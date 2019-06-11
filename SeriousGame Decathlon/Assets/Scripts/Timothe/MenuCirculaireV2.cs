@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuCirculaire : MonoBehaviour
+public class MenuCirculaireV2 : MonoBehaviour
 {
     public Image circleImage;
     public ColisScript colis;

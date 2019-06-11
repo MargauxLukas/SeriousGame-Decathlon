@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuCirculaire : MonoBehaviour
+public class MenuCirculaireTelephone : MonoBehaviour
 {
     public Image circleImage;
-    public ColisScript colis;
     private Vector2 startPosition;
     private Vector2 circlePosition;
     public int itemNumber;
@@ -15,7 +14,6 @@ public class MenuCirculaire : MonoBehaviour
     private bool canOpen = true;
     public float timeBeforeOpen;
     private float timeTouched;
-    private bool doesTouchObject = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,56 +27,48 @@ public class MenuCirculaire : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            touchObject();
-            if (doesTouchObject)
+            Touch touch = Input.GetTouch(0);
+
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.z = 0;
+
+            if (touch.phase == TouchPhase.Began)
             {
+                timeTouched = 0;
+                startPosition = transform.position;
+            }
+            else if (Vector3.Distance(startPosition, touchPosition) > 1.5f && timeTouched < timeBeforeOpen)
+            {
+                canOpen = false;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                canOpen = true;
+            }
 
-                Touch touch = Input.GetTouch(0);
+            timeTouched += Time.deltaTime;
 
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = 0;
+            if (timeTouched > timeBeforeOpen && canOpen)
+            {
+                circleImage.gameObject.SetActive(true);
+                circleImage.fillAmount = 1f / itemNumber;
 
-                if (touch.phase == TouchPhase.Began)
+                switch (touch.phase)
                 {
-                    timeTouched = 0;
-                    startPosition = transform.position;
-                }
-                else if (Vector3.Distance(startPosition, touchPosition) > 1.5f && timeTouched < timeBeforeOpen)
-                {
-                    canOpen = false;
-                    isOpen = false;
-                }
-                else if (touch.phase == TouchPhase.Ended)
-                {
-                    canOpen = true;
-                    isOpen = false;
-                }
-
-                timeTouched += Time.deltaTime;
-
-                if (timeTouched > timeBeforeOpen && canOpen)
-                {
-                    isOpen = true;
-                    circleImage.gameObject.SetActive(true);
-                    circleImage.fillAmount = 1f / itemNumber;
-
-                    switch (touch.phase)
-                    {
-                        case TouchPhase.Moved:
-                            if (Vector2.Distance(startPosition, touchPosition) > 1f)
-                            {
-                                currentItem = GetItemFromAngle(GetAngle(startPosition, touchPosition));
-                            }
-                            else
-                            {
-                                currentItem = -1;
-                            }
-                            break;
-                        case TouchPhase.Ended:
-                            circleImage.gameObject.SetActive(false);
-                            PickInventory(currentItem);
-                            break;
-                    }
+                    case TouchPhase.Moved:
+                        if (Vector2.Distance(startPosition, touchPosition) > 1f)
+                        {
+                            currentItem = GetItemFromAngle(GetAngle(startPosition, touchPosition));
+                        }
+                        else
+                        {
+                            currentItem = -1;
+                        }
+                        break;
+                    case TouchPhase.Ended:
+                        circleImage.gameObject.SetActive(false);
+                        PickInventory(currentItem);
+                        break;
                 }
             }
         }
@@ -91,7 +81,6 @@ public class MenuCirculaire : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
             if (hit.collider.gameObject == gameObject)
             {
-                doesTouchObject = true;
                 Debug.Log("Touched it");
             }
         }
