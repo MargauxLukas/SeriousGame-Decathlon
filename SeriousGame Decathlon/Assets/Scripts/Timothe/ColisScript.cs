@@ -191,7 +191,7 @@ public class ColisScript : MonoBehaviour
     {
         int itemNb = 0;
 
-        itemNb = (int)(angle / (360 / itemNumber));
+        itemNb = (int)((angle + 180) / (360 / itemNumber));
 
         circleImage.transform.eulerAngles = new Vector3(0, 180, (360 / itemNumber) * itemNb);
         return itemNb;
