@@ -7,6 +7,7 @@ public class ColisScript : MonoBehaviour
     private bool isMoving;
 
     public Colis colisScriptable;
+    public MenuCirculaire menuCirculaire;
 
     public bool estSecoue;
     private int changeDirection;
@@ -23,6 +24,11 @@ public class ColisScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(menuCirculaire.isOpen && isMoving)
+        {
+            isMoving = false;
+        }
+
         deltaTimeShake += Time.deltaTime;
         if (Input.touchCount > 0)
         {
@@ -65,6 +71,10 @@ public class ColisScript : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            isMoving = false;
+        }
     }
 
     void touchObject()
@@ -74,6 +84,7 @@ public class ColisScript : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
             if (hit.collider.gameObject == gameObject)
             {
+                isMoving = true;
                 Debug.Log("Touched it");
             }
         }
