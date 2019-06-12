@@ -50,12 +50,17 @@ public class Colis : ScriptableObject
         }
     }
 
+    public void InitializeWithScriptableObject(Colis colisScriptable)
+    {
+        
+    }
+
     public void OuvrirFermer()
     {
         estOuvert = !estOuvert;
     }
 
-    public void Tourner(Vector2 direction)
+    public void Tourner(Vector2 direction, List<Sprite> spriteList)
     {
         switch(orientation)
         {
@@ -168,6 +173,7 @@ public class Colis : ScriptableObject
                 }
                 break;
         }
+        Debug.Log(orientation);
 
         //Changement de Sprite
         /*switch (orientation)
@@ -189,10 +195,13 @@ public class Colis : ScriptableObject
         }*/
     }
 
-    public void Vider()
+    public List<Article> Vider()
     {
+        List<Article> artcilePile;
         PCB = 0;
+        artcilePile = listArticles;
         listArticles = new List<Article>();
+        return artcilePile;
     }
 
     public void Remplir (int newPCB, List<Article> newListArticle)
