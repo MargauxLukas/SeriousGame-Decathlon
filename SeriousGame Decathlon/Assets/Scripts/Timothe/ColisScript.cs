@@ -35,6 +35,8 @@ public class ColisScript : MonoBehaviour
     public float timeBeforeMenuOpen;
     private float timeTouched;
 
+    public bool asBeenScanned;
+
     // Start is called before the first frame update
     void Start()
     {
