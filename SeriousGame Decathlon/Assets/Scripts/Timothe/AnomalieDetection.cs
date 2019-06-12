@@ -9,7 +9,8 @@ public class AnomalieDetection : MonoBehaviour
 
     private void Start()
     {
-
+        CheckList();
+        Debug.Log("Appuie sur A");
     }
 
     private void Update()

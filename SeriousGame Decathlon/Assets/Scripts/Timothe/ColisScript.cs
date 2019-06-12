@@ -42,7 +42,7 @@ public class ColisScript : MonoBehaviour
     void Start()
     {
         Colis newColis = Instantiate(colisScriptable);
-        colisScriptable = newColis;
+        //colisScriptable = newColis;
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
     }
