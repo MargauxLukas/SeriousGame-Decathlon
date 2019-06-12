@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7025935700411313153}
   - component: {fileID: 7025935700411313155}
   m_Layer: 0
-  m_Name: "Ecran Zoom\xE9"
+  m_Name: Ecran Zoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
