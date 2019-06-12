@@ -28,9 +28,13 @@ public class PistolScan : MonoBehaviour
 
             if (isMoving)
             {
-                if (touch.phase == TouchPhase.Moved)
+                if (touch.phase == TouchPhase.Moved && Vector3.Distance(pistolInitPos, touchPosition) > 1f)
                 {
                     transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).y, 0);
+                }
+                else if (touch.phase == TouchPhase.Moved && Vector3.Distance(pistolInitPos, touchPosition) < 1f)
+                {
+                    transform.position = pistolInitPos;
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
