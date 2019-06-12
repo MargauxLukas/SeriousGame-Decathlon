@@ -15,6 +15,8 @@ public class ColisScript : MonoBehaviour
 
     private float deltaTimeShake;
 
+    public bool asBeenScanned;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +26,6 @@ public class ColisScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(menuCirculaire.isOpen && isMoving)
-        {
-            isMoving = false;
-        }
-
         deltaTimeShake += Time.deltaTime;
         if (Input.touchCount > 0)
         {
