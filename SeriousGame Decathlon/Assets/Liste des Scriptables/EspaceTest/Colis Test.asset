@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
   m_Name: Colis Test
   m_EditorClassIdentifier: 
-  PCB: 3
+  PCB: 0
   listArticles:
-  - {fileID: 11400000, guid: 6e2e3414b64f5484c94af309a39e73ec, type: 2}
+  - {fileID: 11400000, guid: ee471a36fb2715f47848ed8c55988930, type: 2}
   - {fileID: 11400000, guid: 6e2e3414b64f5484c94af309a39e73ec, type: 2}
   - {fileID: 11400000, guid: 6e2e3414b64f5484c94af309a39e73ec, type: 2}
   wayTicket: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42, type: 2}
