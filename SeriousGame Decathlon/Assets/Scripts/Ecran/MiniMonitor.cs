@@ -6,10 +6,6 @@ public class MiniMonitor : MonoBehaviour
 {
     public BigMonitor bMonitor;
     public bool isOpen = false;
-    private void Update()
-    {
-        
-    }
 
     private void OnMouseDown()
     {

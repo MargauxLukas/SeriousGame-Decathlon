@@ -13,22 +13,29 @@ public class BigMonitor : MonoBehaviour
 
     private float startPos;
     private float endPos;
+    private float swipeDifference;
 
     private void Update()
-    {
+    {      
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    startPos = touch.position.x;
-                    break;
 
-                case TouchPhase.Ended:
-                    endPos = touch.position.x;
-                    break;
+            if(touch.phase == TouchPhase.Began)
+            {
+                startPos = touch.position.x;
             }
+            if(touch.phase == TouchPhase.Ended)
+            {
+                endPos = touch.position.x;
+            }
+            else
+            {
+                return;
+            }
+
+            swipeDifference = Mathf.Abs(startPos - endPos);
+            //Debug.Log("StartPos : " + startPos + "/ endPos : " + endPos + " /diff : " + swipeDifference);
         }
 
         if (monitorOpening)
@@ -36,7 +43,7 @@ public class BigMonitor : MonoBehaviour
             openBigMonitor();
         }
 
-        if((endPos > startPos) && isOpen)
+        if((endPos > startPos) && isOpen && swipeDifference>200f)
         {
             transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
 
@@ -46,7 +53,7 @@ public class BigMonitor : MonoBehaviour
                 miniMonitor.isOpen = false;
             }
         }
-        else if ((endPos < startPos) && isOpen)
+        else if ((endPos < startPos) && isOpen && swipeDifference > 200f)
         {
             //Move to the left
             return;
