@@ -20,6 +20,12 @@ public class ColisManager : MonoBehaviour
     //Auquel le colis doit être affecté
     public List<BoutonDirection> listeBoutonsMenuTourner;
 
+    public AnomalieDetection anomDetect;
+
+    private void Start()
+    {
+        anomDetect.CheckList(listeColisTraiter);
+    }
 
     public void AppelColis()
     {
@@ -63,7 +69,11 @@ public class ColisManager : MonoBehaviour
     {
         if(!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {
-            listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
+            anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
+            if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
+            {
+                listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
+            }
             GameObject.Destroy(colisRenvoye);
         }
     }
