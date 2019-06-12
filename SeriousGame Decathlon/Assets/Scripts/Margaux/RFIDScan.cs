@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RFIDScan : MonoBehaviour
 {
-    public BoxCollider2D triggerRFID;
-    private ColisScript colisScript;
+    private BoxCollider2D triggerRFID;
+    private ColisScript scriptColis;
     public RFIDInfoManager infoRFID;
     private int numRFID = 0;
     private int listArtLength;
@@ -17,14 +17,14 @@ public class RFIDScan : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("COlide");
-        if(collision.gameObject.tag == "Colis" && collision.gameObject.GetComponent<ColisScript>().estSecoue == true && !collision.gameObject.GetComponent<ColisScript>().asBeenScanned)
+        Debug.Log("CollideRFID");
+        if (collision.gameObject.tag == "Colis" && collision.gameObject.GetComponent<ColisScript>().estSecoue == true && !collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByRFID && collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByPistol)
         {
-            colisScript = collision.gameObject.GetComponent<ColisScript>();
-            infoRFID.refIntRFID = colisScript.colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
-            colisScript.asBeenScanned = true;
+            scriptColis = collision.gameObject.GetComponent<ColisScript>();
+            infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
+            scriptColis.hasBeenScannedByRFID = true;
 
-            foreach (Article item in colisScript.colisScriptable.listArticles)
+            foreach (Article item in scriptColis.colisScriptable.listArticles)
             {
                 numRFID++;
             }

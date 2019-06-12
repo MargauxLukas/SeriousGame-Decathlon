@@ -30,7 +30,8 @@ public class ColisScript : MonoBehaviour
     public float timeBeforeMenuOpen;
     private float timeTouched;
 
-    public bool asBeenScanned;
+    public bool hasBeenScannedByRFID;
+    public bool hasBeenScannedByPistol;
 
     // Start is called before the first frame update
     void Start()

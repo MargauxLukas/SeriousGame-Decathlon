@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenDisplay : MonoBehaviour
+public class ScreenDisplayRFID : MonoBehaviour
 {
     public RFIDInfoManager infoRFID;
     public Text textInfoRFID;
@@ -15,6 +15,6 @@ public class ScreenDisplay : MonoBehaviour
 
     void Update()
     {
-        textInfoRFID.text = "Reference : ART# " + infoRFID.refStringRFID + " /n Total Articles : " + infoRFID.numStringRFID;
+        textInfoRFID.text = "Reference : ART# " + infoRFID.refStringRFID + "\nTotal Articles : " + infoRFID.numStringRFID;
     }
 }
