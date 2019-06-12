@@ -6,6 +6,8 @@ public class PistolScan : MonoBehaviour
 {
     private bool isMoving;
     private Vector3 pistolInitPos;
+    private Transform pistolTransform;
+    private float pistolToBaseDist;
 
     private BoxCollider2D triggerPistol;
     public ColisScript scriptColis;
@@ -13,7 +15,7 @@ public class PistolScan : MonoBehaviour
 
     void Start()
     {
-        pistolInitPos = GetComponent<Transform>().transform.position;
+        pistolInitPos = transform.position;
         triggerPistol = GetComponent<BoxCollider2D>();
     }
 
@@ -28,9 +30,14 @@ public class PistolScan : MonoBehaviour
 
             if (isMoving)
             {
-                if (touch.phase == TouchPhase.Moved)
+                if (touch.phase == TouchPhase.Moved && Vector3.Distance(pistolInitPos, touchPosition) > 1f)
                 {
                     transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).y, 0);
+                }
+                else if (touch.phase == TouchPhase.Moved && Vector3.Distance(pistolInitPos, touchPosition) < 1f)
+                {
+                    transform.position = pistolInitPos;
+                    
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
@@ -43,6 +50,7 @@ public class PistolScan : MonoBehaviour
         {
             isMoving = false;
         }
+       
     }
 
     private void OnTriggerStay2D(Collider2D collision)
