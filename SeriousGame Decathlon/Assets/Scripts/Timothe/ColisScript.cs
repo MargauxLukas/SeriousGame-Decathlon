@@ -35,7 +35,8 @@ public class ColisScript : MonoBehaviour
     public float timeBeforeMenuOpen = 1;
     private float timeTouched;
 
-    public bool asBeenScanned = false;
+    public bool hasBeenScannedByRFID;
+    public bool hasBeenScannedByPistol;
 
     public bool doesEntrance;
     private Vector3 entrancePosition;
@@ -45,7 +46,7 @@ public class ColisScript : MonoBehaviour
     {
         entrancePosition = transform.position;
         Colis newColis = Instantiate(colisScriptable);
-        colisScriptable = newColis;
+        //colisScriptable = newColis;
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
     }

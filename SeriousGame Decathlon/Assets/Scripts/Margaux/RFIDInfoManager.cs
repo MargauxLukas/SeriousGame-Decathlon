@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class RFIDInfoManager : MonoBehaviour
 {
+    //Référence RFID
     public int refIntRFID;
     public string refStringRFID;
+    //Total RFID
     public int numIntRFID;
     public string numStringRFID;
 
@@ -16,7 +18,6 @@ public class RFIDInfoManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(refIntRFID);
         refStringRFID = refIntRFID.ToString();
         numStringRFID = numIntRFID.ToString();
     }
