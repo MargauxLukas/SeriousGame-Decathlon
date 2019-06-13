@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colisScriptable: {fileID: 11400000, guid: 26925cbfeaee2264cbb71193061449c2, type: 2}
-  cartonScriptable: {fileID: 0}
   estSecoue: 0
   changeDirection: 0
   articleOnTable: []
