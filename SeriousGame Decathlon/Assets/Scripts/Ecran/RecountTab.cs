@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class RecountTab : MonoBehaviour
 {
-    //public static Scoring scoring;
-
     public TextMeshProUGUI rfidNumText;
     private string refRFID;
     public RFIDScan        rfidScan; //Activation Scan
