@@ -7,18 +7,28 @@ using UnityEngine.UI;
 public class RecountTab : MonoBehaviour
 {
     public TextMeshProUGUI rfidNumText;
+    private string refRFID;
     public RFIDScan        rfidScan; //Activation Scan
     public RFIDInfoManager infoRFID; //Pour récupérer le nombre de puce RFID
+    public AnomalieDetection anomalieD;
+
+    public GameObject colis;
 
     public WayTicket wayTicketScriptable;
 
     private bool getRFIDNum = false;
+
+    private void Start()
+    {
+
+    }
 
     public void Update()
     {
         if(getRFIDNum) //Faut l'arrêter à un moment mais quand ? Comment marche le vrai Scan RFID ? Il s'arrête à un moment ?
         {
             rfidNumText.text = infoRFID.numStringRFID;
+            refRFID = infoRFID.refStringRFID;
             //rfidNumText.text = "Reference : ART# " + infoRFID.refStringRFID + "\nTotal Articles : " + infoRFID.numStringRFID;
         }
     }
@@ -32,15 +42,34 @@ public class RecountTab : MonoBehaviour
     public void Inventory() //Button OnClick
     {
         //Je considère que si on appuie sur Inventory, c'est qu'on veut plus scan car on a le nombre qui nous interesse. Donc je desactive le SCAN RFID.
-        rfidScan.isActive = false;
-        getRFIDNum = false;
+        if (colis.GetComponent<ColisScript>().hasBeenScannedByRFID && (int.Parse(infoRFID.numStringRFID) > 0))
+        {
+            rfidScan.isActive = false;
+            getRFIDNum = false;
 
-        WayTicket newTicket = Instantiate(wayTicketScriptable);
-        wayTicketScriptable = newTicket;
+            if (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID)))
+            {
+                //Connais déjà
+            }
+            else
+            {
+                Debug.Log("ADD");
+                anomalieD.RFIDtagKnowned.Add(int.Parse(infoRFID.refStringRFID));
+            }
+
+            WayTicket newTicket = Instantiate(wayTicketScriptable);
+            newTicket.PCB = int.Parse(infoRFID.numStringRFID);
+            Debug.Log(newTicket.PCB);
+            wayTicketScriptable = newTicket;
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void PrintRFID() //Button OnClick
     {
-        //Acces méthode imprimante pour imprimer
+        Instantiate(wayTicketScriptable);
     }
 }
