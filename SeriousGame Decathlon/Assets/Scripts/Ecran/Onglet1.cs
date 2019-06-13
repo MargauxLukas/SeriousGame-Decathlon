@@ -8,6 +8,6 @@ public class Onglet1 : MonoBehaviour
 
     private void OnMouseDown()
     {
-        om.FillingRateOpen();    
+        om.FillingRateOpen();
     }
 }

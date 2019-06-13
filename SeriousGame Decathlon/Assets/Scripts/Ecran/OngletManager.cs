@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class OngletManager : MonoBehaviour
 {
-    public SpriteRenderer fillingRate;
-    public SpriteRenderer recount;
-    public SpriteRenderer repack;
+    public GameObject fillingRate;
+    public GameObject recount;
+    public GameObject repack;
 
     public void Start()
     {
-        fillingRate.gameObject.SetActive(true);
-        recount.gameObject.SetActive(false);
-        repack.gameObject.SetActive(false);
+        fillingRate.SetActive(true);
+        recount.SetActive(false);
+        repack.SetActive(false);
     }
 
     public void FillingRateOpen()
@@ -21,9 +21,9 @@ public class OngletManager : MonoBehaviour
         recount.sortingOrder = 11;
         repack.sortingOrder = 11;*/
         Debug.Log("FillingRate Open");
-        fillingRate.gameObject.SetActive(true);
-        recount.gameObject.SetActive(false);
-        repack.gameObject.SetActive(false);
+        fillingRate.SetActive(true);
+        recount.SetActive(false);
+        repack.SetActive(false);
     }
 
     public void RecountOpen()
@@ -33,19 +33,20 @@ public class OngletManager : MonoBehaviour
         repack.sortingOrder = 11;*/
 
         Debug.Log("Recount Open");
-        fillingRate.gameObject.SetActive(false);
-        recount.gameObject.SetActive(true);
-        repack.gameObject.SetActive(false);
+        fillingRate.SetActive(false);
+        recount.SetActive(true);
+        repack.SetActive(false);
     }
 
     public void RepackOpen()
     {
-       /* fillingRate.sortingOrder = 11;
-        recount.sortingOrder = 11;
-        repack.sortingOrder = 12;*/
+        /* fillingRate.sortingOrder = 11;
+         recount.sortingOrder = 11;
+         repack.sortingOrder = 12;*/
 
-        fillingRate.gameObject.SetActive(false);
-        recount.gameObject.SetActive(false);
-        repack.gameObject.SetActive(true);
+        Debug.Log("Repack Open");
+        fillingRate.SetActive(false);
+        recount.SetActive(false);
+        repack.SetActive(true);
     }
 }
