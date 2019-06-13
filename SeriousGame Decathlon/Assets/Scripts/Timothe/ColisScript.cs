@@ -302,7 +302,7 @@ public class ColisScript : MonoBehaviour
     void Vider()
     {
         List<Article> listTemporaire = colisScriptable.Vider();
-        if (listTemporaire.Count > 0)
+        if (listTemporaire.Count > 0 && articleOnTable.Count <= 0)
         {
             articleOnTable = listTemporaire;
         }
