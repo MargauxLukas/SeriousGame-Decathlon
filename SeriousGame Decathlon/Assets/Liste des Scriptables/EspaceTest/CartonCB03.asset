@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27f3868c3b0c3284485e0c91efc1dafc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f528fdbfbf39fd47a2934d5b486250d, type: 3}
   m_Name: CartonCB03
   m_EditorClassIdentifier: 
-  longueur: 60
-  largeur: 20
-  hauteur: 20
+  longueur: 0
+  largeur: 0
+  hauteur: 0
   codeRef: CB03
-  nameCarton: Allumette
+  cartonName: 
