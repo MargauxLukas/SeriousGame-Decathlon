@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Nouveau CartonCB01", menuName = "New CartonCB01")]
-public class CartonCB01 : MonoBehaviour
+[CreateAssetMenu(fileName ="Nouveau CartonCB01", menuName ="New CartonCB01")]
+public class CartonCB01 : ScriptableObject
 {
     public int longueur = 60;
     public int largeur = 40;
