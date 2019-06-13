@@ -10,10 +10,12 @@ public class MenuCirculaireTelephone : MonoBehaviour
     private Vector2 circlePosition;
     public int itemNumber;
     private int currentItem;
-    public bool isOpen;
-    private bool canOpen = true;
+    public bool menuIsOpen;
+    private bool menuCanOpen = true;
     public float timeBeforeOpen;
     private float timeTouched;
+
+    private bool doesTouch;
 
     // Start is called before the first frame update
     void Start()
@@ -28,34 +30,42 @@ public class MenuCirculaireTelephone : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+            TouchObject();
 
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            touchPosition.z = 0;
-
-            if (touch.phase == TouchPhase.Began)
+            if (doesTouch)
             {
-                timeTouched = 0;
-                startPosition = transform.position;
-            }
-            else if (Vector3.Distance(startPosition, touchPosition) > 1.5f && timeTouched < timeBeforeOpen)
-            {
-                canOpen = false;
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                canOpen = true;
-            }
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                touchPosition.z = 0;
 
-            timeTouched += Time.deltaTime;
-
-            if (timeTouched > timeBeforeOpen && canOpen)
-            {
-                circleImage.gameObject.SetActive(true);
-                circleImage.fillAmount = 1f / itemNumber;
-
-                switch (touch.phase)
+                if (touch.phase == TouchPhase.Began)
                 {
-                    case TouchPhase.Moved:
+                    currentItem = -1;
+                    timeTouched = 0;
+                    startPosition = touchPosition;
+                    circlePosition = transform.position;
+                }
+                else if (Vector3.Distance(startPosition, touchPosition) > 1f && timeTouched < timeBeforeOpen)
+                {
+                    menuCanOpen = false;
+                    menuIsOpen = false;
+                }
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    menuCanOpen = true;
+                    menuIsOpen = false;
+                }
+
+                timeTouched += Time.deltaTime;
+
+                if (timeTouched > timeBeforeOpen && menuCanOpen)
+                {
+                    menuIsOpen = true;
+                    circleImage.transform.parent.gameObject.SetActive(true);
+                    circleImage.transform.parent.gameObject.transform.position = transform.position;
+                    circleImage.fillAmount = 1f / itemNumber;
+
+                    if (touch.phase == TouchPhase.Moved)
+                    {
                         if (Vector2.Distance(startPosition, touchPosition) > 1f)
                         {
                             currentItem = GetItemFromAngle(GetAngle(startPosition, touchPosition));
@@ -64,24 +74,36 @@ public class MenuCirculaireTelephone : MonoBehaviour
                         {
                             currentItem = -1;
                         }
-                        break;
-                    case TouchPhase.Ended:
-                        circleImage.gameObject.SetActive(false);
-                        PickInventory(currentItem);
-                        break;
+                    }
+                    else if (touch.phase == TouchPhase.Ended)
+                    {
+                        menuCanOpen = true;
+                        menuIsOpen = false;
+                        circleImage.transform.parent.gameObject.SetActive(false);
+                        if (currentItem > -1)
+                        {
+                            PickInventory(currentItem);
+                        }
+                        return;
+                    }
                 }
+            }
+
+            if(touch.phase == TouchPhase.Ended)
+            {
+                doesTouch = false;
             }
         }
     }
 
-    void touchObject()
+    void TouchObject()
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider.gameObject == gameObject)
+            if (hit.collider.gameObject != null && hit.collider.gameObject == gameObject)
             {
-                Debug.Log("Touched it");
+                doesTouch = true;
             }
         }
     }
@@ -92,8 +114,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
         Vector2 baseAngle = Vector2.zero;
         Vector2 direction = endPos - startPos;
 
-        angle = (Mathf.Atan2(-1 - circlePosition.y, 0 - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
-
+        angle = (Mathf.Atan2(0 - circlePosition.y, 1 - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
         if (angle < 0)
         {
             angle += 360;
@@ -105,7 +126,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
     {
         int itemNb = 0;
 
-        itemNb = (int)(angle / (360 / itemNumber));
+        itemNb = (int)((angle + (360 / 5)) / (360 / itemNumber));
 
         circleImage.transform.eulerAngles = new Vector3(0, 180, (360 / itemNumber) * itemNb);
         return itemNb;
@@ -115,26 +136,30 @@ public class MenuCirculaireTelephone : MonoBehaviour
     {
         switch (nb)
         {
-            case 0:
-                TellSomething("Allo");
-                break;
             case 1:
-                TellSomething("Bonjour");
-                break;
-            case 2:
-                TellSomething("Salut");
-                break;
-            case 3:
-                TellSomething("Hello");
+                TellSomething(1);
                 break;
             case 4:
-                TellSomething("Ohaio");
+                TellSomething(2);
+                break;
+            case 2:
+                TellSomething(2);
+                break;
+            case 3:
+                TellSomething(3);
                 break;
         }
     }
 
-    void TellSomething(string texte)
+    void TellSomething(int texte)
     {
         Debug.Log(texte);
     }
+
+    void CallSomeone()
+    {
+        //En variable d'entrée : Le mec avec qui on veut dialoguer
+        //Début du dialogue
+    }
+
 }

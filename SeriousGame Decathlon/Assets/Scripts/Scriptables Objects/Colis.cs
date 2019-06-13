@@ -8,6 +8,7 @@ public class Colis : ScriptableObject
     enum Direction { Up, Down, Right, Left, Forward, Back };
 
     public int PCB = 0;
+    public ScriptableObject carton;
     public List<Article> listArticles;
     public WayTicket wayTicket;
     public float poids = 0;
