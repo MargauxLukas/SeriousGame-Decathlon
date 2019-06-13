@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f528fdbfbf39fd47a2934d5b486250d, type: 3}
-  m_Name: CartonCB06
+  m_Name: CartonCB02
   m_EditorClassIdentifier: 
   longueur: 0
   largeur: 0
   hauteur: 0
-  codeRef: CB06
+  codeRef: CB02
   cartonName: 
