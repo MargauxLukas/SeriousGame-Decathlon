@@ -73,8 +73,13 @@ public class RecountTab : MonoBehaviour
         }
     }
 
-    public void PrintRFID() //Button OnClick
+    public void PrintHU() //Button OnClick
     {
         Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+    }
+
+    public void PrintRFID() //Button OnClick
+    {
+        //Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 }
