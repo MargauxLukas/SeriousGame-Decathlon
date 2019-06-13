@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[CreateAssetMenu(fileName = "Nouveau Joueur", menuName = "New Player")]
 public class Player : ScriptableObject
 {
     public string name = "";

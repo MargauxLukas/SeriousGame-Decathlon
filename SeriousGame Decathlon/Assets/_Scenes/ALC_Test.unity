@@ -2523,6 +2523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb028f136c5e704e99c08518c8a655d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 925239419}
+  score: 0
   rfidNumText: {fileID: 2090641907}
   rfidScan: {fileID: 1748915971}
   infoRFID: {fileID: 130906414}
@@ -4657,6 +4659,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5d4a8d0cb173a42b69c097d288d12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &925239419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925239421}
+  - component: {fileID: 925239420}
+  m_Layer: 0
+  m_Name: PlayerTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &925239420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925239419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03f7db071c4c954f996f70c34c66a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 0ef6209842de536458b81af54d2dc766, type: 2}
+--- !u!4 &925239421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925239419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3563197, y: 0.7909682, z: -9.358722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929957727
 GameObject:
   m_ObjectHideFlags: 0

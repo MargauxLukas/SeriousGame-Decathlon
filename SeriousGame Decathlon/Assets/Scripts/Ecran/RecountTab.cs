@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class RecountTab : MonoBehaviour
 {
+    public GameObject player;
+    public int score;
+
     public TextMeshProUGUI rfidNumText;
     private string refRFID;
     public RFIDScan        rfidScan; //Activation Scan
@@ -22,7 +25,7 @@ public class RecountTab : MonoBehaviour
 
     private void Start()
     {
-
+        score = player.GetComponent<PlayerTest>().player.score;
     }
 
     public void Update()
@@ -69,6 +72,8 @@ public class RecountTab : MonoBehaviour
         }
         else
         {
+            score = score - 5;
+            player.GetComponent<PlayerTest>().player.score = score;
             return;
         }
     }
