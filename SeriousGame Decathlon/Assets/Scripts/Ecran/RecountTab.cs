@@ -6,75 +6,90 @@ using UnityEngine.UI;
 
 public class RecountTab : MonoBehaviour
 {
+    [Header("Texte en enfant")]
     public TextMeshProUGUI rfidNumText;
-    private string refRFID;
-    public RFIDScan        rfidScan; //Activation Scan
-    public RFIDInfoManager infoRFID; //Pour récupérer le nombre de puce RFID
-    public AnomalieDetection anomalieD;
 
-    public GameObject ticket;
-
+    [Header("GameObject dans la scène")]
     public GameObject colis;
+    public RFIDScan           rfidScan;              //Activation Scan lorsque que j'appuie sur Recount
+    public RFIDInfoManager    infoRFID;              //Pour récupérer le nombre de puce RFID
+    public AnomalieDetection anomalieD;              //Pour savoir si la ref est connu
 
+    [Header("Scriptable")]
     public WayTicket wayTicketScriptable;
 
+    [Header("Prefab")]
+    public GameObject ticket;
+    
     private bool getRFIDNum = false;
+
+    private string refRFID;
 
     public void Update()
     {
-        if(getRFIDNum) //Faut l'arrêter à un moment mais quand ? Comment marche le vrai Scan RFID ? Il s'arrête à un moment ?
+        if(getRFIDNum) 
         {
             rfidNumText.text = infoRFID.numStringRFID;
-            refRFID = infoRFID.refStringRFID;
-            //rfidNumText.text = "Reference : ART# " + infoRFID.refStringRFID + "\nTotal Articles : " + infoRFID.numStringRFID;
+            refRFID          = infoRFID.refStringRFID;
         }
     }
 
-    public void Recount() //Button OnClick 
+
+    /*****************************
+    *  Active le scanner RFID    *
+    ******************************/
+    public void Recount()
     {
         rfidScan.isActive = true;
         getRFIDNum        = true;
     }
 
-    public void Inventory() //Button OnClick
+    /******************************************************************
+    * Enregistre les nouvelles informations sur le ticket à imprimer  *
+    *******************************************************************/
+    public void Inventory()
     {
-        //Je considère que si on appuie sur Inventory, c'est qu'on veut plus scan car on a le nombre qui nous interesse. Donc je desactive le SCAN RFID.
         if (colis.GetComponent<ColisScript>().hasBeenScannedByRFID && (int.Parse(infoRFID.numStringRFID) > 0))
         {
             rfidScan.isActive = false;
-            getRFIDNum = false;
+            getRFIDNum        = false;
 
-            if (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID)))
+            if (anomalieD.RFIDtagKnowned.Contains(int.Parse(refRFID)))
             {
                 //Connais déjà
             }
             else
             {
-                Debug.Log("ADD");
-                anomalieD.RFIDtagKnowned.Add(int.Parse(infoRFID.refStringRFID));
+                anomalieD.RFIDtagKnowned.Add(int.Parse(refRFID));
             }
 
-            WayTicket newTicket = Instantiate(wayTicketScriptable);
-            newTicket.PCB = int.Parse(infoRFID.numStringRFID);
-            newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
-            Debug.Log(newTicket.PCB);
-            wayTicketScriptable = newTicket;
-            ticket.GetComponent<GetIWayFromObject>().IWayTicket = wayTicketScriptable;
+            WayTicket newTicket  = Instantiate(wayTicketScriptable);
+            newTicket.PCB        = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
+            newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
+            wayTicketScriptable  = newTicket;
 
+            ticket.GetComponent<GetIWayFromObject>().IWayTicket = wayTicketScriptable;
         }
         else
         {
-            Scoring.instance.minorPenalty();
+            Scoring.instance.MinorPenalty();                                                                   //Test de scoring
             return;
         }
     }
 
-    public void PrintHU() //Button OnClick
+
+    /*********************************************
+    * Permet d'imprimer un ticket pour le colis  *
+    **********************************************/
+    public void PrintHU() 
     {
         Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 
-    public void PrintRFID() //Button OnClick
+    /************************************
+    * Permet d'imprimer des puces RFID  *
+    *************************************/
+    public void PrintRFID()
     {
         //Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }

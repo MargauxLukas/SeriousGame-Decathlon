@@ -17,10 +17,7 @@ public class OngletManager : MonoBehaviour
 
     public void FillingRateOpen()
     {
-        /*fillingRate.sortingOrder = 12;
-        recount.sortingOrder = 11;
-        repack.sortingOrder = 11;*/
-        Debug.Log("FillingRate Open");
+        //Debug.Log("FillingRate Open");
         fillingRate.SetActive(true);
         recount.SetActive(false);
         repack.SetActive(false);
@@ -28,11 +25,7 @@ public class OngletManager : MonoBehaviour
 
     public void RecountOpen()
     {
-        /*fillingRate.sortingOrder = 11;
-        recount.sortingOrder = 12;
-        repack.sortingOrder = 11;*/
-
-        Debug.Log("Recount Open");
+        //Debug.Log("Recount Open");
         fillingRate.SetActive(false);
         recount.SetActive(true);
         repack.SetActive(false);
@@ -40,11 +33,7 @@ public class OngletManager : MonoBehaviour
 
     public void RepackOpen()
     {
-        /* fillingRate.sortingOrder = 11;
-         recount.sortingOrder = 11;
-         repack.sortingOrder = 12;*/
-
-        Debug.Log("Repack Open");
+        //Debug.Log("Repack Open");
         fillingRate.SetActive(false);
         recount.SetActive(false);
         repack.SetActive(true);

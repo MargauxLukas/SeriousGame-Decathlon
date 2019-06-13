@@ -22,14 +22,14 @@ public class Scoring : MonoBehaviour
     }
 
     // -5
-    public void minorPenalty()
+    public void MinorPenalty()
     {
         score = score - 5;
         player.GetComponent<PlayerTest>().player.score = score;
     }
 
     // -10
-    public void midPenalty()
+    public void MidPenalty()
     {
         score = score - 10;
         player.GetComponent<PlayerTest>().player.score = score;

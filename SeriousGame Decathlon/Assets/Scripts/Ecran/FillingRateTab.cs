@@ -15,9 +15,7 @@ public class FillingRateTab : MonoBehaviour
     public void setFillingRate()
     {
         buttonName = EventSystem.current.currentSelectedGameObject.name;
-
         fillingRate = int.Parse(buttonName);
-        Debug.Log(fillingRate);
     }
 
     public void canMecaOpen()
@@ -25,12 +23,12 @@ public class FillingRateTab : MonoBehaviour
         if(!toggle.isOn)
         {
             bCanMecaOpen = false;
-            Debug.Log("PAS OUVRIR");
+            //Debug.Log("PAS OUVRIR");
         }
         else if(toggle.isOn)
         {
             bCanMecaOpen = true;
-            Debug.Log("Ok il peut");
+            //Debug.Log("Ok il peut");
         }
     }
 }
