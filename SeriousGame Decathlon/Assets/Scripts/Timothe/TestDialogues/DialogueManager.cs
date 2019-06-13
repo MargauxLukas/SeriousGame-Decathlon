@@ -41,8 +41,6 @@ public class DialogueManager : MonoBehaviour
             else if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                Debug.Log(actualDialogue.phraseDites.Count);
-                Debug.Log(actualDialogueLine);
 
                 if(actualDialogueLine < actualDialogue.phraseDites.Count-1)
                 {
@@ -85,10 +83,10 @@ public class DialogueManager : MonoBehaviour
         {
             for (int j = 0; j < bouttonsChoix.Count; j++)
             {
-                bouttonsChoix[j].SetActive(true);
                 if(actualDialogue.choixPossibles[j] != null)
                 {
                     bouttonTextes[j].text = actualDialogue.choixPossibles[j];
+                    bouttonsChoix[j].SetActive(true);
                 }
                 else
                 {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: "D\xE9butFriterie"
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 4795f7a44cd6c454aa59f21308de2e4a, type: 2}
+  persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
+  phraseDites:
+  - "Ah, \xE7a faisait longtemps ! Vous prendrez ?"
+  choixPossibles:
+  - "Un am\xE9ricain fricadelle, 2 grandes frites et de quoi remplir une piscine de
+    sauce barbecue."
+  - "Ah d\xE9sol\xE9, mauvais num\xE9ro."
+  dialoguesSuivant:
+  - {fileID: 11400000, guid: 8267880bb9f478f49a70e17ad3375c58, type: 2}
+  - {fileID: 0}

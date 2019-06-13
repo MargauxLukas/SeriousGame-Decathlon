@@ -17,6 +17,9 @@ public class MenuCirculaireTelephone : MonoBehaviour
 
     private bool doesTouch;
 
+    public DialogueManager dialManage;
+    public List<Dialogue> dialogueList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !dialManage.dialogueGlobal.activeSelf)
         {
             Touch touch = Input.GetTouch(0);
             TouchObject();
@@ -137,18 +140,24 @@ public class MenuCirculaireTelephone : MonoBehaviour
         switch (nb)
         {
             case 1:
-                TellSomething(1);
-                break;
-            case 4:
-                TellSomething(2);
+                LancementDialogue(0);
                 break;
             case 2:
-                TellSomething(2);
+                LancementDialogue(1);
                 break;
-            case 3:
-                TellSomething(3);
+            case 0:
+                LancementDialogue(2);
                 break;
         }
+    }
+
+    public void LancementDialogue(int numDial)
+    {
+        Debug.Log("Dialogue : " + numDial);
+        dialManage.dialogueGlobal.SetActive(true);
+        dialManage.isDialogueOpen = true;
+        dialManage.actualDialogue = dialogueList[numDial];
+        doesTouch = false;
     }
 
     void TellSomething(int texte)

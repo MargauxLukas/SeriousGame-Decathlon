@@ -3124,7 +3124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350303339}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.13, y: 2.33, z: 0}
+  m_LocalPosition: {x: -4.56, y: 2.2, z: 0}
   m_LocalScale: {x: 0.384, y: 0.63, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3194,6 +3194,11 @@ MonoBehaviour:
   itemNumber: 3
   menuIsOpen: 0
   timeBeforeOpen: 1
+  dialManage: {fileID: 1399314697}
+  dialogueList:
+  - {fileID: 11400000, guid: bc838b93a10b3874fb8c48b2e602f768, type: 2}
+  - {fileID: 11400000, guid: f136f3ff945bdbf43bbe0f2d985b997d, type: 2}
+  - {fileID: 11400000, guid: 459aadea56eae1d4e95026e2ca49fa9d, type: 2}
 --- !u!61 &1350303343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4589,12 +4594,12 @@ GameObject:
   - component: {fileID: 1942732429}
   - component: {fileID: 1942732428}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button Test Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1942732427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5213,7 +5218,7 @@ PrefabInstance:
     - target: {fileID: 8355303769727507475, guid: 86ed6a425cc9f314e8c1b3da697a1aac,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8355303769727507474, guid: 86ed6a425cc9f314e8c1b3da697a1aac,
         type: 3}

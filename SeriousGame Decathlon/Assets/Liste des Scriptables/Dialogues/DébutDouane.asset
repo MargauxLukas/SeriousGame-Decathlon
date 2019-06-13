@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: "D\xE9butDouane"
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: f07f36212ba4f3a4a8c7f2529ac3f733, type: 2}
+  persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
+  phraseDites:
+  - Bonjour, que puis-je faire pour Vous ?
+  choixPossibles:
+  - "J'aimerai parler \xE0 votre sup\xE9rieur !"
+  - "Alors voil\xE0, j'ai un probl\xE8me avec un colis re\xE7u qui n'est pas cens\xE9
+    \xEAtre l\xE0."
+  - Vous connaissez l'histoire de Toto dans l'espace ?
+  dialoguesSuivant:
+  - {fileID: 11400000, guid: b1f915963dc287a4485b34efb2baa345, type: 2}
+  - {fileID: 11400000, guid: 64765b28ff4ed654198b2d78c4ac9cba, type: 2}
+  - {fileID: 11400000, guid: ae1dd646db690b144bb22ef0e5d228fe, type: 2}
