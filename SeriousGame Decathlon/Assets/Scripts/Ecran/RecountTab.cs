@@ -12,6 +12,8 @@ public class RecountTab : MonoBehaviour
     public RFIDInfoManager infoRFID; //Pour récupérer le nombre de puce RFID
     public AnomalieDetection anomalieD;
 
+    public GameObject ticket;
+
     public GameObject colis;
 
     public WayTicket wayTicketScriptable;
@@ -59,8 +61,11 @@ public class RecountTab : MonoBehaviour
 
             WayTicket newTicket = Instantiate(wayTicketScriptable);
             newTicket.PCB = int.Parse(infoRFID.numStringRFID);
+            newTicket.numeroCodeBarre = int.Parse(infoRFID.refStringRFID);
             Debug.Log(newTicket.PCB);
             wayTicketScriptable = newTicket;
+            ticket.GetComponent<GetIWayFromObject>().IWayTicket = wayTicketScriptable;
+
         }
         else
         {
@@ -70,6 +75,6 @@ public class RecountTab : MonoBehaviour
 
     public void PrintRFID() //Button OnClick
     {
-        Instantiate(wayTicketScriptable);
+        Instantiate(ticket, new Vector2(2.89f, 0.70f), Quaternion.identity);
     }
 }

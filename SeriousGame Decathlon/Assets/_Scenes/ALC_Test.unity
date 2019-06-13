@@ -2524,6 +2524,9 @@ MonoBehaviour:
   rfidNumText: {fileID: 2090641907}
   rfidScan: {fileID: 1748915971}
   infoRFID: {fileID: 130906414}
+  anomalieD: {fileID: 1618764500}
+  ticket: {fileID: 8320223455091129367, guid: 637ffeda7b2d8604e8eb3016286c7ea9, type: 3}
+  colis: {fileID: 145551424}
   wayTicketScriptable: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42,
     type: 2}
 --- !u!1 &441969852
@@ -6908,7 +6911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28dda54ee56c47e4589cc1eca4412178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RFIDtagKnowned: 40e20100
+  RFIDtagKnowned: 40e201004e460500
 --- !u!4 &1618764501
 Transform:
   m_ObjectHideFlags: 0
