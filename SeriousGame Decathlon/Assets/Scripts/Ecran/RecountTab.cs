@@ -10,6 +10,8 @@ public class RecountTab : MonoBehaviour
     public RFIDScan        rfidScan; //Activation Scan
     public RFIDInfoManager infoRFID; //Pour récupérer le nombre de puce RFID
 
+    public WayTicket wayTicketScriptable;
+
     private bool getRFIDNum = false;
 
     public void Update()
@@ -32,8 +34,9 @@ public class RecountTab : MonoBehaviour
         //Je considère que si on appuie sur Inventory, c'est qu'on veut plus scan car on a le nombre qui nous interesse. Donc je desactive le SCAN RFID.
         rfidScan.isActive = false;
         getRFIDNum = false;
-        
-        //Enregistrer ou ?
+
+        WayTicket newTicket = Instantiate(wayTicketScriptable);
+        wayTicketScriptable = newTicket;
     }
 
     public void PrintRFID() //Button OnClick

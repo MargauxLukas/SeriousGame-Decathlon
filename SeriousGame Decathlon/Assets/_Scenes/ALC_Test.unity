@@ -2356,8 +2356,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rfidNumText: {fileID: 2090641907}
-  rfidScan: {fileID: 0}
-  infoRFID: {fileID: 0}
+  rfidScan: {fileID: 1748915971}
+  infoRFID: {fileID: 130906414}
+  wayTicketScriptable: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42,
+    type: 2}
 --- !u!1 &441969852
 GameObject:
   m_ObjectHideFlags: 0
