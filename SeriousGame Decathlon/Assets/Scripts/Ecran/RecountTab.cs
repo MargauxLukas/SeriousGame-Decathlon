@@ -61,7 +61,7 @@ public class RecountTab : MonoBehaviour
 
             WayTicket newTicket = Instantiate(wayTicketScriptable);
             newTicket.PCB = int.Parse(infoRFID.numStringRFID);
-            newTicket.numeroCodeBarre = int.Parse(infoRFID.refStringRFID);
+            newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
             Debug.Log(newTicket.PCB);
             wayTicketScriptable = newTicket;
             ticket.GetComponent<GetIWayFromObject>().IWayTicket = wayTicketScriptable;
@@ -75,6 +75,6 @@ public class RecountTab : MonoBehaviour
 
     public void PrintRFID() //Button OnClick
     {
-        Instantiate(ticket, new Vector2(2.89f, 0.70f), Quaternion.identity);
+        Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 }
