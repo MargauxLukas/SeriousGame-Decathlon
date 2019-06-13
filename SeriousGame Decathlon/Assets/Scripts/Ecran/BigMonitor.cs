@@ -43,7 +43,7 @@ public class BigMonitor : MonoBehaviour
             openBigMonitor();
         }
 
-        if((endPos > startPos) && isOpen && swipeDifference>200f)
+        if((endPos > startPos) && isOpen && swipeDifference>100f)
         {
             transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
 
@@ -53,7 +53,7 @@ public class BigMonitor : MonoBehaviour
                 miniMonitor.isOpen = false;
             }
         }
-        else if ((endPos < startPos) && isOpen && swipeDifference > 200f)
+        else if ((endPos < startPos) && isOpen && swipeDifference > 100f)
         {
             //Move to the left
             return;

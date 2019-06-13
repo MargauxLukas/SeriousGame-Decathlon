@@ -8,12 +8,19 @@ public class OngletManager : MonoBehaviour
     public SpriteRenderer recount;
     public SpriteRenderer repack;
 
+    public void Start()
+    {
+        fillingRate.gameObject.SetActive(true);
+        recount.gameObject.SetActive(false);
+        repack.gameObject.SetActive(false);
+    }
+
     public void FillingRateOpen()
     {
         /*fillingRate.sortingOrder = 12;
         recount.sortingOrder = 11;
         repack.sortingOrder = 11;*/
-
+        Debug.Log("FillingRate Open");
         fillingRate.gameObject.SetActive(true);
         recount.gameObject.SetActive(false);
         repack.gameObject.SetActive(false);
@@ -25,6 +32,7 @@ public class OngletManager : MonoBehaviour
         recount.sortingOrder = 12;
         repack.sortingOrder = 11;*/
 
+        Debug.Log("Recount Open");
         fillingRate.gameObject.SetActive(false);
         recount.gameObject.SetActive(true);
         repack.gameObject.SetActive(false);
