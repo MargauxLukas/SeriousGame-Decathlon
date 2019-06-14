@@ -10,7 +10,7 @@ public class ColisManager : MonoBehaviour
 
     public Transform positionApparition;
 
-    GameObject[] listeColisActuel;
+    public GameObject[] listeColisActuel;
 
     //A affecté au Colis
     public GameObject menuTourner;
