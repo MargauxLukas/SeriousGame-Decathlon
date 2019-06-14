@@ -25,14 +25,13 @@ MonoBehaviour:
   wayTicket: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42, type: 2}
   poids: 34
   fillPercent: 200
-  isBadOriented: 1
+  isBadOriented: 0
   estOuvert: 0
   estAbime: 1
-  nbAnomalie: 5
+  nbAnomalie: 4
   listAnomalies:
   - RFID tag for unexpected product
   - TU too heavy (20-25)
   - RFID tag scanned for unknown product
   - Quality Control
-  - Wrong carton orientation
   provenance: Glan
