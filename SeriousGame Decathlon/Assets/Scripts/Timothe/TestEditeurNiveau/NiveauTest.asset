@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51ced4f9d60e0948aa8593f4a8d093d, type: 3}
   m_Name: NiveauTest
   m_EditorClassIdentifier: 
-  colisDuNiveauNoms: []
-  nbColisParNomColis: 
-  nbLevel: 0
+  colisDuNiveauNoms:
+  - Colis2
+  - Colis3
+  - Colis4
+  nbColisParNomColis: 060000000400000001000000
+  nbLevel: 1

@@ -6,6 +6,23 @@ public class AnomalieDetection : MonoBehaviour
 {
     public List<int> RFIDtagKnowned;
 
+    /* Anomalie actuellement traitées :
+     * - PCB différents
+     * - RefArticles différents
+     * - Poids trop important
+     * - RefArticle inconnue
+     * - Le colis est abimé
+     * - Le cois est mal orienté
+     */
+
+    private void Start()
+    {
+        if(ChargementListeColis.instance != null)
+        {
+            RFIDtagKnowned = ChargementListeColis.instance.RFIDKnowed;
+        }
+    }
+
     public void CheckColis(Colis colis)
     {
         colis.nbAnomalie = 0;
@@ -25,11 +42,12 @@ public class AnomalieDetection : MonoBehaviour
          * - Scan colis. Scan RFID. Vider colis. Voir nombre Article. Bouton Inventaire. Crée un nouveau RFID. Mettre RFID sur pile Article.
          */
 
-        if (RFIDnb != colis.wayTicket.PCB)
+        if (colis.wayTicket == null || RFIDnb != colis.wayTicket.PCB)
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("RFID tag over Tolerance");
         }
+        Debug.Log("Test Anomalie 1");
 
         bool isBreakable = false;
         foreach (Article article in colis.listArticles) //Scanner le colis. Scanner les RFID. Vider le colis. Imprimer le RFID. Mettre le nouveau RFID.
@@ -41,12 +59,14 @@ public class AnomalieDetection : MonoBehaviour
                 isBreakable = true;
             }
         }
+        Debug.Log("Test Anomalie 2");
 
         if (colis.poids > 20) //A voir comment rectifier en jeu ET à dupliquer pour le supp 35
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("TU too heavy (20-25)");
         }
+        Debug.Log("Test Anomalie 3");
 
         bool isCompatible = false; //Scanner le colis, Scanner les RFID, faire un inventaire pour ajouter les nouveaux RFID.
         for (int i = 0; i < RFIDtagKnowned.Count; i++)
@@ -61,24 +81,30 @@ public class AnomalieDetection : MonoBehaviour
             colis.nbAnomalie++;
             colis.listAnomalies.Add("RFID tag scanned for unknown product");
         }
+        Debug.Log("Test Anomalie 4");
 
         if (colis.estAbime) //A voir comment rectifier en jeu
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("Quality Control");
         }
+        Debug.Log("Test Anomalie 5");
 
         if (colis.isBadOriented) //A voir comment rectifier en jeu (Voir avec les graph)
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("Wrong carton orientation");
         }
-
+        Debug.Log("Test Anomalie 6");
 
         //A la fin
-        if(colis.nbAnomalie <= 0)
+        if (colis.nbAnomalie <= 0)
         {
             Debug.Log("Tout est bon dans le colis " + colis.name);
+        }
+        else
+        {
+            Debug.Log("T'arrive là ?");
         }
     }
 
@@ -97,12 +123,14 @@ public class AnomalieDetection : MonoBehaviour
                     RFIDnb++;
                 }
             }
+            Debug.Log("Test Anomalie 1");
 
-            if (RFIDnb != colis.wayTicket.PCB)
+            if (colis.wayTicket == null || RFIDnb != colis.wayTicket.PCB)
             {
                 colis.nbAnomalie++;
                 colis.listAnomalies.Add("RFID tag over Tolerance");
             }
+            Debug.Log("Test Anomalie 2");
 
             bool isBreakable = false;
             foreach (Article article in colis.listArticles)
@@ -114,16 +142,19 @@ public class AnomalieDetection : MonoBehaviour
                     isBreakable = true;
                 }
             }
+            Debug.Log("Test Anomalie 3");
 
             if (colis.poids > 20)
             {
                 colis.nbAnomalie++;
                 colis.listAnomalies.Add("TU too heavy (20-25)");
             }
+            Debug.Log("Test Anomalie 4");
 
             bool isCompatible = false;
             for (int i = 0; i < RFIDtagKnowned.Count; i++)
             {
+                Debug.Log("Test Anomalie 5");
                 if (colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
                 {
                     isCompatible = true;
@@ -134,18 +165,21 @@ public class AnomalieDetection : MonoBehaviour
                 colis.nbAnomalie++;
                 colis.listAnomalies.Add("RFID tag scanned for unknown product");
             }
+           
 
             if (colis.estAbime)
             {
                 colis.nbAnomalie++;
                 colis.listAnomalies.Add("Quality Control");
             }
+            Debug.Log("Test Anomalie 6");
 
             if (colis.isBadOriented)
             {
                 colis.nbAnomalie++;
                 colis.listAnomalies.Add("Wrong carton orientation");
             }
+            Debug.Log("Test Anomalie 7");
         }
     }
 }

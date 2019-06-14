@@ -42,11 +42,37 @@ public class SaveLoadSystem : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/game_save/colis_data");
         }
 
+        colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
+
+        SaveWayTicket(colisToSave.wayTicket);
+
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/game_save/colis_data" + colisToSave.name + ".txt");
+        FileStream file = File.Create(Application.persistentDataPath + "/game_save/colis_data/" + colisToSave.name + ".txt");
+        Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/colis_data/" + colisToSave.name + ".txt"));
         var json = JsonUtility.ToJson(colisToSave);
         bf.Serialize(file, json);
         file.Close();
+    }
+
+    public void SaveWayTicket(WayTicket ticket)
+    {
+        if (!IsSaveFile())
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
+        }
+
+        if (!Directory.Exists(Application.persistentDataPath + "/game_save/wayTicket_data"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save/wayTicket_data");
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket.NamingTicket() + ".txt");
+        Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket.NamingTicket() + ".txt"));
+        var json = JsonUtility.ToJson(ticket);
+        bf.Serialize(file, json);
+        file.Close();
+
     }
 
     public Colis LoadColis(/*Colis colisToLoad, */string colisName)
@@ -58,13 +84,33 @@ public class SaveLoadSystem : MonoBehaviour
 
         Colis colisToLoad = Colis.CreateInstance<Colis>();
         BinaryFormatter bf = new BinaryFormatter();
-        if(File.Exists(Application.persistentDataPath + "/game_save/colis_data" + colisName + ".txt"))
+        if(File.Exists(Application.persistentDataPath + "/game_save/colis_data/" + colisName + ".txt"))
         {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/colis_data" + colisToLoad.name + ".txt", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/colis_data/" + colisName + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), colisToLoad);
         }
 
+        colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
+
         return colisToLoad;
+    }
+
+    public WayTicket LoadWayTicket(string ticket)
+    {
+        if (!IsSaveFile())
+        {
+            return null;
+        }
+
+        WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
+        BinaryFormatter bf = new BinaryFormatter();
+        if (File.Exists(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket + ".txt"))
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket + ".txt", FileMode.Open);
+            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), newTicket);
+        }
+
+        return newTicket;
     }
 
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
@@ -91,7 +137,7 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    public LevelScriptable LoadLevel(string levelNb)
+    public LevelScriptable LoadLevel(int levelNb)
     {
         if (!IsSaveFile())
         {
@@ -103,10 +149,10 @@ public class SaveLoadSystem : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
         {
+            Debug.Log("Test");
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
         }
-
         return levelToSave;
     }
 }

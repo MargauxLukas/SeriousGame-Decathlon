@@ -28,6 +28,16 @@ public class ColisManager : MonoBehaviour
 
     private void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            listeColisTraiter = ChargementListeColis.instance.colisProcessMulti;
+        }
+
+        anomDetect.CheckList(listeColisTraiter);
+    }
+
+    public void CheckNewColis()
+    {
         anomDetect.CheckList(listeColisTraiter);
     }
 
