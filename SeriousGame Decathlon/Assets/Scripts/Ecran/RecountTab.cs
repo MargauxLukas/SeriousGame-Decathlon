@@ -17,9 +17,11 @@ public class RecountTab : MonoBehaviour
 
     [Header("Scriptable")]
     public WayTicket wayTicketScriptable;
+    public RFID rfidTicketScriptable;
 
     [Header("Prefab")]
     public GameObject ticket;
+    public GameObject ticketRFID;
     
     private bool getRFIDNum = false;
 
@@ -67,8 +69,13 @@ public class RecountTab : MonoBehaviour
             newTicket.PCB        = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
             newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
             wayTicketScriptable  = newTicket;
-
             ticket.GetComponent<GetIWayFromObject>().IWayTicket = wayTicketScriptable;
+
+            RFID newRFID = Instantiate(rfidTicketScriptable);
+            newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
+            newRFID.estFonctionnel = true;
+            rfidTicketScriptable = newRFID;
+            ticketRFID.GetComponent<GetRfidFromObject>().newRFID = rfidTicketScriptable;
         }
         else
         {
@@ -91,6 +98,6 @@ public class RecountTab : MonoBehaviour
     *************************************/
     public void PrintRFID()
     {
-        //Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+        Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
     }
 }
