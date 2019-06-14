@@ -38,7 +38,6 @@ public class FicheCarton : MonoBehaviour
         scriptColis.colisScriptable.carton.codeRef = buttonName;
         scriptColis.colisScriptable.carton.Initialize();
 
-        scriptColis.doesEntrance = true;
         scriptColis.tournerMenu = menuTourner;
         scriptColis.spriteArticleTable = spriteArticleTable;
         scriptColis.circleImage = circleImage;

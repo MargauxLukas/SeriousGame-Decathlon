@@ -7100,6 +7100,12 @@ PrefabInstance:
       propertyPath: scanPistol
       value: 
       objectReference: {fileID: 606082331}
+    - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: colisGameObject
+      value: 
+      objectReference: {fileID: 246706537573853406, guid: 8a9ec21c1886bc14c835c267dea09563,
+        type: 3}
     - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: m_LocalPosition.x

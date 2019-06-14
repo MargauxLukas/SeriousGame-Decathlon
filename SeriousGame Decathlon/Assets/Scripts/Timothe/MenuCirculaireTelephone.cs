@@ -117,7 +117,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
         Vector2 baseAngle = Vector2.zero;
         Vector2 direction = endPos - startPos;
 
-        angle = (Mathf.Atan2(0 - circlePosition.y, 1 - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
+        angle = (Mathf.Atan2(circlePosition.y - circlePosition.y, circlePosition.x - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
         if (angle < 0)
         {
             angle += 360;
@@ -129,7 +129,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
     {
         int itemNb = 0;
 
-        itemNb = (int)((angle + (360 / 5)) / (360 / itemNumber));
+        itemNb = (int)((angle) / (360 / itemNumber));
 
         circleImage.transform.eulerAngles = new Vector3(0, 180, (360 / itemNumber) * itemNb);
         return itemNb;

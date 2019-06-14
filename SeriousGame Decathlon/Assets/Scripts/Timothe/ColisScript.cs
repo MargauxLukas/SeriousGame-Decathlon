@@ -109,6 +109,7 @@ public class ColisScript : MonoBehaviour
                         if (timeTouched > timeBeforeMenuOpen && menuCanOpen)
                         {
                             menuIsOpen = true;
+                            circlePosition = transform.position;
                             circleImage.transform.parent.gameObject.SetActive(true);
                             circleImage.transform.parent.gameObject.transform.position = transform.position;
                             circleImage.fillAmount = 1f / itemNumber;
@@ -178,8 +179,9 @@ public class ColisScript : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position) >= 10f)
+                else if (Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position) >= 20f)
                 {
+                    Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
                     tournerMenu.SetActive(false);
                 }
@@ -222,7 +224,7 @@ public class ColisScript : MonoBehaviour
         Vector2 baseAngle = Vector2.zero;
         Vector2 direction = endPos - startPos;
 
-        angle = (Mathf.Atan2(0 - circlePosition.y, 1 - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
+        angle = (Mathf.Atan2(circlePosition.y - circlePosition.y, circlePosition.x - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
         if (angle < 0)
         {
             angle += 360;
@@ -234,7 +236,7 @@ public class ColisScript : MonoBehaviour
     {
         int itemNb = 0;
 
-        itemNb = (int)((angle + 360/5) / (360 / itemNumber));
+        itemNb = (int)((angle) / (360 / itemNumber));
 
         circleImage.transform.eulerAngles = new Vector3(0, 180, (360 / itemNumber) * itemNb);
         return itemNb;
@@ -344,6 +346,9 @@ public class ColisScript : MonoBehaviour
 
     void Jeter()
     {
-        Debug.Log("A été jeté lachement");
+        if(colisScriptable.PCB == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
