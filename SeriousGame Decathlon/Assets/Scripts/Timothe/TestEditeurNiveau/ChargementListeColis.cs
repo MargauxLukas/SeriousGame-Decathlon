@@ -9,15 +9,16 @@ public class ChargementListeColis : MonoBehaviour
     public ColisManager manageColis;
 
     public int nbLevel;
-    public LevelScriptable currentLevel;
+    public string currentLevel;
+    public LevelScriptable levelScript;
 
     public void ChargementNiveau()
     {
         List<Colis> newList = new List<Colis>();
 
-        SaveLoadSystem.instance.LoadLevel(currentLevel);
+        levelScript = SaveLoadSystem.instance.LoadLevel(currentLevel);
 
-        foreach(int nb in currentLevel.nbColisParNomColis)
+        foreach(int nb in levelScript.nbColisParNomColis)
         {
             for(int i = 0; i < nb; i++)
             {

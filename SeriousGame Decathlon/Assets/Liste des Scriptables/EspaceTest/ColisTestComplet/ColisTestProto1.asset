@@ -10,17 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: ColisVide
+  m_Name: ColisTestProto1
   m_EditorClassIdentifier: 
-  PCB: 0
+  name: CartonTest1
+  PCB: 3
   carton: {fileID: 11400000, guid: 78b6b7ad81a62584e8e032e8fe02d78f, type: 2}
-  listArticles: []
-  wayTicket: {fileID: 0}
-  poids: 0
-  fillPercent: 0
-  isBadOriented: 0
+  listArticles:
+  - {fileID: 11400000, guid: d07c979a8fa376149a35951fbce1647b, type: 2}
+  - {fileID: 11400000, guid: d07c979a8fa376149a35951fbce1647b, type: 2}
+  - {fileID: 11400000, guid: d07c979a8fa376149a35951fbce1647b, type: 2}
+  wayTicket: {fileID: 11400000, guid: 254a5169a037ed548a55fa8235daafe9, type: 2}
+  poids: 2
+  fillPercent: 100
+  isBadOriented: 1
   estOuvert: 0
   estAbime: 0
   nbAnomalie: 0
   listAnomalies: []
-  provenance: 
+  provenance: Proto1

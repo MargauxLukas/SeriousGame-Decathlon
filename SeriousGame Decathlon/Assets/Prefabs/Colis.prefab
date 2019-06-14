@@ -238,6 +238,7 @@ MonoBehaviour:
   itemNumber: 5
   menuIsOpen: 0
   timeBeforeMenuOpen: 1
+  IWayEtiquette: {fileID: 246706536070355173}
   hasBeenScannedByRFID: 0
   hasBeenScannedByPistol: 0
   doesEntrance: 0

@@ -12,6 +12,8 @@ public class ColisManager : MonoBehaviour
 
     public GameObject[] listeColisActuel;
 
+    public List<Article> articleOnTable;
+
     //A affecté au Colis
     public GameObject menuTourner;
     public GameObject spriteArticleTable;
