@@ -19,6 +19,8 @@ public class ColisManager : MonoBehaviour
 
     //Auquel le colis doit être affecté
     public List<BoutonDirection> listeBoutonsMenuTourner;
+    public RecountTab recountTab;
+    public PistolScan scanPistol;
 
     public AnomalieDetection anomDetect;
 
@@ -46,6 +48,9 @@ public class ColisManager : MonoBehaviour
             {
                 bouton.scriptColis = colisTemporaire.GetComponent<ColisScript>();
             }
+
+            scanPistol.scriptColis = scriptColis;
+            recountTab.colis = colisTemporaire;
 
             listeColisTraiter.RemoveAt(0);
             if (listeColisTraiter[0] == null && listeColisTraiter[1] != null)
