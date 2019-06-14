@@ -49,17 +49,19 @@ public class ChargementListeColis : MonoBehaviour
         levelScript = LevelScriptable.CreateInstance<LevelScriptable>();
         levelScript = SaveLoadSystem.instance.LoadLevel(currentLevel);
 
-        List<string> colisName = new List<string>();
-        for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
+        if (levelScript = null)
         {
-            colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
-            for (int i = 0; i < levelScript.nbColisParNomColis[nb]; i++)
+            List<string> colisName = new List<string>();
+            for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
             {
-                newList.Add(colisListe[nb]);
+                colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
+                for (int i = 0; i < levelScript.nbColisParNomColis[nb]; i++)
+                {
+                    newList.Add(colisListe[nb]);
+                }
             }
+            colisProcessMulti = newList;
         }
-        colisProcessMulti = newList;
-
         //Trouver un système pour mélanger les colis aléatoirement.
     }
 }

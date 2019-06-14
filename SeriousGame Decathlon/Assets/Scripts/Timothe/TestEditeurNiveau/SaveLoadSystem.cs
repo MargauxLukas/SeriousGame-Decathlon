@@ -42,9 +42,12 @@ public class SaveLoadSystem : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/game_save/colis_data");
         }
 
-        colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
+        if (colisToSave.wayTicket != null)
+        {
+            colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
 
-        SaveWayTicket(colisToSave.wayTicket);
+            SaveWayTicket(colisToSave.wayTicket);
+        }
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/game_save/colis_data/" + colisToSave.name + ".txt");
@@ -154,5 +157,25 @@ public class SaveLoadSystem : MonoBehaviour
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
         }
         return levelToSave;
+    }
+
+    public void SaveScore(Player playerToSave)
+    {
+        if (!IsSaveFile())
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
+        }
+
+        string path = Application.persistentDataPath + "/game_save/allScoringSave.txt";
+        string content = playerToSave.name + ";" + System.DateTime.Now.ToString("dd MMMM yyyy") + ";" + playerToSave.score + "\r\n";
+
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path, content);
+        }
+        else
+        {
+            File.AppendAllText(path, content);
+        }
     }
 }

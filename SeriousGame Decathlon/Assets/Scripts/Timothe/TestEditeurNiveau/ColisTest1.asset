@@ -16,7 +16,8 @@ MonoBehaviour:
   PCB: 3
   carton: {fileID: 0}
   listArticles: []
-  wayTicket: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42, type: 2}
+  wayTicket: {fileID: 11400000, guid: 254a5169a037ed548a55fa8235daafe9, type: 2}
+  nomWayTicket: PCB4ART123NUM1POI2
   poids: 60
   fillPercent: 34
   isBadOriented: 0

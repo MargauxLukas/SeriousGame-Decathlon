@@ -46,7 +46,7 @@ public class ColisManager : MonoBehaviour
         listeColisActuel = new GameObject[0];
         listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (listeColisActuel.Length <= 0)
+        if (listeColisActuel.Length <= 0 && listeColisTraiter.Count > 0)
         {
             GameObject colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();

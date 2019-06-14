@@ -14,6 +14,8 @@ public class TestSaveLoadScript : MonoBehaviour
     public LevelScriptable levelToLoad;
     public List<Colis> colisToSaveLevel;
 
+    public List<Player> playerList;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Z))
@@ -33,6 +35,13 @@ public class TestSaveLoadScript : MonoBehaviour
         {
             levelToLoad = LevelScriptable.CreateInstance<LevelScriptable>();
             levelToLoad = SaveLoadSystem.instance.LoadLevel(1);
+        }
+        else if(Input.GetKeyDown(KeyCode.Y))
+        {
+            foreach (Player perso in playerList)
+            {
+                SaveLoadSystem.instance.SaveScore(perso);
+            }       
         }
     }
 }
