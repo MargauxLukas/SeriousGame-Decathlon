@@ -6,14 +6,15 @@ public class BigMonitor : MonoBehaviour
 {
     public MiniMonitor miniMonitor;
 
-    public Vector2 targetPosition = new Vector2(2.66f,1.22f);
+    private  Vector2 targetPosition = new Vector2( 2.66f,1.22f);
     private Vector2 initialPosition = new Vector2(15.22f,1.22f);
-    public bool isOpen = false;
-    public bool monitorOpening = false;
 
-    private float startPos;
-    private float endPos;
-    private float swipeDifference;
+    private bool isOpen         = false;                         //Le grand écran est-il ouvert ?
+    public  bool monitorOpening = false;                         //Le grand écran est-il entrain de s'ouvrir ?
+
+    private float        startPos;                              //Position de départ du doigt
+    private float          endPos;                              //Position de fin du doigt
+    private float swipeDifference;                              //Différence entre startPos et endPos
 
     private void Update()
     {      
@@ -21,46 +22,36 @@ public class BigMonitor : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Began)
-            {
-                startPos = touch.position.x;
-            }
-            if(touch.phase == TouchPhase.Ended)
-            {
-                endPos = touch.position.x;
-            }
-            else
-            {
-                return;
-            }
+            if(touch.phase == TouchPhase.Began) { startPos = touch.position.x; }
+            if(touch.phase == TouchPhase.Ended) { endPos   = touch.position.x; }
+            else                                { return                     ; }
 
             swipeDifference = Mathf.Abs(startPos - endPos);
             //Debug.Log("StartPos : " + startPos + "/ endPos : " + endPos + " /diff : " + swipeDifference);
         }
 
-        if (monitorOpening)
-        {
-            openBigMonitor();
-        }
+        if (monitorOpening){openBigMonitor();}                                                            //Condition pour éviter de l'ouvrir en boucle et consommé
 
-        if((endPos > startPos) && isOpen && swipeDifference>200f)
+        if((endPos > startPos) && isOpen && swipeDifference>100f)                                         //Swipe vers la droite
         {
             transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
 
             if(Vector2.Distance(transform.position, initialPosition) <= 0.2f)
             {
                 isOpen = false;
-                miniMonitor.isOpen = false;
             }
         }
-        else if ((endPos < startPos) && isOpen && swipeDifference > 200f)
-        {
-            //Move to the left
+        else if ((endPos < startPos) && isOpen && swipeDifference > 100f)                                 //Swipe vers la gauche
+        {          
             return;
         }
-        else{return;}
+        else { return; }
     }
 
+
+    /**************************************
+     *  Permet d'ouvrir le grand écran    *
+     **************************************/
     public void openBigMonitor()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, 1f);

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
   m_Name: Colis Test
   m_EditorClassIdentifier: 
-  PCB: 0
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  PCB: 3
+  carton: {fileID: 0}
   listArticles:
   - {fileID: 11400000, guid: ee471a36fb2715f47848ed8c55988930, type: 2}
   - {fileID: 11400000, guid: 6e2e3414b64f5484c94af309a39e73ec, type: 2}

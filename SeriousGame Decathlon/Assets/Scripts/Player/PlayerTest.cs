@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepackTab : MonoBehaviour
+public class PlayerTest : MonoBehaviour
 {
-    // ?
+    public Player player;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class RFIDInfoManager : MonoBehaviour
 {
     //Référence RFID
+    public RFID rfidComplet;
     public int refIntRFID;
     public string refStringRFID;
     //Total RFID
