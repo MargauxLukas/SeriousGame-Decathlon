@@ -2058,6 +2058,18 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &606082331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5815273009268680028, guid: e9b8581166f4cd442b09f9922424fe9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1172922267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760810de6c6c3a747a11013fc2302bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &609754765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,6 +7090,16 @@ PrefabInstance:
       propertyPath: listeBoutonsMenuTourner.Array.data[3]
       value: 
       objectReference: {fileID: 646877296}
+    - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: recountTab
+      value: 
+      objectReference: {fileID: 496647097}
+    - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: scanPistol
+      value: 
+      objectReference: {fileID: 606082331}
     - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7153,9 +7175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8786970fd2ecd0f41b48b009609b7c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newColis: {fileID: 0}
-  carton: {fileID: 0}
-  colisManage: {fileID: 0}
+  newColis: {fileID: 8355303769727507475, guid: 86ed6a425cc9f314e8c1b3da697a1aac,
+    type: 3}
+  carton: {fileID: 11400000, guid: 78b6b7ad81a62584e8e032e8fe02d78f, type: 2}
+  colisManage: {fileID: 857046845}
 --- !u!114 &1512090501580459130 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1512090500757680969, guid: 4b92a7cf7a914224cb91594c005fe6f5,

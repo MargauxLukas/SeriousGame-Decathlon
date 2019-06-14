@@ -53,7 +53,7 @@ public class ColisScript : MonoBehaviour
 
         if(colisScriptable.isBadOriented)
         {
-            IWayEtiquette.SetActive(false);
+            //IWayEtiquette.SetActive(false);
         }
     }
 
