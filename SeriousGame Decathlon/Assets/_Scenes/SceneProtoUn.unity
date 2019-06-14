@@ -605,18 +605,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156563195}
   m_CullTransparentMesh: 0
---- !u!114 &178826438 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7995028861008538266, guid: f46ade70557b3964b938c348fa4ce932,
-    type: 3}
-  m_PrefabInstance: {fileID: 7995028860913600092}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &189862465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,8 +1300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b194c4aa7b45624ab51cf32c6302bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialManage: {fileID: 1399314697}
-  dialogue: {fileID: 11400000, guid: eb5963fd01c62a64c91773491d46a3ee, type: 2}
+  dialManage: {fileID: 0}
+  dialogue: {fileID: 0}
 --- !u!4 &380450009
 Transform:
   m_ObjectHideFlags: 0
@@ -2187,9 +2175,11 @@ MonoBehaviour:
   anomalieD: {fileID: 1512090501580459130}
   wayTicketScriptable: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42,
     type: 2}
-  rfidTicketScriptable: {fileID: 0}
+  rfidTicketScriptable: {fileID: 11400000, guid: 3d23512a0ba42a345b0a4b1d526ba176,
+    type: 2}
   ticket: {fileID: 8320223455091129367, guid: 637ffeda7b2d8604e8eb3016286c7ea9, type: 3}
-  ticketRFID: {fileID: 0}
+  ticketRFID: {fileID: 5354593960804518821, guid: eda969c464e88794aa0fa5c7ed38851a,
+    type: 3}
 --- !u!1 &502053888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillingRate: 0
-  bCanMecaOpen: 0
+  bCanMecaOpen: 1
   toggle: {fileID: 667617642}
 --- !u!1 &667617641
 GameObject:
@@ -3629,7 +3619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caeb6439355f781459ed412775297381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IWayTicket: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42, type: 2}
+  IWayTicket: {fileID: 0}
 --- !u!61 &965582135
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4508,6 +4498,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistolet
       objectReference: {fileID: 0}
+    - target: {fileID: 5815273009268680028, guid: e9b8581166f4cd442b09f9922424fe9a,
+        type: 3}
+      propertyPath: iWayInfoManager
+      value: 
+      objectReference: {fileID: 1157788047}
     - target: {fileID: 5815273009268680018, guid: e9b8581166f4cd442b09f9922424fe9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4563,11 +4558,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5815273009268680028, guid: e9b8581166f4cd442b09f9922424fe9a,
-        type: 3}
-      propertyPath: iWayInfoManager
-      value: 
-      objectReference: {fileID: 1157788047}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b8581166f4cd442b09f9922424fe9a, type: 3}
 --- !u!1 &1211636802
@@ -4928,15 +4918,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea53dbafcb75684daf7aee6d730cf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleImage: {fileID: 178826438}
-  itemNumber: 3
+  circleImage: {fileID: 0}
+  itemNumber: 0
   menuIsOpen: 0
-  timeBeforeOpen: 1
-  dialManage: {fileID: 1399314697}
-  dialogueList:
-  - {fileID: 11400000, guid: bc838b93a10b3874fb8c48b2e602f768, type: 2}
-  - {fileID: 11400000, guid: f136f3ff945bdbf43bbe0f2d985b997d, type: 2}
-  - {fileID: 11400000, guid: 459aadea56eae1d4e95026e2ca49fa9d, type: 2}
+  timeBeforeOpen: 0
+  dialManage: {fileID: 0}
+  dialogueList: []
 --- !u!61 &1350303343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5176,7 +5163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2745695a6c4d4049ae19728ffeb6b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newRFID: {fileID: 0}
+  newRFID: {fileID: 11400000, guid: 3d23512a0ba42a345b0a4b1d526ba176, type: 2}
 --- !u!1 &1533201018
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,7 +5912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe3779394d2acb4e9c9380fdd89b662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manage: {fileID: 857046845}
+  manage: {fileID: 0}
 --- !u!61 &1614292102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7752,12 +7739,12 @@ PrefabInstance:
     - target: {fileID: 7995028860192808638, guid: f46ade70557b3964b938c348fa4ce932,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -115
+      value: -88
       objectReference: {fileID: 0}
     - target: {fileID: 7995028860192808638, guid: f46ade70557b3964b938c348fa4ce932,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 241
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f46ade70557b3964b938c348fa4ce932, type: 3}

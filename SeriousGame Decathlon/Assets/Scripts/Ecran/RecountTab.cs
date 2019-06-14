@@ -36,7 +36,6 @@ public class RecountTab : MonoBehaviour
         }
     }
 
-
     /*****************************
     *  Active le scanner RFID    *
     ******************************/
