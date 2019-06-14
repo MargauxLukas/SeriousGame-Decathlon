@@ -51,9 +51,9 @@ public class ColisScript : MonoBehaviour
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
 
-        if(colisScriptable.isBadOriented)
+        if(colisScriptable.isBadOriented && IWayEtiquette != null)
         {
-            //IWayEtiquette.SetActive(false);
+            IWayEtiquette.SetActive(false);
         }
     }
 
@@ -179,7 +179,7 @@ public class ColisScript : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position) >= 20f)
+                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 10f)
                 {
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;

@@ -49,19 +49,22 @@ public class SaveLoadSystem : MonoBehaviour
         file.Close();
     }
 
-    public void LoadColis(Colis colisToLoad)
+    public Colis LoadColis(/*Colis colisToLoad, */string colisName)
     {
         if (!IsSaveFile())
         {
-            return;
+            return null;
         }
 
+        Colis colisToLoad = Colis.CreateInstance<Colis>();
         BinaryFormatter bf = new BinaryFormatter();
-        if(File.Exists(Application.persistentDataPath + "/game_save/colis_data" + colisToLoad.name + ".txt"))
+        if(File.Exists(Application.persistentDataPath + "/game_save/colis_data" + colisName + ".txt"))
         {
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/colis_data" + colisToLoad.name + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), colisToLoad);
         }
+
+        return colisToLoad;
     }
 
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
@@ -88,18 +91,22 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    public void LoadLevel(LevelScriptable levelToSave)
+    public LevelScriptable LoadLevel(string levelNb)
     {
         if (!IsSaveFile())
         {
-            return;
+            return null;
         }
 
+        LevelScriptable levelToSave = LevelScriptable.CreateInstance<LevelScriptable>();
+
         BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
+        if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
         {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
         }
+
+        return levelToSave;
     }
 }
