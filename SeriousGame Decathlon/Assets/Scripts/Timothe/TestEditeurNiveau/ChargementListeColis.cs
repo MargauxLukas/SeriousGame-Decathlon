@@ -28,7 +28,7 @@ public class ChargementListeColis : MonoBehaviour
 
         foreach(Colis colis in newList)
         {
-            SaveLoadSystem.instance.LoadColis(colis);
+           // SaveLoadSystem.instance.LoadColis(colis);
         }
 
         manageColis.listeColisTraiter = newList;
