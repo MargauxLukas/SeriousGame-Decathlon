@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Nouveau Colis", menuName = "NewColis")]
 public class Colis : ScriptableObject
 {
+    public string name;
+
     enum Direction { Up, Down, Right, Left, Forward, Back };
 
     public int PCB = 0;
@@ -173,6 +175,14 @@ public class Colis : ScriptableObject
                     orientation = Direction.Down;
                 }
                 break;
+        }
+        if(orientation == Direction.Forward)
+        {
+            isBadOriented = false;
+        }
+        else
+        {
+            isBadOriented = true;
         }
         Debug.Log(orientation);
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetRfidFromObject : MonoBehaviour
 {
-    public RFID rfid;
+    public RFID newRFID;
 
     private bool doesTouch;
 
@@ -40,10 +40,9 @@ public class GetRfidFromObject : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Ended && collision.gameObject.GetComponent<ColisScript>() != null)
+            if (touch.phase == TouchPhase.Ended && collision.gameObject.GetComponent<PileArticle>() != null)
             {
-                //collision.gameObject.GetComponent<ColisScript>().colisScriptable.wayTicket = rfid;
-                Debug.Log("DeliverTicket");
+                collision.gameObject.GetComponent<PileArticle>().ChangeRFID(newRFID);
                 GameObject.Destroy(gameObject);
             }
         }

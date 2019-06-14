@@ -35,6 +35,7 @@ public class ColisScript : MonoBehaviour
     public float timeBeforeMenuOpen = 1;
     private float timeTouched;
 
+    public GameObject IWayEtiquette;
     public bool hasBeenScannedByRFID;
     public bool hasBeenScannedByPistol;
 
@@ -49,6 +50,11 @@ public class ColisScript : MonoBehaviour
         //colisScriptable = newColis;
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
+
+        if(colisScriptable.isBadOriented)
+        {
+            IWayEtiquette.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -297,10 +303,19 @@ public class ColisScript : MonoBehaviour
     public void Tourner(Vector2 vect)
     {
         colisScriptable.Tourner(vect, spriteCartons);
+        if(colisScriptable.isBadOriented && IWayEtiquette.activeSelf)
+        {
+            IWayEtiquette.SetActive(false);
+        }
+        else if(!colisScriptable.isBadOriented && !IWayEtiquette.activeSelf)
+        {
+            IWayEtiquette.SetActive(true);
+        }
     }
 
     void Vider()
     {
+        articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;
         List<Article> listTemporaire = colisScriptable.Vider();
         if (listTemporaire.Count > 0 && articleOnTable.Count <= 0)
         {
@@ -315,6 +330,7 @@ public class ColisScript : MonoBehaviour
 
     void Remplir()
     {
+        articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;
         if (articleOnTable.Count > 0)
         {
             colisScriptable.Remplir(articleOnTable.Count, articleOnTable);

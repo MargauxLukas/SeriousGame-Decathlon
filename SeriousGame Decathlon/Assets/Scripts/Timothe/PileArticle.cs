@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PileArticle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<Article> listArticles;
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeRFID(RFID refid)
     {
-        
+        foreach(Article art in listArticles)
+        {
+            art.rfid = refid;
+        }
     }
 }
