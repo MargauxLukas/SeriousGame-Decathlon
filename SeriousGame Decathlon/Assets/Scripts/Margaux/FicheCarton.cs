@@ -32,22 +32,27 @@ public class FicheCarton : MonoBehaviour
 
     public void InstantiateCarton(string buttonName)
     {
-        scriptColis = newColis.GetComponent<ColisScript>();
-        scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
-        scriptColis.colisScriptable.carton = carton;
-        scriptColis.colisScriptable.carton.codeRef = buttonName;
-        scriptColis.colisScriptable.carton.Initialize();
+        colisManage.listeColisActuel = new GameObject[0];
+        colisManage.listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        scriptColis.doesEntrance = true;
-        scriptColis.tournerMenu = menuTourner;
-        scriptColis.spriteArticleTable = spriteArticleTable;
-        scriptColis.circleImage = circleImage;
-
-        foreach (BoutonDirection bouton in listeBoutonsMenuTourner)
+        if (colisManage.listeColisActuel.Length <= 1)
         {
-            bouton.scriptColis = scriptColis;
-        }
+            scriptColis = newColis.GetComponent<ColisScript>();
+            scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
+            scriptColis.colisScriptable.carton = carton;
+            scriptColis.colisScriptable.carton.codeRef = buttonName;
+            scriptColis.colisScriptable.carton.Initialize();
 
-        Instantiate(newColis, new Vector3(-2, -1.4f, 0),Quaternion.identity);
+            scriptColis.tournerMenu = menuTourner;
+            scriptColis.spriteArticleTable = spriteArticleTable;
+            scriptColis.circleImage = circleImage;
+
+            foreach (BoutonDirection bouton in listeBoutonsMenuTourner)
+            {
+                bouton.scriptColis = scriptColis;
+            }
+
+            Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
+        }
     }
 }
