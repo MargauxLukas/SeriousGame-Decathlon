@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
+  m_Name: Colis_RFID_Tags_For_Unexpected_Product
+  m_EditorClassIdentifier: 
+  name: RFIDTagsForUnexpectedProduct
+  PCB: 0
+  carton: {fileID: 0}
+  listArticles:
+  - {fileID: 11400000, guid: d38f809a55952a74ca107b59b3fd96fe, type: 2}
+  - {fileID: 11400000, guid: d38f809a55952a74ca107b59b3fd96fe, type: 2}
+  wayTicket: {fileID: 11400000, guid: 8332fec57b7efc0458223d67f3ea03ae, type: 2}
+  nomWayTicket: WTRFIDTagsForUnexpectedProduct
+  poids: 0
+  fillPercent: 50
+  isBadOriented: 0
+  estOuvert: 0
+  estAbime: 0
+  nbAnomalie: 4
+  listAnomalies:
+  - RFID tags to be applied
+  - RFID tag over Tolerance
+  - RFID tag for unexpected product
+  - RFID tag scanned for unknown product
+  provenance: Hurlevent
+  needQualityControl: 0
