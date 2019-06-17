@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc3b85cb60008d4a8c0eec7764cd3ab, type: 3}
   m_Name: Article_RFID_Tags_To_Applied
   m_EditorClassIdentifier: 
+  poids: 1
   rfid: {fileID: 0}
   sprite: {fileID: 0}

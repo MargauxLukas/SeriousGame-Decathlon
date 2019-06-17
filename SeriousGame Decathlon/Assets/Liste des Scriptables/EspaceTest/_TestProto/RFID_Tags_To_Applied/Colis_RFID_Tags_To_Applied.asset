@@ -12,17 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
   m_Name: Colis_RFID_Tags_To_Applied
   m_EditorClassIdentifier: 
-  name: 
-  PCB: 0
+  name: RFIDTagsToApplied
+  PCB: 6
   carton: {fileID: 0}
-  listArticles: []
-  wayTicket: {fileID: 0}
-  nomWayTicket: 
-  poids: 0
-  fillPercent: 0
+  listArticles:
+  - {fileID: 11400000, guid: 441fed1455e3c884f8cf062506728c00, type: 2}
+  - {fileID: 11400000, guid: 441fed1455e3c884f8cf062506728c00, type: 2}
+  - {fileID: 11400000, guid: 441fed1455e3c884f8cf062506728c00, type: 2}
+  - {fileID: 11400000, guid: 441fed1455e3c884f8cf062506728c00, type: 2}
+  - {fileID: 11400000, guid: 441fed1455e3c884f8cf062506728c00, type: 2}
+  - {fileID: 11400000, guid: 441fed1455e3c884f8cf062506728c00, type: 2}
+  wayTicket: {fileID: 11400000, guid: 325273625973c0647bffede1e628bb74, type: 2}
+  nomWayTicket: WT_RFID_Tags_To_Applied
+  poids: 6
+  fillPercent: 150
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
   nbAnomalie: 0
   listAnomalies: []
-  provenance: 
+  provenance: Dalaran
+  needQualityControl: 0

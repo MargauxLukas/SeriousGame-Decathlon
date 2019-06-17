@@ -50,7 +50,7 @@ public class AnomalieDetection : MonoBehaviour
          * - Scan colis. Scan RFID. Bouton Inventaire. Crée nouveau ticket IWAY dans système. PrintHU pour imprimer. Mettre le ticket sur le colis.
          * - Scan colis. Scan RFID. Vider colis. Voir nombre Article. Bouton Inventaire. Crée un nouveau RFID. Mettre RFID sur pile Article.
          */
-        Debug.Log("Test");
+        //Debug.Log("Test");
         if(colis.needQualityControl)
         {
             Debug.Log("Test");
@@ -75,7 +75,7 @@ public class AnomalieDetection : MonoBehaviour
             colis.nbAnomalie++;
             colis.listAnomalies.Add("RFID tag over Tolerance");
         }
-        Debug.Log("Test Anomalie 1");
+        //Debug.Log("Test Anomalie 1");
 
         bool isBreakable = false;
         foreach (Article article in colis.listArticles) //Scanner le colis. Scanner les RFID. Vider le colis. Imprimer le RFID. Mettre le nouveau RFID.
@@ -87,19 +87,19 @@ public class AnomalieDetection : MonoBehaviour
                 isBreakable = true;
             }
         }
-        Debug.Log("Test Anomalie 2");
+        //Debug.Log("Test Anomalie 2");
 
         if (colis.poids > 20) //A voir comment rectifier en jeu ET à dupliquer pour le supp 35
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("TU too heavy (20-25)");
         }
-        Debug.Log("Test Anomalie 3");
+        //Debug.Log("Test Anomalie 3");
 
         bool isCompatible = false; //Scanner le colis, Scanner les RFID, faire un inventaire pour ajouter les nouveaux RFID.
         for (int i = 0; i < RFIDtagKnowned.Count; i++)
         {
-            Debug.Log("Test Anomalie 4");
+            //Debug.Log("Test Anomalie 4");
 
             if (colis.listArticles.Count > 0 && colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
             {
@@ -117,14 +117,14 @@ public class AnomalieDetection : MonoBehaviour
             colis.nbAnomalie++;
             colis.listAnomalies.Add("Dimensions out of tolerance");
         }
-        Debug.Log("Test Anomalie 5");
+        //Debug.Log("Test Anomalie 5");
 
         if (colis.isBadOriented) //A voir comment rectifier en jeu (Voir avec les graph)
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("Wrong carton orientation");
         }
-        Debug.Log("Test Anomalie 6");
+        //Debug.Log("Test Anomalie 6");
 
         //A la fin
         if (colis.nbAnomalie <= 0)
@@ -133,7 +133,7 @@ public class AnomalieDetection : MonoBehaviour
         }
         else
         {
-            Debug.Log("T'arrive là ?");
+            //Debug.Log("T'arrive là ?");
         }
     }
 

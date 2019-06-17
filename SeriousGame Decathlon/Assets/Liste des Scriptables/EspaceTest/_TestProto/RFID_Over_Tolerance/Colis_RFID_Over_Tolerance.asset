@@ -28,7 +28,9 @@ MonoBehaviour:
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
-  nbAnomalie: 1
+  nbAnomalie: 2
   listAnomalies:
-  - RFID over Tolerance
+  - RFID tag over Tolerance
+  - RFID tag scanned for unknown product
   provenance: Anzin
+  needQualityControl: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4bc4965b6f91e4eb19199237bfed08, type: 3}
   m_Name: WayTicket_RFID_Tags_To_Applied
   m_EditorClassIdentifier: 
-  PCB: 0
-  refArticle: {fileID: 0}
-  numeroCodeBarre: 0
-  poids: 0
+  PCB: 6
+  refArticle: {fileID: 11400000, guid: 6c196ed626e053945841fba67be9404d, type: 2}
+  numeroCodeBarre: 1441
+  poids: 5

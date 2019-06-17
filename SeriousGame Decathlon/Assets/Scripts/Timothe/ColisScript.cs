@@ -284,7 +284,7 @@ public class ColisScript : MonoBehaviour
 
     void TellSomething(int texte)
     {
-        Debug.Log(texte);
+        //Debug.Log(texte);
     }
 
     void OuvrirFermer()
@@ -335,7 +335,7 @@ public class ColisScript : MonoBehaviour
             articleOnTable = listTemporaire;
             foreach(Article art in articleOnTable)
             {
-                if(art.rfid != null && art.rfid.estFonctionnel)
+                if (art.rfid != null && art.rfid.estFonctionnel)
                 {
                     nbRFIDFonctionnel++;
                 }

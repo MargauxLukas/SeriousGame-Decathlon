@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RefArticle_RFID_Tags_To_Applied
   m_EditorClassIdentifier: 
   photo: {fileID: 0}
-  numeroRef: 0
+  numeroRef: 4414
