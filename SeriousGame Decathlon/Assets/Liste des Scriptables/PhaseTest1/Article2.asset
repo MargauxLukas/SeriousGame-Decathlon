@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Article2
   m_EditorClassIdentifier: 
   poids: 1
-  rfid: {fileID: 0}
+  rfid: {fileID: 11400000, guid: c368ae2023999fd44ba63d5d0dc7c477, type: 2}
   sprite: {fileID: 0}

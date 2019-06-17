@@ -224,8 +224,8 @@ public class Colis : ScriptableObject
         foreach(Article art in newListArticle)
         {
             poids += art.poids;
-        }
-        PCB = newPCB;
-        listArticles = newListArticle;
+            listArticles.Add(art);
+            PCB++;
+        }    
     }
 }
