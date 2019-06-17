@@ -7,12 +7,26 @@ public class OngletManager : MonoBehaviour
     public GameObject fillingRate;
     public GameObject recount;
     public GameObject repack;
+    public GameObject ongletButton;
+    public GameObject homeScreen;
+
+    public bool hasBeenScannedByPistol = false;
 
     public void Start()
     {
-        fillingRate.SetActive(true);
-        recount.SetActive(false);
-        repack.SetActive(false);
+        homeScreen.SetActive(true);
+    }
+
+    public void Update()
+    {
+        if(hasBeenScannedByPistol)
+        {
+            fillingRate.SetActive(true);
+            recount.SetActive(false);
+            repack.SetActive(false);
+            ongletButton.SetActive(true);
+            homeScreen.SetActive(false);
+        }
     }
 
     public void FillingRateOpen()

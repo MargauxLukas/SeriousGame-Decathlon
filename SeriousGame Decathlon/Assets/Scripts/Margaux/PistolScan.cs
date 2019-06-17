@@ -11,6 +11,8 @@ public class PistolScan : MonoBehaviour
     public ColisScript scriptColis;
     public IWayInfoManager iWayInfoManager;
 
+    public OngletManager ongletManager;
+
     void Start()
     {
         pistolInitPos = transform.position;
@@ -56,6 +58,7 @@ public class PistolScan : MonoBehaviour
             iWayInfoManager.refIntIWay = scriptColis.colisScriptable.wayTicket.refArticle.numeroRef;
             iWayInfoManager.pcbIntIWay = scriptColis.colisScriptable.wayTicket.PCB;
             scriptColis.hasBeenScannedByPistol = true;
+            ongletManager.GetComponent<OngletManager>().hasBeenScannedByPistol = true;
         }
         else
         {
