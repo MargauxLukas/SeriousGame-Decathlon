@@ -22,16 +22,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee471a36fb2715f47848ed8c55988930, type: 2}
   - {fileID: 11400000, guid: 1c1e4fceb39015640b4db7f4bb2d8a19, type: 2}
   - {fileID: 11400000, guid: ee471a36fb2715f47848ed8c55988930, type: 2}
-  wayTicket: {fileID: 11400000, guid: 858cb1e0de4b87f439db789d9b998a42, type: 2}
+  wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
+  nomWayTicket: 
   poids: 34
   fillPercent: 200
   isBadOriented: 0
-  estOuvert: 0
+  estOuvert: 1
   estAbime: 1
   nbAnomalie: 4
   listAnomalies:
+  - RFID tag over Tolerance
   - RFID tag for unexpected product
   - TU too heavy (20-25)
-  - RFID tag scanned for unknown product
   - Quality Control
   provenance: Glan
