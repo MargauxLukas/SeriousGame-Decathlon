@@ -35,6 +35,10 @@ public class AnomalieDetection : MonoBehaviour
             {
                 RFIDnb++;
             }
+            else
+            {
+                //Pas de RFID
+            }
         }
 
         /* Résolution des problèmes de RFID
@@ -118,9 +122,13 @@ public class AnomalieDetection : MonoBehaviour
             int RFIDnb = 0;
             foreach (Article article in colis.listArticles)
             {
-                if (article.rfid.estFonctionnel && article.rfid != null)
+                Debug.Log(article.rfid);
+                if (article.rfid != null)                                 //D'abord vérification si nul, sinon rfid.fonctionnel met une erreur
                 {
-                    RFIDnb++;
+                    if (article.rfid.estFonctionnel)
+                    {
+                        RFIDnb++;
+                    }
                 }
             }
             Debug.Log("Test Anomalie 1");
@@ -155,9 +163,12 @@ public class AnomalieDetection : MonoBehaviour
             for (int i = 0; i < RFIDtagKnowned.Count; i++)
             {
                 Debug.Log("Test Anomalie 5");
-                if (colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
+                if (colis.listArticles[0].rfid != null)
                 {
-                    isCompatible = true;
+                    if (colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
+                    {
+                        isCompatible = true;
+                    }
                 }
             }
             if (!isCompatible)

@@ -25,10 +25,14 @@ public class RFIDScan : MonoBehaviour
             if (collision.gameObject.tag == "Colis" && collision.gameObject.GetComponent<ColisScript>().estSecoue == true && !collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByRFID && collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByPistol)
             {
                 scriptColis = collision.gameObject.GetComponent<ColisScript>();
-                infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[0].rfid;
-                infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
-                scriptColis.hasBeenScannedByRFID = true;
 
+                //if (scriptColis.colisScriptable.listArticles[0].rfid != null)//Vérification si RFID est nul ou pas
+                
+                    infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[0].rfid;
+                    infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[0].rfid.refArticle.numeroRef;     
+                
+
+                scriptColis.hasBeenScannedByRFID = true;
                 foreach (Article item in scriptColis.colisScriptable.listArticles)
                 {
                     numRFID++;

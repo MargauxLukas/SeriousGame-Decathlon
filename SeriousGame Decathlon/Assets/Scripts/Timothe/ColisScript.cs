@@ -319,7 +319,6 @@ public class ColisScript : MonoBehaviour
 
     void Vider()
     {
-        articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;
         List<Article> listTemporaire = colisScriptable.Vider();
         int nbRFIDFonctionnel = 0;
         if (listTemporaire.Count > 0 && articleOnTable.Count <= 0)
