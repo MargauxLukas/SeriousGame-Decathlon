@@ -13,6 +13,7 @@ public class Colis : ScriptableObject
     public Carton carton;
     public List<Article> listArticles;
     public WayTicket wayTicket;
+    public string nomWayTicket;
     public float poids = 0;
     public float fillPercent = 0;
     public bool isBadOriented;
@@ -53,9 +54,9 @@ public class Colis : ScriptableObject
         }
     }
 
-    public void InitializeWithScriptableObject(Colis colisScriptable)
+    public void InitializeWayTicket(WayTicket newTicket)
     {
-        
+        wayTicket = newTicket;
     }
 
     public void OuvrirFermer()

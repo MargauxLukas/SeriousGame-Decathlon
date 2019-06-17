@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51ced4f9d60e0948aa8593f4a8d093d, type: 3}
-  m_Name: NiveauTest
+  m_Script: {fileID: 11500000, guid: d3ae88f932754044284e0e1639c42dd6, type: 3}
+  m_Name: Nouveau Joueur 3
   m_EditorClassIdentifier: 
-  colisDuNiveauNoms:
-  - Colis2
-  - Colis3
-  - Colis4
-  nbColisParNomColis: 060000000400000001000000
-  nbLevel: 1
+  name: Dovakhin
+  date: "36 de la 3e \xE8re des Thalmors"
+  score: 876543
