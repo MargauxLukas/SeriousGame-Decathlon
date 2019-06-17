@@ -135,7 +135,7 @@ public class AnomalieDetection : MonoBehaviour
             bool isBreakable = false;
             foreach (Article article in colis.listArticles)
             {
-                if (article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable)
+                if (article.rfid != null && colis.wayTicket != null &&(article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable))
                 {
                     colis.nbAnomalie++;
                     colis.listAnomalies.Add("RFID tag for unexpected product");

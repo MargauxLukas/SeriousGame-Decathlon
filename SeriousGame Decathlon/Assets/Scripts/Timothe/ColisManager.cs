@@ -17,6 +17,8 @@ public class ColisManager : MonoBehaviour
     //A affecté au Colis
     public GameObject menuTourner;
     public GameObject spriteArticleTable;
+    public Text textArticleTableNombre;
+    public Text textArtcileTableRFID;
     public Image circleImage;
 
     //Auquel le colis doit être affecté
@@ -50,11 +52,14 @@ public class ColisManager : MonoBehaviour
         {
             GameObject colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();
+            scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
             scriptColis.colisScriptable = listeColisTraiter[0];
             scriptColis.doesEntrance = true;
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTable = spriteArticleTable;
             scriptColis.circleImage = circleImage;
+            scriptColis.textArtcileTableRFID = textArtcileTableRFID;
+            scriptColis.textArticleTableNombre = textArticleTableNombre;
 
             foreach (BoutonDirection bouton in listeBoutonsMenuTourner)
             {

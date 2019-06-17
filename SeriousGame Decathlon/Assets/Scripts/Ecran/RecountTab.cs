@@ -64,13 +64,13 @@ public class RecountTab : MonoBehaviour
                 anomalieD.RFIDtagKnowned.Add(int.Parse(refRFID));
             }
 
-            WayTicket newTicket  = Instantiate(wayTicketScriptable);
+            WayTicket newTicket  = WayTicket.CreateInstance<WayTicket>();
             newTicket.PCB        = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
             newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
             wayTicketScriptable  = newTicket;
-            ticket.GetComponent<GetIWayFromObject>().IWayTicket = wayTicketScriptable;
+            ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
-            RFID newRFID = Instantiate(rfidTicketScriptable);
+            RFID newRFID = RFID.CreateInstance <RFID>();
             newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
             newRFID.estFonctionnel = true;
             rfidTicketScriptable = newRFID;

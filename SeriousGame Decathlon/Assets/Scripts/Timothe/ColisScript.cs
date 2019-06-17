@@ -21,6 +21,8 @@ public class ColisScript : MonoBehaviour
     public List<Article> articleOnTable;
     public GameObject tournerMenu;
     public GameObject spriteArticleTable;
+    public Text textArticleTableNombre;
+    public Text textArtcileTableRFID;
 
     public List<Sprite> spriteCartons;
 
@@ -319,9 +321,19 @@ public class ColisScript : MonoBehaviour
     {
         articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;
         List<Article> listTemporaire = colisScriptable.Vider();
+        int nbRFIDFonctionnel = 0;
         if (listTemporaire.Count > 0 && articleOnTable.Count <= 0)
         {
             articleOnTable = listTemporaire;
+            foreach(Article art in articleOnTable)
+            {
+                if(art.rfid.estFonctionnel)
+                {
+                    nbRFIDFonctionnel++;
+                }
+            }
+            textArtcileTableRFID.text = nbRFIDFonctionnel.ToString();
+            textArticleTableNombre.text = articleOnTable.Count.ToString();
         }
         Debug.Log(articleOnTable.Count);
         if (articleOnTable.Count>0)
@@ -341,6 +353,8 @@ public class ColisScript : MonoBehaviour
             {
                 spriteArticleTable.SetActive(false);
             }
+            textArtcileTableRFID.text = "0";
+            textArticleTableNombre.text = "0";
         }
     }
 
