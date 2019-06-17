@@ -28,10 +28,12 @@ public class RFIDScan : MonoBehaviour
                 //if (scriptColis.colisScriptable.listArticles[0].rfid != null)//Vérification si RFID est nul ou pas
                 
                     infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[0].rfid;
+                if(scriptColis.colisScriptable.listArticles[0].rfid != null)
                     infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[0].rfid.refArticle.numeroRef;     
                 
 
                 scriptColis.hasBeenScannedByRFID = true;
+                numRFID = 0;
                 foreach (Article item in scriptColis.colisScriptable.listArticles)
                 {
                     numRFID++;

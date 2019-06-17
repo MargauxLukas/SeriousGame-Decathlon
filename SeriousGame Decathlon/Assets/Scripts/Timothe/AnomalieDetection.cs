@@ -36,7 +36,7 @@ public class AnomalieDetection : MonoBehaviour
         int RFIDnb = 0;
         foreach (Article article in colis.listArticles)
         {
-            if (article.rfid.estFonctionnel && article.rfid != null)
+            if (article.rfid != null && article.rfid.estFonctionnel)
             {
                 RFIDnb++;
             }
@@ -101,7 +101,7 @@ public class AnomalieDetection : MonoBehaviour
         {
             Debug.Log("Test Anomalie 4");
 
-            if (colis.listArticles.Count > 0 && colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
+            if (colis.listArticles[0].rfid != null && colis.listArticles.Count > 0 && colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
             {
                 isCompatible = true;
             }

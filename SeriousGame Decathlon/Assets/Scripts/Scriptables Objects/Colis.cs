@@ -220,12 +220,16 @@ public class Colis : ScriptableObject
 
     public void Remplir (int newPCB, List<Article> newListArticle)
     {
+        if(listArticles == null)
+        {
+            listArticles = new List<Article>();
+        }
         poids = 0;
         foreach(Article art in newListArticle)
         {
             poids += art.poids;
             listArticles.Add(art);
             PCB++;
-        }    
+        }
     }
 }

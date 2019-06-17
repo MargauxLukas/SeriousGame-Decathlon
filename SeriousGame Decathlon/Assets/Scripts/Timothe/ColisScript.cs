@@ -323,13 +323,17 @@ public class ColisScript : MonoBehaviour
         if (colisScriptable.listArticles.Count > 0)
         {
             List<Article> listTemporaire = colisScriptable.Vider();
-            int refBase = listTemporaire[0].rfid.refArticle.numeroRef;
+            int refBase = 0;
+            if (listTemporaire[0].rfid != null)
+            {
+                refBase = listTemporaire[0].rfid.refArticle.numeroRef;
+            }
             List<Article> listTemporairePremiere = new List<Article>();
             List<Article> listTemporaireSeconde = new List<Article>();
             bool needSecond = false;
             foreach (Article art in listTemporaire)
             {
-                if (art.rfid.refArticle.numeroRef != refBase)
+                if (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
                 {
                     needSecond = true;
                     listTemporaireSeconde.Add(art);
