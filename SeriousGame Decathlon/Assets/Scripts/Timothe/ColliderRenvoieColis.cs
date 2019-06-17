@@ -10,6 +10,7 @@ public class ColliderRenvoieColis : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<ColisScript>() != null && !collision.gameObject.GetComponent<ColisScript>().doesEntrance)
         {
+            Debug.Log("Test");
             manage.RenvoieColis(collision.gameObject);
         }
     }

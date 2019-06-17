@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: Colis Test
+  m_Name: ColisTestRFIDNull
   m_EditorClassIdentifier: 
   name: 
-  PCB: 0
+  PCB: 3
   carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
-  listArticles: []
-  wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
+  listArticles:
+  - {fileID: 11400000, guid: d8055cac930171c4a9cb33341df9adc1, type: 2}
+  - {fileID: 11400000, guid: d8055cac930171c4a9cb33341df9adc1, type: 2}
+  - {fileID: 11400000, guid: d8055cac930171c4a9cb33341df9adc1, type: 2}
+  wayTicket: {fileID: 11400000, guid: afb1b4f3b718bd54c811d224a9b1d0a1, type: 2}
   nomWayTicket: 
   poids: 0
-  fillPercent: 100
+  fillPercent: 125
   isBadOriented: 0
   estOuvert: 0
-  estAbime: 0
-  nbAnomalie: 2
+  estAbime: 1
+  nbAnomalie: 1
   listAnomalies:
-  - RFID tags to be applied
-  - RFID tag over Tolerance
-  provenance: Gland
+  - Dimensions out of tolerance
+  provenance: Phase Test 1
   needQualityControl: 0

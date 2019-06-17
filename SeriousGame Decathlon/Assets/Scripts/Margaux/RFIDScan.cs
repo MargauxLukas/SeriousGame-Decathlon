@@ -19,7 +19,6 @@ public class RFIDScan : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("CollideRFID");
         if (isActive)
         {
             if (collision.gameObject.tag == "Colis" && collision.gameObject.GetComponent<ColisScript>().estSecoue == true && !collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByRFID && collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByPistol)
