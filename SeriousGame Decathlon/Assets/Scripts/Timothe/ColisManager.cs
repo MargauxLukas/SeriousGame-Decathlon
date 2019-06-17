@@ -16,7 +16,8 @@ public class ColisManager : MonoBehaviour
 
     //A affecté au Colis
     public GameObject menuTourner;
-    public GameObject spriteArticleTable;
+    public GameObject spriteArticleTableUn;
+    public GameObject spriteArticleTableDeux;
     public Text textArticleTableNombre;
     public Text textArtcileTableRFID;
     public Image circleImage;
@@ -56,10 +57,11 @@ public class ColisManager : MonoBehaviour
             scriptColis.colisScriptable = listeColisTraiter[0];
             scriptColis.doesEntrance = true;
             scriptColis.tournerMenu = menuTourner;
-            scriptColis.spriteArticleTable = spriteArticleTable;
+            scriptColis.spriteArticleTableUn = spriteArticleTableUn;
+            scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
-            scriptColis.textArtcileTableRFID = textArtcileTableRFID;
-            scriptColis.textArticleTableNombre = textArticleTableNombre;
+            //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
+            //scriptColis.textArticleTableNombre = textArticleTableNombre;
 
             foreach (BoutonDirection bouton in listeBoutonsMenuTourner)
             {
@@ -85,6 +87,9 @@ public class ColisManager : MonoBehaviour
                 }
             }
         }
+
+        spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
+        spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
     }
 
     public void RenvoieColis(GameObject colisRenvoye)
@@ -99,5 +104,7 @@ public class ColisManager : MonoBehaviour
             }
             GameObject.Destroy(colisRenvoye);
         }
+        spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
+        spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
     }
 }

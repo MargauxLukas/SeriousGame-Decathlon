@@ -16,11 +16,12 @@ public class FicheCarton : MonoBehaviour
     //Variables Nécessaire pour le colis
     //A affecté au Colis
     private GameObject menuTourner;
-    private GameObject spriteArticleTable;
+    private GameObject spriteArticleTableUn;
+    private GameObject spriteArticleTableDeux;
     private Image circleImage;
 
-    public Text textArticleTableNombre;
-    public Text textArtcileTableRFID;
+   // public Text textArticleTableNombre;
+    //public Text textArtcileTableRFID;
 
     //Auquel le colis doit être affecté
     private List<BoutonDirection> listeBoutonsMenuTourner;
@@ -28,7 +29,8 @@ public class FicheCarton : MonoBehaviour
     private void Start()
     {
         menuTourner = colisManage.menuTourner;
-        spriteArticleTable = colisManage.spriteArticleTable;
+        spriteArticleTableUn = colisManage.spriteArticleTableUn;
+        spriteArticleTableDeux = colisManage.spriteArticleTableUn;
         circleImage = colisManage.circleImage;
         listeBoutonsMenuTourner = colisManage.listeBoutonsMenuTourner;
     }
@@ -47,11 +49,13 @@ public class FicheCarton : MonoBehaviour
             scriptColis.colisScriptable.carton.Initialize();
 
             scriptColis.tournerMenu = menuTourner;
-            scriptColis.spriteArticleTable = spriteArticleTable;
+            scriptColis.spriteArticleTableUn = spriteArticleTableUn;
+            scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            scriptColis.textArtcileTableRFID = textArtcileTableRFID;
-            scriptColis.textArticleTableNombre = textArticleTableNombre;
+
+            //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
+            //scriptColis.textArticleTableNombre = textArticleTableNombre;
 
             foreach (BoutonDirection bouton in listeBoutonsMenuTourner)
             {
@@ -60,5 +64,8 @@ public class FicheCarton : MonoBehaviour
 
             Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
         }
+
+        spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
+        spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
     }
 }

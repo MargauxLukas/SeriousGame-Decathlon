@@ -8,9 +8,10 @@ public class ColliderRenvoieColis : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<ColisScript>() != null && !collision.gameObject.GetComponent<ColisScript>().doesEntrance)
+        Debug.Log("TestCollider");
+        if (collision.gameObject.GetComponent<ColisScript>() != null && !collision.gameObject.GetComponent<ColisScript>().doesEntrance)
         {
-            Debug.Log("Test");
+
             manage.RenvoieColis(collision.gameObject);
         }
     }
