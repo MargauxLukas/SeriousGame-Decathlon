@@ -15,6 +15,10 @@ public class OngletManager : MonoBehaviour
     public void Start()
     {
         homeScreen.SetActive(true);
+        fillingRate.SetActive(false);
+        recount.SetActive(false);
+        repack.SetActive(false);
+        ongletButton.SetActive(false);
     }
 
     public void Update()
@@ -26,6 +30,7 @@ public class OngletManager : MonoBehaviour
             repack.SetActive(false);
             ongletButton.SetActive(true);
             homeScreen.SetActive(false);
+            hasBeenScannedByPistol = false;
         }
     }
 
