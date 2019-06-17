@@ -23,6 +23,7 @@ public class Colis : ScriptableObject
     public List<string> listAnomalies;
     public string provenance;
     Direction orientation;
+    public bool needQualityControl;
 
     public void Initialize()
     {
@@ -211,6 +212,7 @@ public class Colis : ScriptableObject
     {
         List<Article> artcilePile;
         PCB = 0;
+        poids = 0;
         artcilePile = listArticles;
         listArticles = new List<Article>();
         return artcilePile;
@@ -218,6 +220,11 @@ public class Colis : ScriptableObject
 
     public void Remplir (int newPCB, List<Article> newListArticle)
     {
+        poids = 0;
+        foreach(Article art in newListArticle)
+        {
+            poids += art.poids;
+        }
         PCB = newPCB;
         listArticles = newListArticle;
     }

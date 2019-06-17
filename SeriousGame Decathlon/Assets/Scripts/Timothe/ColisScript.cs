@@ -21,6 +21,7 @@ public class ColisScript : MonoBehaviour
     public List<Article> articleOnTable;
     public GameObject tournerMenu;
     public GameObject spriteArticleTable;
+    public ArticleTable articleTableScript;
     public Text textArticleTableNombre;
     public Text textArtcileTableRFID;
 
@@ -57,6 +58,8 @@ public class ColisScript : MonoBehaviour
         {
             IWayEtiquette.SetActive(false);
         }
+
+        articleTableScript = spriteArticleTable.GetComponent<ArticleTable>();
     }
 
     // Update is called once per frame
@@ -181,7 +184,7 @@ public class ColisScript : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 10f)
+                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 5f)
                 {
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
@@ -200,7 +203,7 @@ public class ColisScript : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(-1, 0, 0) * Time.deltaTime;
+            transform.position += new Vector3(-1, 0, 0) * 3 * Time.deltaTime;
             if(Vector3.Distance(transform.position, entrancePosition) > 5f)
             {
                 doesEntrance = false;
@@ -272,6 +275,10 @@ public class ColisScript : MonoBehaviour
                 OpenTurnMenu();
                 TellSomething(5);
                 break;
+            case 0:
+                OpenTurnMenu();
+                TellSomething(5);
+                break;
         }
     }
 
@@ -319,6 +326,8 @@ public class ColisScript : MonoBehaviour
 
     void Vider()
     {
+        articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;
+
         List<Article> listTemporaire = colisScriptable.Vider();
         int nbRFIDFonctionnel = 0;
         if (listTemporaire.Count > 0 && articleOnTable.Count <= 0)
@@ -326,7 +335,7 @@ public class ColisScript : MonoBehaviour
             articleOnTable = listTemporaire;
             foreach(Article art in articleOnTable)
             {
-                if(art.rfid.estFonctionnel)
+                if(art.rfid != null && art.rfid.estFonctionnel)
                 {
                     nbRFIDFonctionnel++;
                 }
@@ -338,6 +347,7 @@ public class ColisScript : MonoBehaviour
         if (articleOnTable.Count>0)
         {
             spriteArticleTable.SetActive(true);
+            spriteArticleTable.GetComponent<PileArticle>().listArticles = articleOnTable;
         }
     }
 
@@ -350,6 +360,7 @@ public class ColisScript : MonoBehaviour
             articleOnTable = new List<Article>();
             if (articleOnTable.Count <= 0)
             {
+                spriteArticleTable.GetComponent<PileArticle>().listArticles = new List<Article>();
                 spriteArticleTable.SetActive(false);
             }
             textArtcileTableRFID.text = "0";

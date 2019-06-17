@@ -19,6 +19,9 @@ public class FicheCarton : MonoBehaviour
     private GameObject spriteArticleTable;
     private Image circleImage;
 
+    public Text textArticleTableNombre;
+    public Text textArtcileTableRFID;
+
     //Auquel le colis doit être affecté
     private List<BoutonDirection> listeBoutonsMenuTourner;
 
@@ -46,6 +49,9 @@ public class FicheCarton : MonoBehaviour
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTable = spriteArticleTable;
             scriptColis.circleImage = circleImage;
+
+            scriptColis.textArtcileTableRFID = textArtcileTableRFID;
+            scriptColis.textArticleTableNombre = textArticleTableNombre;
 
             foreach (BoutonDirection bouton in listeBoutonsMenuTourner)
             {

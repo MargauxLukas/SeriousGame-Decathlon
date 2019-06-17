@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: Colis Test
+  m_Name: ColisTestPoids
   m_EditorClassIdentifier: 
   name: 
-  PCB: 0
+  PCB: 1
   carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
-  listArticles: []
-  wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
+  listArticles:
+  - {fileID: 11400000, guid: cbadcc3d951f26d46821e118888263d7, type: 2}
+  wayTicket: {fileID: 11400000, guid: afb1b4f3b718bd54c811d224a9b1d0a1, type: 2}
   nomWayTicket: 
-  poids: 0
+  poids: 25
   fillPercent: 100
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
-  nbAnomalie: 2
-  listAnomalies:
-  - RFID tags to be applied
-  - RFID tag over Tolerance
-  provenance: Gland
+  nbAnomalie: 0
+  listAnomalies: []
+  provenance: Phase Test 1
   needQualityControl: 0
