@@ -15,10 +15,6 @@ public class RecountTab : MonoBehaviour
     public RFIDInfoManager    infoRFID;              //Pour récupérer le nombre de puce RFID
     public AnomalieDetection anomalieD;              //Pour savoir si la ref est connu
 
-    [Header("Scriptable")]
-    public WayTicket wayTicketScriptable;
-    public RFID rfidTicketScriptable;
-
     [Header("Prefab")]
     public GameObject ticket;
     public GameObject ticketRFID;
@@ -64,17 +60,17 @@ public class RecountTab : MonoBehaviour
                 anomalieD.RFIDtagKnowned.Add(int.Parse(refRFID));
             }
 
-            WayTicket newTicket  = WayTicket.CreateInstance<WayTicket>();
-            newTicket.PCB        = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
-            newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
-            wayTicketScriptable  = newTicket;
+            WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
+            newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
+            newTicket.refArticle      = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
+            newTicket.poids           = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.poids;
+            newTicket.numeroCodeBarre = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.numeroCodeBarre;
             ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
             RFID newRFID = RFID.CreateInstance <RFID>();
             newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
             newRFID.estFonctionnel = true;
-            rfidTicketScriptable = newRFID;
-            ticketRFID.GetComponent<GetRfidFromObject>().newRFID = rfidTicketScriptable;
+            ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
         }
         else
         {
