@@ -302,9 +302,8 @@ public class ColisScript : MonoBehaviour
         tournerMenu.SetActive(true);
     }
 
-    public void Tourner(Vector2 vect)
+    public void Tourner()
     {
-        colisScriptable.Tourner(vect, spriteCartons);
         if(colisScriptable.isBadOriented && IWayEtiquette.activeSelf)
         {
             IWayEtiquette.SetActive(false);

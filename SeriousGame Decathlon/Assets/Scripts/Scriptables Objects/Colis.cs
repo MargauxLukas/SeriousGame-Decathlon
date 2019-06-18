@@ -215,7 +215,7 @@ public class Colis : ScriptableObject
         {
             if(face.isCurrentlyPick)
             {
-                if (face.face != "Up" && face.face != "Down")
+                if (face.face != "Forward")
                 {
                     isBadOriented = true;
                 }
@@ -225,7 +225,7 @@ public class Colis : ScriptableObject
                 }
             }
 
-            if(face.face == "Forward" && face.fullRotation != 0)
+            if(face.face == "Forward" && face.fullRotation != 0 && face.fullRotation != 360)
             {
                 cantSeeHu = false;
             }

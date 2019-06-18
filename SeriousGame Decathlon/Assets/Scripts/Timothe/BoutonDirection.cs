@@ -21,22 +21,22 @@ public class BoutonDirection : MonoBehaviour
         if(isRight)
         {
             Debug.Log("Right");
-            scriptColis.Tourner(new Vector2(1,0));
+            //scriptColis.Tourner(new Vector2(1,0));
         }
         else if(isLeft)
         {
             Debug.Log("Right");
-            scriptColis.Tourner(new Vector2(-1, 0));
+            //scriptColis.Tourner(new Vector2(-1, 0));
         }
         else if (isUp)
         {
             Debug.Log("Right");
-            scriptColis.Tourner(new Vector2(0, 1));
+            //scriptColis.Tourner(new Vector2(0, 1));
         }
         else if (isDown)
         {
             Debug.Log("Right");
-            scriptColis.Tourner(new Vector2(0, -1));
+            //scriptColis.Tourner(new Vector2(0, -1));
         }
     }
 }

@@ -72,6 +72,7 @@ public class ColisManager : MonoBehaviour
             scanPistol.scriptColis = scriptColis;
             recountTab.colis = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
+            scriptRotation.ColisEnter();
 
             listeColisTraiter.RemoveAt(0);
             if (listeColisTraiter.Count > 0 && listeColisTraiter[0] == null && listeColisTraiter[1] != null)

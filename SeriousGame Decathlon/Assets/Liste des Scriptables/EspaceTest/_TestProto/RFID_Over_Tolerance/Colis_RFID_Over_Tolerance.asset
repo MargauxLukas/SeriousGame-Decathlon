@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ColisRFIDOverTolerance
   PCB: 5
-  carton: {fileID: 0}
+  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
   listArticles:
   - {fileID: 11400000, guid: 86143a10404b22342abe908e6caaf376, type: 2}
   - {fileID: 11400000, guid: 86143a10404b22342abe908e6caaf376, type: 2}
@@ -28,9 +28,11 @@ MonoBehaviour:
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
-  nbAnomalie: 2
+  nbAnomalie: 3
   listAnomalies:
+  - RFID tags to be applied
   - RFID tag over Tolerance
   - RFID tag scanned for unknown product
   provenance: Anzin
   needQualityControl: 0
+  cantSeeHu: 0
