@@ -54,7 +54,7 @@ public class ColisManager : MonoBehaviour
             GameObject colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
-            scriptColis.colisScriptable = listeColisTraiter[0];
+            scriptColis.colisScriptable = Instantiate(listeColisTraiter[0]);
             scriptColis.doesEntrance = true;
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTableUn = spriteArticleTableUn;

@@ -18,6 +18,17 @@ public class RecountTab : MonoBehaviour
 
     private string refRFID;
 
+    WayTicket newTicket;
+
+    public void Update()
+    {
+        if(getRFIDNum) 
+        {
+            rfidNumText.text = infoRFID.numStringRFID;
+            refRFID          = infoRFID.refStringRFID;
+        }
+    }
+
     /*****************************
     *  Active le scanner RFID    *
     ******************************/
@@ -31,7 +42,7 @@ public class RecountTab : MonoBehaviour
     *******************************************************************/
     public void Inventory()
     {
-        if (colis.GetComponent<ColisScript>().hasBeenScannedByRFID && (int.Parse(infoRFID.numStringRFID) > 0))
+        if (colis != null && colis.GetComponent<ColisScript>().hasBeenScannedByRFID && (int.Parse(infoRFID.numStringRFID) > 0))
         {
             rfidScan.isActive = false;
 
@@ -53,7 +64,31 @@ public class RecountTab : MonoBehaviour
         }
         else
         {
-            Scoring.instance.MinorPenalty();                                                                        //Test de scoring
+            newTicket = WayTicket.CreateInstance<WayTicket>();
+            newTicket.PCB = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
+            if(rfidScan.infoRFID.rfidComplet != null)
+                newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
+            newTicket.poids = 0;
+            newTicket.numeroCodeBarre = 0;
+            ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
+
+            RFID newRFID = RFID.CreateInstance<RFID>();
+            if (rfidScan.infoRFID.rfidComplet != null)
+            {
+                newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
+            }
+            else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null)
+            {
+                newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle;
+            }
+            else
+            {
+                newRFID.refArticle = RefArticle.CreateInstance<RefArticle>();
+            }
+            newRFID.estFonctionnel = true;
+            ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
+
+            //Scoring.instance.MinorPenalty();                                                                   //Test de scoring
             return;
         }
     }
@@ -63,7 +98,8 @@ public class RecountTab : MonoBehaviour
     **********************************************/
     public void PrintHU() 
     {
-        Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+        GameObject leTicket =  Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+        leTicket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
     }
 
     /************************************

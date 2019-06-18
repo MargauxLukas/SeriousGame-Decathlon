@@ -24,8 +24,20 @@ public class PileArticle : MonoBehaviour
     public float timeBeforeOpen;
     private float timeTouched;
 
+    private float timeUpdate;
+
     private void Update()
     {
+        if(timeUpdate<=0.5f)
+        {
+            timeUpdate++;
+        }
+        else
+        {
+            UpdatePileArticle();
+            timeUpdate = 0;
+        }
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -121,7 +133,7 @@ public class PileArticle : MonoBehaviour
         listArticles = newList;
     }
 
-    public void RemplirColis(Colis colisRemplir)
+    public void RemplirColis(Colis colisRemplir, ColisScript scriptColis)
     {
         colisRemplir.Remplir(listArticles.Count, listArticles);
         listArticles = new List<Article>();
@@ -129,6 +141,7 @@ public class PileArticle : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        scriptColis.hasBeenScannedByRFID = false;
     }
 
     void touchObject()
@@ -173,19 +186,19 @@ public class PileArticle : MonoBehaviour
             case 1:
                 if(listColisPresent[0] != null)
                 {
-                    RemplirColis(listColisPresent[0].colisScriptable);
+                    RemplirColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
                 }
                 break;
             case 2:
                 if (listColisPresent[1] != null)
                 {
-                    RemplirColis(listColisPresent[1].colisScriptable);
+                    RemplirColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
             case 3:
                 if (listColisPresent[2] != null)
                 {
-                    RemplirColis(listColisPresent[2].colisScriptable);
+                    RemplirColis(listColisPresent[2].colisScriptable, listColisPresent[2]);
                 }
                 break;
         }
