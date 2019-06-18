@@ -19,16 +19,6 @@ public class RecountTab : MonoBehaviour
     private string refRFID;
 
     WayTicket newTicket;
-
-    public void Update()
-    {
-        if(getRFIDNum) 
-        {
-            rfidNumText.text = infoRFID.numStringRFID;
-            refRFID          = infoRFID.refStringRFID;
-        }
-    }
-
     /*****************************
     *  Active le scanner RFID    *
     ******************************/
@@ -65,28 +55,19 @@ public class RecountTab : MonoBehaviour
         else
         {
             newTicket = WayTicket.CreateInstance<WayTicket>();
-            newTicket.PCB = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
-            if(rfidScan.infoRFID.rfidComplet != null)
-                newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
-            newTicket.poids = 0;
+            newTicket.PCB       = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
+            if (rfidScan.infoRFID.rfidComplet != null) {newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;}    //On donne au nouveau ticket la bonne référence
+            newTicket.poids           = 0;
             newTicket.numeroCodeBarre = 0;
-            ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
             RFID newRFID = RFID.CreateInstance<RFID>();
-            if (rfidScan.infoRFID.rfidComplet != null)
-            {
-                newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;
-            }
-            else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null)
-            {
-                newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle;
-            }
-            else
-            {
-                newRFID.refArticle = RefArticle.CreateInstance<RefArticle>();
-            }
+                 if (rfidScan.infoRFID.rfidComplet != null)                               {newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle                              ;}
+            else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null) {newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle;}
+            else                                                                          {newRFID.refArticle = RefArticle.CreateInstance<RefArticle>()                               ;}
             newRFID.estFonctionnel = true;
-            ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
+
+            ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
+            ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;
 
             //Scoring.instance.MinorPenalty();                                                                   //Test de scoring
             return;
