@@ -10,6 +10,8 @@ public class OngletManager : MonoBehaviour
     public GameObject ongletButton;
     public GameObject homeScreen;
 
+    public GameObject listAnomalies;
+
     public bool hasBeenScannedByPistol = false;
 
     public void Start()
@@ -19,6 +21,7 @@ public class OngletManager : MonoBehaviour
         recount.SetActive(false);
         repack.SetActive(false);
         ongletButton.SetActive(false);
+        listAnomalies.SetActive(false);
     }
 
     public void Update()
@@ -30,6 +33,9 @@ public class OngletManager : MonoBehaviour
             repack.SetActive(false);
             ongletButton.SetActive(true);
             homeScreen.SetActive(false);
+            listAnomalies.SetActive(true);
+            listAnomalies.GetComponent<AffichageAnomalie>().AfficherAnomalie();
+
             hasBeenScannedByPistol = false;
         }
     }

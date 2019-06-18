@@ -12,6 +12,7 @@ public class PistolScan : MonoBehaviour
     public IWayInfoManager iWayInfoManager;
 
     public OngletManager ongletManager;
+    public GameObject listAnomalie;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class PistolScan : MonoBehaviour
             iWayInfoManager.pcbIntIWay = scriptColis.colisScriptable.wayTicket.PCB;
             scriptColis.hasBeenScannedByPistol = true;
             ongletManager.GetComponent<OngletManager>().hasBeenScannedByPistol = true;
+            listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;
         }
         else
         {
