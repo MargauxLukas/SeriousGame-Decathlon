@@ -16,8 +16,6 @@ public class RecountTab : MonoBehaviour
     public GameObject ticket    ;
     public GameObject ticketRFID;
 
-    private string refRFID;
-
     WayTicket newTicket;
     /*****************************
     *  Active le scanner RFID    *
@@ -36,8 +34,8 @@ public class RecountTab : MonoBehaviour
         {
             rfidScan.isActive = false;
 
-            if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(refRFID))){}                                           //On connait déjà la référence
-            else{anomalieD.RFIDtagKnowned.Add     (int.Parse(refRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
+            if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
+            else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
 
             WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
             newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
@@ -54,7 +52,7 @@ public class RecountTab : MonoBehaviour
         }
         else
         {
-            newTicket = WayTicket.CreateInstance<WayTicket>();
+            WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
             newTicket.PCB       = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
             if (rfidScan.infoRFID.rfidComplet != null) {newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;}    //On donne au nouveau ticket la bonne référence
             newTicket.poids           = 0;
@@ -79,8 +77,7 @@ public class RecountTab : MonoBehaviour
     **********************************************/
     public void PrintHU() 
     {
-        GameObject leTicket =  Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
-        leTicket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
+        Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 
     /************************************
