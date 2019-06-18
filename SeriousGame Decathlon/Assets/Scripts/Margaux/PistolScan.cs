@@ -73,7 +73,7 @@ public class PistolScan : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider.gameObject != null)
+            if (hit.collider.gameObject != null && gameObject != null)
             {
                 if (hit.collider.gameObject == gameObject){isMoving = true;}
             }
