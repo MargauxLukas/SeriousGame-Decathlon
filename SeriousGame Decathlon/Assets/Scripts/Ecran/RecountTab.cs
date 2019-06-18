@@ -18,18 +18,12 @@ public class RecountTab : MonoBehaviour
     [Header("Prefab")]
     public GameObject ticket;
     public GameObject ticketRFID;
-    
-    private bool getRFIDNum = false;
 
     private string refRFID;
 
     public void Update()
     {
-        if(getRFIDNum) 
-        {
-            rfidNumText.text = infoRFID.numStringRFID;
-            refRFID          = infoRFID.refStringRFID;
-        }
+
     }
 
     /*****************************
@@ -38,7 +32,6 @@ public class RecountTab : MonoBehaviour
     public void Recount()
     {
         rfidScan.isActive = true;
-        getRFIDNum        = true;
     }
 
     /******************************************************************
@@ -49,7 +42,6 @@ public class RecountTab : MonoBehaviour
         if (colis.GetComponent<ColisScript>().hasBeenScannedByRFID && (int.Parse(infoRFID.numStringRFID) > 0))
         {
             rfidScan.isActive = false;
-            getRFIDNum        = false;
 
             if (anomalieD.RFIDtagKnowned.Contains(int.Parse(refRFID)))
             {

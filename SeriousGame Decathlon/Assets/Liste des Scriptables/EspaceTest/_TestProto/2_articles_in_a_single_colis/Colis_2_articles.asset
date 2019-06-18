@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
+  m_Name: Colis_2_articles
+  m_EditorClassIdentifier: 
+  name: Colis_2_articles
+  PCB: 4
+  carton: {fileID: 0}
+  listArticles:
+  - {fileID: 11400000, guid: 7cdcf40c0aeaa934bb253b5f49947e05, type: 2}
+  - {fileID: 11400000, guid: 7cdcf40c0aeaa934bb253b5f49947e05, type: 2}
+  - {fileID: 11400000, guid: ed8f14e0fff543e4eb8b6f9c4d0f073f, type: 2}
+  - {fileID: 11400000, guid: ed8f14e0fff543e4eb8b6f9c4d0f073f, type: 2}
+  wayTicket: {fileID: 11400000, guid: 339128362f0a1b54bb2c8e2cc1d611b8, type: 2}
+  nomWayTicket: WT_2_articles
+  poids: 4
+  fillPercent: 120
+  isBadOriented: 0
+  estOuvert: 0
+  estAbime: 0
+  nbAnomalie: 0
+  listAnomalies: []
+  provenance: Poitou
+  needQualityControl: 0

@@ -10,11 +10,18 @@ public class AffichageAnomalie : MonoBehaviour
 
     public void AfficherAnomalie()
     {
-        int n = 1;
+        int n = 0;
         foreach(string anomalie in listAnomalies)
         {
-            text[n].text = anomalie;
-            n++;
+            if (n == 4)
+            {
+                break;
+            }
+            else
+            {
+                text[n].text = anomalie;
+                n++;
+            }
         }
     }
 }
