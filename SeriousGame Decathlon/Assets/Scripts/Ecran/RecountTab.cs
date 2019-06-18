@@ -17,6 +17,9 @@ public class RecountTab : MonoBehaviour
     public GameObject ticketRFID;
 
     WayTicket newTicket;
+
+    GameObject ticketgo;
+    GameObject ticketRFIDgo;
     /*****************************
     *  Active le scanner RFID    *
     ******************************/
@@ -77,7 +80,8 @@ public class RecountTab : MonoBehaviour
     **********************************************/
     public void PrintHU() 
     {
-        Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+        Destroy(ticketgo);
+        ticketgo = Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 
     /************************************
@@ -85,6 +89,7 @@ public class RecountTab : MonoBehaviour
     *************************************/
     public void PrintRFID()
     {
-        Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
+        Destroy(ticketRFIDgo);
+        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
     }
 }
