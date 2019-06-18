@@ -29,8 +29,14 @@ public class RFIDScan : MonoBehaviour
                 scriptColis = collision.gameObject.GetComponent<ColisScript>();
 
                 //if (scriptColis.colisScriptable.listArticles[0].rfid != null)//Vérification si RFID est nul ou pas
-                
-                for(int i = 0; i< scriptColis.colisScriptable.listArticles.Count;i++)
+                numRFID  = 0;
+                numRFID2 = 0;
+                infoRFID.numIntRFID  = 0;
+                infoRFID2.numIntRFID = 0;
+                infoRFID.refIntRFID  = 0;
+                infoRFID2.refIntRFID = 0;
+
+                for (int i = 0; i< scriptColis.colisScriptable.listArticles.Count;i++)
                 {                 
                     if (i == 0)                                                                                                     //Le premier me sert de référence pour savoir si les autres articles sont les mêmes.
                     {
