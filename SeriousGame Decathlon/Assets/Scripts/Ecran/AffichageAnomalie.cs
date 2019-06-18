@@ -6,6 +6,8 @@ using TMPro;
 public class AffichageAnomalie : MonoBehaviour
 {
     public List<TextMeshProUGUI> text;
+
+    [HideInInspector]
     public List<string> listAnomalies;
 
     public void AfficherAnomalie()
@@ -13,10 +15,7 @@ public class AffichageAnomalie : MonoBehaviour
         int n = 0;
         foreach(string anomalie in listAnomalies)
         {
-            if (n == 4)
-            {
-                break;
-            }
+            if (n == 4){break;}
             else
             {
                 text[n].text = anomalie;

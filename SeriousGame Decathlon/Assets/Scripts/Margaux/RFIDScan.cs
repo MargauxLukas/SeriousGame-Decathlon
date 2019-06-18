@@ -35,7 +35,7 @@ public class RFIDScan : MonoBehaviour
                     if (i == 0)                                                                                                     //Le premier me sert de référence pour savoir si les autres articles sont les mêmes.
                     {
                         infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
-                        infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                        infoRFID.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
                         numRFID++;
                     }
                     else

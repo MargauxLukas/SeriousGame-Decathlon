@@ -5,17 +5,18 @@ using UnityEngine;
 public class RFIDInfoManager : MonoBehaviour
 {
     //Référence RFID
-    public RFID rfidComplet;
-    public int refIntRFID;
+    [HideInInspector]
+    public RFID   rfidComplet  ;
+    [HideInInspector]
+    public int    refIntRFID   ;
+    [HideInInspector]
     public string refStringRFID;
+
     //Total RFID
-    public int numIntRFID;
+    [HideInInspector]
+    public int    numIntRFID   ;
+    [HideInInspector]
     public string numStringRFID;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
