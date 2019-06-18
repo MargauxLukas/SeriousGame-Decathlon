@@ -22,11 +22,11 @@ public class RecountTab : MonoBehaviour
 
     public void Update()
     {
-        if(getRFIDNum) 
+        /*if(getRFIDNum) 
         {
             rfidNumText.text = infoRFID.numStringRFID;
             refRFID          = infoRFID.refStringRFID;
-        }
+        }*/
     }
 
     /*****************************
