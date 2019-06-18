@@ -5,6 +5,7 @@ using TMPro;
 
 public class ArticleFind : MonoBehaviour
 {
+    [Header("Texte en enfant")]
     public TextMeshProUGUI text1;
     public TextMeshProUGUI text2;
 
