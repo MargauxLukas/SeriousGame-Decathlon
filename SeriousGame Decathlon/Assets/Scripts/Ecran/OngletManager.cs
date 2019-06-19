@@ -35,6 +35,7 @@ public class OngletManager : MonoBehaviour
             recount      .SetActive(false);
             repack       .SetActive(false);
             listAnomalies.SetActive(true );
+            createHU     .SetActive(false);
 
             listAnomalies.GetComponent<AffichageAnomalie>().AfficherAnomalie();
 

@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 
 public class CreateHUScript : MonoBehaviour
 {
-    private string packagingMat = "";
-    private string workStation = "";
-    private string reference = "";
-    private string madeIn = "";
+    private string packagingMat   = "";
+    private string workStation    = "";
+    private string reference      = "";
+    private string madeIn         = "";
     private string dateExpiration = "";
-    private int quantity;
+    private int quantity          =  0;
 
     public TMPro.TMP_InputField inputPackaging;
     public TMPro.TMP_InputField inputWorkStation;
@@ -21,6 +21,7 @@ public class CreateHUScript : MonoBehaviour
     public TMPro.TMP_InputField inputQuantity;
 
     public OngletManager om;
+    public IWayInfoManager infoHU;
 
     private void Start()
     {
@@ -64,7 +65,16 @@ public class CreateHUScript : MonoBehaviour
 
     public void ClickOK()
     {
-        om.CreateHUOK();
+        if(reference != null && quantity == 0)
+        {
+            infoHU.refStringIWay = reference;
+            infoHU.pcbIntIWay = quantity;
+            om.CreateHUOK();
+        }
+        else
+        {
+
+        }
     }
 
     public void ClickCancel()
