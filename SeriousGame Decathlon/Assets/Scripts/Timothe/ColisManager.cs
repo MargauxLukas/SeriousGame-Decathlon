@@ -74,6 +74,7 @@ public class ColisManager : MonoBehaviour
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
 
+            Debug.Log(listeColisTraiter[0]);
             listeColisTraiter.RemoveAt(0);
             if (listeColisTraiter.Count > 0 && listeColisTraiter[0] == null && listeColisTraiter[1] != null)
             {

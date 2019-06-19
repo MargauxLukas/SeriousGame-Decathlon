@@ -14,17 +14,20 @@ public class ScreenDisplayColor : MonoBehaviour
 
     void Update()
     {
-        if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
+        if (recountTab.colis != null)
         {
-            screenColor.color = new Color32(192, 30, 41, 255);
-        }
-        else if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0)
-        {
-            screenColor.color = new Color32(30, 192, 112, 255);
-        }
-        else
-        {
-            screenColor.color = new Color32(0, 198, 255, 255);
+            if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
+            {
+                screenColor.color = new Color32(192, 30, 41, 255);
+            }
+            else if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0)
+            {
+                screenColor.color = new Color32(30, 192, 112, 255);
+            }
+            else
+            {
+                screenColor.color = new Color32(0, 198, 255, 255);
+            }
         }
     }
 }

@@ -60,4 +60,16 @@ public class OngletManager : MonoBehaviour
         recount    .SetActive(false);
         repack     .SetActive(true );
     }
+
+    public void ReturnToMeca()
+    {
+        homeScreen.SetActive(true);
+        ongletButton.SetActive(false);
+        fillingRate.SetActive(false);
+        recount.SetActive(false);
+        repack.SetActive(false);
+        listAnomalies.SetActive(false);
+        listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
+    }
+
 }

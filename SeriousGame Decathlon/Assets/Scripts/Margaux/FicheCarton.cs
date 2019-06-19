@@ -47,6 +47,7 @@ public class FicheCarton : MonoBehaviour
             scriptColis.colisScriptable.carton = carton;
             scriptColis.colisScriptable.carton.codeRef = buttonName;
             scriptColis.colisScriptable.carton.Initialize();
+            scriptColis.colisScriptable.isBadOriented = false;
 
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTableUn = spriteArticleTableUn;
