@@ -215,7 +215,7 @@ public class ColisScript : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider.gameObject != null && hit.collider.gameObject == gameObject)
+            if (hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
             {
                 isMoving = true;
             }
@@ -302,9 +302,8 @@ public class ColisScript : MonoBehaviour
         tournerMenu.SetActive(true);
     }
 
-    public void Tourner(Vector2 vect)
+    public void Tourner()
     {
-        colisScriptable.Tourner(vect, spriteCartons);
         if(colisScriptable.isBadOriented && IWayEtiquette.activeSelf)
         {
             IWayEtiquette.SetActive(false);

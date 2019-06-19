@@ -62,8 +62,10 @@ public class FicheCarton : MonoBehaviour
                 bouton.scriptColis = scriptColis;
             }
 
-            Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
+            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
+            colisManage.scriptRotation.ColisEnter();
         }
+
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();

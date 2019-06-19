@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class RotationScript : MonoBehaviour
 {
-    public GameObject cube;
-
     public List<SquareFace> squareList;
     SquareFace actualFace;
+
+    public GameObject cartonObj;
+
+    public List<Sprite> cartonsSprites;
+    public SpriteRenderer carton;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +21,7 @@ public class RotationScript : MonoBehaviour
         squareList.Add(CreateFace(0, "Right", false));
         squareList.Add(CreateFace(0, "Left", false));
         squareList.Add(CreateFace(0, "Forward", false));
-        squareList.Add(CreateFace(180, "Backward", false));
+        squareList.Add(CreateFace(0, "Backward", false));
 
         squareList[0] = CreateVoison(squareList[0],squareList[5], squareList[4], squareList[2], squareList[3]);
         squareList[1] = CreateVoison(squareList[1], squareList[4], squareList[5], squareList[2], squareList[3]);
@@ -28,6 +31,30 @@ public class RotationScript : MonoBehaviour
         squareList[5] = CreateVoison(squareList[5], squareList[0], squareList[1], squareList[2], squareList[3]);
 
         actualFace = GetCurrentFace();
+
+        if (cartonObj != null)
+        {
+            cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
+            carton = cartonObj.GetComponent<SpriteRenderer>();
+        }
+    }
+
+    private void resetAll()
+    {
+        squareList = new List<SquareFace>();
+        squareList.Add(CreateFace(0, "Up", false));
+        squareList.Add(CreateFace(0, "Down", false));
+        squareList.Add(CreateFace(0, "Right", false));
+        squareList.Add(CreateFace(0, "Left", false));
+        squareList.Add(CreateFace(0, "Forward", false));
+        squareList.Add(CreateFace(0, "Backward", false));
+
+        squareList[0] = CreateVoison(squareList[0], squareList[5], squareList[4], squareList[2], squareList[3]);
+        squareList[1] = CreateVoison(squareList[1], squareList[4], squareList[5], squareList[2], squareList[3]);
+        squareList[2] = CreateVoison(squareList[2], squareList[0], squareList[1], squareList[4], squareList[5]);
+        squareList[3] = CreateVoison(squareList[3], squareList[0], squareList[1], squareList[5], squareList[4]);
+        squareList[4] = CreateVoison(squareList[4], squareList[0], squareList[1], squareList[3], squareList[2]);
+        squareList[5] = CreateVoison(squareList[5], squareList[1], squareList[0], squareList[2], squareList[3]);
     }
 
     SquareFace CreateFace(float fullRotation, string face, bool isCurrentlyPick)
@@ -49,10 +76,66 @@ public class RotationScript : MonoBehaviour
         return newFace;
     }
 
+    void UpdateSprite(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton)
+    {
+        if (spriteCartonListe.Count > 0)
+        {
+            switch (actualFace.face)
+            {
+                case "Up":
+                    spriteCarton.sprite = spriteCartonListe[0];
+                    break;
+                case "Down":
+                    spriteCarton.sprite = spriteCartonListe[1];
+                    break;
+                case "Right":
+                    spriteCarton.sprite = spriteCartonListe[2];
+                    break;
+                case "Left":
+                    spriteCarton.sprite = spriteCartonListe[3];
+                    break;
+                case "Forward":
+                    spriteCarton.sprite = spriteCartonListe[4];
+                    break;
+                case "Backward":
+                    spriteCarton.sprite = spriteCartonListe[5];
+                    break;
+            }
+        }
+        spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
+        Debug.Log(actualFace.face);
+        Debug.Log(actualFace.fullRotation);
+    }
+
+    public void ColisEnter()
+    {
+        if(cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
+        {
+            resetAll();
+            squareList[0].isCurrentlyPick = true;
+            actualFace = GetCurrentFace();
+            UpdateSprite(cartonsSprites, carton);
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
+            cartonObj.GetComponent<ColisScript>().Tourner();
+        }
+        else
+        {
+            resetAll();
+            squareList[0].isCurrentlyPick = true;
+            actualFace = GetCurrentFace();
+            yAxisMajeur = -1;
+            ChangeRotation();
+            actualFace = GetCurrentFace();
+            UpdateSprite(cartonsSprites, carton);
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
+            cartonObj.GetComponent<ColisScript>().Tourner();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        /*if (Input.GetKeyDown(KeyCode.D))
         {
             ChangeRotation(1, 0, 0);
         }
@@ -75,13 +158,50 @@ public class RotationScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeRotation(0, 0, -90);
-        }
+            UpdateSprite(new List<Sprite>(), carton);
+        }*/
     }
 
-    void ChangeRotation(int xAxis, int yAxis, int rotation)
+    public void GetxAxis(int xAxis)
     {
+        xAxisMajeur = xAxis; 
+    }
+
+    public void GetyAxis(int xAxis)
+    {
+        yAxisMajeur = xAxis;
+    }
+
+    public void GetRotaAxis(int xAxis)
+    {
+        RotaAxis = xAxis;
+    }
+
+    private int xAxisMajeur;
+    private int yAxisMajeur;
+    private int RotaAxis;
+
+    public void ChangeRotation()
+    {
+        if (cartonObj != null)
+        {
+            cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
+            carton = cartonObj.GetComponent<SpriteRenderer>();
+        }
+
+        int xAxis = xAxisMajeur;
+        int yAxis = yAxisMajeur;
+        int rotation = RotaAxis;
         //int nbFace = GetCurrentFaceId();
         actualFace.fullRotation = actualFace.fullRotation % 360;
+        if(actualFace.fullRotation >= 360)
+        {
+            actualFace.fullRotation -= 360;
+        }
+        else if(actualFace.fullRotation < 0)
+        {
+            actualFace.fullRotation += 360;
+        }
         int nbQuaterRotateMore = Mathf.RoundToInt(actualFace.fullRotation / 90)%4;
 
         if (actualFace != null)
@@ -92,55 +212,57 @@ public class RotationScript : MonoBehaviour
             {
                 if (xAxis > 0)
                 {
-                    switch(nbQuaterRotateMore)
+                    newFace = actualFace.rightVoisin;
+                    /*switch(nbQuaterRotateMore)
                     {
                         case 0:
                             newFace = actualFace.rightVoisin;
-                            GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
-                            GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
                             break;
                         case 1:
                             newFace = actualFace.upVoisin;
-                            GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
-                            GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
                             break;
                         case 2:
                             newFace = actualFace.leftVoisin;
-                            GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
-                            GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
                             break;
                         case 3:
                             newFace = actualFace.downVoisin;
-                            GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
-                            GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
                             break;
-                    }
+                    }*/
                 }
                 else
                 {
-                    switch (nbQuaterRotateMore)
+                    newFace = actualFace.leftVoisin;
+                    /*switch (nbQuaterRotateMore)
                     {
                         case 0:
                             newFace = actualFace.leftVoisin;
-                            GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
-                            GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
                             break;
                         case 1:
                             newFace = actualFace.downVoisin;
-                            GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
-                            GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
                             break;
                         case 2:
                             newFace = actualFace.rightVoisin;
-                            GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
-                            GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
                             break;
                         case 3:
                             newFace = actualFace.upVoisin;
-                            GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
-                            GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
                             break;
-                    }
+                    }*/
                 }
                 actualFace = newFace;
             }
@@ -148,55 +270,57 @@ public class RotationScript : MonoBehaviour
             {
                 if(yAxis > 0)
                 {
-                    switch (nbQuaterRotateMore)
+                    newFace = actualFace.upVoisin;
+                    /*switch (nbQuaterRotateMore)
                     {
                         case 0:
+                            newFace = actualFace.upVoisin;
+                            //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                            break;
+                        case 1:
+                            newFace = actualFace.leftVoisin;
+                            //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                            break;
+                        case 2:
+                            newFace = actualFace.downVoisin;
+                            //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                            //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                            break;
+                        case 3:
+                            newFace = actualFace.rightVoisin;
+                            //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                            //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                            break;
+                    }*/
+                }
+                else
+                {
+                    newFace = actualFace.downVoisin;
+                    /*switch (nbQuaterRotateMore)
+                    {
+                        case 0:
+                            newFace = actualFace.downVoisin;
+                            GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                            GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                            break;
+                        case 1:
+                            newFace = actualFace.rightVoisin;
+                            GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                            GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                            break;
+                        case 2:
                             newFace = actualFace.upVoisin;
                             GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
                             GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
                             break;
-                        case 1:
-                            newFace = actualFace.leftVoisin;
-                            actualFace.upVoisin.fullRotation -= 90;
-                            actualFace.downVoisin.fullRotation -= 90;
-                            break;
-                        case 2:
-                            newFace = actualFace.downVoisin;
-                            actualFace.rightVoisin.fullRotation -= 90;
-                            actualFace.leftVoisin.fullRotation -= 90;
-                            break;
-                        case 3:
-                            newFace = actualFace.rightVoisin;
-                            actualFace.upVoisin.fullRotation += 90;
-                            actualFace.downVoisin.fullRotation += 90;
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (nbQuaterRotateMore)
-                    {
-                        case 0:
-                            newFace = actualFace.downVoisin;
-                            actualFace.rightVoisin.fullRotation -= 90;
-                            actualFace.leftVoisin.fullRotation -= 90;
-                            break;
-                        case 1:
-                            newFace = actualFace.rightVoisin;
-                            actualFace.upVoisin.fullRotation += 90;
-                            actualFace.downVoisin.fullRotation += 90;
-                            break;
-                        case 2:
-                            newFace = actualFace.upVoisin;
-                            actualFace.rightVoisin.fullRotation += 90;
-                            actualFace.leftVoisin.fullRotation += 90;
-                            break;
                         case 3:
                             newFace = actualFace.leftVoisin;
-                            actualFace.upVoisin.fullRotation -= 90;
-                            actualFace.downVoisin.fullRotation -= 90;
+                            GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                            GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
                             break;
-                    }
+                    }*/
                 }
                 actualFace = newFace;
             }
@@ -205,18 +329,19 @@ public class RotationScript : MonoBehaviour
                 if(rotation > 0)
                 {
                     actualFace.fullRotation += 90;
-                    //actualFace.upVoisin.upVoisin.fullRotation += 90;
+                    //GetVoisonFromRotation(GetVoisonFromRotation(actualFace, "Right"), "Right").fullRotation += 90;
                 }
                 else
                 {
                     actualFace.fullRotation -= 90;
-                    //actualFace.upVoisin.upVoisin.fullRotation -= 90;
+                    //GetVoisonFromRotation(GetVoisonFromRotation(actualFace, "Right"), "Right").fullRotation += 90;
                 }
             }
             actualFace.isCurrentlyPick = true;
-            Debug.Log(actualFace.face);
-            Debug.Log(actualFace.fullRotation);
         }
+        UpdateSprite(cartonsSprites, carton);
+        cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
+        cartonObj.GetComponent<ColisScript>().Tourner();
     }
 
     SquareFace GetVoisonFromRotation(SquareFace currentFace, string faceNeeded)
@@ -230,16 +355,12 @@ public class RotationScript : MonoBehaviour
                 {
                     case 0:
                         return currentFace.upVoisin;
-                        break;
                     case 1:
                         return currentFace.leftVoisin;
-                        break;
                     case 2:
                         return currentFace.downVoisin;
-                        break;
                     case 3:
                         return currentFace.rightVoisin;
-                        break;
                 }
                 break;
             case "Down":
@@ -247,16 +368,12 @@ public class RotationScript : MonoBehaviour
                 {
                     case 0:
                         return currentFace.downVoisin;
-                        break;
                     case 1:
                         return currentFace.rightVoisin;
-                        break;
                     case 2:
                         return currentFace.upVoisin;
-                        break;
                     case 3:
                         return currentFace.leftVoisin;
-                        break;
                 }
                 break;
             case "Right":
@@ -264,16 +381,12 @@ public class RotationScript : MonoBehaviour
                 {
                     case 0:
                         return currentFace.rightVoisin;
-                        break;
                     case 1:
                         return currentFace.upVoisin;
-                        break;
                     case 2:
                         return currentFace.leftVoisin;
-                        break;
                     case 3:
                         return currentFace.downVoisin;
-                        break;
                 }
                 break;
             case "Left":
@@ -281,16 +394,12 @@ public class RotationScript : MonoBehaviour
                 {
                     case 0:
                         return currentFace.leftVoisin;
-                        break;
                     case 1:
                         return currentFace.downVoisin;
-                        break;
                     case 2:
                         return currentFace.rightVoisin;
-                        break;
                     case 3:
                         return currentFace.upVoisin;
-                        break;
                 }
                 break;
         }

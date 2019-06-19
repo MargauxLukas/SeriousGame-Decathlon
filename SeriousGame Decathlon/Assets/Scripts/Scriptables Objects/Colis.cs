@@ -24,6 +24,7 @@ public class Colis : ScriptableObject
     public string provenance;
     Direction orientation;
     public bool needQualityControl;
+    public bool cantSeeHu;
 
     public void Initialize()
     {
@@ -206,6 +207,36 @@ public class Colis : ScriptableObject
 
                 break;
         }*/
+    }
+
+    public void UpdateRotation(List<SquareFace> listFace)
+    {
+        foreach(SquareFace face in listFace)
+        {
+            if(face.isCurrentlyPick)
+            {
+                if (face.face != "Forward")
+                {
+                    isBadOriented = true;
+                }
+                else if (isBadOriented)
+                {
+                    isBadOriented = false;
+                }
+            }
+
+            if(face.face == "Forward" && face.fullRotation != 0 && face.fullRotation != 360)
+            {
+                cantSeeHu = false;
+            }
+            else if(!cantSeeHu)
+            {
+                cantSeeHu = true;
+            }
+        }
+
+
+
     }
 
     public List<Article> Vider()

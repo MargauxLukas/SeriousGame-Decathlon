@@ -10,6 +10,7 @@ public class Carton : ScriptableObject
     public int hauteur;
     public string codeRef;
     public string cartonName;
+    public List<Sprite> spriteCartonsListe;
 
     [ExecuteAlways]
     public void Initialize()

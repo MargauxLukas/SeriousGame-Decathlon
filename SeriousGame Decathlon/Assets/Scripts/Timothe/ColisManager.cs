@@ -26,6 +26,7 @@ public class ColisManager : MonoBehaviour
     public List<BoutonDirection> listeBoutonsMenuTourner;
     public RecountTab recountTab;
     public PistolScan scanPistol;
+    public RotationScript scriptRotation;
 
     public AnomalieDetection anomDetect;
 
@@ -70,9 +71,11 @@ public class ColisManager : MonoBehaviour
 
             scanPistol.scriptColis = scriptColis;
             recountTab.colis = colisTemporaire;
+            scriptRotation.cartonObj = colisTemporaire;
+            scriptRotation.ColisEnter();
 
             listeColisTraiter.RemoveAt(0);
-            if (listeColisTraiter[0] == null && listeColisTraiter[1] != null)
+            if (listeColisTraiter.Count > 0 && listeColisTraiter[0] == null && listeColisTraiter[1] != null)
             {
                 for (int i = 0; i < listeColisTraiter.Count - 1; i++)
                 {
