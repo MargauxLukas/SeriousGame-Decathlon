@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScreenDisplayColor : MonoBehaviour
 {
-    public ColisScript scriptColis;
+    public RecountTab recountTab;
     private SpriteRenderer screenColor;
 
     void Start()
@@ -14,11 +14,11 @@ public class ScreenDisplayColor : MonoBehaviour
 
     void Update()
     {
-        if (scriptColis.hasBeenScannedByPistol && scriptColis.colisScriptable.nbAnomalie > 0)
+        if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
         {
             screenColor.color = new Color32(192, 30, 41, 255);
         }
-        else if (scriptColis.hasBeenScannedByPistol && scriptColis.colisScriptable.nbAnomalie == 0)
+        else if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0)
         {
             screenColor.color = new Color32(30, 192, 112, 255);
         }

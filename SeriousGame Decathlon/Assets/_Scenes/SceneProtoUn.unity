@@ -1235,12 +1235,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e25f2a9149f6c4f8a7959376ccf345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  homeScreen: {fileID: 724542842}
+  listAnomalies: {fileID: 837369315}
+  ongletButton: {fileID: 1571468983}
   fillingRate: {fileID: 651567393}
   recount: {fileID: 496647095}
   repack: {fileID: 841667410}
-  ongletButton: {fileID: 1571468983}
-  homeScreen: {fileID: 724542842}
-  listAnomalies: {fileID: 837369315}
   hasBeenScannedByPistol: 0
 --- !u!4 &201539001
 Transform:
@@ -2591,6 +2591,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404504004}
   m_CullTransparentMesh: 0
+--- !u!1 &417322048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 599317267256756703, guid: a33201d57f6f30c47bacee4d9c7b58d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1437175729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &417322052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417322048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5f2b58b2255184f8f9202adb2a7dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recountTab: {fileID: 496647097}
 --- !u!1 &423943385
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,7 +3506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb028f136c5e704e99c08518c8a655d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rfidNumText: {fileID: 971994929}
   colis: {fileID: 0}
   rfidScan: {fileID: 2137400886}
   infoRFID: {fileID: 1097150665}
@@ -7245,7 +7263,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1437175729}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 417322048}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d5d4a8d0cb173a42b69c097d288d12c, type: 3}
@@ -10493,10 +10511,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Colis Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680971, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: listeColisTraiter.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
@@ -10568,13 +10591,13 @@ PrefabInstance:
         type: 3}
       propertyPath: listeColisTraiter.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 4211da16d16d41843a53a9ba48d8ac53,
+      objectReference: {fileID: 11400000, guid: 8e53644c72eaf214cbc944c7f96a000f,
         type: 2}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: listeColisTraiter.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 4211da16d16d41843a53a9ba48d8ac53,
+      objectReference: {fileID: 11400000, guid: bf78095dd8c1a6841a09f6d6845b0ab3,
         type: 2}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
@@ -10586,7 +10609,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listeColisTraiter.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 4211da16d16d41843a53a9ba48d8ac53,
+      objectReference: {fileID: 11400000, guid: c7631be7bb111ec419de197d1210dfcd,
         type: 2}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
@@ -10598,6 +10621,12 @@ PrefabInstance:
       propertyPath: spriteArticleTableDeux
       value: 
       objectReference: {fileID: 513951593}
+    - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: listeColisTraiter.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b59314da04fc8b4b93bfc3347e90cf6,
+        type: 2}
     - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: m_LocalPosition.x

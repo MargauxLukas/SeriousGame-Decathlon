@@ -64,7 +64,7 @@ public class AnomalieDetection : MonoBehaviour
             colis.listAnomalies.Add("Repacking from FP");
         }
 
-        if(RFIDnb <= 0)
+        if(RFIDnb == 0)
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("RFID tags to be applied");
