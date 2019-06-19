@@ -10,6 +10,7 @@ public class OngletManager : MonoBehaviour
     public GameObject   fillingRate;
     public GameObject       recount;
     public GameObject        repack;
+    public GameObject      createHU;
 
     public bool hasBeenScannedByPistol = false;
 
@@ -21,6 +22,7 @@ public class OngletManager : MonoBehaviour
         recount      .SetActive(false);
         repack       .SetActive(false);
         listAnomalies.SetActive(false);
+        createHU     .SetActive(false);
     }
 
     public void Update()
@@ -63,13 +65,45 @@ public class OngletManager : MonoBehaviour
 
     public void ReturnToMeca()
     {
-        homeScreen.SetActive(true);
-        ongletButton.SetActive(false);
-        fillingRate.SetActive(false);
-        recount.SetActive(false);
-        repack.SetActive(false);
+        homeScreen   .SetActive(true);
+        ongletButton .SetActive(false);
+        fillingRate  .SetActive(false);
+        recount      .SetActive(false);
+        repack       .SetActive(false);
         listAnomalies.SetActive(false);
         listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
     }
 
+    public void CreateHU()
+    {
+        homeScreen   .SetActive(false);
+        ongletButton .SetActive(false);
+        fillingRate  .SetActive(false);
+        recount      .SetActive(false);
+        repack       .SetActive(false);
+        listAnomalies.SetActive(false);
+        createHU     .SetActive(true );
+    }
+
+    public void CreateHUOK()
+    {
+        homeScreen   .SetActive(false);
+        ongletButton .SetActive(true);
+        fillingRate  .SetActive(true);
+        recount      .SetActive(false);
+        repack       .SetActive(false);
+        listAnomalies.SetActive(false);
+        createHU     .SetActive(false);
+    }
+
+    public void CreateHUCancel()
+    {
+        homeScreen   .SetActive(true);
+        ongletButton .SetActive(false);
+        fillingRate  .SetActive(false);
+        recount      .SetActive(false);
+        repack       .SetActive(false);
+        listAnomalies.SetActive(false);
+        createHU     .SetActive(false);
+    }
 }
