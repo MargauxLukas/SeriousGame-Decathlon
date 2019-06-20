@@ -8,10 +8,10 @@ public class CreateHUScript : MonoBehaviour
 {
     private string packagingMat   = "";
     private string workStation    = "";
-    private string reference      = "";
     private string madeIn         = "";
     private string dateExpiration = "";
     private int quantity          =  0;
+    private int reference         =  0;
 
     public TMPro.TMP_InputField inputPackaging;
     public TMPro.TMP_InputField inputWorkStation;
@@ -21,7 +21,6 @@ public class CreateHUScript : MonoBehaviour
     public TMPro.TMP_InputField inputQuantity;
 
     public OngletManager om;
-    public IWayInfoManager infoHU;
 
     private void Start()
     {
@@ -45,7 +44,7 @@ public class CreateHUScript : MonoBehaviour
 
     public void SetReference(TMPro.TMP_InputField input)
     {
-        reference = input.text;
+        reference = int.Parse(input.text);
     }
 
     public void SetMadeIn(TMPro.TMP_InputField input)
@@ -65,11 +64,9 @@ public class CreateHUScript : MonoBehaviour
 
     public void ClickOK()
     {
-        if(reference != null && quantity == 0)
+        if(reference != null && quantity != 0)
         {
-            infoHU.refStringIWay = reference;
-            infoHU.pcbIntIWay = quantity;
-            om.CreateHUOK();
+            om.CreateHUOK(quantity, reference);
         }
         else
         {

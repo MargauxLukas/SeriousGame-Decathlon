@@ -37,6 +37,7 @@ public class RecountTab : MonoBehaviour
         {
             rfidScan.isActive = false;
 
+            //A mettre dans FillingRate
             if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
             else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
 
@@ -91,5 +92,21 @@ public class RecountTab : MonoBehaviour
     {
         Destroy(ticketRFIDgo);
         ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
+    }
+
+    public void PrintHU(int pcb, int refArcticle)
+    {
+        RefArticle refArt = RefArticle.CreateInstance<RefArticle>();
+        refArt.numeroRef = refArcticle;
+        WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
+        newTicket.PCB             = pcb;
+        newTicket.refArticle      = refArt;       
+        newTicket.poids           = 0;
+        newTicket.numeroCodeBarre = 0;
+
+        ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
+
+        Destroy(ticketgo);
+        ticketgo = Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 }

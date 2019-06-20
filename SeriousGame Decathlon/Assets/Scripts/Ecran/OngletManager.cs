@@ -86,15 +86,18 @@ public class OngletManager : MonoBehaviour
         createHU     .SetActive(true );
     }
 
-    public void CreateHUOK()
+    public void CreateHUOK(int pcb, int reference)
     {
-        homeScreen   .SetActive(false);
-        ongletButton .SetActive(true);
-        fillingRate  .SetActive(true);
+        recount.GetComponent<RecountTab>().PrintHU(pcb, reference);
+        homeScreen   .SetActive(true);
+        ongletButton .SetActive(false);
+        fillingRate  .SetActive(false);
         recount      .SetActive(false);
         repack       .SetActive(false);
         listAnomalies.SetActive(false);
         createHU     .SetActive(false);
+
+
     }
 
     public void CreateHUCancel()
