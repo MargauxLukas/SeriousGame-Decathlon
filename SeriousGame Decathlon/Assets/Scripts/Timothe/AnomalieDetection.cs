@@ -64,7 +64,7 @@ public class AnomalieDetection : MonoBehaviour
             colis.listAnomalies.Add("Repacking from FP");
         }
 
-        if(RFIDnb == 0)
+        if(RFIDnb <= 0)
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("RFID tags to be applied");
@@ -72,8 +72,16 @@ public class AnomalieDetection : MonoBehaviour
 
         if (colis.wayTicket == null || RFIDnb != colis.wayTicket.PCB)
         {
-            colis.nbAnomalie++;
-            colis.listAnomalies.Add("RFID tag over Tolerance");
+            if(RFIDnb>colis.wayTicket.PCB)
+            {
+                colis.nbAnomalie++;
+                colis.listAnomalies.Add("RFID tag over Tolerance");
+            }
+            else if(RFIDnb < colis.wayTicket.PCB)
+            {
+                colis.nbAnomalie++;
+                colis.listAnomalies.Add("RFID tag under Tolerance");
+            }
         }
         //Debug.Log("Test Anomalie 1");
 
