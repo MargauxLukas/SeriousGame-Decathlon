@@ -230,12 +230,14 @@ MonoBehaviour:
   colisScriptable: {fileID: 11400000, guid: 879ad7c65ca876642805f3c6d089598f, type: 2}
   estSecoue: 0
   changeDirection: 0
-  articleOnTable: []
+  articleOnTableUn: []
+  articleOnTableDeux: []
   tournerMenu: {fileID: 0}
-  spriteArticleTable: {fileID: 0}
+  spriteArticleTableUn: {fileID: 0}
+  spriteArticleTableDeux: {fileID: 0}
   spriteCartons: []
   circleImage: {fileID: 0}
-  itemNumber: 5
+  itemNumber: 4
   menuIsOpen: 0
   timeBeforeMenuOpen: 1
   IWayEtiquette: {fileID: 246706536070355173}
