@@ -133,10 +133,20 @@ public class PileArticle : MonoBehaviour
         listArticles = newList;
     }
 
-    public void RemplirColis(Colis colisRemplir, ColisScript scriptColis)
+    //A mettre sur le bouton de validation du nombre
+    public void RemplirColis(Colis colisRemplir, ColisScript scriptColis, int nb)
     {
-        colisRemplir.Remplir(listArticles.Count, listArticles);
-        listArticles = new List<Article>();
+        List<Article> newArticleList = new List<Article>();
+        for(int i = nb-1; i >= 0; i--)
+        {
+            if (i < listArticles.Count)
+            {
+                newArticleList.Add(listArticles[i]);
+                listArticles.RemoveAt(i);
+            }
+        }
+        colisRemplir.Remplir(listArticles.Count, newArticleList);
+        //listArticles = new List<Article>();
         if(listArticles.Count <= 0)
         {
             gameObject.SetActive(false);
@@ -179,6 +189,17 @@ public class PileArticle : MonoBehaviour
         return itemNb;
     }
 
+    public void ChoiceNumberColis(Colis colisRemplir, ColisScript scriptColis)
+    {
+        //Mettre le canvas
+    }
+
+    public void ShowInfo()
+    {
+        //Affichage canvas de l'article
+        //Mettre un bool actif qui se désactive et ferme la fenêtre quand on touche quelque part
+    }
+
     void PickInventory(int nb)
     {
         switch (nb)
@@ -186,19 +207,19 @@ public class PileArticle : MonoBehaviour
             case 1:
                 if(listColisPresent[0] != null)
                 {
-                    RemplirColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
+                    ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
                 }
                 break;
             case 2:
                 if (listColisPresent[1] != null)
                 {
-                    RemplirColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
+                    ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
             case 3:
                 if (listColisPresent[2] != null)
                 {
-                    RemplirColis(listColisPresent[2].colisScriptable, listColisPresent[2]);
+                    ShowInfo();
                 }
                 break;
         }
