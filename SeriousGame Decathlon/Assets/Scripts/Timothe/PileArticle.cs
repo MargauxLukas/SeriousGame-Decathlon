@@ -9,9 +9,6 @@ public class PileArticle : MonoBehaviour
     public List<ColisScript> listColisPresent;
     private GameObject[] listeColisDispo;
 
-    public Text textNbArticle;
-    public Text textNbRFID;
-
     private bool doesTouch;
 
     public Image circleImage;
@@ -23,6 +20,13 @@ public class PileArticle : MonoBehaviour
     private bool menuCanOpen = true;
     public float timeBeforeOpen;
     private float timeTouched;
+
+    public GameObject canvasNombre;
+    public GameObject canvasInfo;
+    public Text textNbArticle;
+    public Text textNbRFID;
+    public Text textRefRFID;
+
 
     private float timeUpdate;
 
@@ -43,10 +47,17 @@ public class PileArticle : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             touchObject();
 
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.z = 0;
+
+            if(menuIsOpen)
+            {
+                menuIsOpen = false;
+                canvasInfo.SetActive(false);
+            }
+
             if (doesTouch)
             {
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = 0;
 
                 if (touch.phase == TouchPhase.Began)
                 {
@@ -191,11 +202,24 @@ public class PileArticle : MonoBehaviour
 
     public void ChoiceNumberColis(Colis colisRemplir, ColisScript scriptColis)
     {
-        //Mettre le canvas
+        canvasNombre.SetActive(true);
     }
 
     public void ShowInfo()
     {
+        canvasInfo.SetActive(true);
+        textNbArticle.text = listArticles.Count.ToString();
+        int nbRFID = 0;
+        foreach (Article art in listArticles)
+        {
+            if(art.rfid.estFonctionnel)
+            {
+                nbRFID++;
+            }
+        }
+        textNbRFID.text = nbRFID.ToString();
+        textRefRFID.text = listArticles[0].rfid.refArticle.numeroRef.ToString();
+        menuIsOpen = true;
         //Affichage canvas de l'article
         //Mettre un bool actif qui se désactive et ferme la fenêtre quand on touche quelque part
     }
