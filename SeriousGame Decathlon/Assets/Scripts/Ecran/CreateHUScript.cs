@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class CreateHUScript : MonoBehaviour
 {
@@ -13,53 +14,70 @@ public class CreateHUScript : MonoBehaviour
     private int quantity          =  0;
     private int reference         =  0;
 
-    public TMPro.TMP_InputField inputPackaging;
-    public TMPro.TMP_InputField inputWorkStation;
-    public TMPro.TMP_InputField inputReference;
-    public TMPro.TMP_InputField inputMadeIn;
-    public TMPro.TMP_InputField inputExpirationDate;
-    public TMPro.TMP_InputField inputQuantity;
+    public TMP_Dropdown dropdownPackaging;
+    public TMP_Dropdown dropdownWorkStation;
+    public TMP_Dropdown dropdownReference;
+    public TMP_Dropdown dropdownMadeIn;
+    public TMP_InputField inputExpirationDate;
+
+    public TMPro.TMP_Text textQuantity;
 
     public OngletManager om;
 
     private void Start()
     {
-        inputPackaging.onValueChanged     .AddListener(delegate { SetPackaging     (inputPackaging     ); });
-        inputWorkStation.onValueChanged   .AddListener(delegate { SetWorkStation   (inputWorkStation   ); });
-        inputReference.onValueChanged     .AddListener(delegate { SetReference     (inputReference     ); });
-        inputMadeIn.onValueChanged        .AddListener(delegate { SetMadeIn        (inputMadeIn        ); });
-        inputExpirationDate.onValueChanged.AddListener(delegate { SetExpirationDate(inputExpirationDate); });
-        inputQuantity.onValueChanged      .AddListener(delegate { SetQuantity      (inputQuantity      ); });
+        dropdownPackaging.onValueChanged     .AddListener(delegate { SetPackaging     (dropdownPackaging     ); });
+        dropdownWorkStation.onValueChanged   .AddListener(delegate { SetWorkStation   (dropdownWorkStation); });
+        dropdownReference.onValueChanged     .AddListener(delegate { SetReference     (dropdownReference); });
+        dropdownMadeIn.onValueChanged        .AddListener(delegate { SetMadeIn        (dropdownMadeIn); });
+        inputExpirationDate.onValueChanged   .AddListener(delegate { SetExpirationDate(inputExpirationDate); });
     }
 
-    public void SetPackaging(TMPro.TMP_InputField input)
+    public void SetPackaging(TMP_Dropdown input)
     {
-        packagingMat = input.text;
+        packagingMat = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
     }
 
-    public void SetWorkStation(TMPro.TMP_InputField input)
+    public void SetWorkStation(TMP_Dropdown input)
     {
-        workStation = input.text;
+        workStation = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
     }
 
-    public void SetReference(TMPro.TMP_InputField input)
+    public void SetReference(TMP_Dropdown input)
     {
-        reference = int.Parse(input.text);
+        reference = int.Parse(input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text);
+
+        //reference =int.Parse(dropdownReference.itemText.ToString());
     }
 
-    public void SetMadeIn(TMPro.TMP_InputField input)
+    public void SetMadeIn(TMP_Dropdown input)
     {
-        madeIn = input.text;
+        madeIn = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
     }
 
-    public void SetExpirationDate(TMPro.TMP_InputField input)
+    public void SetExpirationDate(TMP_InputField input)
     {
-        dateExpiration = input.text;
+        //dateExpiration = inputExpirationDate.ToString();
     }
 
-    public void SetQuantity(TMPro.TMP_InputField input)
+    public void SetQuantity()
     {
-        quantity = int.Parse(input.text);
+        textQuantity.text = quantity.ToString();
+    }
+    
+    public void Plus()
+    {
+        quantity++;
+        SetQuantity();
+    }
+
+    public void Moins()
+    {
+        if (quantity >= 0)
+        {
+            quantity--;
+            SetQuantity();
+        }
     }
 
     public void ClickOK()
