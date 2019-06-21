@@ -26,6 +26,7 @@ public class Colis : ScriptableObject
     public bool needQualityControl;
     public bool cantSeeHu;
 
+
     public void Initialize()
     {
         PCB = listArticles.Count;
