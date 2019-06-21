@@ -12,11 +12,13 @@ public class RepackTab : MonoBehaviour
     public TMPro.TextMeshProUGUI textPCB1;
     public TMPro.TextMeshProUGUI textPCB2;
 
-    public FicheCarton ficheCarton;
-
     [Header("Colis assigné tout seul")]
     public GameObject colis;
     public GameObject colisVide;
+
+    [Header("A assigner")]
+    public FicheCarton ficheCarton;
+    public RecountTab recountTab;
 
     private Article art;
     private bool comptage= false;
@@ -26,13 +28,13 @@ public class RepackTab : MonoBehaviour
         {
             if (colis.GetComponent<ColisScript>().hasBeenScannedByPistol && !comptage)
             {
-                textPCB1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                textPCB1            .text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
                 textCurrentQuantity1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
                 comptage = true;
             }
             if (colisVide != null)
             {
-                textPCB2.text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                textPCB2            .text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
                 textCurrentQuantity2.text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
                 comptage = true;
             }
@@ -48,9 +50,9 @@ public class RepackTab : MonoBehaviour
                 art = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
 
                 colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
-                colis.GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
+                colis    .GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
 
-                colis.GetComponent<ColisScript>().colisScriptable.PCB++;
+                colis    .GetComponent<ColisScript>().colisScriptable.PCB++;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB--;
 
                 comptage = false;
@@ -71,11 +73,10 @@ public class RepackTab : MonoBehaviour
             {
                 art = colis.GetComponent<ColisScript>().colisScriptable.listArticles[colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
 
-                colis.GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
-                Debug.Log(art);
+                colis    .GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
                 colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
 
-                colis.GetComponent<ColisScript>().colisScriptable.PCB--;
+                colis    .GetComponent<ColisScript>().colisScriptable.PCB--;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB++;
 
                 comptage = false;
@@ -92,5 +93,21 @@ public class RepackTab : MonoBehaviour
     {
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
         ficheCarton.InstantiateCarton(codeCarton);
+    }
+
+    public void print1()
+    {
+        int pcb = colis.GetComponent<ColisScript>().colisScriptable.PCB;
+        int refArticle = colis.GetComponent<ColisScript>().colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
+
+        recountTab.PrintHU(pcb, refArticle);
+    }
+
+    public void print2()
+    {
+        int pcb = colisVide.GetComponent<ColisScript>().colisScriptable.PCB;
+        int refArticle = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
+
+        recountTab.PrintHU(pcb, refArticle);
     }
 }

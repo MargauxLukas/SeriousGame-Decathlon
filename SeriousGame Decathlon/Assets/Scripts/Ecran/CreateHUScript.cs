@@ -64,7 +64,7 @@ public class CreateHUScript : MonoBehaviour
 
     public void ClickOK()
     {
-        if(reference != null && quantity != 0)
+        if(reference != 0 && quantity != 0)
         {
             om.CreateHUOK(quantity, reference);
         }
