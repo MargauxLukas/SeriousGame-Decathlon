@@ -122,11 +122,9 @@ public class RotationScript : MonoBehaviour
         else
         {
             resetAll();
-            squareList[0].isCurrentlyPick = true;
+            squareList[4].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
-            yAxisMajeur = -1;
-            ChangeRotation();
-            actualFace = GetCurrentFace();
+            Debug.Log(actualFace.face);
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
             cartonObj.GetComponent<ColisScript>().Tourner();

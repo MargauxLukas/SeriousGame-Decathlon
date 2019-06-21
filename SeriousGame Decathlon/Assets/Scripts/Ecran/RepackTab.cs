@@ -105,15 +105,17 @@ public class RepackTab : MonoBehaviour
     {
         int pcb = colis.GetComponent<ColisScript>().colisScriptable.PCB;
         int refArticle = colis.GetComponent<ColisScript>().colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
+        float poids = colis.GetComponent<ColisScript>().colisScriptable.poids;
 
-        recountTab.PrintHU(pcb, refArticle);
+        recountTab.PrintHU(pcb, refArticle, poids);
     }
 
     public void print2()
     {
         int pcb = colisVide.GetComponent<ColisScript>().colisScriptable.PCB;
         int refArticle = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
+        float poids = colisVide.GetComponent<ColisScript>().colisScriptable.poids;
 
-        recountTab.PrintHU(pcb, refArticle);
+        recountTab.PrintHU(pcb, refArticle, poids);
     }
 }
