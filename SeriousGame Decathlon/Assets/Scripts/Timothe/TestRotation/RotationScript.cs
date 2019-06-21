@@ -104,8 +104,8 @@ public class RotationScript : MonoBehaviour
         }
         if(spriteCarton != null)
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
-        Debug.Log(actualFace.face);
-        Debug.Log(actualFace.fullRotation);
+        //Debug.Log(actualFace.face);
+        //Debug.Log(actualFace.fullRotation);
     }
 
     public void ColisEnter()

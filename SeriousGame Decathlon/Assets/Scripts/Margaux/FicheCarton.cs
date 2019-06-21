@@ -20,6 +20,8 @@ public class FicheCarton : MonoBehaviour
     private GameObject spriteArticleTableDeux;
     private Image circleImage;
 
+    public RepackTab repackTab;
+
    // public Text textArticleTableNombre;
     //public Text textArtcileTableRFID;
 
@@ -70,6 +72,7 @@ public class FicheCarton : MonoBehaviour
             }
 
             colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
+            repackTab.colisVide = colisManage.scriptRotation.cartonObj;
             colisManage.scriptRotation.ColisEnter();
         }
 
