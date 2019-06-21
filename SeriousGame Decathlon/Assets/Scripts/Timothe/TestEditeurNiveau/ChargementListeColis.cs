@@ -63,5 +63,6 @@ public class ChargementListeColis : MonoBehaviour
             colisProcessMulti = newList;
         }
         //Trouver un système pour mélanger les colis aléatoirement.
+        //Ajouter le choix des process pour le level load.
     }
 }
