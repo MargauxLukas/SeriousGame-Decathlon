@@ -203,7 +203,7 @@ public class ColisScript : MonoBehaviour
         else
         {
             transform.position += new Vector3(-1, 0, 0) * 3 * Time.deltaTime;
-            if(Vector3.Distance(transform.position, entrancePosition) > 5f)
+            if(Vector3.Distance(transform.position, entrancePosition) > 7f)
             {
                 doesEntrance = false;
             }
@@ -321,67 +321,79 @@ public class ColisScript : MonoBehaviour
 
         if (colisScriptable.listArticles.Count > 0)
         {
-            List<Article> listTemporaire = colisScriptable.Vider();
-            int refBase = 0;
-            if (listTemporaire[0].rfid != null)
+            if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count > 0)
             {
-                refBase = listTemporaire[0].rfid.refArticle.numeroRef;
-            }
-            List<Article> listTemporairePremiere = new List<Article>();
-            List<Article> listTemporaireSeconde = new List<Article>();
-            bool needSecond = false;
-            foreach (Article art in listTemporaire)
-            {
-                if (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
+                List<Article> listTemporaire = colisScriptable.Vider();
+                int refBase = 0;
+                if (listTemporaire[0].rfid != null)
                 {
-                    needSecond = true;
-                    listTemporaireSeconde.Add(art);
+                    refBase = listTemporaire[0].rfid.refArticle.numeroRef;
                 }
-                else
+                List<Article> listTemporairePremiere = new List<Article>();
+                List<Article> listTemporaireSeconde = new List<Article>();
+                bool needSecond = false;
+                bool needOne = false;
+                foreach (Article art in listTemporaire)
                 {
-                    listTemporairePremiere.Add(art);
-                }
-            }
-
-            //Table 1
-
-            int nbRFIDFonctionnelTableUn = 0;
-            if (listTemporairePremiere.Count > 0 && articleOnTableUn.Count <= 0)
-            {
-                articleOnTableUn = listTemporairePremiere;
-                foreach (Article art in articleOnTableUn)
-                {
-                    if (art.rfid != null && art.rfid.estFonctionnel)
+                    if(spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 && spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                     {
-                        nbRFIDFonctionnelTableUn++;
+                        needSecond = true;
+                        listTemporairePremiere.Add(art);
+                    }
+                    else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
+                    {
+                        needSecond = true;
+                        listTemporaireSeconde.Add(art);
+                    }
+                    else if(spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef == refBase))
+                    {
+                        needOne = true;
+                        listTemporairePremiere.Add(art);
                     }
                 }
-            }
-            if (articleOnTableUn.Count > 0)
-            {
-                spriteArticleTableUn.SetActive(true);
-                spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
-            }
 
-            //Table 2
-            if (needSecond)
-            {
-                int nbRFIDFonctionnelTableDeux = 0;
-                if (listTemporaireSeconde.Count > 0 && articleOnTableDeux.Count <= 0)
+                //Table 1
+                if (needOne)
                 {
-                    articleOnTableDeux = listTemporaireSeconde;
-                    foreach (Article art in articleOnTableDeux)
+                    int nbRFIDFonctionnelTableUn = 0;
+                    if (listTemporairePremiere.Count > 0 && articleOnTableUn.Count <= 0)
                     {
-                        if (art.rfid != null && art.rfid.estFonctionnel)
+                        articleOnTableUn = listTemporairePremiere;
+                        foreach (Article art in articleOnTableUn)
                         {
-                            nbRFIDFonctionnelTableDeux++;
+                            if (art.rfid != null && art.rfid.estFonctionnel)
+                            {
+                                nbRFIDFonctionnelTableUn++;
+                            }
                         }
                     }
+                    if (articleOnTableUn.Count > 0)
+                    {
+                        spriteArticleTableUn.SetActive(true);
+                        spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
+                    }
                 }
-                if (articleOnTableDeux.Count > 0)
+
+                //Table 2
+                if (needSecond)
                 {
-                    spriteArticleTableDeux.SetActive(true);
-                    spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+                    int nbRFIDFonctionnelTableDeux = 0;
+                    if (listTemporaireSeconde.Count > 0 && articleOnTableDeux.Count <= 0)
+                    {
+                        articleOnTableDeux = listTemporaireSeconde;
+                        foreach (Article art in articleOnTableDeux)
+                        {
+                            if (art.rfid != null && art.rfid.estFonctionnel)
+                            {
+                                nbRFIDFonctionnelTableDeux++;
+                            }
+                        }
+                    }
+                    if (articleOnTableDeux.Count > 0)
+                    {
+                        spriteArticleTableDeux.SetActive(true);
+                        spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+                    }
                 }
             }
         }

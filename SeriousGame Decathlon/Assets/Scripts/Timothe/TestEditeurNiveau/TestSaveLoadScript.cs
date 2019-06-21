@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestSaveLoadScript : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class TestSaveLoadScript : MonoBehaviour
     public LevelScriptable levelToLoad;
     public List<Colis> colisToSaveLevel;
 
+    public Text saveColisText;
+    public Text saveLevelText;
+    public Text loadColisText;
+    public Text loadLevelText;
+
     public List<Player> playerList;
 
     void Update()
@@ -26,6 +32,7 @@ public class TestSaveLoadScript : MonoBehaviour
         {
             colisToLoadSolo = Colis.CreateInstance<Colis>();
             colisToLoadSolo = SaveLoadSystem.instance.LoadColis(nomColisLoad);
+            loadColisText.text = (colisToLoadSolo != null).ToString();
         }
         else if(Input.GetKeyDown(KeyCode.R))
         {
@@ -35,6 +42,7 @@ public class TestSaveLoadScript : MonoBehaviour
         {
             levelToLoad = LevelScriptable.CreateInstance<LevelScriptable>();
             levelToLoad = SaveLoadSystem.instance.LoadLevel(1);
+            loadLevelText.text = (levelToLoad != null).ToString();
         }
         else if(Input.GetKeyDown(KeyCode.Y))
         {
@@ -43,5 +51,29 @@ public class TestSaveLoadScript : MonoBehaviour
                 SaveLoadSystem.instance.SaveScore(perso);
             }       
         }
+    }
+
+    public void SaveColis()
+    {
+        SaveLoadSystem.instance.SaveColis(colisToSaveSolo);
+    }
+
+    public void LoadColis()
+    {
+        colisToLoadSolo = Colis.CreateInstance<Colis>();
+        colisToLoadSolo = SaveLoadSystem.instance.LoadColis(nomColisLoad);
+        loadColisText.text = (colisToLoadSolo != null).ToString();
+    }
+
+    public void SaveLevel()
+    {
+        SaveLoadSystem.instance.SaveLevel(levelToSave, colisToSaveLevel);
+    }
+
+    public void LoadLevel()
+    {
+        levelToLoad = LevelScriptable.CreateInstance<LevelScriptable>();
+        levelToLoad = SaveLoadSystem.instance.LoadLevel(1);
+        loadLevelText.text = (levelToLoad != null).ToString();
     }
 }

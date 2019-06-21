@@ -65,6 +65,12 @@ public class FicheCarton : MonoBehaviour
                 bouton.scriptColis = scriptColis;
             }
 
+            scriptColis.colisScriptable.isBadOriented = false;
+            if(scriptColis.IWayEtiquette != null && !scriptColis.colisScriptable.isBadOriented)
+            {
+                scriptColis.IWayEtiquette.SetActive(true);
+            }
+
             colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
             repackTab.colisVide = colisManage.scriptRotation.cartonObj;
             colisManage.scriptRotation.ColisEnter();
