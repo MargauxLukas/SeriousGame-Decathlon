@@ -40,23 +40,29 @@ public class RFIDScan : MonoBehaviour
                 {                 
                     if (i == 0)                                                                                                     //Le premier me sert de référence pour savoir si les autres articles sont les mêmes.
                     {
-                        infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
-                        infoRFID.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
-                        numRFID++;
+                        if (scriptColis.colisScriptable.listArticles[i].rfid != null)
+                        {
+                            infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
+                            infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                            numRFID++;
+                        }
                     }
                     else
                     {
-                        if (scriptColis.colisScriptable.listArticles[i].rfid == infoRFID.rfidComplet)                               //Si pareil que référence, je range là.
+                        if (scriptColis.colisScriptable.listArticles[i].rfid != null)
                         {
-                            infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid                     ;
-                            infoRFID.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
-                            numRFID++;
-                        }
-                        else                                                                                                        //Sinon, je le range ici.
-                        {
-                            infoRFID2.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid                     ;
-                            infoRFID2.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
-                            numRFID2++;
+                            if (scriptColis.colisScriptable.listArticles[i].rfid == infoRFID.rfidComplet)                               //Si pareil que référence, je range là.
+                            {
+                                infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
+                                infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                                numRFID++;
+                            }
+                            else                                                                                                        //Sinon, je le range ici.
+                            {
+                                infoRFID2.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
+                                infoRFID2.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                                numRFID2++;
+                            }
                         }
                     }
                 }

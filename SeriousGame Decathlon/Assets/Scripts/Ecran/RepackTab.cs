@@ -55,6 +55,9 @@ public class RepackTab : MonoBehaviour
                 colis    .GetComponent<ColisScript>().colisScriptable.PCB++;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB--;
 
+                colis    .GetComponent<ColisScript>().colisScriptable.UpdateWeight();
+                colisVide.GetComponent<ColisScript>().colisScriptable.UpdateWeight();
+
                 comptage = false;
             }
         }
@@ -78,6 +81,9 @@ public class RepackTab : MonoBehaviour
 
                 colis    .GetComponent<ColisScript>().colisScriptable.PCB--;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB++;
+
+                colis    .GetComponent<ColisScript>().colisScriptable.UpdateWeight();
+                colisVide.GetComponent<ColisScript>().colisScriptable.UpdateWeight();
 
                 comptage = false;
             }

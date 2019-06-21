@@ -47,12 +47,12 @@ public class RecountTab : MonoBehaviour
             newTicket.poids           = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.poids          ;
             newTicket.numeroCodeBarre = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.numeroCodeBarre;
 
-            RFID newRFID           = RFID.CreateInstance <RFID>();
+            /*RFID newRFID           = RFID.CreateInstance <RFID>();
             newRFID.refArticle     = rfidScan.infoRFID.rfidComplet.refArticle;
-            newRFID.estFonctionnel = true;
+            newRFID.estFonctionnel = true;*/
 
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;                                    //IWayTicket
-            ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;                                      //RFIDTicket
+            //ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;                                      //RFIDTicket
         }
         else
         {
@@ -62,14 +62,14 @@ public class RecountTab : MonoBehaviour
             newTicket.poids           = 0;
             newTicket.numeroCodeBarre = 0;
 
-            RFID newRFID = RFID.CreateInstance<RFID>();
+            /*RFID newRFID = RFID.CreateInstance<RFID>();
                  if (rfidScan.infoRFID.rfidComplet != null)                               {newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle                              ;}
             else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null) {newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle;}
             else                                                                          {newRFID.refArticle = RefArticle.CreateInstance<RefArticle>()                               ;}
-            newRFID.estFonctionnel = true;
+            newRFID.estFonctionnel = true;*/
 
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
-            ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;
+            //ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;
 
             //Scoring.instance.MinorPenalty();                                                                   //Test de scoring
             return;
@@ -90,6 +90,12 @@ public class RecountTab : MonoBehaviour
     *************************************/
     public void PrintRFID()
     {
+        RFID newRFID = RFID.CreateInstance<RFID>();
+        if (rfidScan.infoRFID.rfidComplet != null) { newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle; }
+        else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null) { newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle; }
+        else { newRFID.refArticle = RefArticle.CreateInstance<RefArticle>(); }
+        newRFID.estFonctionnel = true;
+        ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
         Destroy(ticketRFIDgo);
         ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
     }

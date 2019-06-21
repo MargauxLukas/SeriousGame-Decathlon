@@ -53,7 +53,6 @@ public class AnomalieDetection : MonoBehaviour
         //Debug.Log("Test");
         if(colis.needQualityControl)
         {
-            Debug.Log("Test");
             colis.nbAnomalie++;
             colis.listAnomalies.Add("Quality control");
         }

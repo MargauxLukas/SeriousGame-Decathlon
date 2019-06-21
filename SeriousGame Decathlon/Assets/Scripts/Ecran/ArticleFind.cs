@@ -12,6 +12,7 @@ public class ArticleFind : MonoBehaviour
     public void afficherSingleArticle(int pcb, int articleRef)
     {
         text1.text = pcb + " REF#" + articleRef;
+        text2.text = "";
     }
 
     public void afficherDoubleArticle(int pcb1, int pcb2, int articleRef1, int articleRef2)

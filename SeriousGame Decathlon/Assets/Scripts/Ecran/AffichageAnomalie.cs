@@ -12,6 +12,11 @@ public class AffichageAnomalie : MonoBehaviour
 
     public void AfficherAnomalie()
     {
+        foreach(TextMeshProUGUI textMesh in text)
+        {
+            textMesh.text = "";
+        }
+
         int n = 0;
         foreach(string anomalie in listAnomalies)
         {

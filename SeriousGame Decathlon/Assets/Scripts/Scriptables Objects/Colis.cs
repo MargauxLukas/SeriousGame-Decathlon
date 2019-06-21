@@ -260,4 +260,9 @@ public class Colis : ScriptableObject
             PCB++;
         }
     }
+
+    public void UpdateWeight()
+    {
+        poids = PCB * listArticles[0].poids;
+    }
 }

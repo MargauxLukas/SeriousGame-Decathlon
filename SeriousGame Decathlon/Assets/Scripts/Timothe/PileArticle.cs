@@ -156,7 +156,7 @@ public class PileArticle : MonoBehaviour
                 listArticles.RemoveAt(i);
             }
         }
-        colisRemplir.Remplir(listArticles.Count, newArticleList);
+        colisRemplir.Remplir(newArticleList);
         //listArticles = new List<Article>();
         if(listArticles.Count <= 0)
         {

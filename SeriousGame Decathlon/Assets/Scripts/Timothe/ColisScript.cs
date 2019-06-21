@@ -254,10 +254,6 @@ public class ColisScript : MonoBehaviour
                 Jeter();
                 TellSomething(1);
                 break;
-            case 5:
-                Vider();
-                TellSomething(2);
-                break;
             case 2:
                 Vider();
                 TellSomething(2);
@@ -266,7 +262,7 @@ public class ColisScript : MonoBehaviour
                 OuvrirFermer();
                 TellSomething(3);
                 break;
-            case 4:
+            case 0:
                 OpenTurnMenu();
                 TellSomething(5);
                 break;
@@ -275,7 +271,7 @@ public class ColisScript : MonoBehaviour
 
     void TellSomething(int texte)
     {
-        //Debug.Log(texte);
+        Debug.Log(texte);
     }
 
     void OuvrirFermer()
@@ -321,7 +317,7 @@ public class ColisScript : MonoBehaviour
 
         if (colisScriptable.listArticles.Count > 0)
         {
-            if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count > 0)
+            if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
             {
                 List<Article> listTemporaire = colisScriptable.Vider();
                 int refBase = 0;
