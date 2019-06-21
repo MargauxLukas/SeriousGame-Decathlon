@@ -16,6 +16,8 @@ public class RecountTab : MonoBehaviour
     public GameObject ticket    ;
     public GameObject ticketRFID;
 
+    public List<RefArticle> listRefArticles = new List<RefArticle>();
+
     WayTicket newTicket;
 
     GameObject ticketgo;
@@ -102,14 +104,30 @@ public class RecountTab : MonoBehaviour
 
     public void PrintHU(int pcb, int refArticle, float poids = 0)
     {
-        RefArticle refArt = RefArticle.CreateInstance<RefArticle>();
-        refArt.numeroRef = refArticle;
-        WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
-        newTicket.PCB             = pcb;
-        newTicket.refArticle      = refArt;       
-        newTicket.poids           = poids;
-        newTicket.numeroCodeBarre = 0;
+        bool refAlreadyExist = false;
+        RefArticle refArt = null;
 
+        foreach (RefArticle refArticleTemporaire in listRefArticles)                   //Vérification si la RefArticle Existe Déjà
+        {
+            if(refArticleTemporaire.numeroRef == refArticle)
+            {
+                refArt = refArticleTemporaire;
+                refAlreadyExist = true;
+            }
+        }
+
+        if (!refAlreadyExist)
+        {
+            refArt = RefArticle.CreateInstance<RefArticle>();
+            refArt.numeroRef = refArticle;
+        }
+
+        WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
+        newTicket.PCB = pcb;
+        newTicket.refArticle = refArt;
+        newTicket.poids = refArt.poids*pcb;
+        newTicket.numeroCodeBarre = 0;
+        
         ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
         Destroy(ticketgo);

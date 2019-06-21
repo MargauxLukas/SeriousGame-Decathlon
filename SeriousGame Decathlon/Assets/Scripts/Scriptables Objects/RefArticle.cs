@@ -7,4 +7,5 @@ public class RefArticle : ScriptableObject
 {
     public SpringJoint photo;
     public int numeroRef;
+    public float poids;
 }

@@ -35,30 +35,29 @@ public class CreateHUScript : MonoBehaviour
 
     public void SetPackaging(TMP_Dropdown input)
     {
-        packagingMat = dropdownPackaging.itemText.ToString();
+        packagingMat = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
     }
 
     public void SetWorkStation(TMP_Dropdown input)
     {
-        workStation = dropdownWorkStation.itemText.ToString();
+        workStation = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
     }
 
     public void SetReference(TMP_Dropdown input)
     {
         reference = int.Parse(input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text);
-        Debug.Log(reference);
 
         //reference =int.Parse(dropdownReference.itemText.ToString());
     }
 
     public void SetMadeIn(TMP_Dropdown input)
     {
-        madeIn = dropdownMadeIn.itemText.ToString();
+        madeIn = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
     }
 
     public void SetExpirationDate(TMP_InputField input)
     {
-        dateExpiration = inputExpirationDate.ToString();
+        //dateExpiration = inputExpirationDate.ToString();
     }
 
     public void SetQuantity()
