@@ -44,7 +44,9 @@ public class ColisScript : MonoBehaviour
     public bool hasBeenScannedByPistol;
 
     public bool doesEntrance;
-    private Vector3 entrancePosition;
+    public bool doesRenvoie;
+    public bool canMoveVertical;
+    public Vector3 entrancePosition;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +75,7 @@ public class ColisScript : MonoBehaviour
             canMove = true;
         }*/
 
-        if (!doesEntrance)
+        if (!doesEntrance && !doesRenvoie)
         {
             deltaTimeShake += Time.deltaTime;
             if (Input.touchCount > 0)
@@ -147,7 +149,14 @@ public class ColisScript : MonoBehaviour
                         {
                             Vector3 ancientPosition = transform.position;
 
-                            transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, transform.position.y, 0);
+                            if(!canMoveVertical)
+                            {
+                                transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, transform.position.y, 0);
+                            }
+                            else
+                            {
+                                transform.position = new Vector3(transform.position.x, Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).y, 0);
+                            }
 
                             //Vérification colis secoué
                             if (transform.position.x - ancientPosition.x > 0 && !goRight)
@@ -199,6 +208,10 @@ public class ColisScript : MonoBehaviour
                 }
                 isMoving = false;
             }
+        }
+        else if(doesRenvoie)
+        {
+            transform.position += new Vector3(0, 1, 0) * 2 * Time.deltaTime;
         }
         else
         {

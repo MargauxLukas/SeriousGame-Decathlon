@@ -26,6 +26,7 @@ public class Colis : ScriptableObject
     public bool needQualityControl;
     public bool cantSeeHu;
 
+    public SquareFace face;
 
     public void Initialize()
     {
@@ -67,7 +68,7 @@ public class Colis : ScriptableObject
         estOuvert = !estOuvert;
     }
 
-    public void Tourner(Vector2 direction, List<Sprite> spriteList)
+   /*public void Tourner(Vector2 direction, List<Sprite> spriteList)
     {
         switch(orientation)
         {
@@ -207,8 +208,8 @@ public class Colis : ScriptableObject
             case Direction.Forward:
 
                 break;
-        }*/
-    }
+        }
+    }*/
 
     public void UpdateRotation(List<SquareFace> listFace)
     {
