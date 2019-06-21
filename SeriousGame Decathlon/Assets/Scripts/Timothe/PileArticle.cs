@@ -135,7 +135,8 @@ public class PileArticle : MonoBehaviour
 
     public void RemplirColis(Colis colisRemplir, ColisScript scriptColis)
     {
-        colisRemplir.Remplir(listArticles.Count, listArticles);
+        Debug.Log(listArticles!=null);
+        colisRemplir.Remplir(listArticles);
         listArticles = new List<Article>();
         if(listArticles.Count <= 0)
         {

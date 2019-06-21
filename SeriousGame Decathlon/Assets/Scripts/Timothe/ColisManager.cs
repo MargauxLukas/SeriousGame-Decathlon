@@ -25,6 +25,7 @@ public class ColisManager : MonoBehaviour
     //Auquel le colis doit être affecté
     public List<BoutonDirection> listeBoutonsMenuTourner;
     public RecountTab recountTab;
+    public RepackTab repackTab;
     public PistolScan scanPistol;
     public RotationScript scriptRotation;
 
@@ -69,12 +70,13 @@ public class ColisManager : MonoBehaviour
                 bouton.scriptColis = colisTemporaire.GetComponent<ColisScript>();
             }
 
-            scanPistol.scriptColis = scriptColis;
-            recountTab.colis = colisTemporaire;
+            scanPistol.scriptColis   = scriptColis;
+            recountTab.colis         = colisTemporaire;
+            repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
 
-            Debug.Log(listeColisTraiter[0]);
+            //Debug.Log(listeColisTraiter[0]);
             listeColisTraiter.RemoveAt(0);
             if (listeColisTraiter.Count > 0 && listeColisTraiter[0] == null && listeColisTraiter[1] != null)
             {
