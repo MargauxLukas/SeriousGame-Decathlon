@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class RepackTab : MonoBehaviour
 {
     [Header("Texte en enfant")]
-    public TMPro.TextMeshProUGUI textCurrentQuantity1;
-    public TMPro.TextMeshProUGUI textCurrentQuantity2;
-    public TMPro.TextMeshProUGUI textPCB1;
-    public TMPro.TextMeshProUGUI textPCB2;
+    public TextMeshProUGUI textCurrentQuantity1;
+    public TextMeshProUGUI textCurrentQuantity2;
+    public TextMeshProUGUI textPCB1;
+    public TextMeshProUGUI textPCB2;
 
     [Header("Colis assigné tout seul")]
     public GameObject colis;

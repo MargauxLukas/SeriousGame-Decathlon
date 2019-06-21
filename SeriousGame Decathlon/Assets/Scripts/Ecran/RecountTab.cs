@@ -100,7 +100,7 @@ public class RecountTab : MonoBehaviour
         ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
     }
 
-    public void PrintHU(int pcb, int refArticle, float poids)
+    public void PrintHU(int pcb, int refArticle, float poids = 0)
     {
         RefArticle refArt = RefArticle.CreateInstance<RefArticle>();
         refArt.numeroRef = refArticle;

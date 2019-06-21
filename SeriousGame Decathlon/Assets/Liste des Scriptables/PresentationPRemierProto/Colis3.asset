@@ -20,12 +20,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65cb87d9ca1d6b548b747f9d6ebd76ce, type: 2}
   wayTicket: {fileID: 11400000, guid: 840bbf487f9be4445b3ddd5abcd47684, type: 2}
   nomWayTicket: 
-  poids: 1
+  poids: 2
   fillPercent: 100
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
-  nbAnomalie: 0
-  listAnomalies: []
+  nbAnomalie: 2
+  listAnomalies:
+  - Quality control
+  - RFID tag scanned for unknown product
   provenance: 
   needQualityControl: 1
+  cantSeeHu: 0
