@@ -45,9 +45,9 @@ public class RepackTab : MonoBehaviour
         {
             if (colisVide.GetComponent<ColisScript>().colisScriptable.PCB > 0)
             {
-                art = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
+                art = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
 
-                colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
+                colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
                 colis.GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
 
                 colis.GetComponent<ColisScript>().colisScriptable.PCB++;
