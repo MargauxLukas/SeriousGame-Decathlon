@@ -44,6 +44,7 @@ public class ColisScript : MonoBehaviour
     public bool hasBeenScannedByPistol;
 
     public bool doesEntrance;
+    public bool doesEntranceSecond;
     public bool doesRenvoie;
     public bool canMoveVertical;
     public Vector3 entrancePosition;
@@ -75,7 +76,7 @@ public class ColisScript : MonoBehaviour
             canMove = true;
         }*/
 
-        if (!doesEntrance && !doesRenvoie)
+        if (!doesEntrance && !doesRenvoie && !doesEntranceSecond)
         {
             deltaTimeShake += Time.deltaTime;
             if (Input.touchCount > 0)
@@ -207,6 +208,14 @@ public class ColisScript : MonoBehaviour
                     circleImage.transform.parent.gameObject.SetActive(false);
                 }
                 isMoving = false;
+            }
+        }
+        else if(doesEntranceSecond)
+        {
+            transform.position += new Vector3(1, 0, 0) * 3 * Time.deltaTime;
+            if (Vector3.Distance(transform.position, entrancePosition) > 9f)
+            {
+                doesEntranceSecond = false;
             }
         }
         else if(doesRenvoie)
