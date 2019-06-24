@@ -219,8 +219,6 @@ public class PileArticle : MonoBehaviour
         textNbRFID.text = nbRFID.ToString();
         textRefRFID.text = listArticles[0].rfid.refArticle.numeroRef.ToString();
         menuIsOpen = true;
-        //Affichage canvas de l'article
-        //Mettre un bool actif qui se désactive et ferme la fenêtre quand on touche quelque part
     }
 
     void PickInventory(int nb)
@@ -239,11 +237,8 @@ public class PileArticle : MonoBehaviour
                     ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
-            case 3:
-                if (listColisPresent[2] != null)
-                {
-                    ShowInfo();
-                }
+            case 0:
+                ShowInfo();
                 break;
         }
     }
