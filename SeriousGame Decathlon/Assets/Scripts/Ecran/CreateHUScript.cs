@@ -20,7 +20,7 @@ public class CreateHUScript : MonoBehaviour
     public TMP_Dropdown dropdownMadeIn;
     public TMP_InputField inputExpirationDate;
 
-    public TMPro.TMP_Text textQuantity;
+    public TMP_Text textQuantity;
 
     public OngletManager om;
 

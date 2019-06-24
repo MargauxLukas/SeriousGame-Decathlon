@@ -25,7 +25,7 @@ public class GetFAce : MonoBehaviour
     public void UpdateThisFace()
     {
         cartonSprite = colis.colisScriptable.carton.spriteCartonsListe;
-        Debug.Log(cartonSprite.Count);
+        //Debug.Log(cartonSprite.Count);
         SquareFace newFace = scriptRot.actualFace.upVoisin;
         if(scriptRot.actualFace.face == "Right")
         {
@@ -44,6 +44,6 @@ public class GetFAce : MonoBehaviour
         scriptRot.actualFace = newFace;
         scriptRot.UpdateSprite(cartonSprite, GetComponent<SpriteRenderer>());
         scriptRot.actualFace = temporaryFace;
-        Debug.Log(newFace.face);
+        //Debug.Log(newFace.face);
     }
 }

@@ -182,13 +182,13 @@ public class ColisScript : MonoBehaviour
 
                             if (changeDirection >= 3)
                             {
-                                Debug.Log("Est secoué");
+                                //Debug.Log("Est secoué");
                                 changeDirection = 0;
                                 estSecoue = true;
                             }
                             else if (deltaTimeShake >= 2f && estSecoue)
                             {
-                                Debug.Log("Est plus secoué");
+                                //Debug.Log("Est plus secoué");
                                 estSecoue = false;
                             }
                         }
@@ -295,7 +295,7 @@ public class ColisScript : MonoBehaviour
 
     void TellSomething(int texte)
     {
-        Debug.Log(texte);
+        //Debug.Log(texte);
     }
 
     void OuvrirFermer()

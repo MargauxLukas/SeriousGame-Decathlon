@@ -37,7 +37,7 @@ public class CalculNombreArticle : MonoBehaviour
 
     public void ValideAjout()
     {
-        Debug.Log("Test");
+        //Debug.Log("Test");
         pileScript.RemplirColis(pileScript.listColisPresent[nbColisAffecte].colisScriptable, pileScript.listColisPresent[nbColisAffecte], currentNumber);
         currentNumber = 0;
         UpdateAffichage();
