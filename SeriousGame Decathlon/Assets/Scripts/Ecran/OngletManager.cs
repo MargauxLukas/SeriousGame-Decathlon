@@ -17,6 +17,11 @@ public class OngletManager : MonoBehaviour
     [Header("Return to Meca nutton")]
     public Button returnToMeca;
 
+    [Header("ScreenDisplay sur InfoIWay")]
+    public ScreenDisplayIWay screenDisplay;
+
+    public PistolScan pistolScan;
+
     [HideInInspector]
     public bool hasBeenScannedByPistol = false;
     [HideInInspector]
@@ -84,7 +89,11 @@ public class OngletManager : MonoBehaviour
             recount      .SetActive(false);
             repack       .SetActive(false);
             listAnomalies.SetActive(false);
+
             listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
+            screenDisplay.EndAffichage();
+            pistolScan.scriptColis.hasBeenScannedByPistol = false;
+
         }
     }
 
@@ -109,8 +118,6 @@ public class OngletManager : MonoBehaviour
         repack       .SetActive(false);
         listAnomalies.SetActive(false);
         createHU     .SetActive(false);
-
-
     }
 
     public void CreateHUCancel()

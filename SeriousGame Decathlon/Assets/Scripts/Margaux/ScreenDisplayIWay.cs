@@ -8,13 +8,13 @@ public class ScreenDisplayIWay : MonoBehaviour
     public IWayInfoManager iWayInfoManager;
     public Text textInfoIWay;
 
-    void Start()
+    public void UpdateAffichage()
     {
-        
+        textInfoIWay.text = "Reference : ART# " + iWayInfoManager.refIntIWay + "\nPCB : " + iWayInfoManager.pcbIntIWay;
     }
 
-    void Update()
+    public void EndAffichage()
     {
-        textInfoIWay.text = "Reference : ART# " + iWayInfoManager.refStringIWay + "\nPCB : " + iWayInfoManager.pcbStringIWay;
+        textInfoIWay.text = "Reference : ART# " +  "\nPCB : " ;
     }
 }

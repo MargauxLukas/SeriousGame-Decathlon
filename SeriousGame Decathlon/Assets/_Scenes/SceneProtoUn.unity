@@ -2785,6 +2785,8 @@ MonoBehaviour:
   repack: {fileID: 841667410}
   createHU: {fileID: 1921940984}
   returnToMeca: {fileID: 47824793}
+  screenDisplay: {fileID: 2025120078}
+  pistolScan: {fileID: 606082331}
   hasBeenScannedByPistol: 0
   allValidate: 0
 --- !u!4 &201539001
@@ -6902,12 +6904,17 @@ PrefabInstance:
     - target: {fileID: 3095150876052221722, guid: 1d08658dca618984ab1209c321008b7a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 36
+      value: 22.099998
       objectReference: {fileID: 0}
     - target: {fileID: 3095150876052221722, guid: 1d08658dca618984ab1209c321008b7a,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 53.731003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095150876052221722, guid: 1d08658dca618984ab1209c321008b7a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 57.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d08658dca618984ab1209c321008b7a, type: 3}
@@ -22554,6 +22561,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020907734}
   m_CullTransparentMesh: 0
+--- !u!114 &2025120078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3095150876052221727, guid: 1d08658dca618984ab1209c321008b7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 474906922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d943d224ba06bc43a1fdd1eb91f42ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2049125817
 GameObject:
   m_ObjectHideFlags: 0

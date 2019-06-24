@@ -58,6 +58,11 @@ public class PistolScan : MonoBehaviour
         {
             iWayInfoManager.refIntIWay = scriptColis.colisScriptable.wayTicket.refArticle.numeroRef;
             iWayInfoManager.pcbIntIWay = scriptColis.colisScriptable.wayTicket.PCB;
+            //iWayInfoManager.refStringIWay = scriptColis.colisScriptable.wayTicket.refArticle.numeroRef.ToString();
+            //iWayInfoManager.pcbStringIWay = scriptColis.colisScriptable.wayTicket.PCB;
+            ongletManager.screenDisplay.UpdateAffichage();
+
+
             scriptColis.hasBeenScannedByPistol = true;
             ongletManager.GetComponent<OngletManager>().hasBeenScannedByPistol = true;
             listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;

@@ -27,8 +27,13 @@ public class AffichageAnomalie : MonoBehaviour
         {
             textMesh.text = "";
         }
+        foreach (Toggle toggle in toggleList)
+        {
+            toggle.gameObject.SetActive(false);
+        }
 
-        n = 0;
+
+            n = 0;
         foreach(string anomalie in listAnomalies)
         {
             if (n == 4){break;}
