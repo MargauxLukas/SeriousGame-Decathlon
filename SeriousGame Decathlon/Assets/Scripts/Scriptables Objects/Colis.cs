@@ -265,6 +265,9 @@ public class Colis : ScriptableObject
 
     public void UpdateWeight()
     {
-        poids = PCB * listArticles[0].poids;
+        if (listArticles.Count > 0)
+        {
+            poids = PCB * listArticles[0].poids;
+        }
     }
 }

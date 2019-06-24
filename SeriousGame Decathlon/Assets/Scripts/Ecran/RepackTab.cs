@@ -27,16 +27,18 @@ public class RepackTab : MonoBehaviour
     {
         if (colis != null)
         {
-            if (colis.GetComponent<ColisScript>().hasBeenScannedByPistol && !comptage)
+            if (!comptage)
             {
-                textPCB1            .text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
-                textCurrentQuantity1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
-                comptage = true;
-            }
-            if (colisVide != null)
-            {
-                textPCB2            .text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
-                textCurrentQuantity2.text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                if (colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
+                {
+                    textPCB1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                    textCurrentQuantity1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                }
+                if (colisVide != null)
+                {
+                    textPCB2.text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                    textCurrentQuantity2.text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
+                }
                 comptage = true;
             }
         }
@@ -46,7 +48,7 @@ public class RepackTab : MonoBehaviour
     {
         if (colisVide != null && colis != null)
         {
-            if (colisVide.GetComponent<ColisScript>().colisScriptable.PCB > 0)
+            if (colisVide.GetComponent<ColisScript>().colisScriptable.PCB >= 0)
             {
                 art = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
 
@@ -73,13 +75,12 @@ public class RepackTab : MonoBehaviour
     {
         if (colis != null && colisVide != null)
         {
-            if (colis.GetComponent<ColisScript>().colisScriptable.PCB > 0)
+            if (colis.GetComponent<ColisScript>().colisScriptable.PCB >= 0)
             {
-                art = colis.GetComponent<ColisScript>().colisScriptable.listArticles[colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
+                art = colis.GetComponent<ColisScript>().colisScriptable.listArticles[colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count-1];
 
                 colis    .GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
                 colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
-
                 colis    .GetComponent<ColisScript>().colisScriptable.PCB--;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB++;
 
