@@ -122,7 +122,14 @@ public class AnomalieDetection : MonoBehaviour
         if (colis.estAbime) //A voir comment rectifier en jeu
         {
             colis.nbAnomalie++;
-            colis.listAnomalies.Add("Dimensions out of tolerance");
+            if (Random.Range(0f, 1f) > 0.5f)
+            {
+                colis.listAnomalies.Add("Dimensions out of tolerance");
+            }
+            else
+            {
+                colis.listAnomalies.Add("Dimensions out of dimmension for tray");
+            }
         }
         //Debug.Log("Test Anomalie 5");
 
