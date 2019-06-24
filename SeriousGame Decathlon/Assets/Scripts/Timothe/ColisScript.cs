@@ -36,6 +36,7 @@ public class ColisScript : MonoBehaviour
     private int currentItem;
     public bool menuIsOpen = false;
     private bool menuCanOpen = true;
+    private bool tournerMenuIsOpen;
     public float timeBeforeMenuOpen = 1;
     private float timeTouched;
 
@@ -58,7 +59,7 @@ public class ColisScript : MonoBehaviour
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
 
-        if(colisScriptable.isBadOriented && IWayEtiquette != null)
+        if(colisScriptable.isBadOriented && IWayEtiquette != null && colisScriptable.wayTicket != null)
         {
             IWayEtiquette.SetActive(false);
         }
@@ -83,7 +84,7 @@ public class ColisScript : MonoBehaviour
             {
                 Touch touch = Input.GetTouch(0);
 
-                if (!tournerMenu.gameObject.activeSelf)
+                if (!tournerMenuIsOpen)
                 {
                     touchObject();
                     if (isMoving)
@@ -198,6 +199,7 @@ public class ColisScript : MonoBehaviour
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
                     tournerMenu.SetActive(false);
+                    tournerMenuIsOpen = false;
                 }
             }
             else
@@ -237,7 +239,7 @@ public class ColisScript : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
+            if (hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
             {
                 isMoving = true;
             }
@@ -318,6 +320,7 @@ public class ColisScript : MonoBehaviour
         circleImage.transform.parent.gameObject.SetActive(false);
         tournerMenu.transform.position = transform.position;
         tournerMenu.SetActive(true);
+        tournerMenuIsOpen = true;
     }
 
     public void Tourner()
@@ -326,7 +329,7 @@ public class ColisScript : MonoBehaviour
         {
             IWayEtiquette.SetActive(false);
         }
-        else if(!colisScriptable.isBadOriented && !IWayEtiquette.activeSelf)
+        else if(!colisScriptable.isBadOriented && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
         {
             IWayEtiquette.SetActive(true);
         }
