@@ -20,6 +20,7 @@ public class FicheInfoIway : MonoBehaviour
     void Start()
     {
         myStartPosition = transform.position;
+        startPositionMonitor = mainMonitor.gameObject.transform.position;
     }
 
     // Update is called once per frame
