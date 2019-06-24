@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class ScreenDisplayIWay : MonoBehaviour
 {
     public IWayInfoManager iWayInfoManager;
-    public Text textInfoIWay;
+    public Text textArt;
+    public Text textPCB;
 
     public void UpdateAffichage()
     {
-        textInfoIWay.text = "Reference : ART# " + iWayInfoManager.refIntIWay + "\nPCB : " + iWayInfoManager.pcbIntIWay;
+        textArt.text = "ART# " + iWayInfoManager.refIntIWay;
+        textPCB.text = "PCB :" + iWayInfoManager.pcbIntIWay;
     }
 
     public void EndAffichage()
     {
-        textInfoIWay.text = "Reference : ART# " +  "\nPCB : " ;
+        textArt.text = "ART# ";
+        textPCB.text = "PCB :";
     }
 }

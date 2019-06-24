@@ -7,17 +7,20 @@ public class PistolScan : MonoBehaviour
     private bool isMoving;
     private Vector3 pistolInitPos;
 
-    private BoxCollider2D triggerPistol;
+    [Header("Colis assigné automatiquement")]
     public ColisScript scriptColis;
-    public IWayInfoManager iWayInfoManager;
 
+    [Header("A assigner")]
+    public IWayInfoManager iWayInfoManager;
     public OngletManager ongletManager;
+    public FicheInfoIway fiche;
+
+    [Header("List Anomalie de EcranZoom")]
     public GameObject listAnomalie;
 
     void Start()
     {
         pistolInitPos = transform.position;
-        triggerPistol = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -58,11 +61,15 @@ public class PistolScan : MonoBehaviour
         {
             iWayInfoManager.refIntIWay = scriptColis.colisScriptable.wayTicket.refArticle.numeroRef;
             iWayInfoManager.pcbIntIWay = scriptColis.colisScriptable.wayTicket.PCB;
-            ongletManager.screenDisplay.UpdateAffichage();
 
+            //HasBeenScan
             scriptColis.hasBeenScannedByPistol = true;
             ongletManager.GetComponent<OngletManager>().hasBeenScannedByPistol = true;
-            listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;
+
+            //A faire lorsque que je scan
+            ongletManager.screenDisplay.UpdateAffichage();                                                                                       //On met à jour l'affichage
+            fiche.ficheIsOpening = true;                                                                                                         //On ouvre la fiche
+            listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;                            //On donne la liste d'anomalie
         }
         else
         {

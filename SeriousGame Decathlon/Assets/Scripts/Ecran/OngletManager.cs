@@ -14,7 +14,7 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
-    [Header("Return to Meca nutton")]
+    [Header("Return to Meca button")]
     public Button returnToMeca;
 
     [Header("ScreenDisplay sur InfoIWay")]
@@ -83,16 +83,21 @@ public class OngletManager : MonoBehaviour
     {
         if (allValidate)
         {
-            homeScreen   .SetActive(true);
+            homeScreen   .SetActive(true );
             ongletButton .SetActive(false);
             fillingRate  .SetActive(false);
             recount      .SetActive(false);
             repack       .SetActive(false);
             listAnomalies.SetActive(false);
 
-            listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
-            screenDisplay.EndAffichage();
-            pistolScan.scriptColis.hasBeenScannedByPistol = false;
+            //ACTION
+            pistolScan.fiche.ficheIsClosing = true;                                            //Fiche se ferme
+
+            //RESET
+            listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();             //Reset list anomalies
+            screenDisplay.EndAffichage();                                                      //Reset Affichage HU
+            pistolScan.scriptColis.hasBeenScannedByPistol = false;                             //Reset scan pistolet
+
             //CheckColis
         }
     }

@@ -5,36 +5,48 @@ using UnityEngine.UI;
 
 public class FicheInfoIway : MonoBehaviour
 {
-    public Text pcbText;
-    public Text refText;
-
-    public BigMonitor mainMonitor;
     public IWayInfoManager managerWay;
 
-    public float coef;
+    private Vector2 myStartPosition;
+    private Vector2 targetPosition = new Vector2(0f,-5f);
 
-    private Vector3 startPositionMonitor;
-    private Vector3 myStartPosition;
-
-    // Start is called before the first frame update
+    public bool ficheIsOpening = false;
+    public bool ficheIsClosing = false;
     void Start()
     {
         myStartPosition = transform.position;
-        startPositionMonitor = mainMonitor.gameObject.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Vector3.Distance(startPositionMonitor, mainMonitor.gameObject.transform.position) > 0.2f)
+        if(ficheIsOpening)
         {
-            transform.position = myStartPosition + new Vector3(0, Vector3.Distance(startPositionMonitor, mainMonitor.gameObject.transform.position) * coef, 0);
+            OpenFiche();
         }
 
-        if(mainMonitor.monitorOpening)
+        if(ficheIsClosing)
         {
-            pcbText.text = managerWay.pcbIntIWay.ToString();
-            refText.text = managerWay.refIntIWay.ToString();
+            CloseFiche();
+        }
+    }
+
+    public void OpenFiche()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, 0.1f);
+
+        if (Vector2.Distance(transform.position, targetPosition) <= 0.2f)
+        {
+            ficheIsOpening = false;
+        }
+    }
+
+    public void CloseFiche()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, myStartPosition, 0.1f);
+
+        if (Vector2.Distance(transform.position, myStartPosition) <= 0.2f)
+        {
+            ficheIsClosing = false;
         }
     }
 }
