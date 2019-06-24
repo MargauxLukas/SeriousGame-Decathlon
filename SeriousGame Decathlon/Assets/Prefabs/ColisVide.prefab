@@ -244,6 +244,9 @@ MonoBehaviour:
   hasBeenScannedByRFID: 0
   hasBeenScannedByPistol: 0
   doesEntrance: 0
+  doesRenvoie: 0
+  canMoveVertical: 0
+  entrancePosition: {x: 0, y: 0, z: 0}
 --- !u!50 &246706537573853403
 Rigidbody2D:
   serializedVersion: 4

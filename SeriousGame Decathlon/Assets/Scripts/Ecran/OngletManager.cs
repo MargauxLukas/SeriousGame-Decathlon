@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OngletManager : MonoBehaviour
 {
+    [Header("GameObject")]
     public GameObject    homeScreen;
     public GameObject listAnomalies;
     public GameObject  ongletButton;
@@ -12,7 +14,13 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
+    [Header("Return to Meca nutton")]
+    public Button returnToMeca;
+
+    [HideInInspector]
     public bool hasBeenScannedByPistol = false;
+    [HideInInspector]
+    public bool allValidate = false;
 
     public void Start()
     {
@@ -23,6 +31,8 @@ public class OngletManager : MonoBehaviour
         repack       .SetActive(false);
         listAnomalies.SetActive(false);
         createHU     .SetActive(false);
+
+        returnToMeca.GetComponent<Image>().color = Color.red;
     }
 
     public void Update()
@@ -66,13 +76,16 @@ public class OngletManager : MonoBehaviour
 
     public void ReturnToMeca()
     {
-        homeScreen   .SetActive(true);
-        ongletButton .SetActive(false);
-        fillingRate  .SetActive(false);
-        recount      .SetActive(false);
-        repack       .SetActive(false);
-        listAnomalies.SetActive(false);
-        listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
+        if (allValidate)
+        {
+            homeScreen   .SetActive(true);
+            ongletButton .SetActive(false);
+            fillingRate  .SetActive(false);
+            recount      .SetActive(false);
+            repack       .SetActive(false);
+            listAnomalies.SetActive(false);
+            listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
+        }
     }
 
     public void CreateHU()
@@ -109,5 +122,17 @@ public class OngletManager : MonoBehaviour
         repack       .SetActive(false);
         listAnomalies.SetActive(false);
         createHU     .SetActive(false);
+    }
+
+    public void CanReturnToMeca()
+    {
+        returnToMeca.GetComponent<Image>().color = Color.green;
+        allValidate = true;
+    }
+
+    public void CantReturnToMeca()
+    {
+        returnToMeca.GetComponent<Image>().color = Color.red;
+        allValidate = false;
     }
 }

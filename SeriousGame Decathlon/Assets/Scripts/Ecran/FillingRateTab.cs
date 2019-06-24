@@ -8,6 +8,7 @@ public class FillingRateTab : MonoBehaviour
 {
     public int fillingRate;
     public bool bCanMecaOpen = true;
+    [Header("Can Meca Open Toggle")]
     public Toggle toggle;
 
     private string buttonName;
