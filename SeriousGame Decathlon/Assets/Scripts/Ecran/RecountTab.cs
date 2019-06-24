@@ -50,36 +50,24 @@ public class RecountTab : MonoBehaviour
             else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
 
             WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
-            newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
-            newTicket.refArticle      = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
+            newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
+            newTicket.refArticle      = rfidScan.infoRFID.rfidComplet.refArticle;                                                  //On donne au nouveau ticket la bonne référence
             newTicket.poids           = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.poids          ;
             newTicket.numeroCodeBarre = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.numeroCodeBarre;
 
-            /*RFID newRFID           = RFID.CreateInstance <RFID>();
-            newRFID.refArticle     = rfidScan.infoRFID.rfidComplet.refArticle;
-            newRFID.estFonctionnel = true;*/
-
-            ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;                                    //IWayTicket
-            //ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;                                      //RFIDTicket
+            ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;                                                   //IWayTicket
         }
         else
         {
             WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
-            newTicket.PCB       = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
-            if (rfidScan.infoRFID.rfidComplet != null) {newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;}    //On donne au nouveau ticket la bonne référence
+            newTicket.PCB       = int.Parse(infoRFID.numStringRFID);                                                               //On donne au nouveau ticket le bon nombre de RFID
+            if (rfidScan.infoRFID.rfidComplet != null) {newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;}          //On donne au nouveau ticket la bonne référence
             newTicket.poids           = 0;
             newTicket.numeroCodeBarre = 0;
 
-            /*RFID newRFID = RFID.CreateInstance<RFID>();
-                 if (rfidScan.infoRFID.rfidComplet != null)                               {newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle                              ;}
-            else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null) {newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle;}
-            else                                                                          {newRFID.refArticle = RefArticle.CreateInstance<RefArticle>()                               ;}
-            newRFID.estFonctionnel = true;*/
-
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
-            //ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;
 
-            //Scoring.instance.MinorPenalty();                                                                   //Test de scoring
+            //Scoring.instance.MinorPenalty();                                                                                     //Test de scoring
             return;
         }
     }

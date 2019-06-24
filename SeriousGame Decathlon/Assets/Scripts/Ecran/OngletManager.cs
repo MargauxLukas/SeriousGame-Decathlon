@@ -93,7 +93,7 @@ public class OngletManager : MonoBehaviour
             listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();
             screenDisplay.EndAffichage();
             pistolScan.scriptColis.hasBeenScannedByPistol = false;
-
+            //CheckColis
         }
     }
 
