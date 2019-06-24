@@ -54,7 +54,7 @@ public class PistolScan : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log("CollidePistol");
-        if (collision.gameObject.tag == "IWay" && !collision.gameObject.GetComponentInParent<ColisScript>().hasBeenScannedByPistol && scriptColis.colisScriptable.wayTicket != null)
+        if (collision.gameObject.tag == "Colis" && !collision.gameObject.GetComponentInParent<ColisScript>().hasBeenScannedByPistol && scriptColis.colisScriptable.wayTicket != null)
         {
             iWayInfoManager.refIntIWay = scriptColis.colisScriptable.wayTicket.refArticle.numeroRef;
             iWayInfoManager.pcbIntIWay = scriptColis.colisScriptable.wayTicket.PCB;
