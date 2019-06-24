@@ -108,7 +108,7 @@ public class AnomalieDetection : MonoBehaviour
         {
             //Debug.Log("Test Anomalie 4");
 
-            if (colis.listArticles[0].rfid != null && colis.listArticles.Count > 0 && colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
+            if (colis.wayTicket != null && colis.listArticles.Count > 0 && colis.wayTicket.refArticle.numeroRef == RFIDtagKnowned[i])
             {
                 isCompatible = true;
             }

@@ -13,6 +13,9 @@ public class AffichageAnomalie : MonoBehaviour
     [Header("OngletManager")]
     public OngletManager ongletManager;
 
+    public AnomalieDetection detectAnomalie;
+    public IWayInfoManager managerIway;
+
     [HideInInspector]
     public List<string> listAnomalies;
     [HideInInspector]
@@ -46,8 +49,13 @@ public class AffichageAnomalie : MonoBehaviour
         }
     }
 
-    public void ValidateAnomalie()
+    public void ValidateAnomalie(int nbBouton)
     {
+        if(listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
+        {
+            detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
+        }
+
         toggleOnNb = 0;
         foreach(Toggle toggle in toggleList)
         {

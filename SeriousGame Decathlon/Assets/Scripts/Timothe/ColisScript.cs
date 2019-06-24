@@ -392,6 +392,7 @@ public class ColisScript : MonoBehaviour
                     {
                         spriteArticleTableUn.SetActive(true);
                         spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
+                        spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
                     }
                 }
 
@@ -414,6 +415,7 @@ public class ColisScript : MonoBehaviour
                     {
                         spriteArticleTableDeux.SetActive(true);
                         spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+                        spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
                     }
                 }
             }
