@@ -110,11 +110,10 @@ public class PileArticle : MonoBehaviour
                     }
                 }
             }
-
-            if (touch.phase == TouchPhase.Ended)
-            {
-                doesTouch = false;
-            }
+        }
+        else
+        {
+            doesTouch = false;
         }
     }
 
@@ -170,7 +169,7 @@ public class PileArticle : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
+            if (hit.collider != null && hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
             {
                 doesTouch = true;
             }

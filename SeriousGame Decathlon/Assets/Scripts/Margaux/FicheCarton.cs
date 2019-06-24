@@ -49,7 +49,6 @@ public class FicheCarton : MonoBehaviour
             scriptColis.colisScriptable.carton = carton;
             scriptColis.colisScriptable.carton.codeRef = buttonName;
             scriptColis.colisScriptable.carton.Initialize();
-            scriptColis.colisScriptable.isBadOriented = false;
 
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTableUn = spriteArticleTableUn;
@@ -66,9 +65,13 @@ public class FicheCarton : MonoBehaviour
             }
 
             scriptColis.colisScriptable.isBadOriented = false;
-            if(scriptColis.IWayEtiquette != null && !scriptColis.colisScriptable.isBadOriented)
+            if(scriptColis.IWayEtiquette != null && !scriptColis.colisScriptable.isBadOriented && scriptColis.colisScriptable.wayTicket != null)
             {
                 scriptColis.IWayEtiquette.SetActive(true);
+            }
+            else
+            {
+                scriptColis.IWayEtiquette.SetActive(false);
             }
 
             colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);

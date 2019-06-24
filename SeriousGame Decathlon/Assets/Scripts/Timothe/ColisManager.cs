@@ -108,7 +108,7 @@ public class ColisManager : MonoBehaviour
             {
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
             }
-            GameObject.Destroy(colisRenvoye, 3f);
+            GameObject.Destroy(colisRenvoye);
         }
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
