@@ -29,6 +29,7 @@ public class AffichageAnomalie : MonoBehaviour
         }
         foreach (Toggle toggle in toggleList)
         {
+            toggle.isOn = false;
             toggle.gameObject.SetActive(false);
         }
 
