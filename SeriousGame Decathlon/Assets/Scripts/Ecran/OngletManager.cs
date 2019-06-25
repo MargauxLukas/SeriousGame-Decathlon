@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OngletManager : MonoBehaviour
 {
-    [Header("GameObject")]
+    [Header("GameObject lié à l'écran")]
     public GameObject    homeScreen;
     public GameObject listAnomalies;
     public GameObject  ongletButton;
@@ -20,7 +20,9 @@ public class OngletManager : MonoBehaviour
     [Header("ScreenDisplay sur InfoIWay")]
     public ScreenDisplayIWay screenDisplay;
 
+    [Header("GameObject lié à la gestion d'anomalie")]
     public PistolScan pistolScan;
+    public AnomalieDetection anomalieDetect;
 
     [HideInInspector]
     public bool hasBeenScannedByPistol = false;
@@ -98,7 +100,8 @@ public class OngletManager : MonoBehaviour
             screenDisplay.EndAffichage();                                                      //Reset Affichage HU
             pistolScan.scriptColis.hasBeenScannedByPistol = false;                             //Reset scan pistolet
 
-            //CheckColis
+            //CHECKCOLIS
+            anomalieDetect.CheckColis(pistolScan.scriptColis.colisScriptable);
         }
     }
 

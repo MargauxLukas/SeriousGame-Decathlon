@@ -6,8 +6,8 @@ public class BigMonitor : MonoBehaviour
 {
     public MiniMonitor miniMonitor;
 
-    private  Vector2 targetPosition = new Vector2( 2.66f,1.22f);
-    private Vector2 initialPosition = new Vector2(15.22f,1.22f);
+    private  Vector2 targetPosition  = new Vector2( 2.66f,1.22f);
+    private  Vector2 initialPosition = new Vector2(15.22f,1.22f);
 
     private bool isOpen         = false;                         //Le grand écran est-il ouvert ?
     public  bool monitorOpening = false;                         //Le grand écran est-il entrain de s'ouvrir ?

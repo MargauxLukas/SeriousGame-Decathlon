@@ -37,7 +37,6 @@ public class ColisManager : MonoBehaviour
         {
             listeColisTraiter = ChargementListeColis.instance.colisProcessMulti;
         }
-
         anomDetect.CheckList(listeColisTraiter);
     }
 
@@ -103,7 +102,7 @@ public class ColisManager : MonoBehaviour
         colisRenvoye.GetComponent<ColisScript>().colisScriptable.needQualityControl = false;
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {
-            anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
+            //anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
             if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
             {
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);

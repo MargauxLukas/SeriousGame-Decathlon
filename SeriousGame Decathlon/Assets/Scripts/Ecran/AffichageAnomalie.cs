@@ -71,13 +71,13 @@ public class AffichageAnomalie : MonoBehaviour
                     case "RFID tags to be applied":
                         actualUsableDialogue.Add(dialogueList[2]);
                         break;
-                    case "RFID tag over Tolerance":                                             //
+                    case "RFID tag over Tolerance":                                             
                         actualUsableDialogue.Add(dialogueList[3]);
                         break;
                     case "RFID tag under Tolerance":
                         actualUsableDialogue.Add(dialogueList[4]);
                         break;
-                    case "RFID tag for unexpected product":                                     //
+                    case "RFID tag for unexpected product":                                     
                         actualUsableDialogue.Add(dialogueList[5]);
                         break;
                     case "TU too heavy (20-25)":
@@ -92,7 +92,6 @@ public class AffichageAnomalie : MonoBehaviour
                     case "Dimensions out of dimmension for tray":
                         actualUsableDialogue.Add(dialogueList[9]);
                         break;
-
                 }               
                 n++;
             }
@@ -101,7 +100,7 @@ public class AffichageAnomalie : MonoBehaviour
 
     public void ValidateAnomalie(int nbBouton)
     {
-        if(listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
+        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
         {
             detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
         }
