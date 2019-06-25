@@ -9,5 +9,6 @@ public class Pedale : MonoBehaviour
     public void ActivationPedale()
     {
         colisManag.AppelColis();
+        TutoManager.instance.Manager(1);
     }
 }
