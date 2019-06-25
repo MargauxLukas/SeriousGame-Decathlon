@@ -9,6 +9,12 @@ public class Scoring : MonoBehaviour
     public GameObject player;
     public int score;
 
+    private int solveAnomalieCombo             = 0;      //Série d'anomalie résolues
+    private int solveAnomalieComboWithoutMalus = 0;      //Série d'anomalie résolues sans avoir eu de Malus
+    private int sendColisCombo                 = 0;      //Série de colis renvoyé
+    private int sendColisComboWithoutMalus     = 0;      //Série de colis renvoyé sans avoir eu de Malus
+    private int noHelp                         = 0;      //Série de colis renvoyé sans demander d'aide
+
     void Awake()
     {
         if(instance == null)
@@ -21,6 +27,8 @@ public class Scoring : MonoBehaviour
         }
     }
 
+
+    //MALUS
     // -5
     public void MinorPenalty()
     {
@@ -40,5 +48,42 @@ public class Scoring : MonoBehaviour
     {
         score = score - 15;
         player.GetComponent<PlayerTest>().player.score = score;
+    }
+
+    // -50
+    public void Danger()
+    {
+
+    }
+
+    public void WhatTheFuck()
+    {
+
+    }
+
+
+    //BONUS
+    // +50
+    public void solveAnomalie()
+    {
+
+    }
+
+    // +250
+    public void solveAnomalieWithoutMalus()
+    {
+
+    }
+
+    // +150
+    public void sendColis()
+    {
+
+    }
+
+    // +550
+    public void sendColisWithoutMalus()
+    {
+
     }
 }

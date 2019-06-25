@@ -416,6 +416,13 @@ public class ColisScript : MonoBehaviour
                             spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
                         }
                     }
+                    if (articleOnTableUn.Count > 0)
+                    {
+                        spriteArticleTableUn.SetActive(true);
+                        spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
+                       // spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
+                    }
+                }
 
                     //Table 2
                     if (needSecond)
@@ -438,6 +445,12 @@ public class ColisScript : MonoBehaviour
                             spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
                             spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
                         }
+                    }
+                    if (articleOnTableDeux.Count > 0)
+                    {
+                        spriteArticleTableDeux.SetActive(true);
+                        spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+                        //spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
                     }
                 }
             }
