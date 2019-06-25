@@ -24,6 +24,8 @@ public class OngletManager : MonoBehaviour
     public PistolScan pistolScan;
     public AnomalieDetection anomalieDetect;
 
+    public ColliderRenvoieColis colliderRenvoieColis;
+
     [HideInInspector]
     public bool hasBeenScannedByPistol = false;
     [HideInInspector]
@@ -94,6 +96,7 @@ public class OngletManager : MonoBehaviour
 
             //ACTION
             pistolScan.fiche.ficheIsClosing = true;                                            //Fiche se ferme
+            colliderRenvoieColis.canReturn = true;
 
             //RESET
             listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();             //Reset list anomalies
