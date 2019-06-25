@@ -60,6 +60,7 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = true;
             monitorOpening = false;
+            //tuto
         }
     }
 }

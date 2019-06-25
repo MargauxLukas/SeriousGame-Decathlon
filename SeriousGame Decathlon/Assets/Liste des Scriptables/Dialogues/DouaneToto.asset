@@ -16,7 +16,9 @@ MonoBehaviour:
   persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
   phraseDites:
   - "Monsieur. S'il vous pla\xEEt..."
+  - "Monsieur. S'il vous pla\xEEt...2"
+  - "Monsieur. S'il vous pla\xEEt...3"
   choixPossibles:
-  - J'adore l'humour !
+  - 
   dialoguesSuivant:
   - {fileID: 0}

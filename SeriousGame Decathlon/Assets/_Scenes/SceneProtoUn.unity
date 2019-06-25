@@ -300,6 +300,11 @@ PrefabInstance:
       propertyPath: scriptRot
       value: 
       objectReference: {fileID: 1512090501580459131}
+    - target: {fileID: 4529553325785247919, guid: e4e406dd876555e4e925c63807536d0d,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 857046845}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e406dd876555e4e925c63807536d0d, type: 3}
 --- !u!1 &23325637
@@ -988,11 +993,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 837369317}
         m_MethodName: ValidateAnomalie
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1630,11 +1635,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 837369317}
         m_MethodName: ValidateAnomalie
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2492,11 +2497,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 837369317}
         m_MethodName: ValidateAnomalie
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2781,6 +2786,7 @@ MonoBehaviour:
   returnToMeca: {fileID: 47824793}
   screenDisplay: {fileID: 895455878}
   pistolScan: {fileID: 606082331}
+  anomalieDetect: {fileID: 1512090501580459130}
   hasBeenScannedByPistol: 0
   allValidate: 0
 --- !u!4 &201539001
@@ -5622,7 +5628,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 837369317}
         m_MethodName: ValidateAnomalie
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -25851,6 +25857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995028860563855011, guid: f46ade70557b3964b938c348fa4ce932,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f46ade70557b3964b938c348fa4ce932, type: 3}
