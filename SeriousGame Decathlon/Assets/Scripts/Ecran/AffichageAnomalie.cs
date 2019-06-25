@@ -122,6 +122,9 @@ public class AffichageAnomalie : MonoBehaviour
         {
             ongletManager.CantReturnToMeca();
         }
+
+        Scoring.instance.solveAnomalieWithoutMalus();
+        Scoring.instance.ResetComboAnomalie();
     }
 
     public void ShowHelp(int nbHelp)

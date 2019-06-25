@@ -356,8 +356,8 @@ public class ColisScript : MonoBehaviour
 
     void Vider()
     {
-        if(colisScriptable.estOuvert)
-        { 
+        if (colisScriptable.estOuvert)
+        {
             articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
             articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
 
@@ -420,9 +420,8 @@ public class ColisScript : MonoBehaviour
                     {
                         spriteArticleTableUn.SetActive(true);
                         spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
-                       // spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
+                        // spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
                     }
-                }
 
                     //Table 2
                     if (needSecond)
@@ -456,7 +455,6 @@ public class ColisScript : MonoBehaviour
             }
         }
     }
-
     /*void Remplir()
     {
         articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;

@@ -34,6 +34,10 @@ public class RecountTab : MonoBehaviour
     public void Recount()
     {
         rfidScan.isActive = true;
+        if(!colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
+        {
+            Scoring.instance.MinorPenalty();
+        }
     }
 
     /******************************************************************
@@ -67,7 +71,7 @@ public class RecountTab : MonoBehaviour
 
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
-            //Scoring.instance.MinorPenalty();                                                                                     //Test de scoring
+            Scoring.instance.MinorPenalty();                                                                                     //Test de scoring
             return;
         }
     }
