@@ -10,8 +10,18 @@ public class AffichageAnomalie : MonoBehaviour
     public List<TextMeshProUGUI> text;
     [Header("Toggle en enfant")]
     public List<Toggle> toggleList;
+    [Header("Info en enfant")]
+    public List<Button> infoList;
     [Header("OngletManager")]
     public OngletManager ongletManager;
+
+    [Header("Liste des dialogues")]
+    public List<Dialogue> dialogueList;
+
+    public AnomalieDetection detectAnomalie;
+    public IWayInfoManager managerIway;
+    private List<Dialogue> actualUsableDialogue;
+    public DialogueManager manageDialog;
 
     [HideInInspector]
     public List<string> listAnomalies;
@@ -32,6 +42,11 @@ public class AffichageAnomalie : MonoBehaviour
             toggle.isOn = false;
             toggle.gameObject.SetActive(false);
         }
+        foreach(Button button in infoList)
+        {
+            button.gameObject.SetActive(false);
+        }
+        actualUsableDialogue = new List<Dialogue>();
 
 
             n = 0;
@@ -42,13 +57,55 @@ public class AffichageAnomalie : MonoBehaviour
             {
                 text[n].text = anomalie;
                 toggleList[n].gameObject.SetActive(true);
+                infoList[n].gameObject.SetActive(true);
+                {
+                    switch(listAnomalies[n])
+                    {
+                        case "Quality control":
+                            actualUsableDialogue[n] = dialogueList[0];
+                            break;
+                        case "Repacking from FP":
+                            actualUsableDialogue[n] = dialogueList[1];
+                            break;
+                        case "RFID tags to be applied":
+                            actualUsableDialogue[n] = dialogueList[2];
+                            break;
+                        case "RFID tag over Tolerance":
+                            actualUsableDialogue[n] = dialogueList[3];
+                            break;
+                        case "RFID tag under Tolerance":
+                            actualUsableDialogue[n] = dialogueList[4];
+                            break;
+                        case "RFID tag for unexpected product":
+                            actualUsableDialogue[n] = dialogueList[5];
+                            break;
+                        case "TU too heavy (20-25)":
+                            actualUsableDialogue[n] = dialogueList[6];
+                            break;
+                        case "RFID tag scanned for unknown product":
+                            actualUsableDialogue[n] = dialogueList[7];
+                            break;
+                        case "Dimensions out of tolerance":
+                            actualUsableDialogue[n] = dialogueList[8];
+                            break;
+                        case "Dimensions out of dimmension for tray":
+                            actualUsableDialogue[n] = dialogueList[9];
+                            break;
+
+                    }
+                }
                 n++;
             }
         }
     }
 
-    public void ValidateAnomalie()
+    public void ValidateAnomalie(int nbBouton)
     {
+        if(listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
+        {
+            detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
+        }
+
         toggleOnNb = 0;
         foreach(Toggle toggle in toggleList)
         {
@@ -66,5 +123,10 @@ public class AffichageAnomalie : MonoBehaviour
         {
             ongletManager.CantReturnToMeca();
         }
+    }
+
+    public void ShowHelp(int nbHelp)
+    {
+        manageDialog.LoadDialogue(actualUsableDialogue[nbHelp]);
     }
 }

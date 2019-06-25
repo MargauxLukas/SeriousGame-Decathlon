@@ -110,4 +110,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void LoadDialogue(Dialogue dialogueToLoad)
+    {
+        dialogueGlobal.SetActive(true);
+        isDialogueOpen = true;
+        actualDialogue = dialogueToLoad;
+    }
 }

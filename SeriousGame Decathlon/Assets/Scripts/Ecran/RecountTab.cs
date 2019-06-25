@@ -46,8 +46,8 @@ public class RecountTab : MonoBehaviour
             rfidScan.isActive = false;
 
             //A mettre dans FillingRate
-            if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
-            else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
+            //if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
+            //else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
 
             WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
             newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
