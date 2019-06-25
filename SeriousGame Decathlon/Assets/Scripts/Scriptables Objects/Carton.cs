@@ -11,6 +11,7 @@ public class Carton : ScriptableObject
     public string codeRef;
     public string cartonName;
     public List<Sprite> spriteCartonsListe;
+    public Sprite cartonOuvert;
 
     [ExecuteAlways]
     public void Initialize()

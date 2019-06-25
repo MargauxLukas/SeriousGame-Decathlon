@@ -55,6 +55,7 @@ public class ColisManager : MonoBehaviour
         {
             GameObject colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();
+
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
             scriptColis.colisScriptable = Instantiate(listeColisTraiter[0]);
             scriptColis.doesEntrance = true;
@@ -92,6 +93,9 @@ public class ColisManager : MonoBehaviour
                     }
                 }
             }
+
+            scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
