@@ -16,6 +16,14 @@ public class RecountTab : MonoBehaviour
     public GameObject ticket    ;
     public GameObject ticketRFID;
 
+    [Header("Liste des REFArticle connu")]
+    public List<RefArticle> listRefArticles = new List<RefArticle>();
+
+    [HideInInspector]
+    public int refRFID1;
+    [HideInInspector]
+    public int refRFID2;
+
     WayTicket newTicket;
 
     GameObject ticketgo;
@@ -37,40 +45,29 @@ public class RecountTab : MonoBehaviour
         {
             rfidScan.isActive = false;
 
-            if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
-            else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
+            //A mettre dans FillingRate
+            //if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
+            //else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
 
             WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
-            newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                          //On donne au nouveau ticket le bon nombre de RFID
-            newTicket.refArticle      = rfidScan.infoRFID.rfidComplet.refArticle;                                   //On donne au nouveau ticket la bonne référence
+            newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
+            newTicket.refArticle      = rfidScan.infoRFID.rfidComplet.refArticle;                                                  //On donne au nouveau ticket la bonne référence
             newTicket.poids           = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.poids          ;
             newTicket.numeroCodeBarre = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.numeroCodeBarre;
 
-            RFID newRFID           = RFID.CreateInstance <RFID>();
-            newRFID.refArticle     = rfidScan.infoRFID.rfidComplet.refArticle;
-            newRFID.estFonctionnel = true;
-
-            ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;                                    //IWayTicket
-            ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;                                      //RFIDTicket
+            ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;                                                   //IWayTicket
         }
         else
         {
             WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
-            newTicket.PCB       = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
-            if (rfidScan.infoRFID.rfidComplet != null) {newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;}    //On donne au nouveau ticket la bonne référence
+            newTicket.PCB       = int.Parse(infoRFID.numStringRFID);                                                               //On donne au nouveau ticket le bon nombre de RFID
+            if (rfidScan.infoRFID.rfidComplet != null) {newTicket.refArticle = rfidScan.infoRFID.rfidComplet.refArticle;}          //On donne au nouveau ticket la bonne référence
             newTicket.poids           = 0;
             newTicket.numeroCodeBarre = 0;
 
-            RFID newRFID = RFID.CreateInstance<RFID>();
-                 if (rfidScan.infoRFID.rfidComplet != null)                               {newRFID.refArticle = rfidScan.infoRFID.rfidComplet.refArticle                              ;}
-            else if (colis.GetComponent<ColisScript>().colisScriptable.wayTicket != null) {newRFID.refArticle = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle;}
-            else                                                                          {newRFID.refArticle = RefArticle.CreateInstance<RefArticle>()                               ;}
-            newRFID.estFonctionnel = true;
-
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
-            ticketRFID.GetComponent<GetRfidFromObject>().newRFID    = newRFID;
 
-            //Scoring.instance.MinorPenalty();                                                                   //Test de scoring
+            //Scoring.instance.MinorPenalty();                                                                                     //Test de scoring
             return;
         }
     }
@@ -84,11 +81,101 @@ public class RecountTab : MonoBehaviour
         ticketgo = Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
     }
 
-    /************************************
-    * Permet d'imprimer des puces RFID  *
-    *************************************/
-    public void PrintRFID()
+    public void PrintHU(int pcb, int refArticle, float poids = 0)
     {
+        bool refAlreadyExist = false;
+        RefArticle refArt = null;
+
+        foreach (RefArticle refArticleTemporaire in listRefArticles)                   //Vérification si la RefArticle Existe Déjà
+        {
+            if(refArticleTemporaire.numeroRef == refArticle)
+            {
+                refArt = refArticleTemporaire;
+                refAlreadyExist = true;
+            }
+        }
+
+        if (!refAlreadyExist)
+        {
+            refArt = RefArticle.CreateInstance<RefArticle>();
+            refArt.numeroRef = refArticle;
+        }
+
+        WayTicket newTicket                 = WayTicket.CreateInstance<WayTicket>();
+                  newTicket.PCB             = pcb;
+                  newTicket.refArticle      = refArt;
+                  newTicket.poids           = refArt.poids*pcb;
+                  newTicket.numeroCodeBarre = 0;
+        
+        ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
+
+        Destroy(ticketgo);
+        ticketgo = Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+    }
+
+    /************************************
+* Permet d'imprimer des puces RFID  *
+*************************************/
+    public void PrintRFID1()
+    {
+        bool refAlreadyExist = false;
+        RefArticle refArt = null;
+
+        foreach (RefArticle refArticleTemporaire in listRefArticles)                   //Vérification si la RefArticle Existe Déjà
+        {
+            if (refArticleTemporaire.numeroRef == refRFID1)
+            {
+                refArt = refArticleTemporaire;
+                refAlreadyExist = true;
+                Debug.Log("Je connais");
+            }
+        }
+
+        if (!refAlreadyExist)
+        {
+            refArt = RefArticle.CreateInstance<RefArticle>();
+            refArt.numeroRef = refRFID1;
+            Debug.Log("Je connais pas");
+        }
+
+        RFID newRFID                = RFID.CreateInstance<RFID>();
+             newRFID.refArticle     = refArt;
+             newRFID.estFonctionnel = true;
+
+        ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
+
+        Destroy(ticketRFIDgo);
+        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
+    }
+
+    public void PrintRFID2()
+    {
+        bool refAlreadyExist = false;
+        RefArticle refArt = null;
+
+        foreach (RefArticle refArticleTemporaire in listRefArticles)                   //Vérification si la RefArticle Existe Déjà
+        {
+            if (refArticleTemporaire.numeroRef == refRFID2)
+            {
+                refArt = refArticleTemporaire;
+                refAlreadyExist = true;
+                Debug.Log("Je connais");
+            }
+        }
+
+        if (!refAlreadyExist)
+        {
+            refArt = RefArticle.CreateInstance<RefArticle>();
+            refArt.numeroRef = refRFID2;
+            Debug.Log("Je connais pas");
+        }
+
+        RFID newRFID                = RFID.CreateInstance<RFID>();
+             newRFID.refArticle     = refArt;
+             newRFID.estFonctionnel = true;
+
+        ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
+
         Destroy(ticketRFIDgo);
         ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
     }

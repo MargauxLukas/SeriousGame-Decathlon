@@ -5,12 +5,18 @@ using UnityEngine;
 public class RotationScript : MonoBehaviour
 {
     public List<SquareFace> squareList;
-    SquareFace actualFace;
+    public SquareFace actualFace;
 
     public GameObject cartonObj;
 
     public List<Sprite> cartonsSprites;
     public SpriteRenderer carton;
+
+    public void TouchOtherColis(SquareFace newFace)
+    {
+        actualFace = newFace;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +82,7 @@ public class RotationScript : MonoBehaviour
         return newFace;
     }
 
-    void UpdateSprite(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton)
+    public void UpdateSprite(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton)
     {
         if (spriteCartonListe.Count > 0)
         {
@@ -102,9 +108,10 @@ public class RotationScript : MonoBehaviour
                     break;
             }
         }
-        spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
-        Debug.Log(actualFace.face);
-        Debug.Log(actualFace.fullRotation);
+        if(spriteCarton != null)
+            spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
+        //Debug.Log(actualFace.face);
+        //Debug.Log(actualFace.fullRotation);
     }
 
     public void ColisEnter()
@@ -121,11 +128,9 @@ public class RotationScript : MonoBehaviour
         else
         {
             resetAll();
-            squareList[0].isCurrentlyPick = true;
+            squareList[4].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
-            yAxisMajeur = -1;
-            ChangeRotation();
-            actualFace = GetCurrentFace();
+            //Debug.Log(actualFace.face);
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
             cartonObj.GetComponent<ColisScript>().Tourner();

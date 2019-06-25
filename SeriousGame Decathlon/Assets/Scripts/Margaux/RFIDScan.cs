@@ -11,7 +11,12 @@ public class RFIDScan : MonoBehaviour
     public RFIDInfoManager infoRFID2 = null;
 
     [Header("ListArticle dans RecountTab")]
+    public RecountTab recountTab;
     public ArticleFind artFind;
+
+    [Header("Button Print RFID dans RECOUNT")]
+    public GameObject printRFID1;
+    public GameObject printRFID2;
 
     private int numRFID   = 0;
     private int numRFID2  = 0;
@@ -35,28 +40,36 @@ public class RFIDScan : MonoBehaviour
                 infoRFID2.numIntRFID = 0;
                 infoRFID.refIntRFID  = 0;
                 infoRFID2.refIntRFID = 0;
+                printRFID1.SetActive(false);
+                printRFID2.SetActive(false);
 
                 for (int i = 0; i< scriptColis.colisScriptable.listArticles.Count;i++)
                 {                 
                     if (i == 0)                                                                                                     //Le premier me sert de référence pour savoir si les autres articles sont les mêmes.
                     {
-                        infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
-                        infoRFID.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
-                        numRFID++;
+                        if (scriptColis.colisScriptable.listArticles[i].rfid != null)
+                        {
+                            infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
+                            infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                            numRFID++;
+                        }
                     }
                     else
                     {
-                        if (scriptColis.colisScriptable.listArticles[i].rfid == infoRFID.rfidComplet)                               //Si pareil que référence, je range là.
+                        if (scriptColis.colisScriptable.listArticles[i].rfid != null)
                         {
-                            infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid                     ;
-                            infoRFID.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
-                            numRFID++;
-                        }
-                        else                                                                                                        //Sinon, je le range ici.
-                        {
-                            infoRFID2.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid                     ;
-                            infoRFID2.refIntRFID  = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
-                            numRFID2++;
+                            if (scriptColis.colisScriptable.listArticles[i].rfid == infoRFID.rfidComplet)                               //Si pareil que référence, je range là.
+                            {
+                                infoRFID.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
+                                infoRFID.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                                numRFID++;
+                            }
+                            else                                                                                                        //Sinon, je le range ici.
+                            {
+                                infoRFID2.rfidComplet = scriptColis.colisScriptable.listArticles[i].rfid;
+                                infoRFID2.refIntRFID = scriptColis.colisScriptable.listArticles[i].rfid.refArticle.numeroRef;
+                                numRFID2++;
+                            }
                         }
                     }
                 }
@@ -66,8 +79,20 @@ public class RFIDScan : MonoBehaviour
                 infoRFID.numIntRFID  = numRFID ;
                 infoRFID2.numIntRFID = numRFID2;
 
-                if (numRFID2 == 0) { artFind.afficherSingleArticle(numRFID,           infoRFID.refIntRFID                      ); }           // 1 seul produit
-                else               { artFind.afficherDoubleArticle(numRFID, numRFID2, infoRFID.refIntRFID, infoRFID2.refIntRFID); }           // 2 produits
+                if (numRFID2 == 0)
+                {
+                    artFind.afficherSingleArticle(numRFID,           infoRFID.refIntRFID                      );
+                    printRFID1.SetActive(true);
+                    recountTab.refRFID1 = infoRFID.refIntRFID; 
+                }           
+                else
+                {
+                    artFind.afficherDoubleArticle(numRFID, numRFID2, infoRFID.refIntRFID, infoRFID2.refIntRFID);
+                    printRFID1.SetActive(true);
+                    printRFID2.SetActive(true);
+                    recountTab.refRFID1 = infoRFID.refIntRFID;
+                    recountTab.refRFID2 = infoRFID2.refIntRFID;
+                }           
             }
         }
     }

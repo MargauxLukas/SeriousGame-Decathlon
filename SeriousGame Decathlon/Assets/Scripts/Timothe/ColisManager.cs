@@ -25,6 +25,7 @@ public class ColisManager : MonoBehaviour
     //Auquel le colis doit être affecté
     public List<BoutonDirection> listeBoutonsMenuTourner;
     public RecountTab recountTab;
+    public RepackTab repackTab;
     public PistolScan scanPistol;
     public RotationScript scriptRotation;
 
@@ -54,6 +55,7 @@ public class ColisManager : MonoBehaviour
         {
             GameObject colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();
+
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
             scriptColis.colisScriptable = Instantiate(listeColisTraiter[0]);
             scriptColis.doesEntrance = true;
@@ -69,11 +71,13 @@ public class ColisManager : MonoBehaviour
                 bouton.scriptColis = colisTemporaire.GetComponent<ColisScript>();
             }
 
-            scanPistol.scriptColis = scriptColis;
-            recountTab.colis = colisTemporaire;
+            scanPistol.scriptColis   = scriptColis;
+            recountTab.colis         = colisTemporaire;
+            repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
 
+            //Debug.Log(listeColisTraiter[0]);
             listeColisTraiter.RemoveAt(0);
             if (listeColisTraiter.Count > 0 && listeColisTraiter[0] == null && listeColisTraiter[1] != null)
             {
@@ -89,6 +93,9 @@ public class ColisManager : MonoBehaviour
                     }
                 }
             }
+
+            scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();

@@ -11,7 +11,7 @@ public class Colis : ScriptableObject
 
     public int PCB = 0;
     public Carton carton;
-    public List<Article> listArticles;
+    public List<Article> listArticles = new List<Article>();
     public WayTicket wayTicket;
     public string nomWayTicket;
     public float poids = 0;
@@ -25,6 +25,8 @@ public class Colis : ScriptableObject
     Direction orientation;
     public bool needQualityControl;
     public bool cantSeeHu;
+
+    public SquareFace face;
 
     public void Initialize()
     {
@@ -66,7 +68,7 @@ public class Colis : ScriptableObject
         estOuvert = !estOuvert;
     }
 
-    public void Tourner(Vector2 direction, List<Sprite> spriteList)
+   /*public void Tourner(Vector2 direction, List<Sprite> spriteList)
     {
         switch(orientation)
         {
@@ -206,8 +208,8 @@ public class Colis : ScriptableObject
             case Direction.Forward:
 
                 break;
-        }*/
-    }
+        }
+    }*/
 
     public void UpdateRotation(List<SquareFace> listFace)
     {
@@ -234,9 +236,6 @@ public class Colis : ScriptableObject
                 cantSeeHu = true;
             }
         }
-
-
-
     }
 
     public List<Article> Vider()
@@ -249,9 +248,9 @@ public class Colis : ScriptableObject
         return artcilePile;
     }
 
-    public void Remplir (int newPCB, List<Article> newListArticle)
+    public void Remplir (List<Article> newListArticle)
     {
-        if(listArticles == null)
+        if(newListArticle == null)
         {
             listArticles = new List<Article>();
         }
@@ -261,6 +260,14 @@ public class Colis : ScriptableObject
             poids += art.poids;
             listArticles.Add(art);
             PCB++;
+        }
+    }
+
+    public void UpdateWeight()
+    {
+        if (listArticles.Count > 0)
+        {
+            poids = PCB * listArticles[0].poids;
         }
     }
 }

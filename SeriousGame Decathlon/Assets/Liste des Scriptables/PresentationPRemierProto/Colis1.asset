@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Colis1
   m_EditorClassIdentifier: 
   name: 
-  PCB: 3
+  PCB: 4
   carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
   listArticles:
   - {fileID: 11400000, guid: 283d696aaf05fb04cbfddbe93b6a2b1d, type: 2}
@@ -27,7 +27,10 @@ MonoBehaviour:
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
-  nbAnomalie: 0
-  listAnomalies: []
+  nbAnomalie: 2
+  listAnomalies:
+  - RFID tag over Tolerance
+  - RFID tag for unexpected product
   provenance: 
   needQualityControl: 0
+  cantSeeHu: 0

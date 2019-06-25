@@ -53,7 +53,6 @@ public class AnomalieDetection : MonoBehaviour
         //Debug.Log("Test");
         if(colis.needQualityControl)
         {
-            Debug.Log("Test");
             colis.nbAnomalie++;
             colis.listAnomalies.Add("Quality control");
         }
@@ -64,7 +63,7 @@ public class AnomalieDetection : MonoBehaviour
             colis.listAnomalies.Add("Repacking from FP");
         }
 
-        if(RFIDnb == 0)
+        if(RFIDnb <= 0)
         {
             colis.nbAnomalie++;
             colis.listAnomalies.Add("RFID tags to be applied");
@@ -72,8 +71,16 @@ public class AnomalieDetection : MonoBehaviour
 
         if (colis.wayTicket == null || RFIDnb != colis.wayTicket.PCB)
         {
-            colis.nbAnomalie++;
-            colis.listAnomalies.Add("RFID tag over Tolerance");
+            if(RFIDnb>colis.wayTicket.PCB)
+            {
+                colis.nbAnomalie++;
+                colis.listAnomalies.Add("RFID tag over Tolerance");
+            }
+            else if(RFIDnb < colis.wayTicket.PCB)
+            {
+                colis.nbAnomalie++;
+                colis.listAnomalies.Add("RFID tag under Tolerance");
+            }
         }
         //Debug.Log("Test Anomalie 1");
 
@@ -101,7 +108,7 @@ public class AnomalieDetection : MonoBehaviour
         {
             //Debug.Log("Test Anomalie 4");
 
-            if (colis.listArticles[0].rfid != null && colis.listArticles.Count > 0 && colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
+            if (colis.wayTicket != null && colis.listArticles.Count > 0 && colis.wayTicket.refArticle.numeroRef == RFIDtagKnowned[i])
             {
                 isCompatible = true;
             }
@@ -115,7 +122,14 @@ public class AnomalieDetection : MonoBehaviour
         if (colis.estAbime) //A voir comment rectifier en jeu
         {
             colis.nbAnomalie++;
-            colis.listAnomalies.Add("Dimensions out of tolerance");
+            if (Random.Range(0f, 1f) > 0.5f)
+            {
+                colis.listAnomalies.Add("Dimensions out of tolerance");
+            }
+            else
+            {
+                colis.listAnomalies.Add("Dimensions out of dimmension for tray");
+            }
         }
         //Debug.Log("Test Anomalie 5");
 

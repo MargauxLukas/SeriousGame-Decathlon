@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ArticleFind : MonoBehaviour
 {
@@ -12,11 +13,12 @@ public class ArticleFind : MonoBehaviour
     public void afficherSingleArticle(int pcb, int articleRef)
     {
         text1.text = pcb + " REF#" + articleRef;
+        text2.text = "";
     }
 
     public void afficherDoubleArticle(int pcb1, int pcb2, int articleRef1, int articleRef2)
     {
         text1.text = pcb1 + " REF#" + articleRef1;
-        text2.text = pcb2 + " REF#" + articleRef2;   
+        text2.text = pcb2 + " REF#" + articleRef2;
     }
 }

@@ -36,6 +36,7 @@ public class ColisScript : MonoBehaviour
     private int currentItem;
     public bool menuIsOpen = false;
     private bool menuCanOpen = true;
+    private bool tournerMenuIsOpen;
     public float timeBeforeMenuOpen = 1;
     private float timeTouched;
 
@@ -44,7 +45,13 @@ public class ColisScript : MonoBehaviour
     public bool hasBeenScannedByPistol;
 
     public bool doesEntrance;
-    private Vector3 entrancePosition;
+    public bool doesEntranceSecond;
+    public bool doesRenvoie;
+    public bool canMoveVertical;
+    public Vector3 entrancePosition;
+
+    public SpriteRenderer spriteArticleDansColis;
+    public SpriteMask spriteMaskArticleColis;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +62,7 @@ public class ColisScript : MonoBehaviour
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
 
-        if(colisScriptable.isBadOriented && IWayEtiquette != null)
+        if (colisScriptable.isBadOriented && IWayEtiquette != null && colisScriptable.wayTicket != null)
         {
             IWayEtiquette.SetActive(false);
         }
@@ -73,14 +80,14 @@ public class ColisScript : MonoBehaviour
             canMove = true;
         }*/
 
-        if (!doesEntrance)
+        if (!doesEntrance && !doesRenvoie && !doesEntranceSecond)
         {
             deltaTimeShake += Time.deltaTime;
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
 
-                if (!tournerMenu.gameObject.activeSelf)
+                if (!tournerMenuIsOpen)
                 {
                     touchObject();
                     if (isMoving)
@@ -147,7 +154,14 @@ public class ColisScript : MonoBehaviour
                         {
                             Vector3 ancientPosition = transform.position;
 
-                            transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, transform.position.y, 0);
+                            if (!canMoveVertical)
+                            {
+                                transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, transform.position.y, 0);
+                            }
+                            else
+                            {
+                                transform.position = new Vector3(transform.position.x, Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).y, 0);
+                            }
 
                             //Vérification colis secoué
                             if (transform.position.x - ancientPosition.x > 0 && !goRight)
@@ -171,13 +185,13 @@ public class ColisScript : MonoBehaviour
 
                             if (changeDirection >= 3)
                             {
-                                Debug.Log("Est secoué");
+                                //Debug.Log("Est secoué");
                                 changeDirection = 0;
                                 estSecoue = true;
                             }
                             else if (deltaTimeShake >= 2f && estSecoue)
                             {
-                                Debug.Log("Est plus secoué");
+                                //Debug.Log("Est plus secoué");
                                 estSecoue = false;
                             }
                         }
@@ -188,6 +202,7 @@ public class ColisScript : MonoBehaviour
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
                     tournerMenu.SetActive(false);
+                    tournerMenuIsOpen = false;
                 }
             }
             else
@@ -200,10 +215,22 @@ public class ColisScript : MonoBehaviour
                 isMoving = false;
             }
         }
+        else if (doesEntranceSecond)
+        {
+            transform.position += new Vector3(1, 0, 0) * 3 * Time.deltaTime;
+            if (Vector3.Distance(transform.position, entrancePosition) > 9f)
+            {
+                doesEntranceSecond = false;
+            }
+        }
+        else if (doesRenvoie)
+        {
+            transform.position += new Vector3(0, 1, 0) * 2 * Time.deltaTime;
+        }
         else
         {
             transform.position += new Vector3(-1, 0, 0) * 3 * Time.deltaTime;
-            if(Vector3.Distance(transform.position, entrancePosition) > 5f)
+            if (Vector3.Distance(transform.position, entrancePosition) > 7f)
             {
                 doesEntrance = false;
             }
@@ -215,7 +242,7 @@ public class ColisScript : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
+            if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
             {
                 isMoving = true;
             }
@@ -254,10 +281,6 @@ public class ColisScript : MonoBehaviour
                 Jeter();
                 TellSomething(1);
                 break;
-            case 5:
-                Vider();
-                TellSomething(2);
-                break;
             case 2:
                 Vider();
                 TellSomething(2);
@@ -266,7 +289,7 @@ public class ColisScript : MonoBehaviour
                 OuvrirFermer();
                 TellSomething(3);
                 break;
-            case 4:
+            case 0:
                 OpenTurnMenu();
                 TellSomething(5);
                 break;
@@ -278,6 +301,8 @@ public class ColisScript : MonoBehaviour
         //Debug.Log(texte);
     }
 
+    Sprite savedSprite;
+
     void OuvrirFermer()
     {
         colisScriptable.OuvrirFermer();
@@ -287,19 +312,34 @@ public class ColisScript : MonoBehaviour
             newColo.a = 0.3f;
             GetComponent<SpriteRenderer>().color = newColo;
         }
-        else if(!colisScriptable.estOuvert)
+        else if (!colisScriptable.estOuvert)
         {
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 1f;
             GetComponent<SpriteRenderer>().color = newColo;
         }
+
+        if (colisScriptable.estOuvert)
+        {
+            savedSprite = GetComponent<SpriteRenderer>().sprite;
+            GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.cartonOuvert;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = savedSprite;
+        }
     }
+
 
     void OpenTurnMenu()
     {
-        circleImage.transform.parent.gameObject.SetActive(false);
-        tournerMenu.transform.position = transform.position;
-        tournerMenu.SetActive(true);
+        if (!colisScriptable.estOuvert)
+        {
+            circleImage.transform.parent.gameObject.SetActive(false);
+            tournerMenu.transform.position = transform.position;
+            tournerMenu.SetActive(true);
+            tournerMenuIsOpen = true;
+        }
     }
 
     public void Tourner()
@@ -308,7 +348,7 @@ public class ColisScript : MonoBehaviour
         {
             IWayEtiquette.SetActive(false);
         }
-        else if(!colisScriptable.isBadOriented && !IWayEtiquette.activeSelf)
+        else if(!colisScriptable.isBadOriented && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
         {
             IWayEtiquette.SetActive(true);
         }
@@ -316,72 +356,89 @@ public class ColisScript : MonoBehaviour
 
     void Vider()
     {
-        articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
-        articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
+        if(colisScriptable.estOuvert)
+        { 
+            articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
+            articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
 
-        if (colisScriptable.listArticles.Count > 0)
-        {
-            List<Article> listTemporaire = colisScriptable.Vider();
-            int refBase = 0;
-            if (listTemporaire[0].rfid != null)
+            if (colisScriptable.listArticles.Count > 0)
             {
-                refBase = listTemporaire[0].rfid.refArticle.numeroRef;
-            }
-            List<Article> listTemporairePremiere = new List<Article>();
-            List<Article> listTemporaireSeconde = new List<Article>();
-            bool needSecond = false;
-            foreach (Article art in listTemporaire)
-            {
-                if (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
+                if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                 {
-                    needSecond = true;
-                    listTemporaireSeconde.Add(art);
-                }
-                else
-                {
-                    listTemporairePremiere.Add(art);
-                }
-            }
-
-            //Table 1
-
-            int nbRFIDFonctionnelTableUn = 0;
-            if (listTemporairePremiere.Count > 0 && articleOnTableUn.Count <= 0)
-            {
-                articleOnTableUn = listTemporairePremiere;
-                foreach (Article art in articleOnTableUn)
-                {
-                    if (art.rfid != null && art.rfid.estFonctionnel)
+                    List<Article> listTemporaire = colisScriptable.Vider();
+                    int refBase = 0;
+                    if (listTemporaire[0].rfid != null)
                     {
-                        nbRFIDFonctionnelTableUn++;
+                        refBase = listTemporaire[0].rfid.refArticle.numeroRef;
                     }
-                }
-            }
-            if (articleOnTableUn.Count > 0)
-            {
-                spriteArticleTableUn.SetActive(true);
-                spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
-            }
-
-            //Table 2
-            if (needSecond)
-            {
-                int nbRFIDFonctionnelTableDeux = 0;
-                if (listTemporaireSeconde.Count > 0 && articleOnTableDeux.Count <= 0)
-                {
-                    articleOnTableDeux = listTemporaireSeconde;
-                    foreach (Article art in articleOnTableDeux)
+                    List<Article> listTemporairePremiere = new List<Article>();
+                    List<Article> listTemporaireSeconde = new List<Article>();
+                    bool needSecond = false;
+                    bool needOne = false;
+                    foreach (Article art in listTemporaire)
                     {
-                        if (art.rfid != null && art.rfid.estFonctionnel)
+                        if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 && spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                         {
-                            nbRFIDFonctionnelTableDeux++;
+                            needSecond = true;
+                            listTemporairePremiere.Add(art);
+                        }
+                        else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
+                        {
+                            needSecond = true;
+                            listTemporaireSeconde.Add(art);
+                        }
+                        else if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef == refBase))
+                        {
+                            needOne = true;
+                            listTemporairePremiere.Add(art);
                         }
                     }
-                }
-                if (articleOnTableDeux.Count > 0)
-                {
-                    spriteArticleTableDeux.SetActive(true);
-                    spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+
+                    //Table 1
+                    if (needOne)
+                    {
+                        int nbRFIDFonctionnelTableUn = 0;
+                        if (listTemporairePremiere.Count > 0 && articleOnTableUn.Count <= 0)
+                        {
+                            articleOnTableUn = listTemporairePremiere;
+                            foreach (Article art in articleOnTableUn)
+                            {
+                                if (art.rfid != null && art.rfid.estFonctionnel)
+                                {
+                                    nbRFIDFonctionnelTableUn++;
+                                }
+                            }
+                        }
+                        if (articleOnTableUn.Count > 0)
+                        {
+                            spriteArticleTableUn.SetActive(true);
+                            spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
+                        }
+                    }
+
+                    //Table 2
+                    if (needSecond)
+                    {
+                        int nbRFIDFonctionnelTableDeux = 0;
+                        if (listTemporaireSeconde.Count > 0 && articleOnTableDeux.Count <= 0)
+                        {
+                            articleOnTableDeux = listTemporaireSeconde;
+                            foreach (Article art in articleOnTableDeux)
+                            {
+                                if (art.rfid != null && art.rfid.estFonctionnel)
+                                {
+                                    nbRFIDFonctionnelTableDeux++;
+                                }
+                            }
+                        }
+                        if (articleOnTableDeux.Count > 0)
+                        {
+                            spriteArticleTableDeux.SetActive(true);
+                            spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
+                        }
+                    }
                 }
             }
         }

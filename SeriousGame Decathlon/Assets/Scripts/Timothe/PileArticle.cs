@@ -9,9 +9,6 @@ public class PileArticle : MonoBehaviour
     public List<ColisScript> listColisPresent;
     private GameObject[] listeColisDispo;
 
-    public Text textNbArticle;
-    public Text textNbRFID;
-
     private bool doesTouch;
 
     public Image circleImage;
@@ -23,6 +20,13 @@ public class PileArticle : MonoBehaviour
     private bool menuCanOpen = true;
     public float timeBeforeOpen;
     private float timeTouched;
+
+    public GameObject canvasNombre;
+    public GameObject canvasInfo;
+    public Text textNbArticle;
+    public Text textNbRFID;
+    public Text textRefRFID;
+
 
     private float timeUpdate;
 
@@ -43,10 +47,17 @@ public class PileArticle : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             touchObject();
 
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.z = 0;
+
+            if(menuIsOpen)
+            {
+                menuIsOpen = false;
+                canvasInfo.SetActive(false);
+            }
+
             if (doesTouch)
             {
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = 0;
 
                 if (touch.phase == TouchPhase.Began)
                 {
@@ -99,11 +110,10 @@ public class PileArticle : MonoBehaviour
                     }
                 }
             }
-
-            if (touch.phase == TouchPhase.Ended)
-            {
-                doesTouch = false;
-            }
+        }
+        else
+        {
+            doesTouch = false;
         }
     }
 
@@ -133,10 +143,20 @@ public class PileArticle : MonoBehaviour
         listArticles = newList;
     }
 
-    public void RemplirColis(Colis colisRemplir, ColisScript scriptColis)
+    //A mettre sur le bouton de validation du nombre
+    public void RemplirColis(Colis colisRemplir, ColisScript scriptColis, int nb)
     {
-        colisRemplir.Remplir(listArticles.Count, listArticles);
-        listArticles = new List<Article>();
+        List<Article> newArticleList = new List<Article>();
+        for(int i = nb-1; i >= 0; i--)
+        {
+            if (i < listArticles.Count)
+            {
+                newArticleList.Add(listArticles[i]);
+                listArticles.RemoveAt(i);
+            }
+        }
+        colisRemplir.Remplir(newArticleList);
+        //listArticles = new List<Article>();
         if(listArticles.Count <= 0)
         {
             gameObject.SetActive(false);
@@ -149,7 +169,7 @@ public class PileArticle : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
+            if (hit.collider != null && hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
             {
                 doesTouch = true;
             }
@@ -179,6 +199,28 @@ public class PileArticle : MonoBehaviour
         return itemNb;
     }
 
+    public void ChoiceNumberColis(Colis colisRemplir, ColisScript scriptColis)
+    {
+        canvasNombre.SetActive(true);
+    }
+
+    public void ShowInfo()
+    {
+        canvasInfo.SetActive(true);
+        textNbArticle.text = listArticles.Count.ToString();
+        int nbRFID = 0;
+        foreach (Article art in listArticles)
+        {
+            if(art.rfid.estFonctionnel)
+            {
+                nbRFID++;
+            }
+        }
+        textNbRFID.text = nbRFID.ToString();
+        textRefRFID.text = listArticles[0].rfid.refArticle.numeroRef.ToString();
+        menuIsOpen = true;
+    }
+
     void PickInventory(int nb)
     {
         switch (nb)
@@ -186,20 +228,17 @@ public class PileArticle : MonoBehaviour
             case 1:
                 if(listColisPresent[0] != null)
                 {
-                    RemplirColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
+                    ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
                 }
                 break;
             case 2:
                 if (listColisPresent[1] != null)
                 {
-                    RemplirColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
+                    ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
-            case 3:
-                if (listColisPresent[2] != null)
-                {
-                    RemplirColis(listColisPresent[2].colisScriptable, listColisPresent[2]);
-                }
+            case 0:
+                ShowInfo();
                 break;
         }
     }

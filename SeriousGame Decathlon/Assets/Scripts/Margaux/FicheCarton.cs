@@ -20,6 +20,8 @@ public class FicheCarton : MonoBehaviour
     private GameObject spriteArticleTableDeux;
     private Image circleImage;
 
+    public RepackTab repackTab;
+
    // public Text textArticleTableNombre;
     //public Text textArtcileTableRFID;
 
@@ -53,6 +55,8 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
+            scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;
@@ -62,7 +66,18 @@ public class FicheCarton : MonoBehaviour
                 bouton.scriptColis = scriptColis;
             }
 
+            scriptColis.colisScriptable.isBadOriented = false;
+            if(scriptColis.IWayEtiquette != null && !scriptColis.colisScriptable.isBadOriented && scriptColis.colisScriptable.wayTicket != null)
+            {
+                scriptColis.IWayEtiquette.SetActive(true);
+            }
+            else
+            {
+                scriptColis.IWayEtiquette.SetActive(false);
+            }
+
             colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(-2, -1.4f, 0), Quaternion.identity);
+            repackTab.colisVide = colisManage.scriptRotation.cartonObj;
             colisManage.scriptRotation.ColisEnter();
         }
 
