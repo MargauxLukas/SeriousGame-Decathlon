@@ -1234,7 +1234,7 @@ PrefabInstance:
     - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
         type: 3}
       propertyPath: currentLevel
-      value: 1
+      value: 1001
       objectReference: {fileID: 0}
     - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
         type: 3}
@@ -1504,6 +1504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
         type: 3}
+      propertyPath: colisToSaveLevel.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
       propertyPath: loadColisText
       value: 
       objectReference: {fileID: 981147896}
@@ -1517,6 +1522,66 @@ PrefabInstance:
       propertyPath: chargeColis
       value: 
       objectReference: {fileID: 573590619}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: levelToSave
+      value: 
+      objectReference: {fileID: 11400000, guid: ddf9ab11e9e4c174bb6ea5f4b685ecd0,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 99af53f1ea267bb499c1c89a6a95d6fb,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cf6fff017549fc4980c64fa3ddfc89a,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: cb5acd0f23e06ac438f3e7764452ce64,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: e2f1b2d1802d5744aa31fc7b5b7ae412,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 62cdf2adf9386cb43a98bf0df45f0a87,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 86071048a4e6ab34e999341e8782fea2,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b05a4b3e31343c4f9d483d5eca29ae0,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f9d8d420f63875744b3feb4751b3fb82,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: colisToSaveLevel.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: d7b6f8e8a6af75f4e8df8503f6431614,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efedb9db2de68094ba5f2cdc3e2b9505, type: 3}
 --- !u!114 &1112353861 stripped

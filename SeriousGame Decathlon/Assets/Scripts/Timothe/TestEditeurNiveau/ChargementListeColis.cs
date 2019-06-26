@@ -25,7 +25,7 @@ public class ChargementListeColis : MonoBehaviour
 
     public void LoadNewScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     private void Awake()
@@ -43,14 +43,21 @@ public class ChargementListeColis : MonoBehaviour
 
     private void Start()
     {
+        //LoadNewLevelScript(currentLevel);
+    }
+
+    public void LoadNewLevelScript(int currentLevelTempo)
+    {
         List<Colis> newList = new List<Colis>();
         List<Colis> colisListe = new List<Colis>();
 
         levelScript = LevelScriptable.CreateInstance<LevelScriptable>();
-        levelScript = SaveLoadSystem.instance.LoadLevel(currentLevel);
+        levelScript = SaveLoadSystem.instance.LoadLevel(currentLevelTempo);
+
 
         if (levelScript = null)
         {
+            Debug.Log("Test Level Null");
             List<string> colisName = new List<string>();
             for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
             {
@@ -64,5 +71,14 @@ public class ChargementListeColis : MonoBehaviour
         }
         //Trouver un système pour mélanger les colis aléatoirement.
         //Ajouter le choix des process pour le level load.
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            LoadNewLevelScript(currentLevel);
+           // LoadNewScene();
+        }
     }
 }

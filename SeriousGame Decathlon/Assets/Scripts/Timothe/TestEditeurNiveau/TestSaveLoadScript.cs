@@ -73,7 +73,7 @@ public class TestSaveLoadScript : MonoBehaviour
     public void LoadLevel()
     {
         levelToLoad = LevelScriptable.CreateInstance<LevelScriptable>();
-        levelToLoad = SaveLoadSystem.instance.LoadLevel(1);
+        levelToLoad = SaveLoadSystem.instance.LoadLevel(1001);
         loadLevelText.text = (levelToLoad != null).ToString();
     }
 }

@@ -120,6 +120,7 @@ public class SaveLoadSystem : MonoBehaviour
     {
         if (!IsSaveFile())
         {
+            Debug.Log("Test");
             Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
         }
 
@@ -129,14 +130,29 @@ public class SaveLoadSystem : MonoBehaviour
         }
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt");
-        var json = JsonUtility.ToJson(levelToSave);
-        bf.Serialize(file, json);
-        file.Close();
-
-        foreach(Colis lisco in colisDuLevel)
+        if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
         {
-            SaveColis(lisco);
+            FileStream file = File.Create(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt");
+            var json = JsonUtility.ToJson(levelToSave);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+        else
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt", FileMode.Open);
+            var json = JsonUtility.ToJson(levelToSave);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+
+        //colisDuLevel = levelToSave.colisToSave;
+
+        if (colisDuLevel != null && colisDuLevel.Count > 0)
+        {
+            foreach (Colis lisco in colisDuLevel)
+            {
+                SaveColis(lisco);
+            }
         }
     }
 
@@ -152,9 +168,9 @@ public class SaveLoadSystem : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
         {
-            Debug.Log("Test");
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
+            Debug.Log(levelToSave.nbLevel);
         }
         return levelToSave;
     }

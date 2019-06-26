@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
-  m_Name: DialoguePhase00
+  m_Script: {fileID: 11500000, guid: 52a445b73937cbe40bd671b322aafcfa, type: 3}
+  m_Name: RFID Ballon OK
   m_EditorClassIdentifier: 
-  persoParlant: {fileID: 0}
-  persoEcoutant: {fileID: 0}
-  phraseDites: []
-  choixPossibles: []
-  dialoguesSuivant: []
+  estFonctionnel: 1
+  refArticle: {fileID: 11400000, guid: cd085f275a13d724080934686b9271a2, type: 2}

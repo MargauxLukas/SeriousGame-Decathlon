@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ColisManager : MonoBehaviour
 {
@@ -31,14 +32,16 @@ public class ColisManager : MonoBehaviour
 
     public AnomalieDetection anomDetect;
 
-    private void Start()
+    private void Awake()
     {
         if(ChargementListeColis.instance != null)
         {
+            Debug.Log("Test Instance");
             listeColisTraiter = ChargementListeColis.instance.colisProcessMulti;
         }
         anomDetect.CheckList(listeColisTraiter);
     }
+
 
     public void CheckNewColis()
     {

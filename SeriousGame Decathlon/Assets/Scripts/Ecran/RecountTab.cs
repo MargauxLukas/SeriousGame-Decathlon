@@ -34,6 +34,7 @@ public class RecountTab : MonoBehaviour
     public void Recount()
     {
         rfidScan.isActive = true;
+        colis.GetComponent<ColisScript>().colisScriptable.hasBeenRecount = true;
         if(!colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
         {
             Scoring.instance.MinorPenalty();

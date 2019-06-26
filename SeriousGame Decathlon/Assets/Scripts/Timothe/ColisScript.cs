@@ -358,6 +358,7 @@ public class ColisScript : MonoBehaviour
     {
         if (colisScriptable.estOuvert)
         {
+            colisScriptable.aEteVide = true;
             articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
             articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
 
