@@ -280,6 +280,7 @@ public class TutoManager : MonoBehaviour
 
     void Phase13()
     {
+        phaseNum++;
 
     }
 }
