@@ -23,4 +23,11 @@ public class PosteOnClick : MonoBehaviour
             }
         }
     }
+
+    public void ReturnToDezoom()
+    {
+        cameraPoste.SetActive(false);
+        cameraDezoom.SetActive(true);
+        player.GetComponent<Unit>().enabled = true;
+    }
 }
