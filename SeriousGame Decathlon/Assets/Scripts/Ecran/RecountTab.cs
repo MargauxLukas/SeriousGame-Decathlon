@@ -34,6 +34,7 @@ public class RecountTab : MonoBehaviour
     public void Recount()
     {
         rfidScan.isActive = true;
+        TutoManager.instance.Manager(6);
     }
 
     /******************************************************************
