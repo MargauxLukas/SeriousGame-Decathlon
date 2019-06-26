@@ -87,6 +87,7 @@ public class AnomalieDetection : MonoBehaviour
         bool isBreakable = false;
         foreach (Article article in colis.listArticles) //Scanner le colis. Scanner les RFID. Vider le colis. Imprimer le RFID. Mettre le nouveau RFID.
         {
+            Debug.Log(colis.name);
             if (article.rfid != null && colis.wayTicket != null && (article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable))
             {
                 colis.nbAnomalie++;
