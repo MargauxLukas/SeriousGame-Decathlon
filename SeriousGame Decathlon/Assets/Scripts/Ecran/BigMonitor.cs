@@ -42,14 +42,7 @@ public class BigMonitor : MonoBehaviour
         {
             if ((endPos > startPos) && isOpen && swipeDifference > 100f)                                         //Swipe vers la droite
             {
-                miniMonitor.monitorClosing = true;
-                transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
-
-                if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
-                {
-                    isOpen = false;
-                    miniMonitor.monitorClosing = false;
-                }
+                closeBigMonitor();
 
             }
             else if ((endPos < startPos) && isOpen && swipeDifference > 100f)                                   //Swipe vers la gauche
@@ -78,11 +71,14 @@ public class BigMonitor : MonoBehaviour
 
     public void closeBigMonitor()
     {
+
+        miniMonitor.monitorClosing = true;
         transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
 
         if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
         {
             isOpen = false;
+            miniMonitor.monitorClosing = false;
             TutoManager.instance.Manager(7);
         }
     }
