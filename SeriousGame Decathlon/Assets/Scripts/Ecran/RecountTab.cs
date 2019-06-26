@@ -47,7 +47,9 @@ public class RecountTab : MonoBehaviour
     *******************************************************************/
     public void Inventory()
     {
-        if (colis != null && colis.GetComponent<ColisScript>().hasBeenScannedByRFID && (int.Parse(infoRFID.numStringRFID) > 0))
+        if (colis != null && colis.GetComponent<ColisScript>().hasBeenScannedByRFID 
+                          && (int.Parse(infoRFID.numStringRFID) > 0) 
+                          && (int.Parse(infoRFID.numStringRFID) < colis.GetComponent<ColisScript>().colisScriptable.wayTicket.PCB))
         {
             rfidScan.isActive = false;
 
