@@ -74,6 +74,7 @@ public class OngletManager : MonoBehaviour
         fillingRate.SetActive(false);
         recount    .SetActive(true );
         repack     .SetActive(false);
+        TutoManager.instance.Manager(5);
     }
 
     public void RepackOpen()

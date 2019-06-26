@@ -72,7 +72,18 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = true;
             monitorOpening = false;
-            //tuto
+            TutoManager.instance.Manager(3);
+        }
+    }
+
+    public void closeBigMonitor()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
+
+        if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
+        {
+            isOpen = false;
+            TutoManager.instance.Manager(7);
         }
     }
 }

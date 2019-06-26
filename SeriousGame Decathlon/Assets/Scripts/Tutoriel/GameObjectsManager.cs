@@ -7,6 +7,7 @@ public class GameObjectsManager : MonoBehaviour
 {
     public GameObject pedal;
     public GameObject pistolet;
+    public GameObject colis;
     public GameObject screen;
     public GameObject bigScreen;
 
@@ -19,7 +20,6 @@ public class GameObjectsManager : MonoBehaviour
 
     public GameObject repackTab;
     public GameObject fillTab;
-    public GameObject colis;
     public GameObject menuCirculaireColis;
     public GameObject pileArticles;
     public GameObject menuCirculairePileArticles;

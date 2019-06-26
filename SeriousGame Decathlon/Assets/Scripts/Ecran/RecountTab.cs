@@ -39,6 +39,7 @@ public class RecountTab : MonoBehaviour
         {
             Scoring.instance.MinorPenalty();
         }
+        TutoManager.instance.Manager(6);
     }
 
     /******************************************************************
