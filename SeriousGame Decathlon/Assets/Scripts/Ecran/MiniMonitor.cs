@@ -5,9 +5,13 @@ using UnityEngine;
 public class MiniMonitor : MonoBehaviour
 {
     public BigMonitor bMonitor;
+    public bool monitorClosing = false;
 
     private void OnMouseDown()
     {
-        bMonitor.monitorOpening = true;
+        if (!monitorClosing)
+        {
+            bMonitor.monitorOpening = true;
+        }
     }
 }
