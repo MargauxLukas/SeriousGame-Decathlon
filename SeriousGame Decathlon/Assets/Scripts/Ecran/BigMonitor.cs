@@ -30,7 +30,7 @@ public class BigMonitor : MonoBehaviour
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began) { startPos = touch.position.x; }
-            if (touch.phase == TouchPhase.Ended) { endPos = touch.position.x; }
+            if (touch.phase == TouchPhase.Ended) { endPos   = touch.position.x; }
             else { return; }
 
             swipeDifference = Mathf.Abs(startPos - endPos);
