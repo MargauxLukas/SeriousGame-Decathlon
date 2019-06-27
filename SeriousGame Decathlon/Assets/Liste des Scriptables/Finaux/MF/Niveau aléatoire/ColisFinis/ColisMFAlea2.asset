@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
+  m_Name: ColisMFAlea2
+  m_EditorClassIdentifier: 
+  name: ColisMFAlea2
+  PCB: 3
+  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  listArticles:
+  - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
+  - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
+  - {fileID: 11400000, guid: a60ec9b0a04f4c348b32cea203935519, type: 2}
+  wayTicket: {fileID: 11400000, guid: c573498402169404b96bbf88659fb497, type: 2}
+  nomWayTicket: 
+  poids: 6
+  fillPercent: 100
+  isBadOriented: 1
+  estOuvert: 0
+  estAbime: 0
+  nbAnomalie: 0
+  listAnomalies: []
+  provenance: 
+  needQualityControl: 0
+  aEteVide: 0
+  hasBeenRecount: 0

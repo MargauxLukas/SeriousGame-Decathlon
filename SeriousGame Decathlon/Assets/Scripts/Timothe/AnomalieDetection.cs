@@ -87,6 +87,7 @@ public class AnomalieDetection : MonoBehaviour
         bool isBreakable = false;
         foreach (Article article in colis.listArticles) //Scanner le colis. Scanner les RFID. Vider le colis. Imprimer le RFID. Mettre le nouveau RFID.
         {
+            Debug.Log(colis.name);
             if (article.rfid != null && colis.wayTicket != null && (article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable))
             {
                 colis.nbAnomalie++;
@@ -122,14 +123,15 @@ public class AnomalieDetection : MonoBehaviour
         if (colis.estAbime) //A voir comment rectifier en jeu
         {
             colis.nbAnomalie++;
-            if (Random.Range(0f, 1f) > 0.5f)
+            colis.listAnomalies.Add("Dimensions out of tolerance");
+            /*if (Random.Range(0f, 1f) > 0.5f)
             {
                 colis.listAnomalies.Add("Dimensions out of tolerance");
             }
             else
             {
                 colis.listAnomalies.Add("Dimensions out of dimmension for tray");
-            }
+            }*/
         }
         //Debug.Log("Test Anomalie 5");
 

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51ced4f9d60e0948aa8593f4a8d093d, type: 3}
+  m_Name: AleatoireLevel
+  m_EditorClassIdentifier: 
+  colisDuNiveauNoms:
+  - ColisMFAlea1
+  - ColisMFAlea2
+  - ColisMFAlea3
+  - ColisMFAlea4
+  - ColisMFAlea5
+  - ColisMFAlea6
+  - ColisMFAlea7
+  - ColisMFAlea8
+  - ColisMFAlea9
+  nbColisParNomColis: 010000000100000001000000010000000100000001000000010000000100000001000000
+  nbLevel: 1001
+  colisToSave:
+  - {fileID: 11400000, guid: 9b05a4b3e31343c4f9d483d5eca29ae0, type: 2}
+  - {fileID: 11400000, guid: f9d8d420f63875744b3feb4751b3fb82, type: 2}
+  - {fileID: 11400000, guid: d7b6f8e8a6af75f4e8df8503f6431614, type: 2}
+  - {fileID: 11400000, guid: 99af53f1ea267bb499c1c89a6a95d6fb, type: 2}
+  - {fileID: 11400000, guid: 4cf6fff017549fc4980c64fa3ddfc89a, type: 2}
+  - {fileID: 11400000, guid: cb5acd0f23e06ac438f3e7764452ce64, type: 2}
+  - {fileID: 11400000, guid: e2f1b2d1802d5744aa31fc7b5b7ae412, type: 2}
+  - {fileID: 11400000, guid: 62cdf2adf9386cb43a98bf0df45f0a87, type: 2}
+  - {fileID: 11400000, guid: 86071048a4e6ab34e999341e8782fea2, type: 2}

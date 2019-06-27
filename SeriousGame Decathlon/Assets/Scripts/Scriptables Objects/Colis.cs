@@ -24,7 +24,8 @@ public class Colis : ScriptableObject
     public string provenance;
     Direction orientation;
     public bool needQualityControl;
-    public bool cantSeeHu;
+    public bool aEteVide;
+    public bool hasBeenRecount;
 
     public SquareFace face;
 
@@ -225,15 +226,6 @@ public class Colis : ScriptableObject
                 {
                     isBadOriented = false;
                 }
-            }
-
-            if(face.face == "Forward" && face.fullRotation != 0 && face.fullRotation != 360)
-            {
-                cantSeeHu = false;
-            }
-            else if(!cantSeeHu)
-            {
-                cantSeeHu = true;
             }
         }
     }

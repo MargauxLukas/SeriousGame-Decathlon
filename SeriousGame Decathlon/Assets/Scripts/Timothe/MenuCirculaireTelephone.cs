@@ -46,52 +46,9 @@ public class MenuCirculaireTelephone : MonoBehaviour
                     timeTouched = 0;
                     startPosition = touchPosition;
                     circlePosition = transform.position;
-                }
-                else if (Vector3.Distance(startPosition, touchPosition) > 1f && timeTouched < timeBeforeOpen)
-                {
-                    menuCanOpen = false;
-                    menuIsOpen = false;
-                }
-                else if (touch.phase == TouchPhase.Ended)
-                {
-                    menuCanOpen = true;
-                    menuIsOpen = false;
-                }
-
-                timeTouched += Time.deltaTime;
-
-                if (timeTouched > timeBeforeOpen && menuCanOpen)
-                {
-                    menuIsOpen = true;
-                    circleImage.transform.parent.gameObject.SetActive(true);
-                    circleImage.transform.parent.gameObject.transform.position = transform.position;
-                    circleImage.fillAmount = 1f / itemNumber;
-
-                    if (touch.phase == TouchPhase.Moved)
-                    {
-                        if (Vector2.Distance(startPosition, touchPosition) > 1f)
-                        {
-                            currentItem = GetItemFromAngle(GetAngle(startPosition, touchPosition));
-                        }
-                        else
-                        {
-                            currentItem = -1;
-                        }
-                    }
-                    else if (touch.phase == TouchPhase.Ended)
-                    {
-                        menuCanOpen = true;
-                        menuIsOpen = false;
-                        circleImage.transform.parent.gameObject.SetActive(false);
-                        if (currentItem > -1)
-                        {
-                            PickInventory(currentItem);
-                        }
-                        return;
-                    }
+                    LancementDialogue(0);
                 }
             }
-
             if(touch.phase == TouchPhase.Ended)
             {
                 doesTouch = false;

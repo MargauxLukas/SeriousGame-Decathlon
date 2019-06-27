@@ -12,11 +12,16 @@ public class FillingRateTab : MonoBehaviour
     public Toggle toggle;
 
     private string buttonName;
+    public RecountTab tabRecount;
 
     public void setFillingRate()
     {
         buttonName = EventSystem.current.currentSelectedGameObject.name;
         fillingRate = int.Parse(buttonName);
+        if(fillingRate != tabRecount.colis.GetComponent<ColisScript>().colisScriptable.fillPercent)
+        {
+            Scoring.instance.MidPenalty();
+        }
     }
 
     public void canMecaOpen()

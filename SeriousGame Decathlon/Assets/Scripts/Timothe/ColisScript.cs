@@ -5,51 +5,56 @@ using UnityEngine.UI;
 
 public class ColisScript : MonoBehaviour
 {
-    private bool isMoving;
-
     public Colis colisScriptable;
+
+    [Header("Listes piles articles")]
+    public List<Article> articleOnTableUn  ;  
+    public List<Article> articleOnTableDeux;
+
+    [Header("Listes sprite Carton")]
+    public List<Sprite > spriteCartons     ;
+
+    [Header("GameObject")]
+    public GameObject IWayEtiquette         ;
+    public GameObject tournerMenu           ;
+    public GameObject spriteArticleTableUn  ;
+    public GameObject spriteArticleTableDeux;
     //public MenuCirculaireV2 menuCirculaire;
 
+    public int changeDirection = 0;                                 //Appelé que ici, private ?
+
+    private bool goRight;
+    private bool isMoving;
+    private bool canMove   = true ;
 
     public bool estSecoue = false;
-    public int changeDirection = 0;
-    private bool goRight;
-    private bool canMove = true;
-
-    private float deltaTimeShake;
-
-    public List<Article> articleOnTableUn;
-    public List<Article> articleOnTableDeux;
-    public GameObject tournerMenu;
-    public GameObject spriteArticleTableUn;
-    public GameObject spriteArticleTableDeux;
-    //public Text textArticleTableNombre;
-    //public Text textArtcileTableRFID;
-
-    public List<Sprite> spriteCartons;
-
-    //Pour le menu circulaire
-    public Image circleImage;
-    private Vector2 startPosition;
-    private Vector2 circlePosition;
-    public int itemNumber = 5;
-    private int currentItem;
-    public bool menuIsOpen = false;
-    private bool menuCanOpen = true;
-    private bool tournerMenuIsOpen;
-    public float timeBeforeMenuOpen = 1;
-    private float timeTouched;
-
-    public GameObject IWayEtiquette;
     public bool hasBeenScannedByRFID;
     public bool hasBeenScannedByPistol;
 
+    private float deltaTimeShake;
+    //public Text textArticleTableNombre;
+    //public Text textArtcileTableRFID;
+
+    [Header("Menu Circulaire")]
+    public Image circleImage;
+    private Vector2 startPosition;
+    private Vector2 circlePosition;
+    public  int itemNumber = 5;
+    private int currentItem;
+    public  bool menuIsOpen = false;
+    private bool menuCanOpen = true;
+    private bool tournerMenuIsOpen;
+    public  float timeBeforeMenuOpen = 1;
+    private float timeTouched;
+
+    [Header("Renvoie Colis")]
     public bool doesEntrance;
     public bool doesEntranceSecond;
     public bool doesRenvoie;
     public bool canMoveVertical;
     public Vector3 entrancePosition;
 
+    [Header("Carton Etat")]
     public SpriteRenderer spriteArticleDansColis;
     public SpriteMask spriteMaskArticleColis;
 
@@ -57,7 +62,7 @@ public class ColisScript : MonoBehaviour
     void Start()
     {
         entrancePosition = transform.position;
-        Colis newColis = Instantiate(colisScriptable);
+        Colis newColis   = Instantiate(colisScriptable);
         //colisScriptable = newColis;
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
@@ -83,6 +88,7 @@ public class ColisScript : MonoBehaviour
         if (!doesEntrance && !doesRenvoie && !doesEntranceSecond)
         {
             deltaTimeShake += Time.deltaTime;
+
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -100,19 +106,19 @@ public class ColisScript : MonoBehaviour
                         if (touch.phase == TouchPhase.Began)
                         {
                             currentItem = -1;
-                            timeTouched = 0;
-                            startPosition = touchPosition;
+                            timeTouched =  0;
+                            startPosition  = touchPosition     ;
                             circlePosition = transform.position;
                         }
                         else if (Vector3.Distance(startPosition, touchPosition) > 1f && timeTouched < timeBeforeMenuOpen)
                         {
                             menuCanOpen = false;
-                            menuIsOpen = false;
+                            menuIsOpen  = false;
                         }
                         else if (touch.phase == TouchPhase.Ended)
                         {
-                            menuCanOpen = true;
-                            menuIsOpen = false;
+                            menuCanOpen = true ;
+                            menuIsOpen  = false;
                         }
 
                         timeTouched += Time.deltaTime;
@@ -120,6 +126,7 @@ public class ColisScript : MonoBehaviour
                         if (timeTouched > timeBeforeMenuOpen && menuCanOpen)
                         {
                             menuIsOpen = true;
+
                             circlePosition = transform.position;
                             circleImage.transform.parent.gameObject.SetActive(true);
                             circleImage.transform.parent.gameObject.transform.position = transform.position;
@@ -138,8 +145,9 @@ public class ColisScript : MonoBehaviour
                             }
                             else if (touch.phase == TouchPhase.Ended)
                             {
-                                menuCanOpen = true;
-                                menuIsOpen = false;
+                                menuCanOpen = true ;
+                                menuIsOpen  = false;
+
                                 circleImage.transform.parent.gameObject.SetActive(false);
                                 if (currentItem > -1)
                                 {
@@ -356,8 +364,9 @@ public class ColisScript : MonoBehaviour
 
     void Vider()
     {
-        if(colisScriptable.estOuvert)
-        { 
+        if (colisScriptable.estOuvert)
+        {
+            colisScriptable.aEteVide = true;
             articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
             articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
 
@@ -416,6 +425,12 @@ public class ColisScript : MonoBehaviour
                             spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
                         }
                     }
+                    if (articleOnTableUn.Count > 0)
+                    {
+                        spriteArticleTableUn.SetActive(true);
+                        spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
+                        // spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
+                    }
 
                     //Table 2
                     if (needSecond)
@@ -439,11 +454,16 @@ public class ColisScript : MonoBehaviour
                             spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
                         }
                     }
+                    if (articleOnTableDeux.Count > 0)
+                    {
+                        spriteArticleTableDeux.SetActive(true);
+                        spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
+                        //spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
+                    }
                 }
             }
         }
     }
-
     /*void Remplir()
     {
         articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;

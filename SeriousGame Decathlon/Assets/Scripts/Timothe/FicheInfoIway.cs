@@ -8,13 +8,14 @@ public class FicheInfoIway : MonoBehaviour
     public IWayInfoManager managerWay;
 
     private Vector2 myStartPosition;
-    private Vector2 targetPosition = new Vector2(0f,-5f);
+    private Vector2 targetPosition;
 
     public bool ficheIsOpening = false;
     public bool ficheIsClosing = false;
     void Start()
     {
         myStartPosition = transform.position;
+        targetPosition = new Vector2(myStartPosition.x, -5f);
     }
 
     private void Update()

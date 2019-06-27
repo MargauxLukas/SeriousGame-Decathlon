@@ -70,6 +70,11 @@ public class PistolScan : MonoBehaviour
             ongletManager.screenDisplay.UpdateAffichage();                                                                                       //On met à jour l'affichage
             fiche.ficheIsOpening = true;                                                                                                         //On ouvre la fiche
             listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;                            //On donne la liste d'anomalie
+
+            if (TutoManager.instance != null)
+            {
+                TutoManager.instance.Manager(2);
+            }
         }
         else
         {

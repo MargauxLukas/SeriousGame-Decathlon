@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ColisManager : MonoBehaviour
 {
@@ -31,15 +32,16 @@ public class ColisManager : MonoBehaviour
 
     public AnomalieDetection anomDetect;
 
-    private void Start()
+    private void Awake()
     {
         if(ChargementListeColis.instance != null)
         {
+            Debug.Log("Test Instance");
             listeColisTraiter = ChargementListeColis.instance.colisProcessMulti;
         }
-
         anomDetect.CheckList(listeColisTraiter);
     }
+
 
     public void CheckNewColis()
     {
@@ -97,6 +99,10 @@ public class ColisManager : MonoBehaviour
             scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
             scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
+        else
+        {
+            Scoring.instance.MinorPenalty();
+        }
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
@@ -107,10 +113,26 @@ public class ColisManager : MonoBehaviour
         colisRenvoye.GetComponent<ColisScript>().colisScriptable.needQualityControl = false;
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {
-            anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
+            //anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
             if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
             {
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
+                Scoring.instance.sendColis();
+                Scoring.instance.ResetComboColisSansMalus();
+                Scoring.instance.WhatTheFuck();
+                for (int m = 0; m < colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie; m++)
+                {
+                    Scoring.instance.MajorPenalty();
+                }
+            }
+            else
+            {
+                Scoring.instance.sendColisWithoutMalus();
+            }
+
+            if(colisRenvoye.GetComponent<ColisScript>().colisScriptable.isBadOriented)
+            {
+                Scoring.instance.MajorPenalty();
             }
             GameObject.Destroy(colisRenvoye);
         }
