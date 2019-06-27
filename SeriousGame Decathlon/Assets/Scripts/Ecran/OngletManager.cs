@@ -88,6 +88,7 @@ public class OngletManager : MonoBehaviour
     {
         if (allValidate)
         {
+            
             homeScreen   .SetActive(true );
             ongletButton .SetActive(false);
             fillingRate  .SetActive(false);

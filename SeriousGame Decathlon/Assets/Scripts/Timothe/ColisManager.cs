@@ -110,6 +110,7 @@ public class ColisManager : MonoBehaviour
 
     public void RenvoieColis(GameObject colisRenvoye)
     {
+        anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
         colisRenvoye.GetComponent<ColisScript>().colisScriptable.needQualityControl = false;
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {

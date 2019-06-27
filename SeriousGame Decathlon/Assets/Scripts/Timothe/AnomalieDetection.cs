@@ -30,6 +30,7 @@ public class AnomalieDetection : MonoBehaviour
 
     public void CheckColis(Colis colis)
     {
+        Debug.Log("Test Vali 2");
         colis.nbAnomalie = 0;
         colis.listAnomalies = new List<string>();
 
@@ -148,7 +149,7 @@ public class AnomalieDetection : MonoBehaviour
         }
         else
         {
-            //Debug.Log("T'arrive là ?");
+            Debug.Log("T'arrive là ?");
         }
     }
 

@@ -79,7 +79,7 @@ public class ChargementListeColis : MonoBehaviour
         affichageNouveauLevel.text = levelScript.colisDuNiveauNoms[3].ToString();
         //Trouver un système pour mélanger les colis aléatoirement.
         //Ajouter le choix des process pour le level load.
-        //LoadNewScene(0);
+        LoadNewScene(1);
     }
 
     private void Update()
