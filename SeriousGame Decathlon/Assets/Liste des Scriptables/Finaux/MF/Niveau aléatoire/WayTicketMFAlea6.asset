@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PCB: 4
   refArticle: {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
-  numeroCodeBarre: 0
+  numeroCodeBarre: 6
   poids: 2

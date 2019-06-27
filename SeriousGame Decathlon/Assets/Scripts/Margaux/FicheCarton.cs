@@ -55,8 +55,8 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+            //scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
+            //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;

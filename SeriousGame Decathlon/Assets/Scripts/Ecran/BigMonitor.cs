@@ -30,7 +30,7 @@ public class BigMonitor : MonoBehaviour
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began) { startPos = touch.position.x; }
-            if (touch.phase == TouchPhase.Ended) { endPos = touch.position.x; }
+            if (touch.phase == TouchPhase.Ended) { endPos   = touch.position.x; }
             else { return; }
 
             swipeDifference = Mathf.Abs(startPos - endPos);
@@ -65,7 +65,10 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = true;
             monitorOpening = false;
-            TutoManager.instance.Manager(3);
+            if (TutoManager.instance != null)
+            {
+                TutoManager.instance.Manager(3);
+            }
         }
     }
 
@@ -79,7 +82,7 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = false;
             miniMonitor.monitorClosing = false;
-            TutoManager.instance.Manager(7);
+            if (TutoManager.instance != null) {TutoManager.instance.Manager(7);}
         }
     }
 }

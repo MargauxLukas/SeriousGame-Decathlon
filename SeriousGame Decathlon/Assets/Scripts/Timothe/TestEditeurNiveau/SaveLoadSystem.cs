@@ -91,6 +91,7 @@ public class SaveLoadSystem : MonoBehaviour
         {
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/colis_data/" + colisName + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), colisToLoad);
+            file.Close();
         }
 
         colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
@@ -111,6 +112,7 @@ public class SaveLoadSystem : MonoBehaviour
         {
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), newTicket);
+            file.Close();
         }
 
         return newTicket;
@@ -170,6 +172,7 @@ public class SaveLoadSystem : MonoBehaviour
         {
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
+            file.Close();
             Debug.Log(levelToSave.nbLevel);
         }
         return levelToSave;

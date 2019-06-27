@@ -7,18 +7,19 @@ public class PosteOnClick : MonoBehaviour
     public GameObject  cameraPoste;
     public GameObject cameraDezoom;
     public GameObject       player;
+    public GameObject        aStar;
 
     private void Update()
     {
         if (Input.touchCount > 0)
         {
-
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
             if(Physics2D.OverlapPoint(touchPosition))
             {
-                cameraPoste.SetActive(true);
+                cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);
+                aStar       .SetActive(false);
                 player.GetComponent<Unit>().enabled = false;
             }
         }
@@ -26,8 +27,9 @@ public class PosteOnClick : MonoBehaviour
 
     public void ReturnToDezoom()
     {
-        cameraPoste.SetActive(false);
+        cameraPoste .SetActive(false);
         cameraDezoom.SetActive(true);
+        aStar       .SetActive(true);
         player.GetComponent<Unit>().enabled = true;
     }
 }

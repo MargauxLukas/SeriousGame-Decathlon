@@ -230,26 +230,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colisScriptable: {fileID: 11400000, guid: 879ad7c65ca876642805f3c6d089598f, type: 2}
-  estSecoue: 0
-  changeDirection: 0
   articleOnTableUn: []
   articleOnTableDeux: []
+  spriteCartons: []
+  IWayEtiquette: {fileID: 246706536070355173}
   tournerMenu: {fileID: 0}
   spriteArticleTableUn: {fileID: 0}
   spriteArticleTableDeux: {fileID: 0}
-  spriteCartons: []
+  changeDirection: 0
+  estSecoue: 0
+  hasBeenScannedByRFID: 0
+  hasBeenScannedByPistol: 0
   circleImage: {fileID: 0}
   itemNumber: 4
   menuIsOpen: 0
   timeBeforeMenuOpen: 1
-  IWayEtiquette: {fileID: 246706536070355173}
-  hasBeenScannedByRFID: 0
-  hasBeenScannedByPistol: 0
   doesEntrance: 0
   doesEntranceSecond: 0
   doesRenvoie: 0
   canMoveVertical: 0
   entrancePosition: {x: 0, y: 0, z: 0}
+  spriteArticleDansColis: {fileID: 4125945287869827057}
+  spriteMaskArticleColis: {fileID: 0}
 --- !u!50 &246706537573853403
 Rigidbody2D:
   serializedVersion: 4
