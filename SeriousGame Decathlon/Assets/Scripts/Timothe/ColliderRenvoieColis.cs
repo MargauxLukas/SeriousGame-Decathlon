@@ -18,6 +18,9 @@ public class ColliderRenvoieColis : MonoBehaviour
     public bool isFinalRenvoie;
     public bool canReturn;
 
+    public List<GameObject> listToDesactivate;
+    public List<GameObject> listToActive;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<ColisScript>() != null && !collision.gameObject.GetComponent<ColisScript>().doesEntrance && !collision.gameObject.GetComponent<ColisScript>().doesEntranceSecond && !collision.gameObject.GetComponent<ColisScript>().doesRenvoie)
@@ -40,6 +43,22 @@ public class ColliderRenvoieColis : MonoBehaviour
                     collision.gameObject.GetComponent<ColisScript>().entrancePosition = colisPosition.position;
                     collision.gameObject.GetComponent<ColisScript>().doesEntranceSecond = true;
                 }
+                if(listToActive.Count>0)
+                {
+                    foreach(GameObject obj in listToActive)
+                    {
+                        obj.SetActive(true);
+                    }
+                }
+
+                if(listToDesactivate.Count>0)
+                {
+                    foreach(GameObject obj in listToDesactivate)
+                    {
+                        obj.SetActive(false);
+                    }
+                }
+
             }
         }
     }
