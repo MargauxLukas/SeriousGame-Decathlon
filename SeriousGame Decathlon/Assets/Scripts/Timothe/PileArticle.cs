@@ -54,6 +54,7 @@ public class PileArticle : MonoBehaviour
             {
                 menuIsOpen = false;
                 canvasInfo.SetActive(false);
+                if (TutoManager.instance != null) {TutoManager.instance.Manager(14);}
             }
 
             if (doesTouch)
@@ -82,6 +83,7 @@ public class PileArticle : MonoBehaviour
                 if (timeTouched > timeBeforeOpen && menuCanOpen)
                 {
                     menuIsOpen = true;
+                    if(TutoManager.instance != null) {TutoManager.instance.Manager(12);}
                     circleImage.transform.parent.gameObject.SetActive(true);
                     circleImage.transform.parent.gameObject.transform.position = transform.position;
                     circleImage.fillAmount = 1f / itemNumber;
@@ -207,6 +209,7 @@ public class PileArticle : MonoBehaviour
     public void ShowInfo()
     {
         canvasInfo.SetActive(true);
+        if(TutoManager.instance != null) {TutoManager.instance.Manager(13);}
         textNbArticle.text = listArticles.Count.ToString();
         int nbRFID = 0;
         foreach (Article art in listArticles)
@@ -232,19 +235,23 @@ public class PileArticle : MonoBehaviour
         switch (nb)
         {
             case 1:
-                if(listColisPresent[0] != null)
+                if ((TutoManager.instance == null || TutoManager.instance.canColis1) && listColisPresent[0] != null)
                 {
                     ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
+                    if (TutoManager.instance != null) {TutoManager.instance.Manager(15);}
                 }
                 break;
             case 2:
-                if (listColisPresent[1] != null)
+                if ((TutoManager.instance == null || TutoManager.instance.canColis2) && listColisPresent[1] != null)
                 {
                     ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
             case 0:
-                ShowInfo();
+                if (TutoManager.instance == null || TutoManager.instance.canInfo)
+                {
+                    ShowInfo();
+                }
                 break;
         }
     }

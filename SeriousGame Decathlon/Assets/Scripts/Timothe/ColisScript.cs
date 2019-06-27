@@ -126,6 +126,7 @@ public class ColisScript : MonoBehaviour
                         if (timeTouched > timeBeforeMenuOpen && menuCanOpen)
                         {
                             menuIsOpen = true;
+                            if(TutoManager.instance != null) {TutoManager.instance.Manager(9);}
 
                             circlePosition = transform.position;
                             circleImage.transform.parent.gameObject.SetActive(true);
@@ -286,20 +287,32 @@ public class ColisScript : MonoBehaviour
         switch (nb)
         {
             case 1:
-                Jeter();
-                TellSomething(1);
+                if (TutoManager.instance == null || TutoManager.instance.canJeter)
+                {
+                    Jeter();
+                    TellSomething(1);
+                }
                 break;
             case 2:
-                Vider();
-                TellSomething(2);
+                if (TutoManager.instance == null || TutoManager.instance.canVider)
+                {
+                    Vider();
+                    TellSomething(2);
+                }
                 break;
             case 3:
-                OuvrirFermer();
-                TellSomething(3);
+                if (TutoManager.instance == null || TutoManager.instance.canOuvrirFermer)
+                {
+                    OuvrirFermer();
+                    TellSomething(3);
+                }
                 break;
             case 0:
-                OpenTurnMenu();
-                TellSomething(5);
+                if (TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu)
+                {
+                    OpenTurnMenu();
+                    TellSomething(5);
+                }
                 break;
         }
     }
@@ -322,6 +335,7 @@ public class ColisScript : MonoBehaviour
         }
         else if (!colisScriptable.estOuvert)
         {
+            if(TutoManager.instance != null) {TutoManager.instance.Manager(10);}
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 1f;
             GetComponent<SpriteRenderer>().color = newColo;
@@ -367,6 +381,7 @@ public class ColisScript : MonoBehaviour
         if (colisScriptable.estOuvert)
         {
             colisScriptable.aEteVide = true;
+            if(TutoManager.instance != null) {TutoManager.instance.Manager(11);}
             articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
             articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
 

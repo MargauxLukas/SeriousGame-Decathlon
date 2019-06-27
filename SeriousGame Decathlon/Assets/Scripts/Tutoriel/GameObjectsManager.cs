@@ -10,6 +10,8 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject colis;
     public GameObject screen;
     public GameObject bigScreen;
+    public GameObject scanRFID;
+    public GameObject pileArticles;
 
     //RecountTab
     public GameObject recountTab;
@@ -18,12 +20,9 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject printHUButton;
     public GameObject printRFIDButton;
 
+    //WIP
     public GameObject repackTab;
     public GameObject fillTab;
-    public GameObject menuCirculaireColis;
-    public GameObject pileArticles;
-    public GameObject menuCirculairePileArticles;
-    //WIP
 
     public BoxCollider2D GameObjectToBoxCollider(GameObject gameObject)
     {
