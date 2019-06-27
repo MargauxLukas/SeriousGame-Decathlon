@@ -55,6 +55,13 @@ public class SaveLoadSystem : MonoBehaviour
         var json = JsonUtility.ToJson(colisToSave);
         bf.Serialize(file, json);
         file.Close();
+
+        SavedData temporarySave = LoadGeneralData();
+        if(!temporarySave.nomColisConnus.Contains(colisToSave.name))
+        {
+            temporarySave.nomColisConnus.Add(colisToSave.name);
+        }
+        SaveGeneralData(temporarySave);
     }
 
     public void SaveWayTicket(WayTicket ticket)
@@ -75,7 +82,6 @@ public class SaveLoadSystem : MonoBehaviour
         var json = JsonUtility.ToJson(ticket);
         bf.Serialize(file, json);
         file.Close();
-
     }
 
     public Colis LoadColis(/*Colis colisToLoad, */string colisName)
@@ -118,6 +124,50 @@ public class SaveLoadSystem : MonoBehaviour
         return newTicket;
     }
 
+    public void SaveGeneralData(SavedData dataToSave)
+    {
+        if (!IsSaveFile())
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        if (!File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
+        {
+            FileStream file = File.Create(Application.persistentDataPath + "/game_save/generalData.txt");
+            var json = JsonUtility.ToJson(dataToSave);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+        else
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
+            var json = JsonUtility.ToJson(dataToSave);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+    }
+
+    public SavedData LoadGeneralData()
+    {
+
+        if (!IsSaveFile())
+        {
+            return null;
+        }
+
+        SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
+
+        BinaryFormatter bf = new BinaryFormatter();
+        if (File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
+            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), dataToLoad);
+            file.Close();
+        }
+        return dataToLoad;
+    }
+
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
     {
         if (!IsSaveFile())
@@ -134,10 +184,16 @@ public class SaveLoadSystem : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
         {
+            SavedData temporarySave = LoadGeneralData();
+            temporarySave.nombreNiveauCree++;
+            levelToSave.nbLevel = temporarySave.nombreNiveauCree;
+
             FileStream file = File.Create(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt");
             var json = JsonUtility.ToJson(levelToSave);
             bf.Serialize(file, json);
             file.Close();
+
+            SaveGeneralData(temporarySave);
         }
         else
         {

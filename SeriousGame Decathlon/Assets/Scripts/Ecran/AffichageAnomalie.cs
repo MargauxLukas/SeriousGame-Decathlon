@@ -124,7 +124,6 @@ public class AffichageAnomalie : MonoBehaviour
         }
 
         Scoring.instance.solveAnomalieWithoutMalus();
-        Scoring.instance.ResetComboAnomalie();
     }
 
     public void ShowHelp(int nbHelp)
