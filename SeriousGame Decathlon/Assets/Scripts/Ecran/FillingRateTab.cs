@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class FillingRateTab : MonoBehaviour
 {
-    public int fillingRate;
+    public int fillingRate = 0;
     public bool bCanMecaOpen = true;
     [Header("Can Meca Open Toggle")]
     public Toggle toggle;

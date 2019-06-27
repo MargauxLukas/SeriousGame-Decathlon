@@ -115,7 +115,7 @@ public class Unit : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(new Vector3(path.lookPoints[pathIndex].x, path.lookPoints[pathIndex].y, 0) - transform.position);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1);
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
-                
+                //transform.Translate(new Vector3(path.lookPoints[pathIndex].x, path.lookPoints[pathIndex].y, 0), Space.Self);
             }
             yield return null;
         }

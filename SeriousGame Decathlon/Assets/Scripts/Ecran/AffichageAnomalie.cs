@@ -100,7 +100,7 @@ public class AffichageAnomalie : MonoBehaviour
 
     public void ValidateAnomalie(int nbBouton)
     {
-        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
+        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
         {
             detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
         }
