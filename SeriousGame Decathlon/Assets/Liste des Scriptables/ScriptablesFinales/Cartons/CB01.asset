@@ -17,4 +17,11 @@ MonoBehaviour:
   hauteur: 0
   codeRef: CB01
   cartonName: 
-  spriteCartonsListe: []
+  spriteCartonsListe:
+  - {fileID: 21300000, guid: 9493e6cf112f33546a3970e404c028b4, type: 3}
+  - {fileID: 21300000, guid: 778b19d936f7e2e4a9d709993257589b, type: 3}
+  - {fileID: 21300000, guid: 8f48478df7195a34a8288c0e09a593a1, type: 3}
+  - {fileID: 21300000, guid: d318aa392ab9ca44089b7eeddbc13592, type: 3}
+  - {fileID: 21300000, guid: 970d34aa9634765489683ed9aaa269a2, type: 3}
+  - {fileID: 21300000, guid: eead2b111b17fe640b351f62a23e8f75, type: 3}
+  cartonOuvert: {fileID: 21300000, guid: eead2b111b17fe640b351f62a23e8f75, type: 3}

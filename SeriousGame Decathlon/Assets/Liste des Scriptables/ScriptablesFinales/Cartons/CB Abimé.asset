@@ -17,4 +17,11 @@ MonoBehaviour:
   hauteur: 0
   codeRef: QD O99
   cartonName: 
-  spriteCartonsListe: []
+  spriteCartonsListe:
+  - {fileID: 21300000, guid: 4281d06cbd30c254dbd7ec188eb85cf1, type: 3}
+  - {fileID: 21300000, guid: 078a8810e8328084b85bc6613b9de4e1, type: 3}
+  - {fileID: 21300000, guid: 5ecb2a6d6f0e3eb4684aa7c1abf38f20, type: 3}
+  - {fileID: 21300000, guid: 299a523da76c32a488dc4c407556dd0b, type: 3}
+  - {fileID: 21300000, guid: e90c4c707d22ded4db46f065f17e86dd, type: 3}
+  - {fileID: 21300000, guid: d8dc86b141b96b24e869fb2c14ccfc5b, type: 3}
+  cartonOuvert: {fileID: 21300000, guid: e90c4c707d22ded4db46f065f17e86dd, type: 3}
