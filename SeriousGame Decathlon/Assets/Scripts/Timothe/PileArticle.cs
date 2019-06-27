@@ -211,13 +211,19 @@ public class PileArticle : MonoBehaviour
         int nbRFID = 0;
         foreach (Article art in listArticles)
         {
-            if(art.rfid.estFonctionnel)
+            if (art.rfid != null)
             {
-                nbRFID++;
+                if (art.rfid.estFonctionnel)
+                {
+                    nbRFID++;
+                }
             }
         }
         textNbRFID.text = nbRFID.ToString();
-        textRefRFID.text = listArticles[0].rfid.refArticle.numeroRef.ToString();
+        if (listArticles[0].rfid != null)
+        {
+            textRefRFID.text = listArticles[0].rfid.refArticle.numeroRef.ToString();
+        }
         menuIsOpen = true;
     }
 

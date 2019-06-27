@@ -65,7 +65,10 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = true;
             monitorOpening = false;
-            TutoManager.instance.Manager(3);
+            if (TutoManager.instance != null)
+            {
+                TutoManager.instance.Manager(3);
+            }
         }
     }
 
@@ -79,7 +82,7 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = false;
             miniMonitor.monitorClosing = false;
-            TutoManager.instance.Manager(7);
+            if (TutoManager.instance != null) {TutoManager.instance.Manager(7);}
         }
     }
 }

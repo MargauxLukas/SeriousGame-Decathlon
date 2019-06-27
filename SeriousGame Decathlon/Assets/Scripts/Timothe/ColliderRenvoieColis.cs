@@ -22,7 +22,7 @@ public class ColliderRenvoieColis : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<ColisScript>() != null && !collision.gameObject.GetComponent<ColisScript>().doesEntrance && !collision.gameObject.GetComponent<ColisScript>().doesEntranceSecond && !collision.gameObject.GetComponent<ColisScript>().doesRenvoie)
         {
-            if (collision.gameObject.GetComponent<ColisScript>().colisScriptable.listArticles.Count > 0 && canReturn)
+            if (collision.gameObject.GetComponent<ColisScript>().colisScriptable.listArticles.Count > 0)
             {
                 if (isFinalRenvoie)
                 {
@@ -32,7 +32,7 @@ public class ColliderRenvoieColis : MonoBehaviour
                     collision.gameObject.GetComponent<ColisScript>().doesRenvoie = true;
                     canReturn = false;
                 }
-                else
+                else if (canReturn)
                 {
                     faceToGet.colis = collision.gameObject.GetComponent<ColisScript>();
                     renvoieManage.ChangePoste(camera, collision.gameObject, cameraPosition, colisPosition);

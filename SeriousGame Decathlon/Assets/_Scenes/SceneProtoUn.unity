@@ -2118,6 +2118,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129435458}
   m_CullTransparentMesh: 0
+--- !u!114 &139994798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4529553325785247919, guid: e4e406dd876555e4e925c63807536d0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 10885178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1be2ff4e0eb674991aac41f7aa851d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147485156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,6 +2511,18 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
+--- !u!114 &179945680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3933153352285036252, guid: e4e406dd876555e4e925c63807536d0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 10885178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe3779394d2acb4e9c9380fdd89b662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &189862465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,7 +2801,7 @@ MonoBehaviour:
   screenDisplay: {fileID: 895455878}
   pistolScan: {fileID: 606082331}
   anomalieDetect: {fileID: 1512090501580459130}
-  colliderRenvoieColis: {fileID: 0}
+  colliderRenvoieColis: {fileID: 179945680}
   hasBeenScannedByPistol: 0
   allValidate: 0
 --- !u!4 &201539001
@@ -12701,6 +12725,7 @@ MonoBehaviour:
   cameraPoste: {fileID: 502053888}
   cameraDezoom: {fileID: 394800109}
   player: {fileID: 1268085718}
+  aStar: {fileID: 1615897918}
 --- !u!1 &963434845
 GameObject:
   m_ObjectHideFlags: 0
@@ -20144,7 +20169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1614292100
 Transform:
   m_ObjectHideFlags: 0
@@ -20172,7 +20197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manage: {fileID: 857046845}
-  renvoieManage: {fileID: 0}
+  renvoieManage: {fileID: 139994798}
   camera: {fileID: 0}
   cameraPosition: {fileID: 0}
   colisPosition: {fileID: 0}
@@ -26155,7 +26180,7 @@ PrefabInstance:
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: listeColisTraiter.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
@@ -26239,7 +26264,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listeColisTraiter.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 728f549f06aa9334fbccde1a2f668c48,
+      objectReference: {fileID: 11400000, guid: 9011f01ec696e4f4b84c291b56bcf99f,
         type: 2}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
