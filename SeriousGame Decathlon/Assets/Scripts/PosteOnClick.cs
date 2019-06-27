@@ -20,7 +20,7 @@ public class PosteOnClick : MonoBehaviour
                 cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);
                 aStar       .SetActive(false);
-                player.GetComponent<Unit>().enabled = false;
+                player      .SetActive(false);
             }
         }
     }
@@ -30,6 +30,6 @@ public class PosteOnClick : MonoBehaviour
         cameraPoste .SetActive(false);
         cameraDezoom.SetActive(true);
         aStar       .SetActive(true);
-        player.GetComponent<Unit>().enabled = true;
+        player      .SetActive(true);
     }
 }
