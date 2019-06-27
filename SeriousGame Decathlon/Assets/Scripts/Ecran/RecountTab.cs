@@ -38,6 +38,7 @@ public class RecountTab : MonoBehaviour
         if(!colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
         {
             Scoring.instance.MinorPenalty();
+            Scoring.instance.AffichageErreur("Colis non scanné");
         }
         if (TutoManager.instance != null) { TutoManager.instance.Manager(6); }
     }

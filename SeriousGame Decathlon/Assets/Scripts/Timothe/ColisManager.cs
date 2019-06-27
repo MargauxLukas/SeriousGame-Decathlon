@@ -99,9 +99,10 @@ public class ColisManager : MonoBehaviour
             //scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
             //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
-        else
+        else if(listeColisActuel.Length > 0)
         {
             Scoring.instance.MinorPenalty();
+            Scoring.instance.AffichageErreur("Tu a déjà un colis a traiter");
         }
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
@@ -120,7 +121,9 @@ public class ColisManager : MonoBehaviour
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
                 Scoring.instance.sendColis();
                 Scoring.instance.ResetComboColisSansMalus();
+                Scoring.instance.AffichageErreur("Renvoie de colis avec anomalies");
                 Scoring.instance.WhatTheFuck();
+                
                 for (int m = 0; m < colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie; m++)
                 {
                     Scoring.instance.MajorPenalty();

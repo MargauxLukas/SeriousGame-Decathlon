@@ -30,7 +30,18 @@ public class AnomalieDetection : MonoBehaviour
 
     public void CheckColis(Colis colis)
     {
-        Debug.Log("Test Vali 2");
+        if(colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
+        {
+            Scoring.instance.MidPenalty();
+            Scoring.instance.AffichageErreur("Quality control : Colis non vidé");
+        }
+
+        if(colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount)
+        {
+            Scoring.instance.MidPenalty();
+            Scoring.instance.AffichageErreur("Repack from FP : Colis non recompté");
+        }
+
         colis.nbAnomalie = 0;
         colis.listAnomalies = new List<string>();
 

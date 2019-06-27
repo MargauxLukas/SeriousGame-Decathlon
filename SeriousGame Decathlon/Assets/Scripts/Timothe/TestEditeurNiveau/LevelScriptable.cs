@@ -7,6 +7,7 @@ public class LevelScriptable : ScriptableObject
 {
     public List<string> colisDuNiveauNoms;
     public List<int> nbColisParNomColis;
+    public string name;
     public int nbLevel;
 
     public void AddColis(Colis colis)
