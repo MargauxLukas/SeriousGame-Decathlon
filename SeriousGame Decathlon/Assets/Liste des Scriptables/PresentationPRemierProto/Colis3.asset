@@ -28,7 +28,8 @@ MonoBehaviour:
   listArticles:
   - {fileID: 11400000, guid: 65cb87d9ca1d6b548b747f9d6ebd76ce, type: 2}
   - {fileID: 11400000, guid: 65cb87d9ca1d6b548b747f9d6ebd76ce, type: 2}
-  nbAnomalie: 0
+  nbAnomalie: 2
   listAnomalies:
   - Quality control
+  - RFID tag scanned for unknown product
   provenance: 
