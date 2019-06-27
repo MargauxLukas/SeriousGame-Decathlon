@@ -43,6 +43,7 @@ public class GetIWayFromObject : MonoBehaviour
             if (touch.phase == TouchPhase.Ended && collision.gameObject.GetComponent<ColisScript>() != null)
             {
                 collision.gameObject.GetComponent<ColisScript>().colisScriptable.wayTicket = IWayTicket;
+                if (TutoManager.instance != null) {TutoManager.instance.Manager(18);}
                 if(!collision.gameObject.GetComponent<ColisScript>().colisScriptable.isBadOriented && collision.gameObject.GetComponent<ColisScript>().IWayEtiquette != null)
                 {
                     collision.gameObject.GetComponent<ColisScript>().IWayEtiquette.SetActive(true);

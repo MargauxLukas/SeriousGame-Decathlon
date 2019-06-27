@@ -80,6 +80,10 @@ public class TutoManager : MonoBehaviour
                     case (30):
                         Phase30();
                         break;
+
+                    case (38):
+                        Phase38();
+                        break;
                 }
                 break;
 
@@ -130,6 +134,22 @@ public class TutoManager : MonoBehaviour
                     case (26):
                         Phase26();
                         break;
+
+                    case (32):
+                        Phase32();
+                        break;
+
+                    case (36):
+                        Phase36();
+                        break;
+
+                    case (39):
+                        Phase39();
+                        break;
+
+                    case (42):
+                        Phase42();
+                        break;
                 }
                 break;
 
@@ -139,6 +159,10 @@ public class TutoManager : MonoBehaviour
                 {
                     case (10):
                         Phase10();
+                        break;
+
+                    case (31):
+                        Phase31();
                         break;
                 }
                 break;
@@ -163,6 +187,10 @@ public class TutoManager : MonoBehaviour
 
                     case (17):
                         Phase17();
+                        break;
+
+                    case (35):
+                        Phase35();
                         break;
                 }
                 break;
@@ -251,6 +279,56 @@ public class TutoManager : MonoBehaviour
                 {
                     case (29):
                         Phase29();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Inventory
+            case (16):
+                switch (phaseNum)
+                {
+                    case (33):
+                        Phase33();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Print HU
+            case (17):
+                switch (phaseNum)
+                {
+                    case (34):
+                        Phase34();
+                        break;
+                }
+                break;
+
+            //Collage HU
+            case (18):
+                switch (phaseNum)
+                {
+                    case (37):
+                        Phase37();
+                        break;
+                }
+                break;
+
+            //Interaction toggle End Task
+            case (19):
+                switch (phaseNum)
+                {
+                    case (40):
+                        Phase40();
+                        break;
+                }
+                break;
+
+            //Interaction onglet Filling Rate
+            case (20):
+                switch (phaseNum)
+                {
+                    case (41):
+                        Phase41();
                         break;
                 }
                 break;
@@ -582,5 +660,141 @@ public class TutoManager : MonoBehaviour
         phaseNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = true;
+    }
+
+    void Phase31()
+    {
+        phaseNum++;
+        //Enable Fond noir
+        //New position (bouton Inventory) + Enable Spritemask
+        Manager(4);
+    }
+
+    void Phase32()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Doigt click new position (bouton Inventory) + set active
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.inventoryButton).interactable = true;
+    }
+
+    void Phase33()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        //Disable Doigt
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.inventoryButton).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (bouton Print HU) + Enable Spritemask
+        //Doigt click new position (bouton Print HU) + set active
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.printHUButton).interactable = true;
+    }
+
+    void Phase34()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        //Disable Doigt
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.printHUButton).interactable = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+    }
+
+    void Phase35()
+    {
+        phaseNum++;
+        //Enable Fond noir
+        //New position (new HU + colis) + Enable Spritemask x2
+        Manager(4);
+    }
+
+    void Phase36()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Doigt slide new position (new HU > colis) + set active
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ticketHU).enabled = true;
+    }
+
+    void Phase37()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        //Disable Doigt
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+    }
+
+    void Phase38()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        //Enable Fond noir
+        //New position (toggle End Task) + Enable Spritemask
+        Manager(4);
+    }
+
+    void Phase39()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Doigt click new position (toggle End Task) + set active
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask1).interactable = true;
+    }
+
+    void Phase40()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        //Disable Doigt
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask1).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (onglet Filling Rate) + Enable Spritemask
+        //Doigt click new position (onglet Filling Rate) + set active
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.fillTab).interactable = true;
+    }
+
+    void Phase41()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        //Disable Doigt
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (boutons fill%) + Enable Spritemask
+        Manager(4);
+    }
+
+    void Phase42()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //New position (boutons 50%) Spritemask
+        //Doigt click new position (bouton 50%)
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.fill50).interactable = true;
+    }
+
+    void Phase43()
+    {
+
     }
 }

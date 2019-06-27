@@ -100,6 +100,7 @@ public class AffichageAnomalie : MonoBehaviour
 
     public void ValidateAnomalie(int nbBouton)
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(19);}
         if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
         {
             detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);

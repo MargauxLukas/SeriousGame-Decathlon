@@ -12,7 +12,12 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject bigScreen;
     public GameObject scanRFID;
     public GameObject pileArticles;
+    public GameObject ticketHU;
 
+    //Ecran
+    public GameObject toggleEndTask1;
+    public GameObject toggleEndTask2;
+    
     //RecountTab
     public GameObject recountTab;
     public GameObject recountButton;
@@ -20,9 +25,15 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject printHUButton;
     public GameObject printRFIDButton;
 
+    //FillingRateTab
+    public GameObject fillTab;
+    public GameObject fill50;
+    public GameObject fill100;
+    public GameObject fill125;
+
+
     //WIP
     public GameObject repackTab;
-    public GameObject fillTab;
 
     public BoxCollider2D GameObjectToBoxCollider(GameObject gameObject)
     {
@@ -32,5 +43,10 @@ public class GameObjectsManager : MonoBehaviour
     public Button GameObjectToButton(GameObject gameObject)
     {
         return gameObject.GetComponent<Button>();
+    }
+
+    public Toggle GameObjectToToggle(GameObject gameObject)
+    {
+        return gameObject.GetComponent<Toggle>();
     }
 }
