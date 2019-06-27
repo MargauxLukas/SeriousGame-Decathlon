@@ -100,6 +100,7 @@ public class RepackTab : MonoBehaviour
     public void NouveauColis()
     {
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
+        Debug.Log(codeCarton);
         ficheCarton.InstantiateCarton(codeCarton);
     }
 
