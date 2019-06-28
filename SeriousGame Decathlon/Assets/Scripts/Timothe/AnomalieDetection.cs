@@ -160,7 +160,7 @@ public class AnomalieDetection : MonoBehaviour
         }
         else
         {
-            Debug.Log("T'arrive là ?");
+            //Debug.Log("T'arrive là ?");
         }
     }
 

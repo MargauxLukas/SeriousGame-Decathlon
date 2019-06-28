@@ -34,7 +34,6 @@ public class FicheInfoIway : MonoBehaviour
 
     public void OpenFiche()
     {
-        Debug.Log("Test");
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, 0.1f);
 
         if (Vector2.Distance(transform.position, targetPosition) <= 0.2f)
