@@ -16,7 +16,7 @@ public class FicheInfoIway : MonoBehaviour
     void Start()
     {
         myStartPosition = transform.position;
-        targetPosition = new Vector2(myStartPosition.x, -4f);
+        targetPosition = new Vector2(myStartPosition.x, -4.5f);
     }
 
     private void Update()
