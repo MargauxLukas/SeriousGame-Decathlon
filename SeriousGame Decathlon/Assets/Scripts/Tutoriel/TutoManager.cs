@@ -52,6 +52,10 @@ public class TutoManager : MonoBehaviour
                     case (1):
                         Phase01();
                         break;
+
+                    case (64):
+                        Phase64();
+                        break;
                 }
                 break;
 
@@ -83,6 +87,18 @@ public class TutoManager : MonoBehaviour
 
                     case (38):
                         Phase38();
+                        break;
+
+                    case (53):
+                        Phase53();
+                        break;
+
+                    case (57):
+                        Phase57();
+                        break;
+
+                    case (73):
+                        Phase73();
                         break;
                 }
                 break;
@@ -150,6 +166,26 @@ public class TutoManager : MonoBehaviour
                     case (42):
                         Phase42();
                         break;
+
+                    case (56):
+                        Phase56();
+                        break;
+
+                    case (61):
+                        Phase61();
+                        break;
+
+                    case (65):
+                        Phase65();
+                        break;
+
+                    case (67):
+                        Phase67();
+                        break;
+
+                    case (70):
+                        Phase70();
+                        break;
                 }
                 break;
 
@@ -192,6 +228,22 @@ public class TutoManager : MonoBehaviour
                     case (35):
                         Phase35();
                         break;
+
+                    case (46):
+                        Phase46();
+                        break;
+
+                    case (55):
+                        Phase55();
+                        break;
+
+                    case (59):
+                        Phase59();
+                        break;
+
+                    case (68):
+                        Phase68();
+                        break;
                 }
                 break;
 
@@ -201,6 +253,10 @@ public class TutoManager : MonoBehaviour
                 {
                     case (14):
                         Phase14();
+                        break;
+
+                    case (66):
+                        Phase66();
                         break;
                 }
                 break;
@@ -216,15 +272,27 @@ public class TutoManager : MonoBehaviour
                     case (22):
                         Phase22();
                         break;
+
+                    case (47):
+                        Phase47();
+                        break;
+
+                    case (49):
+                        Phase49();
+                        break;
                 }
                 break;
 
-            //Interaction bouton Ouvrir
+            //Interaction bouton OuvrirFermer
             case (10):
                 switch (phaseNum)
                 {
                     case (21):
                         Phase21();
+                        break;
+
+                    case (48):
+                        Phase48();
                         break;
                 }
                 break;
@@ -235,6 +303,10 @@ public class TutoManager : MonoBehaviour
                 {
                     case (23):
                         Phase23();
+                        break;
+
+                    case (69):
+                        Phase69();
                         break;
                 }
                 break;
@@ -259,6 +331,14 @@ public class TutoManager : MonoBehaviour
                 {
                     case (25):
                         Phase25();
+                        break;
+
+                    case (71):
+                        Phase71();
+                        break;
+
+                    case (72):
+                        Phase72();
                         break;
                 }
                 break;
@@ -320,6 +400,14 @@ public class TutoManager : MonoBehaviour
                     case (40):
                         Phase40();
                         break;
+
+                    case (45):
+                        Phase45();
+                        break;
+
+                    case (54):
+                        Phase54();
+                        break;
                 }
                 break;
 
@@ -332,8 +420,108 @@ public class TutoManager : MonoBehaviour
                         break;
                 }
                 break;
+
+            //Interaction bouton %
+            case (21):
+                switch (phaseNum)
+                {
+                    case (43):
+                        Phase43();
+                        break;
+                }
+                break;
+
+            //Interaction toggle Can meca open
+            case (22):
+                switch (phaseNum)
+                {
+                    case (44):
+                        Phase44();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Return to meca
+            case (23):
+                switch (phaseNum)
+                {
+                    case (58):
+                        Phase58();
+                        break;
+                }
+                break;
+
+            //Renvoi colis droite
+            case (24):
+                switch (phaseNum)
+                {
+                    case (60):
+                        Phase60();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Tourner
+            case (25):
+                switch (phaseNum)
+                {
+                    case (50):
+                        Phase50();
+                        break;
+                }
+                break;
+
+            //Interaction flèches
+            case (26):
+                switch (phaseNum)
+                {
+
+                }
+                break;
+
+            //Colis bien orienté
+            case (27):
+                switch (phaseNum)
+                {
+                    case (51):
+                        Phase51();
+                        break;
+                }
+                break;
+
+            //Fermeture menu flèches
+            case (28):
+                switch (phaseNum)
+                {
+                    case (52):
+                        Phase52();
+                        break;
+                }
+                break;
+
+            //Renvoi colis haut
+            case (29):
+                switch (phaseNum)
+                {
+                    case (62):
+                        Phase62();
+                        break;
+                }
+                break;
+
+            //Interaction bouton quitter vue renvoi colis
+            case (30):
+                switch(phaseNum)
+                {
+
+                }
+                break;
         }
     }
+
+        /*****************/
+       /*   Colis 1     */
+      /*****************/
 
     void Phase00()
     {
@@ -359,7 +547,7 @@ public class TutoManager : MonoBehaviour
         //New position (pistolet + HU) + Enable Spritemask x2 
         //Doigt slide new position (pistolet > HU) + set active
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
     }
 
     void Phase02()
@@ -369,7 +557,7 @@ public class TutoManager : MonoBehaviour
         //Disable Spritemask
         //Disable doigt
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = false;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         //Enable Fond noir
@@ -494,7 +682,7 @@ public class TutoManager : MonoBehaviour
         //Enable Fond noir
         //New position (scan RFID + colis) + Enable Spritemask x2
         //Doigt slide (secouer) new position (colis > scan RFID) + set active
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
     }
 
@@ -504,7 +692,7 @@ public class TutoManager : MonoBehaviour
         //Disable Fond noir
         //Disable Spritemask
         //Disable doigt
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
@@ -563,7 +751,7 @@ public class TutoManager : MonoBehaviour
         //Disable Fond noir
         //Disable Spritemask
         //Doigt maintenir new position (colis)
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
     }
 
     void Phase20()
@@ -591,11 +779,11 @@ public class TutoManager : MonoBehaviour
     {
         phaseNum++;
         canVider = false;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         //Doigt maintenir new position (pile article) + set active
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticlesColis1).enabled = true;
     }
 
     void Phase24()
@@ -649,7 +837,7 @@ public class TutoManager : MonoBehaviour
     {
         phaseNum++;
         canColis1 = false;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticlesColis1).enabled = false;
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
@@ -721,7 +909,7 @@ public class TutoManager : MonoBehaviour
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         //Doigt slide new position (new HU > colis) + set active
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ticketHU).enabled = true;
     }
 
@@ -731,7 +919,7 @@ public class TutoManager : MonoBehaviour
         //Disable fond noir
         //Disable Spritemask
         //Disable Doigt
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
@@ -789,12 +977,310 @@ public class TutoManager : MonoBehaviour
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         //New position (boutons 50%) Spritemask
-        //Doigt click new position (bouton 50%)
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.fill50).interactable = true;
+        //Doigt click new position (bouton 50%) + set active
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.fill50Button).interactable = true;
     }
 
     void Phase43()
     {
+        phaseNum++;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.fill50Button).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //New position (toggle Can meca open) Spritemask
+        //Doigt click new position (toggle Can meca open)
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.mecaOpenToggle).interactable = true;
+    }
 
+    void Phase44()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.mecaOpenToggle).interactable = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.fillTab).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Doigt click new position (toggle End task)
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask2).interactable = true;
+    }
+
+    void Phase45()
+    {
+        phaseNum++;
+        //Disable Doigt
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask2).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+    }
+
+    void Phase46()
+    {
+        phaseNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
+    }
+
+    void Phase47()
+    {
+        phaseNum++;
+        canOuvrirFermer = true;
+    }
+
+    void Phase48()
+    {
+        phaseNum++;
+        canOuvrirFermer = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+    }
+
+    void Phase49()
+    {
+        phaseNum++;
+        canOpenTurnMenu = true;
+    }
+
+    void Phase50()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (menu flèches) + Enable Spritemask
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.turnRightButton).interactable = true;
+    }
+
+    void Phase51()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.turnRightButton).interactable = false;
+        canOpenTurnMenu = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Doigt click new position (anywhere) + set active
+    }
+
+    void Phase52()
+    {
+        phaseNum++;
+        //Disable Doigt
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+    }
+
+    void Phase53()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        //Doigt click new position (toggle end task) + set active
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask3).interactable = true;
+    }
+
+    void Phase54()
+    {
+        phaseNum++;
+        //Disable Doigt
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask3).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+    }
+
+    void Phase55()
+    {
+        phaseNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (écran) + Enable Spritemask
+        Manager(4);
+    }
+
+    void Phase56()
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+    }
+
+    void Phase57()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Doigt click new position (bouton Return to meca) + set active
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).interactable = true;
+    }
+
+    void Phase58()
+    {
+        phaseNum++;
+        //Disable Doigt
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+    }
+
+    void Phase59()
+    {
+        phaseNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+        //Doigt slide new position (colis > droite) + set active
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
+    }
+
+    void Phase60()
+    {
+        phaseNum++;
+        //Disable Doigt
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (caméra gabarits) + Enable Spritemask
+        Manager(4);
+    }
+
+    void Phase61()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        //Doigt slide new position (colis > haut) + set active
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
+    }
+
+    void Phase62()
+    {
+        phaseNum++;
+        //Disable Doigt
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (bouton Quitter) + Enable Spritemask
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonSendView).interactable = true;
+    }
+
+    void Phase63()                  //Appeler fonction dans bouton quitter (pas encore fait)
+    {
+        phaseNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonSendView).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = true;
+    }
+
+            /*****************/
+           /*   Colis 2     */
+          /*****************/
+
+    void Phase64()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        Manager(4);
+    }
+
+    void Phase65()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = true;
+    }
+
+    void Phase66()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().openBigMonitor();
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Enable Fond noir
+        //New position (PCB HU + PCBs écran) + Enable Spritemask x2
+        Manager(4);
+    }
+
+    void Phase67()
+    {
+        phaseNum++;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        //Disable fond noir
+        //Disable Spritemask
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+    }
+
+    void Phase68()
+    {
+        phaseNum++;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = true;
+        canOuvrirFermer = true;
+        canVider = true;
+    }
+
+    void Phase69()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = false;
+        canOuvrirFermer = false;
+        canVider = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        Manager(4);
+    }
+
+    void Phase70()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles1Colis2).enabled = true;
+        canInfo = true;
+    }
+
+    void Phase71()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles1Colis2).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles2Colis2).enabled = true;
+    }
+
+    void Phase72()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles2Colis2).enabled = false;
+        canInfo = false;
+        dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+        dialogNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+    }
+
+    void Phase73()
+    {
+        phaseNum++;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.screen).interactable = true;
     }
 }

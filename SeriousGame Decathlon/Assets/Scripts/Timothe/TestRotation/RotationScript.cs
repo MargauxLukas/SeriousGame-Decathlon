@@ -188,6 +188,7 @@ public class RotationScript : MonoBehaviour
 
     public void ChangeRotation()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(26);}
         if (cartonObj != null)
         {
             cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;

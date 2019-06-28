@@ -87,6 +87,7 @@ public class OngletManager : MonoBehaviour
 
     public void ReturnToMeca()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(23);}
         if (allValidate)
         {
             homeScreen   .SetActive(true );

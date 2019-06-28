@@ -7,16 +7,27 @@ public class GameObjectsManager : MonoBehaviour
 {
     public GameObject pedal;
     public GameObject pistolet;
-    public GameObject colis;
     public GameObject screen;
     public GameObject bigScreen;
     public GameObject scanRFID;
-    public GameObject pileArticles;
     public GameObject ticketHU;
+    public GameObject quitButtonSendView;
+    public GameObject quitButtonWorkView;
+
+    //Colis1
+    public GameObject colis1;
+    public GameObject pileArticlesColis1;
+
+    //Colis2
+    public GameObject colis2;
+    public GameObject pileArticles1Colis2;
+    public GameObject pileArticles2Colis2;
 
     //Ecran
     public GameObject toggleEndTask1;
     public GameObject toggleEndTask2;
+    public GameObject toggleEndTask3;
+    public GameObject returnMecaButton;
     
     //RecountTab
     public GameObject recountTab;
@@ -27,9 +38,18 @@ public class GameObjectsManager : MonoBehaviour
 
     //FillingRateTab
     public GameObject fillTab;
-    public GameObject fill50;
-    public GameObject fill100;
-    public GameObject fill125;
+    public GameObject fill50Button;
+    public GameObject fill100Button;
+    public GameObject fill125Button;
+    public GameObject mecaOpenToggle;
+
+    //Menu Tourner
+    public GameObject turnRightButton;
+    public GameObject turnLeftButton;
+    public GameObject turnUpButton;
+    public GameObject turnDownButton;
+    public GameObject rightRotationButton;
+    public GameObject leftRotationButton;
 
 
     //WIP

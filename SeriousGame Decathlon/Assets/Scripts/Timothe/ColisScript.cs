@@ -212,6 +212,7 @@ public class ColisScript : MonoBehaviour
                     estSecoue = false;
                     tournerMenu.SetActive(false);
                     tournerMenuIsOpen = false;
+                    if (TutoManager.instance != null) {TutoManager.instance.Manager(28);}
                 }
             }
             else
@@ -326,6 +327,7 @@ public class ColisScript : MonoBehaviour
 
     void OuvrirFermer()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(10);}
         colisScriptable.OuvrirFermer();
         if (colisScriptable.estOuvert)
         {
@@ -335,7 +337,6 @@ public class ColisScript : MonoBehaviour
         }
         else if (!colisScriptable.estOuvert)
         {
-            if(TutoManager.instance != null) {TutoManager.instance.Manager(10);}
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 1f;
             GetComponent<SpriteRenderer>().color = newColo;
@@ -355,6 +356,7 @@ public class ColisScript : MonoBehaviour
 
     void OpenTurnMenu()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(25);}
         if (!colisScriptable.estOuvert)
         {
             circleImage.transform.parent.gameObject.SetActive(false);
