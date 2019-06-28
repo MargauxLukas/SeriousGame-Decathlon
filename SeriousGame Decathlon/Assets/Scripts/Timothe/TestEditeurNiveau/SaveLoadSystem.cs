@@ -30,6 +30,19 @@ public class SaveLoadSystem : MonoBehaviour
         return Directory.Exists(Application.persistentDataPath + "/game_save");
     }
 
+    public void DeleteLevel(int levelNb)
+    {
+        if (!IsSaveFile())
+        {
+            return;
+        }
+
+        if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
+        {
+            File.Delete(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt");
+        }
+    }
+
     public void SaveColis(Colis colisToSave)
     {
         if(!IsSaveFile())

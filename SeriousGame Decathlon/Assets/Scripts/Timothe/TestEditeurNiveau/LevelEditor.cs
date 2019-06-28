@@ -79,6 +79,34 @@ public class LevelEditor : MonoBehaviour
         currentAnomalieNumber = 0;
     }
 
+    public void SaveLevel()
+    {
+        for(int i = 0; i < colisNewLevel.Count; i ++)
+        {
+            if(colisNewLevel[i] != null)
+            {
+                newLevel.colisDuNiveauNoms.Add(colisNewLevel[i].name);
+                newLevel.nbColisParNomColis.Add(1);
+            }
+        }
+
+        if (newLevel.colisDuNiveauNoms == null)
+        {
+            newLevel.colisDuNiveauNoms = new List<string>();
+        }
+        newLevel.nbColisParNomColis = new List<int>();
+
+        foreach (Colis colis in colisNewLevel)
+        {
+            newLevel.nbColisParNomColis.Add(1);
+            newLevel.colisDuNiveauNoms.Add(colis.name);
+        }
+
+        SaveLoadSystem.instance.SaveLevel(newLevel, colisNewLevel);
+    }
+
+    #region MenuMF
+
     public void NewColis()
     {
         foreach (Button bouton in boutonAnomalies)
@@ -91,9 +119,9 @@ public class LevelEditor : MonoBehaviour
         //currentColis = colisDeBase;
         int nbArticleColis = Random.Range(3, 6);
         randomArticle = Random.Range(0, 1);
-        wrongArticle = (randomArticle+1) % 2;
+        wrongArticle = (randomArticle + 1) % 2;
         currentColis.PCB = nbArticleColis;
-        for(int i = 0; i < nbArticleColis; i++)
+        for (int i = 0; i < nbArticleColis; i++)
         {
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
@@ -105,19 +133,6 @@ public class LevelEditor : MonoBehaviour
         newIway.refArticle = listRefArticles[randomArticle];
         newIway.numeroCodeBarre = Random.Range(100, 9999999);
         newIway.poids = currentColis.poids;
-    }
-
-    public void SaveLevel()
-    {
-        for(int i = 0; i < colisNewLevel.Count; i ++)
-        {
-            if(colisNewLevel[i] != null)
-            {
-                newLevel.colisDuNiveauNoms.Add(colisNewLevel[i].name);
-                newLevel.nbColisParNomColis.Add(1);
-            }
-        }
-        SaveLoadSystem.instance.SaveLevel(newLevel, colisNewLevel);
     }
 
     public void SaveColis()
@@ -419,4 +434,5 @@ public class LevelEditor : MonoBehaviour
             boutonAnomalies[nb].interactable = false;
         }
     }
+    #endregion
 }
