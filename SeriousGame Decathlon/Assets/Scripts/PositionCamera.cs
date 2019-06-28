@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PositionCamera : MonoBehaviour
 {
-
     public float fWidth = 9.0f;  // Desired width 
 
     void Start()
