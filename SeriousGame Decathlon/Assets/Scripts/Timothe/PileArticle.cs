@@ -58,7 +58,6 @@ public class PileArticle : MonoBehaviour
 
             if (doesTouch)
             {
-
                 if (touch.phase == TouchPhase.Began)
                 {
                     currentItem = -1;
