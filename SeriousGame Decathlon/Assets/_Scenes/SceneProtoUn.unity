@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 105759192}
   - component: {fileID: 105759191}
   m_Layer: 11
-  m_Name: Cube (3)
+  m_Name: Poste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1994,7 +1994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &394800110
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2210,6 +2210,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429090917}
   m_CullTransparentMesh: 0
+--- !u!1 &438501167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2488011276625338679, guid: 26e14c14e297de043909cce304004371,
+    type: 3}
+  m_PrefabInstance: {fileID: 1791931832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &457559482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,7 +2492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &502053889
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3579,6 +3585,18 @@ MonoBehaviour:
   iWayInfoManager: {fileID: 1157788047}
   textArt: {fileID: 0}
   textPCB: {fileID: 0}
+--- !u!114 &905325895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1385595807449000715, guid: 40887147d18403247b7250d4bc5662f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 177140028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be6edf7821f5ff4d8ffbd2824743b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &929957727
 GameObject:
   m_ObjectHideFlags: 0
@@ -3627,7 +3645,7 @@ GameObject:
   - component: {fileID: 934143330}
   - component: {fileID: 934143334}
   m_Layer: 11
-  m_Name: Cube (2)
+  m_Name: PosteInteractible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3753,7 +3771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPoste: {fileID: 502053888}
   cameraDezoom: {fileID: 394800109}
-  player: {fileID: 0}
+  player: {fileID: 438501167}
   aStar: {fileID: 1615897918}
 --- !u!1 &982130495 stripped
 GameObject:
@@ -4841,7 +4859,7 @@ GameObject:
   - component: {fileID: 1561165733}
   - component: {fileID: 1561165732}
   m_Layer: 11
-  m_Name: Cube (5)
+  m_Name: Poste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5174,7 +5192,7 @@ PrefabInstance:
     - target: {fileID: 2488011276625338679, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -5231,6 +5249,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 577562310}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e14c14e297de043909cce304004371, type: 3}
 --- !u!1 &1800209892
@@ -6521,7 +6544,7 @@ PrefabInstance:
         type: 3}
       propertyPath: recountTab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 606800895}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: scanPistol
@@ -6592,7 +6615,7 @@ PrefabInstance:
         type: 3}
       propertyPath: repackTab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 905325895}
     - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6691,7 +6714,7 @@ MonoBehaviour:
   newColis: {fileID: 246706537573853406, guid: 6a67850133114164a919064a1ac0a19c, type: 3}
   carton: {fileID: 11400000, guid: 78b6b7ad81a62584e8e032e8fe02d78f, type: 2}
   colisManage: {fileID: 857046845}
-  repackTab: {fileID: 0}
+  repackTab: {fileID: 905325895}
 --- !u!114 &1512090501580459130 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1512090500757680969, guid: 4b92a7cf7a914224cb91594c005fe6f5,

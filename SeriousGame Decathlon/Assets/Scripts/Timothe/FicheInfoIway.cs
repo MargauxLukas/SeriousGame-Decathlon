@@ -12,10 +12,11 @@ public class FicheInfoIway : MonoBehaviour
 
     public bool ficheIsOpening = false;
     public bool ficheIsClosing = false;
+
     void Start()
     {
         myStartPosition = transform.position;
-        targetPosition = new Vector2(myStartPosition.x, -5f);
+        targetPosition = new Vector2(myStartPosition.x, -4f);
     }
 
     private void Update()
@@ -33,6 +34,7 @@ public class FicheInfoIway : MonoBehaviour
 
     public void OpenFiche()
     {
+        Debug.Log("Test");
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, 0.1f);
 
         if (Vector2.Distance(transform.position, targetPosition) <= 0.2f)

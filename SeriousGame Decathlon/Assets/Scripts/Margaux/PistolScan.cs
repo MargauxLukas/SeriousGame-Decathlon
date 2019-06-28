@@ -67,7 +67,7 @@ public class PistolScan : MonoBehaviour
             ongletManager.GetComponent<OngletManager>().hasBeenScannedByPistol = true;
 
             //A faire lorsque que je scan
-            ongletManager.screenDisplay.UpdateAffichage();                                                                                       //On met à jour l'affichage
+            //ongletManager.screenDisplay.UpdateAffichage();                                                                                       //On met à jour l'affichage
             fiche.ficheIsOpening = true;                                                                                                         //On ouvre la fiche
             listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;                            //On donne la liste d'anomalie
 
