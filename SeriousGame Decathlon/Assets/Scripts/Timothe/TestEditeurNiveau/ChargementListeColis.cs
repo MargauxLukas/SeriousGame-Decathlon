@@ -65,7 +65,6 @@ public class ChargementListeColis : MonoBehaviour
         if (levelScript != null)
         {
             Debug.Log("Test Level Null");
-            List<string> colisName = new List<string>();
             for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
             {
                 colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));

@@ -39,6 +39,7 @@ public class LevelEditor : MonoBehaviour
     public GameObject creationNiveau;
     public GameObject ongletMultifonction;
     public GameObject ongletAddColis;
+    public List<Button> boutonAnomalies;
 
 
     // Start is called before the first frame update
@@ -55,12 +56,6 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OpenEditor()
     {
         creationNiveau.SetActive(true);
@@ -74,6 +69,11 @@ public class LevelEditor : MonoBehaviour
 
     public void NewLevel()
     {
+        foreach (Button bouton in boutonAnomalies)
+        {
+            bouton.interactable = true;
+        }
+
         newLevel = LevelScriptable.CreateInstance<LevelScriptable>();
         colisNewLevel = new List<Colis>();
         currentAnomalieNumber = 0;
@@ -81,6 +81,11 @@ public class LevelEditor : MonoBehaviour
 
     public void NewColis()
     {
+        foreach (Button bouton in boutonAnomalies)
+        {
+            bouton.interactable = true;
+        }
+
         currentColis = Colis.CreateInstance<Colis>();
         currentAnomalieNumber = 0;
         //currentColis = colisDeBase;
@@ -162,6 +167,10 @@ public class LevelEditor : MonoBehaviour
     public void OpenMenuMF()
     {
         ongletMultifonction.SetActive(true);
+        foreach (Button bouton in boutonAnomalies)
+        {
+            bouton.interactable = true;
+        }
     }
 
     public void CloseMenuMF()
@@ -231,20 +240,43 @@ public class LevelEditor : MonoBehaviour
         {
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
+        List<int> buttonToDesactivate = new List<int>(new int[] {1,2,4,6,8});
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 
     private void RFIDunderToleranceV1() //Transforme un article en même article sans RFID
     {
         currentColis.listArticles[currentColis.listArticles.Count - 1] = listArticleSansRFID[randomArticle];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 2, 4, 6, 8 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void RFIDunderToleranceV2() //Supprime un article à la fin de la liste
     {
         currentColis.listArticles.RemoveAt(currentColis.listArticles.Count - 1);
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 4, 6, 8 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void DimensionOutToleranceV1() //Met le colis en abimé
     {
         currentColis.estAbime = true;
         currentColis.carton = ListCartons[2];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void DimensionOutToleranceV2() //Met le colis en abimé et lui rajoute des articles de la bonne références (Provoque un RFID Over Tolerance)
     {
@@ -255,16 +287,34 @@ public class LevelEditor : MonoBehaviour
         {
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 3, 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void WrongOrientation() //Met le colis en bad oriented
     {
         currentColis.isBadOriented = true;
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void QualityControl() //Met le colis en NeedControlQuality
     {
         if(currentAnomalieNumber <= 0)
         {
             currentColis.needQualityControl = true;
+
+            List<int> buttonToDesactivate = new List<int>(new int[] { 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13 });
+            foreach (int nb in buttonToDesactivate)
+            {
+                boutonAnomalies[nb].interactable = false;
+            }
         }
     }
     private void NewProduct() //Change tous les articles en articles de nouvelles références
@@ -274,6 +324,12 @@ public class LevelEditor : MonoBehaviour
             currentColis.listArticles[i] = listArticleBonEtat[2];
         }
         newIway.refArticle = listRefArticles[2];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 4, 6, 8, 11 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void RFIDTagToApplied() //Change tous les RFID des articles du colis en RFID non fonctionnel du même article
     {
@@ -287,6 +343,12 @@ public class LevelEditor : MonoBehaviour
                 }
             }
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2 , 4 , 6 , 11 , 10 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void TooHeavy() //Rajoute des articles tant que le poids n'est pas > 21
     {
@@ -296,10 +358,22 @@ public class LevelEditor : MonoBehaviour
             currentColis.listArticles.Add(currentColis.listArticles[0]);
             currentColis.poids = currentColis.listArticles.Count * listArticleBonEtat[randomArticle].poids;
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void RFIDUnexpectedV1() //Change le premier article du colis en mauvais article
     {
         currentColis.listArticles[0] = listArticleBonEtat[wrongArticle];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 8 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 
     private void RFIDUnexpectedV2() //Change tous les articles du colis en mauvais article
@@ -308,14 +382,32 @@ public class LevelEditor : MonoBehaviour
         {
             currentColis.listArticles[i] = listArticleBonEtat[wrongArticle];
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 9, 7, 10});
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 
     private void DimensionOutTray() //Met le colis en abimé
     {
         currentColis.estAbime = true;
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
     private void RepackngFP() //Met le colis en ouvert
     {
         currentColis.estOuvert = true;
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 }
