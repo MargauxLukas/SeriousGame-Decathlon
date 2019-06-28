@@ -13,6 +13,8 @@ public class TestSaveLoadScript : MonoBehaviour
 
     public LevelScriptable levelToSave;
     public LevelScriptable levelToLoad;
+    public List<LevelScriptable> allLevelToSave;
+    public List<Colis> allColisToSave;
     public List<Colis> colisToSaveLevel;
 
     public Text saveColisText;
@@ -24,7 +26,7 @@ public class TestSaveLoadScript : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+       /* if(Input.GetKeyDown(KeyCode.Z))
         {
             SaveLoadSystem.instance.SaveColis(colisToSaveSolo);
         }
@@ -50,6 +52,22 @@ public class TestSaveLoadScript : MonoBehaviour
             {
                 SaveLoadSystem.instance.SaveScore(perso);
             }       
+        }*/
+    }
+
+    public void SaveAllColis()
+    {
+        foreach(Colis colis in allColisToSave)
+        {
+            SaveLoadSystem.instance.SaveColis(colis);
+        }
+    }
+
+    public void SaveAllLevel()
+    {
+        foreach(LevelScriptable level in allLevelToSave)
+        {
+            SaveLoadSystem.instance.SaveLevel(level, allColisToSave);
         }
     }
 
