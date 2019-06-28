@@ -14,18 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   PCB: 2
-  carton: {fileID: 11400000, guid: 613c8e70587862a469704b033534b9d0, type: 2}
-  listArticles:
-  - {fileID: 11400000, guid: 2f397d3efe13d8f4487afcf313bc9ab0, type: 2}
-  - {fileID: 11400000, guid: 2f397d3efe13d8f4487afcf313bc9ab0, type: 2}
-  wayTicket: {fileID: 11400000, guid: e6f0dea60925fb945be263c80f2c08e4, type: 2}
-  nomWayTicket: 
   poids: 24
   fillPercent: 100
+  hasBeenRecount: 0
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
-  nbAnomalie: 0
-  listAnomalies: []
-  provenance: 
   needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: efa806fbb758f4b4f84a96c9803857d6, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 11400000, guid: e6f0dea60925fb945be263c80f2c08e4, type: 2}
+  listArticles:
+  - {fileID: 11400000, guid: 2f397d3efe13d8f4487afcf313bc9ab0, type: 2}
+  - {fileID: 11400000, guid: 2f397d3efe13d8f4487afcf313bc9ab0, type: 2}
+  nbAnomalie: 3
+  listAnomalies:
+  - RFID tags to be applied
+  - RFID tag under Tolerance
+  - TU too heavy (20-25)
+  provenance: 

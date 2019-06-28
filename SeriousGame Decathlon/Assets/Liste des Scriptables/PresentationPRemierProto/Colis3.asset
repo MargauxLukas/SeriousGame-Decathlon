@@ -22,7 +22,7 @@ MonoBehaviour:
   estAbime: 0
   needQualityControl: 1
   aEteVide: 0
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
   nomWayTicket: 
   wayTicket: {fileID: 11400000, guid: 840bbf487f9be4445b3ddd5abcd47684, type: 2}
   listArticles:
