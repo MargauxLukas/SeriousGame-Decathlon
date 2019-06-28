@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: WrongOrientation
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 0}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Pour cette anomalie, il te suffit juste d'ouvrir le menu tourner du colis et
+    de le mettre dans le bon sens. R\xE9f\xE8re toi aux d\xE9limitation au niveau
+    du tapis roulant."
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

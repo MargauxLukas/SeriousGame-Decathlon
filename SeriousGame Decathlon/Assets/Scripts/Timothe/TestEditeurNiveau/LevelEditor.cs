@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelEditor : MonoBehaviour
 {
-    SavedData dataSaved;
+    private SavedData dataSaved;
 
     //Infos du niveau actuel
     LevelScriptable newLevel;
     private List<Colis> colisNewLevel;
 
     //Infos du colis actuel
-    Colis currentColis;
+    [Header("Info du colis")]
+    public Colis currentColis;
     Colis colisChoisit;
     private int currentAnomalieNumber;
     public Colis colisDeBase;
@@ -22,37 +24,56 @@ public class LevelEditor : MonoBehaviour
     WayTicket newIway;
 
     //Infos générales
+    [Header("Info à assigner")]
     public List<Article> listArticleBonEtat;
     public List<Article> listArticleSansRFID;
     public List<RefArticle> listRefArticles;
     public List<RFID> listRFIDFonctionnels;
     public List<RFID> listRFIDNonFonctionnels;
     public List<Carton> ListCartons;
-    private List<Colis> colisDejaCree;
+    public List<Colis> colisDejaCree;
+    public InputField inputField;
+
+    //Les Canvas
+    [Header("Canvas à Activer/Désactiver")]
+    public GameObject creationNiveau;
+    public GameObject ongletMultifonction;
+    public GameObject ongletAddColis;
+    public List<Button> boutonAnomalies;
+
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         LoadLevelEditor();
-        for(int i = 0; i < dataSaved.nomColisConnus.Count; i++)
+        colisDejaCree = new List<Colis>();
+        if (dataSaved != null && dataSaved.nomColisConnus != null)
         {
-            colisDejaCree.Add(SaveLoadSystem.instance.LoadColis(dataSaved.nomColisConnus[i]));
+            for (int i = 0; i < dataSaved.nomColisConnus.Count; i++)
+            {
+                colisDejaCree.Add(SaveLoadSystem.instance.LoadColis(dataSaved.nomColisConnus[i]));
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenEditor()
     {
-        
+        creationNiveau.SetActive(true);
     }
 
     public void LoadLevelEditor()
     {
         dataSaved = SaveLoadSystem.instance.LoadGeneralData();
+        Debug.Log(dataSaved != null);
     }
 
     public void NewLevel()
     {
+        foreach (Button bouton in boutonAnomalies)
+        {
+            bouton.interactable = true;
+        }
+
         newLevel = LevelScriptable.CreateInstance<LevelScriptable>();
         colisNewLevel = new List<Colis>();
         currentAnomalieNumber = 0;
@@ -60,9 +81,14 @@ public class LevelEditor : MonoBehaviour
 
     public void NewColis()
     {
+        foreach (Button bouton in boutonAnomalies)
+        {
+            bouton.interactable = true;
+        }
+
         currentColis = Colis.CreateInstance<Colis>();
         currentAnomalieNumber = 0;
-        currentColis = colisDeBase;
+        //currentColis = colisDeBase;
         int nbArticleColis = Random.Range(3, 6);
         randomArticle = Random.Range(0, 1);
         wrongArticle = (randomArticle+1) % 2;
@@ -96,25 +122,30 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveColis()
     {
-        //Mise à jour du colis après toutes les modifs
-        currentColis.PCB = currentColis.listArticles.Count;
-        currentColis.poids = currentColis.PCB * listArticleBonEtat[randomArticle].poids;
-        if(currentColis.poids > 20)
+        if (inputField.text != null)
         {
-            currentColis.fillPercent = 125;
-        }
-        else if(currentColis.poids <= 5)
-        {
-            currentColis.fillPercent = 50;
-        }
-        else
-        {
-            currentColis.fillPercent = 100;
-        }
-        currentColis.wayTicket = newIway;
+            currentColis.name = inputField.text.ToString();
+            Debug.Log(currentColis.name);
+            //Mise à jour du colis après toutes les modifs
+            currentColis.PCB = currentColis.listArticles.Count;
+            currentColis.poids = currentColis.PCB * listArticleBonEtat[randomArticle].poids;
+            if (currentColis.poids > 20)
+            {
+                currentColis.fillPercent = 125;
+            }
+            else if (currentColis.poids <= 5)
+            {
+                currentColis.fillPercent = 50;
+            }
+            else
+            {
+                currentColis.fillPercent = 100;
+            }
+            currentColis.wayTicket = newIway;
 
-        //Sauvegarde du colis
-        SaveLoadSystem.instance.SaveColis(currentColis);
+            //Sauvegarde du colis
+            SaveLoadSystem.instance.SaveColis(currentColis);
+        }
     }
 
     public void AddColis(int nbColis)
@@ -135,7 +166,16 @@ public class LevelEditor : MonoBehaviour
 
     public void OpenMenuMF()
     {
+        ongletMultifonction.SetActive(true);
+        foreach (Button bouton in boutonAnomalies)
+        {
+            bouton.interactable = true;
+        }
+    }
 
+    public void CloseMenuMF()
+    {
+        ongletMultifonction.SetActive(false);
     }
 
     public void AnomalieChoice(int nbAnomalie)
@@ -144,35 +184,101 @@ public class LevelEditor : MonoBehaviour
         {
             switch (nbAnomalie)
             {
+                case 0:
+                    RFIDoverTolerance();
+                    break;
+                case 1:
+                    RFIDunderToleranceV1();
+                    break;
+                case 2:
+                    RFIDunderToleranceV2();
+                    break;
+                case 3:
+                    DimensionOutToleranceV1();
+                    break;
+                case 4:
+                    DimensionOutToleranceV2();
+                    break;
+                case 5:
+                    WrongOrientation();
+                    break;
+                case 6:
+                    QualityControl();
+                    break;
+                case 7:
+                    NewProduct();
+                    break;
+                case 8:
+                    RFIDTagToApplied();
+                    break;
+                case 9:
+                    TooHeavy();
+                    break;
+                case 10:
+                    RFIDUnexpectedV1();
+                    break;
+                case 11:
+                    RFIDUnexpectedV2();
+                    break;
+                case 12:
+                    DimensionOutTray();
+                    break;
+                case 13:
+                    RepackngFP();
+                    break;
+
 
             }
         }
         currentAnomalieNumber++;
     }
 
-    private void RFIDoverTolerance()
+    private void RFIDoverTolerance() //Ajoute entre 1 et 2 articles de la ref de RandomArticle
     {
         int rngNb = Random.Range(1, 2);
         for (int i = 0; i <= rngNb; i++)
         {
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
+        List<int> buttonToDesactivate = new List<int>(new int[] {1,2,4,6,8});
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 
-    private void RFIDunderToleranceV1()
+    private void RFIDunderToleranceV1() //Transforme un article en même article sans RFID
     {
         currentColis.listArticles[currentColis.listArticles.Count - 1] = listArticleSansRFID[randomArticle];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 2, 4, 6, 8 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void RFIDunderToleranceV2()
+    private void RFIDunderToleranceV2() //Supprime un article à la fin de la liste
     {
         currentColis.listArticles.RemoveAt(currentColis.listArticles.Count - 1);
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 4, 6, 8 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void DimensionOutToleranceV1()
+    private void DimensionOutToleranceV1() //Met le colis en abimé
     {
         currentColis.estAbime = true;
         currentColis.carton = ListCartons[2];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void DimensionOutToleranceV2()
+    private void DimensionOutToleranceV2() //Met le colis en abimé et lui rajoute des articles de la bonne références (Provoque un RFID Over Tolerance)
     {
         currentColis.estAbime = true;
         currentColis.carton = ListCartons[2];
@@ -181,27 +287,51 @@ public class LevelEditor : MonoBehaviour
         {
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 3, 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void WrongOrientation()
+    private void WrongOrientation() //Met le colis en bad oriented
     {
         currentColis.isBadOriented = true;
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void QualityControl()
+    private void QualityControl() //Met le colis en NeedControlQuality
     {
         if(currentAnomalieNumber <= 0)
         {
             currentColis.needQualityControl = true;
+
+            List<int> buttonToDesactivate = new List<int>(new int[] { 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13 });
+            foreach (int nb in buttonToDesactivate)
+            {
+                boutonAnomalies[nb].interactable = false;
+            }
         }
     }
-    private void NewProduct()
+    private void NewProduct() //Change tous les articles en articles de nouvelles références
     {
         for(int i = 0; i < currentColis.listArticles.Count; i++)
         {
             currentColis.listArticles[i] = listArticleBonEtat[2];
         }
         newIway.refArticle = listRefArticles[2];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 4, 6, 8, 11 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void RFIDTagToApplied()
+    private void RFIDTagToApplied() //Change tous les RFID des articles du colis en RFID non fonctionnel du même article
     {
         for(int j = 0; j < currentColis.listArticles.Count; j++)
         {
@@ -213,35 +343,71 @@ public class LevelEditor : MonoBehaviour
                 }
             }
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2 , 4 , 6 , 11 , 10 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void TooHeavy()
+    private void TooHeavy() //Rajoute des articles tant que le poids n'est pas > 21
     {
         int nbSecours = 0;
         while (currentColis.poids < 21 && nbSecours < 100)
         {
-            currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
+            currentColis.listArticles.Add(currentColis.listArticles[0]);
             currentColis.poids = currentColis.listArticles.Count * listArticleBonEtat[randomArticle].poids;
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void RFIDUnexpectedV1()
+    private void RFIDUnexpectedV1() //Change le premier article du colis en mauvais article
     {
         currentColis.listArticles[0] = listArticleBonEtat[wrongArticle];
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 8 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 
-    private void RFIDUnexpectedV2()
+    private void RFIDUnexpectedV2() //Change tous les articles du colis en mauvais article
     {
         for(int i = 0; i < currentColis.listArticles.Count; i ++)
         {
             currentColis.listArticles[i] = listArticleBonEtat[wrongArticle];
         }
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 9, 7, 10});
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 
-    private void DimensionOutTray()
+    private void DimensionOutTray() //Met le colis en abimé
     {
         currentColis.estAbime = true;
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
-    private void RepackngFP()
+    private void RepackngFP() //Met le colis en ouvert
     {
         currentColis.estOuvert = true;
+
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6 });
+        foreach (int nb in buttonToDesactivate)
+        {
+            boutonAnomalies[nb].interactable = false;
+        }
     }
 }

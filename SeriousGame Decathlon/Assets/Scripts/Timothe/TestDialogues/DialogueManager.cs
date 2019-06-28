@@ -13,7 +13,6 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueGlobal;
     public Text texteDialogue;
     public Image portraitUn;
-    public Image portraitDeux;
     public List<GameObject> bouttonsChoix;
     public List<Text> bouttonTextes;
 
@@ -26,8 +25,14 @@ public class DialogueManager : MonoBehaviour
     {
         if (isDialogueOpen && actualDialogue != null)
         {
-            portraitUn.sprite = actualDialogue.persoParlant.sprite;
-            portraitDeux.sprite = actualDialogue.persoEcoutant.sprite;
+            if (actualDialogue.persoParlant.sprite != null)
+            {
+                portraitUn.sprite = actualDialogue.persoParlant.sprite;
+            }
+            else
+            {
+                portraitUn.sprite = null;
+            }
             if (actualDialogue != previousDialogue || previousDialogue == null)
             {
                 previousDialogue = actualDialogue;

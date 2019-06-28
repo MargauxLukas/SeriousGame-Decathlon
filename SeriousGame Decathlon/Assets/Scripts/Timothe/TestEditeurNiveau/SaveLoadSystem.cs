@@ -51,14 +51,22 @@ public class SaveLoadSystem : MonoBehaviour
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/game_save/colis_data/" + colisToSave.name + ".txt");
-        Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/colis_data/" + colisToSave.name + ".txt"));
         var json = JsonUtility.ToJson(colisToSave);
         bf.Serialize(file, json);
         file.Close();
 
         SavedData temporarySave = LoadGeneralData();
-        if(!temporarySave.nomColisConnus.Contains(colisToSave.name))
+        Debug.Log(colisToSave.name);
+        if (temporarySave.nomColisConnus != null)
         {
+            if (!temporarySave.nomColisConnus.Contains(colisToSave.name))
+            {
+                temporarySave.nomColisConnus.Add(colisToSave.name);
+            }
+        }
+        else
+        {
+            temporarySave.nomColisConnus = new List<string>();
             temporarySave.nomColisConnus.Add(colisToSave.name);
         }
         SaveGeneralData(temporarySave);
@@ -78,7 +86,6 @@ public class SaveLoadSystem : MonoBehaviour
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket.NamingTicket() + ".txt");
-        Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket.NamingTicket() + ".txt"));
         var json = JsonUtility.ToJson(ticket);
         bf.Serialize(file, json);
         file.Close();
@@ -150,7 +157,6 @@ public class SaveLoadSystem : MonoBehaviour
 
     public SavedData LoadGeneralData()
     {
-
         if (!IsSaveFile())
         {
             return null;
