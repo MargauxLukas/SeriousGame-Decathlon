@@ -3425,6 +3425,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855637703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1385595807072789511, guid: 40887147d18403247b7250d4bc5662f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 177140028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed46781fad71174993e0fa7c134aa66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &856130628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,6 +3967,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be640d486e2b9874ebdd09b945e0cb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1136025582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1385595806854707119, guid: 40887147d18403247b7250d4bc5662f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 177140028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1155816306 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6647039825416293883, guid: 664a2ed72bc2dd04796115937ffa1ccd,
@@ -5888,6 +5906,12 @@ PrefabInstance:
       objectReference: {fileID: 1901438256}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef05dde8a1dbc7c4381bc7e731e817eb, type: 3}
+--- !u!1 &1996889041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1385595806897501753, guid: 40887147d18403247b7250d4bc5662f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 177140028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2090098913
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,7 +6627,7 @@ PrefabInstance:
         type: 3}
       propertyPath: artFind
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 855637703}
     - target: {fileID: 475608106956110829, guid: 4ddaf2fa882df654a9a2d71111eadad1,
         type: 3}
       propertyPath: infoRFID2
@@ -6613,17 +6637,17 @@ PrefabInstance:
         type: 3}
       propertyPath: recountTab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 606800895}
     - target: {fileID: 475608106956110829, guid: 4ddaf2fa882df654a9a2d71111eadad1,
         type: 3}
       propertyPath: printRFID1
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1136025582}
     - target: {fileID: 475608106956110829, guid: 4ddaf2fa882df654a9a2d71111eadad1,
         type: 3}
       propertyPath: printRFID2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1996889041}
     - target: {fileID: 475608106956110828, guid: 4ddaf2fa882df654a9a2d71111eadad1,
         type: 3}
       propertyPath: m_Enabled
