@@ -49,9 +49,10 @@ public class FicheCarton : MonoBehaviour
         colisManage.listeColisActuel = new GameObject[0];
         colisManage.listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (colisManage.listeColisActuel.Length <= 1)
+        if (colisManage.listeColisActuel.Length <= 10)
         {
-            scriptColis = newColis.GetComponent<ColisScript>();
+            GameObject theNewColis = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
+            scriptColis = theNewColis.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
 
             //scriptColis.colisScriptable.carton.codeRef = buttonName;
@@ -93,7 +94,7 @@ public class FicheCarton : MonoBehaviour
                 scriptColis.IWayEtiquette.SetActive(false);
             }
 
-           /* if (buttonName == "CB02")
+            if (buttonName == "CB02")
             {
                 Debug.Log("Test CB2");
                 scriptColis.colisScriptable.carton = carton[1];
@@ -104,16 +105,13 @@ public class FicheCarton : MonoBehaviour
                 scriptColis.colisScriptable.carton = carton[0];
             }
 
-            scriptColis.colisScriptable.carton = carton[nbCartonChoisit];
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;*/
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
-            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
+            colisManage.scriptRotation.cartonObj = theNewColis;
             repackTab.colisVide = colisManage.scriptRotation.cartonObj;
-            /*colisManage.scriptRotation.ColisEnter();
-            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, newColis.GetComponent<SpriteRenderer>());*/
+            colisManage.scriptRotation.ColisEnter();
+            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, theNewColis.GetComponent<SpriteRenderer>());
         }
-
-
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
     }

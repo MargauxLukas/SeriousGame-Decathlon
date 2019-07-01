@@ -113,6 +113,7 @@ public class RotationScript : MonoBehaviour
                     spriteCarton.sprite = spriteCartonListe[5];
                     break;
             }
+            Debug.Log(spriteCartonListe[0]);
         }
         if(spriteCarton != null)
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
@@ -335,7 +336,7 @@ public class RotationScript : MonoBehaviour
             resetAll();
             squareList[0].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
-            //UpdateSprite(cartonsSprites, carton);
+            UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
             cartonObj.GetComponent<ColisScript>().Tourner();
         }
@@ -345,7 +346,7 @@ public class RotationScript : MonoBehaviour
             squareList[4].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             //Debug.Log(actualFace.face);
-            //UpdateSprite(cartonsSprites, carton);
+            UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
             cartonObj.GetComponent<ColisScript>().Tourner();
         }

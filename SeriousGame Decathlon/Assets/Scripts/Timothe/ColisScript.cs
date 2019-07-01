@@ -330,6 +330,7 @@ public class ColisScript : MonoBehaviour
         if (colisScriptable.estOuvert)
         {
             savedSprite = GetComponent<SpriteRenderer>().sprite;
+            Debug.Log("Test Ouvrir");
             GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.cartonOuvert;
         }
         else
