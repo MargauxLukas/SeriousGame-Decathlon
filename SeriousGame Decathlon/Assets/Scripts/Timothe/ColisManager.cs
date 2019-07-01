@@ -78,6 +78,13 @@ public class ColisManager : MonoBehaviour
             repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
+            scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, colisTemporaire.GetComponent<SpriteRenderer>());
+            if(scriptColis.colisScriptable.estOuvert)
+            {
+                Color newColo = colisTemporaire.GetComponent<SpriteRenderer>().color;
+                newColo.a = 0.3f;
+                colisTemporaire.GetComponent<SpriteRenderer>().color = newColo;
+            }
 
             //Debug.Log(listeColisTraiter[0]);
             listeColisTraiter.RemoveAt(0);

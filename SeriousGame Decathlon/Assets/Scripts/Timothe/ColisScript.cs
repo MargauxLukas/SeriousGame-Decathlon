@@ -62,8 +62,6 @@ public class ColisScript : MonoBehaviour
     void Start()
     {
         entrancePosition = transform.position;
-        Colis newColis   = Instantiate(colisScriptable);
-        //colisScriptable = newColis;
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
 

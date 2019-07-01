@@ -99,6 +99,7 @@ MonoBehaviour:
   turnSpeed: 0
   turnDst: 0
   stoppingDst: 0
+  playerAnimator: {fileID: 3453611145928882421}
 --- !u!212 &5871187060551740161
 SpriteRenderer:
   m_ObjectHideFlags: 0
