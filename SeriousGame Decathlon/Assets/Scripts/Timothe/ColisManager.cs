@@ -73,7 +73,7 @@ public class ColisManager : MonoBehaviour
                 bouton.scriptColis = colisTemporaire.GetComponent<ColisScript>();
             }
 
-            scanPistol.scriptColis   = scriptColis;
+            //scanPistol.scriptColis   = scriptColis;
             recountTab.colis         = colisTemporaire;
             repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
