@@ -9,7 +9,7 @@ public class FicheCarton : MonoBehaviour
     //public string buttonName;
     public GameObject newColis;
     private ColisScript scriptColis;
-    public Carton carton;
+    public List<Carton> carton;
 
     public ColisManager colisManage;
 
@@ -46,7 +46,16 @@ public class FicheCarton : MonoBehaviour
         {
             scriptColis = newColis.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
-            scriptColis.colisScriptable.carton = carton;
+
+            if(buttonName == "CB01")
+            {
+                scriptColis.colisScriptable.carton = carton[0];
+            }
+            else
+            {
+                scriptColis.colisScriptable.carton = carton[1];
+            }
+
             scriptColis.colisScriptable.carton.codeRef = buttonName;
             scriptColis.colisScriptable.carton.Initialize();
 
