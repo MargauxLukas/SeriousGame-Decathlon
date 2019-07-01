@@ -204,6 +204,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393230420764028990, guid: e4e406dd876555e4e925c63807536d0d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1105
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393230420764028990, guid: e4e406dd876555e4e925c63807536d0d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1105
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393230420764028990, guid: e4e406dd876555e4e925c63807536d0d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1105
+      objectReference: {fileID: 0}
     - target: {fileID: 3933153352285036252, guid: e4e406dd876555e4e925c63807536d0d,
         type: 3}
       propertyPath: manage
@@ -7889,7 +7904,7 @@ PrefabInstance:
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: listeColisTraiter.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
@@ -7973,7 +7988,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listeColisTraiter.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 728f549f06aa9334fbccde1a2f668c48,
+      objectReference: {fileID: 11400000, guid: 9b05a4b3e31343c4f9d483d5eca29ae0,
         type: 2}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
