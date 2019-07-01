@@ -433,6 +433,7 @@ public class ColisScript : MonoBehaviour
                             {
                                 spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                             }
+                            GetComponent<SpriteRenderer>().sprite = null;
                         }
                     }
                     if (articleOnTableUn.Count > 0)
@@ -451,6 +452,7 @@ public class ColisScript : MonoBehaviour
                         {
                             spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                         }
+                        GetComponent<SpriteRenderer>().sprite = null;
                     }
 
                     //Table 2
@@ -485,6 +487,7 @@ public class ColisScript : MonoBehaviour
                             {
                                 spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                             }
+                            GetComponent<SpriteRenderer>().sprite = null;
                         }
                     }
                     if (articleOnTableDeux.Count > 0)
@@ -504,6 +507,7 @@ public class ColisScript : MonoBehaviour
                         {
                             spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                         }
+                        GetComponent<SpriteRenderer>().sprite = null;
                     }
                 }
             }
