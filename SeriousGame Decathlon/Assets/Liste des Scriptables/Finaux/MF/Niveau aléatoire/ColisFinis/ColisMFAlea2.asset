@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ColisMFAlea2
   PCB: 3
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  poids: 6
+  fillPercent: 100
+  hasBeenRecount: 0
+  isBadOriented: 1
+  estOuvert: 0
+  estAbime: 0
+  needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 11400000, guid: c573498402169404b96bbf88659fb497, type: 2}
   listArticles:
   - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
   - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
   - {fileID: 11400000, guid: a60ec9b0a04f4c348b32cea203935519, type: 2}
-  wayTicket: {fileID: 11400000, guid: c573498402169404b96bbf88659fb497, type: 2}
-  nomWayTicket: 
-  poids: 6
-  fillPercent: 100
-  isBadOriented: 1
-  estOuvert: 0
-  estAbime: 0
   nbAnomalie: 0
   listAnomalies: []
   provenance: 
-  needQualityControl: 0
-  aEteVide: 0
-  hasBeenRecount: 0
