@@ -236,6 +236,7 @@ public class Colis : ScriptableObject
                 }
                 else if (isBadOriented)
                 {
+                    if (TutoManager.instance != null) {TutoManager.instance.Manager(27);}
                     isBadOriented = false;
                 }
             }

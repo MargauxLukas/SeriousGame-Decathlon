@@ -12,8 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
   m_Name: DialoguePhase00
   m_EditorClassIdentifier: 
-  persoParlant: {fileID: 0}
-  persoEcoutant: {fileID: 0}
-  phraseDites: []
-  choixPossibles: []
-  dialoguesSuivant: []
+  persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
+  persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
+  phraseDites:
+  - "Je vais te montrer, par le bias de trois colis, les outils \xE0 ta disposition
+    pour r\xE9soudre la plupart des anomalies que tu peux rencontrer. "
+  - "Garde bien en t\xEAte que chaque anomalie peut \xEAtre r\xE9solue de plusieurs
+    mani\xE8res diff\xE9rentes. "
+  - "Si plus tard dans ton entra\xEEnement tu rencontres un probl\xE8me ou que tu
+    as besoin de pr\xE9cisions sur un cas pr\xE9cis, n'h\xE9siste pas \xE0 t'adresser
+    directement \xE0 ton moniteur. "
+  - "Je suis l\xE0 pour t'apprendre les bases, \xE0 toi de t'en servir au mieux par
+    la suite."
+  - "Si tout est clair, tu vas pouvoir traiter ton premier colis. Appuie sur la P\xE9dale
+    en bas \xE0 droite de l\u2019\xE9cran pour appeler un colis."
+  - "Si tout est clair, tu vas pouvoir traiter ton premier colis. Appuie sur la P\xE9dale
+    en bas \xE0 droite de l\u2019\xE9cran pour appeler un colis."
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}
