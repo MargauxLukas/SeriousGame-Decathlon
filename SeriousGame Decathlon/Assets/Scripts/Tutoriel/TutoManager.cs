@@ -589,7 +589,7 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
     }
 
-    /*void Phase02()
+   void Phase02()
     {
         phaseNum++;
         //Disable fond noir
@@ -1218,13 +1218,13 @@ public class TutoManager : MonoBehaviour
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = true;
-    }*/
+    }
 
             /*****************/
            /*   Colis 2     */
           /*****************/
 
-    /*void Phase64()
+    void Phase64()
     {
         phaseNum++;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = false;
@@ -1316,5 +1316,5 @@ public class TutoManager : MonoBehaviour
         phaseNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.screen).interactable = true;
-    }*/
+    }
 }
