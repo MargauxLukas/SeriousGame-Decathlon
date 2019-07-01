@@ -900,7 +900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &816608297
 RectTransform:
   m_ObjectHideFlags: 0
@@ -917,7 +917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -194, y: 40}
+  m_AnchoredPosition: {x: -165, y: 40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &816608298
@@ -953,7 +953,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Does save Colis :'
+  m_Text: Colis du niveau Loaded
 --- !u!222 &816608299
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1380,6 +1380,11 @@ PrefabInstance:
       propertyPath: RFIDKnowed.Array.data[2]
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
+        type: 3}
+      propertyPath: affichageNouveauLevel
+      value: 
+      objectReference: {fileID: 1224120145}
     - target: {fileID: 2532194956112379893, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1747,7 +1752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1224120144
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1764,7 +1769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -194, y: -4}
+  m_AnchoredPosition: {x: -165, y: -4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224120145
@@ -1800,7 +1805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Does load Colis :'
+  m_Text: 
 --- !u!222 &1224120146
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3256,7 +3261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1932482027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3274,7 +3279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -65}
+  m_AnchoredPosition: {x: 0, y: -102.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932482028

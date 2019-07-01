@@ -5,27 +5,39 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Nouveau Colis", menuName = "NewColis")]
 public class Colis : ScriptableObject
 {
-    public string name;
-
     enum Direction { Up, Down, Right, Left, Forward, Back };
 
+    [Header("INFO Colis")]
+    public string name;
+
     public int PCB = 0;
-    public Carton carton;
-    public List<Article> listArticles = new List<Article>();
-    public WayTicket wayTicket;
-    public string nomWayTicket;
-    public float poids = 0;
+
+    public float poids       = 0;
     public float fillPercent = 0;
-    public bool isBadOriented;
-    public bool estOuvert;
-    public bool estAbime;
+
+    public bool     hasBeenRecount;
+    public bool      isBadOriented;
+    public bool          estOuvert;
+    public bool           estAbime;
+    public bool needQualityControl;
+    public bool           aEteVide;
+
+    [Header("Type Carton")]
+    public Carton carton;
+
+    [Header("Ticket HU")]
+    public string nomWayTicket;
+    public WayTicket wayTicket;
+
+    [Header("Liste Article")]
+    public List<Article> listArticles = new List<Article>();
+
+    [Header("Liste Anomalie")]
     public int nbAnomalie;
     public List<string> listAnomalies;
+
     public string provenance;
     Direction orientation;
-    public bool needQualityControl;
-    public bool aEteVide;
-    public bool hasBeenRecount;
 
     public SquareFace face;
 
@@ -234,7 +246,7 @@ public class Colis : ScriptableObject
     public List<Article> Vider()
     {
         List<Article> artcilePile;
-        PCB = 0;
+        PCB   = 0;
         poids = 0;
         artcilePile = listArticles;
         listArticles = new List<Article>();

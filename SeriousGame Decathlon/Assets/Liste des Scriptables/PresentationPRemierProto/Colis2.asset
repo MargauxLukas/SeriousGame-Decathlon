@@ -14,17 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   PCB: 1
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
-  listArticles:
-  - {fileID: 11400000, guid: 8db9518c1e3e1d94695185ae5caa34ae, type: 2}
-  wayTicket: {fileID: 11400000, guid: f4459cd8980428743a7516059048fb1a, type: 2}
-  nomWayTicket: 
   poids: 1
   fillPercent: 100
+  hasBeenRecount: 0
   isBadOriented: 1
   estOuvert: 0
   estAbime: 1
-  nbAnomalie: 0
-  listAnomalies: []
-  provenance: 
   needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 11400000, guid: f4459cd8980428743a7516059048fb1a, type: 2}
+  listArticles:
+  - {fileID: 11400000, guid: 8db9518c1e3e1d94695185ae5caa34ae, type: 2}
+  nbAnomalie: 2
+  listAnomalies:
+  - Dimensions out of tolerance
+  - Wrong carton orientation
+  provenance: 

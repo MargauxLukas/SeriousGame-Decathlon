@@ -90,6 +90,7 @@ public class OngletManager : MonoBehaviour
         if (TutoManager.instance != null) {TutoManager.instance.Manager(23);}
         if (allValidate)
         {
+            
             homeScreen   .SetActive(true );
             ongletButton .SetActive(false);
             fillingRate  .SetActive(false);

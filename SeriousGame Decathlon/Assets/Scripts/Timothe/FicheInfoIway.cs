@@ -12,10 +12,11 @@ public class FicheInfoIway : MonoBehaviour
 
     public bool ficheIsOpening = false;
     public bool ficheIsClosing = false;
+
     void Start()
     {
         myStartPosition = transform.position;
-        targetPosition = new Vector2(myStartPosition.x, -5f);
+        targetPosition = new Vector2(myStartPosition.x, -4.5f);
     }
 
     private void Update()

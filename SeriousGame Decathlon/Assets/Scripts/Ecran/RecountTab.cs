@@ -38,6 +38,7 @@ public class RecountTab : MonoBehaviour
         if(!colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
         {
             Scoring.instance.MinorPenalty();
+            Scoring.instance.AffichageErreur("Colis non scanné");
         }
         if (TutoManager.instance != null) { TutoManager.instance.Manager(6); }
     }
@@ -120,32 +121,40 @@ public class RecountTab : MonoBehaviour
         ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
         Destroy(ticketgo);
-        ticketgo = Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+        ticketgo = Instantiate(ticket, new Vector2(68.21f, 1.64f), Quaternion.identity);
     }
 
     /************************************
-* Permet d'imprimer des puces RFID  *
-*************************************/
+    * Permet d'imprimer des puces RFID  *
+    *************************************/
     public void PrintRFID1()
     {
         bool refAlreadyExist = false;
         RefArticle refArt = null;
 
-        foreach (RefArticle refArticleTemporaire in listRefArticles)                   //Vérification si la RefArticle Existe Déjà
+        if (refRFID1 != 0)
         {
-            if (refArticleTemporaire.numeroRef == refRFID1)
+            foreach (RefArticle refArticleTemporaire in listRefArticles)                   //Vérification si la RefArticle Existe Déjà
             {
-                refArt = refArticleTemporaire;
-                refAlreadyExist = true;
-                Debug.Log("Je connais");
+                if (refArticleTemporaire.numeroRef == refRFID1)
+                {
+                    refArt = refArticleTemporaire;
+                    refAlreadyExist = true;
+                    Debug.Log("Je connais");
+                }
+            }
+
+            if (!refAlreadyExist)
+            {
+                refArt = RefArticle.CreateInstance<RefArticle>();
+                refArt.numeroRef = refRFID1;
+                Debug.Log("Je connais pas");
             }
         }
-
-        if (!refAlreadyExist)
+        else
         {
             refArt = RefArticle.CreateInstance<RefArticle>();
-            refArt.numeroRef = refRFID1;
-            Debug.Log("Je connais pas");
+            refArt.numeroRef = colis.GetComponent<ColisScript>().colisScriptable.wayTicket.refArticle.numeroRef;
         }
 
         RFID newRFID                = RFID.CreateInstance<RFID>();
@@ -155,7 +164,7 @@ public class RecountTab : MonoBehaviour
         ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
 
         Destroy(ticketRFIDgo);
-        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
+        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(65.21f, -1.01f), Quaternion.identity);
     }
 
     public void PrintRFID2()

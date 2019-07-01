@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scoring : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Scoring : MonoBehaviour
     private float multiplicator;
     public bool gotNewColis;
     private bool lastGotColis;
+    public Text errorTextZone;
 
     private float timeColisMaking;
 
@@ -131,6 +133,23 @@ public class Scoring : MonoBehaviour
         }
     }
 
+
+    public void AffichageErreur(string errorText)
+    {
+        if (errorTextZone != null)
+        {
+            StopAllCoroutines();
+            errorTextZone.gameObject.SetActive(true);
+            errorTextZone.text = errorText;
+            StartCoroutine(TempsAffichageErreur());
+        }
+    }
+
+    IEnumerator TempsAffichageErreur()
+    {
+        yield return new WaitForSeconds(7f);
+        errorTextZone.gameObject.SetActive(false);
+    }
 
     //BONUS
     // +50

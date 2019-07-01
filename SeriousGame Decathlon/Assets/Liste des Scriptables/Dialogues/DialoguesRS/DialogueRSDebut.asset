@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialogueRSDebut
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: faaa3248b8f0ec84d946840aaaf30b2a, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - Bonjour, que puis-je pour vous ?
+  choixPossibles:
+  - "J'ai un colis abim\xE9 avec plus d'articles que pr\xE9vu"
+  - J'ai un colis pesant plus que 20kg.
+  - "D\xE9sol\xE9, je me suis tromp\xE9"
+  dialoguesSuivant:
+  - {fileID: 11400000, guid: 65a92d692ff588a4380557962cf6753e, type: 2}
+  - {fileID: 11400000, guid: d8db5ba364825cb468284d4739f2ef59, type: 2}
+  - {fileID: 0}

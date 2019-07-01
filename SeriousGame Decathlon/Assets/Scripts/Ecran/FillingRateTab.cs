@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class FillingRateTab : MonoBehaviour
 {
-    public int fillingRate;
+    public int fillingRate = 0;
     public bool bCanMecaOpen = true;
     [Header("Can Meca Open Toggle")]
     public Toggle toggle;
@@ -22,6 +22,7 @@ public class FillingRateTab : MonoBehaviour
         if(fillingRate != tabRecount.colis.GetComponent<ColisScript>().colisScriptable.fillPercent)
         {
             Scoring.instance.MidPenalty();
+            Scoring.instance.AffichageErreur("Mauvais filling rate");
         }
     }
 

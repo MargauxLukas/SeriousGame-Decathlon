@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChargementListeColis : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ChargementListeColis : MonoBehaviour
     public int nbLevel;
     public int currentLevel;
     public LevelScriptable levelScript;
+    public Text affichageNouveauLevel;
 
     public static ChargementListeColis instance;
 
@@ -63,7 +65,6 @@ public class ChargementListeColis : MonoBehaviour
         if (levelScript != null)
         {
             Debug.Log("Test Level Null");
-            List<string> colisName = new List<string>();
             for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
             {
                 colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
@@ -74,9 +75,10 @@ public class ChargementListeColis : MonoBehaviour
             }
             colisProcessMulti = newList;
         }
+        affichageNouveauLevel.text = levelScript.colisDuNiveauNoms[3].ToString();
         //Trouver un système pour mélanger les colis aléatoirement.
         //Ajouter le choix des process pour le level load.
-        LoadNewScene(0);
+        LoadNewScene(1);
     }
 
     private void Update()

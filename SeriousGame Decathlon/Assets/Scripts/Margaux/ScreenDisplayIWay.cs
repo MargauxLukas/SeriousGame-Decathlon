@@ -11,13 +11,13 @@ public class ScreenDisplayIWay : MonoBehaviour
 
     public void UpdateAffichage()
     {
-        textArt.text = "ART# " + iWayInfoManager.refIntIWay;
-        textPCB.text = "PCB :" + iWayInfoManager.pcbIntIWay;
+        textArt.text = "" + iWayInfoManager.refIntIWay;
+        textPCB.text = "" + iWayInfoManager.pcbIntIWay;
     }
 
     public void EndAffichage()
     {
-        textArt.text = "ART# ";
-        textPCB.text = "PCB :";
+        textArt.text = "";
+        textPCB.text = "";
     }
 }
