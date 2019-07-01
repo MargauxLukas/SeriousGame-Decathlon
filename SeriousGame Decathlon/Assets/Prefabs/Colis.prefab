@@ -251,7 +251,7 @@ MonoBehaviour:
   canMoveVertical: 0
   entrancePosition: {x: 0, y: 0, z: 0}
   spriteArticleDansColis: {fileID: 4125945287869827057}
-  spriteMaskArticleColis: {fileID: 0}
+  spriteMaskArticleColis: {fileID: 8170034682280363377}
 --- !u!50 &246706537573853403
 Rigidbody2D:
   serializedVersion: 4

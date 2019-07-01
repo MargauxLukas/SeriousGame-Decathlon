@@ -37,6 +37,13 @@ public class FicheCarton : MonoBehaviour
         listeBoutonsMenuTourner = colisManage.listeBoutonsMenuTourner;
     }
 
+    int nbCartonChoisit;
+
+    public void GetInt(int nbCarton)
+    {
+        nbCartonChoisit = nbCarton;
+    }
+
     public void InstantiateCarton(string buttonName)
     {
         colisManage.listeColisActuel = new GameObject[0];
@@ -47,37 +54,26 @@ public class FicheCarton : MonoBehaviour
             scriptColis = newColis.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
 
-            if(buttonName == "CB01")
-            {
-                scriptColis.colisScriptable.carton = carton[0];
-            }
-            else
-            {
-                scriptColis.colisScriptable.carton = carton[1];
-            }
-
-            scriptColis.colisScriptable.carton.codeRef = buttonName;
-            scriptColis.colisScriptable.carton.Initialize();
+            //scriptColis.colisScriptable.carton.codeRef = buttonName;
+            //scriptColis.colisScriptable.carton.Initialize();
 
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTableUn = spriteArticleTableUn;
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            if (scriptColis.colisScriptable.fillPercent <= 50)
-            {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
-            }
-            else if (scriptColis.colisScriptable.fillPercent >= 125)
-            {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
-            }
-            else
-            {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
-            }
-
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+            /* if (scriptColis.colisScriptable.fillPercent <= 50)
+             {
+                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
+             }
+             else if (scriptColis.colisScriptable.fillPercent >= 125)
+             {
+                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+             }
+             else
+             {
+                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+             }*/
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;
@@ -97,10 +93,24 @@ public class FicheCarton : MonoBehaviour
                 scriptColis.IWayEtiquette.SetActive(false);
             }
 
+           /* if (buttonName == "CB02")
+            {
+                Debug.Log("Test CB2");
+                scriptColis.colisScriptable.carton = carton[1];
+            }
+            else if (buttonName == "CB01")
+            {
+                Debug.Log("Test CB1");
+                scriptColis.colisScriptable.carton = carton[0];
+            }
+
+            scriptColis.colisScriptable.carton = carton[nbCartonChoisit];
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;*/
+
             colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
             repackTab.colisVide = colisManage.scriptRotation.cartonObj;
-            colisManage.scriptRotation.ColisEnter();
-            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, newColis.GetComponent<SpriteRenderer>());
+            /*colisManage.scriptRotation.ColisEnter();
+            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, newColis.GetComponent<SpriteRenderer>());*/
         }
 
 

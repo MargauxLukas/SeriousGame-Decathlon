@@ -23,6 +23,8 @@ public class RotationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lastTopViewFaceIsWrong = false;
+
         squareList = new List<SquareFace>();
         squareList.Add(CreateFace(0, "Up", true));
         squareList.Add(CreateFace(0, "Down", false));
@@ -49,6 +51,8 @@ public class RotationScript : MonoBehaviour
 
     private void resetAll()
     {
+        lastTopViewFaceIsWrong = false;
+
         squareList = new List<SquareFace>();
         squareList.Add(CreateFace(0, "Up", false));
         squareList.Add(CreateFace(0, "Down", false));
@@ -114,7 +118,6 @@ public class RotationScript : MonoBehaviour
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
         //Debug.Log(actualFace.face);
         //Debug.Log(actualFace.fullRotation);
-        Debug.Log("Test Upd Sprite");
     }
 
     public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)
@@ -332,7 +335,7 @@ public class RotationScript : MonoBehaviour
             resetAll();
             squareList[0].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
-            UpdateSprite(cartonsSprites, carton);
+            //UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
             cartonObj.GetComponent<ColisScript>().Tourner();
         }
@@ -342,7 +345,7 @@ public class RotationScript : MonoBehaviour
             squareList[4].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             //Debug.Log(actualFace.face);
-            UpdateSprite(cartonsSprites, carton);
+            //UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
             cartonObj.GetComponent<ColisScript>().Tourner();
         }
@@ -422,6 +425,7 @@ public class RotationScript : MonoBehaviour
 
         if (actualFace != null)
         {
+            Debug.Log("Test Face : " + actualFace.face);
             actualFace.isCurrentlyPick = false;
             SquareFace newFace = new SquareFace();
             if (xAxis != 0)
