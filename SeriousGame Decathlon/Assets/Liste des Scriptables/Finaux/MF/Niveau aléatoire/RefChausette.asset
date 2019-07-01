@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RefChausette
   m_EditorClassIdentifier: 
   photo: {fileID: 0}
-  numeroRef: 3
+  numeroRef: 2
   poids: 2

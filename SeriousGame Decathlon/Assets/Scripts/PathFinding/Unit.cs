@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     public float turnSpeed = 3f;
     public float turnDst = 5f;
     public float stoppingDst = 10;
+    public Animator playerAnimator;
 
     Path path;
 
@@ -93,6 +94,7 @@ public class Unit : MonoBehaviour
                 if(pathIndex == path.finishLineIndex)
                 {
                     followingPath = false;
+                    playerAnimator.SetBool("DoesWalk", false);
                     break;
                 }
                 else
@@ -112,9 +114,15 @@ public class Unit : MonoBehaviour
                     }
                 }
 
-                Quaternion targetRotation = Quaternion.LookRotation(new Vector3(path.lookPoints[pathIndex].x, path.lookPoints[pathIndex].y, 0) - transform.position);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1);
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
+                //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(path.lookPoints[pathIndex].x, path.lookPoints[pathIndex].y, 0) - transform.position);
+                //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1);
+                //transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
+                Vector3 direction = new Vector3(path.lookPoints[pathIndex].x - transform.position.x, path.lookPoints[pathIndex].y - transform.position.y, 0).normalized;
+                transform.Translate(direction * Time.deltaTime * speed * speedPercent, Space.Self);
+
+                playerAnimator.SetFloat("DirectionX",direction.x);
+                playerAnimator.SetFloat("DirectionY", direction.y);
+                playerAnimator.SetBool("DoesWalk", true);
                 //transform.Translate(new Vector3(path.lookPoints[pathIndex].x, path.lookPoints[pathIndex].y, 0), Space.Self);
             }
             yield return null;
