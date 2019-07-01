@@ -67,7 +67,7 @@ public class TestSaveLoadScript : MonoBehaviour
     {
         foreach(LevelScriptable level in allLevelToSave)
         {
-            SaveLoadSystem.instance.SaveLevel(level, allColisToSave);
+            SaveLoadSystem.instance.SaveLevelWithoutColis(level);
         }
     }
 

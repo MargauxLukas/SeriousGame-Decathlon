@@ -55,8 +55,20 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            //scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
-            //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+            if (scriptColis.colisScriptable.fillPercent <= 50)
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
+            }
+            else if (scriptColis.colisScriptable.fillPercent >= 125)
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+            }
+            else
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+            }
+
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;
@@ -76,9 +88,10 @@ public class FicheCarton : MonoBehaviour
                 scriptColis.IWayEtiquette.SetActive(false);
             }
 
-            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.4f, 0), Quaternion.identity);
+            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
             repackTab.colisVide = colisManage.scriptRotation.cartonObj;
             colisManage.scriptRotation.ColisEnter();
+            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, newColis.GetComponent<SpriteRenderer>());
         }
 
 

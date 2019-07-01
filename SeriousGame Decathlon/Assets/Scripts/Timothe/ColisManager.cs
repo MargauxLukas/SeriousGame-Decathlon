@@ -73,11 +73,18 @@ public class ColisManager : MonoBehaviour
                 bouton.scriptColis = colisTemporaire.GetComponent<ColisScript>();
             }
 
-            scanPistol.scriptColis   = scriptColis;
+            //scanPistol.scriptColis   = scriptColis;
             recountTab.colis         = colisTemporaire;
             repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
+            scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, colisTemporaire.GetComponent<SpriteRenderer>());
+            if(scriptColis.colisScriptable.estOuvert)
+            {
+                Color newColo = colisTemporaire.GetComponent<SpriteRenderer>().color;
+                newColo.a = 0.3f;
+                colisTemporaire.GetComponent<SpriteRenderer>().color = newColo;
+            }
 
             //Debug.Log(listeColisTraiter[0]);
             listeColisTraiter.RemoveAt(0);
@@ -96,7 +103,19 @@ public class ColisManager : MonoBehaviour
                 }
             }
 
-            scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].sprite;
+            if(scriptColis.colisScriptable.fillPercent<=50)
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
+            }
+            else if(scriptColis.colisScriptable.fillPercent >= 125)
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+            }
+            else
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+            }
+
             scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
         else if(listeColisActuel.Length > 0)

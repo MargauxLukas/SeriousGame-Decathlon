@@ -187,6 +187,42 @@ public class SaveLoadSystem : MonoBehaviour
         return dataToLoad;
     }
 
+    public void SaveLevelWithoutColis(LevelScriptable levelToSave)
+    {
+        if (!IsSaveFile())
+        {
+            Debug.Log("Test");
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
+        }
+
+        if (!Directory.Exists(Application.persistentDataPath + "/game_save/level_data"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save/level_data");
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
+        {
+            SavedData temporarySave = LoadGeneralData();
+            temporarySave.nombreNiveauCree++;
+            levelToSave.nbLevel = temporarySave.nombreNiveauCree;
+
+            FileStream file = File.Create(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt");
+            var json = JsonUtility.ToJson(levelToSave);
+            bf.Serialize(file, json);
+            file.Close();
+
+            SaveGeneralData(temporarySave);
+        }
+        else
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt", FileMode.Open);
+            var json = JsonUtility.ToJson(levelToSave);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+    }
+
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
     {
         if (!IsSaveFile())

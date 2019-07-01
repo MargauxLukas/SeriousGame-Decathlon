@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poids: 0.5
   rfid: {fileID: 11400000, guid: 33e6fdf06c99b8b4697a2812cdd829e5, type: 2}
-  sprite: {fileID: 21300000, guid: 18cf8e3f8a0bfaf44925fd96591e937b, type: 3}
+  spriteList:
+  - {fileID: 21300000, guid: b4f39ceb6936ddb48b2af7ecf9ede64a, type: 3}
+  - {fileID: 21300000, guid: 18cf8e3f8a0bfaf44925fd96591e937b, type: 3}
+  - {fileID: 21300000, guid: f10f305b784c99240822f7efd5fb74c8, type: 3}

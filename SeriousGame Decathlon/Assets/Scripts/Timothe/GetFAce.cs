@@ -9,6 +9,7 @@ public class GetFAce : MonoBehaviour
     public ColisScript colis;
 
     public List<Sprite> cartonSprite;
+    public SquareFace newFace;
 
     private void Update()
     {
@@ -24,10 +25,14 @@ public class GetFAce : MonoBehaviour
 
     public void UpdateThisFace()
     {
+        if(newFace == null)
+        {
+            newFace = scriptRot.actualFace.upVoisin;
+        }
+
         cartonSprite = colis.colisScriptable.carton.spriteCartonsListe;
         //Debug.Log(cartonSprite.Count);
-        SquareFace newFace = scriptRot.actualFace.upVoisin;
-        if(scriptRot.actualFace.face == "Right")
+        /*if(scriptRot.actualFace.face == "Right")
         {
             newFace.fullRotation = 90;
         }
@@ -41,9 +46,10 @@ public class GetFAce : MonoBehaviour
         }
 
         SquareFace temporaryFace = scriptRot.actualFace;
-        scriptRot.actualFace = newFace;
-        scriptRot.UpdateSprite(cartonSprite, GetComponent<SpriteRenderer>());
-        scriptRot.actualFace = temporaryFace;
+        scriptRot.actualFace = newFace;*/
+        newFace = scriptRot.UpdateVueHaut(cartonSprite, GetComponent<SpriteRenderer>(), newFace);
+        /*scriptRot.UpdateSprite(cartonSprite, GetComponent<SpriteRenderer>());
+        scriptRot.actualFace = temporaryFace;*/
         //Debug.Log(newFace.face);
     }
 }

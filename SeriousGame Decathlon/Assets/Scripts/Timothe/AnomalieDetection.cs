@@ -84,7 +84,7 @@ public class AnomalieDetection : MonoBehaviour
             colis.listAnomalies.Add("RFID tags to be applied");
         }
 
-        if (colis.wayTicket == null || RFIDnb != colis.wayTicket.PCB)
+        if (colis.wayTicket != null || RFIDnb != colis.wayTicket.PCB)
         {
             if(RFIDnb>colis.wayTicket.PCB)
             {

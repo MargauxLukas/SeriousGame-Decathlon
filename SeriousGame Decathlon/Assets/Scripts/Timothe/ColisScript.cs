@@ -62,8 +62,6 @@ public class ColisScript : MonoBehaviour
     void Start()
     {
         entrancePosition = transform.position;
-        Colis newColis   = Instantiate(colisScriptable);
-        //colisScriptable = newColis;
         circlePosition = Vector2.zero;
         circleImage.fillAmount = 1f / itemNumber;
 
@@ -439,14 +437,39 @@ public class ColisScript : MonoBehaviour
                         {
                             spriteArticleTableUn.SetActive(true);
                             spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
+
+                            if (colisScriptable.fillPercent <= 50)
+                            {
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                            }
+                            else if (colisScriptable.fillPercent >= 125)
+                            {
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                            }
+                            else
+                            {
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                            }
+                            GetComponent<SpriteRenderer>().sprite = null;
                         }
                     }
                     if (articleOnTableUn.Count > 0)
                     {
                         spriteArticleTableUn.SetActive(true);
                         spriteArticleTableUn.GetComponent<PileArticle>().listArticles = articleOnTableUn;
-                        // spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].sprite;
+                        if (colisScriptable.fillPercent <= 50)
+                        {
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                        }
+                        else if (colisScriptable.fillPercent >= 125)
+                        {
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                        }
+                        else
+                        {
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                        }
+                        GetComponent<SpriteRenderer>().sprite = null;
                     }
 
                     //Table 2
@@ -468,14 +491,40 @@ public class ColisScript : MonoBehaviour
                         {
                             spriteArticleTableDeux.SetActive(true);
                             spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
+
+                            if (colisScriptable.fillPercent <= 50)
+                            {
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                            }
+                            else if (colisScriptable.fillPercent >= 125)
+                            {
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                            }
+                            else
+                            {
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                            }
+                            GetComponent<SpriteRenderer>().sprite = null;
                         }
                     }
                     if (articleOnTableDeux.Count > 0)
                     {
                         spriteArticleTableDeux.SetActive(true);
                         spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
-                        //spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].sprite;
+
+                        if (colisScriptable.fillPercent <= 50)
+                        {
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                        }
+                        else if (colisScriptable.fillPercent >= 125)
+                        {
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                        }
+                        else
+                        {
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                        }
+                        GetComponent<SpriteRenderer>().sprite = null;
                     }
                 }
             }

@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: ChaussetteNoRFID
   m_EditorClassIdentifier: 
   poids: 2
-  rfid: {fileID: 0}
-  sprite: {fileID: 21300000, guid: 55231251b0b7d8b4fa60080889dc219b, type: 3}
+  rfid: {fileID: 11400000, guid: 02752d7f9a1af9b4e9642981b1d4f3db, type: 2}
+  spriteList:
+  - {fileID: 21300000, guid: 0cff902f37a70404c934c9cffb034a62, type: 3}
+  - {fileID: 21300000, guid: 55231251b0b7d8b4fa60080889dc219b, type: 3}
+  - {fileID: 21300000, guid: 1409f0a192b42cc40b8df53089d139e4, type: 3}

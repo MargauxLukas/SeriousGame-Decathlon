@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcb347e374cbf9040a637d42a946de1c, type: 3}
-  m_Name: RefChausette
+  m_Name: RefDoudoune
   m_EditorClassIdentifier: 
   photo: {fileID: 0}
-  numeroRef: 2
-  poids: 2
+  numeroRef: 3
+  poids: 1

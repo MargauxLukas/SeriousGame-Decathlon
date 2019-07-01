@@ -28,6 +28,8 @@ public class RecountTab : MonoBehaviour
 
     GameObject ticketgo;
     GameObject ticketRFIDgo;
+
+    public bool isInventory = false ;
     /*****************************
     *  Active le scanner RFID    *
     ******************************/
@@ -56,8 +58,8 @@ public class RecountTab : MonoBehaviour
             rfidScan.isActive = false;
 
             //A mettre dans FillingRate
-            //if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                           //On connait déjà la référence
-            //else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                           //On rajoute la référence dans notre base de donnée
+            //if  (anomalieD.RFIDtagKnowned.Contains(int.Parse(infoRFID.refStringRFID))){}                                         //On connait déjà la référence
+            //else{anomalieD.RFIDtagKnowned.Add     (int.Parse(infoRFID.refStringRFID)) ;}                                         //On rajoute la référence dans notre base de donnée
 
             WayTicket newTicket       = WayTicket.CreateInstance<WayTicket>();
             newTicket.PCB             = int.Parse(infoRFID.numStringRFID);                                                         //On donne au nouveau ticket le bon nombre de RFID
@@ -77,9 +79,10 @@ public class RecountTab : MonoBehaviour
 
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
-            Scoring.instance.MinorPenalty();                                                                                     //Test de scoring
-            return;
+            Scoring.instance.MinorPenalty();                                                                                       //Test de scoring
         }
+
+        isInventory = true;
     }
 
     /*********************************************
@@ -88,8 +91,17 @@ public class RecountTab : MonoBehaviour
     public void PrintHU() 
     {
         if (TutoManager.instance != null) {TutoManager.instance.Manager(17);}
-        Destroy(ticketgo);
-        ticketgo = Instantiate(ticket, new Vector2(2.89f, 1.64f), Quaternion.identity);
+        if (isInventory)
+        {
+            Destroy(ticketgo);
+            ticketgo = Instantiate(ticket, new Vector2(73.34f, 1.74f), Quaternion.identity);
+        }
+        else
+        {
+            Destroy(ticketgo);
+            ticket.GetComponent<GetIWayFromObject>().IWayTicket = colis.GetComponent<ColisScript>().colisScriptable.wayTicket;
+            ticketgo = Instantiate(ticket, new Vector2(73.34f, 1.74f), Quaternion.identity);
+        }
     }
 
     public void PrintHU(int pcb, int refArticle, float poids = 0)
@@ -121,7 +133,7 @@ public class RecountTab : MonoBehaviour
         ticket.GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
         Destroy(ticketgo);
-        ticketgo = Instantiate(ticket, new Vector2(68.21f, 1.64f), Quaternion.identity);
+        ticketgo = Instantiate(ticket, new Vector2(73.34f, 1.74f), Quaternion.identity);
     }
 
     /************************************
@@ -164,7 +176,7 @@ public class RecountTab : MonoBehaviour
         ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
 
         Destroy(ticketRFIDgo);
-        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(65.21f, -1.01f), Quaternion.identity);
+        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(69.91f, 1.81f), Quaternion.identity);
     }
 
     public void PrintRFID2()
@@ -196,6 +208,6 @@ public class RecountTab : MonoBehaviour
         ticketRFID.GetComponent<GetRfidFromObject>().newRFID = newRFID;
 
         Destroy(ticketRFIDgo);
-        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(-3.06f, -1.01f), Quaternion.identity);
+        ticketRFIDgo = Instantiate(ticketRFID, new Vector2(69.91f, 1.81f), Quaternion.identity);
     }
 }

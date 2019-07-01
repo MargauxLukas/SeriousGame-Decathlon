@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb347e374cbf9040a637d42a946de1c, type: 3}
-  m_Name: RefChausette
+  m_Script: {fileID: 11500000, guid: 52a445b73937cbe40bd671b322aafcfa, type: 3}
+  m_Name: RFIDMontre not OK
   m_EditorClassIdentifier: 
-  photo: {fileID: 0}
-  numeroRef: 2
-  poids: 2
+  estFonctionnel: 0
+  refArticle: {fileID: 11400000, guid: aada3e3ebc9fed549b7e1b199f8d5454, type: 2}

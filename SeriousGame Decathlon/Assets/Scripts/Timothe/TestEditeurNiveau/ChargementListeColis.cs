@@ -11,6 +11,7 @@ public class ChargementListeColis : MonoBehaviour
      */
 
     public string sceneName;
+    public int sceneToLoad;
     public List<int> RFIDKnowed;
     public List<Colis> colisProcessMulti;
 
@@ -75,18 +76,18 @@ public class ChargementListeColis : MonoBehaviour
             }
             colisProcessMulti = newList;
         }
-        affichageNouveauLevel.text = levelScript.colisDuNiveauNoms[3].ToString();
-        //Trouver un système pour mélanger les colis aléatoirement.
-        //Ajouter le choix des process pour le level load.
-        LoadNewScene(1);
-    }
+        //affichageNouveauLevel.text = levelScript.colisDuNiveauNoms[3].ToString();         Ceci est pour le debug
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.B))
+        //Rangement aléatoire des colis
+        for(int i = 0; i < newList.Count - 1; i ++)
         {
-            LoadNewLevelScript(currentLevel);
-            LoadNewScene(0);
+            int rng = Random.Range(0, newList.Count - 1);
+            Colis temporaryColis = newList[rng];
+            newList[rng] = newList[i];
+            newList[i] = temporaryColis;
         }
+
+        //Ajouter le choix des process pour le level load.
+        LoadNewScene(sceneToLoad);
     }
 }

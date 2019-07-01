@@ -12,6 +12,8 @@ public class RotationScript : MonoBehaviour
     public List<Sprite> cartonsSprites;
     public SpriteRenderer carton;
 
+    private bool lastTopViewFaceIsWrong;
+
     public void TouchOtherColis(SquareFace newFace)
     {
         actualFace = newFace;
@@ -112,6 +114,215 @@ public class RotationScript : MonoBehaviour
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
         //Debug.Log(actualFace.face);
         //Debug.Log(actualFace.fullRotation);
+        Debug.Log("Test Upd Sprite");
+    }
+
+    public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)
+    {
+        if (lastTopViewFaceIsWrong)
+        {
+            lastTopViewFaceIsWrong = false;
+            int xAxis = xAxisMajeur;
+            int yAxis = yAxisMajeur;
+            int rotation = RotaAxis;
+
+            if (xAxisMajeur > 0)
+            {
+                rotation = 90;
+            }
+            else if (xAxisMajeur < 0)
+            {
+                rotation = -90;
+            }
+
+            if (RotaAxis > 0)
+            {
+                xAxis = 1;
+            }
+            else if (RotaAxis < 0)
+            {
+                xAxis = -1;
+            }
+
+            theNewFace.fullRotation = theNewFace.fullRotation % 360;
+            if (theNewFace.fullRotation >= 360)
+            {
+                theNewFace.fullRotation -= 360;
+            }
+            else if (theNewFace.fullRotation < 0)
+            {
+                theNewFace.fullRotation += 360;
+            }
+            int nbQuaterRotateMore = Mathf.RoundToInt(theNewFace.fullRotation / 90) % 4;
+
+            if (theNewFace != null)
+            {
+                theNewFace.isCurrentlyPick = false;
+                SquareFace newFace = new SquareFace();
+                if (xAxis != 0)
+                {
+                    if (xAxis > 0)
+                    {
+                        newFace = theNewFace.rightVoisin;
+                        /*switch(nbQuaterRotateMore)
+                        {
+                            case 0:
+                                newFace = actualFace.rightVoisin;
+                                //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                                //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                                break;
+                            case 1:
+                                newFace = actualFace.upVoisin;
+                                //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                                //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                                break;
+                            case 2:
+                                newFace = actualFace.leftVoisin;
+                                //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                                //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                                break;
+                            case 3:
+                                newFace = actualFace.downVoisin;
+                                //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                                //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                                break;
+                        }*/
+                    }
+                    else
+                    {
+                        newFace = theNewFace.leftVoisin;
+                        /*switch (nbQuaterRotateMore)
+                        {
+                            case 0:
+                                newFace = actualFace.leftVoisin;
+                                //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                                //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                                break;
+                            case 1:
+                                newFace = actualFace.downVoisin;
+                                //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                                //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                                break;
+                            case 2:
+                                newFace = actualFace.rightVoisin;
+                                //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                                //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                                break;
+                            case 3:
+                                newFace = actualFace.upVoisin;
+                                //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                                //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                                break;
+                        }*/
+                    }
+                    theNewFace = newFace;
+                }
+                else if (yAxis != 0)
+                {
+                    if (yAxis > 0)
+                    {
+                        newFace = theNewFace.upVoisin;
+                        /*switch (nbQuaterRotateMore)
+                        {
+                            case 0:
+                                newFace = actualFace.upVoisin;
+                                //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                                //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                                break;
+                            case 1:
+                                newFace = actualFace.leftVoisin;
+                                //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                                //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                                break;
+                            case 2:
+                                newFace = actualFace.downVoisin;
+                                //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                                //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                                break;
+                            case 3:
+                                newFace = actualFace.rightVoisin;
+                                //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                                //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                                break;
+                        }*/
+                    }
+                    else
+                    {
+                        newFace = theNewFace.downVoisin;
+                        /*switch (nbQuaterRotateMore)
+                        {
+                            case 0:
+                                newFace = actualFace.downVoisin;
+                                GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
+                                GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
+                                break;
+                            case 1:
+                                newFace = actualFace.rightVoisin;
+                                GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
+                                GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
+                                break;
+                            case 2:
+                                newFace = actualFace.upVoisin;
+                                GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
+                                GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
+                                break;
+                            case 3:
+                                newFace = actualFace.leftVoisin;
+                                GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
+                                GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
+                                break;
+                        }*/
+                    }
+                    theNewFace = newFace;
+                }
+                else if (rotation != 0)
+                {
+                    if (rotation > 0)
+                    {
+                        theNewFace.fullRotation += 90;
+                        //GetVoisonFromRotation(GetVoisonFromRotation(actualFace, "Right"), "Right").fullRotation += 90;
+                    }
+                    else
+                    {
+                        theNewFace.fullRotation -= 90;
+                        //GetVoisonFromRotation(GetVoisonFromRotation(actualFace, "Right"), "Right").fullRotation += 90;
+                    }
+                }
+                theNewFace.isCurrentlyPick = true;
+            }
+
+            if (spriteCartonListe.Count > 0)
+            {
+                switch (theNewFace.face)
+                {
+                    case "Up":
+                        spriteCarton.sprite = spriteCartonListe[0];
+                        break;
+                    case "Down":
+                        spriteCarton.sprite = spriteCartonListe[1];
+                        break;
+                    case "Right":
+                        spriteCarton.sprite = spriteCartonListe[2];
+                        break;
+                    case "Left":
+                        spriteCarton.sprite = spriteCartonListe[3];
+                        break;
+                    case "Forward":
+                        spriteCarton.sprite = spriteCartonListe[4];
+                        break;
+                    case "Backward":
+                        spriteCarton.sprite = spriteCartonListe[5];
+                        break;
+                }
+            }
+            if (spriteCarton != null)
+                spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -theNewFace.fullRotation);
+            //Debug.Log(actualFace.face);
+            //Debug.Log(actualFace.fullRotation);
+            Debug.Log(theNewFace);
+            return theNewFace;
+        }
+        return theNewFace;
     }
 
     public void ColisEnter()
@@ -348,6 +559,8 @@ public class RotationScript : MonoBehaviour
         UpdateSprite(cartonsSprites, carton);
         cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
         cartonObj.GetComponent<ColisScript>().Tourner();
+
+        lastTopViewFaceIsWrong = true;
     }
 
     SquareFace GetVoisonFromRotation(SquareFace currentFace, string faceNeeded)
