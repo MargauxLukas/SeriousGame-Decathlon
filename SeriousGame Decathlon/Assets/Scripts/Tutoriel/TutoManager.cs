@@ -21,6 +21,7 @@ public class TutoManager : MonoBehaviour
     public bool canColis1 = false;
     public bool canColis2 = false;
     public bool canInfo = false;
+    public bool dialIsFinished = false;
 
     //Déplacement doigt
     private Vector3 fingerPosition = new Vector3(0f,0f,0f);
@@ -43,7 +44,17 @@ public class TutoManager : MonoBehaviour
     {
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
-        Phase00();
+
+    }
+
+    public void DialogueIsFinished()
+    {
+        dialIsFinished = true;
+
+        if(dialIsFinished)
+        {
+            Phase00();
+        }
     }
 
     public void Manager(int interaction)
@@ -517,6 +528,14 @@ public class TutoManager : MonoBehaviour
                         break;
                 }
                 break;
+
+            //Switch fin Dialogue
+            case (30):
+                switch(phaseNum)
+                {
+
+                }
+                break;
         }
     }
 
@@ -544,12 +563,13 @@ public class TutoManager : MonoBehaviour
 
     void Phase00()
     {
+        dialIsFinished = false;
         phaseNum++;
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.position = new Vector2(11.67f,-4);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localScale = new Vector2(0.9f, 0.9f);
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = true;
-        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.position = new Vector2(12.1f,-4.5f);
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.1f,-4.5f);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localScale = new Vector2(0.8f,0.8f);
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
         gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
@@ -604,6 +624,8 @@ public class TutoManager : MonoBehaviour
         //Doigt click new position (écran) + set active
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
     }
+
+
 
     void Phase03()
     {
