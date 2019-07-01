@@ -29,7 +29,7 @@ public class RecountTab : MonoBehaviour
     GameObject ticketgo;
     GameObject ticketRFIDgo;
 
-    bool isInventory = false ;
+    public bool isInventory = false ;
     /*****************************
     *  Active le scanner RFID    *
     ******************************/
@@ -79,7 +79,6 @@ public class RecountTab : MonoBehaviour
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
 
             Scoring.instance.MinorPenalty();                                                                                       //Test de scoring
-            return;
         }
 
         isInventory = true;
