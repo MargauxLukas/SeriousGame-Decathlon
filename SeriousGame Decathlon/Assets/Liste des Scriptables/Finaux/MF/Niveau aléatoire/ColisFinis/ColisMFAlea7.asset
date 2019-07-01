@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ColisMFAlea7
   PCB: 12
-  carton: {fileID: 11400000, guid: 613c8e70587862a469704b033534b9d0, type: 2}
+  poids: 24
+  fillPercent: 150
+  hasBeenRecount: 0
+  isBadOriented: 0
+  estOuvert: 0
+  estAbime: 0
+  needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 11400000, guid: 53b8e80417fe82d4c895e4f05c9734b6, type: 2}
   listArticles:
   - {fileID: 11400000, guid: 022b50f841cea0a4ea0a9e04f8e12600, type: 2}
   - {fileID: 11400000, guid: 022b50f841cea0a4ea0a9e04f8e12600, type: 2}
@@ -28,16 +38,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 022b50f841cea0a4ea0a9e04f8e12600, type: 2}
   - {fileID: 11400000, guid: 022b50f841cea0a4ea0a9e04f8e12600, type: 2}
   - {fileID: 11400000, guid: 022b50f841cea0a4ea0a9e04f8e12600, type: 2}
-  wayTicket: {fileID: 11400000, guid: 53b8e80417fe82d4c895e4f05c9734b6, type: 2}
-  nomWayTicket: 
-  poids: 24
-  fillPercent: 150
-  isBadOriented: 0
-  estOuvert: 0
-  estAbime: 0
   nbAnomalie: 0
   listAnomalies: []
   provenance: 
-  needQualityControl: 0
-  aEteVide: 0
-  hasBeenRecount: 0

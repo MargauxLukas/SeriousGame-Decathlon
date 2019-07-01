@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Nom
   PCB: 0
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
-  listArticles: []
-  wayTicket: {fileID: 0}
-  nomWayTicket: 
   poids: 0
   fillPercent: 100
+  hasBeenRecount: 0
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
+  needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 0}
+  listArticles: []
   nbAnomalie: 0
   listAnomalies: []
   provenance: 
-  needQualityControl: 0
-  aEteVide: 0
-  hasBeenRecount: 0

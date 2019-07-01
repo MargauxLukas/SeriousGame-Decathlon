@@ -14,22 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ColisMFAlea5
   PCB: 4
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  poids: 8
+  fillPercent: 100
+  hasBeenRecount: 0
+  isBadOriented: 0
+  estOuvert: 0
+  estAbime: 0
+  needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 11400000, guid: 9013b45dd8a679b4fa7e57ac6d5f0767, type: 2}
   listArticles:
   - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
   - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
   - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
   - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  wayTicket: {fileID: 11400000, guid: 9013b45dd8a679b4fa7e57ac6d5f0767, type: 2}
-  nomWayTicket: 
-  poids: 8
-  fillPercent: 100
-  isBadOriented: 0
-  estOuvert: 0
-  estAbime: 0
-  nbAnomalie: 0
-  listAnomalies: []
+  nbAnomalie: 2
+  listAnomalies:
+  - RFID tags to be applied
+  - RFID tag under Tolerance
   provenance: 
-  needQualityControl: 0
-  aEteVide: 0
-  hasBeenRecount: 0
