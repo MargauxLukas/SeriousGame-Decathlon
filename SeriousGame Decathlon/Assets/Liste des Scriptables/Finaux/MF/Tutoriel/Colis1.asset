@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: Colis Test
+  m_Name: Colis1
   m_EditorClassIdentifier: 
-  name: 
-  PCB: 0
-  poids: 0
-  fillPercent: 100
+  name: TutoMFColis1
+  PCB: 9
+  poids: 9
+  fillPercent: 50
   hasBeenRecount: 0
-  isBadOriented: 0
+  isBadOriented: 1
   estOuvert: 0
   estAbime: 0
   needQualityControl: 0
   aEteVide: 0
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
   nomWayTicket: 
-  wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
+  wayTicket: {fileID: 0}
   listArticles: []
   nbAnomalie: 2
   listAnomalies:
-  - RFID tags to be applied
-  - RFID tag over Tolerance
-  provenance: Gland
+  - RFID tag under Tolerance
+  - New Product
+  provenance: Chine

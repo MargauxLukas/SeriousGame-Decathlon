@@ -6,21 +6,26 @@ public class TutoManager : MonoBehaviour
 {
     public static TutoManager instance;
     public DialogueManager dialogueManager;
+    public GameObjectsManager gameObjectsManager;
+    public List<Dialogue> listDialogues;
     public int phaseNum = 0;
     public int dialogNum = 0;
-    public List<Dialogue> listDialogues;
-    public GameObjectsManager gameObjectsManager;
-   
-    //Menu circulaire colis
+
+    [Header("Menu Colis")]
     public bool canJeter = false;
     public bool canVider = false;
     public bool canOuvrirFermer = false;
     public bool canOpenTurnMenu = false;
 
-    //Menu circulaire articles
+    [Header("Menu Articles")]
     public bool canColis1 = false;
     public bool canColis2 = false;
     public bool canInfo = false;
+
+    //Déplacement doigt
+    private Vector3 fingerPosition = new Vector3(0f,0f,0f);
+    private Vector3 targetPosition = new Vector3(0f,0f,0f);
+    private float fingerSpeed = 0f;
 
     void Awake()
     {
@@ -173,6 +178,10 @@ public class TutoManager : MonoBehaviour
 
                     case (61):
                         Phase61();
+                        break;
+
+                    case (63):
+                        Phase63();
                         break;
 
                     case (65):
@@ -508,15 +517,25 @@ public class TutoManager : MonoBehaviour
                         break;
                 }
                 break;
-
-            //Interaction bouton quitter vue renvoi colis
-            case (30):
-                switch(phaseNum)
-                {
-
-                }
-                break;
         }
+    }
+
+    IEnumerator MoveDoigt()
+    {
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.position = Vector3.MoveTowards(fingerPosition, targetPosition, fingerSpeed);
+
+        if (gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.position == targetPosition)
+        {
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.position = fingerPosition;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+        }
+        else
+        {
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(MoveDoigt());
     }
 
         /*****************/
@@ -526,31 +545,51 @@ public class TutoManager : MonoBehaviour
     void Phase00()
     {
         phaseNum++;
-        //Prefab Dézoom disabled
-        //Prefab Zoom enabled
-        //Enable fond noir
-        //New position (pédale) + Enable Spritemask
-        //Doigt click new position (pédale) + set active
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.position = new Vector2(11.67f,-4);
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localScale = new Vector2(0.9f, 0.9f);
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = true;
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.position = new Vector2(12.1f,-4.5f);
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localScale = new Vector2(0.8f,0.8f);
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
+        gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = true;
     }
 
     void Phase01()
     {
         phaseNum++;
-        //Disable fond noir
-        //Disable Spritemask
-        //Disable doigt
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = false;
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
+        gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = false;
+
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
-        //Enable Fond noir
-        //New position (pistolet + HU) + Enable Spritemask x2 
-        //Doigt slide new position (pistolet > HU) + set active
+
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.position = new Vector2(5.3f, 1.24f);
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.44f, 0.84f);
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+
+        //Set position & scale on HU Colis 1
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask02).transform.position = new Vector2(0f, 0f);
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask02).transform.localScale = new Vector2(0f, 0f);
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask02).enabled = true;
+
+        //Set position & scale on HU Colis 1
+        fingerPosition = new Vector3(0f, 0f, 0f);
+        targetPosition = new Vector3(0f, 0f, 0f);
+        fingerSpeed = 1f;
+        gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
+        MoveDoigt();
+        
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
     }
 
-    void Phase02()
+    /*void Phase02()
     {
         phaseNum++;
         //Disable fond noir
@@ -910,7 +949,7 @@ public class TutoManager : MonoBehaviour
         dialogNum++;
         //Doigt slide new position (new HU > colis) + set active
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ticketHU).enabled = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.newTicketHUColis1).enabled = true;
     }
 
     void Phase37()
@@ -1170,27 +1209,22 @@ public class TutoManager : MonoBehaviour
         //Disable Doigt
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
-        //Enable Fond noir
-        //New position (bouton Quitter) + Enable Spritemask
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonSendView).interactable = true;
+        Manager(4);
     }
 
-    void Phase63()                  //Appeler fonction dans bouton quitter (pas encore fait)
+    void Phase63()
     {
         phaseNum++;
-        //Disable fond noir
-        //Disable Spritemask
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonSendView).interactable = false;
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = true;
-    }
+    }*/
 
             /*****************/
            /*   Colis 2     */
           /*****************/
 
-    void Phase64()
+    /*void Phase64()
     {
         phaseNum++;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = false;
@@ -1282,5 +1316,5 @@ public class TutoManager : MonoBehaviour
         phaseNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.screen).interactable = true;
-    }
+    }*/
 }
