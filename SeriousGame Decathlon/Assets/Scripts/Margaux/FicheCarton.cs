@@ -88,7 +88,7 @@ public class FicheCarton : MonoBehaviour
                 scriptColis.IWayEtiquette.SetActive(false);
             }
 
-            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.4f, 0), Quaternion.identity);
+            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
             repackTab.colisVide = colisManage.scriptRotation.cartonObj;
             colisManage.scriptRotation.ColisEnter();
             colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, newColis.GetComponent<SpriteRenderer>());
