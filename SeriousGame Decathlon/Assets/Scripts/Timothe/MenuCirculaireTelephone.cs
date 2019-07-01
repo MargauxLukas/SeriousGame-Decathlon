@@ -38,7 +38,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
             if (doesTouch)
             {
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = 0;
+                        touchPosition.z = 0;
 
                 if (touch.phase == TouchPhase.Began)
                 {

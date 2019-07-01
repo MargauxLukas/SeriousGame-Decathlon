@@ -51,49 +51,52 @@ public class AffichageAnomalie : MonoBehaviour
 
 
         n = 0;
-        foreach(string anomalie in listAnomalies)
+        if (listAnomalies != null)
         {
-            if (n == 4){break;}
-            else
+            foreach (string anomalie in listAnomalies)
             {
-                text      [n].text = anomalie;
-                toggleList[n].gameObject.SetActive(true);
-                infoList  [n].gameObject.SetActive(true);
-
-                switch (anomalie)
+                if (n == 4) { break; }
+                else
                 {
-                    case "Quality control":
-                        actualUsableDialogue.Add(dialogueList[0]);
-                        break;
-                    case "Repacking from FP":
-                        actualUsableDialogue.Add(dialogueList[1]);
-                        break;
-                    case "RFID tags to be applied":
-                        actualUsableDialogue.Add(dialogueList[2]);
-                        break;
-                    case "RFID tag over Tolerance":                                             
-                        actualUsableDialogue.Add(dialogueList[3]);
-                        break;
-                    case "RFID tag under Tolerance":
-                        actualUsableDialogue.Add(dialogueList[4]);
-                        break;
-                    case "RFID tag for unexpected product":                                     
-                        actualUsableDialogue.Add(dialogueList[5]);
-                        break;
-                    case "TU too heavy (20-25)":
-                        actualUsableDialogue.Add(dialogueList[6]);
-                        break;
-                    case "RFID tag scanned for unknown product":
-                        actualUsableDialogue.Add(dialogueList[7]);
-                        break;
-                    case "Dimensions out of tolerance":
-                        actualUsableDialogue.Add(dialogueList[8]);
-                        break;
-                    case "Dimensions out of dimmension for tray":
-                        actualUsableDialogue.Add(dialogueList[9]);
-                        break;
-                }               
-                n++;
+                    text[n].text = anomalie;
+                    toggleList[n].gameObject.SetActive(true);
+                    infoList[n].gameObject.SetActive(true);
+
+                    switch (anomalie)
+                    {
+                        case "Quality control":
+                            actualUsableDialogue.Add(dialogueList[0]);
+                            break;
+                        case "Repacking from FP":
+                            actualUsableDialogue.Add(dialogueList[1]);
+                            break;
+                        case "RFID tags to be applied":
+                            actualUsableDialogue.Add(dialogueList[2]);
+                            break;
+                        case "RFID tag over Tolerance":
+                            actualUsableDialogue.Add(dialogueList[3]);
+                            break;
+                        case "RFID tag under Tolerance":
+                            actualUsableDialogue.Add(dialogueList[4]);
+                            break;
+                        case "RFID tag for unexpected product":
+                            actualUsableDialogue.Add(dialogueList[5]);
+                            break;
+                        case "TU too heavy (20-25)":
+                            actualUsableDialogue.Add(dialogueList[6]);
+                            break;
+                        case "RFID tag scanned for unknown product":
+                            actualUsableDialogue.Add(dialogueList[7]);
+                            break;
+                        case "Dimensions out of tolerance":
+                            actualUsableDialogue.Add(dialogueList[8]);
+                            break;
+                        case "Dimensions out of dimmension for tray":
+                            actualUsableDialogue.Add(dialogueList[9]);
+                            break;
+                    }
+                    n++;
+                }
             }
         }
     }

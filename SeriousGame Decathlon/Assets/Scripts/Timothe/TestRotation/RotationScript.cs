@@ -114,7 +114,6 @@ public class RotationScript : MonoBehaviour
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
         //Debug.Log(actualFace.face);
         //Debug.Log(actualFace.fullRotation);
-        Debug.Log("Test Upd Sprite");
     }
 
     public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)

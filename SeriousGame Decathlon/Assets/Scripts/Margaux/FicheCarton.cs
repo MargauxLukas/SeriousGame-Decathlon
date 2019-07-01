@@ -55,7 +55,7 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            if (scriptColis.colisScriptable.fillPercent <= 50)
+            /*if (scriptColis.colisScriptable.fillPercent <= 50)
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
             }
@@ -66,9 +66,9 @@ public class FicheCarton : MonoBehaviour
             else
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
-            }
+            }*/
 
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+            //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;
