@@ -2392,6 +2392,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1385595808361153370, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 905325895}
+    - target: {fileID: 1385595808361153370, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NouveauColis
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595808361153370, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40887147d18403247b7250d4bc5662f4, type: 3}
 --- !u!114 &179945680 stripped

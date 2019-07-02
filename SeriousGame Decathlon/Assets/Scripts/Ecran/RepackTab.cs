@@ -101,7 +101,15 @@ public class RepackTab : MonoBehaviour
     {
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
         Debug.Log(codeCarton);
-        ficheCarton.InstantiateCarton(codeCarton);
+        if (codeCarton.Equals("CB01") || codeCarton.Equals("CB02"))
+        {
+            ficheCarton.InstantiateCarton(codeCarton);
+        }
+        else
+        {
+            codeCarton = "CB01";
+            ficheCarton.InstantiateCarton(codeCarton);
+        }
     }
 
     public void print1()
