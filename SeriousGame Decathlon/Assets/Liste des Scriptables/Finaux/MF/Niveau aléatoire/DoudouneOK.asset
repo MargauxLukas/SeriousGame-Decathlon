@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoudouneOK
   m_EditorClassIdentifier: 
   poids: 1
-  rfid: {fileID: 11400000, guid: 6278189e41f03c042a14ee9ab4fcf471, type: 2}
+  rfid: {fileID: 11400000, guid: 6bab9c19affe1d445985bb429f4c1c7b, type: 2}
   spriteList:
   - {fileID: 21300000, guid: a09ef48dc53df074c8eb32f6d1dafff6, type: 3}
   - {fileID: 21300000, guid: 42ea4664c1a6f284f9eb33e14483c40a, type: 3}
