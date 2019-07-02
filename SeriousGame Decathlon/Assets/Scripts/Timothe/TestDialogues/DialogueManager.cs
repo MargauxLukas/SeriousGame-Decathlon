@@ -66,6 +66,10 @@ public class DialogueManager : MonoBehaviour
                             isDialogueOpen = false;
                             dialogueGlobal.SetActive(false);
                         }
+                        else if(actualDialogue.dialoguesSuivant[k] != null)
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -103,6 +107,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DialogueChoice(int nbDialogueChoisit)
     {
+        Debug.Log("Test");
         if(actualDialogue.dialoguesSuivant[nbDialogueChoisit] != null)
         {
             Dialogue newDialogue = actualDialogue.dialoguesSuivant[nbDialogueChoisit];

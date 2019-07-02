@@ -16,6 +16,12 @@ public class Unit : MonoBehaviour
 
     Path path;
 
+    public void DeplacementPlayer(Vector3 newPos)
+    {
+        target.localPosition = newPos;
+        StartCoroutine(UpdatePath());
+    }
+
     void Update()
     {
         if (Input.touchCount > 0)
@@ -24,7 +30,7 @@ public class Unit : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32f));
+                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
                     StartCoroutine(UpdatePath());
                     break;
 
@@ -82,7 +88,7 @@ public class Unit : MonoBehaviour
     {
         bool followingPath = true;
         int pathIndex = 0;
-        transform.LookAt(path.lookPoints[0]);
+        //transform.LookAt(path.lookPoints[0]);
 
         float speedPercent = 1;
 
@@ -118,7 +124,10 @@ public class Unit : MonoBehaviour
                 //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1);
                 //transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
                 Vector3 direction = new Vector3(path.lookPoints[pathIndex].x - transform.position.x, path.lookPoints[pathIndex].y - transform.position.y, 0).normalized;
-                transform.Translate(direction * Time.deltaTime * speed * speedPercent, Space.Self);
+                Debug.Log(direction);
+
+                transform.position += direction * Time.deltaTime * speed * speedPercent;
+                //transform.Translate(direction * Time.deltaTime * speed * speedPercent, Space.Self);
 
                 playerAnimator.SetFloat("DirectionX",direction.x);
                 playerAnimator.SetFloat("DirectionY", direction.y);

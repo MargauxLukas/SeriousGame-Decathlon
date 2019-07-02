@@ -9,6 +9,7 @@ public class PosteOnClick : MonoBehaviour
     public GameObject       player;
     public GameObject      moniteur;
     public GameObject        aStar;
+    public Transform positionPoste;
 
     private void Update()
     {
@@ -18,11 +19,18 @@ public class PosteOnClick : MonoBehaviour
 
             if(Physics2D.OverlapPoint(touchPosition) && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                cameraPoste .SetActive(true);
-                cameraDezoom.SetActive(false);
-                aStar       .SetActive(false);
-                moniteur    .SetActive(false);
-                player      .SetActive(false);
+                /*if (Vector2.Distance(player.transform.position, positionPoste.position) > 1f)
+                {
+                    player.GetComponent<Unit>().DeplacementPlayer(positionPoste.position);
+                }
+                else
+                {*/
+                    cameraPoste.SetActive(true);
+                    cameraDezoom.SetActive(false);
+                    aStar.SetActive(false);
+                    moniteur.SetActive(false);
+                    player.SetActive(false);
+                //}
             }
         }
     }

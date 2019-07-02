@@ -331,18 +331,21 @@ public class ColisScript : MonoBehaviour
         {
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 0.3f;
+            spriteMaskArticleColis.transform.localScale = new Vector3(1,1.5f,1);
             GetComponent<SpriteRenderer>().color = newColo;
         }
         else if (!colisScriptable.estOuvert)
         {
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 1f;
+            spriteMaskArticleColis.transform.localScale = new Vector3(1, 1f, 1);
             GetComponent<SpriteRenderer>().color = newColo;
         }
 
         if (colisScriptable.estOuvert)
         {
             savedSprite = GetComponent<SpriteRenderer>().sprite;
+            Debug.Log("Test Ouvrir");
             GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.cartonOuvert;
         }
         else

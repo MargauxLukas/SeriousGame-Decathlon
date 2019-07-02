@@ -23,6 +23,8 @@ public class RotationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lastTopViewFaceIsWrong = false;
+
         squareList = new List<SquareFace>();
         squareList.Add(CreateFace(0, "Up", true));
         squareList.Add(CreateFace(0, "Down", false));
@@ -49,6 +51,8 @@ public class RotationScript : MonoBehaviour
 
     private void resetAll()
     {
+        lastTopViewFaceIsWrong = false;
+
         squareList = new List<SquareFace>();
         squareList.Add(CreateFace(0, "Up", false));
         squareList.Add(CreateFace(0, "Down", false));
@@ -109,6 +113,7 @@ public class RotationScript : MonoBehaviour
                     spriteCarton.sprite = spriteCartonListe[5];
                     break;
             }
+            Debug.Log(spriteCartonListe[0]);
         }
         if(spriteCarton != null)
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
@@ -118,6 +123,7 @@ public class RotationScript : MonoBehaviour
 
     public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)
     {
+        Debug.Log(theNewFace.face);
         if (lastTopViewFaceIsWrong)
         {
             lastTopViewFaceIsWrong = false;
@@ -329,7 +335,7 @@ public class RotationScript : MonoBehaviour
         if(cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
         {
             resetAll();
-            squareList[0].isCurrentlyPick = true;
+            squareList[5].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
@@ -422,6 +428,7 @@ public class RotationScript : MonoBehaviour
 
         if (actualFace != null)
         {
+            Debug.Log("Test Face : " + actualFace.face);
             actualFace.isCurrentlyPick = false;
             SquareFace newFace = new SquareFace();
             if (xAxis != 0)

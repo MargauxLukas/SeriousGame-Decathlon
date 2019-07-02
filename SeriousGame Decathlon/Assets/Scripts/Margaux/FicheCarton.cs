@@ -9,7 +9,7 @@ public class FicheCarton : MonoBehaviour
     //public string buttonName;
     public GameObject newColis;
     private ColisScript scriptColis;
-    public Carton carton;
+    public List<Carton> carton;
 
     public ColisManager colisManage;
 
@@ -42,20 +42,21 @@ public class FicheCarton : MonoBehaviour
         colisManage.listeColisActuel = new GameObject[0];
         colisManage.listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (colisManage.listeColisActuel.Length <= 1)
+        if (colisManage.listeColisActuel.Length <= 10)
         {
-            scriptColis = newColis.GetComponent<ColisScript>();
+            GameObject theNewColis = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
+            scriptColis = theNewColis.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
-            scriptColis.colisScriptable.carton = carton;
-            scriptColis.colisScriptable.carton.codeRef = buttonName;
-            scriptColis.colisScriptable.carton.Initialize();
+
+            //scriptColis.colisScriptable.carton.codeRef = buttonName;
+            //scriptColis.colisScriptable.carton.Initialize();
 
             scriptColis.tournerMenu = menuTourner;
             scriptColis.spriteArticleTableUn = spriteArticleTableUn;
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            /*if (scriptColis.colisScriptable.fillPercent <= 50)
+            if (scriptColis.colisScriptable.fillPercent <= 50)
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
             }
@@ -66,9 +67,9 @@ public class FicheCarton : MonoBehaviour
             else
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
-            }*/
+            }
 
-            //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;
@@ -88,13 +89,24 @@ public class FicheCarton : MonoBehaviour
                 scriptColis.IWayEtiquette.SetActive(false);
             }
 
-            colisManage.scriptRotation.cartonObj = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
+            if (buttonName == "CB02")
+            {
+                Debug.Log("Test CB2");
+                scriptColis.colisScriptable.carton = carton[1];
+            }
+            else if (buttonName == "CB01")
+            {
+                Debug.Log("Test CB1");
+                scriptColis.colisScriptable.carton = carton[0];
+            }
+
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+
+            colisManage.scriptRotation.cartonObj = theNewColis;
             repackTab.colisVide = colisManage.scriptRotation.cartonObj;
             colisManage.scriptRotation.ColisEnter();
-            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, newColis.GetComponent<SpriteRenderer>());
+            colisManage.scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, theNewColis.GetComponent<SpriteRenderer>());
         }
-
-
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
     }
