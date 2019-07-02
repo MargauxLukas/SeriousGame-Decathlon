@@ -12,6 +12,7 @@ public class RepackTab : MonoBehaviour
     public TextMeshProUGUI textCurrentQuantity2;
     public TextMeshProUGUI textPCB1;
     public TextMeshProUGUI textPCB2;
+    public TextMeshProUGUI textRef2;
 
     [Header("Colis assigné tout seul")]
     public GameObject colis;
@@ -99,6 +100,7 @@ public class RepackTab : MonoBehaviour
 
     public void NouveauColis()
     {
+        textRef2.text = "7357";
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
         Debug.Log(codeCarton);
         if (codeCarton.Equals("CB01") || codeCarton.Equals("CB02"))

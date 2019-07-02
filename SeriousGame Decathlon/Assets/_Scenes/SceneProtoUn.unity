@@ -1042,6 +1042,11 @@ PrefabInstance:
       propertyPath: ficheCarton
       value: 
       objectReference: {fileID: 1512090501580459129}
+    - target: {fileID: 1385595807449000715, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: textRef2
+      value: 
+      objectReference: {fileID: 803671795}
     - target: {fileID: 1385595807470142906, guid: 40887147d18403247b7250d4bc5662f4,
         type: 3}
       propertyPath: detectAnomalie
