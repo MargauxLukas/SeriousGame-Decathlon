@@ -29,6 +29,7 @@ public class ColliderRenvoieColis : MonoBehaviour
             {
                 if (isFinalRenvoie)
                 {
+                    if (TutoManager.instance != null) {TutoManager.instance.Manager(29);}
                     faceToGet.colis = null;
                     manage.RenvoieColis(collision.gameObject);
                     renvoieManage.ChangePoste(camera, collision.gameObject, cameraPosition, colisPosition);
@@ -37,6 +38,7 @@ public class ColliderRenvoieColis : MonoBehaviour
                 }
                 else if (canReturn)
                 {
+                    if (TutoManager.instance != null) {TutoManager.instance.Manager(24);}
                     faceToGet.colis = collision.gameObject.GetComponent<ColisScript>();
                     renvoieManage.ChangePoste(camera, collision.gameObject, cameraPosition, colisPosition);
                     collision.gameObject.GetComponent<ColisScript>().canMoveVertical = true;

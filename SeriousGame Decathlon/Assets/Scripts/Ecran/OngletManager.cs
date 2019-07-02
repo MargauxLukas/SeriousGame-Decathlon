@@ -67,6 +67,7 @@ public class OngletManager : MonoBehaviour
         fillingRate.SetActive(true );
         recount    .SetActive(false);
         repack     .SetActive(false);
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(20);}
     }
 
     public void RecountOpen()
@@ -74,7 +75,7 @@ public class OngletManager : MonoBehaviour
         fillingRate.SetActive(false);
         recount    .SetActive(true );
         repack     .SetActive(false);
-        if (TutoManager.instance != null) { TutoManager.instance.Manager(5); }
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(5);}
     }
 
     public void RepackOpen()
@@ -86,6 +87,7 @@ public class OngletManager : MonoBehaviour
 
     public void ReturnToMeca()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(23);}
         if (allValidate)
         {
             

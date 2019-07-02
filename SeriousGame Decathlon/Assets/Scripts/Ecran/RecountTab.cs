@@ -50,6 +50,7 @@ public class RecountTab : MonoBehaviour
     *******************************************************************/
     public void Inventory()
     {
+        if(TutoManager.instance != null) {TutoManager.instance.Manager(16);}
         if (colis != null && colis.GetComponent<ColisScript>().hasBeenScannedByRFID 
                           && (int.Parse(infoRFID.numStringRFID) > 0) 
                           && (int.Parse(infoRFID.numStringRFID) < colis.GetComponent<ColisScript>().colisScriptable.wayTicket.PCB))
@@ -89,6 +90,7 @@ public class RecountTab : MonoBehaviour
     **********************************************/
     public void PrintHU() 
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(17);}
         if (isInventory)
         {
             Destroy(ticketgo);

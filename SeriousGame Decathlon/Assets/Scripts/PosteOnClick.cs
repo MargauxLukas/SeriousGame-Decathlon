@@ -7,6 +7,7 @@ public class PosteOnClick : MonoBehaviour
     public GameObject  cameraPoste;
     public GameObject cameraDezoom;
     public GameObject       player;
+    public GameObject      moniteur;
     public GameObject        aStar;
 
     private void Update()
@@ -20,6 +21,7 @@ public class PosteOnClick : MonoBehaviour
                 cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);
                 aStar       .SetActive(false);
+                moniteur    .SetActive(false);
                 player      .SetActive(false);
             }
         }
@@ -30,6 +32,7 @@ public class PosteOnClick : MonoBehaviour
         cameraPoste .SetActive(false);
         cameraDezoom.SetActive(true);
         aStar       .SetActive(true);
+        moniteur    .SetActive(true);
         player      .SetActive(true);
     }
 }

@@ -14,18 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   PCB: 0
-  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
-  listArticles: []
-  wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
-  nomWayTicket: 
   poids: 0
   fillPercent: 100
+  hasBeenRecount: 0
   isBadOriented: 0
   estOuvert: 0
   estAbime: 0
+  needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 11400000, guid: 59d1d98cd168965428a390a348e07432, type: 2}
+  nomWayTicket: 
+  wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
+  listArticles: []
   nbAnomalie: 2
   listAnomalies:
   - RFID tags to be applied
   - RFID tag over Tolerance
   provenance: Gland
-  needQualityControl: 0
