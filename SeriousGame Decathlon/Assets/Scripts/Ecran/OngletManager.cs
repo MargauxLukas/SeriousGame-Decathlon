@@ -14,9 +14,9 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
-    public GameObject onglet1;
-    public GameObject onglet2;
-    public GameObject onglet3;
+    public Button onglet1;
+    public Button onglet2;
+    public Button onglet3;
 
     [Header("Return to Meca button")]
     public Button returnToMeca;
@@ -160,5 +160,27 @@ public class OngletManager : MonoBehaviour
     {
         returnToMeca.GetComponent<Image>().color = Color.red;
         allValidate = false;
+    }
+
+    public void DesactivateAll()
+    {
+        onglet1.interactable = false;
+        onglet2.interactable = false;
+        onglet3.interactable = false;
+    }
+    
+    public void ActivateOnglet1()
+    {
+        onglet1.interactable = true;
+    }
+
+    public void ActivateOnglet2()
+    {
+        onglet2.interactable = true;
+    }
+
+    public void ActivateOnglet3()
+    {
+        onglet3.interactable = true;
     }
 }
