@@ -107,4 +107,9 @@ public class GameObjectsManager : MonoBehaviour
     {
         return gameObject.GetComponent<Animator>();
     }
+
+    public ColisScript GameObjectToColisScript(GameObject gameObject)
+    {
+        return gameObject.GetComponent<ColisScript>();
+    }
 }

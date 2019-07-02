@@ -36,13 +36,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a32c875ec0c4cd4493653d982cc58b4, type: 2}
   - {fileID: 11400000, guid: 7a32c875ec0c4cd4493653d982cc58b4, type: 2}
   - {fileID: 11400000, guid: e5acef719e77d6146855c8f193e546dd, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  nbAnomalie: 2
+  nbAnomalie: 1
   listAnomalies:
   - RFID tag under Tolerance
-  - RFID tag for unexpected product
   provenance: Chine
