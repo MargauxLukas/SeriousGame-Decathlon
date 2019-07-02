@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tuto
+    uniqueID: 2257237077
+    locked: 0

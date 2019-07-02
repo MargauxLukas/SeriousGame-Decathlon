@@ -42,7 +42,7 @@ public class FicheCarton : MonoBehaviour
         colisManage.listeColisActuel = new GameObject[0];
         colisManage.listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (colisManage.listeColisActuel.Length <= 10)
+        if (colisManage.listeColisActuel.Length <= 1)
         {
             GameObject theNewColis = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
             scriptColis = theNewColis.GetComponent<ColisScript>();
@@ -56,20 +56,25 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            if (scriptColis.colisScriptable.fillPercent <= 50)
+            if (scriptColis.colisScriptable.fillPercent > 0)
             {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
-            }
-            else if (scriptColis.colisScriptable.fillPercent >= 125)
-            {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+                if (scriptColis.colisScriptable.fillPercent <= 50)
+                {
+                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
+                }
+                else if (scriptColis.colisScriptable.fillPercent >= 125)
+                {
+                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+                }
+                else
+                {
+                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+                }
             }
             else
             {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+                scriptColis.spriteArticleDansColis.sprite = null;
             }
-
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;

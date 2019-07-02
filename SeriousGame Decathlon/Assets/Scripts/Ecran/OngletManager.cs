@@ -14,6 +14,10 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
+    public GameObject onglet1;
+    public GameObject onglet2;
+    public GameObject onglet3;
+
     [Header("Return to Meca button")]
     public Button returnToMeca;
 
