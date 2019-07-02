@@ -123,6 +123,7 @@ public class RotationScript : MonoBehaviour
 
     public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)
     {
+        Debug.Log(theNewFace.face);
         if (lastTopViewFaceIsWrong)
         {
             lastTopViewFaceIsWrong = false;
@@ -334,7 +335,7 @@ public class RotationScript : MonoBehaviour
         if(cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
         {
             resetAll();
-            squareList[0].isCurrentlyPick = true;
+            squareList[5].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
