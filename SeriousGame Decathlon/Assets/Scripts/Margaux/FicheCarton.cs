@@ -37,13 +37,6 @@ public class FicheCarton : MonoBehaviour
         listeBoutonsMenuTourner = colisManage.listeBoutonsMenuTourner;
     }
 
-    int nbCartonChoisit;
-
-    public void GetInt(int nbCarton)
-    {
-        nbCartonChoisit = nbCarton;
-    }
-
     public void InstantiateCarton(string buttonName)
     {
         colisManage.listeColisActuel = new GameObject[0];
@@ -63,20 +56,20 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            /* if (scriptColis.colisScriptable.fillPercent <= 50)
-             {
-                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
-             }
-             else if (scriptColis.colisScriptable.fillPercent >= 125)
-             {
-                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
-             }
-             else
-             {
-                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
-             }*/
+            if (scriptColis.colisScriptable.fillPercent <= 50)
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
+            }
+            else if (scriptColis.colisScriptable.fillPercent >= 125)
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+            }
+            else
+            {
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+            }
 
-            //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;
