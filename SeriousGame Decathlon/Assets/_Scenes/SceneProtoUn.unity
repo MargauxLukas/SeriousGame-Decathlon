@@ -9484,7 +9484,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newColis: {fileID: 246706537573853406, guid: 6a67850133114164a919064a1ac0a19c, type: 3}
-  carton: []
+  carton:
+  - {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  - {fileID: 11400000, guid: efa806fbb758f4b4f84a96c9803857d6, type: 2}
   colisManage: {fileID: 857046845}
   repackTab: {fileID: 905325895}
 --- !u!114 &1512090501580459130 stripped

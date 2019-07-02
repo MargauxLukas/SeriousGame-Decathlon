@@ -25,11 +25,11 @@ public class PosteOnClick : MonoBehaviour
                 }
                 else
                 {*/
-                    cameraPoste.SetActive(true);
+                    cameraPoste .SetActive(true);
                     cameraDezoom.SetActive(false);
-                    aStar.SetActive(false);
-                    moniteur.SetActive(false);
-                    player.SetActive(false);
+                    aStar       .SetActive(false);
+                    moniteur    .SetActive(false);
+                    player      .SetActive(false);
                 //}
             }
         }

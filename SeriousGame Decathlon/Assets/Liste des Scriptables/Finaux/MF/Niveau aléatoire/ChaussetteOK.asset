@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChaussetteOK
   m_EditorClassIdentifier: 
   poids: 2
-  rfid: {fileID: 11400000, guid: 02752d7f9a1af9b4e9642981b1d4f3db, type: 2}
+  rfid: {fileID: 11400000, guid: b03e751a4e52366428dcce09f499b46e, type: 2}
   spriteList:
   - {fileID: 21300000, guid: 0cff902f37a70404c934c9cffb034a62, type: 3}
   - {fileID: 21300000, guid: 55231251b0b7d8b4fa60080889dc219b, type: 3}
