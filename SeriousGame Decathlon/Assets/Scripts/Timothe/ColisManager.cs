@@ -12,6 +12,7 @@ public class ColisManager : MonoBehaviour
     public Transform positionApparition;
 
     public GameObject[] listeColisActuel;
+    public List<GameObject> listeColisTuto;
 
     public List<Article> articleOnTable;
 
@@ -53,10 +54,23 @@ public class ColisManager : MonoBehaviour
         listeColisActuel = new GameObject[0];
         listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (listeColisActuel.Length <= 0 && listeColisTraiter.Count > 0)
+        if ((listeColisActuel.Length <= 0 && listeColisTraiter.Count > 0) || TutoManager.instance != null)
         {
-            GameObject colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
+            GameObject colisTemporaire = null;
+
+            if (TutoManager.instance == null && listeColisTuto.Count <= 0)
+            {
+                colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("test");
+                colisTemporaire = listeColisTuto[0];
+             
+            }
+
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();
+
 
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
             scriptColis.colisScriptable = Instantiate(listeColisTraiter[0]);
