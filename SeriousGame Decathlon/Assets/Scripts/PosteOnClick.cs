@@ -19,18 +19,18 @@ public class PosteOnClick : MonoBehaviour
 
             if(Physics2D.OverlapPoint(touchPosition) && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                if (Vector2.Distance(player.transform.position, positionPoste.position) > 1f)
+                /*if (Vector2.Distance(player.transform.position, positionPoste.position) > 1f)
                 {
                     player.GetComponent<Unit>().DeplacementPlayer(positionPoste.position);
                 }
                 else
-                {
+                {*/
                     cameraPoste.SetActive(true);
                     cameraDezoom.SetActive(false);
                     aStar.SetActive(false);
                     moniteur.SetActive(false);
                     player.SetActive(false);
-                }
+                //}
             }
         }
     }
