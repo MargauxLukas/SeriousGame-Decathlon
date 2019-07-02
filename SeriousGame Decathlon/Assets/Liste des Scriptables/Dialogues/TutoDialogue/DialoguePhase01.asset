@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
   m_Name: DialoguePhase01
   m_EditorClassIdentifier: 
-  persoParlant: {fileID: 0}
+  persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Voil\xE0 un colis, la premi\xE8re chose que tu dois faire, c\u2019est scanner
     l'\xC9tiquette HU avec le Pistolet scanneur juste ici. "
   - "Prend le Pistolet scanneur et fais le glisser sur l\u2019\xC9tiquette HU du carton."
-  choixPossibles: []
-  dialoguesSuivant: []
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

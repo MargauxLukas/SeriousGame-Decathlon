@@ -17,3 +17,7 @@ MonoBehaviour:
   hauteur: 30
   codeRef: CB06
   cartonName: Standard Court
+  spriteCartonsListe:
+  - {fileID: 0}
+  - {fileID: 0}
+  cartonOuvert: {fileID: 0}
