@@ -15,6 +15,8 @@ public class PistolScan : MonoBehaviour
     public OngletManager ongletManager;
     public FicheInfoIway fiche;
 
+    public ColliderRenvoieColis renvoieColis;
+
     [Header("List Anomalie de EcranZoom")]
     public GameObject listAnomalie;
 
@@ -59,6 +61,8 @@ public class PistolScan : MonoBehaviour
         //Debug.Log("CollidePistol");
         if (collision.gameObject.tag == "Colis" && !collision.gameObject.GetComponentInParent<ColisScript>().hasBeenScannedByPistol && collision.gameObject.GetComponentInParent<ColisScript>().colisScriptable.wayTicket != null)
         {
+            renvoieColis.canReturn = false;
+
             scriptColis = collision.gameObject.GetComponentInParent<ColisScript>();
             iWayInfoManager.refIntIWay = scriptColis.colisScriptable.wayTicket.refArticle.numeroRef;
             iWayInfoManager.pcbIntIWay = scriptColis.colisScriptable.wayTicket.PCB;
