@@ -69,6 +69,9 @@ public class LevelEditor : MonoBehaviour
 
     public void NewLevel()
     {
+        creationNiveau.SetActive(true);
+        ongletMultifonction.SetActive(false);
+
         foreach (Button bouton in boutonAnomalies)
         {
             bouton.interactable = true;
@@ -181,6 +184,7 @@ public class LevelEditor : MonoBehaviour
 
     public void OpenMenuMF()
     {
+        creationNiveau.SetActive(false);
         ongletMultifonction.SetActive(true);
         foreach (Button bouton in boutonAnomalies)
         {
@@ -191,6 +195,7 @@ public class LevelEditor : MonoBehaviour
     public void CloseMenuMF()
     {
         ongletMultifonction.SetActive(false);
+        creationNiveau.SetActive(true);
     }
 
     public void AnomalieChoice(int nbAnomalie)
