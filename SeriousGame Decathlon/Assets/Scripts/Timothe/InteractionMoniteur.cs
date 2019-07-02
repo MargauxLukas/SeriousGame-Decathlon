@@ -12,7 +12,7 @@ public class InteractionMoniteur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 && !dialManage.dialogueGlobal.activeSelf)
+        if (Input.touchCount > 0 && dialManage != null && !dialManage.dialogueGlobal.activeSelf)
         {
             Touch touch = Input.GetTouch(0);
             TouchObject();
