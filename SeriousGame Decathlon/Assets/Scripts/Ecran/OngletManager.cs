@@ -169,17 +169,17 @@ public class OngletManager : MonoBehaviour
         onglet3.interactable = false;
     }
     
-    public void ActivateOnglet1()
+    public void ActivateOngletFillingRate()
     {
         onglet1.interactable = true;
     }
 
-    public void ActivateOnglet2()
+    public void ActivateOngletRecount()
     {
         onglet2.interactable = true;
     }
 
-    public void ActivateOnglet3()
+    public void ActivateOngletRepack()
     {
         onglet3.interactable = true;
     }

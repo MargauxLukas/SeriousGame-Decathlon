@@ -53,6 +53,7 @@ public class AffichageAnomalie : MonoBehaviour
         n = 0;
         if (listAnomalies != null)
         {
+            ongletManager.DesactivateAll();
             foreach (string anomalie in listAnomalies)
             {
                 if (n == 4) { break; }
@@ -66,33 +67,44 @@ public class AffichageAnomalie : MonoBehaviour
                     {
                         case "Quality control":
                             actualUsableDialogue.Add(dialogueList[0]);
+                            ongletManager.ActivateOngletFillingRate();
                             break;
                         case "Repacking from FP":
                             actualUsableDialogue.Add(dialogueList[1]);
+                            ongletManager.ActivateOngletRecount();
+                            ongletManager.ActivateOngletRepack();
                             break;
                         case "RFID tags to be applied":
                             actualUsableDialogue.Add(dialogueList[2]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tag over Tolerance":
                             actualUsableDialogue.Add(dialogueList[3]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tag under Tolerance":
                             actualUsableDialogue.Add(dialogueList[4]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tag for unexpected product":
                             actualUsableDialogue.Add(dialogueList[5]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "TU too heavy (20-25)":
                             actualUsableDialogue.Add(dialogueList[6]);
+                            ongletManager.ActivateOngletRepack();
                             break;
                         case "RFID tag scanned for unknown product":
                             actualUsableDialogue.Add(dialogueList[7]);
+                            ongletManager.ActivateOngletFillingRate();
                             break;
                         case "Dimensions out of tolerance":
                             actualUsableDialogue.Add(dialogueList[8]);
+                            ongletManager.ActivateOngletRepack();
                             break;
                         case "Dimensions out of dimmension for tray":
                             actualUsableDialogue.Add(dialogueList[9]);
+                            ongletManager.ActivateOngletRepack();
                             break;
                     }
                     n++;
