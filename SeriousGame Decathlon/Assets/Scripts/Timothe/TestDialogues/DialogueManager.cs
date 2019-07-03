@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     public List<GameObject> bouttonsChoix;
     public List<Text> bouttonTextes;
 
+    public Sprite sprAmpoule;
+
     //Variables
     private int actualDialogueLine = 0;
 
@@ -25,13 +27,13 @@ public class DialogueManager : MonoBehaviour
     {
         if (isDialogueOpen && actualDialogue != null)
         {
-            if (actualDialogue.persoParlant.sprite != null)
+            if (actualDialogue.persoParlant != null)
             {
                 portraitUn.sprite = actualDialogue.persoParlant.sprite;
             }
             else
             {
-                portraitUn.sprite = null;
+                portraitUn.sprite = sprAmpoule;
             }
             if (actualDialogue != previousDialogue || previousDialogue == null)
             {
