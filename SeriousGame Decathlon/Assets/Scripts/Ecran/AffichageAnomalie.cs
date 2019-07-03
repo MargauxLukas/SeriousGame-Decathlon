@@ -71,8 +71,8 @@ public class AffichageAnomalie : MonoBehaviour
                             break;
                         case "Repacking from FP":
                             actualUsableDialogue.Add(dialogueList[1]);
-                            ongletManager.ActivateOngletRecount();
                             ongletManager.ActivateOngletRepack();
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tags to be applied":
                             actualUsableDialogue.Add(dialogueList[2]);
