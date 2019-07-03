@@ -1770,6 +1770,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86071048a4e6ab34e999341e8782fea2, type: 2}
   allLevelCreated:
   - {fileID: 11400000, guid: ddf9ab11e9e4c174bb6ea5f4b685ecd0, type: 2}
+  currentVersion: 1
 --- !u!1 &1224120143
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,4 +6,5 @@ public class SavedData : ScriptableObject
 {
     public int nombreNiveauCree;
     public List<string> nomColisConnus;
+    public int version = 0;
 }

@@ -201,6 +201,12 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
+    public SavedData Versionning (SavedData dataSaved)
+    {
+        dataSaved.version += 1;
+        return dataSaved;
+    }
+
     public SavedData LoadGeneralData()
     {
         if (!IsSaveFile())
