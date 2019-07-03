@@ -58,6 +58,12 @@ public class ColisScript : MonoBehaviour
     public SpriteRenderer spriteArticleDansColis;
     public SpriteMask spriteMaskArticleColis;
 
+
+    bool canJeter;
+    bool canOpen;
+    bool canTurn;
+    bool canVide;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -225,6 +231,10 @@ public class ColisScript : MonoBehaviour
         }
         else if (doesEntranceSecond)
         {
+            canVide = false;
+            canOpen = false;
+            canJeter = false;
+
             transform.position += new Vector3(1, 0, 0) * 3 * Time.deltaTime;
             if (Vector3.Distance(transform.position, entrancePosition) > 9f)
             {
@@ -281,35 +291,36 @@ public class ColisScript : MonoBehaviour
         return itemNb;
     }
 
+
     void PickInventory(int nb)
     {
         switch (nb)
         {
             case 1:
-                if (TutoManager.instance == null || TutoManager.instance.canJeter)
+                if ((TutoManager.instance == null || TutoManager.instance.canJeter) || canJeter)
                 {
                     Jeter();
                     TellSomething(1);
                 }
                 break;
             case 2:
-                if (TutoManager.instance == null || TutoManager.instance.canVider)
+                if ((TutoManager.instance == null || TutoManager.instance.canVider) || canOpen)
                 {
-                    Vider();
+                    OuvrirFermer();
                     TellSomething(2);
                 }
                 break;
             case 3:
-                if (TutoManager.instance == null || TutoManager.instance.canOuvrirFermer)
+                if ((TutoManager.instance == null || TutoManager.instance.canOuvrirFermer) || canTurn)
                 {
-                    OuvrirFermer();
+                    OpenTurnMenu();
                     TellSomething(3);
                 }
                 break;
             case 0:
-                if (TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu)
+                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) || canVide)
                 {
-                    OpenTurnMenu();
+                    Vider();
                     TellSomething(5);
                 }
                 break;

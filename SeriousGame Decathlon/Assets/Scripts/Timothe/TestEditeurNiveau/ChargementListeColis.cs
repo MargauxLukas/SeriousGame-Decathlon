@@ -62,10 +62,9 @@ public class ChargementListeColis : MonoBehaviour
         levelScript = LevelScriptable.CreateInstance<LevelScriptable>();
         levelScript = SaveLoadSystem.instance.LoadLevel(currentLevelTempo);
 
-
         if (levelScript != null)
         {
-            Debug.Log("Test Level Null");
+            Debug.Log(levelScript);
             for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
             {
                 colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
