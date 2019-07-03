@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem instance;
+    public AnomalieDetection detection;
 
     //private Colis colisToSave;
 
