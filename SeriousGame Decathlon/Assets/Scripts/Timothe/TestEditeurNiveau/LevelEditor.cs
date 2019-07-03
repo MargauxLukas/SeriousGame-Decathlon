@@ -8,8 +8,8 @@ public class LevelEditor : MonoBehaviour
     private SavedData dataSaved;
 
     //Infos du niveau actuel
-    LevelScriptable newLevel;
-    private List<Colis> colisNewLevel;
+    public LevelScriptable newLevel;
+    public List<Colis> colisNewLevel;
 
     //Infos du colis actuel
     [Header("Info du colis")]
@@ -84,20 +84,8 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveLevel()
     {
-        for(int i = 0; i < colisNewLevel.Count; i ++)
-        {
-            if(colisNewLevel[i] != null)
-            {
-                newLevel.colisDuNiveauNoms.Add(colisNewLevel[i].name);
-                newLevel.nbColisParNomColis.Add(1);
-            }
-        }
-
-        if (newLevel.colisDuNiveauNoms == null)
-        {
-            newLevel.colisDuNiveauNoms = new List<string>();
-        }
         newLevel.nbColisParNomColis = new List<int>();
+        newLevel.colisDuNiveauNoms = new List<string>();
 
         foreach (Colis colis in colisNewLevel)
         {
@@ -164,6 +152,7 @@ public class LevelEditor : MonoBehaviour
             //Sauvegarde du colis
             SaveLoadSystem.instance.SaveColis(currentColis);
         }
+        colisNewLevel.Add(currentColis);
     }
 
     public void AddColis(int nbColis)
