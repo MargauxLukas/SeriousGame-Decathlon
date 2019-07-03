@@ -372,7 +372,13 @@ public class RotationScript : MonoBehaviour
 
     public void ColisEnter()
     {
-        if(cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
+        if (cartonObj != null)
+        {
+            cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
+            carton = cartonObj.GetComponent<SpriteRenderer>();
+        }
+
+        if (cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
         {
             resetAll();
             squareList[5].isCurrentlyPick = true;
