@@ -11,6 +11,7 @@ public class GetCurrentLevelButton : MonoBehaviour
     public void ShowInfo()
     {
         managerLevel.ShowGeneralInfoLevel(currentLevel);
+        managerLevel.currentLevelNb = nbLevel;
     }
 
 }
