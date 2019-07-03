@@ -5574,7 +5574,7 @@ GameObject:
   - component: {fileID: 934143331}
   - component: {fileID: 934143330}
   - component: {fileID: 934143334}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PosteInteractible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8321,7 +8321,7 @@ GameObject:
   - component: {fileID: 1943978220}
   - component: {fileID: 1943978219}
   - component: {fileID: 1943978218}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PosteInteractibleTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

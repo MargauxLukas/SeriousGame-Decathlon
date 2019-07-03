@@ -10,25 +10,41 @@ public class PosteOnClick : MonoBehaviour
     public GameObject     moniteur;
     public GameObject        aStar;
 
+    private bool isMoving;
     private void Update()
     {
         if (Input.touchCount > 0)
         {
+            isMoving = false;
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             if(gameObject.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPosition) && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                /*if (Vector2.Distance(player.transform.position, positionPoste.position) > 1f)
+                if (Vector2.Distance(player.transform.position, gameObject.transform.position) > 1f)
                 {
-                    player.GetComponent<Unit>().DeplacementPlayer(positionPoste.position);
+                    player.GetComponent<Unit>().DeplacementPlayer(gameObject.transform.position);
+                    isMoving = true;
+
                 }
                 else
-                {*/
+                {
                     cameraPoste .SetActive(true);
                     cameraDezoom.SetActive(false);
                     aStar       .SetActive(false);
                     moniteur    .SetActive(false);
                     player      .SetActive(false);
-                //}
+                }
+            }
+        }
+
+        if(isMoving)
+        {
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < 1f)
+            {
+                cameraPoste.SetActive(true);
+                cameraDezoom.SetActive(false);
+                aStar.SetActive(false);
+                moniteur.SetActive(false);
+                player.SetActive(false);
             }
         }
     }
