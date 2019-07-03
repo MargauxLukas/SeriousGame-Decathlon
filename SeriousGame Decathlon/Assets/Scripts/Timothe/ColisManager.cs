@@ -78,7 +78,7 @@ public class ColisManager : MonoBehaviour
             repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
-            Debug.Log("Test Colis Manager");
+            //Debug.Log("Test Colis Manager");
             scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, colisTemporaire.GetComponent<SpriteRenderer>());
             if(scriptColis.colisScriptable.estOuvert)
             {

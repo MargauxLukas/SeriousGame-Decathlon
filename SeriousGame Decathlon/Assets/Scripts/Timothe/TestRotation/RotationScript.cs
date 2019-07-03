@@ -113,7 +113,7 @@ public class RotationScript : MonoBehaviour
                     spriteCarton.sprite = spriteCartonListe[5];
                     break;
             }
-            Debug.Log(spriteCartonListe[0]);
+            //Debug.Log(spriteCartonListe[0]);
         }
         if(spriteCarton != null)
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
@@ -348,22 +348,22 @@ public class RotationScript : MonoBehaviour
         switch (actualFace.upVoisin.face)
         {
             case "Up":
-                Debug.Log("Up affichage");
+                //Debug.Log("Up affichage");
                 return spriteCartonListe[0];
             case "Down":
-                Debug.Log("Down affichage");
+                //Debug.Log("Down affichage");
                 return spriteCartonListe[1];
             case "Right":
-                Debug.Log("Right affichage");
+                //Debug.Log("Right affichage");
                 return spriteCartonListe[2];
             case "Left":
-                Debug.Log("Left affichage");
+                //Debug.Log("Left affichage");
                 return spriteCartonListe[3];
             case "Forward":
-                Debug.Log("For affichage");
+                //Debug.Log("For affichage");
                 return spriteCartonListe[4];
             case "Backward":
-                Debug.Log("Back affichage");
+                //Debug.Log("Back affichage");
                 return spriteCartonListe[5];
         }
 
