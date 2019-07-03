@@ -6173,12 +6173,14 @@ MonoBehaviour:
   listDialogues:
   - {fileID: 11400000, guid: b73358d0614f4b841b03166593dd5544, type: 2}
   - {fileID: 11400000, guid: c7c6e008c5b45bd45b235bd352b6957b, type: 2}
+  - {fileID: 11400000, guid: b099dded523c3da49a9be8e59d10f092, type: 2}
+  - {fileID: 11400000, guid: b296221e21cbcd541920966019d0d86e, type: 2}
   phaseNum: 0
   dialogNum: 0
   canJeter: 0
   canVider: 0
   canOuvrirFermer: 0
-  canOpenTurnMenu: 0
+  canOpenTurnMenu: 1
   canColis1: 0
   canColis2: 0
   canInfo: 0
