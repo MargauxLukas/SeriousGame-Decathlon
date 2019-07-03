@@ -493,7 +493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SaveLevel
+  m_Text: Delete All
 --- !u!222 &507934829
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1734,12 +1734,42 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1112353860}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1112353862}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a07357d9f11b21e4698f387e8352bca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1112353862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7338592626244155789, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+    type: 3}
+  m_PrefabInstance: {fileID: 1112353860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1112353863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112353862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779427ccd4a43914495008be3cdbfe72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allColisCreated:
+  - {fileID: 11400000, guid: 9b05a4b3e31343c4f9d483d5eca29ae0, type: 2}
+  - {fileID: 11400000, guid: f9d8d420f63875744b3feb4751b3fb82, type: 2}
+  - {fileID: 11400000, guid: d7b6f8e8a6af75f4e8df8503f6431614, type: 2}
+  - {fileID: 11400000, guid: 99af53f1ea267bb499c1c89a6a95d6fb, type: 2}
+  - {fileID: 11400000, guid: 4cf6fff017549fc4980c64fa3ddfc89a, type: 2}
+  - {fileID: 11400000, guid: cb5acd0f23e06ac438f3e7764452ce64, type: 2}
+  - {fileID: 11400000, guid: e2f1b2d1802d5744aa31fc7b5b7ae412, type: 2}
+  - {fileID: 11400000, guid: 62cdf2adf9386cb43a98bf0df45f0a87, type: 2}
+  - {fileID: 11400000, guid: 86071048a4e6ab34e999341e8782fea2, type: 2}
+  allLevelCreated:
+  - {fileID: 11400000, guid: ddf9ab11e9e4c174bb6ea5f4b685ecd0, type: 2}
 --- !u!1 &1224120143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,8 +3360,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1112353861}
-        m_MethodName: SaveLevel
+      - m_Target: {fileID: 1112353863}
+        m_MethodName: Desinstall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

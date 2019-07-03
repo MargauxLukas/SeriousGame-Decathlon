@@ -25,6 +25,39 @@ public class SaveLoadSystem : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public void DeleteAllFile()
+    {
+        if(IsSaveFile())
+        {
+            if (Directory.Exists(Application.persistentDataPath + "/game_save"))
+            {
+                DeleteFileInDirectory(Application.persistentDataPath + "/game_save");
+            }
+        }
+    }
+
+    public void DeleteFileInDirectory(string direc)
+    {
+        string[] files = Directory.GetFiles(direc);
+        string[] dirs = Directory.GetDirectories(direc);
+
+        if(dirs.Length > 0)
+        {
+            foreach(string dir in dirs)
+            {
+                DeleteFileInDirectory(dir);
+            }
+        }
+
+        foreach (string file in files)
+        {
+            File.SetAttributes(file, FileAttributes.Normal);
+            File.Delete(file);
+        }
+
+        Directory.Delete(direc);
+    }
+
     public bool IsSaveFile()
     {
         return Directory.Exists(Application.persistentDataPath + "/game_save");
