@@ -12,6 +12,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject bigScreen;
     public GameObject scanRFID;
     public GameObject quitButtonWorkView;
+    public GameObject menuCirculaireColis;
 
     [Header("Colis 1")]
     public GameObject colis1;
@@ -61,6 +62,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject menuColis24SpriteMask;
     public GameObject menuColis34SpriteMask;
     public GameObject menuColis44SpriteMask;
+    public GameObject menuColis44SpriteMaskTuto;
     public GameObject menuArticles13SpriteMask;
     public GameObject menuArticles23SpriteMask;
     public GameObject menuArticles33SpriteMask;
