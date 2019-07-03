@@ -284,8 +284,13 @@ public class SaveLoadSystem : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
             file.Close();
-            Debug.Log(levelToSave.nbLevel);
+            Debug.Log("Bonjour : " + levelToSave.colisDuNiveauNoms.Count);
         }
+
+        Debug.Log("nb level : " + levelNb);
+
+        Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"));
+
         return levelToSave;
     }
 

@@ -152,7 +152,9 @@ public class PileArticle : MonoBehaviour
         {
             if (i < listArticles.Count)
             {
-                newArticleList.Add(listArticles[i]);
+                Article articleToHad = Article.CreateInstance<Article>();
+                articleToHad = listArticles[i];
+                newArticleList.Add(articleToHad);
                 listArticles.RemoveAt(i);
             }
         }

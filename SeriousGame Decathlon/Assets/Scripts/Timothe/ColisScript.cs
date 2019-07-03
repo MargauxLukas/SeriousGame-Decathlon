@@ -58,6 +58,12 @@ public class ColisScript : MonoBehaviour
     public SpriteRenderer spriteArticleDansColis;
     public SpriteMask spriteMaskArticleColis;
 
+
+    bool canJeter = true;
+    bool canOpen = true;
+    bool canTurn = true;
+    bool canVide = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -225,6 +231,10 @@ public class ColisScript : MonoBehaviour
         }
         else if (doesEntranceSecond)
         {
+            canVide = false;
+            canOpen = false;
+            canJeter = false;
+
             transform.position += new Vector3(1, 0, 0) * 3 * Time.deltaTime;
             if (Vector3.Distance(transform.position, entrancePosition) > 9f)
             {
@@ -281,35 +291,36 @@ public class ColisScript : MonoBehaviour
         return itemNb;
     }
 
+
     void PickInventory(int nb)
     {
         switch (nb)
         {
             case 1:
-                if (TutoManager.instance == null || TutoManager.instance.canJeter)
+                if ((TutoManager.instance == null || TutoManager.instance.canJeter) || canJeter)
                 {
                     Jeter();
                     TellSomething(1);
                 }
                 break;
             case 2:
-                if (TutoManager.instance == null || TutoManager.instance.canVider)
+                if ((TutoManager.instance == null || TutoManager.instance.canVider) || canOpen)
                 {
-                    Vider();
+                    OuvrirFermer();
                     TellSomething(2);
                 }
                 break;
             case 3:
-                if (TutoManager.instance == null || TutoManager.instance.canOuvrirFermer)
+                if ((TutoManager.instance == null || TutoManager.instance.canOuvrirFermer) || canTurn)
                 {
-                    OuvrirFermer();
+                    OpenTurnMenu();
                     TellSomething(3);
                 }
                 break;
             case 0:
-                if (TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu)
+                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) || canVide)
                 {
-                    OpenTurnMenu();
+                    Vider();
                     TellSomething(5);
                 }
                 break;
@@ -390,8 +401,10 @@ public class ColisScript : MonoBehaviour
 
             if (colisScriptable.listArticles.Count > 0)
             {
+                Debug.Log("Test1");
                 if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                 {
+                    Debug.Log("Test2");
                     List<Article> listTemporaire = colisScriptable.Vider();
                     int refBase = 0;
                     if (listTemporaire[0].rfid != null)
@@ -406,18 +419,25 @@ public class ColisScript : MonoBehaviour
                     {
                         if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 && spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                         {
+                            Debug.Log("Test3");
                             needSecond = true;
-                            listTemporairePremiere.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporairePremiere.Add(articleToHad);
                         }
                         else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
                         {
                             needSecond = true;
-                            listTemporaireSeconde.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporaireSeconde.Add(articleToHad);
                         }
                         else if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef == refBase))
                         {
                             needOne = true;
-                            listTemporairePremiere.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporairePremiere.Add(articleToHad);
                         }
                     }
 
