@@ -172,15 +172,18 @@ public class OngletManager : MonoBehaviour
     public void ActivateOngletFillingRate()
     {
         onglet1.interactable = true;
+        fillingRate.SetActive(true);
     }
 
     public void ActivateOngletRecount()
     {
         onglet2.interactable = true;
+        recount.SetActive(true);
     }
 
     public void ActivateOngletRepack()
     {
         onglet3.interactable = true;
+        repack.SetActive(true);
     }
 }
