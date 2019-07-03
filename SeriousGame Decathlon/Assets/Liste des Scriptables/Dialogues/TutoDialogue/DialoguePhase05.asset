@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase05
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
+  persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
+  phraseDites:
+  - "\u2026 la r\xE9f\xE9rence et le nombre d'articles qu'il devrait y avoir dans
+    le colis.  "
+  - "Nous avons maintenant toutes les informations qu\u2019il nous faut, nous pouvons
+    commencer \xE0 traiter le colis. "
+  - "Proc\xE9dons dans l\u2019ordre, d\u2019abord l\u2019article manquant. "
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

@@ -1411,7 +1411,6 @@ public class TutoManager : MonoBehaviour
             StartCoroutine(MoveDoigt());
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.newTicketHUColis1).enabled = true;
 
             phaseNum++;
             canPlayFirst = true;

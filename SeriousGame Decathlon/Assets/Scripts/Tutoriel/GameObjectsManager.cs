@@ -17,13 +17,11 @@ public class GameObjectsManager : MonoBehaviour
     [Header("Colis 1")]
     public GameObject colis1;
     public GameObject pileArticlesColis1;
-    public GameObject newTicketHUColis1;
 
     [Header("Colis 2")]
     public GameObject colis2;
     public GameObject pileArticles1Colis2;
     public GameObject pileArticles2Colis2;
-    public GameObject newTicketHUColis2;
 
     [Header("Ecran principal")]
     public GameObject toggleEndTask1;

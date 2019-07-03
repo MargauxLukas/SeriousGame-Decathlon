@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
-  m_Name: DialoguePhase03
+  m_Name: DialoguePhase13
   m_EditorClassIdentifier: 
-  persoParlant: {fileID: 0}
-  persoEcoutant: {fileID: 0}
+  persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
+  persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
   phraseDites:
-  - Voici ton principal outil de travail. Ici...
+  - '... puis passe le colis au dessus du Scanner RFID afin de recompter les articles. '
+  - "Pour faciliter la lecture des puces et \xE9viter qu\u2019elles ne se collent
+    entre elles, secoue le colis lorsque tu le scannes."
   choixPossibles:
   - '...'
   dialoguesSuivant:
