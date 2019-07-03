@@ -8,7 +8,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
     public List<Colis> allColisCreated;
     public List<LevelScriptable> allLevelCreated;
     
-    void Awake()
+    void Start()
     {
         if(!SaveLoadSystem.instance.IsSaveFile())
         {
@@ -21,8 +21,12 @@ public class SaveAllScriptableBeginning : MonoBehaviour
             {
                 SaveLoadSystem.instance.SaveLevelWithoutColis(level);
             }
-
         }
+    }
+
+    public void Desinstall()
+    {
+        SaveLoadSystem.instance.DeleteAllFile();
     }
 
 }
