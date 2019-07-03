@@ -124,7 +124,7 @@ public class Unit : MonoBehaviour
                 //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1);
                 //transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
                 Vector3 direction = new Vector3(path.lookPoints[pathIndex].x - transform.position.x, path.lookPoints[pathIndex].y - transform.position.y, 0).normalized;
-                Debug.Log(direction);
+                //Debug.Log(direction);
 
                 transform.position += direction * Time.deltaTime * speed * speedPercent;
                 //transform.Translate(direction * Time.deltaTime * speed * speedPercent, Space.Self);
