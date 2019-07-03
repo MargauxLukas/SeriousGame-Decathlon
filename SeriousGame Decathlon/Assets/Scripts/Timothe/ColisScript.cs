@@ -59,10 +59,10 @@ public class ColisScript : MonoBehaviour
     public SpriteMask spriteMaskArticleColis;
 
 
-    bool canJeter;
-    bool canOpen;
-    bool canTurn;
-    bool canVide;
+    bool canJeter = true;
+    bool canOpen = true;
+    bool canTurn = true;
+    bool canVide = true;
 
     // Start is called before the first frame update
     void Start()
@@ -401,8 +401,10 @@ public class ColisScript : MonoBehaviour
 
             if (colisScriptable.listArticles.Count > 0)
             {
+                Debug.Log("Test1");
                 if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                 {
+                    Debug.Log("Test2");
                     List<Article> listTemporaire = colisScriptable.Vider();
                     int refBase = 0;
                     if (listTemporaire[0].rfid != null)
@@ -417,18 +419,25 @@ public class ColisScript : MonoBehaviour
                     {
                         if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 && spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                         {
+                            Debug.Log("Test3");
                             needSecond = true;
-                            listTemporairePremiere.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporairePremiere.Add(articleToHad);
                         }
                         else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
                         {
                             needSecond = true;
-                            listTemporaireSeconde.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporaireSeconde.Add(articleToHad);
                         }
                         else if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef == refBase))
                         {
                             needOne = true;
-                            listTemporairePremiere.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporairePremiere.Add(articleToHad);
                         }
                     }
 
