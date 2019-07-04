@@ -128,7 +128,7 @@ public class ColisManager : MonoBehaviour
             float div = (float)listeColisTraiter.Count / (float)colisTotal;
             //nbColisRestant.fillAmount = div;
 
-            /*if(scriptColis.colisScriptable.fillPercent<=50)
+            if(scriptColis.colisScriptable.fillPercent<=50)
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
             }
@@ -141,7 +141,7 @@ public class ColisManager : MonoBehaviour
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
             }
 
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;*/
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
         else if(listeColisActuel.Length > 0)
         {
