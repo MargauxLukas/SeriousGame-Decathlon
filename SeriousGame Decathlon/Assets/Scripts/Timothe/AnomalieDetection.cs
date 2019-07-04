@@ -31,7 +31,7 @@ public class AnomalieDetection : MonoBehaviour
 
     public void CheckColis(Colis colis)
     {
-        if (!isAwakning)
+        if (!isAwakning && colis.listAnomalies != null)
         {
             if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
             {
