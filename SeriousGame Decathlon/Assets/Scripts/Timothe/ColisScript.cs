@@ -113,23 +113,18 @@ public class ColisScript : MonoBehaviour
                             menuCanOpen = false;
                             menuIsOpen  = false;
                         }
-                        else if (touch.phase == TouchPhase.Ended)
-                        {
-                            menuCanOpen = true ;
-                            menuIsOpen  = false;
-                        }
 
                         timeTouched += Time.deltaTime;
 
                         if (timeTouched > timeBeforeMenuOpen && menuCanOpen)
                         {
                             menuIsOpen = true;
-                            if(TutoManager.instance != null) {TutoManager.instance.Manager(9);}
 
                             circlePosition = transform.position;
                             circleImage.transform.parent.gameObject.SetActive(true);
                             circleImage.transform.parent.gameObject.transform.position = transform.position;
                             circleImage.fillAmount = 1f / itemNumber;
+                            if (TutoManager.instance != null) { TutoManager.instance.Manager(9); }
 
                             if (touch.phase == TouchPhase.Moved)
                             {
@@ -154,6 +149,12 @@ public class ColisScript : MonoBehaviour
                                 }
                                 return;
                             }
+                        }
+
+                        if (touch.phase == TouchPhase.Ended)
+                        {
+                            menuCanOpen = true;
+                            menuIsOpen = false;
                         }
 
                         //Déplacement du Colis

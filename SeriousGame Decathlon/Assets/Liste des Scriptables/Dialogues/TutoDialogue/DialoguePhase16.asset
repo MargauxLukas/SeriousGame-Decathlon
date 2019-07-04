@@ -17,8 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Maintenant que tu as v\xE9rifi\xE9 que l\u2019anomalie \xE9tait belle et bien
     r\xE9elle, tu vas devoir la traiter.  "
-  - "Il va te falloir partir \xE0 la recherche de la source de l'anomalie. Ferme l'\xE9cran
-    [...]"
+  - "Il va te falloir partir \xE0 la recherche de la source de l'anomalie. Ferme l'\xE9cran..."
   choixPossibles:
   - '...'
   dialoguesSuivant:

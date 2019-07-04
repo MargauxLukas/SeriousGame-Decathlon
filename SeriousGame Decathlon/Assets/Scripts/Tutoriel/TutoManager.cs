@@ -21,6 +21,7 @@ public class TutoManager : MonoBehaviour
     public bool canColis1 = false;
     public bool canColis2 = false;
     public bool canInfo = false;
+    public bool canCloseFicheInfo = false;
 
     [Header("Launch Dialogue & Phases")]
     public bool canPlayFirst = true;
@@ -56,6 +57,7 @@ public class TutoManager : MonoBehaviour
 
     public void DialogueIsFinished()
     {
+        //Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
         canPlayFirst  = false;
         canPlaySecond = true;
 
@@ -65,7 +67,7 @@ public class TutoManager : MonoBehaviour
     public void Manager(int interaction)
     {
         interactionNum = interaction;
-
+        Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
         switch (interaction)
         {
             //Initial State
@@ -108,6 +110,10 @@ public class TutoManager : MonoBehaviour
                 {
                     case (3):
                         Phase03();
+                        break;
+
+                    case (9):
+                        Phase09();
                         break;
 
                     case (15):
@@ -570,8 +576,19 @@ public class TutoManager : MonoBehaviour
         StartCoroutine(MoveDoigt());
     }
 
+    IEnumerator NewPhase(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        phaseNum++;
+        canPlayFirst = true;
+        canPlaySecond = false;
+
+        Manager(4);
+    }
+
         /*****************/
-       /*   Colis 1     */
+       /*    Colis 1    */
       /*****************/
 
     void Phase00()
@@ -668,6 +685,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -688,6 +706,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -712,25 +731,19 @@ public class TutoManager : MonoBehaviour
     {
         if (canPlayFirst)
         {
-            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
-
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(6.05f, 3.64f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(5.56f, 1.18f);
+            
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
 
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.22f, -4.25f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(1.12f, 0.5f);
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.24f, -4.23f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(1.2f, 0.48f);
 
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
-
-            Manager(4);
+            StartCoroutine(NewPhase(2.5f));
         }
     }
 
@@ -757,22 +770,23 @@ public class TutoManager : MonoBehaviour
 
     void Phase06()
     {
-        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().closeBigMonitor();
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().CloseMonitorTuto();
 
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(6.85f, -2.64f);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(1f, 0.48f);
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
 
-        phaseNum++;
-
-        Manager(4);
+        StartCoroutine(NewPhase(2f));
     }
 
     void Phase07()
     {
         if (canPlayFirst)
         {
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
@@ -792,7 +806,8 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
 
-        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().monitorOpening = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().OpenMonitorTuto();
 
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(6.23f, 1.64f);
@@ -813,6 +828,9 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
+            Debug.Log("Et dans la 2e phase tu rentres ?");
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(7.75f, 1.22f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
@@ -973,6 +991,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -991,6 +1010,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -999,19 +1019,15 @@ public class TutoManager : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(3.1f, -0.3f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.5f, 0.83f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(1.77f, 0.17f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(1.32f, 0.4f);
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
 
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask02).transform.localPosition = new Vector2(2.22f, -4.25f);
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask02).transform.localScale = new Vector2(1.12f, 0.5f);
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask02).enabled = true;
 
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
-
-            Manager(4);
+            StartCoroutine(NewPhase(3f));
         }
     }
 
@@ -1054,11 +1070,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = true;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
 
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
-
-            Manager(4);
+            StartCoroutine(NewPhase(2f));
         }
     }
 
@@ -1075,9 +1087,7 @@ public class TutoManager : MonoBehaviour
         fingerSpeed = 4;
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPosition - gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition).normalized * Time.fixedDeltaTime * fingerSpeed;
 
-        phaseNum++;
-
-        Manager(4);
+        StartCoroutine(NewPhase(2f));
     }
 
     void Phase19()
@@ -1165,21 +1175,16 @@ public class TutoManager : MonoBehaviour
 
     void Phase24()
     {
-        canInfo = true;
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = false;
+        gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = false;
 
-        targetPosition = new Vector3(5.06f, -2.92f, 30f);
-        fingerSpeed = 4;
-        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPosition - gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition).normalized * Time.fixedDeltaTime * fingerSpeed;
+        canInfo = true;
 
         phaseNum++;
     }
 
     void Phase25()
     {
-        fingerSpeed = 0;
-        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = false;
-        gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = false;
-
         canInfo = false;
 
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
@@ -1196,6 +1201,8 @@ public class TutoManager : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            canCloseFicheInfo = false;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
@@ -1209,6 +1216,8 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
 
+            canCloseFicheInfo = true;
+
             phaseNum++;
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1221,6 +1230,8 @@ public class TutoManager : MonoBehaviour
         {
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
+
+            canCloseFicheInfo = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -1263,6 +1274,7 @@ public class TutoManager : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -1273,6 +1285,7 @@ public class TutoManager : MonoBehaviour
     void Phase30()
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
         gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = true;
 
@@ -1377,6 +1390,8 @@ public class TutoManager : MonoBehaviour
 
     void Phase35()
     {
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(7.2f, 2.08f);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.52f, 0.66f);
@@ -1438,6 +1453,7 @@ public class TutoManager : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -1448,6 +1464,7 @@ public class TutoManager : MonoBehaviour
     void Phase38()
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(11.64f, 4.56f);
@@ -1780,6 +1797,7 @@ public class TutoManager : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -1790,6 +1808,7 @@ public class TutoManager : MonoBehaviour
     void Phase53()
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.27f, 2.4f);
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
@@ -1862,6 +1881,7 @@ public class TutoManager : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -1874,6 +1894,7 @@ public class TutoManager : MonoBehaviour
         if (canPlayFirst)
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2053,6 +2074,7 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = true;
     }
 
@@ -2062,8 +2084,9 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = false;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = false;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = false;
-        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().openBigMonitor();
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().OpenBigMonitor();
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         //Enable Fond noir
@@ -2123,12 +2146,14 @@ public class TutoManager : MonoBehaviour
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
     }
 
     void Phase73()
     {
         phaseNum++;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.screen).interactable = true;
     }
 }

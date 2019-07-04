@@ -15,11 +15,9 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
   persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
   phraseDites:
-  - "\u2026 la r\xE9f\xE9rence et le nombre d'articles qu'il devrait y avoir dans
-    le colis.  "
-  - "Nous avons maintenant toutes les informations qu\u2019il nous faut, nous pouvons
-    commencer \xE0 traiter le colis. "
-  - "Proc\xE9dons dans l\u2019ordre, d\u2019abord l\u2019article manquant. "
+  - "Nous avons maintenant toutes les informations qu'il nous faut, nous pouvons commencer
+    \u28F4traiter le colis. "
+  - "Proc\xE9dons dans l'\x19ordre, d\x19'abord l'\x19article manquant. "
   choixPossibles:
   - '...'
   dialoguesSuivant:
