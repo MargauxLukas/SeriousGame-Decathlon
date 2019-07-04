@@ -21,7 +21,8 @@ public class SaveLoadSystem : MonoBehaviour
         }
         else if(instance != this)
         {
-            Destroy(this);
+            Destroy(instance.gameObject);
+            instance = this;
         }
         DontDestroyOnLoad(this);
     }

@@ -33,6 +33,9 @@ public class ColisManager : MonoBehaviour
 
     public AnomalieDetection anomDetect;
 
+    public Image nbColisRestant;
+    private int colisTotal;
+
     private void Awake()
     {
         if(ChargementListeColis.instance != null)
@@ -43,6 +46,10 @@ public class ColisManager : MonoBehaviour
         anomDetect.CheckList(listeColisTraiter);
     }
 
+    private void Start()
+    {
+        colisTotal = listeColisTraiter.Count;
+    }
 
     public void CheckNewColis()
     {
@@ -118,6 +125,9 @@ public class ColisManager : MonoBehaviour
                 }
             }
 
+            float div = (float)listeColisTraiter.Count / (float)colisTotal;
+            nbColisRestant.fillAmount = div;
+
             /*if(scriptColis.colisScriptable.fillPercent<=50)
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
@@ -141,6 +151,7 @@ public class ColisManager : MonoBehaviour
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
+
     }
 
     public void RenvoieColis(GameObject colisRenvoye)
@@ -166,6 +177,11 @@ public class ColisManager : MonoBehaviour
             else
             {
                 Scoring.instance.sendColisWithoutMalus();
+                if(listeColisTraiter.Count<=0)
+                {
+                    Debug.Log("End Level");
+                    Scoring.instance.EndLevel();
+                }
             }
 
             if(colisRenvoye.GetComponent<ColisScript>().colisScriptable.isBadOriented)
@@ -176,5 +192,9 @@ public class ColisManager : MonoBehaviour
         }
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
+
+        float div = (float)listeColisTraiter.Count / (float)colisTotal;
+        nbColisRestant.fillAmount = div;
+
     }
 }

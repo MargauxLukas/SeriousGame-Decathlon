@@ -8,6 +8,7 @@ public class Scoring : MonoBehaviour
     public static Scoring instance;
 
     public GameObject player;
+    public Player playerScriptable;
     public int score;
 
     private float multiplicator;
@@ -38,6 +39,21 @@ public class Scoring : MonoBehaviour
         {
             Destroy(instance);
         }
+
+        //DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        if(ChargementListeColis.instance != null)
+        {
+            playerScriptable = ChargementListeColis.instance.currentPlayerScriptable;
+        }
+    }
+
+    public void EndLevel()
+    {
+        
     }
 
     private void Update()
@@ -47,6 +63,21 @@ public class Scoring : MonoBehaviour
             timeColisMaking += Time.deltaTime;
         }
         lastGotColis = gotNewColis;
+
+        if(score < 0)
+        {
+            //score = 0;
+        }
+
+        if(playerScriptable != null && score != playerScriptable.score)
+        {
+            playerScriptable.score = score;
+            if (ChargementListeColis.instance != null)
+            {
+                ChargementListeColis.instance.currentPlayerScriptable = playerScriptable;
+            }
+        }
+
     }
 
     //MALUS

@@ -24,7 +24,12 @@ public class ChargementListeColis : MonoBehaviour
     public LevelScriptable levelScript;
     public Text affichageNouveauLevel;
 
+    public Player currentPlayerScriptable;
+
     public static ChargementListeColis instance;
+
+    public InputField nomDuJoueur;
+    public int sceneFinNiveau;
 
     public void LoadNewScene(int nbScene)
     {
@@ -39,7 +44,8 @@ public class ChargementListeColis : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(this);
+            Destroy(instance.gameObject);
+            instance = this;
         }
         DontDestroyOnLoad(this);
     }
@@ -54,8 +60,25 @@ public class ChargementListeColis : MonoBehaviour
         Application.Quit();
     }
 
+    public void SortEntrepot()
+    {
+        LoadNewScene(sceneFinNiveau);
+    }
+
     public void LoadNewLevelScript(int currentLevelTempo)
     {
+        if(nomDuJoueur.text != null)
+        {
+            currentPlayerScriptable.name = nomDuJoueur.text;
+        }
+        else
+        {
+            Debug.Log("Test");
+            currentPlayerScriptable.name = "Okun Idey";
+        }
+        currentPlayerScriptable.score = 0;
+        currentPlayerScriptable.date = System.DateTime.Now.ToString("dd MMMM yyyy");
+
         List<Colis> newList = new List<Colis>();
         List<Colis> colisListe = new List<Colis>();
 

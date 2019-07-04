@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnomalieDetection : MonoBehaviour
 {
     public List<int> RFIDtagKnowned;
-    private bool isAwakning;
+    private bool isAwakning = true;
 
     /* Anomalie actuellement traitées :
      * - PCB différents (1)
@@ -249,9 +249,9 @@ public class AnomalieDetection : MonoBehaviour
             */
 
         }
-        if(!isAwakning)
+        if(isAwakning)
         {
-            isAwakning = true;
+            isAwakning = false;
         }
     }
 }
