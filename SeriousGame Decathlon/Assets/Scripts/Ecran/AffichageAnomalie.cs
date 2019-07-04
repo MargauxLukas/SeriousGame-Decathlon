@@ -110,6 +110,7 @@ public class AffichageAnomalie : MonoBehaviour
                     n++;
                 }
             }
+            ongletManager.Priority();
         }
     }
 
