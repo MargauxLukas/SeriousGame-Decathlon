@@ -7,6 +7,7 @@ using System;
 public class PathFinding : MonoBehaviour
 {
     Grid grid;
+    public bool reset = false;
 
     private void Awake()
     {
@@ -49,11 +50,12 @@ public class PathFinding : MonoBehaviour
                 Node currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (currentNode == targetNode)
+                if (currentNode == targetNode || reset)
                 {
                     sw.Stop();
                     //print("Path Found: " + sw.ElapsedMilliseconds + " ms");
                     pathSuccess = true;
+                    reset = false;
                     break;
                 }
                 foreach (Node neighbour in grid.GetNeighbours(currentNode))
@@ -103,7 +105,6 @@ public class PathFinding : MonoBehaviour
         Vector2[] waypoints = SimplifyPath(path);
         Array.Reverse(waypoints);
         return waypoints;
-
     }
 
     Vector2[] SimplifyPath(List<Node> path)

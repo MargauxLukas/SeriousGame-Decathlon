@@ -182,7 +182,7 @@ public class Grid : MonoBehaviour
                 {
                     Gizmos.color = Color.cyan;
                 }*/
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter));
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter/5));
             }
         }
     }

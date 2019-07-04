@@ -72,7 +72,6 @@ public class BigMonitor : MonoBehaviour
 
     public void closeBigMonitor()
     {
-
         miniMonitor.monitorClosing = true;
         transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
 
