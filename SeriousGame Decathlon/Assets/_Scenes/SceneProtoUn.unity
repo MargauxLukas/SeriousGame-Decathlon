@@ -3325,6 +3325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recountTab: {fileID: 606800895}
+  affichageAnomalie: {fileID: 1872105565}
   screenColor: {fileID: 511732976}
   lamp: {fileID: 1765506918}
   textNBAnomalie: {fileID: 812460609}
@@ -8956,6 +8957,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 177140028}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1872105565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1385595807470142906, guid: 40887147d18403247b7250d4bc5662f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 177140028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872105564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b5715928240ee439ae7ed55bcac2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1901438255
 PrefabInstance:
   m_ObjectHideFlags: 0

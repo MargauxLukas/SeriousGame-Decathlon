@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ScreenDisplayColor : MonoBehaviour
 {
     public RecountTab recountTab;
+    public AffichageAnomalie affichageAnomalie;
 
     public GameObject screenColor;
     private Animator screenColorAnimator;
@@ -33,16 +34,18 @@ public class ScreenDisplayColor : MonoBehaviour
     {
         if (recountTab.colis != null)
         {
+            Debug.Log(affichageAnomalie.toggleOnNb + " == " + recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie);
             screenColor.SetActive(true);
-            if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
+            if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0 
+                                                                                    && affichageAnomalie.toggleOnNb != recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
             {
                 textNBAnomalie.enabled = true;
-                textNBAnomalie.text    = recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie.ToString();
+                textNBAnomalie.text    = (recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie - affichageAnomalie.toggleOnNb).ToString() ;
 
                 lampAnimator       .SetBool("hasAnomalie", true);
                 screenColorAnimator.SetBool("hasAnomalie", true);
             }
-            else if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0)
+            else if (recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0 || affichageAnomalie.toggleOnNb == recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
             {
                 textNBAnomalie.enabled = false;
 
