@@ -34,7 +34,6 @@ public class ScreenDisplayColor : MonoBehaviour
     {
         if (recountTab.colis != null)
         {
-            Debug.Log(affichageAnomalie.toggleOnNb + " == " + recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie);
             screenColor.SetActive(true);
             if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0 
                                                                                     && affichageAnomalie.toggleOnNb != recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)

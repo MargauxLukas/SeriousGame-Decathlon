@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     public Animator playerAnimator;
 
     Path path;
+    public PathFinding pf;
 
     public void DeplacementPlayer(Vector3 newPos)
     {
@@ -29,16 +30,17 @@ public class Unit : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             switch (touch.phase)
             {
-                case TouchPhase.Began:
-                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0.0f));
+                case TouchPhase.Ended:
+                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
                     StartCoroutine(UpdatePath());
                     break;
 
                 case TouchPhase.Moved:
-                    //Debug.Log("MOVED not supported");
-                    break;
+                    /*target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
+                    StartCoroutine(UpdatePath());
+                    break;*/
 
-                case TouchPhase.Ended:
+                case TouchPhase.Began:
                     //Debug.Log("ENDED not supported");
                     break;
 
@@ -117,7 +119,6 @@ public class Unit : MonoBehaviour
                     if(speedPercent < 0.01f)
                     {
                         followingPath = false;
-                        playerAnimator.SetBool("DoesWalk", false);
                     }
                 }
 
@@ -127,7 +128,7 @@ public class Unit : MonoBehaviour
                 Vector3 direction = new Vector3(path.lookPoints[pathIndex].x - transform.position.x, path.lookPoints[pathIndex].y - transform.position.y, 0).normalized;
                 //Debug.Log(direction);
 
-                transform.position += direction * Time.deltaTime * speed * speedPercent;
+                transform.position += direction * Time.deltaTime * speed; //* speedPercent;
                 //transform.Translate(direction * Time.deltaTime * speed * speedPercent, Space.Self);
 
                 playerAnimator.SetFloat("DirectionX",direction.x);

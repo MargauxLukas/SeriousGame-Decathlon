@@ -7,11 +7,25 @@ using System;
 public class PathFinding : MonoBehaviour
 {
     Grid grid;
+    public bool reset = false;
 
     private void Awake()
     {
         grid = GetComponent<Grid>();
     }
+
+    /*private void Update()
+    {
+        if(Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            FindPath(seeker.position, new Vector3(touch.position.x, touch.position.y, 0));
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            FindPath(seeker.position, target.position);
+        }
+    }*/
 
     public void FindPath(PathRequest request, Action<PathResult> callback)
     {
@@ -36,11 +50,12 @@ public class PathFinding : MonoBehaviour
                 Node currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (currentNode == targetNode)
+                if (currentNode == targetNode || reset)
                 {
                     sw.Stop();
                     //print("Path Found: " + sw.ElapsedMilliseconds + " ms");
                     pathSuccess = true;
+                    reset = false;
                     break;
                 }
                 foreach (Node neighbour in grid.GetNeighbours(currentNode))
@@ -90,7 +105,6 @@ public class PathFinding : MonoBehaviour
         Vector2[] waypoints = SimplifyPath(path);
         Array.Reverse(waypoints);
         return waypoints;
-
     }
 
     Vector2[] SimplifyPath(List<Node> path)
