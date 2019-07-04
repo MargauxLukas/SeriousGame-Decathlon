@@ -41,10 +41,10 @@ public class ChoixNiveauManager : MonoBehaviour
             Debug.Log("Test");
             GameObject nouveauBouton = Instantiate(button, contentArea.transform);
             nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel = SaveLoadSystem.instance.LoadLevel(i);
-            nouveauBouton.GetComponentInChildren<Text>().text = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel.nbLevel.ToString();
+            nouveauBouton.GetComponentInChildren<Text>().text = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel.name;
             nouveauBouton.GetComponent<GetCurrentLevelButton>().nbLevel = i;
             nouveauBouton.GetComponent<GetCurrentLevelButton>().managerLevel = this;
-            currentChoiceLevel = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel;
+            //currentChoiceLevel = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel;
         }
         listAffAnomalies = new List<GameObject>();
     }
@@ -103,7 +103,10 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        levelLoading.LoadNewLevelScript(currentLevelNb);
+        if (currentLevelNb != 0)
+        {
+            levelLoading.LoadNewLevelScript(currentLevelNb);
+        }
     }
 }
 

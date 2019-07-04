@@ -32,7 +32,8 @@ public class LevelEditor : MonoBehaviour
     public List<RFID> listRFIDNonFonctionnels;
     public List<Carton> ListCartons;
     public List<Colis> colisDejaCree;
-    public InputField inputField;
+    public InputField inputFieldColisMF;
+    public InputField inputFieldLevel;
 
     //Les Canvas
     [Header("Canvas à Activer/Désactiver")]
@@ -84,6 +85,11 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveLevel()
     {
+        if(inputFieldLevel.text != null)
+        {
+            newLevel.name = inputFieldLevel.text.ToString();
+        }
+
         newLevel.nbColisParNomColis = new List<int>();
         newLevel.colisDuNiveauNoms = new List<string>();
 
@@ -128,9 +134,9 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveColis()
     {
-        if (inputField.text != null)
+        if (inputFieldColisMF.text != null)
         {
-            currentColis.name = inputField.text.ToString();
+            currentColis.name = inputFieldColisMF.text.ToString();
             Debug.Log(currentColis.name);
             //Mise à jour du colis après toutes les modifs
             currentColis.PCB = currentColis.listArticles.Count;

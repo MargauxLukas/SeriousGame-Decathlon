@@ -276,6 +276,11 @@ public class SaveLoadSystem : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/game_save/level_data");
         }
 
+        if(levelToSave.name == null)
+        {
+            levelToSave.name = "Niveau " + levelToSave.nbLevel.ToString();
+        }
+
         BinaryFormatter bf = new BinaryFormatter();
         if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
         {
