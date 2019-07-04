@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Timothe Test/ChoixDeNiveauMF.unity
     guid: 80b9679d633b03b4ea552d2ea3a678d0
+  - enabled: 1
+    path: Assets/_Scenes/Timothe Test/SceneTutoTempo.unity
+    guid: 5814cae61690de8459233eb9cbb00090
   m_configObjects: {}

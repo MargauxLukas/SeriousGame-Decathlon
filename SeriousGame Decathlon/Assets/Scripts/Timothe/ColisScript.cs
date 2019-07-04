@@ -297,28 +297,28 @@ public class ColisScript : MonoBehaviour
         switch (nb)
         {
             case 1:
-                if ((TutoManager.instance == null || TutoManager.instance.canJeter) || canJeter)
+                if ((TutoManager.instance == null || TutoManager.instance.canJeter) && canJeter)
                 {
                     Jeter();
                     TellSomething(1);
                 }
                 break;
             case 2:
-                if ((TutoManager.instance == null || TutoManager.instance.canVider) || canOpen)
+                if ((TutoManager.instance == null || TutoManager.instance.canOuvrirFermer) && canOpen)
                 {
                     OuvrirFermer();
                     TellSomething(2);
                 }
                 break;
             case 3:
-                if ((TutoManager.instance == null || TutoManager.instance.canOuvrirFermer) || canTurn)
+                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) && canTurn)
                 {
                     OpenTurnMenu();
                     TellSomething(3);
                 }
                 break;
             case 0:
-                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) || canVide)
+                if ((TutoManager.instance == null || TutoManager.instance.canVider) && canVide)
                 {
                     Vider();
                     TellSomething(5);
