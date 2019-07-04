@@ -2482,21 +2482,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
   - {fileID: 11400000, guid: 022b50f841cea0a4ea0a9e04f8e12600, type: 2}
   - {fileID: 11400000, guid: f9a7054d08bc11a4a888b856a5729b0b, type: 2}
+  - {fileID: 11400000, guid: f9a7054d08bc11a4a888b856a5729b0b, type: 2}
+  - {fileID: 11400000, guid: f9a7054d08bc11a4a888b856a5729b0b, type: 2}
+  - {fileID: 11400000, guid: f9a7054d08bc11a4a888b856a5729b0b, type: 2}
   listArticleSansRFID:
   - {fileID: 11400000, guid: a60ec9b0a04f4c348b32cea203935519, type: 2}
   - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   listRefArticles:
   - {fileID: 11400000, guid: aada3e3ebc9fed549b7e1b199f8d5454, type: 2}
   - {fileID: 11400000, guid: cd085f275a13d724080934686b9271a2, type: 2}
   - {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
+  - {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
+  - {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
+  - {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
   listRFIDFonctionnels:
   - {fileID: 11400000, guid: b03e751a4e52366428dcce09f499b46e, type: 2}
   - {fileID: 11400000, guid: 6278189e41f03c042a14ee9ab4fcf471, type: 2}
   - {fileID: 11400000, guid: 33e6fdf06c99b8b4697a2812cdd829e5, type: 2}
+  - {fileID: 11400000, guid: 33e6fdf06c99b8b4697a2812cdd829e5, type: 2}
+  - {fileID: 11400000, guid: 33e6fdf06c99b8b4697a2812cdd829e5, type: 2}
+  - {fileID: 11400000, guid: 33e6fdf06c99b8b4697a2812cdd829e5, type: 2}
   listRFIDNonFonctionnels:
   - {fileID: 11400000, guid: 02752d7f9a1af9b4e9642981b1d4f3db, type: 2}
   - {fileID: 11400000, guid: 6bab9c19affe1d445985bb429f4c1c7b, type: 2}
+  - {fileID: 11400000, guid: 68be7c47a12282045a5b5b266752388b, type: 2}
+  - {fileID: 11400000, guid: 68be7c47a12282045a5b5b266752388b, type: 2}
+  - {fileID: 11400000, guid: 68be7c47a12282045a5b5b266752388b, type: 2}
   - {fileID: 11400000, guid: 68be7c47a12282045a5b5b266752388b, type: 2}
   ListCartons:
   - {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}

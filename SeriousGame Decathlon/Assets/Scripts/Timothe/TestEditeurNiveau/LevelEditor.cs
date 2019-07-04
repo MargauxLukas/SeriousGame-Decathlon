@@ -115,8 +115,8 @@ public class LevelEditor : MonoBehaviour
         currentAnomalieNumber = 0;
         //currentColis = colisDeBase;
         int nbArticleColis = Random.Range(3, 6);
-        randomArticle = Random.Range(0, 1);
-        wrongArticle = (randomArticle + 1) % 2;
+        randomArticle = Random.Range(0, 3);
+        wrongArticle = (randomArticle + 1) % 4;
         currentColis.PCB = nbArticleColis;
         for (int i = 0; i < nbArticleColis; i++)
         {
@@ -343,11 +343,12 @@ public class LevelEditor : MonoBehaviour
     }
     private void NewProduct() //Change tous les articles en articles de nouvelles références
     {
+        int rngNewProd = Random.Range(5, 6);
         for(int i = 0; i < currentColis.listArticles.Count; i++)
         {
-            currentColis.listArticles[i] = listArticleBonEtat[2];
+            currentColis.listArticles[i] = listArticleBonEtat[rngNewProd];
         }
-        newIway.refArticle = listRefArticles[2];
+        newIway.refArticle = listRefArticles[rngNewProd];
 
         List<int> buttonToDesactivate = new List<int>(new int[] { 0, 4, 6, 7, 8, 11 });
         foreach (int nb in buttonToDesactivate)

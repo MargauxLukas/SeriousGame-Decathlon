@@ -126,7 +126,7 @@ public class ColisManager : MonoBehaviour
             }
 
             float div = (float)listeColisTraiter.Count / (float)colisTotal;
-            nbColisRestant.fillAmount = div;
+            //nbColisRestant.fillAmount = div;
 
             /*if(scriptColis.colisScriptable.fillPercent<=50)
             {
@@ -194,7 +194,7 @@ public class ColisManager : MonoBehaviour
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
 
         float div = (float)listeColisTraiter.Count / (float)colisTotal;
-        nbColisRestant.fillAmount = div;
+        //nbColisRestant.fillAmount = div;
 
     }
 }

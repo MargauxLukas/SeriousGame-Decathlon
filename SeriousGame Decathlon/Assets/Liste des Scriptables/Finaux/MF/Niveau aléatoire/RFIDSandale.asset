@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52a445b73937cbe40bd671b322aafcfa, type: 3}
-  m_Name: RFIDMontre OK
+  m_Name: RFIDSandale
   m_EditorClassIdentifier: 
   estFonctionnel: 1
-  refArticle: {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
+  refArticle: {fileID: 11400000, guid: bfd2d68021baeb24387d408dc1335534, type: 2}
