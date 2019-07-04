@@ -13,19 +13,6 @@ public class PathFinding : MonoBehaviour
         grid = GetComponent<Grid>();
     }
 
-    /*private void Update()
-    {
-        if(Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            FindPath(seeker.position, new Vector3(touch.position.x, touch.position.y, 0));
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
-            FindPath(seeker.position, target.position);
-        }
-    }*/
-
     public void FindPath(PathRequest request, Action<PathResult> callback)
     {
         Stopwatch sw = new Stopwatch();

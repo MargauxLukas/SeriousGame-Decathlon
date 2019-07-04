@@ -30,7 +30,7 @@ public class Unit : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
+                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0.0f));
                     StartCoroutine(UpdatePath());
                     break;
 
@@ -117,6 +117,7 @@ public class Unit : MonoBehaviour
                     if(speedPercent < 0.01f)
                     {
                         followingPath = false;
+                        playerAnimator.SetBool("DoesWalk", false);
                     }
                 }
 
