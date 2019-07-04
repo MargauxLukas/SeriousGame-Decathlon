@@ -7,7 +7,7 @@ public class PileArticle : MonoBehaviour
 {
     public List<Article> listArticles;
     public List<ColisScript> listColisPresent;
-    private GameObject[] listeColisDispo;
+    public GameObject[] listeColisDispo;
 
     private bool doesTouch;
 

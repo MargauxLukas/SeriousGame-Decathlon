@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ScreenDisplayColor : MonoBehaviour
 {
     public RecountTab recountTab;
+    public RepackTab repackTab;
     public AffichageAnomalie affichageAnomalie;
 
     public GameObject screenColor;
@@ -16,6 +17,8 @@ public class ScreenDisplayColor : MonoBehaviour
     private Animator lampAnimator;
 
     public TextMeshProUGUI textNBAnomalie;
+    
+    
 
     void Start()
     {
@@ -32,29 +35,57 @@ public class ScreenDisplayColor : MonoBehaviour
 
     void Update()
     {
-        if (recountTab.colis != null)
+        if (recountTab.colis != null ||repackTab.colisVide != null)
         {
-            screenColor.SetActive(true);
-            if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0 
-                                                                                    && affichageAnomalie.toggleOnNb != recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+            if (recountTab.colis != null)
             {
-                textNBAnomalie.enabled = true;
-                textNBAnomalie.text    = (recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie - affichageAnomalie.toggleOnNb).ToString() ;
+                screenColor.SetActive(true);
+                if (recountTab.colis.GetComponent<ColisScript>().hasBeenScannedByPistol && recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0
+                                                                                        && affichageAnomalie.toggleOnNb != recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+                {
+                    textNBAnomalie.enabled = true;
+                    textNBAnomalie.text = (recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie - affichageAnomalie.toggleOnNb).ToString();
 
-                lampAnimator       .SetBool("hasAnomalie", true);
-                screenColorAnimator.SetBool("hasAnomalie", true);
-            }
-            else if (recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0 || affichageAnomalie.toggleOnNb == recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
-            {
-                textNBAnomalie.enabled = false;
+                    lampAnimator.SetBool("hasAnomalie", true);
+                    screenColorAnimator.SetBool("hasAnomalie", true);
+                }
+                else if (recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0 || affichageAnomalie.toggleOnNb == recountTab.colis.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+                {
+                    textNBAnomalie.enabled = false;
 
-                lampAnimator       .SetBool("hasAnomalie", false);
-                screenColorAnimator.SetBool("hasAnomalie", false);
+                    lampAnimator.SetBool("hasAnomalie", false);
+                    screenColorAnimator.SetBool("hasAnomalie", false);
+                }
+                else
+                {
+                    screenColor.SetActive(false);
+                    //textNBAnomalie.enabled = false;
+                }
             }
             else
             {
-                screenColor.SetActive(false);
-                //textNBAnomalie.enabled = false;
+                screenColor.SetActive(true);
+                if (repackTab.colisVide.GetComponent<ColisScript>().hasBeenScannedByPistol && repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0
+                                                                                        && affichageAnomalie.toggleOnNb != repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+                {
+                    textNBAnomalie.enabled = true;
+                    textNBAnomalie.text = (repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie - affichageAnomalie.toggleOnNb).ToString();
+
+                    lampAnimator.SetBool("hasAnomalie", true);
+                    screenColorAnimator.SetBool("hasAnomalie", true);
+                }
+                else if (repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0 || affichageAnomalie.toggleOnNb == repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+                {
+                    textNBAnomalie.enabled = false;
+
+                    lampAnimator.SetBool("hasAnomalie", false);
+                    screenColorAnimator.SetBool("hasAnomalie", false);
+                }
+                else
+                {
+                    screenColor.SetActive(false);
+                    //textNBAnomalie.enabled = false;
+                }
             }
         }
         else
