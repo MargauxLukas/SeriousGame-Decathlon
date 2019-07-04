@@ -67,17 +67,20 @@ public class ChargementListeColis : MonoBehaviour
 
     public void LoadNewLevelScript(int currentLevelTempo)
     {
-        if(nomDuJoueur.text != null)
+        if (nomDuJoueur != null)
         {
-            currentPlayerScriptable.name = nomDuJoueur.text;
+            if (nomDuJoueur.text != null)
+            {
+                currentPlayerScriptable.name = nomDuJoueur.text;
+            }
+            else
+            {
+                Debug.Log("Test");
+                currentPlayerScriptable.name = "Okun Idey";
+            }
+            currentPlayerScriptable.score = 0;
+            currentPlayerScriptable.date = System.DateTime.Now.ToString("dd MMMM yyyy");
         }
-        else
-        {
-            Debug.Log("Test");
-            currentPlayerScriptable.name = "Okun Idey";
-        }
-        currentPlayerScriptable.score = 0;
-        currentPlayerScriptable.date = System.DateTime.Now.ToString("dd MMMM yyyy");
 
         List<Colis> newList = new List<Colis>();
         List<Colis> colisListe = new List<Colis>();

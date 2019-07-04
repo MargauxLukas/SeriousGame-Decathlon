@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2532194956112379893
 Transform:
   m_ObjectHideFlags: 0
@@ -43,8 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11807f9db3de754b82e55683bb1d78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: SceneProtoUn Timothe1
+  sceneToLoad: 1
+  RFIDKnowed: 020000000300000004000000
+  colisProcessMulti: []
   anomDetect: {fileID: 0}
   manageColis: {fileID: 0}
   nbLevel: 1
-  currentLevel: 0
+  currentLevel: 1
   levelScript: {fileID: 0}
+  affichageNouveauLevel: {fileID: 0}
+  currentPlayerScriptable: {fileID: 11400000, guid: 0ef6209842de536458b81af54d2dc766,
+    type: 2}
+  nomDuJoueur: {fileID: 0}
+  sceneFinNiveau: 4

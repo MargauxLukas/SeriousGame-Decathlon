@@ -34,6 +34,7 @@ public class SaveLoadSystem : MonoBehaviour
             if (Directory.Exists(Application.persistentDataPath + "/game_save"))
             {
                 DeleteFileInDirectory(Application.persistentDataPath + "/game_save");
+                Application.Quit();
             }
         }
     }
