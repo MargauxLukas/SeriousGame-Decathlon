@@ -9,9 +9,11 @@ public class BigMonitor : MonoBehaviour
     private Vector2 targetPosition;
     private Vector2 initialPosition;
 
-    private bool isOpen         = false;                         //Le grand écran est-il ouvert ?
-    public  bool monitorOpening = false;                         //Le grand écran est-il entrain de s'ouvrir ?
-    private bool monitorClosing = false;
+    private bool isOpen           = false;                      //Le grand écran est-il ouvert ?
+    public  bool monitorOpening   = false;                      //Le grand écran est-il entrain de s'ouvrir ?
+    private bool monitorClosing   = false;
+    private bool closeMonitorTuto = false;
+    private bool openMonitorTuto  = false;
 
     private float        startPos;                              //Position de départ du doigt
     private float          endPos;                              //Position de fin du doigt
@@ -38,12 +40,12 @@ public class BigMonitor : MonoBehaviour
             //Debug.Log("StartPos : " + startPos + "/ endPos : " + endPos + " /diff : " + swipeDifference);
         }
         
-        if (monitorOpening) { openBigMonitor(); }                                                                //Condition pour éviter de l'ouvrir en boucle et consommé
+        if (monitorOpening || openMonitorTuto) { OpenBigMonitor(); }                                                                //Condition pour éviter de l'ouvrir en boucle et consommé
         else
         {
-            if ((endPos > startPos) && isOpen && swipeDifference > 100f)                                         //Swipe vers la droite
+            if (((endPos > startPos) && isOpen && swipeDifference > 100f) || closeMonitorTuto)                                      //Swipe vers la droite
             {
-                closeBigMonitor();
+                CloseBigMonitor();
 
             }
             else if ((endPos < startPos) && isOpen && swipeDifference > 100f)                                   //Swipe vers la gauche
@@ -54,11 +56,10 @@ public class BigMonitor : MonoBehaviour
         }
     }
 
-
     /**************************************
      *  Permet d'ouvrir le grand écran    *
      **************************************/
-    public void openBigMonitor()
+    public void OpenBigMonitor()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, 1f);
 
@@ -66,11 +67,17 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = true;
             monitorOpening = false;
-            if (TutoManager.instance != null) {TutoManager.instance.Manager(3);}
+            if (TutoManager.instance != null && !openMonitorTuto) {TutoManager.instance.Manager(3);}
+            openMonitorTuto = false;
         }
     }
 
-    public void closeBigMonitor()
+    public void OpenMonitorTuto()
+    {
+        openMonitorTuto = true;
+    }
+
+    public void CloseBigMonitor()
     {
         miniMonitor.monitorClosing = true;
         transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
@@ -78,8 +85,14 @@ public class BigMonitor : MonoBehaviour
         if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
         {
             isOpen = false;
+            closeMonitorTuto = false;
             miniMonitor.monitorClosing = false;
             if (TutoManager.instance != null) {TutoManager.instance.Manager(7);}
         }
+    }
+
+    public void CloseMonitorTuto()
+    {
+        closeMonitorTuto = true;
     }
 }

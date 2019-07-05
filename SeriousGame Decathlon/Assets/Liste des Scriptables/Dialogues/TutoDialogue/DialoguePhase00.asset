@@ -15,7 +15,7 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
   persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
   phraseDites:
-  - "Je vais te montrer, par le bias de trois colis, les outils \xE0 ta disposition
+  - "Je vais te montrer, par le biais de trois colis, les outils \xE0 ta disposition
     pour r\xE9soudre la plupart des anomalies que tu peux rencontrer. "
   - "Garde bien en t\xEAte que chaque anomalie peut \xEAtre r\xE9solue de plusieurs
     mani\xE8res diff\xE9rentes. "
