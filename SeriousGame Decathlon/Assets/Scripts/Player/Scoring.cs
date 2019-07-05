@@ -66,7 +66,7 @@ public class Scoring : MonoBehaviour
 
         if(score < 0)
         {
-            //score = 0;
+            score = 0;
         }
 
         if(playerScriptable != null && score != playerScriptable.score)
