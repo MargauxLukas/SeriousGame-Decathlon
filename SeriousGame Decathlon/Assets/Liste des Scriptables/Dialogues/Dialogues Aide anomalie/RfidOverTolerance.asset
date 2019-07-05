@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
   m_Name: RfidOverTolerance
   m_EditorClassIdentifier: 
-  persoParlant: {fileID: 0}
+  persoParlant: {fileID: 11400000, guid: ebecf78ad84f1c548b314378ab210395, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Pour cette anomalie, il te faut retirer les articles en trop. S'il n'a pas d'autres
