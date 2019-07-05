@@ -178,6 +178,10 @@ public class OngletManager : MonoBehaviour
         onglet1.interactable = true;
         needFillingRate = true;
         fillingRate.SetActive(true);
+        if(fillingRate.GetComponent<FillingRateTab>() != null && fillingRate.GetComponent<FillingRateTab>().ancientButton != null)
+        {
+            fillingRate.GetComponent<FillingRateTab>().ancientButton.interactable = true;
+        }
     }
 
     public void ActivateOngletRecount()
