@@ -19,7 +19,6 @@ public class BigMonitor : MonoBehaviour
     private float          endPos;                              //Position de fin du doigt
     private float swipeDifference;                              //Différence entre startPos et endPos
 
-
     private void Start()
     {
         initialPosition = transform.position;

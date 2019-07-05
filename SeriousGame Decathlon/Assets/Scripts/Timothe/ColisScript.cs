@@ -343,7 +343,7 @@ public class ColisScript : MonoBehaviour
         {
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 0.3f;
-            spriteMaskArticleColis.transform.localScale = new Vector3(1,1.5f,1);
+            spriteMaskArticleColis.transform.localScale = new Vector3(1,2f,1);
             GetComponent<SpriteRenderer>().color = newColo;
         }
         else if (!colisScriptable.estOuvert)

@@ -40,7 +40,7 @@ public class ColisManager : MonoBehaviour
     {
         if(ChargementListeColis.instance != null)
         {
-            Debug.Log("Test Instance");
+            //Debug.Log("Test Instance");
             listeColisTraiter = ChargementListeColis.instance.colisProcessMulti;
         }
         anomDetect.CheckList(listeColisTraiter);
