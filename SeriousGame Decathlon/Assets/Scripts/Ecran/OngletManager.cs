@@ -111,6 +111,7 @@ public class OngletManager : MonoBehaviour
             listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();             //Reset list anomalies
             screenDisplay.EndAffichage();                                                      //Reset Affichage HU
             pistolScan.scriptColis.hasBeenScannedByPistol = false;                             //Reset scan pistolet
+            repack.GetComponent<RepackTab>().Reset();
 
             //CHECKCOLIS
             anomalieDetect.CheckColis(pistolScan.scriptColis.colisScriptable);

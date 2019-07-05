@@ -131,4 +131,13 @@ public class RepackTab : MonoBehaviour
 
         recountTab.PrintHU(pcb, refArticle, poids);
     }
+
+    public void Reset()
+    {
+        textRef2.text = "";
+        textCurrentQuantity2.text = "0";
+        textCurrentQuantity1.text = "0";
+        textPCB1.text = "0";
+        textPCB2.text = "0";
+    }
 }
