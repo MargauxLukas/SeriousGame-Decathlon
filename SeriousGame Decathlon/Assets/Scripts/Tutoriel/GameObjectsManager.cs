@@ -67,7 +67,9 @@ public class GameObjectsManager : MonoBehaviour
 
     [Header("Doigt")]
     public GameObject doigtClick;
+    public GameObject doigtClickSpriteMask;
     public GameObject doigtStay;
+    public GameObject doigtStaySpriteMask;
 
 
     //WIP
