@@ -165,6 +165,7 @@ public class PileArticle : MonoBehaviour
             gameObject.SetActive(false);
         }
         scriptColis.hasBeenScannedByRFID = false;
+        scriptColis.spriteArticleDansColis.sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     void touchObject()
