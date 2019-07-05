@@ -52,7 +52,6 @@ public class AffichageAnomalie : MonoBehaviour
         }
         actualUsableDialogue = new List<Dialogue>();
 
-
         n = 0;
         if (listAnomalies != null)
         {

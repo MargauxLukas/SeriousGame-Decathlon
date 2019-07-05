@@ -66,19 +66,18 @@ public class ScreenDisplayColor : MonoBehaviour
             }
             else if (repackTab.colisVide != null)
             {
-                if (repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0 && affichageAnomalie.toggleOnNb != repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+                if (affichageAnomalie.toggleList.Count-2 > 0 && affichageAnomalie.toggleOnNb != affichageAnomalie.toggleList.Count - 2)
                 {
-                    Debug.Log("3");
+                    Debug.Log(affichageAnomalie.toggleList.Count-2 + " - " + affichageAnomalie.toggleOnNb);
                     textNBAnomalie.enabled = true;
-                    textNBAnomalie.text = (repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie - affichageAnomalie.toggleOnNb).ToString();
+                    textNBAnomalie.text = (affichageAnomalie.toggleList.Count-2 - affichageAnomalie.toggleOnNb).ToString();
 
                     lampAnimator.SetBool("hasAnomalie", true);
                     screenColorAnimator.SetBool("hasAnomalie", true);
                     screenColor.SetActive(true);
                 }
-                else if (repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie == 0 || affichageAnomalie.toggleOnNb == repackTab.colisVide.GetComponent<ColisScript>().colisScriptable.nbAnomalie)
+                else if (affichageAnomalie.toggleOnNb == affichageAnomalie.toggleList.Count-2)
                 {
-                    Debug.Log("4");
                     textNBAnomalie.enabled = false;
 
                     lampAnimator.SetBool("hasAnomalie", false);
@@ -93,7 +92,7 @@ public class ScreenDisplayColor : MonoBehaviour
             }
             else
             {
-
+                screenColor.SetActive(false);
             }
         }
         else
