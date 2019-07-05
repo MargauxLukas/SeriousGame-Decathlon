@@ -11,7 +11,7 @@ public class Scoring : MonoBehaviour
     public Player playerScriptable;
     public int score;
 
-    private float multiplicator;
+    private float multiplicator = 1;
     public bool gotNewColis;
     private bool lastGotColis;
     public Text errorTextZone;
@@ -58,7 +58,7 @@ public class Scoring : MonoBehaviour
 
     private void Update()
     {
-        if(gotNewColis && !lastGotColis)
+        if(gotNewColis)
         {
             timeColisMaking += Time.deltaTime;
         }
@@ -77,11 +77,10 @@ public class Scoring : MonoBehaviour
                 ChargementListeColis.instance.currentPlayerScriptable = playerScriptable;
             }
         }
-
     }
 
     //MALUS
-    // -5
+    // -15
     public void MinorPenalty()
     {
         if(!hadMalusColis)
@@ -94,12 +93,12 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        score = score - 5;
+        score = score - 15;
         player.GetComponent<PlayerTest>().player.score = score;
         
     }
 
-    // -10
+    // -30
     public void MidPenalty()
     {
         if (!hadMalusColis)
@@ -112,11 +111,11 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        score = score - 10;
+        score = score - 30;
         player.GetComponent<PlayerTest>().player.score = score;
     }
 
-    // -15
+    // -70
     public void MajorPenalty()
     {
         if (!hadMalusColis)
@@ -129,11 +128,11 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        score = score - 15;
+        score = score - 70;
         player.GetComponent<PlayerTest>().player.score = score;
     }
 
-    // -50
+    // -150
     public void Danger()
     {
 
@@ -151,7 +150,7 @@ public class Scoring : MonoBehaviour
 
     public void WhatTheFuck()
     {
-        score -= (int)(TimeBonus()/2);
+        score -= (int)TimeBonus();
         if (!hadMalusColis)
         {
             hadMalusColis = true;
@@ -190,12 +189,12 @@ public class Scoring : MonoBehaviour
         solveAnomalieCombo++;
     }
 
-    // +250
+    // +200
     public void solveAnomalieWithoutMalus()
     {
         if (!hadMalusAnomalie)
         {
-            score += (int)(250 * multiplicator);
+            score += (int)(200 * multiplicator);
             solveAnomalieComboWithoutMalus++;
         }
         else
@@ -204,24 +203,24 @@ public class Scoring : MonoBehaviour
         }
     }
 
-    // +150
+    // +100
     public void sendColis()
     {
-        score += (int)(150 * multiplicator);
+        score += (int)(100 * multiplicator);
         sendColisCombo++;
         if(!tookHelp)
         {
             noHelp++;
         }
-        score += (int)TimeBonus();
+        //score += (int)TimeBonus();
     }
 
-    // +550
+    // +450
     public void sendColisWithoutMalus()
     {
         if (!hadMalusColis)
         {
-            score += (int)(550 * multiplicator);
+            score += (int)(450 * multiplicator);
             sendColisComboWithoutMalus++;
             if (!tookHelp)
             {
@@ -237,7 +236,7 @@ public class Scoring : MonoBehaviour
 
     public float TimeBonus()
     {
-        float calcul = (timeColisMaking - 3 * 60) * 3f; //Calcul le temps bonus (Temps mit pour le colis - 3 fois 60 secondes (3 minutes)) * 3
+        float calcul = (5 * 60 - timeColisMaking) * 3f; //Calcul le temps bonus (Temps mit pour le colis - 3 fois 60 secondes (3 minutes)) * 3
         timeColisMaking = 0;
         gotNewColis = false;
         if (calcul <= 0)
@@ -280,6 +279,6 @@ public class Scoring : MonoBehaviour
 
     public void CalculMultiplicator()
     {
-        multiplicator = (solveAnomalieCombo * 2 + solveAnomalieComboWithoutMalus * 4 + sendColisCombo * 5 + sendColisComboWithoutMalus * 10 + noHelp * 2)/ 100;
+        multiplicator = 1 + ((solveAnomalieCombo * 2 + solveAnomalieComboWithoutMalus * 4 + sendColisCombo * 5 + sendColisComboWithoutMalus * 10 + noHelp * 2)/ 100);
     }
 }

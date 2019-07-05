@@ -58,6 +58,11 @@ public class ColisManager : MonoBehaviour
 
     public void AppelColis()
     {
+        if(Scoring.instance != null)
+        {
+            Scoring.instance.gotNewColis = true;
+        }
+
         listeColisActuel = new GameObject[0];
         listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
@@ -161,7 +166,7 @@ public class ColisManager : MonoBehaviour
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {
             //anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
-            if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
+            if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0 || (colisRenvoye.GetComponent<ColisScript>().colisScriptable.listAnomalies.Count > 0))
             {
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
                 Scoring.instance.sendColis();
@@ -174,7 +179,7 @@ public class ColisManager : MonoBehaviour
                     Scoring.instance.MajorPenalty();
                 }
             }
-            else
+            else if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.listAnomalies.Count <= 0)
             {
                 Scoring.instance.sendColisWithoutMalus();
                 if(listeColisTraiter.Count<=0)
