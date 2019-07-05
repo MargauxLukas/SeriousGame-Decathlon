@@ -522,15 +522,15 @@ public class ColisScript : MonoBehaviour
 
                             if (colisScriptable.fillPercent <= 50)
                             {
-                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[0];
                             }
                             else if (colisScriptable.fillPercent >= 125)
                             {
-                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                             }
                             else
                             {
-                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                             }
                             spriteArticleDansColis.sprite = null;
                         }
@@ -542,15 +542,15 @@ public class ColisScript : MonoBehaviour
 
                         if (colisScriptable.fillPercent <= 50)
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[0];
                         }
                         else if (colisScriptable.fillPercent >= 125)
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                         }
                         else
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                         }
                         spriteArticleDansColis.sprite = null;
                     }
