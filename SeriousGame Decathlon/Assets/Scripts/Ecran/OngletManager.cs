@@ -49,7 +49,7 @@ public class OngletManager : MonoBehaviour
         listAnomalies.SetActive(false);
         createHU     .SetActive(false);
 
-        returnToMeca.GetComponent<Image>().color = Color.red;
+        returnToMeca.interactable = false;
     }
 
     public void Update()
@@ -153,13 +153,13 @@ public class OngletManager : MonoBehaviour
 
     public void CanReturnToMeca()
     {
-        returnToMeca.GetComponent<Image>().color = Color.green;
+        returnToMeca.interactable = true;
         allValidate = true;
     }
 
     public void CantReturnToMeca()
     {
-        returnToMeca.GetComponent<Image>().color = Color.red;
+        returnToMeca.interactable = false;
         allValidate = false;
     }
 

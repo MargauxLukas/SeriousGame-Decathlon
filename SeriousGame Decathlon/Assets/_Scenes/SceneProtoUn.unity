@@ -1854,6 +1854,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8267345854795447489, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8267345855098926461, guid: 40887147d18403247b7250d4bc5662f4,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2511,6 +2516,52 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595806651238341, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8dc01b5bacdf23d4eb0da518c48d744d,
+        type: 3}
+    - target: {fileID: 1385595806651238341, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595806651238341, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595806651238341, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595806651238341, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595806651238341, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595808208194558, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595806840292194, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385595808582507559, guid: 40887147d18403247b7250d4bc5662f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40887147d18403247b7250d4bc5662f4, type: 3}

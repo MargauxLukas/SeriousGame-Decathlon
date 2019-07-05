@@ -31,6 +31,8 @@ public class AffichageAnomalie : MonoBehaviour
     [HideInInspector]
     public int toggleOnNb = 0;
 
+    bool toggleCanActivate = false;
+
 
     public void AfficherAnomalie()
     {
@@ -42,6 +44,7 @@ public class AffichageAnomalie : MonoBehaviour
         {
             toggle.isOn = false;
             toggle.gameObject.SetActive(false);
+            toggleCanActivate = false;
         }
         foreach(Button button in infoList)
         {
@@ -62,6 +65,7 @@ public class AffichageAnomalie : MonoBehaviour
                     text[n].text = anomalie;
                     toggleList[n].gameObject.SetActive(true);
                     infoList[n].gameObject.SetActive(true);
+                    toggleCanActivate = true;
 
                     switch (anomalie)
                     {
@@ -116,35 +120,34 @@ public class AffichageAnomalie : MonoBehaviour
 
     public void ValidateAnomalie(int nbBouton)
     {
-        Debug.Log(listAnomalies != null);
-        Debug.Log(nbBouton);
-
-        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(19);}
-        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
-        {
-            detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
-        }
-
         toggleOnNb = 0;
-        foreach(Toggle toggle in toggleList)
+        if (toggleCanActivate)
         {
-            if(toggle.isOn)
+            if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
+                if (TutoManager.instance != null) { TutoManager.instance.Manager(19); }
+            if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
             {
-                toggleOnNb++;
+                detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
             }
-        }
+            foreach (Toggle toggle in toggleList)
+            {
+                if (toggle.isOn)
+                {
+                    toggleOnNb++;
+                }
+            }
 
-        if(toggleOnNb == n)
-        {
-            ongletManager.CanReturnToMeca();
-        }
-        else
-        {
-            ongletManager.CantReturnToMeca();
-        }
+            if (toggleOnNb == n)
+            {
+                ongletManager.CanReturnToMeca();
+            }
+            else
+            {
+                ongletManager.CantReturnToMeca();
+            }
 
-        Scoring.instance.solveAnomalieWithoutMalus();
+            Scoring.instance.solveAnomalieWithoutMalus();
+        }
     }
 
     public void ShowHelp(int nbHelp)
