@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
 
     //Canvas
     public GameObject dialogueGlobal;
+    public Image fond;
     public Text texteDialogue;
     public Image portraitUn;
     public List<GameObject> bouttonsChoix;
@@ -23,6 +24,13 @@ public class DialogueManager : MonoBehaviour
 
     public bool isDialogueOpen;
 
+    private void Awake()
+    {
+        if(TutoManager.instance != null)
+        {
+            fond.enabled = false;
+        }
+    }
     private void Update()
     {
         if (isDialogueOpen && actualDialogue != null)

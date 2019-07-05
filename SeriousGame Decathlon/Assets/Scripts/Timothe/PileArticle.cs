@@ -50,7 +50,7 @@ public class PileArticle : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if(menuIsOpen)
+            if(menuIsOpen && ((TutoManager.instance == null) || (TutoManager.instance != null && TutoManager.instance.canCloseFicheInfo)))
             {
                 menuIsOpen = false;
                 canvasInfo.SetActive(false);
