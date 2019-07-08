@@ -13921,9 +13921,10 @@ MonoBehaviour:
   ticketRFID: {fileID: 5354593960804518821, guid: eda969c464e88794aa0fa5c7ed38851a,
     type: 3}
   listRefArticles:
-  - {fileID: 11400000, guid: 649a745ca5ba7e84daa9b1f8f8802573, type: 2}
-  - {fileID: 11400000, guid: 5e3750060cad27840b1af6ae0efaf3d5, type: 2}
-  - {fileID: 11400000, guid: 2df5284684f879447b2ef2d92e67851d, type: 2}
+  - {fileID: 11400000, guid: aada3e3ebc9fed549b7e1b199f8d5454, type: 2}
+  - {fileID: 11400000, guid: cd085f275a13d724080934686b9271a2, type: 2}
+  - {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
+  - {fileID: 11400000, guid: d39c42b72a10c9443bee5edf2d0af2fa, type: 2}
   refRFID1: 0
   refRFID2: 0
   isInventory: 0
@@ -17032,7 +17033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1385595807334301077
