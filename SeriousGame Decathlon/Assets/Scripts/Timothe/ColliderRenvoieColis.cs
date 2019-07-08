@@ -32,7 +32,7 @@ public class ColliderRenvoieColis : MonoBehaviour
                     if (TutoManager.instance != null) {TutoManager.instance.Manager(29);}
                     faceToGet.colis = null;
                     manage.RenvoieColis(collision.gameObject);
-                    renvoieManage.ChangePoste(camera, collision.gameObject, cameraPosition, colisPosition);
+                    StartCoroutine(RenvoieFinalAnim(collision.gameObject));
                     collision.gameObject.GetComponent<ColisScript>().doesRenvoie = true;
                     canReturn = false;
                 }
@@ -63,6 +63,12 @@ public class ColliderRenvoieColis : MonoBehaviour
 
             }
         }
+    }
+
+    IEnumerator RenvoieFinalAnim(GameObject obj)
+    {
+        yield return new WaitForSeconds(2f);
+        renvoieManage.ChangePoste(camera, obj, cameraPosition, colisPosition);
     }
 
     public void CanReturnNow()

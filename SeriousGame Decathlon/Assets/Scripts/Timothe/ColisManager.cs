@@ -193,7 +193,7 @@ public class ColisManager : MonoBehaviour
             {
                 Scoring.instance.MajorPenalty();
             }
-            GameObject.Destroy(colisRenvoye);
+            //GameObject.Destroy(colisRenvoye);
         }
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
