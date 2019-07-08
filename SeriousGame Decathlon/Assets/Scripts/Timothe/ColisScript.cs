@@ -58,6 +58,8 @@ public class ColisScript : MonoBehaviour
     public SpriteRenderer spriteArticleDansColis;
     public SpriteMask spriteMaskArticleColis;
 
+    public GameObject spriteSelection;
+
 
     bool canJeter = true;
     bool canOpen = true;
@@ -211,7 +213,7 @@ public class ColisScript : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 5f)
+                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 3f)
                 {
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
@@ -245,6 +247,9 @@ public class ColisScript : MonoBehaviour
         else if (doesRenvoie)
         {
             transform.position += new Vector3(0, 1, 0) * 2 * Time.deltaTime;
+            transform.localScale = transform.localScale - (new Vector3(1, 1, 1) * 0.3f * Time.deltaTime);
+            if(transform.position.y >= 3.4f)
+                Destroy(gameObject);
         }
         else
         {

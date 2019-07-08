@@ -92,14 +92,19 @@ public class PileArticle : MonoBehaviour
                         if (Vector2.Distance(startPosition, touchPosition) > 1f)
                         {
                             currentItem = GetItemFromAngle(GetAngle(startPosition, touchPosition));
+                            PickInventorySecond(currentItem);
                         }
                         else
                         {
+                            listColisPresent[1].spriteSelection.SetActive(false);
+                            listColisPresent[0].spriteSelection.SetActive(false);
                             currentItem = -1;
                         }
                     }
                     else if (touch.phase == TouchPhase.Ended)
                     {
+                        listColisPresent[1].spriteSelection.SetActive(false);
+                        listColisPresent[0].spriteSelection.SetActive(false);
                         menuCanOpen = true;
                         menuIsOpen = false;
                         circleImage.transform.parent.gameObject.SetActive(false);
@@ -165,6 +170,7 @@ public class PileArticle : MonoBehaviour
             gameObject.SetActive(false);
         }
         scriptColis.hasBeenScannedByRFID = false;
+        scriptColis.spriteArticleDansColis.sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     void touchObject()
@@ -253,6 +259,25 @@ public class PileArticle : MonoBehaviour
                 {
                     ShowInfo();
                 }
+                break;
+        }
+    }
+
+    void PickInventorySecond(int nb)
+    {
+        switch (nb)
+        {
+            case 1:
+                listColisPresent[0].spriteSelection.SetActive(true);
+                listColisPresent[1].spriteSelection.SetActive(false);
+                break;
+            case 2:
+                listColisPresent[1].spriteSelection.SetActive(true);
+                listColisPresent[0].spriteSelection.SetActive(false);
+                break;
+            default:
+                listColisPresent[1].spriteSelection.SetActive(false);
+                listColisPresent[0].spriteSelection.SetActive(false);
                 break;
         }
     }

@@ -430,6 +430,7 @@ public class LevelEditor : MonoBehaviour
     private void RepackngFP() //Met le colis en ouvert
     {
         currentColis.estOuvert = true;
+        currentColis.estAbime = true;
 
         List<int> buttonToDesactivate = new List<int>(new int[] { 6, 13 });
         foreach (int nb in buttonToDesactivate)

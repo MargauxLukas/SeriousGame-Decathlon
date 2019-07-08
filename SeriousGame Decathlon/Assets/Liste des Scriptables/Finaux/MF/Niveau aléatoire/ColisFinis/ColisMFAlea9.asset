@@ -19,7 +19,7 @@ MonoBehaviour:
   hasBeenRecount: 0
   isBadOriented: 0
   estOuvert: 1
-  estAbime: 0
+  estAbime: 1
   needQualityControl: 0
   aEteVide: 0
   carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
