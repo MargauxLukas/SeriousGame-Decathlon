@@ -95,7 +95,8 @@ public class OngletManager : MonoBehaviour
         if (TutoManager.instance != null) {TutoManager.instance.Manager(23);}
         if (allValidate)
         {
-            
+            recount.GetComponent<RecountTab>().rfidScan.artFind.ResetAll();
+
             homeScreen   .SetActive(true );
             ongletButton .SetActive(false);
             fillingRate  .SetActive(false);

@@ -21,4 +21,10 @@ public class ArticleFind : MonoBehaviour
         text1.text = pcb1 + " ART#" + articleRef1;
         text2.text = pcb2 + " ART#" + articleRef2;
     }
+
+    public void ResetAll()
+    {
+        text1.text = " ";
+        text2.text = " ";
+    }
 }
