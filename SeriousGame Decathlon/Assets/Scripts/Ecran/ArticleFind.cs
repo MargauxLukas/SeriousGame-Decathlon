@@ -12,13 +12,19 @@ public class ArticleFind : MonoBehaviour
 
     public void afficherSingleArticle(int pcb, int articleRef)
     {
-        text1.text = pcb + " REF#" + articleRef;
+        text1.text = pcb + " ART#" + articleRef;
         text2.text = "";
     }
 
     public void afficherDoubleArticle(int pcb1, int pcb2, int articleRef1, int articleRef2)
     {
-        text1.text = pcb1 + " REF#" + articleRef1;
-        text2.text = pcb2 + " REF#" + articleRef2;
+        text1.text = pcb1 + " ART#" + articleRef1;
+        text2.text = pcb2 + " ART#" + articleRef2;
+    }
+
+    public void ResetAll()
+    {
+        text1.text = " ";
+        text2.text = " ";
     }
 }
