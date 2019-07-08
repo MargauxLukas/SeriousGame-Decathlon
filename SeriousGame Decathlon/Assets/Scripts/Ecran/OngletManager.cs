@@ -137,6 +137,7 @@ public class OngletManager : MonoBehaviour
 
     public void CreateHUCancel()
     {
+        if(TutoManager.instance != null) {TutoManager.instance.Manager(34);}
         homeScreen   .SetActive(true);
         ongletButton .SetActive(false);
         fillingRate  .SetActive(false);

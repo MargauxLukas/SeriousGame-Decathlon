@@ -26,16 +26,21 @@ public class CreateHUScript : MonoBehaviour
 
     private void Start()
     {
-        dropdownPackaging.onValueChanged     .AddListener(delegate { SetPackaging     (dropdownPackaging     ); });
+        dropdownPackaging.onValueChanged     .AddListener(delegate { SetPackaging     (dropdownPackaging  ); });
         dropdownWorkStation.onValueChanged   .AddListener(delegate { SetWorkStation   (dropdownWorkStation); });
-        dropdownReference.onValueChanged     .AddListener(delegate { SetReference     (dropdownReference); });
-        dropdownMadeIn.onValueChanged        .AddListener(delegate { SetMadeIn        (dropdownMadeIn); });
+        dropdownReference.onValueChanged     .AddListener(delegate { SetReference     (dropdownReference  ); });
+        dropdownMadeIn.onValueChanged        .AddListener(delegate { SetMadeIn        (dropdownMadeIn     ); });
         inputExpirationDate.onValueChanged   .AddListener(delegate { SetExpirationDate(inputExpirationDate); });
     }
 
     public void SetPackaging(TMP_Dropdown input)
     {
         packagingMat = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
+
+        if (TutoManager.instance != null && packagingMat == "CB02")
+        {
+            TutoManager.instance.Manager(35);
+        }
     }
 
     public void SetWorkStation(TMP_Dropdown input)
@@ -46,6 +51,11 @@ public class CreateHUScript : MonoBehaviour
     public void SetReference(TMP_Dropdown input)
     {
         reference = int.Parse(input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text);
+
+        if(TutoManager.instance != null && reference == 4635)
+        {
+            TutoManager.instance.Manager(36);
+        }
 
         //reference =int.Parse(dropdownReference.itemText.ToString());
     }
@@ -63,6 +73,11 @@ public class CreateHUScript : MonoBehaviour
     public void SetQuantity()
     {
         textQuantity.text = quantity.ToString();
+        
+        if(TutoManager.instance != null && textQuantity.text == "5")
+        {
+            TutoManager.instance.Manager(37);
+        }
     }
     
     public void Plus()

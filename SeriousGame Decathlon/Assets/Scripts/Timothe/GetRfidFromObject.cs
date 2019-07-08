@@ -42,6 +42,7 @@ public class GetRfidFromObject : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended && collision.gameObject.GetComponent<PileArticle>() != null)
             {
+                if (TutoManager.instance != null) {TutoManager.instance.Manager(31);}
                 collision.gameObject.GetComponent<PileArticle>().ChangeRFID(newRFID);
                 GameObject.Destroy(gameObject);
             }

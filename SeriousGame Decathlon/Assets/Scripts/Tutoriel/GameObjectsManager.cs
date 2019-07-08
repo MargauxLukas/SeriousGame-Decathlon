@@ -13,6 +13,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject scanRFID;
     public GameObject quitButtonWorkView;
     public GameObject menuCirculaireColis;
+    public GameObject CB02Button;
 
     [Header("Colis 1")]
     public GameObject colis1;
@@ -20,6 +21,7 @@ public class GameObjectsManager : MonoBehaviour
 
     [Header("Colis 2")]
     public GameObject colis2;
+    public GameObject colis2bis;
     public GameObject pileArticles1Colis2;
     public GameObject pileArticles2Colis2;
 
@@ -28,6 +30,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject toggleEndTask2;
     public GameObject toggleEndTask3;
     public GameObject returnMecaButton;
+    public GameObject createHUButton;
 
     [Header("Recount Tab")]
     public GameObject recountTab;
@@ -42,6 +45,13 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject fill100Button;
     public GameObject fill125Button;
     public GameObject mecaOpenToggle;
+
+    [Header("Menu Create HU")]
+    public GameObject packMatDropdown;
+    public GameObject refDropdown;
+    public GameObject createHUPlusButton;
+    public GameObject createHUMinusButton;
+    public GameObject buttonOK;
 
     [Header("Menu Tourner")]
     public GameObject turnRightButton;
@@ -88,6 +98,11 @@ public class GameObjectsManager : MonoBehaviour
     public Toggle GameObjectToToggle(GameObject gameObject)
     {
         return gameObject.GetComponent<Toggle>();
+    }
+
+    public Dropdown GameObjectToDropdown(GameObject gameObject)
+    {
+        return gameObject.GetComponent<Dropdown>();
     }
 
     public Transform GameObjectToTransform(GameObject gameObject)
