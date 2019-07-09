@@ -12,11 +12,19 @@ public class FillingRateTab : MonoBehaviour
     public Toggle toggle;
 
     private string buttonName;
+    [HideInInspector]
+    public Button ancientButton;
     public RecountTab tabRecount;
 
     public void setFillingRate()
     {
         if (TutoManager.instance != null) {TutoManager.instance.Manager(21);}
+        if (ancientButton != null)
+        {
+            ancientButton.interactable = true;
+        }
+        ancientButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        ancientButton.interactable = false;
         buttonName = EventSystem.current.currentSelectedGameObject.name;
         fillingRate = int.Parse(buttonName);
         if(fillingRate != tabRecount.colis.GetComponent<ColisScript>().colisScriptable.fillPercent)

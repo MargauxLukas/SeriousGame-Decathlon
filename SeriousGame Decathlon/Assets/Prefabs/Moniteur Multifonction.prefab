@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1963771447315876639}
   - component: {fileID: 7551380649260137488}
   - component: {fileID: 1444291607340359613}
+  - component: {fileID: 7447777421411506872}
   m_Layer: 0
   m_Name: Moniteur Multifonction
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: afe27f9a00817e94b81ae4e08730c0c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4bb007d65924f1479f9ed46ab3e41b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,14 +99,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.675, y: 6}
+    oldSize: {x: 1.5875, y: 1.9625}
     newSize: {x: 4.675, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.675, y: 6}
+  m_Size: {x: 1.52, y: 1.88}
   m_EdgeRadius: 0
 --- !u!114 &1444291607340359613
 MonoBehaviour:
@@ -122,3 +123,32 @@ MonoBehaviour:
   dialManage: {fileID: 0}
   dialogueList:
   - {fileID: 11400000, guid: ae1dd646db690b144bb22ef0e5d228fe, type: 2}
+--- !u!114 &7447777421411506872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824666939379854377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29639a48733847b42b0231649227c882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMoniteur: 3
+  moniteurProcessActuel:
+  - currentMoniteur:
+    - {fileID: 21300000, guid: c4bb007d65924f1479f9ed46ab3e41b6, type: 3}
+    - {fileID: 21300000, guid: caa8491609f31544c9b30bdbadc7b44a, type: 3}
+    - {fileID: 21300000, guid: 53126f52be003374cb125867cd791a07, type: 3}
+    - {fileID: 21300000, guid: 996d2354fe24a994798f49489e24d3d5, type: 3}
+  - currentMoniteur:
+    - {fileID: 21300000, guid: 879dc66c1ab69174f9691af801792f9f, type: 3}
+    - {fileID: 21300000, guid: b1c57c6ad08424f4a8efb0e61c87aebe, type: 3}
+    - {fileID: 21300000, guid: b6082852673f7b14dad7fd5cfb8accd4, type: 3}
+    - {fileID: 21300000, guid: efd7496d4d07e1343becc29920ea9ea9, type: 3}
+  - currentMoniteur:
+    - {fileID: 21300000, guid: 39e8088f87524ce4e8af5fe9e499a3af, type: 3}
+    - {fileID: 21300000, guid: 70713e6863641f049adec1e955d2a46d, type: 3}
+    - {fileID: 21300000, guid: 26a9560ad894a9249bbd2fb861ae8ae0, type: 3}
+    - {fileID: 21300000, guid: 7b5cb9ad57deb4748a7bb94dfe557491, type: 3}

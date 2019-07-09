@@ -30,7 +30,6 @@ public class TestGoto : MonoBehaviour
 
     public void IncreaseLabelV2()
     {
-        nbLabel++;
         canTest = true;
         Test();
     }
@@ -39,17 +38,15 @@ public class TestGoto : MonoBehaviour
     {
         if (nbLabel >= 3)
         {
-            goto label3;
+            Debug.Log("Skip this");
+
         }
-
-        Debug.Log("Skip this");
-
-    label3:
         
         if(canTest)
         {
-
+            canTest = false;
             Debug.Log("TestLabel3");
+
         }
     }
 }

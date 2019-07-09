@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem instance;
+    public AnomalieDetection detection;
 
     //private Colis colisToSave;
 
@@ -20,9 +21,44 @@ public class SaveLoadSystem : MonoBehaviour
         }
         else if(instance != this)
         {
-            Destroy(this);
+            Destroy(instance.gameObject);
+            instance = this;
         }
         DontDestroyOnLoad(this);
+    }
+
+    public void DeleteAllFile()
+    {
+        if(IsSaveFile())
+        {
+            if (Directory.Exists(Application.persistentDataPath + "/game_save"))
+            {
+                DeleteFileInDirectory(Application.persistentDataPath + "/game_save");
+                Application.Quit();
+            }
+        }
+    }
+
+    public void DeleteFileInDirectory(string direc)
+    {
+        string[] files = Directory.GetFiles(direc);
+        string[] dirs = Directory.GetDirectories(direc);
+
+        if(dirs.Length > 0)
+        {
+            foreach(string dir in dirs)
+            {
+                DeleteFileInDirectory(dir);
+            }
+        }
+
+        foreach (string file in files)
+        {
+            File.SetAttributes(file, FileAttributes.Normal);
+            File.Delete(file);
+        }
+
+        Directory.Delete(direc);
     }
 
     public bool IsSaveFile()
@@ -168,6 +204,12 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
+    public SavedData Versionning (SavedData dataSaved)
+    {
+        dataSaved.version += 1;
+        return dataSaved;
+    }
+
     public SavedData LoadGeneralData()
     {
         if (!IsSaveFile())
@@ -236,6 +278,11 @@ public class SaveLoadSystem : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/game_save/level_data");
         }
 
+        if(levelToSave.name == null)
+        {
+            levelToSave.name = "Niveau " + levelToSave.nbLevel.ToString();
+        }
+
         BinaryFormatter bf = new BinaryFormatter();
         if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
         {
@@ -284,8 +331,13 @@ public class SaveLoadSystem : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
             file.Close();
-            Debug.Log(levelToSave.nbLevel);
+            //Debug.Log("Bonjour : " + levelToSave.colisDuNiveauNoms.Count);
         }
+
+        //Debug.Log("nb level : " + levelNb);
+
+        //Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"));
+
         return levelToSave;
     }
 

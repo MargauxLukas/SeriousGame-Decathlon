@@ -58,6 +58,14 @@ public class ColisScript : MonoBehaviour
     public SpriteRenderer spriteArticleDansColis;
     public SpriteMask spriteMaskArticleColis;
 
+    public GameObject spriteSelection;
+
+
+    bool canJeter = true;
+    bool canOpen = true;
+    bool canTurn = true;
+    bool canVide = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -205,7 +213,7 @@ public class ColisScript : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 5f)
+                else if (Vector3.Distance(new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 3f)
                 {
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
@@ -226,6 +234,10 @@ public class ColisScript : MonoBehaviour
         }
         else if (doesEntranceSecond)
         {
+            canVide = false;
+            canOpen = false;
+            canJeter = false;
+
             transform.position += new Vector3(1, 0, 0) * 3 * Time.deltaTime;
             if (Vector3.Distance(transform.position, entrancePosition) > 9f)
             {
@@ -235,6 +247,9 @@ public class ColisScript : MonoBehaviour
         else if (doesRenvoie)
         {
             transform.position += new Vector3(0, 1, 0) * 2 * Time.deltaTime;
+            transform.localScale = transform.localScale - (new Vector3(1, 1, 1) * 0.3f * Time.deltaTime);
+            if(transform.position.y >= 3.4f)
+                Destroy(gameObject);
         }
         else
         {
@@ -282,35 +297,36 @@ public class ColisScript : MonoBehaviour
         return itemNb;
     }
 
+
     void PickInventory(int nb)
     {
         switch (nb)
         {
             case 1:
-                if (TutoManager.instance == null || TutoManager.instance.canJeter)
+                if ((TutoManager.instance == null || TutoManager.instance.canJeter) && canJeter)
                 {
                     Jeter();
                     TellSomething(1);
                 }
                 break;
             case 2:
-                if (TutoManager.instance == null || TutoManager.instance.canVider)
+                if ((TutoManager.instance == null || TutoManager.instance.canOuvrirFermer) && canOpen)
                 {
-                    Vider();
+                    OuvrirFermer();
                     TellSomething(2);
                 }
                 break;
             case 3:
-                if (TutoManager.instance == null || TutoManager.instance.canOuvrirFermer)
+                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) && canTurn)
                 {
-                    OuvrirFermer();
+                    OpenTurnMenu();
                     TellSomething(3);
                 }
                 break;
             case 0:
-                if (TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu)
+                if ((TutoManager.instance == null || TutoManager.instance.canVider) && canVide)
                 {
-                    OpenTurnMenu();
+                    Vider();
                     TellSomething(5);
                 }
                 break;
@@ -332,7 +348,7 @@ public class ColisScript : MonoBehaviour
         {
             Color newColo = GetComponent<SpriteRenderer>().color;
             newColo.a = 0.3f;
-            spriteMaskArticleColis.transform.localScale = new Vector3(1,1.5f,1);
+            spriteMaskArticleColis.transform.localScale = new Vector3(1,2f,1);
             GetComponent<SpriteRenderer>().color = newColo;
         }
         else if (!colisScriptable.estOuvert)
@@ -349,9 +365,13 @@ public class ColisScript : MonoBehaviour
             Debug.Log("Test Ouvrir");
             GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.cartonOuvert;
         }
-        else
+        else if (savedSprite != null)
         {
             GetComponent<SpriteRenderer>().sprite = savedSprite;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.spriteCartonsListe[4];
         }
     }
 
@@ -391,8 +411,10 @@ public class ColisScript : MonoBehaviour
 
             if (colisScriptable.listArticles.Count > 0)
             {
+                Debug.Log("Test1");
                 if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                 {
+                    Debug.Log("Test2");
                     List<Article> listTemporaire = colisScriptable.Vider();
                     int refBase = 0;
                     if (listTemporaire[0].rfid != null)
@@ -407,18 +429,25 @@ public class ColisScript : MonoBehaviour
                     {
                         if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count > 0 && spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0)
                         {
+                            Debug.Log("Test3");
                             needSecond = true;
-                            listTemporairePremiere.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporairePremiere.Add(articleToHad);
                         }
                         else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
                         {
                             needSecond = true;
-                            listTemporaireSeconde.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporaireSeconde.Add(articleToHad);
                         }
                         else if (spriteArticleTableUn.GetComponent<PileArticle>().listArticles.Count <= 0 || (listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef == refBase))
                         {
                             needOne = true;
-                            listTemporairePremiere.Add(art);
+                            Article articleToHad = Article.CreateInstance<Article>();
+                            articleToHad = Instantiate(art);
+                            listTemporairePremiere.Add(articleToHad);
                         }
                     }
 
@@ -454,7 +483,7 @@ public class ColisScript : MonoBehaviour
                             {
                                 spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                             }
-                            GetComponent<SpriteRenderer>().sprite = null;
+                            spriteArticleDansColis.sprite = null;
                         }
                     }
                     if (articleOnTableUn.Count > 0)
@@ -473,7 +502,7 @@ public class ColisScript : MonoBehaviour
                         {
                             spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                         }
-                        GetComponent<SpriteRenderer>().sprite = null;
+                        spriteArticleDansColis.sprite = null;
                     }
 
                     //Table 2
@@ -498,17 +527,17 @@ public class ColisScript : MonoBehaviour
 
                             if (colisScriptable.fillPercent <= 50)
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[0];
                             }
                             else if (colisScriptable.fillPercent >= 125)
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                             }
                             else
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                             }
-                            GetComponent<SpriteRenderer>().sprite = null;
+                            spriteArticleDansColis.sprite = null;
                         }
                     }
                     if (articleOnTableDeux.Count > 0)
@@ -518,17 +547,17 @@ public class ColisScript : MonoBehaviour
 
                         if (colisScriptable.fillPercent <= 50)
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[0];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[0];
                         }
                         else if (colisScriptable.fillPercent >= 125)
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                         }
                         else
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                         }
-                        GetComponent<SpriteRenderer>().sprite = null;
+                        spriteArticleDansColis.sprite = null;
                     }
                 }
             }

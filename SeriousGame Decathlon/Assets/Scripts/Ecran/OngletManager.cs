@@ -14,6 +14,14 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
+    private bool needFillingRate = false;
+    private bool needRecount = false;
+    private bool needRepack = false;
+
+    public Button onglet1;
+    public Button onglet2;
+    public Button onglet3;
+
     [Header("Return to Meca button")]
     public Button returnToMeca;
 
@@ -41,7 +49,7 @@ public class OngletManager : MonoBehaviour
         listAnomalies.SetActive(false);
         createHU     .SetActive(false);
 
-        returnToMeca.GetComponent<Image>().color = Color.red;
+        returnToMeca.interactable = false;
     }
 
     public void Update()
@@ -50,9 +58,6 @@ public class OngletManager : MonoBehaviour
         {
             homeScreen   .SetActive(false);
             ongletButton .SetActive(true );
-            fillingRate  .SetActive(true );
-            recount      .SetActive(false);
-            repack       .SetActive(false);
             listAnomalies.SetActive(true );
             createHU     .SetActive(false);
 
@@ -90,7 +95,8 @@ public class OngletManager : MonoBehaviour
         if (TutoManager.instance != null) {TutoManager.instance.Manager(23);}
         if (allValidate)
         {
-            
+            recount.GetComponent<RecountTab>().rfidScan.artFind.ResetAll();
+
             homeScreen   .SetActive(true );
             ongletButton .SetActive(false);
             fillingRate  .SetActive(false);
@@ -106,6 +112,7 @@ public class OngletManager : MonoBehaviour
             listAnomalies.GetComponent<AffichageAnomalie>().listAnomalies.Clear();             //Reset list anomalies
             screenDisplay.EndAffichage();                                                      //Reset Affichage HU
             pistolScan.scriptColis.hasBeenScannedByPistol = false;                             //Reset scan pistolet
+            repack.GetComponent<RepackTab>().Reset();
 
             //CHECKCOLIS
             anomalieDetect.CheckColis(pistolScan.scriptColis.colisScriptable);
@@ -149,13 +156,67 @@ public class OngletManager : MonoBehaviour
 
     public void CanReturnToMeca()
     {
-        returnToMeca.GetComponent<Image>().color = Color.green;
+        returnToMeca.interactable = true;
         allValidate = true;
     }
 
     public void CantReturnToMeca()
     {
-        returnToMeca.GetComponent<Image>().color = Color.red;
+        returnToMeca.interactable = false;
         allValidate = false;
+    }
+
+    public void DesactivateAll()
+    {
+        onglet1.interactable = false;
+        onglet2.interactable = false;
+        onglet3.interactable = false;
+        needFillingRate = false;
+        needRecount = false;
+        needRepack = false;
+    }
+    
+    public void ActivateOngletFillingRate()
+    {
+        onglet1.interactable = true;
+        needFillingRate = true;
+        fillingRate.SetActive(true);
+        if(fillingRate.GetComponent<FillingRateTab>() != null && fillingRate.GetComponent<FillingRateTab>().ancientButton != null)
+        {
+            fillingRate.GetComponent<FillingRateTab>().ancientButton.interactable = true;
+        }
+    }
+
+    public void ActivateOngletRecount()
+    {
+        onglet2.interactable = true;
+        needRecount = true;
+        
+    }
+
+    public void ActivateOngletRepack()
+    {
+        onglet3.interactable = true;
+        needRepack = true;
+        
+    }
+
+    public void Priority()
+    {
+        if(needFillingRate)
+        {
+            fillingRate.SetActive(true);
+        }
+        else
+        {
+            if(needRecount)
+            {
+                recount.SetActive(true);
+            }
+            else
+            {
+                repack.SetActive(true);
+            }
+        }
     }
 }

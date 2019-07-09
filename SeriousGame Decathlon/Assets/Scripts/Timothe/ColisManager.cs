@@ -33,16 +33,23 @@ public class ColisManager : MonoBehaviour
 
     public AnomalieDetection anomDetect;
 
+    public Image nbColisRestant;
+    private int colisTotal;
+
     private void Awake()
     {
         if(ChargementListeColis.instance != null)
         {
-            Debug.Log("Test Instance");
+            //Debug.Log("Test Instance");
             listeColisTraiter = ChargementListeColis.instance.colisProcessMulti;
         }
         anomDetect.CheckList(listeColisTraiter);
     }
 
+    private void Start()
+    {
+        colisTotal = listeColisTraiter.Count;
+    }
 
     public void CheckNewColis()
     {
@@ -51,6 +58,11 @@ public class ColisManager : MonoBehaviour
 
     public void AppelColis()
     {
+        if(Scoring.instance != null)
+        {
+            Scoring.instance.gotNewColis = true;
+        }
+
         listeColisActuel = new GameObject[0];
         listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
@@ -92,7 +104,7 @@ public class ColisManager : MonoBehaviour
             repackTab .colis         = colisTemporaire;
             scriptRotation.cartonObj = colisTemporaire;
             scriptRotation.ColisEnter();
-            Debug.Log("Test Colis Manager");
+            //Debug.Log("Test Colis Manager");
             scriptRotation.UpdateSprite(scriptColis.colisScriptable.carton.spriteCartonsListe, colisTemporaire.GetComponent<SpriteRenderer>());
             if(scriptColis.colisScriptable.estOuvert)
             {
@@ -118,7 +130,10 @@ public class ColisManager : MonoBehaviour
                 }
             }
 
-            /*if(scriptColis.colisScriptable.fillPercent<=50)
+            float div = (float)listeColisTraiter.Count / (float)colisTotal;
+            //nbColisRestant.fillAmount = div;
+
+            if(scriptColis.colisScriptable.fillPercent<=50)
             {
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
             }
@@ -131,7 +146,7 @@ public class ColisManager : MonoBehaviour
                 scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
             }
 
-            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;*/
+            scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
         }
         else if(listeColisActuel.Length > 0)
         {
@@ -141,6 +156,7 @@ public class ColisManager : MonoBehaviour
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
+
     }
 
     public void RenvoieColis(GameObject colisRenvoye)
@@ -150,7 +166,7 @@ public class ColisManager : MonoBehaviour
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {
             //anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
-            if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0)
+            if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie > 0 || (colisRenvoye.GetComponent<ColisScript>().colisScriptable.listAnomalies.Count > 0))
             {
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
                 Scoring.instance.sendColis();
@@ -163,18 +179,27 @@ public class ColisManager : MonoBehaviour
                     Scoring.instance.MajorPenalty();
                 }
             }
-            else
+            else if (colisRenvoye.GetComponent<ColisScript>().colisScriptable.listAnomalies.Count <= 0)
             {
                 Scoring.instance.sendColisWithoutMalus();
+                if(listeColisTraiter.Count<=0)
+                {
+                    Debug.Log("End Level");
+                    Scoring.instance.EndLevel();
+                }
             }
 
             if(colisRenvoye.GetComponent<ColisScript>().colisScriptable.isBadOriented)
             {
                 Scoring.instance.MajorPenalty();
             }
-            GameObject.Destroy(colisRenvoye);
+            //GameObject.Destroy(colisRenvoye);
         }
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
+
+        float div = (float)listeColisTraiter.Count / (float)colisTotal;
+        //nbColisRestant.fillAmount = div;
+
     }
 }

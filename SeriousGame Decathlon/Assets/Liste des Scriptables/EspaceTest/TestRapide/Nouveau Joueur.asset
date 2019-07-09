@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ae88f932754044284e0e1639c42dd6, type: 3}
   m_Name: Nouveau Joueur
   m_EditorClassIdentifier: 
-  name: Hayao Miyazaki
+  name: 
   date: 13 juin 2019
-  score: -90
+  score: 0

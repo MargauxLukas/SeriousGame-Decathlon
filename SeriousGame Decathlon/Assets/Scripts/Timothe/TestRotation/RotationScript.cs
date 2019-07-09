@@ -113,7 +113,7 @@ public class RotationScript : MonoBehaviour
                     spriteCarton.sprite = spriteCartonListe[5];
                     break;
             }
-            Debug.Log(spriteCartonListe[0]);
+            //Debug.Log(spriteCartonListe[0]);
         }
         if(spriteCarton != null)
             spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -actualFace.fullRotation);
@@ -133,20 +133,28 @@ public class RotationScript : MonoBehaviour
             if (xAxisMajeur > 0)
             {
                 rotation = 90;
+                xAxis = 0;
             }
             else if (xAxisMajeur < 0)
             {
                 rotation = -90;
+                xAxis = 0;
             }
 
             if (RotaAxis > 0)
             {
                 xAxis = 1;
+                rotation = 0;
             }
             else if (RotaAxis < 0)
             {
                 xAxis = -1;
+                rotation = 0;
             }
+
+            Debug.Log(xAxis);
+            Debug.Log(yAxis);
+            Debug.Log(rotation);
 
             theNewFace.fullRotation = theNewFace.fullRotation % 360;
             if (theNewFace.fullRotation >= 360)
@@ -300,21 +308,27 @@ public class RotationScript : MonoBehaviour
                 switch (theNewFace.face)
                 {
                     case "Up":
+                        Debug.Log("Up affichage");
                         spriteCarton.sprite = spriteCartonListe[0];
                         break;
                     case "Down":
+                        Debug.Log("Down affichage");
                         spriteCarton.sprite = spriteCartonListe[1];
                         break;
                     case "Right":
+                        Debug.Log("Right affichage");
                         spriteCarton.sprite = spriteCartonListe[2];
                         break;
                     case "Left":
+                        Debug.Log("Left affichage");
                         spriteCarton.sprite = spriteCartonListe[3];
                         break;
                     case "Forward":
+                        Debug.Log("For affichage");
                         spriteCarton.sprite = spriteCartonListe[4];
                         break;
                     case "Backward":
+                        Debug.Log("Back affichage");
                         spriteCarton.sprite = spriteCartonListe[5];
                         break;
                 }
@@ -329,12 +343,45 @@ public class RotationScript : MonoBehaviour
         return theNewFace;
     }
 
+    public Sprite GetUpFace(List<Sprite> spriteCartonListe)
+    {
+        switch (actualFace.upVoisin.face)
+        {
+            case "Up":
+                //Debug.Log("Up affichage");
+                return spriteCartonListe[0];
+            case "Down":
+                //Debug.Log("Down affichage");
+                return spriteCartonListe[1];
+            case "Right":
+                //Debug.Log("Right affichage");
+                return spriteCartonListe[2];
+            case "Left":
+                //Debug.Log("Left affichage");
+                return spriteCartonListe[3];
+            case "Forward":
+                //Debug.Log("For affichage");
+                return spriteCartonListe[4];
+            case "Backward":
+                //Debug.Log("Back affichage");
+                return spriteCartonListe[5];
+        }
+
+        return spriteCartonListe[5];
+    }
+
     public void ColisEnter()
     {
-        if(cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
+        if (cartonObj != null)
+        {
+            cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
+            carton = cartonObj.GetComponent<SpriteRenderer>();
+        }
+
+        if (cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
         {
             resetAll();
-            squareList[0].isCurrentlyPick = true;
+            squareList[5].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);

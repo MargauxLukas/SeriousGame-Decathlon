@@ -31,6 +31,8 @@ public class AffichageAnomalie : MonoBehaviour
     [HideInInspector]
     public int toggleOnNb = 0;
 
+    bool toggleCanActivate = false;
+
 
     public void AfficherAnomalie()
     {
@@ -42,6 +44,7 @@ public class AffichageAnomalie : MonoBehaviour
         {
             toggle.isOn = false;
             toggle.gameObject.SetActive(false);
+            toggleCanActivate = false;
         }
         foreach(Button button in infoList)
         {
@@ -49,10 +52,10 @@ public class AffichageAnomalie : MonoBehaviour
         }
         actualUsableDialogue = new List<Dialogue>();
 
-
         n = 0;
         if (listAnomalies != null)
         {
+            ongletManager.DesactivateAll();
             foreach (string anomalie in listAnomalies)
             {
                 if (n == 4) { break; }
@@ -61,75 +64,90 @@ public class AffichageAnomalie : MonoBehaviour
                     text[n].text = anomalie;
                     toggleList[n].gameObject.SetActive(true);
                     infoList[n].gameObject.SetActive(true);
+                    toggleCanActivate = true;
 
                     switch (anomalie)
                     {
                         case "Quality control":
                             actualUsableDialogue.Add(dialogueList[0]);
+                            ongletManager.ActivateOngletFillingRate();
                             break;
                         case "Repacking from FP":
                             actualUsableDialogue.Add(dialogueList[1]);
+                            ongletManager.ActivateOngletRepack();
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tags to be applied":
                             actualUsableDialogue.Add(dialogueList[2]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tag over Tolerance":
                             actualUsableDialogue.Add(dialogueList[3]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tag under Tolerance":
                             actualUsableDialogue.Add(dialogueList[4]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "RFID tag for unexpected product":
                             actualUsableDialogue.Add(dialogueList[5]);
+                            ongletManager.ActivateOngletRecount();
                             break;
                         case "TU too heavy (20-25)":
                             actualUsableDialogue.Add(dialogueList[6]);
+                            ongletManager.ActivateOngletRepack();
                             break;
                         case "RFID tag scanned for unknown product":
                             actualUsableDialogue.Add(dialogueList[7]);
+                            ongletManager.ActivateOngletFillingRate();
                             break;
                         case "Dimensions out of tolerance":
                             actualUsableDialogue.Add(dialogueList[8]);
+                            ongletManager.ActivateOngletRepack();
                             break;
                         case "Dimensions out of dimmension for tray":
                             actualUsableDialogue.Add(dialogueList[9]);
+                            ongletManager.ActivateOngletRepack();
                             break;
                     }
                     n++;
                 }
             }
+            ongletManager.Priority();
         }
     }
 
     public void ValidateAnomalie(int nbBouton)
     {
-        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(19);}
-        if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
-        {
-            detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
-        }
-
         toggleOnNb = 0;
-        foreach(Toggle toggle in toggleList)
+        if (toggleCanActivate)
         {
-            if(toggle.isOn)
+            if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
+                if (TutoManager.instance != null) { TutoManager.instance.Manager(19); }
+            if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
             {
-                toggleOnNb++;
+                detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);
             }
-        }
+            foreach (Toggle toggle in toggleList)
+            {
+                if (toggle.isOn)
+                {
+                    toggleOnNb++;
+                }
+            }
 
-        if(toggleOnNb == n)
-        {
+            if (toggleOnNb == n)
+            {
             if (TutoManager.instance != null) {TutoManager.instance.Manager(32);}
-            ongletManager.CanReturnToMeca();
-        }
-        else
-        {
-            ongletManager.CantReturnToMeca();
-        }
+                ongletManager.CanReturnToMeca();
+            }
+            else
+            {
+                ongletManager.CantReturnToMeca();
+            }
 
-        Scoring.instance.solveAnomalieWithoutMalus();
+            Scoring.instance.solveAnomalieWithoutMalus();
+        }
     }
 
     public void ShowHelp(int nbHelp)

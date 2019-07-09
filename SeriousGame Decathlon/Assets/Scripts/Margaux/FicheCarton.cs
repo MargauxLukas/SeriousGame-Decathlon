@@ -38,13 +38,6 @@ public class FicheCarton : MonoBehaviour
         listeBoutonsMenuTourner = colisManage.listeBoutonsMenuTourner;
     }
 
-    int nbCartonChoisit;
-
-    public void GetInt(int nbCarton)
-    {
-        nbCartonChoisit = nbCarton;
-    }
-
     public void InstantiateCarton(string buttonName)
     {
         if (TutoManager.instance != null) {TutoManager.instance.Manager(33);}
@@ -76,7 +69,9 @@ public class FicheCarton : MonoBehaviour
             scriptColis.spriteArticleTableDeux = spriteArticleTableDeux;
             scriptColis.circleImage = circleImage;
 
-            /* if (scriptColis.colisScriptable.fillPercent <= 50)
+            if (scriptColis.colisScriptable.fillPercent > 0)
+            {
+                if (scriptColis.colisScriptable.fillPercent <= 50)
                 {
                     scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[0];
                 }
@@ -87,9 +82,12 @@ public class FicheCarton : MonoBehaviour
                 else
                 {
                     scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
-                }*/
-
-            //scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
+                }
+            }
+            else
+            {
+                scriptColis.spriteArticleDansColis.sprite = null;
+            }
 
             //scriptColis.textArtcileTableRFID = textArtcileTableRFID;
             //scriptColis.textArticleTableNombre = textArticleTableNombre;

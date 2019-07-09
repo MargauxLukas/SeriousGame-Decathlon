@@ -8,8 +8,8 @@ public class LevelEditor : MonoBehaviour
     private SavedData dataSaved;
 
     //Infos du niveau actuel
-    LevelScriptable newLevel;
-    private List<Colis> colisNewLevel;
+    public LevelScriptable newLevel;
+    public List<Colis> colisNewLevel;
 
     //Infos du colis actuel
     [Header("Info du colis")]
@@ -32,7 +32,8 @@ public class LevelEditor : MonoBehaviour
     public List<RFID> listRFIDNonFonctionnels;
     public List<Carton> ListCartons;
     public List<Colis> colisDejaCree;
-    public InputField inputField;
+    public InputField inputFieldColisMF;
+    public InputField inputFieldLevel;
 
     //Les Canvas
     [Header("Canvas à Activer/Désactiver")]
@@ -69,6 +70,9 @@ public class LevelEditor : MonoBehaviour
 
     public void NewLevel()
     {
+        creationNiveau.SetActive(true);
+        ongletMultifonction.SetActive(false);
+
         foreach (Button bouton in boutonAnomalies)
         {
             bouton.interactable = true;
@@ -81,20 +85,13 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveLevel()
     {
-        for(int i = 0; i < colisNewLevel.Count; i ++)
+        if(inputFieldLevel.text != null)
         {
-            if(colisNewLevel[i] != null)
-            {
-                newLevel.colisDuNiveauNoms.Add(colisNewLevel[i].name);
-                newLevel.nbColisParNomColis.Add(1);
-            }
+            newLevel.name = inputFieldLevel.text.ToString();
         }
 
-        if (newLevel.colisDuNiveauNoms == null)
-        {
-            newLevel.colisDuNiveauNoms = new List<string>();
-        }
         newLevel.nbColisParNomColis = new List<int>();
+        newLevel.colisDuNiveauNoms = new List<string>();
 
         foreach (Colis colis in colisNewLevel)
         {
@@ -118,8 +115,8 @@ public class LevelEditor : MonoBehaviour
         currentAnomalieNumber = 0;
         //currentColis = colisDeBase;
         int nbArticleColis = Random.Range(3, 6);
-        randomArticle = Random.Range(0, 1);
-        wrongArticle = (randomArticle + 1) % 2;
+        randomArticle = Random.Range(0, 3);
+        wrongArticle = (randomArticle + 1) % 4;
         currentColis.PCB = nbArticleColis;
         for (int i = 0; i < nbArticleColis; i++)
         {
@@ -137,9 +134,9 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveColis()
     {
-        if (inputField.text != null)
+        if (inputFieldColisMF.text != null)
         {
-            currentColis.name = inputField.text.ToString();
+            currentColis.name = inputFieldColisMF.text.ToString();
             Debug.Log(currentColis.name);
             //Mise à jour du colis après toutes les modifs
             currentColis.PCB = currentColis.listArticles.Count;
@@ -161,6 +158,7 @@ public class LevelEditor : MonoBehaviour
             //Sauvegarde du colis
             SaveLoadSystem.instance.SaveColis(currentColis);
         }
+        colisNewLevel.Add(currentColis);
     }
 
     public void AddColis(int nbColis)
@@ -181,6 +179,7 @@ public class LevelEditor : MonoBehaviour
 
     public void OpenMenuMF()
     {
+        creationNiveau.SetActive(false);
         ongletMultifonction.SetActive(true);
         foreach (Button bouton in boutonAnomalies)
         {
@@ -191,6 +190,7 @@ public class LevelEditor : MonoBehaviour
     public void CloseMenuMF()
     {
         ongletMultifonction.SetActive(false);
+        creationNiveau.SetActive(true);
     }
 
     public void AnomalieChoice(int nbAnomalie)
@@ -343,11 +343,12 @@ public class LevelEditor : MonoBehaviour
     }
     private void NewProduct() //Change tous les articles en articles de nouvelles références
     {
+        int rngNewProd = Random.Range(5, 6);
         for(int i = 0; i < currentColis.listArticles.Count; i++)
         {
-            currentColis.listArticles[i] = listArticleBonEtat[2];
+            currentColis.listArticles[i] = listArticleBonEtat[rngNewProd];
         }
-        newIway.refArticle = listRefArticles[2];
+        newIway.refArticle = listRefArticles[rngNewProd];
 
         List<int> buttonToDesactivate = new List<int>(new int[] { 0, 4, 6, 7, 8, 11 });
         foreach (int nb in buttonToDesactivate)
@@ -391,7 +392,7 @@ public class LevelEditor : MonoBehaviour
     }
     private void RFIDUnexpectedV1() //Change le premier article du colis en mauvais article
     {
-        currentColis.listArticles[0] = listArticleBonEtat[wrongArticle];
+        currentColis.listArticles[1] = listArticleBonEtat[wrongArticle];
 
         List<int> buttonToDesactivate = new List<int>(new int[] { 6, 8, 10 });
         foreach (int nb in buttonToDesactivate)
@@ -429,6 +430,7 @@ public class LevelEditor : MonoBehaviour
     private void RepackngFP() //Met le colis en ouvert
     {
         currentColis.estOuvert = true;
+        currentColis.estAbime = true;
 
         List<int> buttonToDesactivate = new List<int>(new int[] { 6, 13 });
         foreach (int nb in buttonToDesactivate)

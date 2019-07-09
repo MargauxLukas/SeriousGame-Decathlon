@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc3b85cb60008d4a8c0eec7764cd3ab, type: 3}
   m_Name: DoudouneOK
   m_EditorClassIdentifier: 
-  poids: 1
+  poids: 2
   rfid: {fileID: 11400000, guid: 6278189e41f03c042a14ee9ab4fcf471, type: 2}
   spriteList:
-  - {fileID: 21300000, guid: a09ef48dc53df074c8eb32f6d1dafff6, type: 3}
-  - {fileID: 21300000, guid: 42ea4664c1a6f284f9eb33e14483c40a, type: 3}
-  - {fileID: 21300000, guid: c9607b8c0c6ae3843a5115e29a8e237e, type: 3}
+  - {fileID: 21300000, guid: a7d47bc8deb5e4e439c1e95e49d2f49e, type: 3}
+  - {fileID: 21300000, guid: 49d1c66de3d0b19478e617f09ef1763b, type: 3}
+  - {fileID: 21300000, guid: 414c02e6975c5df4686d766f9db34037, type: 3}

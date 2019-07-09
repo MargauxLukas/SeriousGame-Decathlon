@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91eb9c3eacdee144bba671b2896bf37, type: 3}
   m_Name: PersoRS
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e1d95aa591d92864f8b937ef67d91c36, type: 3}
   nom: RS

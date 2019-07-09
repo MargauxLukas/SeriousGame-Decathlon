@@ -12,6 +12,7 @@ public class RepackTab : MonoBehaviour
     public TextMeshProUGUI textCurrentQuantity2;
     public TextMeshProUGUI textPCB1;
     public TextMeshProUGUI textPCB2;
+    public TextMeshProUGUI textRef2;
 
     [Header("Colis assigné tout seul")]
     public GameObject colis;
@@ -105,9 +106,18 @@ public class RepackTab : MonoBehaviour
     {
         if (TutoManager.instance != null) {TutoManager.instance.Manager(40);}
 
+        textRef2.text = "7357";
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
         Debug.Log(codeCarton);
-        ficheCarton.InstantiateCarton(codeCarton);
+        if (codeCarton.Equals("CB01") || codeCarton.Equals("CB02"))
+        {
+            ficheCarton.InstantiateCarton(codeCarton);
+        }
+        else
+        {
+            codeCarton = "CB01";
+            ficheCarton.InstantiateCarton(codeCarton);
+        }
     }
 
     public void print1()
@@ -126,5 +136,14 @@ public class RepackTab : MonoBehaviour
         float poids = colisVide.GetComponent<ColisScript>().colisScriptable.poids;
 
         recountTab.PrintHU(pcb, refArticle, poids);
+    }
+
+    public void Reset()
+    {
+        textRef2.text = "";
+        textCurrentQuantity2.text = "0";
+        textCurrentQuantity1.text = "0";
+        textPCB1.text = "0";
+        textPCB2.text = "0";
     }
 }

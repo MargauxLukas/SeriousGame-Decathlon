@@ -18,6 +18,8 @@ public class GetFAce : MonoBehaviour
             if (colis.doesEntranceSecond)
             {
                 transform.position = new Vector3(colis.gameObject.transform.position.x + 5f, transform.position.y, 0);
+                cartonSprite = colis.colisScriptable.carton.spriteCartonsListe;
+                GetComponent<SpriteRenderer>().sprite = scriptRot.GetUpFace(cartonSprite);
             }
             UpdateThisFace();
         }
@@ -30,7 +32,6 @@ public class GetFAce : MonoBehaviour
             newFace = scriptRot.actualFace.upVoisin;
         }
 
-        cartonSprite = colis.colisScriptable.carton.spriteCartonsListe;
         //Debug.Log(cartonSprite.Count);
         /*if(scriptRot.actualFace.face == "Right")
         {
