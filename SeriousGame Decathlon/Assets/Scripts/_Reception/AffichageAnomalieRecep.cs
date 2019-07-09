@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AffichageAnomalieRecep : MonoBehaviour
 {
@@ -16,35 +17,24 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     private float swipeDifference;
 
+    public TextMeshProUGUI text1;
+    public TextMeshProUGUI text2;
+    public TextMeshProUGUI text3;
+
     private GameObject fiche;
 
     public void Start()
     {
         initialPos = transform.position;
         targetPos = new Vector2(initialPos.x ,1.38f);
+
+        text1.text = "";
+        text2.text = "";
+        text3.text = "";
     }
 
     private void Update()
     {
-        /*if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began) { startPos = touch.position.y; }
-            if (touch.phase == TouchPhase.Ended) { endPos   = touch.position.y; }
-            else { return; }
-
-            swipeDifference = Mathf.Abs(startPos - endPos);
-        }
-
-        if(startPos > endPos && swipeDifference > 50f)
-        {
-            if(isOpen)
-            {
-                Close();
-            }
-        }*/
-
         if(isOpening)
         {
             Open();
@@ -91,5 +81,10 @@ public class AffichageAnomalieRecep : MonoBehaviour
             isClosing = false;
             isOpen = false;
         }
+    }
+
+    public void ChangeText()
+    {
+        //Recuperation des anomalies detecté
     }
 }
