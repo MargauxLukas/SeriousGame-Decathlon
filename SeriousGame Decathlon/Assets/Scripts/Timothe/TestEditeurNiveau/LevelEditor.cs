@@ -392,7 +392,7 @@ public class LevelEditor : MonoBehaviour
     }
     private void RFIDUnexpectedV1() //Change le premier article du colis en mauvais article
     {
-        currentColis.listArticles[0] = listArticleBonEtat[wrongArticle];
+        currentColis.listArticles[1] = listArticleBonEtat[wrongArticle];
 
         List<int> buttonToDesactivate = new List<int>(new int[] { 6, 8, 10 });
         foreach (int nb in buttonToDesactivate)
