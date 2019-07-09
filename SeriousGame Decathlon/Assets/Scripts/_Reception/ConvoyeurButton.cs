@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ConvoyeurButton : MonoBehaviour
 {
+    public GameObject convoyeur;
 
     private void On()
     {

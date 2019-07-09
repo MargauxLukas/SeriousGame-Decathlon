@@ -96,14 +96,20 @@ public class PileArticle : MonoBehaviour
                         }
                         else
                         {
-                            listColisPresent[1].spriteSelection.SetActive(false);
+                            if (listColisPresent.Count-1 >= 1)
+                            {
+                                listColisPresent[1].spriteSelection.SetActive(false);
+                            }
                             listColisPresent[0].spriteSelection.SetActive(false);
                             currentItem = -1;
                         }
                     }
                     else if (touch.phase == TouchPhase.Ended)
                     {
-                        listColisPresent[1].spriteSelection.SetActive(false);
+                        if (listColisPresent.Count - 1 >= 1)
+                        {
+                            listColisPresent[1].spriteSelection.SetActive(false);
+                        }
                         listColisPresent[0].spriteSelection.SetActive(false);
                         menuCanOpen = true;
                         menuIsOpen = false;
@@ -269,14 +275,23 @@ public class PileArticle : MonoBehaviour
         {
             case 1:
                 listColisPresent[0].spriteSelection.SetActive(true);
-                listColisPresent[1].spriteSelection.SetActive(false);
+                if (listColisPresent.Count-1 >= 1)
+                {
+                    listColisPresent[1].spriteSelection.SetActive(false);
+                }
                 break;
             case 2:
-                listColisPresent[1].spriteSelection.SetActive(true);
+                if (listColisPresent.Count-1 >= 1)
+                {
+                    listColisPresent[1].spriteSelection.SetActive(true);
+                }
                 listColisPresent[0].spriteSelection.SetActive(false);
                 break;
             default:
-                listColisPresent[1].spriteSelection.SetActive(false);
+                if (listColisPresent.Count-1 >= 1)
+                {
+                    listColisPresent[1].spriteSelection.SetActive(false);
+                }
                 listColisPresent[0].spriteSelection.SetActive(false);
                 break;
         }
