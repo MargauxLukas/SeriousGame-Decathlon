@@ -21,7 +21,7 @@ public class AnomalieDetection : MonoBehaviour
      * - Repack from FP
      */
 
-    private void Start()
+    private void Awake()
     {
         if(ChargementListeColis.instance != null)
         {
@@ -121,7 +121,7 @@ public class AnomalieDetection : MonoBehaviour
         bool isCompatible = false; //Scanner le colis, Scanner les RFID, faire un inventaire pour ajouter les nouveaux RFID.
         for (int i = 0; i < RFIDtagKnowned.Count; i++)
         {
-            //Debug.Log("Test Anomalie 4");
+           Debug.Log(gameObject.name);
 
             if (colis.wayTicket != null && colis.listArticles.Count > 0 && colis.wayTicket.refArticle.numeroRef == RFIDtagKnowned[i])
             {
@@ -131,6 +131,7 @@ public class AnomalieDetection : MonoBehaviour
         if (!isCompatible)
         {
             colis.nbAnomalie++;
+            Debug.Log(colis.wayTicket.refArticle.numeroRef);
             colis.listAnomalies.Add("RFID tag scanned for unknown product");
         }
 
