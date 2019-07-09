@@ -57,7 +57,6 @@ public class TutoManager : MonoBehaviour
 
     public void DialogueIsFinished()
     {
-        //Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
         canPlayFirst  = false;
         canPlaySecond = true;
 
@@ -105,6 +104,10 @@ public class TutoManager : MonoBehaviour
                     case (2):
                         Phase02();
                         break;
+
+                    case (100):
+                        Phase100();
+                        break;
                 }
                 break;
 
@@ -150,6 +153,10 @@ public class TutoManager : MonoBehaviour
 
                     case (89):
                         Phase89();
+                        break;
+
+                    case (101):
+                        Phase101();
                         break;
                 }
                 break;
@@ -248,6 +255,18 @@ public class TutoManager : MonoBehaviour
 
                     case (97):
                         Phase97();
+                        break;
+
+                    case (103):
+                        Phase103();
+                        break;
+
+                    case (104):
+                        Phase104();
+                        break;
+
+                    case (105):
+                        Phase105();
                         break;
                 }
                 break;
@@ -706,6 +725,25 @@ public class TutoManager : MonoBehaviour
                 {
                     case (94):
                         Phase94();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Téléphone
+            case (39):
+                switch (phaseNum)
+                {
+                    case (102):
+                        Phase102();
+                        break;
+                }
+                break;
+
+            case (40):
+                switch (phaseNum)
+                {
+                    case (106):
+                        Phase106();
                         break;
                 }
                 break;
@@ -2806,9 +2844,168 @@ public class TutoManager : MonoBehaviour
         if (canPlayFirst)
         {
             gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).enabled = false;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
         
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = true;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3).enabled = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase100()
+    {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3).enabled = false;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+
+        phaseNum++;
+    }
+
+    void Phase101()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localPosition = new Vector2(-2.33f, 4.97f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localScale = new Vector2(0.9f, 0.9f); ;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.telephone).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase102()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = false;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.telephone).interactable = false;
+        }
+
+        if (canPlaySecond)
+        {
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+
+            Manager(4);
+        }
+    }
+
+    void Phase103()
+    {
+        if (canPlaySecond)
+        {
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+
+            Manager(4);
+        }
+    }
+
+    void Phase104()
+    {
+        if (canPlayFirst)
+        {
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.72f, -0.66f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.26f, 0.26f); ;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+
+            StartCoroutine(NewPhase(1.5f));
+        }
+    }
+
+    void Phase105()
+    {
+        if (canPlayFirst)
+        {
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(3.29f, -1.1f);
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.newColisButton).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase106()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.newColisButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(6.52f, -0.25f);
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.repackTabPlusButton).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase107()
+    {
+
     }
 }

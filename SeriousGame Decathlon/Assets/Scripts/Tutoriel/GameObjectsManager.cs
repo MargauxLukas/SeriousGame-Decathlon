@@ -11,6 +11,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject screen;
     public GameObject bigScreen;
     public GameObject scanRFID;
+    public GameObject telephone;
     public GameObject quitButtonWorkView;
     public GameObject menuCirculaireColis;
     public GameObject CB02Button;
@@ -24,6 +25,9 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject colis2bis;
     public GameObject pileArticles1Colis2;
     public GameObject pileArticles2Colis2;
+
+    [Header("Colis 3")]
+    public GameObject colis3;
 
     [Header("Ecran principal")]
     public GameObject toggleEndTask1;
@@ -45,6 +49,13 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject fill100Button;
     public GameObject fill125Button;
     public GameObject mecaOpenToggle;
+
+    [Header("Repack Tab")]
+    public GameObject repackTab;
+    public GameObject newColisButton;
+    public GameObject repackTabPlusButton;
+    public GameObject textQuantity1;
+    public GameObject textQuantity2;
 
     [Header("Menu Create HU")]
     public GameObject packMatDropdown;
@@ -80,10 +91,6 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject doigtClickSpriteMask;
     public GameObject doigtStay;
     public GameObject doigtStaySpriteMask;
-
-
-    //WIP
-    public GameObject repackTab;
 
     public BoxCollider2D GameObjectToBoxCollider(GameObject gameObject)
     {
