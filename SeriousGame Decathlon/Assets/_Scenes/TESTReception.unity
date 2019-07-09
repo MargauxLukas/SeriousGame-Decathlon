@@ -470,8 +470,9 @@ GameObject:
   - component: {fileID: 321747920}
   - component: {fileID: 321747919}
   - component: {fileID: 321747918}
+  - component: {fileID: 321747921}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,6 +580,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321747916}
   m_CullTransparentMesh: 0
+--- !u!114 &321747921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321747916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1343610245}
+          m_MethodName: UpPointerDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1343610245}
+          m_MethodName: UpPointerUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &364313036
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +749,7 @@ GameObject:
   - component: {fileID: 495943512}
   - component: {fileID: 495943511}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AnomalieText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1505,7 +1553,7 @@ GameObject:
   - component: {fileID: 939898340}
   - component: {fileID: 939898339}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ButtonMonter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1973,7 +2021,7 @@ GameObject:
   - component: {fileID: 1066267078}
   - component: {fileID: 1066267077}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Fiche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2064,7 +2112,7 @@ GameObject:
   - component: {fileID: 1101597481}
   - component: {fileID: 1101597480}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: AnomalieText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2393,6 +2441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5a1d951864bcf4099f4288496d9da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  convoyeur: {fileID: 0}
+  UpPressed: 0
 --- !u!1 &1386697976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,9 +2662,9 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0}
   startPos: 0
   endPos: 0
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  text3: {fileID: 0}
+  text1: {fileID: 495943511}
+  text2: {fileID: 2015446018}
+  text3: {fileID: 1101597480}
 --- !u!1 &1672919574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,7 +3585,7 @@ GameObject:
   - component: {fileID: 1941382881}
   - component: {fileID: 1941382880}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3758,7 +3808,7 @@ GameObject:
   - component: {fileID: 2015446019}
   - component: {fileID: 2015446018}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: AnomalieText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3946,7 +3996,7 @@ GameObject:
   - component: {fileID: 2113695902}
   - component: {fileID: 2113695901}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ButtonDescendre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
