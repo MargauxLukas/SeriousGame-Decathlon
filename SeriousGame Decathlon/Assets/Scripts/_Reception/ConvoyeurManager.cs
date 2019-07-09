@@ -5,6 +5,6 @@ using UnityEngine;
 public class ConvoyeurManager : MonoBehaviour
 {
     public float metter;
-
+    public float distancey;
     public bool isOn;
 }

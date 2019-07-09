@@ -5,7 +5,12 @@ using UnityEngine;
 public class ConvoyeurButton : MonoBehaviour
 {
     public GameObject convoyeur;
-    public bool UpPressed = false;
+    public bool UpPressed   = false;
+    public bool downPressed = false;
+    public bool replierPressed = false;
+    public bool deplierPressed = false;
+    public bool isOn = false;
+    public bool validatePressed = false;
 
     private void Update()
     {
@@ -14,21 +19,45 @@ public class ConvoyeurButton : MonoBehaviour
             //Deplacement Convoyeur Haut
             Debug.Log("Deplacement Convoyeur Haut");
         }
+        if(downPressed)
+        {
+            Debug.Log("Deplacement Convoyeur bas");
+        }
+        if(deplierPressed)
+        {
+            Debug.Log("On déplie");
+        }
+        if(replierPressed)
+        {
+            Debug.Log("On replie");
+        }
+
+        if(validatePressed)
+        {
+            Debug.Log("Validate");
+        }
     }
 
-    private void On()
+    public void OnOrOff()
     {
-
+        if(isOn)
+        {
+            isOn = false;
+        }
+        else
+        {
+            isOn = true;
+        }
     }
 
-    private void Off()
+    public void ValidationPointerDown()
     {
-
+        validatePressed = true;
     }
 
-    private void Validation()
+    public void ValidationPointerUp()
     {
-
+        validatePressed = false;
     }
 
     public void UpPointerDown()
@@ -41,19 +70,34 @@ public class ConvoyeurButton : MonoBehaviour
         UpPressed = false;
     }
 
-    private void Down()
+    public void DownPointerDown()
     {
-        
+        downPressed = true;
     }
 
-    private void Deplier()
+    public void DownPointerUp()
     {
-
+        downPressed = false;
     }
 
-    private void Replier()
+    public void DeplierPointerDown()
     {
+        deplierPressed = true;
+    }
 
+    public void DeplierPointerUp()
+    {
+        deplierPressed = false;
+    }
+
+    public void RepliePointerDown()
+    {
+        replierPressed = true;
+    }
+
+    public void RepliePointerUp()
+    {
+        replierPressed = false;
     }
 }
 
