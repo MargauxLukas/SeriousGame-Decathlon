@@ -44,7 +44,7 @@ public class FicheCarton : MonoBehaviour
         colisManage.listeColisActuel = new GameObject[0];
         colisManage.listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (colisManage.listeColisActuel.Length <= 10 || TutoManager.instance != null)
+        if (colisManage.listeColisActuel.Length <= 1 || TutoManager.instance != null)
         {
             GameObject theNewColis = null;
             if(TutoManager.instance == null && listeColisTuto.Count <= 0)
