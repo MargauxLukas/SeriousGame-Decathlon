@@ -7,7 +7,7 @@ public class TapisRoulant : MonoBehaviour
     public List<GameObject> colisSurLeTapis;
     public float speed = 0.3f;
     public RotationScript rotationScr;
-    public Colis lastColis;
+    public GameObject lastColis;
 
     private bool menuIsOpen;
 
@@ -47,6 +47,7 @@ public class TapisRoulant : MonoBehaviour
             {
                 turnMenu.SetActive(false);
                 menuIsOpen = false;
+                lastColis.GetComponent<ScriptColisRecep>().canMove = true;
                 lastColis = null;
             }
         }
@@ -57,14 +58,14 @@ public class TapisRoulant : MonoBehaviour
         rotationScr.cartonObj = colisToAdd;
         rotationScr.carton = colisToAdd.GetComponent<SpriteRenderer>();
         rotationScr.cartonsSprites = colisToAdd.GetComponent<ScriptColisRecep>().colisScriptable.carton.spriteCartonsListe;
-        lastColis = colisToAdd.GetComponent<ScriptColisRecep>().colisScriptable;
+        lastColis = colisToAdd;
         colisSurLeTapis.Add(colisToAdd);
         OpenTurnMenu();
     }
 
     public void OpenTurnMenu()
     {
-        if (lastColis.isBadOriented)
+        if (lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
         {
             rotationScr.resetAll();
             rotationScr.actualFace = rotationScr.squareList[4];

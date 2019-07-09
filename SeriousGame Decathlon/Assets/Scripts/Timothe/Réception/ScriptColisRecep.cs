@@ -6,10 +6,12 @@ public class ScriptColisRecep : MonoBehaviour
 {
     public Colis colisScriptable;
 
-    private bool doesTouch;
+    public bool doesTouch;
     public bool canMove = false;
     public bool canBePicked = true;
     private bool isOnTapis;
+
+    public int currentHauteur = 0;
 
     private Vector2 startPosition;
 
@@ -19,6 +21,15 @@ public class ScriptColisRecep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(canBePicked)
+        {
+            Color theColor = new Color();
+            theColor.b = 260;
+            theColor.g = 260;
+            theColor.r = 260;
+            theColor.a = 1;
+            GetComponent<SpriteRenderer>().color = theColor;
+        }
         startPosition = transform.position;
         if(colisScriptable.isBadOriented)
         {
@@ -63,9 +74,9 @@ public class ScriptColisRecep : MonoBehaviour
                     }
                 }
             }
-
-            if(tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis)
+            if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis)
             {
+                
                 canMove = true;
             }
         }
@@ -75,9 +86,17 @@ public class ScriptColisRecep : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Tapis" && collision.GetComponent<TapisRoulant>().lastColis == null)
+        {
+            isOnTapis = true;
+            tapisScript = collision.GetComponent<TapisRoulant>();
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Tapis" && collision.GetComponent<TapisRoulant>().lastColis == null)
         {
             isOnTapis = true;
             tapisScript = collision.GetComponent<TapisRoulant>();
