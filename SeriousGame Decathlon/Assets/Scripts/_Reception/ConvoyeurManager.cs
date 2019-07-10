@@ -7,8 +7,9 @@ public class ConvoyeurManager : MonoBehaviour
     public GameObject camera;
     public GameObject player;
 
-    public float metter;
-    public float distancey;
+    public float height = 1f;
+    public float minHeight = 1f;
+    public float maxHeight = 3f;
     public float speed = 2f;
     public bool isOn;
 
@@ -19,13 +20,20 @@ public class ConvoyeurManager : MonoBehaviour
 
     public void MoveZ(string direction)
     {
+        Debug.Log(direction);
         if(direction.Equals("up"))
         {
-
+            if(height <= maxHeight)
+            {
+                height = height + 0.002f;
+            }
         }
         else
         {
-
+            if (height >= minHeight)
+            {
+                height = height - 0.002f;
+            }
         }
     }
 
