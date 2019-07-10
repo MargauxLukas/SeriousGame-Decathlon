@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
   m_Name: DialoguePhase21
   m_EditorClassIdentifier: 
-  persoParlant: {fileID: 11400000, guid: 2522f42ca63c638418ac38eb6af94570, type: 2}
-  persoEcoutant: {fileID: 11400000, guid: ff5e0558f380d0f4eb00846ff6642077, type: 2}
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
   phraseDites:
   - "Maintenant, tu peux vider le colis pour compter les articles qu\u2019il contient.
     Ouvre le Menu circulaire du colis et appuie sur le bouton Vider."

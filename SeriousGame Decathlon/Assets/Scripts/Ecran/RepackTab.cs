@@ -30,6 +30,10 @@ public class RepackTab : MonoBehaviour
         {
             if (!comptage)
             {
+                if (TutoManager.instance != null && textCurrentQuantity1.text == "0" && textCurrentQuantity2.text == "10")
+                {
+                    TutoManager.instance.Manager(41);
+                }
                 if (colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
                 {
                     textPCB1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
@@ -100,6 +104,8 @@ public class RepackTab : MonoBehaviour
 
     public void NouveauColis()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(40);}
+
         textRef2.text = "7357";
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
         Debug.Log(codeCarton);

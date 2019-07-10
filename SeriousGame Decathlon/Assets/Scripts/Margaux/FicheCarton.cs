@@ -10,6 +10,7 @@ public class FicheCarton : MonoBehaviour
     public GameObject newColis;
     private ColisScript scriptColis;
     public List<Carton> carton;
+    public List<GameObject> listeColisTuto;
 
     public ColisManager colisManage;
 
@@ -39,14 +40,26 @@ public class FicheCarton : MonoBehaviour
 
     public void InstantiateCarton(string buttonName)
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(33);}
         colisManage.listeColisActuel = new GameObject[0];
         colisManage.listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if (colisManage.listeColisActuel.Length <= 1)
+        if (colisManage.listeColisActuel.Length <= 1 || TutoManager.instance != null)
         {
-            GameObject theNewColis = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
+            GameObject theNewColis = null;
+            if(TutoManager.instance == null && listeColisTuto.Count <= 0)
+            {
+                theNewColis = Instantiate(newColis, new Vector3(68.1f, -1.6f, 0), Quaternion.identity);
+            }
+            else
+            {
+                theNewColis = listeColisTuto[0];
+                theNewColis.GetComponent<Transform>().localPosition = new Vector3(3f, -1.7f, 30);
+            }
+
             scriptColis = theNewColis.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
+           
 
             //scriptColis.colisScriptable.carton.codeRef = buttonName;
             //scriptColis.colisScriptable.carton.Initialize();
@@ -85,7 +98,7 @@ public class FicheCarton : MonoBehaviour
             }
 
             scriptColis.colisScriptable.isBadOriented = false;
-            if(scriptColis.IWayEtiquette != null && !scriptColis.colisScriptable.isBadOriented && scriptColis.colisScriptable.wayTicket != null)
+            if (scriptColis.IWayEtiquette != null && !scriptColis.colisScriptable.isBadOriented && scriptColis.colisScriptable.wayTicket != null)
             {
                 scriptColis.IWayEtiquette.SetActive(true);
             }
