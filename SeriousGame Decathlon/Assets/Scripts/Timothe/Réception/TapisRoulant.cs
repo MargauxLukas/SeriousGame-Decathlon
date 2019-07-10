@@ -9,6 +9,8 @@ public class TapisRoulant : MonoBehaviour
     public RotationScript rotationScr;
     public GameObject lastColis;
 
+    public TapisRoulantGeneral tapisGeneral;
+
     private bool menuIsOpen;
 
     public GameObject turnMenu;
@@ -24,7 +26,7 @@ public class TapisRoulant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (colisSurLeTapis.Count > 0)
+        if (colisSurLeTapis.Count > 0 && !tapisGeneral.doesStop)
         {
             foreach (GameObject colisTap in colisSurLeTapis)
             {

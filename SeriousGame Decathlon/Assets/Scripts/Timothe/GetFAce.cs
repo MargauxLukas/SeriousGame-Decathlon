@@ -18,6 +18,7 @@ public class GetFAce : MonoBehaviour
             if (colis.doesEntranceSecond)
             {
                 transform.position = new Vector3(colis.gameObject.transform.position.x + 5f, transform.position.y, 0);
+                transform.rotation = Quaternion.identity;
                 cartonSprite = colis.colisScriptable.carton.spriteCartonsListe;
                 GetComponent<SpriteRenderer>().sprite = scriptRot.GetUpFace(cartonSprite);
             }

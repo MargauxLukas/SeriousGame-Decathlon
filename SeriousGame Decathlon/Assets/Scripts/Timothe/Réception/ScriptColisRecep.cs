@@ -48,12 +48,25 @@ public class ScriptColisRecep : MonoBehaviour
     void Update()
     {
         if(Input.touchCount > 0)
-        {
+        { 
             Touch touch = Input.GetTouch(0);
-            touchObject();
+            
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
+
+            if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && !tapisScript.tapisGeneral.doesStop)
+            {
+                canMove = true;
+            }
+            if (!canMove)
+            {
+                touchObject();
+            }
+            else
+            {
+                doesTouch = false;
+            }
 
             if (doesTouch && canBePicked)
             {
@@ -61,7 +74,7 @@ public class ScriptColisRecep : MonoBehaviour
 
                 if(touch.phase == TouchPhase.Ended)
                 {
-                    if(!isOnTapis)
+                    if(!isOnTapis || tapisScript.tapisGeneral.doesStop)
                     {
                         //Malus de lacher le colis
                         transform.position = startPosition;
@@ -74,11 +87,7 @@ public class ScriptColisRecep : MonoBehaviour
                     }
                 }
             }
-            if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis)
-            {
-                
-                canMove = true;
-            }
+            
         }
         else
         {
@@ -128,7 +137,6 @@ public class ScriptColisRecep : MonoBehaviour
         if(face == "Up" && (rotation == 90 || rotation == 270))
         {
             colisScriptable.isBadOriented = false;
-            Debug.Log("Test");
         }
         else
         {

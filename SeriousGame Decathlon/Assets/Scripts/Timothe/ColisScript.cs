@@ -11,6 +11,11 @@ public class ColisScript : MonoBehaviour
     public List<Article> articleOnTableUn  ;  
     public List<Article> articleOnTableDeux;
 
+    [Header("Sprite de sélection du colis")]
+    public SpriteRenderer leSprite;
+    public Sprite spriteGrandCarton;
+    public Sprite spritePetitCarton;
+
     [Header("Listes sprite Carton")]
     public List<Sprite > spriteCartons     ;
 
@@ -76,6 +81,15 @@ public class ColisScript : MonoBehaviour
         if (colisScriptable.isBadOriented && IWayEtiquette != null && colisScriptable.wayTicket != null)
         {
             IWayEtiquette.SetActive(false);
+        }
+
+        if(colisScriptable.carton.codeRef == "CB02")
+        {
+            leSprite.sprite = spritePetitCarton;
+        }
+        else
+        {
+            leSprite.sprite = spriteGrandCarton;
         }
     }
 
