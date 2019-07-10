@@ -158,6 +158,10 @@ public class TutoManager : MonoBehaviour
                     case (101):
                         Phase101();
                         break;
+
+                    case (112):
+                        Phase112();
+                        break;
                 }
                 break;
 
@@ -338,6 +342,10 @@ public class TutoManager : MonoBehaviour
                     case (95):
                         Phase95();
                         break;
+
+                    case (110):
+                        Phase110();
+                        break;
                 }
                 break;
 
@@ -377,6 +385,10 @@ public class TutoManager : MonoBehaviour
 
                     case (80):
                         Phase80();
+                        break;
+
+                    case (117):
+                        Phase117();
                         break;
                 }
                 break;
@@ -483,7 +495,7 @@ public class TutoManager : MonoBehaviour
                 }
                 break;
 
-            //Interaction bouton Print HU
+            //Interaction bouton Print HU (Recount)
             case (17):
                 switch (phaseNum)
                 {
@@ -504,6 +516,10 @@ public class TutoManager : MonoBehaviour
                     case (96):
                         Phase96();
                         break;
+
+                    case (111):
+                        Phase111();
+                        break;
                 }
                 break;
 
@@ -521,6 +537,10 @@ public class TutoManager : MonoBehaviour
 
                     case (54):
                         Phase54();
+                        break;
+
+                    case (113):
+                        Phase113();
                         break;
                 }
                 break;
@@ -580,6 +600,10 @@ public class TutoManager : MonoBehaviour
                     case (85):
                         Phase85();
                         break;
+
+                    case (115):
+                        Phase115();
+                        break;
                 }
                 break;
 
@@ -636,6 +660,10 @@ public class TutoManager : MonoBehaviour
                     case (98):
                         Phase98();
                         break;
+
+                    case (116):
+                        Phase116();
+                        break;
                 }
                 break;
 
@@ -665,6 +693,10 @@ public class TutoManager : MonoBehaviour
                 {
                     case (83):
                         Phase83();
+                        break;
+
+                    case (114):
+                        Phase114();
                         break;
                 }
                 break;
@@ -739,11 +771,62 @@ public class TutoManager : MonoBehaviour
                 }
                 break;
 
+            //Interaction bouton New Colis
             case (40):
                 switch (phaseNum)
                 {
                     case (106):
                         Phase106();
+                        break;
+                }
+                break;
+
+            //Good value on Quantity 1 & 2 (Repack)
+            case (41):
+                switch (phaseNum)
+                {
+                    case (108):
+                        Phase108();
+                        break;
+                }
+                break;
+
+            //Interaction bouton - (Repack)
+            case (42):
+                switch (phaseNum)
+                {
+                    case (107):
+                        Phase107();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Print HU (Repack)
+            case (43):
+                switch (phaseNum)
+                {
+                    case (109):
+                        Phase109();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Jeter
+            case (44):
+                switch (phaseNum)
+                {
+                    case (118):
+                        Phase118();
+                        break;
+                }
+                break;
+
+            //Interaction bouton Quitter
+            case (45):
+                switch (phaseNum)
+                {
+                    case (119):
+                        Phase119();
                         break;
                 }
                 break;
@@ -787,6 +870,12 @@ public class TutoManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canCloseFicheInfo = true;
+    }
+
+    IEnumerator ReturnToMenu(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObjectsManager.quitButtonToMenu.GetComponent<BoutonChangementScene>().LoadNewScene(4);
     }
 
         /*****************/
@@ -1579,7 +1668,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.printHUButton).interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.recountPrintHUButton).interactable = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -1598,7 +1687,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.printHUButton).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.recountPrintHUButton).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
@@ -2996,7 +3085,10 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.repackTabPlusButton).interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.repackTabMinusButton).interactable = true;
+
+            gameObjectsManager.quantity1 = "0";
+            gameObjectsManager.quantity2 = "10";
 
             phaseNum++;
             canPlayFirst = true;
@@ -3006,6 +3098,192 @@ public class TutoManager : MonoBehaviour
 
     void Phase107()
     {
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
+        gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
+        phaseNum++;
+    }
+
+    void Phase108()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.repackTabMinusButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.11f, -1.43f);
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.repackPrintHUButton).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase109()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.repackPrintHUButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+        
+        if (canPlaySecond)
+        {
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase110()
+    {
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3bis).enabled = true;
+
+        phaseNum++;
+    }
+
+    void Phase111()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3bis).enabled = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
+            gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase112()
+    {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask1).interactable = true;
+
+        phaseNum++;
+    }
+
+    void Phase113()
+    {
+        gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask1).interactable = false;
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).interactable = true;
+
+        phaseNum++;
+    }
+
+    void Phase114()
+    {
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().CloseMonitorTuto();
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3bis).enabled = true;
+
+        phaseNum++;
+    }
+
+    void Phase115()
+    {
+        gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
+
+        phaseNum++;
+    }
+
+    void Phase116()
+    {
+        if (canPlayFirst)
+        {
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3).enabled = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase117()
+    {
+        canJeter = true;
+
+        phaseNum++;
+    }
+
+    void Phase118()
+    {
+        if (canPlayFirst)
+        {
+            canJeter = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(-4.67f, 5.51f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.33f, 0.33f); ;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonWorkView).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase119()
+    {
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonWorkView).interactable = false;
+
+        phaseNum++;
+    }
+
+    void Phase120()
+    {
+        StartCoroutine(ReturnToMenu(1));
+
+        phaseNum++;
     }
 }

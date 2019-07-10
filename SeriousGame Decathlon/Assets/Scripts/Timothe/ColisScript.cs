@@ -585,6 +585,7 @@ public class ColisScript : MonoBehaviour
         if(colisScriptable.PCB == 0)
         {
             Destroy(gameObject);
+            if (TutoManager.instance != null) { TutoManager.instance.Manager(44); }
         }
     }
 }
