@@ -49,7 +49,7 @@ public class RotationScript : MonoBehaviour
         }
     }
 
-    private void resetAll()
+    public void resetAll()
     {
         lastTopViewFaceIsWrong = false;
 
@@ -453,8 +453,16 @@ public class RotationScript : MonoBehaviour
         if (TutoManager.instance != null) {TutoManager.instance.Manager(26);}
         if (cartonObj != null)
         {
-            cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
-            carton = cartonObj.GetComponent<SpriteRenderer>();
+            if (cartonObj.GetComponent<ColisScript>() != null)
+            {
+                cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
+                carton = cartonObj.GetComponent<SpriteRenderer>();
+            }
+            else if(cartonObj.GetComponent<ScriptColisRecep>() != null)
+            {
+                cartonsSprites = cartonObj.GetComponent<ScriptColisRecep>().colisScriptable.carton.spriteCartonsListe;
+                carton = cartonObj.GetComponent<SpriteRenderer>();
+            }
         }
 
         int xAxis = xAxisMajeur;
@@ -609,10 +617,18 @@ public class RotationScript : MonoBehaviour
             actualFace.isCurrentlyPick = true;
         }
         UpdateSprite(cartonsSprites, carton);
-        cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
-        cartonObj.GetComponent<ColisScript>().Tourner();
+        if (cartonObj.GetComponent<ColisScript>() != null)
+        {
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
+            cartonObj.GetComponent<ColisScript>().Tourner();
+        }
+        else if (cartonObj.GetComponent<ScriptColisRecep>() != null)
+        {
+            cartonObj.GetComponent<ScriptColisRecep>().Tourner(actualFace.face, actualFace.fullRotation);
+        }
 
-        lastTopViewFaceIsWrong = true;
+
+       lastTopViewFaceIsWrong = true;
     }
 
     SquareFace GetVoisonFromRotation(SquareFace currentFace, string faceNeeded)
