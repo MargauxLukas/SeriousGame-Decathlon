@@ -57,8 +57,8 @@ public class ConvoyeurManager : MonoBehaviour
         {
             if (transform.position.y <= maxReplier)
             {
-                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 0.01f, camera.transform.position.z);
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
+                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 0.02f, camera.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.02f, player.transform.position.z);
                 player.GetComponent<Animator>().SetFloat("DirectionY", 1f);
                 player.GetComponent<Animator>().SetBool("DoesWalk", true);
                 isReplierMax = false;
@@ -73,8 +73,8 @@ public class ConvoyeurManager : MonoBehaviour
         {
             //if (transform.position.y >= maxDeplier)
             //{
-                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 0.01f, camera.transform.position.z);
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 0.02f, camera.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.02f, player.transform.position.z);
                 player.GetComponent<Animator>().SetFloat("DirectionY", -1f);
                 player.GetComponent<Animator>().SetBool("DoesWalk", true);
             //}
