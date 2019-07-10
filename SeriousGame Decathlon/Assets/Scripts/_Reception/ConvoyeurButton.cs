@@ -2,52 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/**********************************************
+ *   Je ne traite que les boutons par ici     *
+ **********************************************/
 public class ConvoyeurButton : MonoBehaviour
 {
-    public GameObject convoyeur;
-    public bool UpPressed   = false;
-    public bool downPressed = false;
-    public bool replierPressed = false;
-    public bool deplierPressed = false;
-    public bool isOn = false;
-    public bool validatePressed = false;
+    public ConvoyeurManager convoyeur;
+
+    private bool UpPressed       = false;
+    private bool downPressed     = false;
+    private bool replierPressed  = false;
+    private bool deplierPressed  = false;
+    private bool validatePressed = false;
 
     private void Update()
     {
-        if(UpPressed)
-        {
-            //Deplacement Convoyeur Haut
-            Debug.Log("Deplacement Convoyeur Haut");
-        }
-        if(downPressed)
-        {
-            Debug.Log("Deplacement Convoyeur bas");
-        }
-        if(deplierPressed)
-        {
-            Debug.Log("On déplie");
-        }
-        if(replierPressed)
-        {
-            Debug.Log("On replie");
-        }
-
-        if(validatePressed)
-        {
-            Debug.Log("Validate");
-        }
+        if(UpPressed     ){convoyeur.MoveZ("up"     );}
+        if(downPressed   ){convoyeur.MoveZ("down"   );}
+        if(deplierPressed){convoyeur.MoveY("deplier");}
+        if(replierPressed && validatePressed){convoyeur.MoveY("replier");}
+        else{return;}
     }
 
     public void OnOrOff()
     {
-        if(isOn)
-        {
-            isOn = false;
-        }
-        else
-        {
-            isOn = true;
-        }
+        if(convoyeur.isOn) {convoyeur.isOn = false;}
+        else               {convoyeur.isOn = true ;}
     }
 
     public void ValidationPointerDown()
@@ -88,6 +69,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void DeplierPointerUp()
     {
         deplierPressed = false;
+        convoyeur.PlayerNotMove();
     }
 
     public void RepliePointerDown()
@@ -98,6 +80,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void RepliePointerUp()
     {
         replierPressed = false;
+        convoyeur.PlayerNotMove();
     }
 }
 
