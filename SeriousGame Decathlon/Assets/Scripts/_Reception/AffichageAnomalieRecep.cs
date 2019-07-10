@@ -83,6 +83,11 @@ public class AffichageAnomalieRecep : MonoBehaviour
         }
     }
 
+    public void ContenerReturn()
+    {
+        //Seulement si replier a fond
+    }
+
     public void ChangeText()
     {
         //Recuperation des anomalies detecté

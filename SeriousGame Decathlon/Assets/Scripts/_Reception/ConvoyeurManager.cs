@@ -12,7 +12,16 @@ public class ConvoyeurManager : MonoBehaviour
     private float minHeight = 1f;        //Hauteur minimum
     private float maxHeight = 3f;        //Hauteur maximum
 
+    public float maxReplier;
+    public float maxDeplier;
+
     public bool isOn;
+    public bool isReplierMax = true;
+
+    public void Start()
+    {
+        maxReplier = transform.position.y;
+    }
 
     /********************************************************
      *   Permet de faire descendre ou monter le convoyeur   *
@@ -45,10 +54,19 @@ public class ConvoyeurManager : MonoBehaviour
     {
         if (direction.Equals("replier"))
         {
-            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 0.01f, camera.transform.position.z);
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
-            player.GetComponent<Animator>().SetFloat("DirectionY", 1f);
-            player.GetComponent<Animator>().SetBool("DoesWalk", true);
+            if (transform.position.y <= maxReplier)
+            {
+                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 0.01f, camera.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
+                player.GetComponent<Animator>().SetFloat("DirectionY", 1f);
+                player.GetComponent<Animator>().SetBool("DoesWalk", true);
+                isReplierMax = false;
+            }
+            else
+            {
+                PlayerNotMove();
+                isReplierMax = true;
+            }
         }
         else
         {

@@ -16,6 +16,8 @@ public class ConvoyeurButton : MonoBehaviour
     private bool deplierPressed  = false;
     private bool validatePressed = false;
 
+    private bool isReturnContener = false;
+
     private void Update()
     {
         if(UpPressed     ){convoyeur.MoveZ("up"     );}
@@ -87,7 +89,11 @@ public class ConvoyeurButton : MonoBehaviour
 
     public void RenvoisContener()
     {
-
+        if(convoyeur.isReplierMax)
+        {
+            //Contener renvoyé
+            isReturnContener = true;
+        }
     }
 }
 
