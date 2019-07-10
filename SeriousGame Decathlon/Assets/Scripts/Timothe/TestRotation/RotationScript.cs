@@ -121,10 +121,21 @@ public class RotationScript : MonoBehaviour
         //Debug.Log(actualFace.fullRotation);
     }
 
+    SquareFace ancientTopView;
+
     public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)
     {
         if (lastTopViewFaceIsWrong)
         {
+            if (ancientTopView == null || ancientTopView.face != theNewFace.face)
+            {
+                if (ancientTopView != null)
+                {
+                    ancientTopView.fullRotation = 0;
+                }
+                theNewFace.fullRotation = 0;
+                ancientTopView = theNewFace;
+            }
             lastTopViewFaceIsWrong = false;
             int xAxis = xAxisMajeur;
             int yAxis = yAxisMajeur;
@@ -339,6 +350,7 @@ public class RotationScript : MonoBehaviour
             //Debug.Log(actualFace.fullRotation);
             Debug.Log(theNewFace);
             return theNewFace;
+            ancientTopView = theNewFace;
         }
         return theNewFace;
     }
@@ -627,8 +639,7 @@ public class RotationScript : MonoBehaviour
             cartonObj.GetComponent<ScriptColisRecep>().Tourner(actualFace.face, actualFace.fullRotation);
         }
 
-
-       lastTopViewFaceIsWrong = true;
+        lastTopViewFaceIsWrong = true;
     }
 
     SquareFace GetVoisonFromRotation(SquareFace currentFace, string faceNeeded)

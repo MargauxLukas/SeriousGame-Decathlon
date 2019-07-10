@@ -30,6 +30,11 @@ public class PileArticle : MonoBehaviour
 
     private float timeUpdate;
 
+    private void Start()
+    {
+        StartCoroutine(ResetPile());
+    }
+
     private void Update()
     {
         if(timeUpdate<=0.5f)
@@ -140,6 +145,13 @@ public class PileArticle : MonoBehaviour
                 listColisPresent.Add(listeColisDispo[i].GetComponent<ColisScript>());
             }
         }
+    }
+
+    IEnumerator ResetPile()
+    {
+        yield return new WaitForSeconds(2f);
+        UpdatePileArticle();
+        StartCoroutine(ResetPile());
     }
 
     public void ChangeRFID(RFID refid)
