@@ -6,6 +6,7 @@ public class ConvoyeurManager : MonoBehaviour
 {
     public GameObject camera;
     public GameObject player;
+    public GaugeConvoyeur gauge;
 
     public  float height    = 1f;        //Hauteur actuelle
     private float minHeight = 1f;        //Hauteur minimum
@@ -24,6 +25,8 @@ public class ConvoyeurManager : MonoBehaviour
             if(height <= maxHeight)
             {
                 height = height + 0.002f;
+                gauge.Up();
+
             }
         }
         else
@@ -31,6 +34,7 @@ public class ConvoyeurManager : MonoBehaviour
             if (height >= minHeight)
             {
                 height = height - 0.002f;
+                gauge.Down();
             }
         }
     }
