@@ -50,6 +50,8 @@ public class CreationDePalette : MonoBehaviour
     public int nbColisTraite;
     private int nbCurrentColis;
 
+    public List<Colis> colisDeCote;
+
     public List<ScriptColisRecep> colisActuels;
 
     int i = 0;
@@ -86,9 +88,7 @@ public class CreationDePalette : MonoBehaviour
                             if (colisPossibles.Count > 0)
                             {
                                 Debug.Log(i + " " + j + " " + k + " " + l);
-                                Colis leColis = Colis.CreateInstance<Colis>();
-                                leColis = colisPossibles[Random.Range(0, colisPossibles.Count)];
-                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = leColis;
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = Instantiate(colisPossibles[Random.Range(0, colisPossibles.Count)]);
                             }
                         }
                     }

@@ -17,6 +17,7 @@ public class ScriptColisRecep : MonoBehaviour
 
     private TapisRoulant tapisScript;
 
+    public bool isOneSecondScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,6 @@ public class ScriptColisRecep : MonoBehaviour
         if(Input.touchCount > 0)
         { 
             Touch touch = Input.GetTouch(0);
-            
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
@@ -134,13 +134,27 @@ public class ScriptColisRecep : MonoBehaviour
 
     public void Tourner(string face, float rotation)
     {
-        if(face == "Up" && (rotation == 90 || rotation == 270))
+        if (!isOneSecondScreen)
         {
-            colisScriptable.isBadOriented = false;
+            if (face == "Up" && (rotation == 90 || rotation == 270))
+            {
+                colisScriptable.isBadOriented = false;
+            }
+            else
+            {
+                colisScriptable.isBadOriented = true;
+            }
         }
         else
         {
-            colisScriptable.isBadOriented = true;
+            if (face == "Up" && (rotation == 0 || rotation == 180))
+            {
+                colisScriptable.isBadOriented = false;
+            }
+            else
+            {
+                colisScriptable.isBadOriented = true;
+            }
         }
     }
 }

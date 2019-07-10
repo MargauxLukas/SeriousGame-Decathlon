@@ -10,6 +10,8 @@ public class LevelScriptable : ScriptableObject
     public string name;
     public int nbLevel;
 
+    public List<string> colisDuNiveauNomReception;
+
     public void AddColis(Colis colis)
     {
         if(!colisDuNiveauNoms.Contains(colis.name))
