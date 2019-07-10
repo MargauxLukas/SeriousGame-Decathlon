@@ -26,7 +26,6 @@ public class ConvoyeurManager : MonoBehaviour
             {
                 height = height + 0.002f;
                 gauge.Up();
-
             }
         }
         else
@@ -67,5 +66,34 @@ public class ConvoyeurManager : MonoBehaviour
     {
         player.GetComponent<Animator>().SetFloat("DirectionY", 0f);
         player.GetComponent<Animator>().SetBool("DoesWalk", false);
+    }
+
+    public void SetFloor()
+    {
+        if(height < 1.25f)  //1m
+        {
+            gauge.SetPosition(0);
+            height = 1f;
+        }
+        if (height >= 1.25f && height < 1.85f)
+        {
+            gauge.SetPosition(1);
+            height = 1.5f;
+        } 
+        if (height >= 1.85f && height < 2.25f)
+        {
+            gauge.SetPosition(2);
+            height = 2f;
+        } 
+        if (height >= 2.25f && height < 2.85f)
+        {
+            gauge.SetPosition(3);
+            height = 2.5f;
+        } 
+        if (height >= 2.85f)
+        {
+            gauge.SetPosition(4);
+            height = 3f;
+        } 
     }
 }

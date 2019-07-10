@@ -49,6 +49,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void UpPointerUp()
     {
         UpPressed = false;
+        convoyeur.SetFloor();
     }
 
     public void DownPointerDown()
@@ -59,6 +60,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void DownPointerUp()
     {
         downPressed = false;
+        convoyeur.SetFloor();
     }
 
     public void DeplierPointerDown()
