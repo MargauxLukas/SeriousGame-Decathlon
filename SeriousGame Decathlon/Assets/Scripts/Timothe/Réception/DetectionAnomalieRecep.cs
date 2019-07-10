@@ -10,21 +10,32 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
     public GameObject gestionAnomalie;
 
+    public GameObject avertissementZoom;
+
+    public GameObject signalBoiteOrange;
+    public GameObject signalBoiteVert;
+    public GameObject signalBoiteOrangeClignotant;
+
     public bool doesDetectDimension;
     public bool doesDetectOrientation;
     public bool doesDetectPoids;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Colis")
+        if (collision.tag == "Colis")
         {
             ScriptColisRecep currentColis = collision.GetComponent<ScriptColisRecep>();
-            if(doesDetectOrientation)
+            signalBoiteOrange.SetActive(false);
+            signalBoiteOrangeClignotant.SetActive(false);
+            if (doesDetectOrientation)
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
+                    avertissementZoom.SetActive(true);
+                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
+                    signalBoiteOrangeClignotant.SetActive(true);
                 }
                
             }
@@ -35,6 +46,9 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
+                    avertissementZoom.SetActive(true);
+                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
+                    signalBoiteOrangeClignotant.SetActive(true);
                 }
             }
 
@@ -44,6 +58,9 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
+                    avertissementZoom.SetActive(true);
+                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 1;
+                    signalBoiteOrange.SetActive(true);
                 }
             }
         }
