@@ -141,6 +141,7 @@ public class RecountTab : MonoBehaviour
     *************************************/
     public void PrintRFID1()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(30);}
         bool refAlreadyExist = false;
         RefArticle refArt = null;
 

@@ -233,6 +233,9 @@ MonoBehaviour:
   colisScriptable: {fileID: 0}
   articleOnTableUn: []
   articleOnTableDeux: []
+  leSprite: {fileID: 4012330592055296173}
+  spriteGrandCarton: {fileID: 21300000, guid: 64f9b76cd0d0b8247999c07c64430ddb, type: 3}
+  spritePetitCarton: {fileID: 21300000, guid: 29e03378fae26b942974aef3c5f3f155, type: 3}
   spriteCartons: []
   IWayEtiquette: {fileID: 246706536070355173}
   tournerMenu: {fileID: 0}
@@ -301,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 575026291229540651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.1999999, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 246706537573853407}
   m_RootOrder: 3
@@ -343,7 +346,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1605b75de9f09e40a372655c7e4bdf0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64f9b76cd0d0b8247999c07c64430ddb, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

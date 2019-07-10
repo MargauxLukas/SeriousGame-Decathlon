@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Colis
   - IWay
+  - Tapis
   layers:
   - Default
   - TransparentFX

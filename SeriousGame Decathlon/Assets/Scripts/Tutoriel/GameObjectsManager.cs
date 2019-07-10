@@ -11,8 +11,10 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject screen;
     public GameObject bigScreen;
     public GameObject scanRFID;
+    public GameObject telephone;
     public GameObject quitButtonWorkView;
     public GameObject menuCirculaireColis;
+    public GameObject CB02Button;
 
     [Header("Colis 1")]
     public GameObject colis1;
@@ -20,14 +22,19 @@ public class GameObjectsManager : MonoBehaviour
 
     [Header("Colis 2")]
     public GameObject colis2;
+    public GameObject colis2bis;
     public GameObject pileArticles1Colis2;
     public GameObject pileArticles2Colis2;
+
+    [Header("Colis 3")]
+    public GameObject colis3;
 
     [Header("Ecran principal")]
     public GameObject toggleEndTask1;
     public GameObject toggleEndTask2;
     public GameObject toggleEndTask3;
     public GameObject returnMecaButton;
+    public GameObject createHUButton;
 
     [Header("Recount Tab")]
     public GameObject recountTab;
@@ -42,6 +49,20 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject fill100Button;
     public GameObject fill125Button;
     public GameObject mecaOpenToggle;
+
+    [Header("Repack Tab")]
+    public GameObject repackTab;
+    public GameObject newColisButton;
+    public GameObject repackTabPlusButton;
+    public GameObject textQuantity1;
+    public GameObject textQuantity2;
+
+    [Header("Menu Create HU")]
+    public GameObject packMatDropdown;
+    public GameObject refDropdown;
+    public GameObject createHUPlusButton;
+    public GameObject createHUMinusButton;
+    public GameObject buttonOK;
 
     [Header("Menu Tourner")]
     public GameObject turnRightButton;
@@ -67,11 +88,9 @@ public class GameObjectsManager : MonoBehaviour
 
     [Header("Doigt")]
     public GameObject doigtClick;
+    public GameObject doigtClickSpriteMask;
     public GameObject doigtStay;
-
-
-    //WIP
-    public GameObject repackTab;
+    public GameObject doigtStaySpriteMask;
 
     public BoxCollider2D GameObjectToBoxCollider(GameObject gameObject)
     {
@@ -86,6 +105,11 @@ public class GameObjectsManager : MonoBehaviour
     public Toggle GameObjectToToggle(GameObject gameObject)
     {
         return gameObject.GetComponent<Toggle>();
+    }
+
+    public Dropdown GameObjectToDropdown(GameObject gameObject)
+    {
+        return gameObject.GetComponent<Dropdown>();
     }
 
     public Transform GameObjectToTransform(GameObject gameObject)

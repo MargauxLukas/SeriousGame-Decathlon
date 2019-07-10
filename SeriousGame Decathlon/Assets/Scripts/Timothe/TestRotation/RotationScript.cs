@@ -49,7 +49,7 @@ public class RotationScript : MonoBehaviour
         }
     }
 
-    private void resetAll()
+    public void resetAll()
     {
         lastTopViewFaceIsWrong = false;
 
@@ -121,10 +121,21 @@ public class RotationScript : MonoBehaviour
         //Debug.Log(actualFace.fullRotation);
     }
 
+    SquareFace ancientTopView;
+
     public SquareFace UpdateVueHaut(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton, SquareFace theNewFace)
     {
         if (lastTopViewFaceIsWrong)
         {
+            if (ancientTopView == null || ancientTopView.face != theNewFace.face)
+            {
+                if (ancientTopView != null)
+                {
+                    ancientTopView.fullRotation = 0;
+                }
+                theNewFace.fullRotation = 0;
+                ancientTopView = theNewFace;
+            }
             lastTopViewFaceIsWrong = false;
             int xAxis = xAxisMajeur;
             int yAxis = yAxisMajeur;
@@ -339,6 +350,7 @@ public class RotationScript : MonoBehaviour
             //Debug.Log(actualFace.fullRotation);
             Debug.Log(theNewFace);
             return theNewFace;
+            ancientTopView = theNewFace;
         }
         return theNewFace;
     }
@@ -453,8 +465,16 @@ public class RotationScript : MonoBehaviour
         if (TutoManager.instance != null) {TutoManager.instance.Manager(26);}
         if (cartonObj != null)
         {
-            cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
-            carton = cartonObj.GetComponent<SpriteRenderer>();
+            if (cartonObj.GetComponent<ColisScript>() != null)
+            {
+                cartonsSprites = cartonObj.GetComponent<ColisScript>().colisScriptable.carton.spriteCartonsListe;
+                carton = cartonObj.GetComponent<SpriteRenderer>();
+            }
+            else if(cartonObj.GetComponent<ScriptColisRecep>() != null)
+            {
+                cartonsSprites = cartonObj.GetComponent<ScriptColisRecep>().colisScriptable.carton.spriteCartonsListe;
+                carton = cartonObj.GetComponent<SpriteRenderer>();
+            }
         }
 
         int xAxis = xAxisMajeur;
@@ -609,8 +629,15 @@ public class RotationScript : MonoBehaviour
             actualFace.isCurrentlyPick = true;
         }
         UpdateSprite(cartonsSprites, carton);
-        cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
-        cartonObj.GetComponent<ColisScript>().Tourner();
+        if (cartonObj.GetComponent<ColisScript>() != null)
+        {
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
+            cartonObj.GetComponent<ColisScript>().Tourner();
+        }
+        else if (cartonObj.GetComponent<ScriptColisRecep>() != null)
+        {
+            cartonObj.GetComponent<ScriptColisRecep>().Tourner(actualFace.face, actualFace.fullRotation);
+        }
 
         lastTopViewFaceIsWrong = true;
     }
