@@ -52,7 +52,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     doesTouch = false;
                 }
             }
-            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)) >= 9f)
+            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)) >= 7f)
             {
                 gestionAnomalie.SetActive(false);
                 colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;

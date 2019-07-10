@@ -127,6 +127,7 @@ public class ScriptColisRecep : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
             if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
             {
+                Debug.Log("Test");
                 doesTouch = true;
             }
         }
