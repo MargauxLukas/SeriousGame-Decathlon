@@ -45,10 +45,10 @@ public class GaugeConvoyeur : MonoBehaviour
                 height = 2.50f;
                 transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 2.1f, initialPos.z);
                 break;
-            case 4:
+            /*case 4:
                 height = 3f;
                 transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 2.75f, initialPos.z);
-                break;
+                break;*/
             default:
                 break;
         }

@@ -93,25 +93,25 @@ public class ConvoyeurManager : MonoBehaviour
             gauge.SetPosition(0);
             height = 1f;
         }
-        if (height >= 1.25f && height < 1.85f)
+        if (height >= 1.25f && height < 1.85f) //1m50
         {
             gauge.SetPosition(1);
             height = 1.5f;
         } 
-        if (height >= 1.85f && height < 2.25f)
+        if (height >= 1.85f && height < 2.25f)   //2m
         {
             gauge.SetPosition(2);
             height = 2f;
         } 
-        if (height >= 2.25f && height < 2.85f)
+        if (height >= 2.25f && height < 2.85f)    //2.5m
         {
             gauge.SetPosition(3);
             height = 2.5f;
         } 
-        if (height >= 2.85f)
+        /*if (height >= 2.85f)     //3m
         {
             gauge.SetPosition(4);
             height = 3f;
-        } 
+        } */
     }
 }

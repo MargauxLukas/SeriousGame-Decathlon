@@ -89,10 +89,11 @@ public class ConvoyeurButton : MonoBehaviour
 
     public void RenvoisContener()
     {
-        if(convoyeur.isReplierMax)
+        if(convoyeur.isReplierMax /*&& isReturnContener.isDefectueux*/)
         {
             //Contener renvoyé
             isReturnContener = true;
+            //Quitter niveau
         }
     }
 }
