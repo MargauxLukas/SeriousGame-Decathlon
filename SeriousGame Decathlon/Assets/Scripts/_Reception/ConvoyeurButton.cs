@@ -20,11 +20,11 @@ public class ConvoyeurButton : MonoBehaviour
 
     private void Update()
     {
-        if(UpPressed     ){convoyeur.MoveZ("up"     );}
-        if(downPressed   ){convoyeur.MoveZ("down"   );}
-        if(deplierPressed){convoyeur.MoveY("deplier");}
-        if(replierPressed && validatePressed){convoyeur.MoveY("replier");}
-        else{return;}
+        if(UpPressed     ){convoyeur.MoveZ("up"     );}                       //Boutton Monter
+        if(downPressed   ){convoyeur.MoveZ("down"   );}                       //Boutton Descendre
+        if(deplierPressed){convoyeur.MoveY("deplier");}                       //Boutton Deplier
+        if(replierPressed && validatePressed){convoyeur.MoveY("replier");}    //Boutton Replier + Validate
+        else {return;}
     }
 
     public void OnOrOff()
@@ -87,6 +87,10 @@ public class ConvoyeurButton : MonoBehaviour
         convoyeur.PlayerNotMove();
     }
 
+
+    /*****************************
+     *    Renvois contener       *
+     *****************************/
     public void RenvoisContener()
     {
         if(convoyeur.isReplierMax /*&& isReturnContener.isDefectueux*/)
