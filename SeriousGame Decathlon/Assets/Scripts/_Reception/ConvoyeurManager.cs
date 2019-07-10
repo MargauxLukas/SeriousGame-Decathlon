@@ -7,17 +7,15 @@ public class ConvoyeurManager : MonoBehaviour
     public GameObject camera;
     public GameObject player;
 
-    public float height = 1f;
-    public float minHeight = 1f;
-    public float maxHeight = 3f;
-    public float speed = 2f;
+    public  float height    = 1f;        //Hauteur actuelle
+    private float minHeight = 1f;        //Hauteur minimum
+    private float maxHeight = 3f;        //Hauteur maximum
+
     public bool isOn;
 
-    private void Update()
-    {
-        
-    }
-
+    /********************************************************
+     *   Permet de faire descendre ou monter le convoyeur   *
+     ********************************************************/
     public void MoveZ(string direction)
     {
         Debug.Log(direction);
@@ -37,6 +35,9 @@ public class ConvoyeurManager : MonoBehaviour
         }
     }
 
+    /********************************************************
+    *   Permet de faire avancer ou reculer le convoyeur     *
+    ********************************************************/
     public void MoveY(string direction)
     {
         if (direction.Equals("replier"))
@@ -55,6 +56,9 @@ public class ConvoyeurManager : MonoBehaviour
         }
     }
 
+    /********************************************************
+    *   Function pour dire au joueur d'arreter de marcher   *
+    ********************************************************/
     public void PlayerNotMove()
     {
         player.GetComponent<Animator>().SetFloat("DirectionY", 0f);

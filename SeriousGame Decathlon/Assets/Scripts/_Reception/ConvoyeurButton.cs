@@ -2,51 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/**********************************************
+ *   Je ne traite que les boutons par ici     *
+ **********************************************/
 public class ConvoyeurButton : MonoBehaviour
 {
     public ConvoyeurManager convoyeur;
 
-    public bool UpPressed   = false;
-    public bool downPressed = false;
-    public bool replierPressed = false;
-    public bool deplierPressed = false;
-    public bool isOn = false;
-    public bool validatePressed = false;
+    private bool UpPressed       = false;
+    private bool downPressed     = false;
+    private bool replierPressed  = false;
+    private bool deplierPressed  = false;
+    private bool validatePressed = false;
 
     private void Update()
     {
-        if(UpPressed)
-        {
-            convoyeur.MoveZ("up");
-        }
-        if(downPressed)
-        {
-            convoyeur.MoveZ("down");
-        }
-        if(deplierPressed)
-        {
-            convoyeur.MoveY("deplier");
-        }
-        if(replierPressed && validatePressed)
-        {
-            convoyeur.MoveY("replier");
-        }
-        else
-        {
-
-        }
+        if(UpPressed     ){convoyeur.MoveZ("up"     );}
+        if(downPressed   ){convoyeur.MoveZ("down"   );}
+        if(deplierPressed){convoyeur.MoveY("deplier");}
+        if(replierPressed && validatePressed){convoyeur.MoveY("replier");}
+        else{return;}
     }
 
     public void OnOrOff()
     {
-        if(isOn)
-        {
-            isOn = false;
-        }
-        else
-        {
-            isOn = true;
-        }
+        if(convoyeur.isOn) {convoyeur.isOn = false;}
+        else               {convoyeur.isOn = true ;}
     }
 
     public void ValidationPointerDown()
