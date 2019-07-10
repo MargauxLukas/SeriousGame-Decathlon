@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ConvoyeurButton : MonoBehaviour
 {
-    public GameObject convoyeur;
+    public ConvoyeurManager convoyeur;
+
     public bool UpPressed   = false;
     public bool downPressed = false;
     public bool replierPressed = false;
@@ -16,25 +17,23 @@ public class ConvoyeurButton : MonoBehaviour
     {
         if(UpPressed)
         {
-            //Deplacement Convoyeur Haut
-            Debug.Log("Deplacement Convoyeur Haut");
+            convoyeur.MoveZ("up");
         }
         if(downPressed)
         {
-            Debug.Log("Deplacement Convoyeur bas");
+            convoyeur.MoveZ("down");
         }
         if(deplierPressed)
         {
-            Debug.Log("On déplie");
+            convoyeur.MoveY("deplier");
         }
-        if(replierPressed)
+        if(replierPressed && validatePressed)
         {
-            Debug.Log("On replie");
+            convoyeur.MoveY("replier");
         }
+        else
+        {
 
-        if(validatePressed)
-        {
-            Debug.Log("Validate");
         }
     }
 
@@ -88,6 +87,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void DeplierPointerUp()
     {
         deplierPressed = false;
+        convoyeur.PlayerNotMove();
     }
 
     public void RepliePointerDown()
@@ -98,6 +98,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void RepliePointerUp()
     {
         replierPressed = false;
+        convoyeur.PlayerNotMove();
     }
 }
 
