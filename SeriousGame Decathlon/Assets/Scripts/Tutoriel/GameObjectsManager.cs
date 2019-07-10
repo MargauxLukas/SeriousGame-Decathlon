@@ -58,9 +58,9 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject repackTabMinusButton;
     public GameObject textQuantity1;
     public GameObject textQuantity2;
+    public GameObject repackPrintHUButton;
     public string quantity1;
     public string quantity2;
-    public GameObject repackPrintHUButton;
 
     [Header("Menu Create HU")]
     public GameObject packMatDropdown;

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase81
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Tu as corrig\xE9 l\u2019anomalie, pas besoin de r\xE9imprimer d\u2019\xC9tiquette
+    HU puisque les informations correspondent \xE0 celles du colis. "
+  - "Tu n\u2019as plus qu\u2019\xE0 renvoyer le colis, n'oublies pas de cocher les
+    cases pr\xE9cisant que tu as fini de traiter les anomalies sur ce colis. "
+  - "Dans un cas comme celui-l\xE0, tu peux marquer les deux anomalies comme r\xE9solues
+    puisque tu as retir\xE9 les articles en trop du colis que tu veux renvoyer."
+  - "Tu devras simplement, pour le reste des articles, cr\xE9er un nouveau colis et
+    l'enregister en cr\xE9ant une nouvelle \xC9tiquette HU. "
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}
