@@ -20,15 +20,23 @@ public class ConvoyeurButton : MonoBehaviour
 
     private void Update()
     {
-        if(UpPressed     ){convoyeur.MoveZ("up"     );}                       //Boutton Monter
-        if(downPressed   ){convoyeur.MoveZ("down"   );}                       //Boutton Descendre
-        if(deplierPressed){convoyeur.MoveY("deplier");}                       //Boutton Deplier
-        if(replierPressed && validatePressed){convoyeur.MoveY("replier");}    //Boutton Replier + Validate
-        else {return;}
+        if (convoyeur.isOn)
+        {
+            if (UpPressed) { convoyeur.MoveZ("up"); }                       //Boutton Monter
+            if (downPressed) { convoyeur.MoveZ("down"); }                       //Boutton Descendre
+            if (deplierPressed) { convoyeur.MoveY("deplier"); }                       //Boutton Deplier
+            if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
+            else { return; }
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void OnOrOff()
     {
+        //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
         if(convoyeur.isOn) {convoyeur.isOn = false;}
         else               {convoyeur.isOn = true ;}
     }

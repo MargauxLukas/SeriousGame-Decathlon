@@ -1640,6 +1640,8 @@ MonoBehaviour:
   maxDeplier: 0
   isOn: 0
   isReplierMax: 1
+  vueGeneralDeplier: {fileID: 0}
+  vueGeneralReplier: {fileID: 0}
 --- !u!1 &935644919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,7 +2584,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4737
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 26e14c14e297de043909cce304004371, type: 3}
 --- !u!1 &1343610240
 GameObject:
