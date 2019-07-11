@@ -87,7 +87,6 @@ public class CreationDePalette : MonoBehaviour
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().currentHauteur = k;
                             if (colisPossibles.Count > 0)
                             {
-                                Debug.Log(i + " " + j + " " + k + " " + l);
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = Instantiate(colisPossibles[Random.Range(0, colisPossibles.Count)]);
                             }
                         }
@@ -133,6 +132,7 @@ public class CreationDePalette : MonoBehaviour
         for (int m = 0; m < palettes[i].rangees[j].collones[k].colis.Count; m++)
         {
             palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
+            palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
         }
     }
@@ -201,6 +201,7 @@ public class CreationDePalette : MonoBehaviour
                 theColor.r = 260;
                 theColor.a = 1;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<SpriteRenderer>().color = theColor;
+                palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }
