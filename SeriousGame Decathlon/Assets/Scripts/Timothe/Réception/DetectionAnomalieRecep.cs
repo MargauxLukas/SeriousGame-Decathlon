@@ -24,6 +24,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
     public bool doesDetectPoids;
 
     public ColisGestionAnomalieRecep colisAnomalie;
+    public AffichageAnomalieRecep affichageAnomalieRecep;
 
     private bool doesTouch;
 
@@ -104,20 +105,19 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
-                    //Afficher les feedbacks de l'anomalie
+                    affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
                 }
-               
             }
 
             if(doesDetectDimension)
             {
                 if(currentColis.colisScriptable.carton.codeRef == "CBGrand")
                 {
-                    //Afficher les feedbacks de l'anomalie
+                    affichageAnomalieRecep.ChangeText("dimension");
                     tapisGeneral.doesStop = true;
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
@@ -129,7 +129,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.poids >= 35)
                 {
-                    //Afficher les feedbacks de l'anomalie
+                    affichageAnomalieRecep.ChangeText("heavy");
                     tapisGeneral.doesStop = true;
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 1;
@@ -144,7 +144,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
         signalBoiteOrange.SetActive(false);
         signalBoiteVert.SetActive(true);
         signalBoiteOrangeClignotant.SetActive(false);
-}
+    }
 
     void touchObject() //Fonction permettant de détecter si le joueur touche l'objet
     {
