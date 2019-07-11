@@ -8,8 +8,9 @@ public class TutoManager : MonoBehaviour
     public DialogueManager dialogueManager;
     public GameObjectsManager gameObjectsManager;
     public List<Dialogue> listDialogues;
-    public int phaseNum = 0;
+    public float phaseNum = 0;
     public int dialogNum = 0;
+    public string articlesNum = "";
 
     [Header("Menu Colis")]
     public bool canJeter = false;
@@ -26,7 +27,7 @@ public class TutoManager : MonoBehaviour
     [Header("Launch Dialogue & Phases")]
     public bool canPlayFirst = true;
     public bool canPlaySecond = false;
-    public int  interactionNum = 0;
+    public float interactionNum = 0;
 
     //Déplacement doigt
     private Vector3 fingerPosition;
@@ -63,7 +64,7 @@ public class TutoManager : MonoBehaviour
         Manager(interactionNum);
     }
 
-    public void Manager(int interaction)
+    public void Manager(float interaction)
     {
         interactionNum = interaction;
         Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
@@ -213,6 +214,10 @@ public class TutoManager : MonoBehaviour
                         Phase26();
                         break;
 
+                    case (31):
+                        Phase31();
+                        break;
+
                     case (32):
                         Phase32();
                         break;
@@ -281,10 +286,6 @@ public class TutoManager : MonoBehaviour
                 {
                     case (10):
                         Phase10();
-                        break;
-
-                    case (31):
-                        Phase31();
                         break;
 
                     case (74):
@@ -433,8 +434,8 @@ public class TutoManager : MonoBehaviour
                         Phase24();
                         break;
 
-                    case (28):
-                        Phase28();
+                    case (27.1f):
+                        Phase27bis();
                         break;
 
                     case (78):
@@ -475,8 +476,8 @@ public class TutoManager : MonoBehaviour
             case (15):
                 switch (phaseNum)
                 {
-                    case (29):
-                        Phase29();
+                    case (27.2f):
+                        Phase27ter();
                         break;
 
                     case (79):
@@ -827,6 +828,26 @@ public class TutoManager : MonoBehaviour
                 {
                     case (119):
                         Phase119();
+                        break;
+                }
+                break;
+
+            //Good value on Choix Nombre articles text
+            case (46):
+                switch (phaseNum)
+                {
+                    case (28):
+                        Phase28();
+                        break;
+                }
+                break;
+
+            //Interaction bouton validate choix (pile article à déplacer)
+            case (47):
+                switch (phaseNum)
+                {
+                    case (29):
+                        Phase29();
                         break;
                 }
                 break;
@@ -1375,7 +1396,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = true;
 
-            StartCoroutine(NewPhase(1f));
+            StartCoroutine(NewPhase(0.5f));
         }
     }
 
@@ -1552,13 +1573,13 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = true;
 
-            phaseNum++;
+            phaseNum += 0.1f;
             canPlayFirst = true;
             canPlaySecond = false;
         }
     }
 
-    void Phase28()
+    void Phase27bis()
     {
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = false;
         gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = false;
@@ -1566,15 +1587,56 @@ public class TutoManager : MonoBehaviour
 
         canColis1 = true;
 
-        phaseNum++;
+        phaseNum += 0.1f;
+    }
+
+    void Phase27ter()
+    {
+        if (canPlayFirst)
+        {
+            canColis1 = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pileArticlesColis1PlusButton).interactable = true;
+
+            articlesNum = "9";
+
+            phaseNum += 0.8f;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase28()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pileArticlesColis1PlusButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pileArticlesColis1ValidateButton).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
     }
 
     void Phase29()
     {
         if (canPlayFirst)
         {
-            canColis1 = false;
-
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pileArticlesColis1ValidateButton).interactable = false;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticlesColis1).enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
@@ -1597,9 +1659,8 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
         gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = true;
-
         phaseNum++;
+        Manager(4);
     }
 
     void Phase31()

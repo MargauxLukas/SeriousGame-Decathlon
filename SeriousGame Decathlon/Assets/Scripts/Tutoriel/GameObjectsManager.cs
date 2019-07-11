@@ -20,6 +20,9 @@ public class GameObjectsManager : MonoBehaviour
     [Header("Colis 1")]
     public GameObject colis1;
     public GameObject pileArticlesColis1;
+    public GameObject pileArticlesColis1PlusButton;
+    public GameObject pileArticlesColis1MinusButton;
+    public GameObject pileArticlesColis1ValidateButton;
 
     [Header("Colis 2")]
     public GameObject colis2;
