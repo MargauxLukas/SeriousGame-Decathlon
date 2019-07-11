@@ -16,7 +16,7 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Nous avons maintenant toutes les informations qu'il nous faut, nous pouvons commencer
-    \u28F4traiter le colis. "
+    \xE0 traiter le colis."
   - "Proc\xE9dons dans l'\x19ordre, d\x19'abord l'\x19article manquant. "
   choixPossibles:
   - '...'

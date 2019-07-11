@@ -8,6 +8,7 @@ public class Dialogue : ScriptableObject
     public PersonnageDialogue persoParlant;
     public PersonnageDialogue persoEcoutant;
 
+    [TextArea(5, 3)]
     public List<string> phraseDites;
     public List<string> choixPossibles;
 

@@ -122,8 +122,9 @@ public class AffichageAnomalie : MonoBehaviour
         toggleOnNb = 0;
         if (toggleCanActivate)
         {
+            if (TutoManager.instance != null) { TutoManager.instance.Manager(19); }
             if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
-                if (TutoManager.instance != null) { TutoManager.instance.Manager(19); }
+
             if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")
             {
                 detectAnomalie.RFIDtagKnowned.Add(managerIway.refIntIWay);

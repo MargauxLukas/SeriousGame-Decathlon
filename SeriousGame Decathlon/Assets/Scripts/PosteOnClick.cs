@@ -52,6 +52,7 @@ public class PosteOnClick : MonoBehaviour
 
     public void ReturnToDezoom()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(45);}
         cameraPoste .SetActive(false);
         cameraDezoom.SetActive(true);
         aStar       .SetActive(true);

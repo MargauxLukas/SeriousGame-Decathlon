@@ -24,13 +24,16 @@ public class RepackTab : MonoBehaviour
 
     private Article art;
     private bool comptage= false;
+
+    public GameObjectsManager gameObjectsManager;
+
     public void Update()
     {
         if (colis != null)
         {
             if (!comptage)
             {
-                if (TutoManager.instance != null && textCurrentQuantity1.text == "0" && textCurrentQuantity2.text == "10")
+                if (TutoManager.instance != null && textCurrentQuantity1.text == gameObjectsManager.quantity1 && textCurrentQuantity2.text == gameObjectsManager.quantity2)
                 {
                     TutoManager.instance.Manager(41);
                 }
@@ -78,6 +81,8 @@ public class RepackTab : MonoBehaviour
 
     public void Moins1()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(42);}
+
         if (colis != null && colisVide != null)
         {
             if (colis.GetComponent<ColisScript>().colisScriptable.PCB >= 0)
@@ -131,6 +136,7 @@ public class RepackTab : MonoBehaviour
 
     public void print2()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(43);}
         int pcb = colisVide.GetComponent<ColisScript>().colisScriptable.PCB;
         int refArticle = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
         float poids = colisVide.GetComponent<ColisScript>().colisScriptable.poids;

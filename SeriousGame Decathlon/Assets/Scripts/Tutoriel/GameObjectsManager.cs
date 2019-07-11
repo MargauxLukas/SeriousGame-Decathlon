@@ -13,12 +13,16 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject scanRFID;
     public GameObject telephone;
     public GameObject quitButtonWorkView;
+    public GameObject quitButtonToMenu;
     public GameObject menuCirculaireColis;
     public GameObject CB02Button;
 
     [Header("Colis 1")]
     public GameObject colis1;
     public GameObject pileArticlesColis1;
+    public GameObject pileArticlesColis1PlusButton;
+    public GameObject pileArticlesColis1MinusButton;
+    public GameObject pileArticlesColis1ValidateButton;
 
     [Header("Colis 2")]
     public GameObject colis2;
@@ -28,6 +32,7 @@ public class GameObjectsManager : MonoBehaviour
 
     [Header("Colis 3")]
     public GameObject colis3;
+    public GameObject colis3bis;
 
     [Header("Ecran principal")]
     public GameObject toggleEndTask1;
@@ -40,7 +45,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject recountTab;
     public GameObject recountButton;
     public GameObject inventoryButton;
-    public GameObject printHUButton;
+    public GameObject recountPrintHUButton;
     public GameObject printRFIDButton;
 
     [Header("Filling Rate Tab")]
@@ -53,9 +58,12 @@ public class GameObjectsManager : MonoBehaviour
     [Header("Repack Tab")]
     public GameObject repackTab;
     public GameObject newColisButton;
-    public GameObject repackTabPlusButton;
+    public GameObject repackTabMinusButton;
     public GameObject textQuantity1;
     public GameObject textQuantity2;
+    public GameObject repackPrintHUButton;
+    public string quantity1;
+    public string quantity2;
 
     [Header("Menu Create HU")]
     public GameObject packMatDropdown;
