@@ -3548,8 +3548,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 151.0082, y: -0.10000229}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2, y: 0.8}
+  m_SizeDelta: {x: -115.3999, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484844222
 MonoBehaviour:
@@ -3639,7 +3639,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4.3324056, y: -10.108967, z: 104.70003, w: -14.441372}
+  m_margin: {x: 0.30557185, y: -0.25603604, z: -0.81280744, w: -1.1109325}
   m_textInfo:
     textComponent: {fileID: 484844222}
     characterCount: 8
@@ -5373,7 +5373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &654770812
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5392,7 +5392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: -48}
+  m_AnchoredPosition: {x: 18, y: 81}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &657663156
@@ -7008,8 +7008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 151.0082, y: 0.60063696}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1, y: 0.60063696}
+  m_SizeDelta: {x: -120.900024, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998781780
 MonoBehaviour:
@@ -7097,7 +7097,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4.3324056, y: -10.108967, z: 104.70003, w: -14.441372}
+  m_margin: {x: -0.27528203, y: -0.25637493, z: 0.37828198, w: 0.047745667}
   m_textInfo:
     textComponent: {fileID: 998781780}
     characterCount: 7
@@ -10112,8 +10112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 151.0082, y: -0.20000267}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.20000267}
+  m_SizeDelta: {x: -110.10004, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1583817772
 MonoBehaviour:
@@ -10201,7 +10201,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4.3324056, y: -10.108967, z: 104.70003, w: -14.441372}
+  m_margin: {x: 0.30557132, y: 0.32356095, z: -0.23319301, w: 1.2074304}
   m_textInfo:
     textComponent: {fileID: 1583817772}
     characterCount: 7
@@ -10269,8 +10269,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 151.0082, y: 0.099998474}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1, y: 0.099998474}
+  m_SizeDelta: {x: -94.60004, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1605167027
 MonoBehaviour:
@@ -10358,7 +10358,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4.3324056, y: -10.108967, z: 104.70003, w: -14.441372}
+  m_margin: {x: 0.30557176, y: -0.83560723, z: 0.34643286, w: -0.53134197}
   m_textInfo:
     textComponent: {fileID: 1605167027}
     characterCount: 9
@@ -11319,8 +11319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 151.0082, y: 0.39999962}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3, y: 0.39999962}
+  m_SizeDelta: {x: -119.099915, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748159238
 MonoBehaviour:
@@ -11408,7 +11408,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4.3324056, y: -10.108967, z: 104.70003, w: -14.441372}
+  m_margin: {x: 0.30537266, y: -0.8356263, z: 0.34663528, w: -0.5313418}
   m_textInfo:
     textComponent: {fileID: 1748159238}
     characterCount: 6
