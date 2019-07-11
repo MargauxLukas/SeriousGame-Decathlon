@@ -18,14 +18,19 @@ public class ConvoyeurButton : MonoBehaviour
 
     private bool isReturnContener = false;
 
+    public bool isCollide         = false;
+
     private void Update()
     {
         if (convoyeur.isOn)
         {
             if (UpPressed) { convoyeur.MoveZ("up"); }                       //Boutton Monter
             if (downPressed) { convoyeur.MoveZ("down"); }                       //Boutton Descendre
-            if (deplierPressed) { convoyeur.MoveY("deplier"); }                       //Boutton Deplier
-            if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
+            if (!isCollide)
+            {
+                if (deplierPressed) { convoyeur.MoveY("deplier"); }                       //Boutton Deplier
+                if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
+            }
             else { return; }
         }
         else
