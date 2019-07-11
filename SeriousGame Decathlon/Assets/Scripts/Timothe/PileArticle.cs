@@ -27,6 +27,8 @@ public class PileArticle : MonoBehaviour
     public Text textNbRFID;
     public Text textRefRFID;
 
+    bool menuInfoIsOpen;
+
 
     private float timeUpdate;
 
@@ -55,9 +57,9 @@ public class PileArticle : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if(menuIsOpen && ((TutoManager.instance == null) || (TutoManager.instance != null && TutoManager.instance.canCloseFicheInfo)))
+            if(menuInfoIsOpen && ((TutoManager.instance == null) || (TutoManager.instance != null && TutoManager.instance.canCloseFicheInfo)))
             {
-                menuIsOpen = false;
+                menuInfoIsOpen = false;
                 canvasInfo.SetActive(false);
                 if (TutoManager.instance != null) {TutoManager.instance.Manager(14);}
             }
@@ -252,7 +254,7 @@ public class PileArticle : MonoBehaviour
         {
             textRefRFID.text = listArticles[0].rfid.refArticle.numeroRef.ToString();
         }
-        menuIsOpen = true;
+        menuInfoIsOpen = true;
     }
 
     void PickInventory(int nb)
