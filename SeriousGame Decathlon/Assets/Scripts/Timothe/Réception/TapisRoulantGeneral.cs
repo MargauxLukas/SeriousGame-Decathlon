@@ -23,7 +23,7 @@ public class TapisRoulantGeneral : MonoBehaviour
     {
         if(collision != null && collision.tag == "Colis" && !doesStop)
         {
-            collision.transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+            collision.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
         }
     }
 }
