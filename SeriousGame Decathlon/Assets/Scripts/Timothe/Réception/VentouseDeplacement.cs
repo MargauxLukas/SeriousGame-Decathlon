@@ -7,13 +7,13 @@ public class VentouseDeplacement : MonoBehaviour
     private bool doesTouch;
     public GameObject colisAttached;
    
-    private Vector2 startPosition;
+    private Vector3 startPosition;
 
     private void Start()
     {
         startPosition = transform.localPosition;
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.touchCount > 0)
