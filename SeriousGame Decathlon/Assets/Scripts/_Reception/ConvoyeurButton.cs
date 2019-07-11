@@ -29,8 +29,8 @@ public class ConvoyeurButton : MonoBehaviour
             if (!isCollide)
             {
                 if (deplierPressed) { convoyeur.MoveY("deplier"); }                       //Boutton Deplier
-                if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
             }
+            if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
             else { return; }
         }
         else
