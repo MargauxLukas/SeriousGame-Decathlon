@@ -49,7 +49,7 @@ public class ScriptColisRecep : MonoBehaviour
     void Update()
     {
         if(Input.touchCount > 0)
-        { 
+        {
             Touch touch = Input.GetTouch(0);
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
@@ -81,8 +81,7 @@ public class ScriptColisRecep : MonoBehaviour
                     }
                     else
                     {
-                        //Ouvrir le menu tourner
-                        transform.position = new Vector2(transform.position.x, 3.4f);
+                        transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
                         tapisScript.AddColis(this.gameObject);
                     }
                 }
@@ -127,7 +126,6 @@ public class ScriptColisRecep : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
             if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
             {
-                Debug.Log("Test");
                 doesTouch = true;
             }
         }

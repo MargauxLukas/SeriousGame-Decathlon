@@ -11,6 +11,8 @@ public class TapisRoulant : MonoBehaviour
 
     public TapisRoulantGeneral tapisGeneral;
 
+    public Transform positionTapisZoom;
+
     private bool menuIsOpen;
 
     public GameObject turnMenu;
@@ -33,7 +35,6 @@ public class TapisRoulant : MonoBehaviour
                 if (colisTap.GetComponent<ScriptColisRecep>() != null && colisTap.GetComponent<ScriptColisRecep>().canMove)
                 {
                     colisTap.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
-                    Debug.Log("Test");
                 }
             }
         }

@@ -2,22 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuitToGeneraView : MonoBehaviour
+public class ChangementEtiquettes : MonoBehaviour
 {
-    public GameObject cameraGeneral;
+    public int nbEtiquetteMax;
+    public int nbEtiquettes;
+
+    public TapisRoulantGeneral tapisGeneral;
 
     private bool doesTouch;
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if(nbEtiquettes<= 0.2*nbEtiquetteMax)
+        {
+            if(nbEtiquettes<=0)
+            {
+                tapisGeneral.doesStop = true;
+            }
+        }
+       
+        if(Input.touchCount > 0)
         {
             touchObject();
-            if (doesTouch)
+            if(doesTouch)
             {
-                SwitchCameraState();
+                nbEtiquettes = nbEtiquetteMax;
                 doesTouch = false;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Colis")
+        {
+            nbEtiquettes--;
         }
     }
 
@@ -32,9 +51,5 @@ public class QuitToGeneraView : MonoBehaviour
                 doesTouch = true;
             }
         }
-    }
-    public void SwitchCameraState()
-    {
-        cameraGeneral.SetActive(!cameraGeneral.activeSelf);
     }
 }

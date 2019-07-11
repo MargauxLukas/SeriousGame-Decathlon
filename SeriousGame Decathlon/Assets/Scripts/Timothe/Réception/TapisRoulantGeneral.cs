@@ -21,7 +21,6 @@ public class TapisRoulantGeneral : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Test");
         if(collision != null && collision.tag == "Colis" && !doesStop)
         {
             collision.transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
