@@ -50,18 +50,20 @@ public class AnomalieDetection : MonoBehaviour
             colis.listAnomalies = new List<string>();
 
             int RFIDnb = 0;
-            foreach (Article article in colis.listArticles)
+            if (colis.listArticles != null && colis.listArticles.Count > 0)
             {
-                if (article.rfid != null && article.rfid.estFonctionnel)
+                foreach (Article article in colis.listArticles)
                 {
-                    RFIDnb++;
-                }
-                else
-                {
-                    //Pas de RFID
+                    if (article.rfid != null && article.rfid.estFonctionnel)
+                    {
+                        RFIDnb++;
+                    }
+                    else
+                    {
+                        //Pas de RFID
+                    }
                 }
             }
-
             /* Résolution des problèmes de RFID
              * - Scan colis. Scan RFID. Bouton Inventaire. Crée nouveau ticket IWAY dans système. PrintHU pour imprimer. Mettre le ticket sur le colis.
              * - Scan colis. Scan RFID. Vider colis. Voir nombre Article. Bouton Inventaire. Crée un nouveau RFID. Mettre RFID sur pile Article.
@@ -100,18 +102,20 @@ public class AnomalieDetection : MonoBehaviour
             }
             //Debug.Log("Test Anomalie 1");
 
-            bool isBreakable = false;
-            foreach (Article article in colis.listArticles) //Scanner le colis. Scanner les RFID. Vider le colis. Imprimer le RFID. Mettre le nouveau RFID.
+            if (colis.listArticles != null && colis.listArticles.Count > 0)
             {
-                if (article.rfid != null && colis.wayTicket != null && (article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable))
+                bool isBreakable = false;
+                foreach (Article article in colis.listArticles) //Scanner le colis. Scanner les RFID. Vider le colis. Imprimer le RFID. Mettre le nouveau RFID.
                 {
-                    colis.nbAnomalie++;
-                    colis.listAnomalies.Add("RFID tag for unexpected product");
-                    isBreakable = true;
+                    if (article.rfid != null && colis.wayTicket != null && (article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable))
+                    {
+                        colis.nbAnomalie++;
+                        colis.listAnomalies.Add("RFID tag for unexpected product");
+                        isBreakable = true;
+                    }
                 }
+                //Debug.Log("Test Anomalie 2");
             }
-            //Debug.Log("Test Anomalie 2");
-
             if (colis.poids > 20) //A voir comment rectifier en jeu ET à dupliquer pour le supp 35
             {
                 colis.nbAnomalie++;

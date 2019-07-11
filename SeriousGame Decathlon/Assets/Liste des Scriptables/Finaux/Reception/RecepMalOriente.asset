@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
   m_Name: RecepMalOriente
   m_EditorClassIdentifier: 
-  name: 
+  name: RecepMalOriente
   PCB: 0
   poids: 0
   fillPercent: 0

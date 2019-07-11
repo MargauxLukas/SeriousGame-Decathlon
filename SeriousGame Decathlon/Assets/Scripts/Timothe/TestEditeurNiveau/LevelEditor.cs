@@ -133,6 +133,11 @@ public class LevelEditor : MonoBehaviour
 
     public void ChooseColisForReception(Colis colisToAdd)
     {
+        if(newLevel.colisDuNiveauNomReception == null)
+        {
+            newLevel.colisDuNiveauNomReception = new List<string>();
+        }
+
         if(!newLevel.colisDuNiveauNomReception.Contains(colisToAdd.name))
         {
             newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);

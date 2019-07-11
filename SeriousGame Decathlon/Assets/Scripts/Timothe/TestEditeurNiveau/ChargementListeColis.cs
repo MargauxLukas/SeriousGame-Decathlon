@@ -97,25 +97,30 @@ public class ChargementListeColis : MonoBehaviour
         if (levelScript != null)
         {
             //Debug.Log(levelScript);
-            for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
+            if (levelScript.colisDuNiveauNoms != null)
             {
-                colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
-                for (int i = 0; i < levelScript.nbColisParNomColis[nb]; i++)
+                for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
                 {
-                    newList.Add(colisListe[nb]);
+                    colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
+                    for (int i = 0; i < levelScript.nbColisParNomColis[nb]; i++)
+                    {
+                        newList.Add(colisListe[nb]);
+                    }
                 }
+                colisProcessMulti = newList;
             }
-            colisProcessMulti = newList;
-
             nombreColisRecep = levelScript.nombreColisReception;
             chanceAnomalieRecep = levelScript.chanceReceptionColisHaveAnomalie;
 
-            for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
+            if (levelScript.colisDuNiveauNomReception != null)
             {
-                newListRecep.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNomReception[nb]));
-            }
+                for (int nb = 0; nb < levelScript.colisDuNiveauNomReception.Count; nb++)
+                {
+                    newListRecep.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNomReception[nb]));
+                }
 
-            colisProcessReception = newListRecep;
+                colisProcessReception = newListRecep;
+            }
         }
         //affichageNouveauLevel.text = levelScript.colisDuNiveauNoms[3].ToString();         Ceci est pour le debug
 
