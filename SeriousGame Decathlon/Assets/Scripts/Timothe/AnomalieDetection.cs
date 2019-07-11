@@ -16,7 +16,6 @@ public class AnomalieDetection : MonoBehaviour
      * - Le cois est mal orienté (3)
      * - Pas de RFID (6)
      * - Vérification Qualité (4)
-     * (A faire)
      * - Dimension plateau
      * - Repack from FP
      */

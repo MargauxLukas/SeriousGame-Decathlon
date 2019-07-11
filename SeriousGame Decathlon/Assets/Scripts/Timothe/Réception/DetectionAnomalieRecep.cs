@@ -19,6 +19,10 @@ public class DetectionAnomalieRecep : MonoBehaviour
     public GameObject signalBoiteVert;
     public GameObject signalBoiteOrangeClignotant;
 
+    public GameObject ampouleOrange;
+    public GameObject ampouleClignotante;
+    public GameObject bulle;
+
     public bool doesDetectDimension;
     public bool doesDetectOrientation;
     public bool doesDetectPoids;
@@ -59,6 +63,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
                 signalBoiteOrange.SetActive(false);
                 signalBoiteOrangeClignotant.SetActive(false);
+
+                ampouleOrange.SetActive(false);
+                ampouleClignotante.SetActive(false);
+                bulle.SetActive(false);
+
                 if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
                 {
                     //Afficher les feedbacks de l'anomalie
@@ -66,6 +75,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
+                    ampouleClignotante.SetActive(true);
+                    bulle.SetActive(true);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
                 {
@@ -74,6 +85,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
+                    ampouleClignotante.SetActive(true);
+                    bulle.SetActive(true);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                 {
@@ -82,6 +95,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 1;
                     signalBoiteOrange.SetActive(true);
+                    ampouleOrange.SetActive(true);
+                    bulle.SetActive(true);
                 }
                 else
                 {
@@ -99,6 +114,10 @@ public class DetectionAnomalieRecep : MonoBehaviour
             ScriptColisRecep currentColis = collision.GetComponent<ScriptColisRecep>();
             signalBoiteOrange.SetActive(false);
             signalBoiteOrangeClignotant.SetActive(false);
+            ampouleOrange.SetActive(false);
+            ampouleClignotante.SetActive(false);
+            bulle.SetActive(false);
+
             colisATraiter = collision.gameObject;
             if (doesDetectOrientation)
             {
@@ -109,6 +128,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
+                    ampouleClignotante.SetActive(true);
+                    bulle.SetActive(true);
                 }
                
             }
@@ -122,6 +143,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
+                    ampouleClignotante.SetActive(true);
+                    bulle.SetActive(true);
                 }
             }
 
@@ -134,6 +157,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     avertissementZoom.SetActive(true);
                     avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 1;
                     signalBoiteOrange.SetActive(true);
+                    ampouleOrange.SetActive(true);
+                    bulle.SetActive(true);
                 }
             }
         }
@@ -144,7 +169,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
         signalBoiteOrange.SetActive(false);
         signalBoiteVert.SetActive(true);
         signalBoiteOrangeClignotant.SetActive(false);
-}
+        ampouleOrange.SetActive(false);
+        ampouleClignotante.SetActive(false);
+        bulle.SetActive(false);
+
+    }
 
     void touchObject() //Fonction permettant de détecter si le joueur touche l'objet
     {
