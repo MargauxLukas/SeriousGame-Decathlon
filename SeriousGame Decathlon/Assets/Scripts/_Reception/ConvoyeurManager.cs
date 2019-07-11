@@ -37,7 +37,7 @@ public class ConvoyeurManager : MonoBehaviour
         {
             if(height <= maxHeight)
             {
-                height = height + 0.002f;
+                height = height + 0.005f;
                 gauge.Up();
             }
         }
@@ -45,7 +45,7 @@ public class ConvoyeurManager : MonoBehaviour
         {
             if (height >= minHeight)
             {
-                height = height - 0.002f;
+                height = height - 0.005f;
                 gauge.Down();
             }
         }

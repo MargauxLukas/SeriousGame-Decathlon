@@ -17,7 +17,7 @@ public class VentouseDeplacement : MonoBehaviour
     {
         startPosition = transform.localPosition;
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.touchCount > 0)
