@@ -984,8 +984,6 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pistolet).enabled = false;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
 
-            gameObjectsManager.GameObjectToToggle(gameObjectsManager.mecaOpenToggle).isOn = false;
-
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
