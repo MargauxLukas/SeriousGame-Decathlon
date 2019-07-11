@@ -6,8 +6,12 @@ public class VentouseDeplacement : MonoBehaviour
 {
     private bool doesTouch;
     public GameObject colisAttached;
-   
-    private Vector2 startPosition;
+
+    private bool haveToWait;
+
+    private Vector3 startPosition;
+
+    public GameObject menuTourner;
 
     private void Start()
     {
@@ -24,26 +28,67 @@ public class VentouseDeplacement : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if (doesTouch)
+            if (menuTourner.activeSelf)
+            {
+                transform.localPosition = startPosition;
+                doesTouch = false;
+                if (colisAttached != null)
+                {
+                    colisAttached.GetComponent<ScriptColisRecep>().doesTouch = false;
+                    colisAttached = null;
+                }
+            }
+
+            if (doesTouch && !haveToWait)
             {
                 transform.position = new Vector2(touchPosition.x, touchPosition.y);
 
                 if (touch.phase == TouchPhase.Ended)
                 {
                     transform.localPosition = startPosition;
+                    colisAttached.GetComponent<ScriptColisRecep>().doesTouch = false;
                     colisAttached = null;
                 }
+            }
+            else
+            {
+                if (colisAttached != null)
+                {
+                    colisAttached.GetComponent<ScriptColisRecep>().doesTouch = false;
+                    colisAttached = null;
+                }
+            }
+        }
+        else if(menuTourner.activeSelf)
+        {
+            doesTouch = false;
+            if (colisAttached != null)
+            {
+                colisAttached.GetComponent<ScriptColisRecep>().doesTouch = false;
+                colisAttached = null;
             }
         }
         else
         {
             doesTouch = false;
+            if(colisAttached != null)
+            {
+                colisAttached.GetComponent<ScriptColisRecep>().doesTouch = false;
+                colisAttached = null;
+            }
         }
+    }
+
+    IEnumerator NowWait()
+    {
+        haveToWait = true;
+        yield return new WaitForSeconds(0.5f);
+        haveToWait = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Colis" && colisAttached == null && collision.GetComponent<ScriptColisRecep>().canBePicked)
+        if (collision.tag == "Colis" && colisAttached == null && collision.GetComponent<ScriptColisRecep>().canBePicked && !collision.GetComponent<ScriptColisRecep>().canMove)
         {
             colisAttached = collision.gameObject;
             colisAttached.GetComponent<ScriptColisRecep>().doesTouch = true;
