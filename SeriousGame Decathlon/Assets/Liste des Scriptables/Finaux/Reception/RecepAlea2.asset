@@ -10,22 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: ColisBaseRecep
+  m_Name: ColisMFAlea11
   m_EditorClassIdentifier: 
-  name: 
-  PCB: 0
-  poids: 0
-  fillPercent: 0
+  name: ColisMFAlea2
+  PCB: 3
+  poids: 6
+  fillPercent: 100
   hasBeenRecount: 0
-  isBadOriented: 0
+  isBadOriented: 1
   estOuvert: 0
   estAbime: 0
   needQualityControl: 0
   aEteVide: 0
-  carton: {fileID: 11400000, guid: debd2d380404d334ea93ccc9f2626925, type: 2}
+  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
   nomWayTicket: 
-  wayTicket: {fileID: 0}
-  listArticles: []
+  wayTicket: {fileID: 11400000, guid: c573498402169404b96bbf88659fb497, type: 2}
+  listArticles:
+  - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
+  - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
+  - {fileID: 11400000, guid: a60ec9b0a04f4c348b32cea203935519, type: 2}
   nbAnomalie: 0
   listAnomalies: []
   provenance: 

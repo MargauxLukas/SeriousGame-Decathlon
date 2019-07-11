@@ -23,6 +23,8 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     private GameObject fiche;
 
+    public CreationDePalette paletteManager;
+
     public void Start()
     {
         initialPos = transform.position;
@@ -86,10 +88,19 @@ public class AffichageAnomalieRecep : MonoBehaviour
     public void ContenerReturn()
     {
         //Seulement si replier a fond
+        if(paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
+        {
+            //Mettre la fin du niveau + bonus si le container était bien défectueux
+        }
+        else
+        {
+            //Mettre un gros malus
+        }
     }
 
     public void ChangeText()
     {
         //Recuperation des anomalies detecté
+        //A récupéré sur le DetectionAnomalie sur le collider FinDuConvoyeur
     }
 }
