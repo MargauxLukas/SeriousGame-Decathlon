@@ -330,17 +330,17 @@ public class ColisScript : MonoBehaviour
                 }
                 break;
             case 3:
-                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) && canTurn)
-                {
-                    OpenTurnMenu();
-                    TellSomething(3);
-                }
-                break;
-            case 0:
                 if ((TutoManager.instance == null || TutoManager.instance.canVider) && canVide)
                 {
                     Vider();
                     TellSomething(5);
+                }
+                break;
+            case 0:
+                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) && canTurn)
+                {
+                    OpenTurnMenu();
+                    TellSomething(3);
                 }
                 break;
         }
