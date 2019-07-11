@@ -23,7 +23,6 @@ public class PosteOnClick : MonoBehaviour
                 {
                     player.GetComponent<Unit>().DeplacementPlayer(gameObject.transform.position);
                     isMoving = true;
-
                 }
                 else
                 {
