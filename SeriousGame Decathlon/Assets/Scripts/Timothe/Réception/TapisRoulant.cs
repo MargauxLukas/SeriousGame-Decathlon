@@ -11,6 +11,9 @@ public class TapisRoulant : MonoBehaviour
 
     public TapisRoulantGeneral tapisGeneral;
 
+
+    public Transform positionTapisZoom;
+
     private bool menuIsOpen;
 
     public GameObject turnMenu;

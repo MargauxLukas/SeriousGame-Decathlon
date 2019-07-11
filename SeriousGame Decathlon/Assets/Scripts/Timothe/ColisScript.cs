@@ -24,9 +24,8 @@ public class ColisScript : MonoBehaviour
     public GameObject tournerMenu           ;
     public GameObject spriteArticleTableUn  ;
     public GameObject spriteArticleTableDeux;
-    //public MenuCirculaireV2 menuCirculaire;
 
-    public int changeDirection = 0;                                 //Appelé que ici, private ?
+    private int changeDirection = 0;                                 //Appelé que ici, private ?
 
     private bool goRight;
     private bool isMoving;
@@ -577,22 +576,6 @@ public class ColisScript : MonoBehaviour
             }
         }
     }
-    /*void Remplir()
-    {
-        articleOnTable = spriteArticleTable.GetComponent<PileArticle>().listArticles;
-        if (articleOnTable.Count > 0)
-        {
-            colisScriptable.Remplir(articleOnTable.Count, articleOnTable);
-            articleOnTable = new List<Article>();
-            if (articleOnTable.Count <= 0)
-            {
-                spriteArticleTable.GetComponent<PileArticle>().listArticles = new List<Article>();
-                spriteArticleTable.SetActive(false);
-            }
-            textArtcileTableRFID.text = "0";
-            textArticleTableNombre.text = "0";
-        }
-    }*/
 
     void Jeter()
     {

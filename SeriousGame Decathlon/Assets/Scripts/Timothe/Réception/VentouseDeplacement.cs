@@ -11,7 +11,7 @@ public class VentouseDeplacement : MonoBehaviour
 
     private void Start()
     {
-        startPosition = transform.position;
+        startPosition = transform.localPosition;
     }
     // Update is called once per frame
     void Update()
@@ -30,7 +30,7 @@ public class VentouseDeplacement : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Ended)
                 {
-                    transform.position = startPosition;
+                    transform.localPosition = startPosition;
                     colisAttached = null;
                 }
             }

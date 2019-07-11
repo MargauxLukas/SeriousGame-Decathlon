@@ -81,8 +81,7 @@ public class ScriptColisRecep : MonoBehaviour
                     }
                     else
                     {
-                        //Ouvrir le menu tourner
-                        transform.position = new Vector2(transform.position.x, 3.4f);
+                        transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
                         tapisScript.AddColis(this.gameObject);
                     }
                 }
