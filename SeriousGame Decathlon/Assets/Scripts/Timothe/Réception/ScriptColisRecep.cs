@@ -135,7 +135,7 @@ public class ScriptColisRecep : MonoBehaviour
     {
         if (!isOneSecondScreen)
         {
-            if (face == "Up" && (rotation == 90 || rotation == 270))
+            if (face == "Up" && (rotation == 0 || rotation == 180))
             {
                 colisScriptable.isBadOriented = false;
             }

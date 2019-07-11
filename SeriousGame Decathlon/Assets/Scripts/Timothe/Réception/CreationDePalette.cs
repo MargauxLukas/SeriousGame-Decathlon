@@ -137,6 +137,11 @@ public class CreationDePalette : MonoBehaviour
         }
     }
 
+    public void UpdateProgression(int nb)
+    {
+        barreProgression.fillAmount = ((float)nbColisTotal - (float)nb) / (float)nbColisTotal;
+    }
+
     private void Update()
     {
         List<ScriptColisRecep> colisToRemove = new List<ScriptColisRecep>();
@@ -156,7 +161,6 @@ public class CreationDePalette : MonoBehaviour
                 colisActuels.Remove(colis);
             }
 
-            barreProgression.fillAmount = ((float)nbColisTotal - (float)nbColisTraite) / (float)nbColisTotal;
         }
         else
         {

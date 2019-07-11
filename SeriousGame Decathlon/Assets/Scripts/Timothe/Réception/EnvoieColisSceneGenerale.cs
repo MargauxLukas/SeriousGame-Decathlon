@@ -12,7 +12,6 @@ public class EnvoieColisSceneGenerale : MonoBehaviour
         if(collision.tag == "Colis")
         {
             collision.transform.position = newPosition.position;
-            collision.transform.Rotate(new Vector3(0, 0, 90));
             collision.GetComponent<ScriptColisRecep>().isOneSecondScreen = true;
             tapis.colisSurLeTapis.Remove(collision.gameObject);
         }
