@@ -50,6 +50,7 @@ public class CreationDePalette : MonoBehaviour
     private int nbPalettesMax = 100;
 
     public Image barreProgression;
+    public Image feedbackPileEtage;
     public int nbColisTraite;
     private int nbCurrentColis;
 
@@ -94,6 +95,7 @@ public class CreationDePalette : MonoBehaviour
                         }
                         else
                         {
+
                             nbCurrentColis++;
                             Vector2 newPos = startPos + new Vector2(l * coefPosColonne, i * coefPosPalette + j * coefPosRangee);
                             palettes[i].rangees[j].collones[k].colis.Add(Instantiate(colisObj, newPos, Quaternion.identity));
@@ -154,6 +156,7 @@ public class CreationDePalette : MonoBehaviour
             palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
             palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
+            feedbackPileEtage.fillAmount = ((float)palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().currentHauteur + 1f) / 5f;
         }
     }
 
@@ -180,19 +183,19 @@ public class CreationDePalette : MonoBehaviour
         else
         {
             colisActuels = new List<ScriptColisRecep>();
-            Debug.Log(i + " " + j + " " + k + " " + l);
             k--;
-            if (k <= 0)
+            if (k < 0)
             {
-                if (j == 0)
+                j--;
+                if (j < 0)
                 {
-                    if (i == 0)
+                    i--;
+                    if (i < 0)
                     {
                         return;
                     }
                     else
                     {
-                        i--;
                         j = nbRangeeMax - 1;
                         k = nbColonnesMax - 1;
                         l = nbColisParColonneMax - 1;
@@ -200,7 +203,6 @@ public class CreationDePalette : MonoBehaviour
                 }
                 else
                 {
-                    j--;
                     k = nbColonnesMax - 1;
                     l = nbColisParColonneMax - 1;
                 }
@@ -212,8 +214,10 @@ public class CreationDePalette : MonoBehaviour
             }
             for (int m = 0; m < palettes[i].rangees[j].collones[k].colis.Count; m++)
             {
+                Debug.Log(i + " " + j + " " + k + " " + l);
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
                 colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
+                feedbackPileEtage.fillAmount = ((float)palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().currentHauteur+1f) / 5f;
                 Color theColor = new Color();
                 theColor.b = 260;
                 theColor.g = 260;

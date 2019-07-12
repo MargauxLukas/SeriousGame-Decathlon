@@ -26,10 +26,12 @@ MonoBehaviour:
   - ColisMFAlea9
   nbColisParNomColis: 010000000100000001000000010000000100000001000000010000000100000001000000
   name: Niveau de Base
-  nbLevel: 1001
+  nbLevel: 1
   colisDuNiveauNomReception:
   - ColisBaseRecep
   - RecepGrosCarton
   - RecepMalOriente
+  - RecepTropLourd
+  - RecepAbimePetit
   chanceReceptionColisHaveAnomalie: 5
   nombreColisReception: 27

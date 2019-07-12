@@ -88,7 +88,7 @@ public class VentouseDeplacement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Colis" && colisAttached == null && collision.GetComponent<ScriptColisRecep>().canBePicked && !collision.GetComponent<ScriptColisRecep>().canMove)
+        if (doesTouch && collision.tag == "Colis" && colisAttached == null && collision.GetComponent<ScriptColisRecep>().canBePicked && !collision.GetComponent<ScriptColisRecep>().canMove)
         {
             colisAttached = collision.gameObject;
             colisAttached.GetComponent<ScriptColisRecep>().doesTouch = true;

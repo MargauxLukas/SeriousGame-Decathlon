@@ -13,8 +13,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
     public GameObject gestionAnomalie;
 
-    public GameObject avertissementZoom;
-
     public GameObject signalBoiteOrange;
     public GameObject signalBoiteVert;
     public GameObject signalBoiteOrangeClignotant;
@@ -73,8 +71,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
-                    avertissementZoom.SetActive(true);
-                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante.SetActive(true);
                     bulle.SetActive(true);
@@ -83,8 +79,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
-                    avertissementZoom.SetActive(true);
-                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante.SetActive(true);
                     bulle.SetActive(true);
@@ -93,8 +87,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
-                    avertissementZoom.SetActive(true);
-                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 1;
                     signalBoiteOrange.SetActive(true);
                     ampouleOrange.SetActive(true);
                     bulle.SetActive(true);
@@ -124,10 +116,9 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
+                    Debug.Log("1");
                     affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
-                    avertissementZoom.SetActive(true);
-                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante.SetActive(true);
                     bulle.SetActive(true);
@@ -138,10 +129,9 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.carton.codeRef == "CBGrand")
                 {
+                    Debug.Log("2");
                     affichageAnomalieRecep.ChangeText("dimension");
                     tapisGeneral.doesStop = true;
-                    avertissementZoom.SetActive(true);
-                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 0;
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante.SetActive(true);
                     bulle.SetActive(true);
@@ -152,10 +142,9 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.poids >= 35)
                 {
+                    Debug.Log("3");
                     affichageAnomalieRecep.ChangeText("heavy");
                     tapisGeneral.doesStop = true;
-                    avertissementZoom.SetActive(true);
-                    avertissementZoom.GetComponent<affichageAmouleRecep>().alertLevel = 1;
                     signalBoiteOrange.SetActive(true);
                     ampouleOrange.SetActive(true);
                     bulle.SetActive(true);
