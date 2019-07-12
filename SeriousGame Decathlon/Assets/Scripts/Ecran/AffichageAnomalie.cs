@@ -139,7 +139,6 @@ public class AffichageAnomalie : MonoBehaviour
 
             if (toggleOnNb == n)
             {
-            if (TutoManager.instance != null) {TutoManager.instance.Manager(32);}
                 ongletManager.CanReturnToMeca();
             }
             else

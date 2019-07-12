@@ -23,6 +23,7 @@ public class FillingRateTab : MonoBehaviour
         {
             ancientButton.interactable = true;
         }
+        Debug.Log(EventSystem.current.currentSelectedGameObject != null);
         ancientButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         ancientButton.interactable = false;
         buttonName = EventSystem.current.currentSelectedGameObject.name;

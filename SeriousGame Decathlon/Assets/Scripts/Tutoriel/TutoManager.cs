@@ -540,6 +540,10 @@ public class TutoManager : MonoBehaviour
                         Phase54();
                         break;
 
+                    case (83):
+                        Phase83();
+                        break;
+
                     case (113):
                         Phase113();
                         break;
@@ -586,6 +590,10 @@ public class TutoManager : MonoBehaviour
 
                     case (84):
                         Phase84();
+                        break;
+
+                    case (114):
+                        Phase114();
                         break;
                 }
                 break;
@@ -692,13 +700,7 @@ public class TutoManager : MonoBehaviour
             case (32):
                 switch (phaseNum)
                 {
-                    case (83):
-                        Phase83();
-                        break;
-
-                    case (114):
-                        Phase114();
-                        break;
+                   
                 }
                 break;
 
@@ -1981,8 +1983,6 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.fill50Button).interactable = false;
-
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(9.84f, -0.21f);
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.37f, 0.41f);
 
@@ -2231,6 +2231,7 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
+            Debug.Log("Je peux activer le script de l'écran maintenant");
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
@@ -2344,7 +2345,7 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = colisPosition + new Vector3(0.5f, 0.2f, 30f);
         fingerPosition = colisPosition + new Vector3(0.5f, 0.2f, 30f);
         targetPosition = new Vector3(12.74f, -2.05f, 30f);
-        fingerSpeed = 4f;
+        fingerSpeed = 8f;
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = true;
         gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = true;
@@ -2374,8 +2375,8 @@ public class TutoManager : MonoBehaviour
         {
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.blackScreen).transform.localPosition = new Vector3(-20.1f, 0.23f, 30f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(-15.58f, 3.03f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.4f, 1.73f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(-15.08f, 3.29f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.67f, 1.97f);
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
 
             phaseNum++;
