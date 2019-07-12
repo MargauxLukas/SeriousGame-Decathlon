@@ -116,7 +116,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
-                    Debug.Log("1");
                     affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
                     signalBoiteOrangeClignotant.SetActive(true);
@@ -129,7 +128,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.carton.codeRef == "CBGrand")
                 {
-                    Debug.Log("2");
                     affichageAnomalieRecep.ChangeText("dimension");
                     tapisGeneral.doesStop = true;
                     signalBoiteOrangeClignotant.SetActive(true);
@@ -142,7 +140,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.poids >= 35)
                 {
-                    Debug.Log("3");
                     affichageAnomalieRecep.ChangeText("heavy");
                     tapisGeneral.doesStop = true;
                     signalBoiteOrange.SetActive(true);
