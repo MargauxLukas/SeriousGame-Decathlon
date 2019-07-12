@@ -5,6 +5,7 @@ using UnityEngine;
 public class TapisRoulant : MonoBehaviour
 {
     public List<GameObject> colisSurLeTapis;
+    public List<GameObject> colisEnvoye;
     public float speed = 0.3f;
     public RotationScript rotationScr;
     public GameObject lastColis;
@@ -46,12 +47,16 @@ public class TapisRoulant : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if (menuIsOpen && Vector2.Distance(touchPosition, turnMenuPosition) > 5f)
+            if (menuIsOpen)
             {
-                turnMenu.SetActive(false);
-                menuIsOpen = false;
-                lastColis.GetComponent<ScriptColisRecep>().canMove = true;
-                lastColis = null;
+                turnMenuPosition = turnMenu.transform.position;
+                if (Vector2.Distance(touchPosition, turnMenuPosition) > 5f)
+                {
+                    turnMenu.SetActive(false);
+                    menuIsOpen = false;
+                    lastColis.GetComponent<ScriptColisRecep>().canMove = true;
+                    lastColis = null;
+                }
             }
         }
     }

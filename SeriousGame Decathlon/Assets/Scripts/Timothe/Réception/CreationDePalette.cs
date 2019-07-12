@@ -94,6 +94,7 @@ public class CreationDePalette : MonoBehaviour
                         }
                         else
                         {
+
                             nbCurrentColis++;
                             Vector2 newPos = startPos + new Vector2(l * coefPosColonne, i * coefPosPalette + j * coefPosRangee);
                             palettes[i].rangees[j].collones[k].colis.Add(Instantiate(colisObj, newPos, Quaternion.identity));
@@ -180,19 +181,19 @@ public class CreationDePalette : MonoBehaviour
         else
         {
             colisActuels = new List<ScriptColisRecep>();
-            Debug.Log(i + " " + j + " " + k + " " + l);
             k--;
-            if (k <= 0)
+            if (k < 0)
             {
-                if (j == 0)
+                j--;
+                if (j < 0)
                 {
-                    if (i == 0)
+                    i--;
+                    if (i < 0)
                     {
                         return;
                     }
                     else
                     {
-                        i--;
                         j = nbRangeeMax - 1;
                         k = nbColonnesMax - 1;
                         l = nbColisParColonneMax - 1;
@@ -200,7 +201,6 @@ public class CreationDePalette : MonoBehaviour
                 }
                 else
                 {
-                    j--;
                     k = nbColonnesMax - 1;
                     l = nbColisParColonneMax - 1;
                 }
@@ -212,6 +212,7 @@ public class CreationDePalette : MonoBehaviour
             }
             for (int m = 0; m < palettes[i].rangees[j].collones[k].colis.Count; m++)
             {
+                Debug.Log(i + " " + j + " " + k + " " + l);
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
                 colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
                 Color theColor = new Color();

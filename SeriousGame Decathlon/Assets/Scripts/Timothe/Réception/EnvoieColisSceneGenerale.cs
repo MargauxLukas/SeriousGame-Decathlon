@@ -14,6 +14,7 @@ public class EnvoieColisSceneGenerale : MonoBehaviour
             collision.transform.position = newPosition.position;
             collision.GetComponent<ScriptColisRecep>().isOneSecondScreen = true;
             tapis.colisSurLeTapis.Remove(collision.gameObject);
+            tapis.colisEnvoye.Add(collision.gameObject);
         }
     }
 }

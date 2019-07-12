@@ -22,7 +22,7 @@ public class ScriptColisRecep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(canBePicked)
+        if (canBePicked)
         {
             Color theColor = new Color();
             theColor.b = 260;
@@ -59,16 +59,25 @@ public class ScriptColisRecep : MonoBehaviour
             {
                 canMove = true;
             }
-            if (!canMove)
+            if (!canMove && (tapisScript == null || tapisScript.colisSurLeTapis.Count>0 || !tapisScript.colisSurLeTapis.Contains(gameObject)))
             {
                 touchObject();
+                if (tapisScript != null && tapisScript.turnMenu.activeSelf)
+                {
+                    doesTouch = false;
+                }
             }
             else
             {
                 doesTouch = false;
             }
 
-            if (doesTouch && canBePicked)
+            if (isOnTapis && !doesTouch && !tapisScript.colisSurLeTapis.Contains(gameObject) && !tapisScript.colisEnvoye.Contains(gameObject))
+            {
+                transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
+                tapisScript.AddColis(this.gameObject);
+            }
+            else if (doesTouch && canBePicked)
             {
                 transform.position = new Vector2(touchPosition.x, touchPosition.y);
 
@@ -86,6 +95,7 @@ public class ScriptColisRecep : MonoBehaviour
                     }
                 }
             }
+
             
         }
         else
@@ -133,27 +143,14 @@ public class ScriptColisRecep : MonoBehaviour
 
     public void Tourner(string face, float rotation)
     {
-        if (!isOneSecondScreen)
+        if (face == "Up" && ((rotation >= 85 && rotation <= 95) || (rotation >= 265 && rotation <= 275)))
         {
-            if (face == "Up" && (rotation == 0 || rotation == 180))
-            {
-                colisScriptable.isBadOriented = false;
-            }
-            else
-            {
-                colisScriptable.isBadOriented = true;
-            }
+            colisScriptable.isBadOriented = false;
+            Debug.Log("Test");
         }
         else
         {
-            if (face == "Up" && (rotation == 0 || rotation == 180))
-            {
-                colisScriptable.isBadOriented = false;
-            }
-            else
-            {
-                colisScriptable.isBadOriented = true;
-            }
+            colisScriptable.isBadOriented = true;
         }
     }
 }
