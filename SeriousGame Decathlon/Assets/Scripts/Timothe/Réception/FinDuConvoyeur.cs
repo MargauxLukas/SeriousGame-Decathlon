@@ -19,18 +19,6 @@ public class FinDuConvoyeur : MonoBehaviour
     public GameObject prefabText;
     private List<ZoneAffichageAnomalieFiche> zoneAffichage;
 
-    public List<Colis> colisTests;
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            int rngNb = Random.Range(0, colisTests.Count);
-            detect.CheckColis(colisTests[rngNb]);
-            UpdateAffichage(colisTests[rngNb]);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Colis")

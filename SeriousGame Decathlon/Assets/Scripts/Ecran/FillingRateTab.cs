@@ -13,7 +13,7 @@ public class FillingRateTab : MonoBehaviour
 
     private string buttonName;
     [HideInInspector]
-    public Button ancientButton;
+    public Button ancientButton = null;
     public RecountTab tabRecount;
 
     public void setFillingRate()
@@ -25,8 +25,7 @@ public class FillingRateTab : MonoBehaviour
         }
         ancientButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         ancientButton.interactable = false;
-        buttonName = EventSystem.current.currentSelectedGameObject.name;
-        fillingRate = int.Parse(buttonName);
+        fillingRate = int.Parse(ancientButton.name);
         if(fillingRate != tabRecount.colis.GetComponent<ColisScript>().colisScriptable.fillPercent)
         {
             Scoring.instance.MidPenalty();
