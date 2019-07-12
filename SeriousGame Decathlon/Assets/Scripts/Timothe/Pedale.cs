@@ -13,7 +13,6 @@ public class Pedale : MonoBehaviour
 
         if (TutoManager.instance != null)
         {
-            Debug.Log("Colis 2 est arrivé");
             TutoManager.instance.Manager(1);
         }
     }

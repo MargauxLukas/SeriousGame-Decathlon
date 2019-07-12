@@ -164,7 +164,7 @@ public class OngletManager : MonoBehaviour
             ColorBlock cb = gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).colors;
             cb.disabledColor = new Color32(255, 255, 255, 255);
         }
-        else
+        else if (TutoManager.instance == null)
         {
             returnToMeca.interactable = true;
             allValidate = true;

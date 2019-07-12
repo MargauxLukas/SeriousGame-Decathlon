@@ -14496,7 +14496,7 @@ MonoBehaviour:
   recount: {fileID: 8267345855925378770}
   repack: {fileID: 8267345855595034165}
   createHU: {fileID: 1385595808693286043}
-  gameObjectsManager: {fileID: 0}
+  gameObjectsManager: {fileID: 1709204068}
   onglet1: {fileID: 1385595808006685471}
   onglet2: {fileID: 1385595808660566781}
   onglet3: {fileID: 1385595806901622200}
