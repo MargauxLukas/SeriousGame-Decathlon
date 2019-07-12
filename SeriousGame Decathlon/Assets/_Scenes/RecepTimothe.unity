@@ -8932,63 +8932,6 @@ MonoBehaviour:
   cartonObj: {fileID: 0}
   cartonsSprites: []
   carton: {fileID: 0}
---- !u!1 &1367715180
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1367715181}
-  - component: {fileID: 1367715182}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1367715181
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367715180}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1644104636}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1367715182
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367715180}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.045066357, y: -0.020507216}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.7125454, y: 5.375557}
-  m_EdgeRadius: 0
 --- !u!1001 &1376013050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10455,7 +10398,7 @@ GameObject:
   - component: {fileID: 1644104635}
   - component: {fileID: 1644104637}
   - component: {fileID: 1644104638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DtectionAnomaliesOrientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10475,7 +10418,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03359151, y: 0.94614047}
+  m_Offset: {x: 0.03359151, y: -0.008629203}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10486,7 +10429,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7667298, y: 3.3431668}
+  m_Size: {x: 2.7667298, y: 5.2527065}
   m_EdgeRadius: 0
 --- !u!4 &1644104636
 Transform:
@@ -10498,8 +10441,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 8.89, y: 1.83, z: 0}
   m_LocalScale: {x: 1.3097672, y: 1.3097672, z: 1.3097672}
-  m_Children:
-  - {fileID: 1367715181}
+  m_Children: []
   m_Father: {fileID: 1896894228}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -10518,8 +10460,6 @@ MonoBehaviour:
   cameraGeneral: {fileID: 1929283566}
   colisATraiter: {fileID: 0}
   colisAffiche: {fileID: 0}
-  tapisGeneral: {fileID: 1923138424}
-  gestionAnomalie: {fileID: 1817322105}
   signalBoiteOrange: {fileID: 1020508332}
   signalBoiteVert: {fileID: 49952108}
   signalBoiteOrangeClignotant: {fileID: 1864332691}
@@ -10531,6 +10471,8 @@ MonoBehaviour:
   doesDetectPoids: 1
   colisAnomalie: {fileID: 4239822756992051926}
   affichageAnomalieRecep: {fileID: 652738257}
+  gestionAnomalie: {fileID: 1817322105}
+  tapisGeneral: {fileID: 1923138424}
 --- !u!212 &1644104638
 SpriteRenderer:
   m_ObjectHideFlags: 0
