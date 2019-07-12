@@ -8,9 +8,9 @@ public class ConvoyeurManager : MonoBehaviour
     public GameObject player;
     public GaugeConvoyeur gauge;
 
-    public  float height    = 1f;        //Hauteur actuelle
-    private float minHeight = 1f;        //Hauteur minimum
-    private float maxHeight = 3f;        //Hauteur maximum
+    public  float height    = 1f;          //Hauteur actuelle
+    private float minHeight = 1f;          //Hauteur minimum
+    private float maxHeight = 2.6f;        //Hauteur maximum
 
     public float maxReplier;
     public float maxDeplier;
@@ -35,17 +35,17 @@ public class ConvoyeurManager : MonoBehaviour
         Debug.Log(direction);
         if(direction.Equals("up"))
         {
-            if(height <= maxHeight)
+            if(height <= maxHeight)                             //Peut monter tant qu'il a pas atteint le maxHeight
             {
-                height = height + 0.005f;
+                height = height + 0.004f;
                 gauge.Up();
             }
         }
         else
         {
-            if (height >= minHeight)
+            if (height >= minHeight)                            //Peut descendre tant qu'il a pas atteint le minHeight
             {
-                height = height - 0.005f;
+                height = height - 0.004f;
                 gauge.Down();
             }
         }
@@ -118,7 +118,7 @@ public class ConvoyeurManager : MonoBehaviour
             gauge.SetPosition(2);
             height = 2f;
         } 
-        if (height >= 2.25f && height < 2.85f)    //2.5m
+        if (height >= 2.25f)    //2.5m
         {
             gauge.SetPosition(3);
             height = 2.5f;

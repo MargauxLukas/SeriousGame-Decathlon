@@ -17,12 +17,12 @@ public class GaugeConvoyeur : MonoBehaviour
 
     public void Up()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.0050f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.0051f, transform.position.z);
     }
 
     public void Down()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.0050f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 0.0052f, transform.position.z);
     }
 
     public void SetPosition(int floor)
@@ -31,19 +31,19 @@ public class GaugeConvoyeur : MonoBehaviour
         {
             case 0:
                 height = 1f;
-                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y, initialPos.z);
+                transform.position = new Vector3(initialPos.x, initialPos.y, initialPos.z);
                 break;
             case 1:
                 height = 1.50f;
-                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 0.70f, initialPos.z);
+                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 0.65f, initialPos.z);
                 break;
             case 2:
                 height = 2f;
-                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 1.40f, initialPos.z);
+                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 1.35f, initialPos.z);
                 break;
             case 3:
                 height = 2.50f;
-                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 2.1f, initialPos.z);
+                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y + 2.05f, initialPos.z);
                 break;
             /*case 4:
                 height = 3f;
