@@ -77,8 +77,7 @@ public class ColisManager : MonoBehaviour
             else
             {
                 Debug.Log("test");
-                colisTemporaire = listeColisTuto[0];
-             
+                colisTemporaire = listeColisTuto[0];         
             }
 
             ColisScript scriptColis = colisTemporaire.GetComponent<ColisScript>();
@@ -161,6 +160,7 @@ public class ColisManager : MonoBehaviour
 
     public void RenvoieColis(GameObject colisRenvoye)
     {
+
         colisRenvoye.GetComponent<ColisScript>().colisScriptable.needQualityControl = false;
         anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
@@ -200,6 +200,11 @@ public class ColisManager : MonoBehaviour
 
         float div = (float)listeColisTraiter.Count / (float)colisTotal;
         //nbColisRestant.fillAmount = div;
+
+        if(TutoManager.instance != null)
+        {
+            listeColisTuto.RemoveAt(0);
+        }
 
     }
 }
