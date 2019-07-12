@@ -10,6 +10,11 @@ public class Pedale : MonoBehaviour
     {
         colisManag.AppelColis();
         //Debug.Log(TutoManager.instance != null);
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(1);}
+
+        if (TutoManager.instance != null)
+        {
+            Debug.Log("Colis 2 est arrivé");
+            TutoManager.instance.Manager(1);
+        }
     }
 }
