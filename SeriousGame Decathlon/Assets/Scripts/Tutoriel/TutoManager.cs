@@ -1060,8 +1060,8 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.24f, -4.23f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(1.2f, 0.48f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.35f, -4.23f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(1.29f, 0.48f);
 
             StartCoroutine(NewPhase(2f));
         }
@@ -2224,6 +2224,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
             gameObjectsManager.GameObjectToToggle(gameObjectsManager.toggleEndTask3).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2231,7 +2232,6 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Debug.Log("Je peux activer le script de l'écran maintenant");
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
             phaseNum++;
