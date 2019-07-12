@@ -3494,7 +3494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542907144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.4, y: 2.29, z: 0}
+  m_LocalPosition: {x: 19.14, y: 2.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1896894228}
@@ -4932,6 +4932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ledVerteAnom
+      objectReference: {fileID: 0}
+    - target: {fileID: 372297045815055691, guid: dfeb26ab7795639428d55adddadc1e8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 372297045815055701, guid: dfeb26ab7795639428d55adddadc1e8c,
         type: 3}
@@ -7762,6 +7767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ledOrangeClignoAnom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902310581339559344, guid: 479eb974bc678c14fae3a48cdab8920c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6902310581339559346, guid: 479eb974bc678c14fae3a48cdab8920c,
         type: 3}
@@ -12628,7 +12638,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.29331112}
+  m_Offset: {x: 0.18547165, y: 0.29331112}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12639,7 +12649,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.25, y: 1.4957752}
+  m_Size: {x: 2.6209433, y: 1.4957752}
   m_EdgeRadius: 0
 --- !u!1 &1929283563
 GameObject:
@@ -13560,6 +13570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ledVerteAnomHU
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965294093193800768, guid: b9b9566f50206d74aac8b203e898a0cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4965294093193800769, guid: b9b9566f50206d74aac8b203e898a0cd,
         type: 3}
