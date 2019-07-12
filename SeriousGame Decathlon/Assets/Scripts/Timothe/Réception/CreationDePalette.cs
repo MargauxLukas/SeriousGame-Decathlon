@@ -157,11 +157,6 @@ public class CreationDePalette : MonoBehaviour
         }
     }
 
-    public void UpdateProgression(int nb)
-    {
-        barreProgression.fillAmount = ((float)nbColisTotal - (float)nb) / (float)nbColisTotal;
-    }
-
     private void Update()
     {
         List<ScriptColisRecep> colisToRemove = new List<ScriptColisRecep>();
