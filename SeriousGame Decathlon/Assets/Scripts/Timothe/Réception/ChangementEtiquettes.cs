@@ -53,7 +53,7 @@ public class ChangementEtiquettes : MonoBehaviour
                 ledOrangeClignotante.SetActive(false);
                 ampouleOrange.SetActive(false);
                 ampouleClignotante.SetActive(false);
-                bulle.SetActive(true);
+                bulle.SetActive(false);
 
             }
             else if(nbEtiquettes <= 0)
@@ -72,7 +72,7 @@ public class ChangementEtiquettes : MonoBehaviour
                 ledOrangeClignotante.SetActive(false);
                 ampouleOrange.SetActive(true);
                 ampouleClignotante.SetActive(false);
-                bulle.SetActive(false);
+                bulle.SetActive(true);
             }
         }
     }
