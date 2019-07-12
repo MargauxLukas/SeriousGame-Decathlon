@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
   m_Name: RecepAlea1
   m_EditorClassIdentifier: 
-  name: ColisMFAlea1
+  name: RecepAlea1
   PCB: 6
   poids: 12
   fillPercent: 100
@@ -22,7 +22,7 @@ MonoBehaviour:
   estAbime: 0
   needQualityControl: 1
   aEteVide: 0
-  carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  carton: {fileID: 11400000, guid: 4c0a7ff2afa1c714e970aba6b62989bf, type: 2}
   nomWayTicket: 
   wayTicket: {fileID: 11400000, guid: 92eea7467c799044b9259d4d40bfa1f1, type: 2}
   listArticles:

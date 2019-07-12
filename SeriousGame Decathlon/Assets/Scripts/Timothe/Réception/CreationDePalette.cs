@@ -65,6 +65,13 @@ public class CreationDePalette : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            colisPossibles = ChargementListeColis.instance.colisProcessReception;
+            chanceHavingAnomaliesMF = ChargementListeColis.instance.chanceAnomalieRecep;
+            nbColisTotal = ChargementListeColis.instance.nombreColisRecep;
+        }
+
         if(chanceHavingAnomaliesMF>100)
         {
             chanceHavingAnomaliesMF = 100;

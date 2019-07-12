@@ -34,11 +34,13 @@ public class LevelEditor : MonoBehaviour
     public List<Colis> colisDejaCree;
     public InputField inputFieldColisMF;
     public InputField inputFieldLevel;
+    public InputField inputFieldNombreColisRecep;
 
     //Les Canvas
     [Header("Canvas à Activer/Désactiver")]
     public GameObject creationNiveau;
     public GameObject ongletMultifonction;
+    public GameObject ongletReception;
     public GameObject ongletAddColis;
     public List<Button> boutonAnomalies;
 
@@ -100,6 +102,46 @@ public class LevelEditor : MonoBehaviour
         }
 
         SaveLoadSystem.instance.SaveLevel(newLevel, colisNewLevel);
+    }
+
+    public void OpenMenuRecep()
+    {
+        creationNiveau.SetActive(false);
+        ongletReception.SetActive(true);
+        newLevel.doesNeedRecep = true;
+    }
+
+    public void CloseMenuRecep()
+    {
+        ongletReception.SetActive(false);
+        creationNiveau.SetActive(true);
+    }
+
+    public void IsContainerDefaillant()
+    {
+        newLevel.chanceReceptionColisHaveAnomalie += 100;
+        if(newLevel.chanceReceptionColisHaveAnomalie > 100)
+        {
+            newLevel.chanceReceptionColisHaveAnomalie = 0;
+        }
+    }
+
+    public void ValidateNombreColis()
+    {
+        newLevel.nombreColisReception = int.Parse(inputFieldNombreColisRecep.text);
+    }
+
+    public void ChooseColisForReception(Colis colisToAdd)
+    {
+        if(newLevel.colisDuNiveauNomReception == null)
+        {
+            newLevel.colisDuNiveauNomReception = new List<string>();
+        }
+
+        if(!newLevel.colisDuNiveauNomReception.Contains(colisToAdd.name))
+        {
+            newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
+        }
     }
 
     #region MenuMF
@@ -185,6 +227,7 @@ public class LevelEditor : MonoBehaviour
         {
             bouton.interactable = true;
         }
+        newLevel.doesNeedMF = true;
     }
 
     public void CloseMenuMF()
