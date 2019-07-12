@@ -19,8 +19,6 @@ public class RotationScript : MonoBehaviour
         actualFace = newFace;
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         lastTopViewFaceIsWrong = false;
