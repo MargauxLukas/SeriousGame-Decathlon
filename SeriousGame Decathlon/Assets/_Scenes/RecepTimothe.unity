@@ -13728,7 +13728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colisScriptable: {fileID: 11400000, guid: 879ad7c65ca876642805f3c6d089598f, type: 2}
   colisTapis: {fileID: 0}
-  cameraGeneral: {fileID: 0}
+  cameraGeneral: {fileID: 1929283566}
   spriteCartons: []
   tournerMenu: {fileID: 2064901741}
   changeDirection: 0
