@@ -50,6 +50,7 @@ public class CreationDePalette : MonoBehaviour
     private int nbPalettesMax = 100;
 
     public Image barreProgression;
+    public Image feedbackPileEtage;
     public int nbColisTraite;
     private int nbCurrentColis;
 
@@ -155,6 +156,7 @@ public class CreationDePalette : MonoBehaviour
             palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
             palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
+            feedbackPileEtage.fillAmount = ((float)palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().currentHauteur + 1f) / 5f;
         }
     }
 
@@ -215,6 +217,7 @@ public class CreationDePalette : MonoBehaviour
                 Debug.Log(i + " " + j + " " + k + " " + l);
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
                 colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
+                feedbackPileEtage.fillAmount = ((float)palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().currentHauteur+1f) / 5f;
                 Color theColor = new Color();
                 theColor.b = 260;
                 theColor.g = 260;
