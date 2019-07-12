@@ -1590,6 +1590,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
         type: 3}
+      propertyPath: allColisToSave.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allLevelToSave.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
       propertyPath: loadColisText
       value: 
       objectReference: {fileID: 981147896}
@@ -1662,6 +1672,42 @@ PrefabInstance:
       propertyPath: colisToSaveLevel.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: d7b6f8e8a6af75f4e8df8503f6431614,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allColisToSave.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allColisToSave.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 47bad980ec8d7aa468a4e75fb7f55fda,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allColisToSave.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c396131450bf62a46a775cce3e6e2a7c,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allColisToSave.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allColisToSave.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: e811fa1ad51285c43a058e2317b57132,
+        type: 2}
+    - target: {fileID: 7338592626244155788, guid: efedb9db2de68094ba5f2cdc3e2b9505,
+        type: 3}
+      propertyPath: allLevelToSave.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ddf9ab11e9e4c174bb6ea5f4b685ecd0,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efedb9db2de68094ba5f2cdc3e2b9505, type: 3}
