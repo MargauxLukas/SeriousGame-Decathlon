@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f528fdbfbf39fd47a2934d5b486250d, type: 3}
+  m_Name: CBRecepGros
+  m_EditorClassIdentifier: 
+  longueur: 0
+  largeur: 0
+  hauteur: 0
+  codeRef: CBGrand
+  cartonName: 
+  spriteCartonsListe:
+  - {fileID: 21300000, guid: 83864dbdf8fc76f47ae4984cd75ccf59, type: 3}
+  - {fileID: 21300000, guid: 19f068a1f9fa8c64184fd7ecd66c0069, type: 3}
+  - {fileID: 21300000, guid: 3c84336118fdc2b489980a557be20a5e, type: 3}
+  - {fileID: 21300000, guid: f3b7d1f8c06100549926dc5fc700d75b, type: 3}
+  - {fileID: 21300000, guid: e7ce547cd64abd6429a7ee9b6f4087c0, type: 3}
+  - {fileID: 21300000, guid: 0367c34624b879d4cbb15684bcd47b69, type: 3}
+  cartonOuvert: {fileID: 21300000, guid: 0367c34624b879d4cbb15684bcd47b69, type: 3}

@@ -48,6 +48,7 @@ public class Scoring : MonoBehaviour
         if(ChargementListeColis.instance != null)
         {
             playerScriptable = ChargementListeColis.instance.currentPlayerScriptable;
+            score = playerScriptable.score;
         }
     }
 
@@ -78,6 +79,8 @@ public class Scoring : MonoBehaviour
             }
         }
     }
+
+    #region Multifonction
 
     //MALUS
     // -15
@@ -281,4 +284,6 @@ public class Scoring : MonoBehaviour
     {
         multiplicator = 1 + ((solveAnomalieCombo * 2 + solveAnomalieComboWithoutMalus * 4 + sendColisCombo * 5 + sendColisComboWithoutMalus * 10 + noHelp * 2)/ 100);
     }
+
+    #endregion
 }

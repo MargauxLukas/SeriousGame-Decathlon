@@ -5,8 +5,8 @@ using TMPro;
 
 public class AffichageAnomalieRecep : MonoBehaviour
 {
-    public Vector2 initialPos;
-    public Vector2 targetPos;
+    public Vector3 initialPos;
+    public Vector3 targetPos;
 
     bool isOpen = false;
     bool isOpening = false;
@@ -21,16 +21,21 @@ public class AffichageAnomalieRecep : MonoBehaviour
     public TextMeshProUGUI text2;
     public TextMeshProUGUI text3;
 
+    public TextMeshProUGUI textAnomalieAmpoule;
+
     private GameObject fiche;
+
+    public CreationDePalette paletteManager;
 
     public void Start()
     {
         initialPos = transform.position;
-        targetPos = new Vector2(initialPos.x ,1.38f);
+        targetPos = new Vector3(initialPos.x ,1.38f, initialPos.z);
 
-        text1.text = "";
-        text2.text = "";
-        text3.text = "";
+        text1.text               = "";
+        text2.text               = "";
+        text3.text               = "";
+        textAnomalieAmpoule.text = "";
     }
 
     private void Update()
@@ -63,9 +68,9 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     private void Open()
     {
-        transform.position = Vector2.MoveTowards(transform.position, targetPos, 1f);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, 1f);
 
-        if (Vector2.Distance(transform.position, targetPos) <= 0.1f)
+        if (Vector3.Distance(transform.position, targetPos) <= 0.1f)
         {
             isOpening = false;
             isOpen = true;
@@ -74,17 +79,45 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     private void Close()
     {
-        transform.position = Vector2.MoveTowards(transform.position, initialPos, 1f);
+        transform.position = Vector3.MoveTowards(transform.position, initialPos, 1f);
 
-        if (Vector2.Distance(transform.position, initialPos) <= 0.1f)
+        if (Vector3.Distance(transform.position, initialPos) <= 0.1f)
         {
             isClosing = false;
             isOpen = false;
         }
     }
 
-    public void ChangeText()
+    public void ContenerReturn()
     {
+        //Seulement si replier a fond
+        if(paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
+        {
+            //Mettre la fin du niveau + bonus si le container était bien défectueux
+        }
+        else
+        {
+            //Mettre un gros malus
+        }
+    }
+
+    public void ChangeText(string error)
+    {
+        switch(error)
+        {
+            case "badOriented":
+                textAnomalieAmpoule.text = "Bad Oriented";
+                break;
+            case "dimension":
+                textAnomalieAmpoule.text = "Dimension Out";
+                break;
+            case "heavy":
+                textAnomalieAmpoule.text = "Too HEAVY";
+                break;
+            default:
+                break;
+        }
         //Recuperation des anomalies detecté
+        //A récupéré sur le DetectionAnomalie sur le collider FinDuConvoyeur
     }
 }

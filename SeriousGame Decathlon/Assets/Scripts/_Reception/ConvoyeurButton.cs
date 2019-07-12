@@ -16,17 +16,32 @@ public class ConvoyeurButton : MonoBehaviour
     private bool deplierPressed  = false;
     private bool validatePressed = false;
 
+    private bool isReturnContener = false;
+
+    public bool isCollide         = false;
+
     private void Update()
     {
-        if(UpPressed     ){convoyeur.MoveZ("up"     );}
-        if(downPressed   ){convoyeur.MoveZ("down"   );}
-        if(deplierPressed){convoyeur.MoveY("deplier");}
-        if(replierPressed && validatePressed){convoyeur.MoveY("replier");}
-        else{return;}
+        if (convoyeur.isOn)
+        {
+            if (UpPressed) { convoyeur.MoveZ("up"); }                       //Boutton Monter
+            if (downPressed) { convoyeur.MoveZ("down"); }                       //Boutton Descendre
+            if (!isCollide)
+            {
+                if (deplierPressed) { convoyeur.MoveY("deplier"); }                       //Boutton Deplier
+            }
+            if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
+            else { return; }
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void OnOrOff()
     {
+        //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
         if(convoyeur.isOn) {convoyeur.isOn = false;}
         else               {convoyeur.isOn = true ;}
     }
@@ -49,6 +64,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void UpPointerUp()
     {
         UpPressed = false;
+        convoyeur.SetFloor();
     }
 
     public void DownPointerDown()
@@ -59,6 +75,7 @@ public class ConvoyeurButton : MonoBehaviour
     public void DownPointerUp()
     {
         downPressed = false;
+        convoyeur.SetFloor();
     }
 
     public void DeplierPointerDown()
@@ -83,9 +100,18 @@ public class ConvoyeurButton : MonoBehaviour
         convoyeur.PlayerNotMove();
     }
 
+
+    /*****************************
+     *    Renvois contener       *
+     *****************************/
     public void RenvoisContener()
     {
-
+        if(convoyeur.isReplierMax /*&& isReturnContener.isDefectueux*/)
+        {
+            //Contener renvoyé
+            isReturnContener = true;
+            //Quitter niveau
+        }
     }
 }
 

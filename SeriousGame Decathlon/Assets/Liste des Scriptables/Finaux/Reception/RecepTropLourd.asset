@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: ColisBaseRecep 1
+  m_Name: RecepTropLourd
   m_EditorClassIdentifier: 
-  name: 
+  name: RecepTropLourd
   PCB: 0
-  poids: 0
+  poids: 45
   fillPercent: 0
   hasBeenRecount: 0
-  isBadOriented: 1
+  isBadOriented: 0
   estOuvert: 0
   estAbime: 0
   needQualityControl: 0

@@ -25,7 +25,10 @@ public class CreationDePalette : MonoBehaviour
 {
     public GameObject colisObj;
 
+    public float chanceHavingAnomaliesMF;
+
     public List<Colis> colisPossibles;
+    public List<Colis> colisAvecAnomalieMF;
 
     public List<Palette> palettes;
 
@@ -50,6 +53,8 @@ public class CreationDePalette : MonoBehaviour
     public int nbColisTraite;
     private int nbCurrentColis;
 
+    public List<Colis> colisDeCote;
+
     public List<ScriptColisRecep> colisActuels;
 
     int i = 0;
@@ -60,6 +65,18 @@ public class CreationDePalette : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            colisPossibles = ChargementListeColis.instance.colisProcessReception;
+            chanceHavingAnomaliesMF = ChargementListeColis.instance.chanceAnomalieRecep;
+            nbColisTotal = ChargementListeColis.instance.nombreColisRecep;
+        }
+
+        if(chanceHavingAnomaliesMF>100)
+        {
+            chanceHavingAnomaliesMF = 100;
+        }
+
         for (i = 0; i < nbPalettesMax; i++)
         {
             palettes.Add(new Palette());
@@ -83,12 +100,14 @@ public class CreationDePalette : MonoBehaviour
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<SpriteRenderer>().sortingOrder = k + 2;
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().canBePicked = false;
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().currentHauteur = k;
-                            if (colisPossibles.Count > 0)
+                            if (((chanceHavingAnomaliesMF != 0 && Random.Range(0f, 1f) <= chanceHavingAnomaliesMF / 100f) || chanceHavingAnomaliesMF>= 100) && colisAvecAnomalieMF.Count > 0)
                             {
-                                Debug.Log(i + " " + j + " " + k + " " + l);
-                                Colis leColis = Colis.CreateInstance<Colis>();
-                                leColis = colisPossibles[Random.Range(0, colisPossibles.Count)];
-                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = leColis;
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = Instantiate(colisAvecAnomalieMF[Random.Range(0, colisAvecAnomalieMF.Count)]);
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.carton = colisPossibles[Random.Range(0, colisPossibles.Count)].carton;
+                            }
+                            else if (colisPossibles.Count > 0)
+                            {
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = Instantiate(colisPossibles[Random.Range(0, colisPossibles.Count)]);
                             }
                         }
                     }
@@ -133,8 +152,14 @@ public class CreationDePalette : MonoBehaviour
         for (int m = 0; m < palettes[i].rangees[j].collones[k].colis.Count; m++)
         {
             palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
+            palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
         }
+    }
+
+    public void UpdateProgression(int nb)
+    {
+        barreProgression.fillAmount = ((float)nbColisTotal - (float)nb) / (float)nbColisTotal;
     }
 
     private void Update()
@@ -156,7 +181,6 @@ public class CreationDePalette : MonoBehaviour
                 colisActuels.Remove(colis);
             }
 
-            barreProgression.fillAmount = ((float)nbColisTotal - (float)nbColisTraite) / (float)nbColisTotal;
         }
         else
         {
@@ -201,6 +225,7 @@ public class CreationDePalette : MonoBehaviour
                 theColor.r = 260;
                 theColor.a = 1;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<SpriteRenderer>().color = theColor;
+                palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }

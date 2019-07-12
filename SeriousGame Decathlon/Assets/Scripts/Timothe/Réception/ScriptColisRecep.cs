@@ -17,6 +17,7 @@ public class ScriptColisRecep : MonoBehaviour
 
     private TapisRoulant tapisScript;
 
+    public bool isOneSecondScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +49,8 @@ public class ScriptColisRecep : MonoBehaviour
     void Update()
     {
         if(Input.touchCount > 0)
-        { 
+        {
             Touch touch = Input.GetTouch(0);
-            
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
@@ -81,8 +81,7 @@ public class ScriptColisRecep : MonoBehaviour
                     }
                     else
                     {
-                        //Ouvrir le menu tourner
-                        transform.position = new Vector2(transform.position.x, 3.4f);
+                        transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
                         tapisScript.AddColis(this.gameObject);
                     }
                 }
@@ -134,13 +133,27 @@ public class ScriptColisRecep : MonoBehaviour
 
     public void Tourner(string face, float rotation)
     {
-        if(face == "Up" && (rotation == 90 || rotation == 270))
+        if (!isOneSecondScreen)
         {
-            colisScriptable.isBadOriented = false;
+            if (face == "Up" && (rotation == 0 || rotation == 180))
+            {
+                colisScriptable.isBadOriented = false;
+            }
+            else
+            {
+                colisScriptable.isBadOriented = true;
+            }
         }
         else
         {
-            colisScriptable.isBadOriented = true;
+            if (face == "Up" && (rotation == 0 || rotation == 180))
+            {
+                colisScriptable.isBadOriented = false;
+            }
+            else
+            {
+                colisScriptable.isBadOriented = true;
+            }
         }
     }
 }

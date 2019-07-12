@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PosteOnClick : MonoBehaviour
 {
-    public GameObject  cameraPoste;
-    public GameObject cameraDezoom;
+    [Header("Camera du Poste")]
+    public GameObject  cameraPoste;   //Camera vers laquelle on souhaite aller
+    [Header("Camera de la vue dézoom")]
+    public GameObject cameraDezoom;   //Camera vue Dezoom
     public GameObject       player;
     public GameObject     moniteur;
     public GameObject        aStar;
@@ -23,7 +25,6 @@ public class PosteOnClick : MonoBehaviour
                 {
                     player.GetComponent<Unit>().DeplacementPlayer(gameObject.transform.position);
                     isMoving = true;
-
                 }
                 else
                 {
