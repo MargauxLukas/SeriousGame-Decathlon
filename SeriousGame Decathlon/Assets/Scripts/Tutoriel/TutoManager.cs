@@ -1983,15 +1983,15 @@ public class TutoManager : MonoBehaviour
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.fill50Button).interactable = false;
 
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(9.84f, -0.21f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.37f, 0.41f);
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
 
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(9.84f, -0.21f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.37f, 0.41f);
-
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(9.08f, -0.7f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
@@ -2025,7 +2025,7 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.27f, 3.26f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.18f, 2.92f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
@@ -2205,7 +2205,7 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
         gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = false;
 
-        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.27f, 2.4f);
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.2f, 2.26f);
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
         gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
