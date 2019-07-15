@@ -30,12 +30,10 @@ public class FinDuConvoyeur : MonoBehaviour
             //Afficher les anomalies
             Destroy(collision.gameObject);
         }
-
     }
 
     private void UpdateAffichage(Colis colis)
     {
-        //int currentAnomalieCount = listAnomalieDejaDetectee.Count;
         for (int j = 0; j < colis.listAnomalies.Count; j++)
         {
             Debug.Log("Test Affiche Anomalie2");
@@ -48,6 +46,8 @@ public class FinDuConvoyeur : MonoBehaviour
                 if (listAnomalieDejaDetectee[i] == colis.listAnomalies[j])
                 {
                     zoneAffichage[i].zoneNombreAnomaliePresente.text = (int.Parse(zoneAffichage[i].zoneNombreAnomaliePresente.text) + 1).ToString();
+                    zoneAffichage[i].zoneNombreAnomaliePresente.CrossFadeAlpha(255f, 0f, false);
+                    zoneAffichage[i].zoneAffichageAnomalie     .CrossFadeAlpha(255f, 0f, false);
                 }
             }
 

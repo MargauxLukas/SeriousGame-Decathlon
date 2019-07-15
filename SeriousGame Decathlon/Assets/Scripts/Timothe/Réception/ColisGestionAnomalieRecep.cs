@@ -313,6 +313,5 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         Destroy(detect.colisATraiter);
         detect.tapisGeneral.doesStop = false;
         detect.ResolveAnomalie();
-        //gestionAnomalieRecep.SetActive(false);
     }
 }
