@@ -16,3 +16,5 @@ MonoBehaviour:
   rfid: {fileID: 11400000, guid: 338d9c4a7bb613e46b8837414f2cf0bf, type: 2}
   spriteList:
   - {fileID: 21300000, guid: 0cff902f37a70404c934c9cffb034a62, type: 3}
+  - {fileID: 21300000, guid: 55231251b0b7d8b4fa60080889dc219b, type: 3}
+  - {fileID: 21300000, guid: 1409f0a192b42cc40b8df53089d139e4, type: 3}
