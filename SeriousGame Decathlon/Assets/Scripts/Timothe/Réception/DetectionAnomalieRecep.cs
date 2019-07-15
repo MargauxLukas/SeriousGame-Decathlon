@@ -54,10 +54,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 if (colisATraiter != null)
                 {
                     gestionAnomalie.SetActive(true);
+                    GetComponent<BoxCollider2D>().enabled = false;
                     player.stuck = true;
                     colisAnomalie.colisScriptable = colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable;
                     colisAnomalie.rotationScr.cartonObj = colisATraiter;
-                    colisATraiter.GetComponent<SpriteRenderer>().sprite = colisATraiter.GetComponent<SpriteRenderer>().sprite;
+                    colisAnomalie.GetComponent<SpriteRenderer>().sprite = colisATraiter.GetComponent<SpriteRenderer>().sprite;
                     colisAnomalie.colisTapis                            = colisATraiter.GetComponent<SpriteRenderer>();
                 }
                 if(touch.phase == TouchPhase.Ended)
@@ -65,10 +66,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     doesTouch = false;
                 }
             }
-            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 7f)
+            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 5f)
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
                 gestionAnomalie.SetActive(false);
+                GetComponent<BoxCollider2D>().enabled = true;
                 player.stuck = false;
                 colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
