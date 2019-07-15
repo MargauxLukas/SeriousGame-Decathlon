@@ -58,7 +58,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            Debug.Log(Vector2.Distance(new Vector3(cameraGeneral.ScreenToWorldPoint(touch.position).x, cameraGeneral.ScreenToWorldPoint(touch.position).y, 0), transform.position));
+            //Debug.Log(Vector2.Distance(new Vector3(cameraGeneral.ScreenToWorldPoint(touch.position).x, cameraGeneral.ScreenToWorldPoint(touch.position).y, 0), transform.position));
 
             if (!tournerMenuIsOpen)
             {

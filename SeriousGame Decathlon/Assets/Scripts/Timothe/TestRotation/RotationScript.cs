@@ -492,7 +492,6 @@ public class RotationScript : MonoBehaviour
 
         if (actualFace != null)
         {
-            Debug.Log("Test Face : " + actualFace.face);
             actualFace.isCurrentlyPick = false;
             SquareFace newFace = new SquareFace();
             if (xAxis != 0)
