@@ -5,7 +5,6 @@ using TMPro;
 
 public class AffichageAnomalieRecep : MonoBehaviour
 {
-    public Vector3 initialPos;
     public Vector3 targetPos;
 
     bool isOpen = false;
@@ -16,6 +15,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
     public float endPos;
 
     private float swipeDifference;
+    private float posY;
 
     public TextMeshProUGUI text1;
     public TextMeshProUGUI text2;
@@ -29,9 +29,6 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public void Start()
     {
-        initialPos = transform.position;
-        targetPos = new Vector3(initialPos.x ,1.38f, initialPos.z);
-
         text1.text               = "";
         text2.text               = "";
         text3.text               = "";
@@ -58,19 +55,21 @@ public class AffichageAnomalieRecep : MonoBehaviour
     {
         if(!isOpen)
         {
+            posY = transform.position.y + 3.2f;
             isOpening = true;
         }
         else
         {
+            posY = transform.position.y - 3.2f;
             isClosing = true;
         }
     }
 
     private void Open()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, 1f);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, posY, transform.position.z), 1f);
 
-        if (Vector3.Distance(transform.position, targetPos) <= 0.1f)
+        if (Vector3.Distance(transform.position, new Vector3(transform.position.x, posY, transform.position.z)) <= 0.1f)
         {
             isOpening = false;
             isOpen = true;
@@ -79,9 +78,9 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     private void Close()
     {
-        transform.position = Vector3.MoveTowards(transform.position, initialPos, 1f);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, posY, transform.position.z), 1f);
 
-        if (Vector3.Distance(transform.position, initialPos) <= 0.1f)
+        if (Vector3.Distance(transform.position, new Vector3(transform.position.x, posY, transform.position.z)) <= 0.1f)
         {
             isClosing = false;
             isOpen = false;
