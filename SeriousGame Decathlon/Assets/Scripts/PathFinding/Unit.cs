@@ -17,6 +17,8 @@ public class Unit : MonoBehaviour
     Path path;
     public PathFinding pf;
 
+    public bool stuck = false;
+
     public void DeplacementPlayer(Vector3 newPos)
     {
         target.localPosition = newPos;
@@ -25,32 +27,35 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (!stuck)
         {
-            Touch touch = Input.GetTouch(0);
-            switch (touch.phase)
+            if (Input.touchCount > 0)
             {
-                case TouchPhase.Ended:
-                    target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
-                    StartCoroutine(UpdatePath());
-                    break;
+                Touch touch = Input.GetTouch(0);
+                switch (touch.phase)
+                {
+                    case TouchPhase.Ended:
+                        target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
+                        StartCoroutine(UpdatePath());
+                        break;
 
-                case TouchPhase.Moved:
+                    case TouchPhase.Moved:
                     /*target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
                     StartCoroutine(UpdatePath());
                     break;*/
 
-                case TouchPhase.Began:
-                    //Debug.Log("ENDED not supported");
-                    break;
+                    case TouchPhase.Began:
+                        //Debug.Log("ENDED not supported");
+                        break;
 
-                case TouchPhase.Stationary:
-                    //Debug.Log("STATIONARY not supported");
-                    break;
+                    case TouchPhase.Stationary:
+                        //Debug.Log("STATIONARY not supported");
+                        break;
 
-                case TouchPhase.Canceled:
-                    //Debug.Log("CANCELED not supported ");
-                    break;
+                    case TouchPhase.Canceled:
+                        //Debug.Log("CANCELED not supported ");
+                        break;
+                }
             }
         }
     }

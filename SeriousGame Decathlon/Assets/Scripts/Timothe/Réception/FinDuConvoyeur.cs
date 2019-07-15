@@ -35,7 +35,6 @@ public class FinDuConvoyeur : MonoBehaviour
 
     private void UpdateAffichage(Colis colis)
     {
-        Debug.Log(colis.name);
         //int currentAnomalieCount = listAnomalieDejaDetectee.Count;
         for (int j = 0; j < colis.listAnomalies.Count; j++)
         {

@@ -32,7 +32,6 @@ public class ConvoyeurManager : MonoBehaviour
      ********************************************************/
     public void MoveZ(string direction)
     {
-        Debug.Log(direction);
         if(direction.Equals("up"))
         {
             if(height <= maxHeight)                             //Peut monter tant qu'il a pas atteint le maxHeight

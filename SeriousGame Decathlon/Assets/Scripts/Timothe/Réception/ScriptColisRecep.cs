@@ -80,8 +80,8 @@ public class ScriptColisRecep : MonoBehaviour
             else if (doesTouch && canBePicked)
             {
                 transform.position = new Vector2(touchPosition.x, touchPosition.y);
-
-                if(touch.phase == TouchPhase.Ended)
+                MalusScript.instance.HaveAMalus();                                  //Je le met ici car je pense qu'il peut être sympa de donner un malus tant qu'il le garde dans les mains (Le malus doit être faible du coup)
+                if (touch.phase == TouchPhase.Ended)
                 {
                     if(!isOnTapis || tapisScript.tapisGeneral.doesStop)
                     {
@@ -94,9 +94,7 @@ public class ScriptColisRecep : MonoBehaviour
                         tapisScript.AddColis(this.gameObject);
                     }
                 }
-            }
-
-            
+            }     
         }
         else
         {
@@ -146,7 +144,6 @@ public class ScriptColisRecep : MonoBehaviour
         if (face == "Up" && ((rotation >= 85 && rotation <= 95) || (rotation >= 265 && rotation <= 275)))
         {
             colisScriptable.isBadOriented = false;
-            Debug.Log("Test");
         }
         else
         {

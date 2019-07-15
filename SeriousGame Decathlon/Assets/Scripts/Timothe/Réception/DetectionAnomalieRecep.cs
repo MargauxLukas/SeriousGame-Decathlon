@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DetectionAnomalieRecep : MonoBehaviour
 {
+    public Unit player;
+
     [Header("Camera")]
     public Camera cameraGeneral;
 
@@ -52,6 +54,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 if (colisATraiter != null)
                 {
                     gestionAnomalie.SetActive(true);
+                    player.stuck = true;
                     colisAnomalie.colisScriptable = colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable;
                     colisAnomalie.rotationScr.cartonObj = colisATraiter;
                     colisATraiter.GetComponent<SpriteRenderer>().sprite = colisATraiter.GetComponent<SpriteRenderer>().sprite;
@@ -66,6 +69,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
                 gestionAnomalie.SetActive(false);
+                player.stuck = false;
                 colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
                 signalBoiteOrange          .SetActive(false);
