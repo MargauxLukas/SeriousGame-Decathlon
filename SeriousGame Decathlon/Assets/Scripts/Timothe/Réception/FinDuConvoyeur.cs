@@ -23,8 +23,8 @@ public class FinDuConvoyeur : MonoBehaviour
     {
         if(collision.tag == "Colis")
         {
-            detect.CheckColis(collision.GetComponent<ScriptColisRecep>().colisScriptable);
-            UpdateAffichage(collision.GetComponent<ScriptColisRecep>().colisScriptable);
+            detect.CheckColis  (collision.GetComponent<ScriptColisRecep>().colisScriptable);
+            UpdateAffichage    (collision.GetComponent<ScriptColisRecep>().colisScriptable);
             listColisEnvoye.Add(collision.GetComponent<ScriptColisRecep>().colisScriptable);
             dechargeBar.UpdateProgression(listColisEnvoye.Count);
             //Afficher les anomalies
