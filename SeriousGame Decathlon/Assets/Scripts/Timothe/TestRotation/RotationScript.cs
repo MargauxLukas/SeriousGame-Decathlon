@@ -31,7 +31,7 @@ public class RotationScript : MonoBehaviour
         squareList.Add(CreateFace(0, "Forward", false));
         squareList.Add(CreateFace(0, "Backward", false));
 
-        squareList[0] = CreateVoison(squareList[0],squareList[5], squareList[4], squareList[2], squareList[3]);
+        squareList[0] = CreateVoison(squareList[0], squareList[5], squareList[4], squareList[2], squareList[3]);
         squareList[1] = CreateVoison(squareList[1], squareList[4], squareList[5], squareList[2], squareList[3]);
         squareList[2] = CreateVoison(squareList[2], squareList[0], squareList[1], squareList[4], squareList[5]);
         squareList[3] = CreateVoison(squareList[3], squareList[0], squareList[1], squareList[5], squareList[4]);
