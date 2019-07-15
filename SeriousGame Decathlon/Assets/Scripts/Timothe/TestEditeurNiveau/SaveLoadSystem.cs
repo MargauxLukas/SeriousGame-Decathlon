@@ -360,4 +360,94 @@ public class SaveLoadSystem : MonoBehaviour
             File.AppendAllText(path, content);
         }
     }
+
+    public void SaveBestBegin(BestScoreScript bestBegin)
+    {
+        if (!IsSaveFile())
+        {
+            Debug.Log("Test");
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+
+        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
+        {
+            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFame.txt");
+            var json = JsonUtility.ToJson(bestBegin);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+    }
+
+    public void SaveBestScore(int score, string nom)
+    {
+        if (!IsSaveFile())
+        {
+            Debug.Log("Test");
+            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        BestScoreScript newBest = new BestScoreScript();
+
+        if(File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
+        {
+            newBest = LoadBestScore();
+        }
+
+        if(newBest.nomDesJoueurs != null && newBest.nomDesJoueurs.Count > 0)
+        {
+            if (score >= newBest.scoreDesJoueurs[newBest.scoreDesJoueurs.Count - 1])
+            {
+                newBest.scoreDesJoueurs[newBest.scoreDesJoueurs.Count - 1] = score;
+                newBest.nomDesJoueurs[newBest.nomDesJoueurs.Count - 1] = nom;
+                for (int i = newBest.nomDesJoueurs.Count-2 ; i >= 0; i--)
+                {
+                    if(score >= newBest.scoreDesJoueurs[i])
+                    {
+                        int tempoScore = newBest.scoreDesJoueurs[i];
+                        string tempoNom = newBest.nomDesJoueurs[i];
+                        newBest.scoreDesJoueurs[i] = score;
+                        newBest.nomDesJoueurs[i] = nom;
+                        newBest.scoreDesJoueurs[i+1] = tempoScore;
+                        newBest.nomDesJoueurs[i+1] = tempoNom;
+                    }
+                }
+            }
+        }
+        
+        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
+        {
+            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFame.txt");
+            var json = JsonUtility.ToJson(newBest);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+        else
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/hallOfFame.txt", FileMode.Open);
+            var json = JsonUtility.ToJson(newBest);
+            bf.Serialize(file, json);
+            file.Close();
+        }
+    }
+
+    public BestScoreScript LoadBestScore()
+    {
+        if (!IsSaveFile())
+        {
+            return null;
+        }
+        BestScoreScript hallToLoad = BestScoreScript.CreateInstance<BestScoreScript>();
+
+        BinaryFormatter bf = new BinaryFormatter();
+        if (File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/hallOfFame.txt", FileMode.Open);
+            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), hallToLoad);
+            file.Close();
+        }
+        return hallToLoad;
+    }
 }

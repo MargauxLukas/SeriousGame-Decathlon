@@ -134,7 +134,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                     }
                 }
             }
-            else if (Vector2.Distance(touchPosition, tournerMenu.transform.position) > 5f)
+            else if (Vector2.Distance(touchPosition, tournerMenu.transform.position) > 6f)
             {
                 tournerMenu.SetActive(false);
                 tournerMenuIsOpen = false;

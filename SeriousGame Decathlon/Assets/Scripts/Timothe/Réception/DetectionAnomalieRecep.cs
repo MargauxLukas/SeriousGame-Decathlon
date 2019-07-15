@@ -66,7 +66,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     doesTouch = false;
                 }
             }
-            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 5f)
+            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 6f)
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
                 gestionAnomalie.SetActive(false);

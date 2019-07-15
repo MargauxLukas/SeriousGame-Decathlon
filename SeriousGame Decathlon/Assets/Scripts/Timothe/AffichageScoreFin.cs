@@ -17,6 +17,8 @@ public class AffichageScoreFin : MonoBehaviour
             affichageScore.text = ChargementListeColis.instance.currentPlayerScriptable.score.ToString();
             affichageNom.text = ChargementListeColis.instance.currentPlayerScriptable.name.ToString();
             affichageDate.text = ChargementListeColis.instance.currentPlayerScriptable.date.ToString();
+
+            SaveLoadSystem.instance.SaveBestScore(ChargementListeColis.instance.currentPlayerScriptable.score, ChargementListeColis.instance.currentPlayerScriptable.name);
         }
     }
 }
