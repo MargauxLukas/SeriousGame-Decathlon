@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class ConvoyeurManager : MonoBehaviour
 {
+    [Header("Camera")]
     public GameObject camera;
+
+    [Header("Player")]
     public GameObject player;
+
+    [Header("Pointeur")]
     public GaugeConvoyeur gauge;
 
-    public  float height    = 1f;          //Hauteur actuelle
-    private float minHeight = 1f;          //Hauteur minimum
-    private float maxHeight = 2.6f;        //Hauteur maximum
+    private float height    = 1f  ;          //Hauteur actuelle
+    private float minHeight = 1f  ;          //Hauteur minimum
+    private float maxHeight = 2.6f;          //Hauteur maximum
+    private float maxReplier;
+    private float maxDeplier;
 
-    public float maxReplier;
-    public float maxDeplier;
-
+    [Header("Boolean")]
     public bool isOn;
     public bool isReplierMax = true;
 
+    [Header("Sprite Vue General")]
     public GameObject vueGeneralDeplier;
     public GameObject vueGeneralReplier;
 
@@ -61,8 +67,8 @@ public class ConvoyeurManager : MonoBehaviour
             {
                 camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 0.02f, camera.transform.position.z);
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.02f, player.transform.position.z);
-                player.GetComponent<Animator>().SetFloat("DirectionY", 1f);
-                player.GetComponent<Animator>().SetBool("DoesWalk", true);
+                player.GetComponent<Animator>().SetFloat("DirectionY",   1f);
+                player.GetComponent<Animator>().SetBool ("DoesWalk"  , true);
                 isReplierMax = false;
             }
             else
@@ -70,24 +76,17 @@ public class ConvoyeurManager : MonoBehaviour
                 PlayerNotMove();
                 isReplierMax = true;
                 vueGeneralDeplier.SetActive(false);
-                vueGeneralReplier.SetActive(true);
+                vueGeneralReplier.SetActive(true );
             }
         }
         else
         {
-            vueGeneralDeplier.SetActive(true);
+            vueGeneralDeplier.SetActive(true );
             vueGeneralReplier.SetActive(false);
-            //if (transform.position.y >= maxDeplier)
-            //{
             camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 0.02f, camera.transform.position.z);
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.02f, player.transform.position.z);
-                player.GetComponent<Animator>().SetFloat("DirectionY", -1f);
-                player.GetComponent<Animator>().SetBool("DoesWalk", true);
-            //}
-            /*else
-            {
-                PlayerNotMove();
-            }*/
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.02f, player.transform.position.z);
+            player.GetComponent<Animator>().SetFloat("DirectionY",  -1f);
+            player.GetComponent<Animator>().SetBool ("DoesWalk"  , true);
         }
     }
 
@@ -96,36 +95,34 @@ public class ConvoyeurManager : MonoBehaviour
     ********************************************************/
     public void PlayerNotMove()
     {
-        player.GetComponent<Animator>().SetFloat("DirectionY", 0f);
-        player.GetComponent<Animator>().SetBool("DoesWalk", false);
+        player.GetComponent<Animator>().SetFloat("DirectionY",    0f);
+        player.GetComponent<Animator>().SetBool ("DoesWalk"  , false);
     }
 
+    /*************************************************************************
+    *   Function permettant de mettre la hauteur pile au niveau des traits   *
+    **************************************************************************/
     public void SetFloor()
     {
-        if(height < 1.25f)  //1m
+        if(height < 1.25f)                          //1st floor
         {
             gauge.SetPosition(0);
             height = 1f;
         }
-        if (height >= 1.25f && height < 1.85f) //1m50
+        if (height >= 1.25f && height < 1.85f)      //2nd floor
         {
             gauge.SetPosition(1);
             height = 1.5f;
         } 
-        if (height >= 1.85f && height < 2.25f)   //2m
+        if (height >= 1.85f && height < 2.25f)      //3th floor
         {
             gauge.SetPosition(2);
             height = 2f;
         } 
-        if (height >= 2.25f)    //2.5m
+        if (height >= 2.25f)                        //4th floor
         {
             gauge.SetPosition(3);
             height = 2.5f;
         } 
-        /*if (height >= 2.85f)     //3m
-        {
-            gauge.SetPosition(4);
-            height = 3f;
-        } */
     }
 }

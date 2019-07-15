@@ -7,15 +7,20 @@ public class Scoring : MonoBehaviour
 {
     public static Scoring instance;
 
+    [Header("Player")]
     public GameObject player;
     public Player playerScriptable;
-    public int score;
 
-    private float multiplicator = 1;
-    public bool gotNewColis;
-    private bool lastGotColis;
+    [Header("Texte Anomalie")]
     public Text errorTextZone;
 
+    [Header("Score")]
+    public int score;
+
+    [Header("---")]
+    public bool gotNewColis;
+
+    private float multiplicator = 1;
     private float timeColisMaking;
 
     private int solveAnomalieCombo             = 0;      //Série d'anomalie résolues
@@ -24,9 +29,10 @@ public class Scoring : MonoBehaviour
     private int sendColisComboWithoutMalus     = 0;      //Série de colis renvoyé sans avoir eu de Malus
     private int noHelp                         = 0;      //Série de colis renvoyé sans demander d'aide
 
-    private bool tookHelp = false;
+    private bool lastGotColis;
+    private bool tookHelp         = false;
     private bool hadMalusAnomalie = false;
-    private bool hadMalusColis = false;
+    private bool hadMalusColis    = false;
 
 
     void Awake()

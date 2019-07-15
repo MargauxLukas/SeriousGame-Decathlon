@@ -35,6 +35,12 @@ public class ChangementEtiquettes : MonoBehaviour
             if(doesTouch)
             {
                 nbEtiquettes = nbEtiquetteMax;
+                ledVerte            .SetActive(true);
+                ledOrange           .SetActive(false);
+                ledOrangeClignotante.SetActive(false);
+                ampouleOrange       .SetActive(false);
+                ampouleClignotante  .SetActive(false);
+                bulle               .SetActive(false);
                 doesTouch = false;
             }
         }
