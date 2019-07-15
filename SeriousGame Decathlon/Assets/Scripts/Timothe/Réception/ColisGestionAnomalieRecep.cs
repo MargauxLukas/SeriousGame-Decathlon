@@ -43,6 +43,15 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         circleImage.fillAmount = 1f / itemNumber;
     }
 
+    private void OnDisable()
+    {
+        if (!gameObject.transform.parent.gameObject.activeSelf && tournerMenuIsOpen)
+        {
+            tournerMenu.SetActive(false);
+            tournerMenuIsOpen = false;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,17 +69,16 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             //Debug.Log(Vector2.Distance(new Vector3(cameraGeneral.ScreenToWorldPoint(touch.position).x, cameraGeneral.ScreenToWorldPoint(touch.position).y, 0), transform.position));
 
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.z = 0;
+
+            Debug.Log(Vector2.Distance(touchPosition, tournerMenu.transform.position));
             if (!tournerMenuIsOpen)
             {
                 touchObject();
                 if (doesTouch)
                 {
-                    Debug.Log("Test Colis 1");
                     //Menu circulaire
-
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0;
-
                     if (touch.phase == TouchPhase.Began)
                     {
                         currentItem = -1;
@@ -127,7 +135,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                     }
                 }
             }
-            else if (Vector2.Distance(new Vector3(cameraGeneral.ScreenToWorldPoint(touch.position).x, cameraGeneral.ScreenToWorldPoint(touch.position).y, 0), transform.position) >= 7f)
+            else if (Vector2.Distance(touchPosition, tournerMenu.transform.position) > 5f)
             {
                 tournerMenu.SetActive(false);
                 tournerMenuIsOpen = false;
