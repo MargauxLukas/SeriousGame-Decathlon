@@ -185,7 +185,12 @@ public class ColisScript : MonoBehaviour
 
                             if (!canMoveVertical)
                             {
-                                transform.position = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, transform.position.y, 0);
+                                Vector3 newDestination = new Vector3(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)).x, transform.position.y, 0);
+                                if(newDestination.y < startPosition.y)
+                                {
+                                    newDestination = transform.position;
+                                }
+                                transform.position = newDestination;
                             }
                             else
                             {
