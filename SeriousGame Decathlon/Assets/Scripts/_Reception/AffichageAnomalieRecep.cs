@@ -51,7 +51,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!isOpen)
+        /*if(!isOpen)
         {
             posY = transform.position.y + 3.2f;
             isOpening = true;
@@ -60,7 +60,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
         {
             posY = transform.position.y - 3.2f;
             isClosing = true;
-        }
+        }*/
     }
 
     private void Open()
