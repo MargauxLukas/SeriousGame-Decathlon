@@ -38,11 +38,11 @@ public class CreationDePalette : MonoBehaviour
     public float coefPosRangee;
     public float coefPosPalette;
 
-    public int nbColisTotal;
-    private int nbColisParColonne;
-    private int nbColonnes;
-    private int nbRangee;
-    private int nbPalettes;
+    public  int nbColisTotal;
+    private int nbColisParColonne;       //Non utilisé
+    private int nbColonnes;       //Non utilisé
+    private int nbRangee;       //Non utilisé
+    private int nbPalettes;       //Non utilisé
 
     private int nbColisParColonneMax = 4;
     private int nbColonnesMax = 5;
@@ -66,11 +66,11 @@ public class CreationDePalette : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(ChargementListeColis.instance != null)
+        if (ChargementListeColis.instance != null)
         {
-            colisPossibles = ChargementListeColis.instance.colisProcessReception;
+            colisPossibles          = ChargementListeColis.instance.colisProcessReception;
             chanceHavingAnomaliesMF = ChargementListeColis.instance.chanceAnomalieRecep;
-            nbColisTotal = ChargementListeColis.instance.nombreColisRecep;
+            nbColisTotal            = ChargementListeColis.instance.nombreColisRecep;
         }
 
         if(chanceHavingAnomaliesMF>100)
@@ -95,7 +95,6 @@ public class CreationDePalette : MonoBehaviour
                         }
                         else
                         {
-
                             nbCurrentColis++;
                             Vector2 newPos = startPos + new Vector2(l * coefPosColonne, i * coefPosPalette + j * coefPosRangee);
                             palettes[i].rangees[j].collones[k].colis.Add(Instantiate(colisObj, newPos, Quaternion.identity));
@@ -227,5 +226,10 @@ public class CreationDePalette : MonoBehaviour
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
             }
         }
+    }
+
+    public int GetNBColonnes()
+    {
+        return nbColonnesMax;
     }
 }
