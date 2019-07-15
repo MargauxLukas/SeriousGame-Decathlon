@@ -26,6 +26,7 @@ public class CreationDePalette : MonoBehaviour
     public GameObject colisObj;
 
     public float chanceHavingAnomaliesMF;
+    private int nbColisAvecAnomalie;
 
     public List<Colis> colisPossibles;
     public List<Colis> colisAvecAnomalieMF;
@@ -76,6 +77,11 @@ public class CreationDePalette : MonoBehaviour
         if(chanceHavingAnomaliesMF>100)
         {
             chanceHavingAnomaliesMF = 100;
+            nbColisAvecAnomalie = nbColisTotal;
+        }
+        else
+        {
+            nbColisAvecAnomalie = Mathf.RoundToInt(nbColisTotal * chanceHavingAnomaliesMF);
         }
 
         for (i = 0; i < nbPalettesMax; i++)
@@ -101,10 +107,12 @@ public class CreationDePalette : MonoBehaviour
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<SpriteRenderer>().sortingOrder = k + 2;
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().canBePicked = false;
                             palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().currentHauteur = k;
-                            if (((chanceHavingAnomaliesMF != 0 && Random.Range(0f, 1f) <= chanceHavingAnomaliesMF / 100f) || chanceHavingAnomaliesMF>= 100) && colisAvecAnomalieMF.Count > 0)
+                            if ((Random.Range(0, nbColisTotal-nbCurrentColis) < nbColisAvecAnomalie /*(chanceHavingAnomaliesMF != 0 && Random.Range(0f, 1f) <= chanceHavingAnomaliesMF / 100f)*/ || chanceHavingAnomaliesMF>= 100) && colisAvecAnomalieMF.Count > 0)
                             {
+                                nbColisAvecAnomalie--;
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = Instantiate(colisAvecAnomalieMF[Random.Range(0, colisAvecAnomalieMF.Count)]);
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.carton = colisPossibles[Random.Range(0, colisPossibles.Count)].carton;
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented = colisPossibles[Random.Range(0, colisPossibles.Count)].isBadOriented;
                             }
                             else if (colisPossibles.Count > 0)
                             {

@@ -50,7 +50,7 @@ public class TapisRoulant : MonoBehaviour
             if (menuIsOpen)
             {
                 turnMenuPosition = turnMenu.transform.position;
-                if (Vector2.Distance(touchPosition, turnMenuPosition) > 5f)
+                if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
                 {
                     turnMenu.SetActive(false);
                     menuIsOpen = false;
