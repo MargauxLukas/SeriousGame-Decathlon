@@ -12,6 +12,10 @@ public class PosteOnClick : MonoBehaviour
     public GameObject     moniteur;
     public GameObject        aStar;
 
+    [Header("Apparition du joueur")]
+    public ConvoyeurManager managerConvoie;
+    public Transform positionVoulue;
+
     private bool isMoving;
     private void Update()
     {
@@ -58,5 +62,9 @@ public class PosteOnClick : MonoBehaviour
         aStar       .SetActive(true);
         moniteur    .SetActive(true);
         player      .SetActive(true);
+        if(!managerConvoie.isReplierMax)
+        {
+            player.transform.position = positionVoulue.position;
+        }
     }
 }
