@@ -262,16 +262,16 @@ public class PileArticle : MonoBehaviour
         switch (nb)
         {
             case 1:
-                if ((TutoManager.instance == null || TutoManager.instance.canColis1) && listColisPresent[0] != null)
-                {
-                    ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
-                    if (TutoManager.instance != null) {TutoManager.instance.Manager(15);}
-                }
-                break;
-            case 2:
                 if ((TutoManager.instance == null || TutoManager.instance.canColis2) && listColisPresent[1] != null)
                 {
                     ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
+                }
+                break;
+            case 2:
+                if ((TutoManager.instance == null || TutoManager.instance.canColis1) && listColisPresent[0] != null)
+                {
+                    ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
+                    if (TutoManager.instance != null) { TutoManager.instance.Manager(15); }
                 }
                 break;
             case 0:
@@ -288,18 +288,18 @@ public class PileArticle : MonoBehaviour
         switch (nb)
         {
             case 1:
-                listColisPresent[0].spriteSelection.SetActive(true);
-                if (listColisPresent.Count-1 >= 1)
-                {
-                    listColisPresent[1].spriteSelection.SetActive(false);
-                }
-                break;
-            case 2:
-                if (listColisPresent.Count-1 >= 1)
+                if (listColisPresent.Count - 1 >= 1)
                 {
                     listColisPresent[1].spriteSelection.SetActive(true);
                 }
                 listColisPresent[0].spriteSelection.SetActive(false);
+                break;
+            case 2:
+                listColisPresent[0].spriteSelection.SetActive(true);
+                if (listColisPresent.Count - 1 >= 1)
+                {
+                    listColisPresent[1].spriteSelection.SetActive(false);
+                }
                 break;
             default:
                 if (listColisPresent.Count-1 >= 1)

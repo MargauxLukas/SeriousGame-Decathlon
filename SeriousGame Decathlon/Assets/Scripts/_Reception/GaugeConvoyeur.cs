@@ -31,7 +31,7 @@ public class GaugeConvoyeur : MonoBehaviour
         {
             case 0:
                 height = 1f;
-                transform.position = new Vector3(initialPos.x, initialPos.y, initialPos.z);
+                transform.position = new Vector3(initialPos.x, minGauge.transform.position.y, initialPos.z);
                 break;
             case 1:
                 height = 1.50f;

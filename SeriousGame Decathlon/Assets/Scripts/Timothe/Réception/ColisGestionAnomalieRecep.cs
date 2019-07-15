@@ -90,7 +90,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                     {
                         menuIsOpen = true;
 
-                        circlePosition = transform.position - cameraGeneral.gameObject.transform.position;
+                        circlePosition = transform.position;
                         circleImage.transform.parent.gameObject.SetActive(true);
                         circleImage.transform.parent.gameObject.transform.position = transform.position;
                         circleImage.fillAmount = 1f / itemNumber;

@@ -36,7 +36,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a32c875ec0c4cd4493653d982cc58b4, type: 2}
   - {fileID: 11400000, guid: 7a32c875ec0c4cd4493653d982cc58b4, type: 2}
   - {fileID: 11400000, guid: e5acef719e77d6146855c8f193e546dd, type: 2}
-  nbAnomalie: 1
+  - {fileID: 11400000, guid: f1366ed1877e6284c93fd4c8299e3b72, type: 2}
+  - {fileID: 11400000, guid: f1366ed1877e6284c93fd4c8299e3b72, type: 2}
+  - {fileID: 11400000, guid: f1366ed1877e6284c93fd4c8299e3b72, type: 2}
+  - {fileID: 11400000, guid: f1366ed1877e6284c93fd4c8299e3b72, type: 2}
+  - {fileID: 11400000, guid: f1366ed1877e6284c93fd4c8299e3b72, type: 2}
+  nbAnomalie: 2
   listAnomalies:
   - RFID tag under Tolerance
+  - RFID tag scanned for unknown product
   provenance: Chine

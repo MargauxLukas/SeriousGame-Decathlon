@@ -14,6 +14,8 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
+    public GameObjectsManager gameObjectsManager;
+
     private bool needFillingRate = false;
     private bool needRecount = false;
     private bool needRepack = false;
@@ -156,8 +158,17 @@ public class OngletManager : MonoBehaviour
 
     public void CanReturnToMeca()
     {
-        returnToMeca.interactable = true;
-        allValidate = true;
+        if(TutoManager.instance != null)
+        {
+            allValidate = true;
+            ColorBlock cb = gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).colors;
+            cb.disabledColor = new Color32(255, 255, 255, 255);
+        }
+        else if (TutoManager.instance == null)
+        {
+            returnToMeca.interactable = true;
+            allValidate = true;
+        }
     }
 
     public void CantReturnToMeca()
