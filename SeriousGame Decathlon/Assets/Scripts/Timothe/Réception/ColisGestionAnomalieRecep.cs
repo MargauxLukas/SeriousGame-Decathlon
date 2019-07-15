@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class ColisGestionAnomalieRecep : MonoBehaviour
 {
+    [Header("Camera")]
+    public Camera cameraGeneral;
+
+    [Header("ASSIGNER AUTOMATIQUEMENT")]
     public Colis colisScriptable;
     public SpriteRenderer colisTapis;
 
-    public Camera cameraGeneral;
+    [Header("Anomalie")]
+    public DetectionAnomalieRecep detect;
+    public GameObject gestionAnomalieRecep;
 
-    private bool doesTouch;
+    [Header("Palette")]
+    public CreationDePalette paletteManager;
 
     [Header("Listes sprite Carton")]
     public List<Sprite> spriteCartons;
@@ -24,19 +31,21 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
     public Image circleImage;
     private Vector2 startPosition;
     private Vector2 circlePosition;
-    public int itemNumber = 5;
-    private int currentItem;
-    public bool menuIsOpen = false;
-    private bool menuCanOpen = true;
-    private bool tournerMenuIsOpen;
-    public float timeBeforeMenuOpen = 1;
-    private float timeTouched;
 
+    [Header("Menu")]
     public RotationScript rotationScr;
-    public CreationDePalette paletteManager;
-    public DetectionAnomalieRecep detect;
-    public GameObject gestionAnomalieRecep;
-    // Start is called before the first frame update
+    public  bool menuIsOpen  = false;
+    private bool menuCanOpen =  true;
+    private bool tournerMenuIsOpen  ;
+    public float timeBeforeMenuOpen = 1;
+
+    [Header("Item")]
+    public  int itemNumber = 5;
+    private int currentItem;
+
+    private float timeTouched;
+    private bool doesTouch;
+
     void Start()
     {
         circlePosition = Vector2.zero;
@@ -52,7 +61,6 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(colisTapis.sprite != GetComponent<SpriteRenderer>().sprite)
@@ -75,20 +83,21 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
             if (!tournerMenuIsOpen)
             {
                 touchObject();
+
                 if (doesTouch)
                 {
                     //Menu circulaire
                     if (touch.phase == TouchPhase.Began)
                     {
                         currentItem = -1;
-                        timeTouched = 0;
-                        startPosition = touchPosition;
+                        timeTouched =  0;
+                        startPosition  = touchPosition;
                         circlePosition = transform.position - cameraGeneral.gameObject.transform.position;
                     }
                     else if (Vector3.Distance(startPosition, touchPosition) > 1f && timeTouched < timeBeforeMenuOpen)
                     {
                         menuCanOpen = false;
-                        menuIsOpen = false;
+                        menuIsOpen  = false;
                     }
 
                     timeTouched += Time.deltaTime;
@@ -115,8 +124,8 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                         }
                         else if (touch.phase == TouchPhase.Ended)
                         {
-                            menuCanOpen = true;
-                            menuIsOpen = false;
+                            menuCanOpen =  true;
+                            menuIsOpen  = false;
 
                             circleImage.transform.parent.gameObject.SetActive(false);
                             if (currentItem > -1)
@@ -129,8 +138,8 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
 
                     if (touch.phase == TouchPhase.Ended)
                     {
-                        menuCanOpen = true;
-                        menuIsOpen = false;
+                        menuCanOpen =  true;
+                        menuIsOpen  = false;
                     }
                 }
             }
@@ -304,6 +313,6 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         Destroy(detect.colisATraiter);
         detect.tapisGeneral.doesStop = false;
         detect.ResolveAnomalie();
-        gestionAnomalieRecep.SetActive(false);
+        //gestionAnomalieRecep.SetActive(false);
     }
 }
