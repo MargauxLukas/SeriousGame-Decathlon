@@ -141,8 +141,10 @@ public class ScriptColisRecep : MonoBehaviour
 
     public void Tourner(string face, float rotation)
     {
-        if (face == "Up" && ((rotation >= 85 && rotation <= 95) || (rotation >= 265 && rotation <= 275)))
+        Debug.Log("Test Orientation Fonction");
+        if ((face == "Up" || face =="Down") && ((rotation >= 85 && rotation <= 95) || (rotation >= 265 && rotation <= 275)))
         {
+            Debug.Log("Test Orientation");
             colisScriptable.isBadOriented = false;
         }
         else

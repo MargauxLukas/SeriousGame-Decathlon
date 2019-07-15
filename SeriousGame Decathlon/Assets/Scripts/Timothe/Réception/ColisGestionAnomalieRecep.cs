@@ -72,7 +72,6 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            Debug.Log(Vector2.Distance(touchPosition, tournerMenu.transform.position));
             if (!tournerMenuIsOpen)
             {
                 touchObject();
@@ -263,6 +262,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
 
     public void OpenTurnMenu()
     {
+        menuCanOpen = false;
         if (colisScriptable.isBadOriented)
         {
             rotationScr.resetAll();
