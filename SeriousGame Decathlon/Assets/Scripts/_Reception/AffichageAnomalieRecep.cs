@@ -5,16 +5,11 @@ using TMPro;
 
 public class AffichageAnomalieRecep : MonoBehaviour
 {
-    public Vector3 targetPos;
-
     bool isOpen = false;
     bool isOpening = false;
     bool isClosing = false;
 
-    public float startPos;
-    public float endPos;
-
-    private float swipeDifference;
+    private float swipeDifference;          //Au cas ou, on veut mettre un glisser pour refermer
     private float posY;
 
     public TextMeshProUGUI text1;
