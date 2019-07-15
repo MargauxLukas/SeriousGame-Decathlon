@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameObjectsManager : MonoBehaviour
 {
@@ -113,9 +114,9 @@ public class GameObjectsManager : MonoBehaviour
         return gameObject.GetComponent<Toggle>();
     }
 
-    public Dropdown GameObjectToDropdown(GameObject gameObject)
+    public TMP_Dropdown GameObjectToDropdown(GameObject gameObject)
     {
-        return gameObject.GetComponent<Dropdown>();
+        return gameObject.GetComponent<TMP_Dropdown>();
     }
 
     public Transform GameObjectToTransform(GameObject gameObject)

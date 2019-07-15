@@ -61,7 +61,7 @@ public class TutoManager : MonoBehaviour
     {
         canPlayFirst  = false;
         canPlaySecond = true;
-
+        Debug.Log(interactionNum + "Dialogue");
         Manager(interactionNum);
     }
 
@@ -705,11 +705,13 @@ public class TutoManager : MonoBehaviour
                 }
                 break;
 
-            //Interaction bouton CB02
+            //Interaction bouton CB01
             case (33):
                 switch (phaseNum)
                 {
-                    
+                    case (88):
+                        Phase88();
+                        break;
                 }
                 break;
 
@@ -2854,10 +2856,38 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(-2.88f, -3.23f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.73f, 0.88f); ;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.CB01Button).interactable = true;
+
+            phaseNum++;
+            canPlayFirst = true;
+            canPlaySecond = false;
+        }
+    }
+
+    void Phase88()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.CB01Button).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
-            phaseNum += 2;
+            phaseNum++;
             canPlayFirst = true;
             canPlaySecond = false;
         }
@@ -2880,10 +2910,8 @@ public class TutoManager : MonoBehaviour
 
     void Phase90()
     {
-        Debug.Log("Phase 90");
         if (canPlayFirst)
         {
-            Debug.Log("Phase 90 if can play first");
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
 
