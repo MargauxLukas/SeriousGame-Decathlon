@@ -48,31 +48,31 @@ public class ChangementEtiquettes : MonoBehaviour
 
             if(nbEtiquettes > 20)
             {
-                ledVerte.SetActive(true);
-                ledOrange.SetActive(false);
+                ledVerte            .SetActive(true);
+                ledOrange           .SetActive(false);
                 ledOrangeClignotante.SetActive(false);
-                ampouleOrange.SetActive(false);
-                ampouleClignotante.SetActive(false);
-                bulle.SetActive(true);
+                ampouleOrange       .SetActive(false);
+                ampouleClignotante  .SetActive(false);
+                bulle               .SetActive(false);
 
             }
             else if(nbEtiquettes <= 0)
             {
-                ledVerte.SetActive(false);
-                ledOrange.SetActive(false);
+                ledVerte            .SetActive(false);
+                ledOrange           .SetActive(false);
                 ledOrangeClignotante.SetActive(true);
-                ampouleOrange.SetActive(false);
-                ampouleClignotante.SetActive(true);
-                bulle.SetActive(true);
+                ampouleOrange       .SetActive(false);
+                ampouleClignotante  .SetActive(true);
+                bulle               .SetActive(true);
             }
             else
             {
-                ledVerte.SetActive(false);
-                ledOrange.SetActive(true);
+                ledVerte            .SetActive(false);
+                ledOrange           .SetActive(true);
                 ledOrangeClignotante.SetActive(false);
-                ampouleOrange.SetActive(true);
-                ampouleClignotante.SetActive(false);
-                bulle.SetActive(false);
+                ampouleOrange       .SetActive(true);
+                ampouleClignotante  .SetActive(false);
+                bulle               .SetActive(true);
             }
         }
     }

@@ -24,8 +24,8 @@ public class ChargementListeColis : MonoBehaviour
 
     public ColisManager manageColis;
 
-    public int nbLevel;
-    public int currentLevel;
+    public int nbLevel;      //Pas utilisé
+    public int currentLevel; //Pas utilisé
     public LevelScriptable levelScript;
     public Text affichageNouveauLevel;
 

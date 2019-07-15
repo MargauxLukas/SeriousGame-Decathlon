@@ -20,6 +20,9 @@ public class ConvoyeurButton : MonoBehaviour
 
     public bool isCollide         = false;
 
+    public GameObject  isOnAmpoule;
+    public GameObject isOffAmpoule;
+
     private void Update()
     {
         if (convoyeur.isOn)
@@ -42,8 +45,18 @@ public class ConvoyeurButton : MonoBehaviour
     public void OnOrOff()
     {
         //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
-        if(convoyeur.isOn) {convoyeur.isOn = false;}
-        else               {convoyeur.isOn = true ;}
+        if(convoyeur.isOn)
+        {
+            isOffAmpoule.SetActive(true);
+            isOnAmpoule .SetActive(false);
+            convoyeur.isOn = false;
+        }
+        else
+        {
+            isOnAmpoule .SetActive(true);
+            isOffAmpoule.SetActive(false);
+            convoyeur.isOn = true ;
+        }
     }
 
     public void ValidationPointerDown()

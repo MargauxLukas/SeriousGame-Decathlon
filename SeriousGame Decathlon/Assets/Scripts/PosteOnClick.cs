@@ -12,7 +12,12 @@ public class PosteOnClick : MonoBehaviour
     public GameObject     moniteur;
     public GameObject        aStar;
 
+    [Header("Apparition du joueur")]
+    public ConvoyeurManager managerConvoie;
+    public Transform positionVoulue;
+
     private bool isMoving;
+
     private void Update()
     {
         if (Input.touchCount > 0)
@@ -41,11 +46,11 @@ public class PosteOnClick : MonoBehaviour
         {
             if (Vector2.Distance(player.transform.position, gameObject.transform.position) < 1f)
             {
-                cameraPoste.SetActive(true);
+                cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);
-                aStar.SetActive(false);
-                moniteur.SetActive(false);
-                player.SetActive(false);
+                aStar       .SetActive(false);
+                moniteur    .SetActive(false);
+                player      .SetActive(false);
             }
         }
     }
@@ -58,5 +63,9 @@ public class PosteOnClick : MonoBehaviour
         aStar       .SetActive(true);
         moniteur    .SetActive(true);
         player      .SetActive(true);
+        if(!managerConvoie.isReplierMax)
+        {
+            player.transform.position = positionVoulue.position;
+        }
     }
 }

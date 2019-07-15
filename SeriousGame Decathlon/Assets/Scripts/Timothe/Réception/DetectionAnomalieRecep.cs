@@ -4,38 +4,47 @@ using UnityEngine;
 
 public class DetectionAnomalieRecep : MonoBehaviour
 {
+    public Unit player;
+
+    [Header("Camera")]
     public Camera cameraGeneral;
 
+    [Header("Assigné automatiquement")]
     public GameObject colisATraiter;
     public ScriptColisRecep colisAffiche;
 
-    public TapisRoulantGeneral tapisGeneral;
-
-    public GameObject gestionAnomalie;
-
-    public GameObject signalBoiteOrange;
-    public GameObject signalBoiteVert;
+    [Header("Ampoule/Led")]
+    public GameObject signalBoiteOrange          ;
+    public GameObject signalBoiteVert            ;
     public GameObject signalBoiteOrangeClignotant;
+    public GameObject ampouleOrange              ;
+    public GameObject ampouleClignotante         ;
+    public GameObject bulle                      ;
 
-    public GameObject ampouleOrange;
-    public GameObject ampouleClignotante;
-    public GameObject bulle;
-
-    public bool doesDetectDimension;
+    [Header("Erreur detecté")]
+    public bool doesDetectDimension  ;
     public bool doesDetectOrientation;
-    public bool doesDetectPoids;
+    public bool doesDetectPoids      ;
 
+    [Header("Gestion Anomalie")]
     public ColisGestionAnomalieRecep colisAnomalie;
     public AffichageAnomalieRecep affichageAnomalieRecep;
+    public GameObject gestionAnomalie;
+
+    [Header("Tapis")]
+    public TapisRoulantGeneral tapisGeneral;
 
     private bool doesTouch;
+    private void Start()
+    {
+        signalBoiteVert.SetActive(true);
+    }
 
     private void Update()
     {
         if(Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
             touchObject();
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
@@ -45,51 +54,58 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 if (colisATraiter != null)
                 {
                     gestionAnomalie.SetActive(true);
+                    GetComponent<BoxCollider2D>().enabled = false;
+                    player.stuck = true;
                     colisAnomalie.colisScriptable = colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable;
                     colisAnomalie.rotationScr.cartonObj = colisATraiter;
-                    colisATraiter.gameObject.GetComponent<SpriteRenderer>().sprite = colisATraiter.GetComponent<SpriteRenderer>().sprite;
-                    colisAnomalie.colisTapis = colisATraiter.GetComponent<SpriteRenderer>();
+                    colisAnomalie.GetComponent<SpriteRenderer>().sprite = colisATraiter.GetComponent<SpriteRenderer>().sprite;
+                    colisAnomalie.colisTapis                            = colisATraiter.GetComponent<SpriteRenderer>();
                 }
                 if(touch.phase == TouchPhase.Ended)
                 {
                     doesTouch = false;
                 }
             }
-            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)) >= 7f)
+            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 5f)
             {
+                Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
                 gestionAnomalie.SetActive(false);
+                GetComponent<BoxCollider2D>().enabled = true;
+                player.stuck = false;
                 colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
-                signalBoiteOrange.SetActive(false);
+                signalBoiteOrange          .SetActive(false);
                 signalBoiteOrangeClignotant.SetActive(false);
-
-                ampouleOrange.SetActive(false);
-                ampouleClignotante.SetActive(false);
-                bulle.SetActive(false);
+                ampouleOrange              .SetActive(false);
+                ampouleClignotante         .SetActive(false);
+                bulle                      .SetActive(false);
 
                 if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
+                    signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante.SetActive(true);
-                    bulle.SetActive(true);
+                    ampouleClignotante         .SetActive(true);
+                    bulle                      .SetActive(true);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
+                    signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante.SetActive(true);
-                    bulle.SetActive(true);
+                    ampouleClignotante         .SetActive(true);
+                    bulle                      .SetActive(true);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
+                    signalBoiteVert  .SetActive(false);
                     signalBoiteOrange.SetActive(true);
-                    ampouleOrange.SetActive(true);
-                    bulle.SetActive(true);
+                    ampouleOrange    .SetActive(true);
+                    bulle            .SetActive(true);
                 }
                 else
                 {
@@ -105,23 +121,24 @@ public class DetectionAnomalieRecep : MonoBehaviour
         if (collision.tag == "Colis")
         {
             ScriptColisRecep currentColis = collision.GetComponent<ScriptColisRecep>();
-            signalBoiteOrange.SetActive(false);
+            signalBoiteOrange          .SetActive(false);
             signalBoiteOrangeClignotant.SetActive(false);
-            ampouleOrange.SetActive(false);
-            ampouleClignotante.SetActive(false);
-            bulle.SetActive(false);
+            ampouleOrange              .SetActive(false);
+            ampouleClignotante         .SetActive(false);
+            bulle                      .SetActive(false);
 
             colisATraiter = collision.gameObject;
+
             if (doesDetectOrientation)
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
-                    Debug.Log("1");
                     affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
+                    signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante.SetActive(true);
-                    bulle.SetActive(true);
+                    ampouleClignotante         .SetActive(true);
+                    bulle                      .SetActive(true);
                 }
             }
 
@@ -129,12 +146,12 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.carton.codeRef == "CBGrand")
                 {
-                    Debug.Log("2");
                     affichageAnomalieRecep.ChangeText("dimension");
                     tapisGeneral.doesStop = true;
+                    signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante.SetActive(true);
-                    bulle.SetActive(true);
+                    ampouleClignotante         .SetActive(true);
+                    bulle                      .SetActive(true);
                 }
             }
 
@@ -142,12 +159,12 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.poids >= 35)
                 {
-                    Debug.Log("3");
                     affichageAnomalieRecep.ChangeText("heavy");
                     tapisGeneral.doesStop = true;
+                    signalBoiteVert  .SetActive(false);
                     signalBoiteOrange.SetActive(true);
-                    ampouleOrange.SetActive(true);
-                    bulle.SetActive(true);
+                    ampouleOrange    .SetActive(true);
+                    bulle            .SetActive(true);
                 }
             }
         }
@@ -155,12 +172,12 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
     public void ResolveAnomalie()
     {
-        signalBoiteOrange.SetActive(false);
-        signalBoiteVert.SetActive(true);
+        signalBoiteVert            .SetActive(true);
+        signalBoiteOrange          .SetActive(false);
         signalBoiteOrangeClignotant.SetActive(false);
-        ampouleOrange.SetActive(false);
-        ampouleClignotante.SetActive(false);
-        bulle.SetActive(false);
+        ampouleOrange              .SetActive(false);
+        ampouleClignotante         .SetActive(false);
+        bulle                      .SetActive(false);
 
     }
 
@@ -169,7 +186,10 @@ public class DetectionAnomalieRecep : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             RaycastHit2D hit = Physics2D.Raycast(cameraGeneral.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
+            if (hit.collider != null && hit.collider.gameObject != null 
+                                     &&              gameObject != null 
+                                     && hit.collider.gameObject      == gameObject
+                                     && hit.collider.gameObject.name == gameObject.name)
             {
                 doesTouch = true;
             }
