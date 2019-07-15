@@ -18,12 +18,15 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public TextMeshProUGUI textAnomalieAmpoule;
 
+    public  GameObject fondTexteAnomalie;
     private GameObject fiche;
 
     public CreationDePalette paletteManager;
 
     public void Start()
     {
+        fondTexteAnomalie.SetActive(false);
+
         text1.text               = "";
         text2.text               = "";
         text3.text               = "";
@@ -97,6 +100,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public void ChangeText(string error)
     {
+        fondTexteAnomalie.SetActive(true);
         switch(error)
         {
             case "badOriented":
@@ -111,7 +115,5 @@ public class AffichageAnomalieRecep : MonoBehaviour
             default:
                 break;
         }
-        //Recuperation des anomalies detecté
-        //A récupéré sur le DetectionAnomalie sur le collider FinDuConvoyeur
     }
 }
