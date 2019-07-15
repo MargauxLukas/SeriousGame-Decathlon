@@ -17,11 +17,13 @@ MonoBehaviour:
   phraseDites:
   - "Plus qu\u2019une pile d\u2019articles. Il te faut un nouveau carton pour en faire
     un colis. "
-  - "Au vu de la taille des articles, tu peux choisir un petit colis. Appuie sur le
-    bouton correspondant sur la Fiche carton \xE0 ta gauche."
   - "Quand un colis contient plusieurs types d'articles diff\xE9rents, tu dois les
     s\xE9parer dans deux colis diff\xE9rents manuellement et recr\xE9er une ou plusieurs
     \xC9tiquette HU pour indiquer les changements op\xE9r\xE9s sur les colis."
+  - "Tu dois cr\xE9er une \xC9tiquette HU pour que la machine puisse identifier le
+    colis. "
+  - "Sur l\u2019\xE9cran, appuie sur le bouton Create HU et remplis la fen\xEAtre
+    avec les donn\xE9es correspondantes."
   choixPossibles:
   - '...'
   dialoguesSuivant:

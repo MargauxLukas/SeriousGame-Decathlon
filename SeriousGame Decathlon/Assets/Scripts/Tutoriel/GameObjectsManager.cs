@@ -15,7 +15,7 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject quitButtonWorkView;
     public GameObject quitButtonToMenu;
     public GameObject menuCirculaireColis;
-    public GameObject CB02Button;
+    public GameObject CB01Button;
 
     [Header("Colis 1")]
     public GameObject colis1;
@@ -28,7 +28,11 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject colis2;
     public GameObject colis2bis;
     public GameObject pileArticles1Colis2;
+    public GameObject pileArticles1Colis2PlusButton;
+    public GameObject pileArticles1Colis2ValidateButton;
     public GameObject pileArticles2Colis2;
+    public GameObject pileArticles2Colis2PlusButton;
+    public GameObject pileArticles2Colis2ValidateButton;
 
     [Header("Colis 3")]
     public GameObject colis3;
@@ -85,14 +89,8 @@ public class GameObjectsManager : MonoBehaviour
     public GameObject squareSpriteMask01;
     public GameObject squareSpriteMask02;
     public GameObject circleSpriteMask;
-    public GameObject menuColis14SpriteMask;
-    public GameObject menuColis24SpriteMask;
-    public GameObject menuColis34SpriteMask;
-    public GameObject menuColis44SpriteMask;
     public GameObject menuColis44SpriteMaskTuto;
-    public GameObject menuArticles13SpriteMask;
-    public GameObject menuArticles23SpriteMask;
-    public GameObject menuArticles33SpriteMask;
+    public GameObject menuCirculaireArticlesSpriteMask;
 
     [Header("Doigt")]
     public GameObject doigtClick;

@@ -37,7 +37,7 @@ public class CreateHUScript : MonoBehaviour
     {
         packagingMat = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
 
-        if (TutoManager.instance != null && packagingMat == "CB02")
+        if (TutoManager.instance != null && packagingMat == "CB01")
         {
             TutoManager.instance.Manager(35);
         }
