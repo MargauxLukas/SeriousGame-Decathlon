@@ -116,4 +116,9 @@ public class FinDuConvoyeur : MonoBehaviour
             StartCoroutine(AnomalieMoveBack(button));
         }
     }
+
+    public void AfficherAnomalie(int i)
+    {
+        StartCoroutine(AnomalieMove(listButton[i]));
+    }
 }
