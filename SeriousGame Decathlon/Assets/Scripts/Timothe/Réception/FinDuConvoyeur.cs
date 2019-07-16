@@ -6,26 +6,30 @@ using TMPro;
 
 public class FinDuConvoyeur : MonoBehaviour
 {
+    [Header("AnomalieDetection")]
     public AnomalieDetection detect;
 
+    [Header("Image - DechargementBarre")]
     public DechargementBarre dechargeBar;
 
+    [Header("Liste Colis")]
     public List<Colis> listColisEnvoye;
 
+    [Header("Liste Anomalie")]
     public List<string> listAnomalieDejaDetectee;
-    //public GameObject menuDeroulant;
-
     public int nbAnomalieMax;
-
-    public GameObject prefabText;
     private List<ZoneAffichageAnomalieFiche> zoneAffichage;
 
-    private float posXInitial;
-
-
+    [Header("Button")]
     public List<Button> listButton;
+
+    [Header("Nb")]
     public List<TextMeshProUGUI> listNb;
+
+    [Header("Texte")]
     public List<TextMeshProUGUI> listText;
+
+    private float posXInitial;
 
     private void Start()
     {
@@ -49,11 +53,14 @@ public class FinDuConvoyeur : MonoBehaviour
             UpdateAffichage    (collision.GetComponent<ScriptColisRecep>().colisScriptable);
             listColisEnvoye.Add(collision.GetComponent<ScriptColisRecep>().colisScriptable);
             dechargeBar.UpdateProgression(listColisEnvoye.Count);
-            //Afficher les anomalies
+
             Destroy(collision.gameObject);
         }
     }
 
+    /*******************************************************************
+     *   Permet de mettre à jour l'affichage des anomalies du colis    *
+     *******************************************************************/
     private void UpdateAffichage(Colis colis)
     {
         for (int j = 0; j < colis.listAnomalies.Count; j++)
@@ -85,6 +92,9 @@ public class FinDuConvoyeur : MonoBehaviour
         }
     }
 
+    /*******************************************************************
+    *   Coroutine qui permet de déplacer l'anomalie vers la droite     *
+    *******************************************************************/
     IEnumerator AnomalieMove(Button button)
     {
         button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial+7f, button.transform.position.y, button.transform.position.z),1f);
@@ -101,6 +111,9 @@ public class FinDuConvoyeur : MonoBehaviour
         }
     }
 
+    /*******************************************************************
+    *   Coroutine qui permet de ranger l'anomalie vers la gauche       *
+    *******************************************************************/
     IEnumerator AnomalieMoveBack(Button button)
     {
         button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial+0.8f, button.transform.position.y, button.transform.position.z), 1f);
@@ -117,6 +130,9 @@ public class FinDuConvoyeur : MonoBehaviour
         }
     }
 
+    /*******************************************************************
+    *   Onclick() qui permet de déplacer une anomalie vers la droite   *
+    *******************************************************************/
     public void AfficherAnomalie(int i)
     {
         StartCoroutine(AnomalieMove(listButton[i]));

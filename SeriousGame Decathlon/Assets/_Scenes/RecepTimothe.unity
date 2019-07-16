@@ -148,7 +148,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44407981
 GameObject:
@@ -1592,7 +1592,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 140399162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &140399162
@@ -1715,7 +1726,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 204444576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &204444576
@@ -2399,7 +2421,7 @@ Transform:
   - {fileID: 1851385954}
   - {fileID: 1918294868}
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &300710771
 GameObject:
@@ -3224,7 +3246,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397093643}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &397093643
@@ -4472,8 +4505,6 @@ MonoBehaviour:
   listColisEnvoye: []
   listAnomalieDejaDetectee: []
   nbAnomalieMax: 9
-  prefabText: {fileID: 8946503112676112057, guid: ef59755846178f844b4632d1adbb850f,
-    type: 3}
   listButton:
   - {fileID: 2102595231}
   - {fileID: 140399161}
@@ -4542,7 +4573,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &542907148
 MonoBehaviour:
@@ -7174,7 +7205,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 889300158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &889300158
@@ -7297,7 +7339,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 898513367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &898513367
@@ -8575,7 +8628,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1078470767
 MonoBehaviour:
@@ -9053,10 +9106,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154726447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f76db56e227354696e3115a6a48716, type: 3}
+  m_Script: {fileID: 11500000, guid: a17a275863dd90945bae625912d812b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraGeneral: {fileID: 1803507320}
+  cameraPoste: {fileID: 1803507320}
+  cameraDezoom: {fileID: 1929283563}
+  player: {fileID: 376036780}
+  moniteur: {fileID: 2082458861}
+  aStar: {fileID: 813783619}
+  managerConvoie: {fileID: 110519614}
+  positionVoulue: {fileID: 26195917}
 --- !u!61 &1154726450
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14094,7 +14153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1803507321
 AudioListener:
   m_ObjectHideFlags: 0
@@ -14265,7 +14324,7 @@ RectTransform:
   - {fileID: 2064901743}
   - {fileID: 798592202}
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14539,7 +14598,7 @@ Transform:
   - {fileID: 1247725198}
   - {fileID: 4239822756992051930}
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1817322107
 SpriteRenderer:
@@ -14987,7 +15046,7 @@ Transform:
   - {fileID: 356269299}
   - {fileID: 1199485890}
   m_Father: {fileID: 1896894228}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1851385953
 GameObject:
@@ -15873,13 +15932,13 @@ Transform:
   - {fileID: 573627935}
   - {fileID: 1979564136}
   - {fileID: 1644104636}
-  - {fileID: 542907147}
   - {fileID: 1817322106}
   - {fileID: 1078470766}
   - {fileID: 287693843}
   - {fileID: 1834347137}
   - {fileID: 26195917}
   - {fileID: 1806442772}
+  - {fileID: 542907147}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -16764,7 +16823,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1936713028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1936713028
@@ -17031,7 +17101,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1970021379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1970021379
@@ -17610,7 +17691,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2087378710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2087378710
@@ -17839,7 +17931,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2102595232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 542907145}
+        m_MethodName: AfficherAnomalie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2102595232
