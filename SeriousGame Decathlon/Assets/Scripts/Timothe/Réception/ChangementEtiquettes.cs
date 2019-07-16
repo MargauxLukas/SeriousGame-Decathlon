@@ -79,6 +79,7 @@ public class ChangementEtiquettes : MonoBehaviour
                 ampouleOrange       .SetActive(true);
                 ampouleClignotante  .SetActive(false);
                 bulle               .SetActive(true);
+                Scoring.instance.RecepBonus(200);
             }
         }
     }
