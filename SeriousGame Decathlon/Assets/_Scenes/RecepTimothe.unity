@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -1727,7 +1727,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -3247,7 +3247,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -4786,6 +4786,10 @@ MonoBehaviour:
   colisPossibles:
   - {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f, type: 2}
   - {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09, type: 2}
+  - {fileID: 11400000, guid: c396131450bf62a46a775cce3e6e2a7c, type: 2}
+  - {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09, type: 2}
+  - {fileID: 11400000, guid: e811fa1ad51285c43a058e2317b57132, type: 2}
+  - {fileID: 11400000, guid: 47bad980ec8d7aa468a4e75fb7f55fda, type: 2}
   colisAvecAnomalieMF:
   - {fileID: 11400000, guid: 9b05a4b3e31343c4f9d483d5eca29ae0, type: 2}
   - {fileID: 11400000, guid: f9d8d420f63875744b3feb4751b3fb82, type: 2}
@@ -7221,7 +7225,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -7355,7 +7359,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -16713,7 +16717,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -16991,7 +16995,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -17581,7 +17585,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
@@ -17821,7 +17825,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 542907145}
+      - m_Target: {fileID: 652738261}
         m_MethodName: AfficherAnomalie
         m_Mode: 3
         m_Arguments:
