@@ -16,7 +16,7 @@ public class ConvoyeurManager : MonoBehaviour
     private float height    = 1f  ;          //Hauteur actuelle
     private float minHeight = 1f  ;          //Hauteur minimum
     private float maxHeight = 2.6f;          //Hauteur maximum
-    private float maxReplier;
+    public float maxReplier;
     private float maxDeplier;
 
     [Header("Boolean")]
@@ -29,7 +29,7 @@ public class ConvoyeurManager : MonoBehaviour
 
     public void Start()
     {
-        maxReplier = transform.position.y;
+        maxReplier = camera.transform.position.y;
         //maxdeplier
     }
 
@@ -63,7 +63,8 @@ public class ConvoyeurManager : MonoBehaviour
     {
         if (direction.Equals("replier"))
         {
-            if (transform.position.y <= maxReplier)
+            Debug.Log(camera.transform.position.y);
+            if (camera.transform.position.y <= maxReplier)
             {
                 camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 0.02f, camera.transform.position.z);
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.02f, player.transform.position.z);
@@ -81,6 +82,7 @@ public class ConvoyeurManager : MonoBehaviour
         }
         else
         {
+            isReplierMax = false;
             vueGeneralDeplier.SetActive(true );
             vueGeneralReplier.SetActive(false);
             camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 0.02f, camera.transform.position.z);

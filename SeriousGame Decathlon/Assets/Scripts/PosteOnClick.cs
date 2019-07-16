@@ -63,7 +63,7 @@ public class PosteOnClick : MonoBehaviour
         aStar       .SetActive(true);
         moniteur    .SetActive(true);
         player      .SetActive(true);
-        if(!managerConvoie.isReplierMax)
+        if (!managerConvoie.isReplierMax)
         {
             player.transform.position = positionVoulue.position;
         }
