@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FinDuConvoyeur : MonoBehaviour
 {
@@ -12,12 +13,33 @@ public class FinDuConvoyeur : MonoBehaviour
     public List<Colis> listColisEnvoye;
 
     public List<string> listAnomalieDejaDetectee;
-    public GameObject menuDeroulant;
+    //public GameObject menuDeroulant;
 
     public int nbAnomalieMax;
 
     public GameObject prefabText;
     private List<ZoneAffichageAnomalieFiche> zoneAffichage;
+
+    private float posXInitial;
+
+
+    public List<Button> listButton;
+    public List<TextMeshProUGUI> listNb;
+    public List<TextMeshProUGUI> listText;
+
+    private void Start()
+    {
+        foreach(TextMeshProUGUI nb in listNb)
+        {
+            nb.text = "1";
+        }
+        foreach (TextMeshProUGUI text in listText)
+        {
+            text.text = "";
+        }
+
+        posXInitial = listButton[0].transform.position.x;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,36 +58,62 @@ public class FinDuConvoyeur : MonoBehaviour
     {
         for (int j = 0; j < colis.listAnomalies.Count; j++)
         {
-            Debug.Log("Test Affiche Anomalie2");
             int i = 0;
             for (i = 0; i < listAnomalieDejaDetectee.Count; i++)
             {
-                Debug.Log("Test Affiche Anomalie3");
-                Debug.Log(listAnomalieDejaDetectee[i]);
-                Debug.Log(colis.listAnomalies[j]);
                 if (listAnomalieDejaDetectee[i] == colis.listAnomalies[j])
                 {
-                    zoneAffichage[i].zoneNombreAnomaliePresente.text = (int.Parse(zoneAffichage[i].zoneNombreAnomaliePresente.text) + 1).ToString();
-                    zoneAffichage[i].zoneNombreAnomaliePresente.CrossFadeAlpha(255f, 0f, false);
-                    zoneAffichage[i].zoneAffichageAnomalie     .CrossFadeAlpha(255f, 0f, false);
+                    listNb[i].text = (int.Parse(listNb[i].text) + 1).ToString();
+                    StartCoroutine(AnomalieMove(listButton[i]));
                 }
             }
 
             if (!listAnomalieDejaDetectee.Contains(colis.listAnomalies[j]) && listAnomalieDejaDetectee.Count <= nbAnomalieMax)
             {
-                Debug.Log("Test Affiche Anomalie4");
                 if(zoneAffichage == null || zoneAffichage.Count<=0)
                 {
                     zoneAffichage = new List<ZoneAffichageAnomalieFiche>();
                 }
-                zoneAffichage.Add(Instantiate(prefabText, menuDeroulant.transform).GetComponent<ZoneAffichageAnomalieFiche>());
-                zoneAffichage[i].zoneAffichageAnomalie.text = colis.listAnomalies[j];
+                listText[i].text = colis.listAnomalies[j];
+                StartCoroutine(AnomalieMove(listButton[i]));
                 if (listAnomalieDejaDetectee == null || listAnomalieDejaDetectee.Count <= 0)
                 {
                     listAnomalieDejaDetectee = new List<string>();
                 }
                 listAnomalieDejaDetectee.Add(colis.listAnomalies[j]);
             }
+        }
+    }
+
+    IEnumerator AnomalieMove(Button button)
+    {
+        button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial+7f, button.transform.position.y, button.transform.position.z),1f);
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
+
+        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z)) <= 0.2f)
+        {
+            yield return new WaitForSeconds(4f);
+            StartCoroutine(AnomalieMoveBack(button));
+        }
+        else
+        {
+            StartCoroutine(AnomalieMove(button));
+        }
+    }
+
+    IEnumerator AnomalieMoveBack(Button button)
+    {
+        button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial+0.8f, button.transform.position.y, button.transform.position.z), 1f);
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
+
+        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial+0.8f, button.transform.position.y, button.transform.position.z)) <= 0.2f)
+        {
+            yield return new WaitForSeconds(4f);
+            StopCoroutine(AnomalieMoveBack(button));
+        }
+        else
+        {
+            StartCoroutine(AnomalieMoveBack(button));
         }
     }
 }
