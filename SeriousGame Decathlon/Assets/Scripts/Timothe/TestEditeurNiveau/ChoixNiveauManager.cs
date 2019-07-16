@@ -27,7 +27,6 @@ public class ChoixNiveauManager : MonoBehaviour
     public Button boutonsAffichageMF;
     public Button boutonsAffichageReception;
     public Button boutonsAffichageGTP;
-    public GameObject imageADesactiver;
 
     //Multifoncition
 
