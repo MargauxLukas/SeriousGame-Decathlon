@@ -66,7 +66,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     doesTouch = false;
                 }
             }
-            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 5f)
+            else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 6f)
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
                 gestionAnomalie.SetActive(false);
@@ -88,6 +88,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
                     bulle                      .SetActive(true);
+                    Scoring.instance.RecepMalus(15);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
                 {
@@ -97,6 +98,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
                     bulle                      .SetActive(true);
+                    Scoring.instance.RecepMalus(15);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                 {
@@ -106,11 +108,13 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     signalBoiteOrange.SetActive(true);
                     ampouleOrange    .SetActive(true);
                     bulle            .SetActive(true);
+                    Scoring.instance.RecepMalus(15);
                 }
                 else
                 {
                     tapisGeneral.doesStop = false;
                     colisATraiter = null;
+                    Scoring.instance.RecepBonus(350);
                 }
             }
         }
@@ -120,6 +124,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
     {
         if (collision.tag == "Colis")
         {
+            bool gotAnomalie = false;
+
             ScriptColisRecep currentColis = collision.GetComponent<ScriptColisRecep>();
             signalBoiteOrange          .SetActive(false);
             signalBoiteOrangeClignotant.SetActive(false);
@@ -133,6 +139,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
+                    gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
@@ -140,12 +147,14 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     ampouleClignotante         .SetActive(true);
                     bulle                      .SetActive(true);
                 }
+                Scoring.instance.RecepMalus(15);
             }
 
             if(doesDetectDimension)
             {
                 if(currentColis.colisScriptable.carton.codeRef == "CBGrand")
                 {
+                    gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("dimension");
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
@@ -159,6 +168,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if(currentColis.colisScriptable.poids >= 35)
                 {
+                    gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("heavy");
                     tapisGeneral.doesStop = true;
                     signalBoiteVert  .SetActive(false);
@@ -167,6 +177,12 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     bulle            .SetActive(true);
                 }
             }
+
+            if(!gotAnomalie && Scoring.instance != null)
+            {
+                Scoring.instance.UpCombo();
+            }
+            Scoring.instance.RecepRenvoieColis();
         }
     }
 

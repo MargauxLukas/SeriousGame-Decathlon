@@ -7,6 +7,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
 
     public List<Colis> allColisCreated;
     public List<LevelScriptable> allLevelCreated;
+    public BestScoreScript beginScore;
 
     public int currentVersion;
     
@@ -23,6 +24,8 @@ public class SaveAllScriptableBeginning : MonoBehaviour
             {
                 SaveLoadSystem.instance.SaveLevelWithoutColis(level);
             }
+
+            SaveLoadSystem.instance.SaveBestBegin(beginScore);
         }
         else if(SaveLoadSystem.instance.LoadGeneralData().version != currentVersion)
         {
@@ -39,6 +42,8 @@ public class SaveAllScriptableBeginning : MonoBehaviour
             {
                 SaveLoadSystem.instance.SaveLevelWithoutColis(level);
             }
+
+            SaveLoadSystem.instance.SaveBestBegin(beginScore);
         }
     }
 

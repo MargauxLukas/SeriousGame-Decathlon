@@ -34,6 +34,12 @@ public class Scoring : MonoBehaviour
     private bool hadMalusAnomalie = false;
     private bool hadMalusColis    = false;
 
+    //Réception
+    int comboPallier=5;
+    float pointToLoseWithTime = 0;
+    float recepCombo;
+    float currentTime;
+    int currentColisInCombo;
 
     void Awake()
     {
@@ -84,7 +90,113 @@ public class Scoring : MonoBehaviour
                 ChargementListeColis.instance.currentPlayerScriptable = playerScriptable;
             }
         }
+
+        //Reception
+        //Calcul du temps mit
+
+        currentTime -= Time.deltaTime;
+        switch(comboPallier)
+        {
+            case 1:
+                if (currentTime > 1f)
+                {
+                    comboPallier++;
+                }
+                break;
+            case 2:
+                if (currentTime > 2f)
+                {
+                    comboPallier++;
+                }
+                break;
+            case 3:
+                if (currentTime > 4f)
+                {
+                    comboPallier++;
+                }
+                break;
+            case 4:
+                if (currentTime > 8f)
+                {
+                    comboPallier++;
+                }
+                break;
+            case 5:
+                if (currentTime > 15f)
+                {
+                    comboPallier++;
+                }
+                break;
+        }
     }
+
+    #region Réception
+
+    public void LosePointOnTime()
+    {
+        pointToLoseWithTime += Time.deltaTime;
+    }
+
+    public void EndLosePointOnTime()
+    {
+        score += (int)pointToLoseWithTime;
+        pointToLoseWithTime = 0;
+    }
+
+    public void RecepMalus(int valeurMalus)
+    {
+        score -= valeurMalus;
+        ResetComboRpcep();
+    }
+
+    public void RecepBonus(int valeurBonus)
+    {
+        score += valeurBonus;
+    }
+
+    public void UpCombo()
+    {
+        switch (comboPallier)
+        {
+            case 1:
+                recepCombo = 1.4f + 0.02f * currentColisInCombo;
+                break;
+            case 2:
+                recepCombo = 1.3f + 0.02f * currentColisInCombo;
+                break;
+            case 3:
+                recepCombo = 1.2f + 0.02f * currentColisInCombo;
+                break;
+            case 4:
+                recepCombo = 1.1f + 0.02f * currentColisInCombo;
+                break;
+            case 5:
+                recepCombo = 1f + 0.02f * currentColisInCombo;
+                break;
+            case 6:
+                recepCombo = 1f;
+                break;
+        }
+    }
+
+    public void RecepRenvoieColis()
+    {
+        score += (int)Mathf.Pow(75, recepCombo);
+        currentColisInCombo++;
+        if(currentColisInCombo > 4)
+        {
+            comboPallier++;
+            currentColisInCombo = 0;
+        }
+    }
+
+    public void ResetComboRpcep()
+    {
+        comboPallier = 6;
+        currentColisInCombo = 0;
+    }
+
+    #endregion
 
     #region Multifonction
 

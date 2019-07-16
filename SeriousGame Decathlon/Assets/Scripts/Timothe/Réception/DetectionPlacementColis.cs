@@ -8,7 +8,7 @@ public class DetectionPlacementColis : MonoBehaviour
     {
         if(collision.tag == "Colis")
         {
-            //Faire perdre du score au joueur
+            Scoring.instance.RecepMalus(50);
         }
     }
 }

@@ -85,13 +85,14 @@ public class ScriptColisRecep : MonoBehaviour
                 {
                     if(!isOnTapis || tapisScript.tapisGeneral.doesStop)
                     {
-                        //Malus de lacher le colis
+                        Scoring.instance.RecepMalus(15);
                         transform.position = startPosition;
                     }
                     else
                     {
                         transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
                         tapisScript.AddColis(this.gameObject);
+                        Scoring.instance.EndLosePointOnTime();
                     }
                 }
             }     
@@ -99,6 +100,7 @@ public class ScriptColisRecep : MonoBehaviour
         else
         {
             doesTouch = false;
+            Scoring.instance.EndLosePointOnTime();
         }
     }
 
