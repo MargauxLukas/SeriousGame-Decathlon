@@ -16,6 +16,12 @@ public class ZoneAffichageAnomalieFiche : MonoBehaviour
     public List<TextMeshProUGUI> listText;
 
     public float posXInitial;
+    public Camera cameraToFollow;
+
+    public void Update()
+    {
+        transform.position = new Vector3(transform.position.x, cameraToFollow.transform.position.y+1.3f, transform.position.z);
+    }
 
     private void Start()
     {
@@ -58,7 +64,6 @@ public class ZoneAffichageAnomalieFiche : MonoBehaviour
         if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 0.8f, button.transform.position.y, button.transform.position.z)) <= 0.1f)
         {
             yield return new WaitForSeconds(4f);
-            StopCoroutine(AnomalieMoveBack(button));
         }
         else
         {

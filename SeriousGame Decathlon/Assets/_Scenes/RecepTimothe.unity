@@ -5584,7 +5584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652738255}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1800003, y: 0.27, z: 12.97}
+  m_LocalPosition: {x: -7.1800003, y: 1.51, z: 12.97}
   m_LocalScale: {x: 1.36176, y: 0.70145, z: 0.19708}
   m_Children:
   - {fileID: 1689850392}
@@ -5707,6 +5707,7 @@ MonoBehaviour:
   - {fileID: 1393818868}
   - {fileID: 444866006}
   posXInitial: 0
+  cameraToFollow: {fileID: 1803507322}
 --- !u!1 &654770811
 GameObject:
   m_ObjectHideFlags: 0

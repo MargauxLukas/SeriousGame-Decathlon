@@ -74,20 +74,16 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 player.stuck = false;
                 colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
-                signalBoiteOrange          .SetActive(false);
-                signalBoiteOrangeClignotant.SetActive(false);
-                ampouleOrange              .SetActive(false);
-                ampouleClignotante         .SetActive(false);
-                bulle                      .SetActive(false);
-
                 if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
-                    signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante         .SetActive(true);
-                    bulle                      .SetActive(true);
+                    signalBoiteOrange          .SetActive(false);
+                    signalBoiteOrangeClignotant.SetActive(true );
+                    ampouleClignotante         .SetActive(true );
+                    ampouleOrange              .SetActive(false);
+                    bulle                      .SetActive(true );
                     Scoring.instance.RecepMalus(15);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
@@ -95,19 +91,23 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
-                    signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante         .SetActive(true);
-                    bulle                      .SetActive(true);
+                    signalBoiteOrange          .SetActive(false);
+                    signalBoiteOrangeClignotant.SetActive(true );
+                    ampouleClignotante         .SetActive(true );
+                    ampouleOrange              .SetActive(false);
+                    bulle                      .SetActive(true );
                     Scoring.instance.RecepMalus(15);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
-                    signalBoiteVert  .SetActive(false);
-                    signalBoiteOrange.SetActive(true);
-                    ampouleOrange    .SetActive(true);
-                    bulle            .SetActive(true);
+                    signalBoiteVert            .SetActive(false);
+                    signalBoiteOrange          .SetActive(true );
+                    signalBoiteOrangeClignotant.SetActive(false);
+                    ampouleClignotante         .SetActive(false);
+                    ampouleOrange              .SetActive(true );
+                    bulle                      .SetActive(true );
                     Scoring.instance.RecepMalus(15);
                 }
                 else
