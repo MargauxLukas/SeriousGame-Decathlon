@@ -1298,6 +1298,7 @@ public class TutoManager : MonoBehaviour
             StartCoroutine(MoveDoigt());
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -1319,6 +1320,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = false;
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2509,6 +2511,7 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.recountButton).interactable = true;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
 
         phaseNum++;
     }
@@ -2522,6 +2525,7 @@ public class TutoManager : MonoBehaviour
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.recountTab).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.recountButton).interactable = false;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
 
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>().OpenMonitorTuto();
 
@@ -3021,6 +3025,7 @@ public class TutoManager : MonoBehaviour
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2bis).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.pileArticles2Colis2).enabled = true;
+        articlesNum = "5";
         canColis1 = true;
         canOuvrirFermer = true;
 
@@ -3042,7 +3047,8 @@ public class TutoManager : MonoBehaviour
         
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).enabled = true;
+            Debug.Log("Phase 98 second");
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = true;
 
             phaseNum++;
             canPlayFirst = true;
@@ -3058,7 +3064,7 @@ public class TutoManager : MonoBehaviour
     {
         if (canPlayFirst)
         {
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).enabled = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;

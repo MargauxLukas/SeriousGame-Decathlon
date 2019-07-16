@@ -53,7 +53,7 @@ public class CreateHUScript : MonoBehaviour
         Debug.Log("Set Reference");
         reference = int.Parse(input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text);
 
-        if(TutoManager.instance != null && reference == 4635)
+        if(TutoManager.instance != null && reference == 9712)
         {
             Debug.Log("Set Reference if Tuto");
             TutoManager.instance.Manager(36);

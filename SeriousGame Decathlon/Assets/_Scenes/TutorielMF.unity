@@ -3936,6 +3936,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RemoveArticle
       objectReference: {fileID: 0}
+    - target: {fileID: 5856178237461049665, guid: beaa9c0fc357f124d902301be265c0cf,
+        type: 3}
+      propertyPath: tutoMan
+      value: 
+      objectReference: {fileID: 1494410233}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beaa9c0fc357f124d902301be265c0cf, type: 3}
 --- !u!114 &620553052 stripped
@@ -13415,7 +13420,7 @@ PrefabInstance:
     - target: {fileID: 475608106956110826, guid: 4ddaf2fa882df654a9a2d71111eadad1,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ddaf2fa882df654a9a2d71111eadad1, type: 3}
