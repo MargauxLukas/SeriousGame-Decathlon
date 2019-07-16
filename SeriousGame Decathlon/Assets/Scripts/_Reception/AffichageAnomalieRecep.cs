@@ -13,8 +13,10 @@ public class AffichageAnomalieRecep : MonoBehaviour
     private float posY;
 
     public TextMeshProUGUI textAnomalieAmpoule;
+    public TextMeshProUGUI textAnomalieGestion;
 
     public  GameObject fondTexteAnomalie;
+    public GameObject fondTextAnomalieDezoom;
     private GameObject fiche;
 
     public CreationDePalette paletteManager;
@@ -22,8 +24,10 @@ public class AffichageAnomalieRecep : MonoBehaviour
     public void Start()
     {
         fondTexteAnomalie.SetActive(false);
+        fondTextAnomalieDezoom.SetActive(false);
 
         textAnomalieAmpoule.text = "";
+        textAnomalieGestion.text = "";
     }
 
     private void Update()
@@ -94,16 +98,20 @@ public class AffichageAnomalieRecep : MonoBehaviour
     public void ChangeText(string error)
     {
         fondTexteAnomalie.SetActive(true);
-        switch(error)
+        fondTextAnomalieDezoom.SetActive(true);
+        switch (error)
         {
             case "badOriented":
                 textAnomalieAmpoule.text = "Bad Oriented";
+                textAnomalieGestion.text = "Bad Oriented";
                 break;
             case "dimension":
                 textAnomalieAmpoule.text = "Dimension Out";
+                textAnomalieGestion.text = "Dimension Out";
                 break;
             case "heavy":
                 textAnomalieAmpoule.text = "Too HEAVY";
+                textAnomalieGestion.text = "Too HEAVY";
                 break;
             default:
                 break;
