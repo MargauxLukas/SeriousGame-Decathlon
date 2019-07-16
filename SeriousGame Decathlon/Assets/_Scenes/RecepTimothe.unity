@@ -3131,7 +3131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  playerScriptable: {fileID: 0}
+  playerScriptable: {fileID: 11400000, guid: c055a72da539aa043972ba532629577c, type: 2}
   errorTextZone: {fileID: 0}
   score: 0
   gotNewColis: 0
@@ -18214,7 +18214,7 @@ GameObject:
   - component: {fileID: 4239822756992051926}
   m_Layer: 0
   m_Name: Carton Gestion Anomalie
-  m_TagString: Colis
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

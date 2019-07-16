@@ -36,7 +36,7 @@ public class ZoneAffichageAnomalieFiche : MonoBehaviour
         button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z), 1f);
         yield return new WaitForSeconds(Time.fixedDeltaTime);
 
-        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z)) <= 0.2f)
+        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z)) <= 0.1f)
         {
             yield return new WaitForSeconds(4f);
             StartCoroutine(AnomalieMoveBack(button));
@@ -55,7 +55,7 @@ public class ZoneAffichageAnomalieFiche : MonoBehaviour
         button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial + 0.8f, button.transform.position.y, button.transform.position.z), 1f);
         yield return new WaitForSeconds(Time.fixedDeltaTime);
 
-        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 0.8f, button.transform.position.y, button.transform.position.z)) <= 0.2f)
+        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 0.8f, button.transform.position.y, button.transform.position.z)) <= 0.1f)
         {
             yield return new WaitForSeconds(4f);
             StopCoroutine(AnomalieMoveBack(button));
