@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ZoneAffichageAnomalieFiche : MonoBehaviour
 {
-    public Text zoneNombreAnomaliePresente;
-    public Text zoneAffichageAnomalie;
-
-    private void Update()
-    {
-        zoneAffichageAnomalie     .CrossFadeAlpha(0, 2f, false);
-        zoneNombreAnomaliePresente.CrossFadeAlpha(0, 2f, false);
-    }
+    public TextMeshProUGUI zoneNombreAnomaliePresente;
+    public TextMeshProUGUI zoneAffichageAnomalie;
 }

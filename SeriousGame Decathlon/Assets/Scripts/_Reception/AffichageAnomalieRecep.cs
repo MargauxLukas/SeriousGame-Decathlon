@@ -12,10 +12,6 @@ public class AffichageAnomalieRecep : MonoBehaviour
     private float swipeDifference;          //Au cas ou, on veut mettre un glisser pour refermer
     private float posY;
 
-    public TextMeshProUGUI text1;
-    public TextMeshProUGUI text2;
-    public TextMeshProUGUI text3;
-
     public TextMeshProUGUI textAnomalieAmpoule;
 
     public  GameObject fondTexteAnomalie;
@@ -27,9 +23,6 @@ public class AffichageAnomalieRecep : MonoBehaviour
     {
         fondTexteAnomalie.SetActive(false);
 
-        text1.text               = "";
-        text2.text               = "";
-        text3.text               = "";
         textAnomalieAmpoule.text = "";
     }
 
