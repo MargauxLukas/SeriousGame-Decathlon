@@ -87,11 +87,13 @@ public class ScriptColisRecep : MonoBehaviour
                     {
                         Scoring.instance.RecepMalus(15);
                         transform.position = startPosition;
+                        Scoring.instance.EndLosePointOnTime();
                     }
                     else
                     {
                         transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
                         tapisScript.AddColis(this.gameObject);
+                        Scoring.instance.UpCombo();
                         Scoring.instance.EndLosePointOnTime();
                     }
                 }

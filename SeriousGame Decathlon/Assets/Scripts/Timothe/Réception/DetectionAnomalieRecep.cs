@@ -146,8 +146,8 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
                     bulle                      .SetActive(true);
+                    Scoring.instance.RecepMalus(15);
                 }
-                Scoring.instance.RecepMalus(15);
             }
 
             if(doesDetectDimension)
@@ -180,7 +180,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
             if(!gotAnomalie && Scoring.instance != null)
             {
-                Scoring.instance.UpCombo();
+                //Scoring.instance.UpCombo();
             }
             Scoring.instance.RecepRenvoieColis();
         }

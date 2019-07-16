@@ -35,11 +35,12 @@ public class Scoring : MonoBehaviour
     private bool hadMalusColis    = false;
 
     //Réception
-    int comboPallier=5;
+    int comboPallier=6;
     float pointToLoseWithTime = 0;
-    float recepCombo;
+    float recepCombo = 1;
     float currentTime;
     int currentColisInCombo;
+    public bool pauseCombo;
 
     void Awake()
     {
@@ -94,7 +95,10 @@ public class Scoring : MonoBehaviour
         //Reception
         //Calcul du temps mit
 
-        currentTime -= Time.deltaTime;
+        if (!pauseCombo)
+        {
+            currentTime += Time.deltaTime;
+        }
         switch(comboPallier)
         {
             case 1:
@@ -143,8 +147,21 @@ public class Scoring : MonoBehaviour
         pointToLoseWithTime = 0;
     }
 
+    public void PauseCombo()
+    {
+        StartCoroutine(PauseComboWait());
+    }
+
+    public IEnumerator PauseComboWait()
+    {
+        pauseCombo = true;
+        yield return new WaitForSeconds(3f);
+        pauseCombo = false;
+    }
+
     public void RecepMalus(int valeurMalus)
     {
+        Debug.Log("Malus Recep");
         score -= valeurMalus;
         ResetComboRpcep();
     }
@@ -156,6 +173,45 @@ public class Scoring : MonoBehaviour
 
     public void UpCombo()
     {
+        Debug.Log("Current combo : " + comboPallier + " And current nbColis for Combo : " + currentColisInCombo);
+        switch (comboPallier)
+        {
+            case 1:
+                if (currentTime > 1f)
+                {
+                    currentColisInCombo++;
+                }
+                break;
+            case 2:
+                if (currentTime > 2f)
+                {
+                    currentColisInCombo++;
+                }
+                break;
+            case 3:
+                if (currentTime > 4f)
+                {
+                    currentColisInCombo++;
+                }
+                break;
+            case 4:
+                if (currentTime > 8f)
+                {
+                    currentColisInCombo++;
+                }
+                break;
+            default:
+                currentColisInCombo++;
+                break;
+        }
+
+        currentTime = 0;
+        if (currentColisInCombo > 4 && comboPallier>1)
+        {
+            comboPallier--;
+            currentColisInCombo = 0;
+        }
+
         switch (comboPallier)
         {
             case 1:
@@ -182,12 +238,6 @@ public class Scoring : MonoBehaviour
     public void RecepRenvoieColis()
     {
         score += (int)Mathf.Pow(75, recepCombo);
-        currentColisInCombo++;
-        if(currentColisInCombo > 4)
-        {
-            comboPallier++;
-            currentColisInCombo = 0;
-        }
     }
 
     public void ResetComboRpcep()
