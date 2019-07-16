@@ -4503,38 +4503,9 @@ MonoBehaviour:
   detect: {fileID: 542907148}
   dechargeBar: {fileID: 1853158963}
   listColisEnvoye: []
+  zoneAffichage: {fileID: 652738261}
   listAnomalieDejaDetectee: []
   nbAnomalieMax: 9
-  listButton:
-  - {fileID: 2102595231}
-  - {fileID: 140399161}
-  - {fileID: 898513366}
-  - {fileID: 1970021378}
-  - {fileID: 1936713027}
-  - {fileID: 2087378709}
-  - {fileID: 397093642}
-  - {fileID: 204444575}
-  - {fileID: 889300157}
-  listNb:
-  - {fileID: 44407983}
-  - {fileID: 343426920}
-  - {fileID: 1806607888}
-  - {fileID: 502771971}
-  - {fileID: 1043452752}
-  - {fileID: 1758120776}
-  - {fileID: 1582066317}
-  - {fileID: 1867237049}
-  - {fileID: 1282054572}
-  listText:
-  - {fileID: 1780652333}
-  - {fileID: 1648357793}
-  - {fileID: 875583451}
-  - {fileID: 520460151}
-  - {fileID: 1578164306}
-  - {fileID: 2037382840}
-  - {fileID: 1459140987}
-  - {fileID: 1393818868}
-  - {fileID: 444866006}
 --- !u!61 &542907146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5593,6 +5564,7 @@ GameObject:
   - component: {fileID: 652738259}
   - component: {fileID: 652738258}
   - component: {fileID: 652738257}
+  - component: {fileID: 652738261}
   m_Layer: 0
   m_Name: FicheInfo
   m_TagString: Untagged
@@ -5608,7 +5580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652738255}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1800003, y: 1.05, z: 12.97}
+  m_LocalPosition: {x: -7.1800003, y: 0.27, z: 12.97}
   m_LocalScale: {x: 1.36176, y: 0.70145, z: 0.19708}
   m_Children:
   - {fileID: 1689850392}
@@ -5688,6 +5660,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652738255}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &652738261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652738255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e399a437298ce546956289085d91607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listButton:
+  - {fileID: 2102595231}
+  - {fileID: 140399161}
+  - {fileID: 898513366}
+  - {fileID: 1970021378}
+  - {fileID: 1936713027}
+  - {fileID: 2087378709}
+  - {fileID: 397093642}
+  - {fileID: 204444575}
+  - {fileID: 889300157}
+  listNb:
+  - {fileID: 44407983}
+  - {fileID: 343426920}
+  - {fileID: 1806607888}
+  - {fileID: 502771971}
+  - {fileID: 1043452752}
+  - {fileID: 1758120776}
+  - {fileID: 1582066317}
+  - {fileID: 1867237049}
+  - {fileID: 1282054572}
+  listText:
+  - {fileID: 1780652333}
+  - {fileID: 1648357793}
+  - {fileID: 875583451}
+  - {fileID: 520460151}
+  - {fileID: 1578164306}
+  - {fileID: 2037382840}
+  - {fileID: 1459140987}
+  - {fileID: 1393818868}
+  - {fileID: 444866006}
+  posXInitial: 0
 --- !u!1 &654770811
 GameObject:
   m_ObjectHideFlags: 0

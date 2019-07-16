@@ -6,6 +6,71 @@ using TMPro;
 
 public class ZoneAffichageAnomalieFiche : MonoBehaviour
 {
-    public TextMeshProUGUI zoneNombreAnomaliePresente;
-    public TextMeshProUGUI zoneAffichageAnomalie;
+    [Header("Button")]
+    public List<Button> listButton;
+
+    [Header("Nb")]
+    public List<TextMeshProUGUI> listNb;
+
+    [Header("Texte")]
+    public List<TextMeshProUGUI> listText;
+
+    public float posXInitial;
+
+    private void Start()
+    {
+        foreach (TextMeshProUGUI nb in listNb)
+        {
+            nb.text = "1";
+        }
+        foreach (TextMeshProUGUI text in listText)
+        {
+            text.text = "";
+        }
+
+        posXInitial = listButton[0].transform.position.x;
+    }
+
+    public IEnumerator AnomalieMove(Button button)
+    {
+        button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z), 1f);
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
+
+        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z)) <= 0.2f)
+        {
+            yield return new WaitForSeconds(4f);
+            StartCoroutine(AnomalieMoveBack(button));
+        }
+        else
+        {
+            StartCoroutine(AnomalieMove(button));
+        }
+    }
+
+    /*******************************************************************
+    *   Coroutine qui permet de ranger l'anomalie vers la gauche       *
+    *******************************************************************/
+    public IEnumerator AnomalieMoveBack(Button button)
+    {
+        button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial + 0.8f, button.transform.position.y, button.transform.position.z), 1f);
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
+
+        if (Vector3.Distance(button.transform.position, new Vector3(posXInitial + 0.8f, button.transform.position.y, button.transform.position.z)) <= 0.2f)
+        {
+            yield return new WaitForSeconds(4f);
+            StopCoroutine(AnomalieMoveBack(button));
+        }
+        else
+        {
+            StartCoroutine(AnomalieMoveBack(button));
+        }
+    }
+
+    /*******************************************************************
+    *   Onclick() qui permet de déplacer une anomalie vers la droite   *
+    *******************************************************************/
+    public void AfficherAnomalie(int i)
+    {
+        StartCoroutine(AnomalieMove(listButton[i]));
+    }
 }
