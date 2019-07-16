@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51ced4f9d60e0948aa8593f4a8d093d, type: 3}
   m_Name: AleatoireLevel
   m_EditorClassIdentifier: 
-  doesNeedMF: 0
-  doesNeedRecep: 0
+  doesNeedMF: 1
+  doesNeedRecep: 1
   colisDuNiveauNoms:
   - ColisMFAlea1
   - ColisMFAlea2

@@ -23,12 +23,24 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public AnomalieDetection detect;
 
+    //Boutons d'affichage
+    public Button boutonsAffichageMF;
+    public Button boutonsAffichageReception;
+    public Button boutonsAffichageGTP;
+
+    //Multifoncition
+
     public GameObject affichageAnomalie;
     private List<GameObject> listAffAnomalies;
     public GameObject zoneAffichageAnomalie;
 
     private List<int> currentAnomalieNumber;
     private List<string> currentAnomalies;
+
+    //Réception
+    public Text affichageNombreColisRecep;
+    public Image convoyeurDefaillant;
+    public GameObject zoneAffichageAnomalieRecep;
 
 
     // Start is called before the first frame update 
@@ -51,6 +63,15 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public void ShowGeneralInfoLevel(LevelScriptable level)
     {
+        if(level.doesNeedMF)
+        {
+            boutonsAffichageMF.interactable = true;
+        }
+        if(level.doesNeedRecep)
+        {
+            boutonsAffichageReception.interactable = true;
+        }
+
         currentColisLevel = new List<Colis>();
 
         currentAnomalieNumber = new List<int>();
@@ -97,6 +118,9 @@ public class ChoixNiveauManager : MonoBehaviour
             listAffAnomalies.Add(Instantiate(affichageAnomalie, zoneAffichageAnomalie.transform));
             listAffAnomalies[p].GetComponent<Text>().text = currentAnomalies[p];
         }
+
+        affichageNombreColisRecep.text = level.nombreColisReception.ToString();
+        convoyeurDefaillant.gameObject.SetActive(level.chanceReceptionColisHaveAnomalie >= 95);
 
         //Instantiate un prefab d'affichage pour chaque anomalie
     }

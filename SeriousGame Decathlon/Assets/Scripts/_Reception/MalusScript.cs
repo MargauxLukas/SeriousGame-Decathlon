@@ -27,11 +27,11 @@ public class MalusScript : MonoBehaviour
     {
         if(gaugeConvoyeur.currentLevel == palette.GetNBColonnes())
         {
-            Debug.Log("T'es trop fort");
+            //Pas de malus
         }
         else
         {
-            Debug.Log("Tu te prends un Malus poto");
+            Scoring.instance.LosePointOnTime();
         }
     }
 }
