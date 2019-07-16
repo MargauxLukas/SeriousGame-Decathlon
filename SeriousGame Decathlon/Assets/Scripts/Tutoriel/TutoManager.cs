@@ -267,14 +267,6 @@ public class TutoManager : MonoBehaviour
                         Phase97();
                         break;
 
-                    case (103):
-                        Phase103();
-                        break;
-
-                    case (104):
-                        Phase104();
-                        break;
-
                     case (105):
                         Phase105();
                         break;
@@ -705,12 +697,16 @@ public class TutoManager : MonoBehaviour
                 }
                 break;
 
-            //Interaction bouton CB01
+            //Interaction bouton CB01 ou New colis Repack tab
             case (33):
                 switch (phaseNum)
                 {
                     case (88):
                         Phase88();
+                        break;
+
+                    case (106):
+                        Phase106();
                         break;
                 }
                 break;
@@ -769,9 +765,7 @@ public class TutoManager : MonoBehaviour
             case (39):
                 switch (phaseNum)
                 {
-                    case (102):
-                        Phase102();
-                        break;
+
                 }
                 break;
 
@@ -779,9 +773,7 @@ public class TutoManager : MonoBehaviour
             case (40):
                 switch (phaseNum)
                 {
-                    case (106):
-                        Phase106();
-                        break;
+
                 }
                 break;
 
@@ -3106,68 +3098,11 @@ public class TutoManager : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localPosition = new Vector2(-2.33f, 4.97f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localScale = new Vector2(0.9f, 0.9f); ;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localPosition = new Vector2(-2.12f, 5.04f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localScale = new Vector2(0.8f, 0.8f); ;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = true;
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.telephone).interactable = true;
-
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
-        }
-    }
-
-    void Phase102()
-    {
-        if (canPlayFirst)
-        {
-            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = false;
-
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.telephone).interactable = false;
-        }
-
-        if (canPlaySecond)
-        {
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
-
-            Manager(4);
-        }
-    }
-
-    void Phase103()
-    {
-        if (canPlaySecond)
-        {
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
-
-            Manager(4);
-        }
-    }
-
-    void Phase104()
-    {
-        if (canPlayFirst)
-        {
-            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
-            dialogNum++;
-        }
-
-        if (canPlaySecond)
-        {
-            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.72f, -0.66f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.26f, 0.26f); ;
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
-
-            phaseNum++;
-            canPlayFirst = true;
-            canPlaySecond = false;
+            phaseNum += 3;
 
             StartCoroutine(NewPhase(1.5f));
         }
@@ -3177,13 +3112,21 @@ public class TutoManager : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = false;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
 
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(3.29f, -1.1f);
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(2.97f, -0.92f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(0.54f, 0.54f); ;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = new Vector2(3.76f, -1.59f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = true;
@@ -3200,6 +3143,9 @@ public class TutoManager : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;

@@ -17,11 +17,14 @@ MonoBehaviour:
   phraseDites:
   - "Comme tu peux le constater, ton colis est trop lourd. Je vais te montrer comment
     reconditionner un colis depuis l'\xC9cran du poste. "
-  - "Il va falloir que tu cr\xE9es deux colis \xE0 partir d'un seul, dans ce genre
-    de cas, tu dois appeler le RS, c'est-\xE0-dire le groupe acheteur, pour le pr\xE9venir
-    que tu augmentes le nombre de colis dans le stock. "
-  - "Pour ce faire, appuie sur le bouton T\xE9l\xE9phone en bas \xE0 droite pour appeler
-    le RS et lui pr\xE9ciser ta situation. "
+  - 'Regarde l''onglet Repack pour reconditionner ton colis. '
+  - "Tu devras reconditionner un colis s'il est abim\xE9, n'a pas les bonnes dimensions
+    ou est trop lourd pour la machine."
+  - "Dans ton cas, tu dois d\xE9placer tous les articles d'un colis \xE0 un autre,
+    mais tu peux aussi te servir de cet onglet si tu dois s\xE9parer un tas d'articles
+    dans deux colis distincts."
+  - "N'oublie pas de pr\xE9venir le groupe acheteur (RS) quand tu s\xE9pares les articles
+    dans deux colis diff\xE9rents gr\xE2ce au bonton T\xE9l\xE9phone juste ici."
   choixPossibles:
   - '...'
   dialoguesSuivant:
