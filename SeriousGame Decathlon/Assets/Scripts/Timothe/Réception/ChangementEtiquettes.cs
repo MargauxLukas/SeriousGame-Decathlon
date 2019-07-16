@@ -21,13 +21,10 @@ public class ChangementEtiquettes : MonoBehaviour
 
     private void Update()
     {
-        if(nbEtiquettes<= 0.2*nbEtiquetteMax)
-        {
             if(nbEtiquettes<=0)
             {
                 tapisGeneral.doesStop = true;
             }
-        }
        
         if(Input.touchCount > 0)
         {
@@ -41,6 +38,7 @@ public class ChangementEtiquettes : MonoBehaviour
                 ampouleOrange       .SetActive(false);
                 ampouleClignotante  .SetActive(false);
                 bulle               .SetActive(false);
+                tapisGeneral.doesStop = false;
                 doesTouch = false;
             }
         }
