@@ -16,8 +16,8 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Tu dois remplir la premi\xE8re case, Packaging Mat., avec la r\xE9f\xE9rence
-    du carton que tu viens de cr\xE9er : CB02."
-  - "Puis entrer la r\xE9f\xE9rence des articles dans la case suivante, ici 4635. "
+    du carton que tu viens de cr\xE9er : CB01."
+  - "Puis entrer la r\xE9f\xE9rence des articles dans la case suivante, ici 9712. "
   - "Enfin le nombre d\u2019articles que tu vas mettre dans le colis sur la derni\xE8re
     ligne. Une fois les informations compl\xE9t\xE9es, appuies sur OK."
   choixPossibles:

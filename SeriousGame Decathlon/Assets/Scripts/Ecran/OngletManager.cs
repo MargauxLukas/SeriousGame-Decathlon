@@ -123,6 +123,7 @@ public class OngletManager : MonoBehaviour
 
     public void CreateHU()
     {
+        if (TutoManager.instance != null) {TutoManager.instance.Manager(34);}
         homeScreen   .SetActive(false);
         ongletButton .SetActive(false);
         fillingRate  .SetActive(false);
@@ -146,7 +147,6 @@ public class OngletManager : MonoBehaviour
 
     public void CreateHUCancel()
     {
-        if(TutoManager.instance != null) {TutoManager.instance.Manager(34);}
         homeScreen   .SetActive(true);
         ongletButton .SetActive(false);
         fillingRate  .SetActive(false);

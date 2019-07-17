@@ -33,10 +33,6 @@ public class RepackTab : MonoBehaviour
         {
             if (!comptage)
             {
-                if (TutoManager.instance != null && textCurrentQuantity1.text == gameObjectsManager.quantity1 && textCurrentQuantity2.text == gameObjectsManager.quantity2)
-                {
-                    TutoManager.instance.Manager(41);
-                }
                 if (colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
                 {
                     textPCB1.text = colis.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
@@ -48,6 +44,13 @@ public class RepackTab : MonoBehaviour
                     textCurrentQuantity2.text = colisVide.GetComponent<ColisScript>().colisScriptable.PCB.ToString();
                 }
                 comptage = true;
+
+                Debug.Log("Quantity 1 : " + textCurrentQuantity1.text + "TutoQuantity 1 : " + gameObjectsManager.quantity1 + "Quantity 2 : " + textCurrentQuantity2.text + "TutoQuantity 2 : " + gameObjectsManager.quantity2);
+                if (TutoManager.instance != null && textCurrentQuantity1.text == gameObjectsManager.quantity1 && textCurrentQuantity2.text == gameObjectsManager.quantity2)
+                {
+                    Debug.Log("Repack quantity is good");
+                    TutoManager.instance.Manager(41);
+                }
             }
         }
     }
