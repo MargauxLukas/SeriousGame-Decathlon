@@ -5898,6 +5898,7 @@ MonoBehaviour:
   aStar: {fileID: 1615897918}
   managerConvoie: {fileID: 0}
   positionVoulue: {fileID: 0}
+  distance: 1
 --- !u!1 &958253545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9066,6 +9067,11 @@ PrefabInstance:
       propertyPath: pf
       value: 
       objectReference: {fileID: 1615897920}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_IsTrigger
@@ -9926,6 +9932,7 @@ MonoBehaviour:
   aStar: {fileID: 1615897918}
   managerConvoie: {fileID: 0}
   positionVoulue: {fileID: 0}
+  distance: 1
 --- !u!61 &1943978219
 BoxCollider2D:
   m_ObjectHideFlags: 0
