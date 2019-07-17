@@ -19,14 +19,18 @@ public class ChangementEtiquettes : MonoBehaviour
     public GameObject ampouleClignotante;
     public GameObject bulle;
 
+    public DetectionAnomalieRecep detectAnomRecep;
+
+    private void Start()
+    {
+        nbEtiquettes = Random.Range(10, nbEtiquetteMax);
+    }
+
     private void Update()
     {
-        if(nbEtiquettes<= 0.2*nbEtiquetteMax)
+        if (nbEtiquettes <= 0)
         {
-            if(nbEtiquettes<=0)
-            {
-                tapisGeneral.doesStop = true;
-            }
+            tapisGeneral.doesStop = true;
         }
        
         if(Input.touchCount > 0)
@@ -41,6 +45,10 @@ public class ChangementEtiquettes : MonoBehaviour
                 ampouleOrange       .SetActive(false);
                 ampouleClignotante  .SetActive(false);
                 bulle               .SetActive(false);
+                if (!detectAnomRecep.gotAnomalie)
+                {
+                    tapisGeneral.doesStop = false;
+                }
                 doesTouch = false;
             }
         }

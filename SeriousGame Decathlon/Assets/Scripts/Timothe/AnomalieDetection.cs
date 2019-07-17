@@ -54,7 +54,6 @@ public class AnomalieDetection : MonoBehaviour
             {
                 foreach (Article article in colis.listArticles)
                 {
-                    Debug.Log(article.poids);
                     if (article.rfid != null && article.rfid.estFonctionnel)
                     {
                         RFIDnb++;

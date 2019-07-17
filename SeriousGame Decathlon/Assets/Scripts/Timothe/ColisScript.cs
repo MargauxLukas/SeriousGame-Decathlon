@@ -25,7 +25,7 @@ public class ColisScript : MonoBehaviour
     public GameObject spriteArticleTableUn  ;
     public GameObject spriteArticleTableDeux;
 
-    private int changeDirection = 0;                                 //Appelé que ici, private ?
+    private int changeDirection = 0;
 
     private bool goRight;
     private bool isMoving;

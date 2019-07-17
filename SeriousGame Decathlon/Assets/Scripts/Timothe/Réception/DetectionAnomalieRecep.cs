@@ -25,11 +25,13 @@ public class DetectionAnomalieRecep : MonoBehaviour
     public bool doesDetectDimension  ;
     public bool doesDetectOrientation;
     public bool doesDetectPoids      ;
+    public bool gotAnomalie;
 
     [Header("Gestion Anomalie")]
     public ColisGestionAnomalieRecep colisAnomalie;
     public AffichageAnomalieRecep affichageAnomalieRecep;
     public GameObject gestionAnomalie;
+    public ChangementEtiquettes etiquettesManager;
 
     [Header("Tapis")]
     public TapisRoulantGeneral tapisGeneral;
@@ -74,20 +76,16 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 player.stuck = false;
                 colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
-                signalBoiteOrange          .SetActive(false);
-                signalBoiteOrangeClignotant.SetActive(false);
-                ampouleOrange              .SetActive(false);
-                ampouleClignotante         .SetActive(false);
-                bulle                      .SetActive(false);
-
                 if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
-                    signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante         .SetActive(true);
-                    bulle                      .SetActive(true);
+                    signalBoiteOrange          .SetActive(false);
+                    signalBoiteOrangeClignotant.SetActive(true );
+                    ampouleClignotante         .SetActive(true );
+                    ampouleOrange              .SetActive(false);
+                    bulle                      .SetActive(true );
                     Scoring.instance.RecepMalus(15);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
@@ -95,24 +93,32 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
-                    signalBoiteOrangeClignotant.SetActive(true);
-                    ampouleClignotante         .SetActive(true);
-                    bulle                      .SetActive(true);
+                    signalBoiteOrange          .SetActive(false);
+                    signalBoiteOrangeClignotant.SetActive(true );
+                    ampouleClignotante         .SetActive(true );
+                    ampouleOrange              .SetActive(false);
+                    bulle                      .SetActive(true );
                     Scoring.instance.RecepMalus(15);
                 }
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                 {
                     //Afficher les feedbacks de l'anomalie
                     tapisGeneral.doesStop = true;
-                    signalBoiteVert  .SetActive(false);
-                    signalBoiteOrange.SetActive(true);
-                    ampouleOrange    .SetActive(true);
-                    bulle            .SetActive(true);
+                    signalBoiteVert            .SetActive(false);
+                    signalBoiteOrange          .SetActive(true );
+                    signalBoiteOrangeClignotant.SetActive(false);
+                    ampouleClignotante         .SetActive(false);
+                    ampouleOrange              .SetActive(true );
+                    bulle                      .SetActive(true );
                     Scoring.instance.RecepMalus(15);
                 }
                 else
                 {
-                    tapisGeneral.doesStop = false;
+                    gotAnomalie = false;
+                    if (etiquettesManager.nbEtiquettes > 0)
+                    {
+                        tapisGeneral.doesStop = false;
+                    }
                     colisATraiter = null;
                     Scoring.instance.RecepBonus(350);
                 }
@@ -124,8 +130,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
     {
         if (collision.tag == "Colis")
         {
-            bool gotAnomalie = false;
-
             ScriptColisRecep currentColis = collision.GetComponent<ScriptColisRecep>();
             signalBoiteOrange          .SetActive(false);
             signalBoiteOrangeClignotant.SetActive(false);
@@ -139,15 +143,15 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
-                    gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
                     bulle                      .SetActive(true);
+                    gotAnomalie = true;
+                    Scoring.instance.RecepMalus(15);
                 }
-                Scoring.instance.RecepMalus(15);
             }
 
             if(doesDetectDimension)
@@ -176,11 +180,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     ampouleOrange    .SetActive(true);
                     bulle            .SetActive(true);
                 }
-            }
-
-            if(!gotAnomalie && Scoring.instance != null)
-            {
-                Scoring.instance.UpCombo();
             }
             Scoring.instance.RecepRenvoieColis();
         }

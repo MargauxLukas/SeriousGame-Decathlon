@@ -63,14 +63,29 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
 
     void Update()
     {
-        if(colisTapis.sprite != GetComponent<SpriteRenderer>().sprite)
+        if(!gestionAnomalieRecep.activeSelf)
         {
-            GetComponent<SpriteRenderer>().sprite = colisTapis.sprite;
+            if(circleImage.transform.parent.gameObject.activeSelf)
+            {
+                circleImage.transform.parent.gameObject.SetActive(true);
+                currentItem = -1;
+            }
+            if(doesTouch)
+            {
+                doesTouch = false;
+            }
         }
-        if(colisTapis.transform.rotation != transform.rotation)
+        if (colisTapis != null)
         {
-            transform.rotation = colisTapis.transform.rotation;
-            transform.localScale = new Vector3(2, 2, 1);
+            if (colisTapis.sprite != GetComponent<SpriteRenderer>().sprite)
+            {
+                GetComponent<SpriteRenderer>().sprite = colisTapis.sprite;
+            }
+            if (colisTapis.transform.rotation != transform.rotation)
+            {
+                transform.rotation = colisTapis.transform.rotation;
+                transform.localScale = new Vector3(2, 2, 1);
+            }
         }
         if (Input.touchCount > 0)
         {
