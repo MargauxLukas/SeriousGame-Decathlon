@@ -105,7 +105,7 @@ public class AffichageAnomalie : MonoBehaviour
                             actualUsableDialogue.Add(dialogueList[8]);
                             ongletManager.ActivateOngletRepack();
                             break;
-                        case "Dimensions out of dimmension for tray":
+                        case "Dimensions out of dimension for tray":
                             actualUsableDialogue.Add(dialogueList[9]);
                             ongletManager.ActivateOngletRepack();
                             break;
