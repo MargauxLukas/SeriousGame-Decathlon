@@ -25,11 +25,13 @@ public class DetectionAnomalieRecep : MonoBehaviour
     public bool doesDetectDimension  ;
     public bool doesDetectOrientation;
     public bool doesDetectPoids      ;
+    public bool gotAnomalie;
 
     [Header("Gestion Anomalie")]
     public ColisGestionAnomalieRecep colisAnomalie;
     public AffichageAnomalieRecep affichageAnomalieRecep;
     public GameObject gestionAnomalie;
+    public ChangementEtiquettes etiquettesManager;
 
     [Header("Tapis")]
     public TapisRoulantGeneral tapisGeneral;
@@ -112,7 +114,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 }
                 else
                 {
-                    tapisGeneral.doesStop = false;
+                    gotAnomalie = false;
+                    if (etiquettesManager.nbEtiquettes > 0)
+                    {
+                        tapisGeneral.doesStop = false;
+                    }
                     colisATraiter = null;
                     Scoring.instance.RecepBonus(350);
                 }
@@ -124,8 +130,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
     {
         if (collision.tag == "Colis")
         {
-            bool gotAnomalie = false;
-
             ScriptColisRecep currentColis = collision.GetComponent<ScriptColisRecep>();
             signalBoiteOrange          .SetActive(false);
             signalBoiteOrangeClignotant.SetActive(false);
@@ -139,13 +143,13 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 if (currentColis.colisScriptable.isBadOriented)
                 {
-                    gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("badOriented");
                     tapisGeneral.doesStop = true;
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
                     bulle                      .SetActive(true);
+                    gotAnomalie = true;
                     Scoring.instance.RecepMalus(15);
                 }
             }
@@ -176,11 +180,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     ampouleOrange    .SetActive(true);
                     bulle            .SetActive(true);
                 }
-            }
-
-            if(!gotAnomalie && Scoring.instance != null)
-            {
-                //Scoring.instance.UpCombo();
             }
             Scoring.instance.RecepRenvoieColis();
         }
