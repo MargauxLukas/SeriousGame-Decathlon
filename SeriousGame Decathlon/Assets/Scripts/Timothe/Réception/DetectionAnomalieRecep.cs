@@ -73,7 +73,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
                 colisGestionScript.circleImage.gameObject.SetActive(false);
-                colisGestionScript.itemNumber = -1;
                 colisGestionScript.tournerMenu.SetActive(false);
                 colisGestionScript.doesTouch = false;
                 colisGestionScript.timeTouched = 0;
