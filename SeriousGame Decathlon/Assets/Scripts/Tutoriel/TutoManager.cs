@@ -3360,7 +3360,7 @@ public class TutoManager : MonoBehaviour
 
     void Phase120()
     {
-        StartCoroutine(ReturnToMenu(1));
+        StartCoroutine(ReturnToMenu(0));
 
         phaseNum++;
     }
