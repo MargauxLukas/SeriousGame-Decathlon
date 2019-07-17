@@ -3003,41 +3003,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChargementLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379891, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: RFIDKnowed.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: currentLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: RFIDKnowed.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: RFIDKnowed.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: RFIDKnowed.Array.data[2]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
-        type: 3}
-      propertyPath: sceneToLoad
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 2532194956112379892, guid: caa8167e92d4a5f4abbfe3e28bf9b566,
         type: 3}
       propertyPath: anomDetect

@@ -172,6 +172,11 @@ public class AnomalieDetection : MonoBehaviour
                 //Debug.Log("T'arrive là ?");
             }
         }
+        else
+        {
+            colis.nbAnomalie = 0;
+            colis.listAnomalies = new List<string>();
+        }
     }
 
     public void CheckList(List<Colis> listColis)

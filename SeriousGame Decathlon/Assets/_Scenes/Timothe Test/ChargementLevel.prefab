@@ -44,9 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: SceneProtoUn Timothe1
-  sceneToLoad: 1
+  sceneToLoad: 6
   RFIDKnowed: 1b120000751c0000f0250000e71a0000
   colisProcessMulti: []
+  colisProcessReception: []
+  chanceAnomalieRecep: 0
+  nombreColisRecep: 0
   anomDetect: {fileID: 0}
   manageColis: {fileID: 0}
   nbLevel: 1

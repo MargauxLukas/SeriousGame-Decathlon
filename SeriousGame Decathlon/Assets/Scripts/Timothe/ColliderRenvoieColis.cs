@@ -67,7 +67,7 @@ public class ColliderRenvoieColis : MonoBehaviour
 
     IEnumerator RenvoieFinalAnim(GameObject obj)
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1.9f);
         renvoieManage.ChangePoste(camera, obj, cameraPosition, colisPosition);
     }
 
