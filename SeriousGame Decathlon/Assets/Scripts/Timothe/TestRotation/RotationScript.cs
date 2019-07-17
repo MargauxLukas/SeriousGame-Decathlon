@@ -88,8 +88,10 @@ public class RotationScript : MonoBehaviour
 
     public void UpdateSprite(List<Sprite> spriteCartonListe, SpriteRenderer spriteCarton)
     {
+        Debug.Log("Test Changement de sprite");
         if (spriteCartonListe.Count > 0)
         {
+            Debug.Log("Test Changement de sprite carton liste");
             switch (actualFace.face)
             {
                 case "Up":
@@ -460,6 +462,7 @@ public class RotationScript : MonoBehaviour
 
     public void ChangeRotation()
     {
+        Debug.Log("Test Rotation");
         if (TutoManager.instance != null) {TutoManager.instance.Manager(26);}
         if (cartonObj != null)
         {
@@ -472,6 +475,7 @@ public class RotationScript : MonoBehaviour
             {
                 cartonsSprites = cartonObj.GetComponent<ScriptColisRecep>().colisScriptable.carton.spriteCartonsListe;
                 carton = cartonObj.GetComponent<SpriteRenderer>();
+                Debug.Log("Test Rotation Recep");
             }
         }
 
