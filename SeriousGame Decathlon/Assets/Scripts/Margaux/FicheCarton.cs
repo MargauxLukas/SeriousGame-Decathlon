@@ -55,6 +55,11 @@ public class FicheCarton : MonoBehaviour
             {
                 theNewColis = listeColisTuto[0];
                 theNewColis.GetComponent<Transform>().localPosition = new Vector3(3f, -1.7f, 30);
+
+                if (TutoManager.instance != null)
+                {
+                    listeColisTuto.RemoveAt(0);
+                }
             }
 
             scriptColis = theNewColis.GetComponent<ColisScript>();
