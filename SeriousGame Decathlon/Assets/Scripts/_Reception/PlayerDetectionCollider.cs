@@ -6,9 +6,12 @@ public class PlayerDetectionCollider : MonoBehaviour
 {
     public ConvoyeurButton convoyeurButton;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        convoyeurButton.isCollide = true;
+        if (!convoyeurButton.isCollide)
+        {
+            convoyeurButton.isCollide = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
