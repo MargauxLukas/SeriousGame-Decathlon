@@ -72,7 +72,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
             else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 6f)
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
-                colisGestionScript.circleImage.gameObject.SetActive(false);
+                colisGestionScript.circleImage.transform.parent.gameObject.SetActive(false);
                 colisGestionScript.tournerMenu.SetActive(false);
                 colisGestionScript.doesTouch = false;
                 colisGestionScript.timeTouched = 0;
