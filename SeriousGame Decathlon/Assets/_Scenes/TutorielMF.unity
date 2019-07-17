@@ -4765,6 +4765,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5856178237461049665, guid: beaa9c0fc357f124d902301be265c0cf,
+        type: 3}
+      propertyPath: tutoMan
+      value: 
+      objectReference: {fileID: 1494410233}
     - target: {fileID: 5871945748843923883, guid: beaa9c0fc357f124d902301be265c0cf,
         type: 3}
       propertyPath: m_FontData.m_FontSize
@@ -4805,11 +4810,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 502053890}
-    - target: {fileID: 5856178237461049665, guid: beaa9c0fc357f124d902301be265c0cf,
-        type: 3}
-      propertyPath: tutoMan
-      value: 
-      objectReference: {fileID: 1494410233}
     - target: {fileID: 8060615406305443432, guid: beaa9c0fc357f124d902301be265c0cf,
         type: 3}
       propertyPath: m_IsActive
@@ -8592,6 +8592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1399314697}
   gameObjectsManager: {fileID: 1709204068}
+  colisManager: {fileID: 857046845}
   listDialogues:
   - {fileID: 11400000, guid: b73358d0614f4b841b03166593dd5544, type: 2}
   - {fileID: 11400000, guid: c7c6e008c5b45bd45b235bd352b6957b, type: 2}
@@ -8662,6 +8663,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa3f3069cbd529a44adfbe28d6f4c688, type: 2}
   - {fileID: 11400000, guid: 0c6a1fb57f8c2144aaa9a0e8f7596663, type: 2}
   - {fileID: 11400000, guid: 9915cb85ea409074d94797e431e6fde7, type: 2}
+  listColis:
+  - {fileID: 11400000, guid: e5ac32b9ae2556b41bcbf2157aef9d1a, type: 2}
+  - {fileID: 11400000, guid: 3d3e837e126556140b91317ee2917b7a, type: 2}
+  - {fileID: 11400000, guid: 3741dbca4b0121b4bb6ca5efbe1e780b, type: 2}
   phaseNum: 0
   dialogNum: 0
   articlesNum: 
