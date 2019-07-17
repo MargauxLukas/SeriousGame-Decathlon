@@ -26,7 +26,7 @@ public class PosteOnClick : MonoBehaviour
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             if(gameObject.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPosition) && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                if (Vector2.Distance(player.transform.position, gameObject.transform.position) > 1f)
+                if (Vector2.Distance(player.transform.position, gameObject.transform.position) > 4f)
                 {
                     player.GetComponent<Unit>().DeplacementPlayer(gameObject.transform.position);
                     isMoving = true;
@@ -44,7 +44,7 @@ public class PosteOnClick : MonoBehaviour
 
         if(isMoving)
         {
-            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < 1f)
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < 4f)
             {
                 cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);
