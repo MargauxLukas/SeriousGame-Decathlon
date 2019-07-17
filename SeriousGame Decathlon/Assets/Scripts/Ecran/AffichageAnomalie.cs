@@ -76,6 +76,7 @@ public class AffichageAnomalie : MonoBehaviour
                             actualUsableDialogue.Add(dialogueList[1]);
                             ongletManager.ActivateOngletRepack();
                             ongletManager.ActivateOngletRecount();
+                            //Desactiver Fiche Carton
                             break;
                         case "RFID tags to be applied":
                             actualUsableDialogue.Add(dialogueList[2]);
@@ -96,6 +97,7 @@ public class AffichageAnomalie : MonoBehaviour
                         case "TU too heavy (20-25)":
                             actualUsableDialogue.Add(dialogueList[6]);
                             ongletManager.ActivateOngletRepack();
+                            //Desactiver Fiche Carton
                             break;
                         case "RFID tag scanned for unknown product":
                             actualUsableDialogue.Add(dialogueList[7]);
@@ -104,10 +106,12 @@ public class AffichageAnomalie : MonoBehaviour
                         case "Dimensions out of tolerance":
                             actualUsableDialogue.Add(dialogueList[8]);
                             ongletManager.ActivateOngletRepack();
+                            //Desactiver Fiche Carton
                             break;
                         case "Dimensions out of dimmension for tray":
                             actualUsableDialogue.Add(dialogueList[9]);
                             ongletManager.ActivateOngletRepack();
+                            //Desactiver Fiche Carton
                             break;
                     }
                     n++;
