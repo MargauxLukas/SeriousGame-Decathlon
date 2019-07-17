@@ -124,6 +124,12 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     if (etiquettesManager.nbEtiquettes > 0)
                     {
                         tapisGeneral.doesStop = false;
+                        signalBoiteVert.SetActive(true);
+                        signalBoiteOrange.SetActive(false);
+                        signalBoiteOrangeClignotant.SetActive(false);
+                        ampouleClignotante.SetActive(false);
+                        ampouleOrange.SetActive(false);
+                        bulle.SetActive(false);
                     }
                     colisATraiter = null;
                     Scoring.instance.RecepBonus(350);
@@ -142,6 +148,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
             ampouleOrange              .SetActive(false);
             ampouleClignotante         .SetActive(false);
             bulle                      .SetActive(false);
+
+            if (etiquettesManager.nbEtiquettes > 0)
+            {
+                signalBoiteVert.SetActive(false);
+            }
 
             colisATraiter = collision.gameObject;
 
@@ -193,13 +204,15 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
     public void ResolveAnomalie()
     {
-        signalBoiteVert            .SetActive(true);
-        signalBoiteOrange          .SetActive(false);
-        signalBoiteOrangeClignotant.SetActive(false);
-        ampouleOrange              .SetActive(false);
-        ampouleClignotante         .SetActive(false);
-        bulle                      .SetActive(false);
-
+        if (etiquettesManager.nbEtiquettes > 0)
+        {
+            signalBoiteVert.SetActive(true);
+            signalBoiteOrange.SetActive(false);
+            signalBoiteOrangeClignotant.SetActive(false);
+            ampouleOrange.SetActive(false);
+            ampouleClignotante.SetActive(false);
+            bulle.SetActive(false);
+        }
     }
 
     void touchObject() //Fonction permettant de détecter si le joueur touche l'objet

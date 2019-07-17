@@ -6,6 +6,7 @@ public class PosteOnClick : MonoBehaviour
 {
     [Header("Camera du Poste")]
     public GameObject  cameraPoste;   //Camera vers laquelle on souhaite aller
+
     [Header("Camera de la vue dézoom")]
     public GameObject cameraDezoom;   //Camera vue Dezoom
     public GameObject       player;
@@ -15,6 +16,9 @@ public class PosteOnClick : MonoBehaviour
     [Header("Apparition du joueur")]
     public ConvoyeurManager managerConvoie;
     public Transform positionVoulue;
+
+    [Header("Distance du poste")]
+    public float distance;
 
     private bool isMoving;
 
@@ -26,7 +30,7 @@ public class PosteOnClick : MonoBehaviour
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             if(gameObject.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPosition) && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                if (Vector2.Distance(player.transform.position, gameObject.transform.position) > 4f)
+                if (Vector2.Distance(player.transform.position, gameObject.transform.position) > distance)
                 {
                     player.GetComponent<Unit>().DeplacementPlayer(gameObject.transform.position);
                     isMoving = true;
@@ -44,7 +48,7 @@ public class PosteOnClick : MonoBehaviour
 
         if(isMoving)
         {
-            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < 4f)
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < distance)
             {
                 cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);

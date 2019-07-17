@@ -7,7 +7,9 @@ public class TutoManager : MonoBehaviour
     public static TutoManager instance;
     public DialogueManager dialogueManager;
     public GameObjectsManager gameObjectsManager;
+    public ColisManager colisManager;
     public List<Dialogue> listDialogues;
+    public List<Colis> listColis;
     public float phaseNum = 0;
     public int dialogNum = 0;
     public string articlesNum = "";
@@ -53,6 +55,8 @@ public class TutoManager : MonoBehaviour
 
     private void Start()
     {
+        colisManager.GetComponent<ColisManager>().listeColisTraiter = listColis;
+
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
     }

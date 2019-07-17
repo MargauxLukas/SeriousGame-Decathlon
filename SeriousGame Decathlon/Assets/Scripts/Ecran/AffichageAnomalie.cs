@@ -108,7 +108,7 @@ public class AffichageAnomalie : MonoBehaviour
                             ongletManager.ActivateOngletRepack();
                             //Desactiver Fiche Carton
                             break;
-                        case "Dimensions out of dimmension for tray":
+                        case "Dimensions out of dimension for tray":
                             actualUsableDialogue.Add(dialogueList[9]);
                             ongletManager.ActivateOngletRepack();
                             //Desactiver Fiche Carton

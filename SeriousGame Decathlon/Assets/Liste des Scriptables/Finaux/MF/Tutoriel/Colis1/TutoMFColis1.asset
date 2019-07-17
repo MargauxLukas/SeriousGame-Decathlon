@@ -35,8 +35,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f962ef0732fb33f4d81f420f539d98f1, type: 2}
   - {fileID: 11400000, guid: f962ef0732fb33f4d81f420f539d98f1, type: 2}
   - {fileID: 11400000, guid: f962ef0732fb33f4d81f420f539d98f1, type: 2}
-  nbAnomalie: 2
+  nbAnomalie: 3
   listAnomalies:
   - RFID tag under Tolerance
   - New Product
+  - Wrong carton orientation
   provenance: Chine
