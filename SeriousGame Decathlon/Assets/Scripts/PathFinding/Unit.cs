@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    const float minPathUpdateTime = 0.2f;
+    const float minPathUpdateTime       = 0.2f;
     const float pathUpdateMoveThreshold = 0.5f;
 
     public Transform target;
-    public float speed = 1f;
+    public float speed     = 1f;
     public float turnSpeed = 3f;
-    public float turnDst = 5f;
+    public float turnDst   = 5f;
     public float stoppingDst = 10;
     public Animator playerAnimator;
 
@@ -133,12 +133,12 @@ public class Unit : MonoBehaviour
                 Vector3 direction = new Vector3(path.lookPoints[pathIndex].x - transform.position.x, path.lookPoints[pathIndex].y - transform.position.y, 0).normalized;
                 //Debug.Log(direction);
 
-                transform.position += direction * Time.deltaTime * speed; //* speedPercent;
+                transform.position += direction * Time.fixedDeltaTime * speed; //* speedPercent;
                 //transform.Translate(direction * Time.deltaTime * speed * speedPercent, Space.Self);
 
-                playerAnimator.SetFloat("DirectionX",direction.x);
+                playerAnimator.SetFloat("DirectionX", direction.x);
                 playerAnimator.SetFloat("DirectionY", direction.y);
-                playerAnimator.SetBool("DoesWalk", true);
+                playerAnimator.SetBool ("DoesWalk"  ,        true);
                 //transform.Translate(new Vector3(path.lookPoints[pathIndex].x, path.lookPoints[pathIndex].y, 0), Space.Self);
             }
             yield return null;

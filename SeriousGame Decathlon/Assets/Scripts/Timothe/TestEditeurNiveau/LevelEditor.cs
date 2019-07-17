@@ -104,6 +104,8 @@ public class LevelEditor : MonoBehaviour
         SaveLoadSystem.instance.SaveLevel(newLevel, colisNewLevel);
     }
 
+    #region Réception
+
     public void OpenMenuRecep()
     {
         creationNiveau.SetActive(false);
@@ -119,10 +121,10 @@ public class LevelEditor : MonoBehaviour
 
     public void IsContainerDefaillant()
     {
-        newLevel.chanceReceptionColisHaveAnomalie += 100;
+        newLevel.chanceReceptionColisHaveAnomalie += 90;
         if(newLevel.chanceReceptionColisHaveAnomalie > 100)
         {
-            newLevel.chanceReceptionColisHaveAnomalie = 0;
+            newLevel.chanceReceptionColisHaveAnomalie = 10;
         }
     }
 
@@ -143,6 +145,8 @@ public class LevelEditor : MonoBehaviour
             newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
         }
     }
+
+    #endregion
 
     #region MenuMF
 

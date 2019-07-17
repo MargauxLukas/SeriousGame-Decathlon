@@ -15,8 +15,9 @@ public class ZoneAffichageAnomalieFiche : MonoBehaviour
     [Header("Texte")]
     public List<TextMeshProUGUI> listText;
 
-    public float posXInitial;
     public Camera cameraToFollow;
+
+    private float posXInitial;
 
     public void Update()
     {

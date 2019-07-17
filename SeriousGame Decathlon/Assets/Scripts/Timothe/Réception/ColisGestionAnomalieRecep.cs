@@ -43,8 +43,8 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
     public  int itemNumber = 5;
     private int currentItem;
 
-    private float timeTouched;
-    private bool doesTouch;
+    public float timeTouched;
+    public bool doesTouch;
 
     void Start()
     {
@@ -58,6 +58,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         {
             tournerMenu.SetActive(false);
             tournerMenuIsOpen = false;
+            doesTouch = false;
         }
     }
 
@@ -107,7 +108,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                         currentItem = -1;
                         timeTouched =  0;
                         startPosition  = touchPosition;
-                        circlePosition = transform.position - cameraGeneral.gameObject.transform.position;
+                        circlePosition = touchPosition;
                     }
                     else if (Vector3.Distance(startPosition, touchPosition) > 1f && timeTouched < timeBeforeMenuOpen)
                     {
@@ -120,8 +121,6 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                     if (timeTouched > timeBeforeMenuOpen && menuCanOpen)
                     {
                         menuIsOpen = true;
-
-                        circlePosition = transform.position;
                         circleImage.transform.parent.gameObject.SetActive(true);
                         circleImage.transform.parent.gameObject.transform.position = transform.position;
                         circleImage.fillAmount = 1f / itemNumber;
@@ -175,10 +174,8 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
 
     void touchObject()
     {
-        Debug.Log("Test Colis 2");
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Debug.Log("Test Colis 3");
             RaycastHit2D hit = Physics2D.Raycast(cameraGeneral.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
             if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
             {
@@ -194,6 +191,10 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         Vector2 direction = endPos - startPos;
 
         angle = (Mathf.Atan2(circlePosition.y - circlePosition.y, circlePosition.x - circlePosition.x) - Mathf.Atan2(endPos.y - circlePosition.y, endPos.x - circlePosition.x)) * Mathf.Rad2Deg;
+        Debug.Log(angle);
+        Debug.Log("Touch : " + Input.GetTouch(0).position);
+        Debug.Log("Circle Pos : " + circlePosition);
+
         if (angle < 0)
         {
             angle += 360;
@@ -205,7 +206,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
     {
         int itemNb = 0;
 
-        itemNb = (int)((angle) / (360 / itemNumber));
+        itemNb = (int)((angle + 90) / (360 / itemNumber));
 
         circleImage.transform.eulerAngles = new Vector3(0, 180, (360 / itemNumber) * itemNb);
         return itemNb;
@@ -222,23 +223,12 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         switch (nb)
         {
             case 1:
-                    Jeter();
-                    TellSomething(1);
-                
-                break;
-            case 2:
-                    OuvrirFermer();
-                    TellSomething(2);
-                
-                break;
-            case 3:
-                    OpenTurnMenu();
-                    TellSomething(3);
-                
+                Jeter();
+                TellSomething(1);
                 break;
             case 0:
-                    Vider();
-                    TellSomething(5);
+                OpenTurnMenu();
+                TellSomething(3);
                 break;
         }
     }
@@ -247,42 +237,6 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
     {
         //Debug.Log(texte);
     }
-
-    Sprite savedSprite;
-
-    void OuvrirFermer()
-    {
-        /*if (TutoManager.instance != null) { TutoManager.instance.Manager(10); }
-        colisScriptable.OuvrirFermer();
-        if (colisScriptable.estOuvert)
-        {
-            Color newColo = GetComponent<SpriteRenderer>().color;
-            newColo.a = 0.3f;
-            GetComponent<SpriteRenderer>().color = newColo;
-        }
-        else if (!colisScriptable.estOuvert)
-        {
-            Color newColo = GetComponent<SpriteRenderer>().color;
-            newColo.a = 1f;
-            GetComponent<SpriteRenderer>().color = newColo;
-        }
-
-        if (colisScriptable.estOuvert)
-        {
-            savedSprite = GetComponent<SpriteRenderer>().sprite;
-            Debug.Log("Test Ouvrir");
-            GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.cartonOuvert;
-        }
-        else if (savedSprite != null)
-        {
-            GetComponent<SpriteRenderer>().sprite = savedSprite;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().sprite = colisScriptable.carton.spriteCartonsListe[4];
-        }*/
-    }
-
 
     public void OpenTurnMenu()
     {
@@ -305,27 +259,11 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         tournerMenu.SetActive(true);
     }
 
-    public void Tourner(string face, float rotation)
-    {
-        if (face == "Up" && (rotation == 90 || rotation == 270))
-        {
-            colisScriptable.isBadOriented = false;
-        }
-        else
-        {
-            colisScriptable.isBadOriented = true;
-        }
-    }
-
-    void Vider() //A revoir
-    {
-
-    }
-
     void Jeter() //Permet de mettre le colis sur le côté
     {
         paletteManager.colisDeCote.Add(colisScriptable);
         Destroy(detect.colisATraiter);
+        GetComponent<SpriteRenderer>().sprite = null;
         detect.tapisGeneral.doesStop = false;
         detect.ResolveAnomalie();
     }

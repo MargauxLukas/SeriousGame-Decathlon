@@ -31,6 +31,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
     public ColisGestionAnomalieRecep colisAnomalie;
     public AffichageAnomalieRecep affichageAnomalieRecep;
     public GameObject gestionAnomalie;
+    public ColisGestionAnomalieRecep colisGestionScript;
     public ChangementEtiquettes etiquettesManager;
 
     [Header("Tapis")]
@@ -71,6 +72,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
             else if(touch.phase == TouchPhase.Began && gestionAnomalie.activeSelf && Vector2.Distance(touchPosition, gestionAnomalie.transform.position) >= 6f)
             {
                 Debug.Log("A verifer : " + Vector2.Distance(touchPosition, (gestionAnomalie.transform.position - cameraGeneral.gameObject.transform.position)));
+                colisGestionScript.circleImage.gameObject.SetActive(false);
+                colisGestionScript.tournerMenu.SetActive(false);
+                colisGestionScript.doesTouch = false;
+                colisGestionScript.timeTouched = 0;
+
                 gestionAnomalie.SetActive(false);
                 GetComponent<BoxCollider2D>().enabled = true;
                 player.stuck = false;
@@ -118,6 +124,12 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     if (etiquettesManager.nbEtiquettes > 0)
                     {
                         tapisGeneral.doesStop = false;
+                        signalBoiteVert.SetActive(true);
+                        signalBoiteOrange.SetActive(false);
+                        signalBoiteOrangeClignotant.SetActive(false);
+                        ampouleClignotante.SetActive(false);
+                        ampouleOrange.SetActive(false);
+                        bulle.SetActive(false);
                     }
                     colisATraiter = null;
                     Scoring.instance.RecepBonus(350);
@@ -136,6 +148,11 @@ public class DetectionAnomalieRecep : MonoBehaviour
             ampouleOrange              .SetActive(false);
             ampouleClignotante         .SetActive(false);
             bulle                      .SetActive(false);
+
+            if (etiquettesManager.nbEtiquettes > 0)
+            {
+                signalBoiteVert.SetActive(false);
+            }
 
             colisATraiter = collision.gameObject;
 
@@ -187,13 +204,15 @@ public class DetectionAnomalieRecep : MonoBehaviour
 
     public void ResolveAnomalie()
     {
-        signalBoiteVert            .SetActive(true);
-        signalBoiteOrange          .SetActive(false);
-        signalBoiteOrangeClignotant.SetActive(false);
-        ampouleOrange              .SetActive(false);
-        ampouleClignotante         .SetActive(false);
-        bulle                      .SetActive(false);
-
+        if (etiquettesManager.nbEtiquettes > 0)
+        {
+            signalBoiteVert.SetActive(true);
+            signalBoiteOrange.SetActive(false);
+            signalBoiteOrangeClignotant.SetActive(false);
+            ampouleOrange.SetActive(false);
+            ampouleClignotante.SetActive(false);
+            bulle.SetActive(false);
+        }
     }
 
     void touchObject() //Fonction permettant de détecter si le joueur touche l'objet
