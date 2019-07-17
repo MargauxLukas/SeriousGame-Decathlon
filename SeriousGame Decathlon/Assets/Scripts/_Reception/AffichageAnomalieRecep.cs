@@ -12,10 +12,8 @@ public class AffichageAnomalieRecep : MonoBehaviour
     private float swipeDifference;          //Au cas ou, on veut mettre un glisser pour refermer
     private float posY;
 
-    public TextMeshProUGUI textAnomalieAmpoule;
     public TextMeshProUGUI textAnomalieGestion;
 
-    public  GameObject fondTexteAnomalie;
     public GameObject fondTextAnomalieDezoom;
     private GameObject fiche;
 
@@ -23,10 +21,8 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public void Start()
     {
-        fondTexteAnomalie.SetActive(false);
         fondTextAnomalieDezoom.SetActive(false);
 
-        textAnomalieAmpoule.text = "";
         textAnomalieGestion.text = "";
     }
 
@@ -97,20 +93,16 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public void ChangeText(string error)
     {
-        fondTexteAnomalie.SetActive(true);
         fondTextAnomalieDezoom.SetActive(true);
         switch (error)
         {
             case "badOriented":
-                textAnomalieAmpoule.text = "Bad Oriented";
                 textAnomalieGestion.text = "Bad Oriented";
                 break;
             case "dimension":
-                textAnomalieAmpoule.text = "Dimension Out";
                 textAnomalieGestion.text = "Dimension Out";
                 break;
             case "heavy":
-                textAnomalieAmpoule.text = "Too HEAVY";
                 textAnomalieGestion.text = "Too HEAVY";
                 break;
             default:

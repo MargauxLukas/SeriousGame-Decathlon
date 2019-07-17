@@ -43,8 +43,8 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
     public  int itemNumber = 5;
     private int currentItem;
 
-    private float timeTouched;
-    private bool doesTouch;
+    public float timeTouched;
+    public bool doesTouch;
 
     void Start()
     {
@@ -58,6 +58,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         {
             tournerMenu.SetActive(false);
             tournerMenuIsOpen = false;
+            doesTouch = false;
         }
     }
 
