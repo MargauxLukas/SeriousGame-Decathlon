@@ -13,8 +13,8 @@ public class DechargementBarre : MonoBehaviour
 
     public void UpdateProgression(int nb)
     {
-        gameObject.GetComponent<Image>().fillAmount = ((float)palette.nbColisTotal - (float)nb) / (float)palette.nbColisTotal;
-        blueText.text  = ((palette.nbColisTotal - nb) * 100 / palette.nbColisTotal).ToString() + "%";
-        whiteText.text = ((palette.nbColisTotal - nb) * 100 / palette.nbColisTotal).ToString() + "%";
+        gameObject.GetComponent<Image>().fillAmount = (float)nb / (float)palette.nbColisTotal;
+        blueText.text  = nb.ToString() + "/" + palette.nbColisTotal;
+        whiteText.text = nb.ToString() + "/" + palette.nbColisTotal;
     }
 }

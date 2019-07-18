@@ -20,6 +20,11 @@ public class FinDuConvoyeur : MonoBehaviour
     public List<string> listAnomalieDejaDetectee;
     public int nbAnomalieMax;
 
+    private void Start()
+    {
+        dechargeBar.UpdateProgression(0);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Colis")
