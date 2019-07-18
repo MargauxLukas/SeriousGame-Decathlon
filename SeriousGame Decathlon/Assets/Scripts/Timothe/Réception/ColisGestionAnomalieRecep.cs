@@ -260,7 +260,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         tournerMenu.SetActive(true);
     }
 
-    void Jeter() //Permet de mettre le colis sur le côté
+    public void Jeter() //Permet de mettre le colis sur le côté
     {
         paletteManager.colisDeCote.Add(colisScriptable);
         Destroy(detect.colisATraiter);

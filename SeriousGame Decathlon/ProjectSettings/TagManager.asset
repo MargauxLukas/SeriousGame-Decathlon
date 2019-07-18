@@ -41,11 +41,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Colis
-    uniqueID: 3253610615
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Articles
+    uniqueID: 2931831649
+    locked: 0
+  - name: Colis
+    uniqueID: 3253610615
     locked: 0
   - name: Tuto
     uniqueID: 2257237077
