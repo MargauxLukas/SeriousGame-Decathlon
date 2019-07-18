@@ -83,10 +83,10 @@ public class BigMonitor : MonoBehaviour
 
         if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
         {
+            if (TutoManager.instance != null && !closeMonitorTuto) { TutoManager.instance.Manager(7); }
             isOpen = false;
             closeMonitorTuto = false;
-            miniMonitor.monitorClosing = false;
-            if (TutoManager.instance != null) {TutoManager.instance.Manager(7);}
+            miniMonitor.monitorClosing = false;  
         }
     }
 

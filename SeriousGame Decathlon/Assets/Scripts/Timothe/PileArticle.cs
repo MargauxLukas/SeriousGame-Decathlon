@@ -29,7 +29,6 @@ public class PileArticle : MonoBehaviour
 
     bool menuInfoIsOpen;
 
-
     private float timeUpdate;
 
     private void Start()
@@ -140,11 +139,38 @@ public class PileArticle : MonoBehaviour
     {
         listeColisDispo = GameObject.FindGameObjectsWithTag("Colis");
         listColisPresent = new List<ColisScript>();
-        for(int i = 0; i < listeColisDispo.Length; i++)
+        for (int i = 0; i < listeColisDispo.Length; i++)
         {
-            if(listeColisDispo[i] != null && listeColisDispo[i].GetComponent<ColisScript>() != null)
+            if (listeColisDispo[i] != null && listeColisDispo[i].GetComponent<ColisScript>() != null)
             {
                 listColisPresent.Add(listeColisDispo[i].GetComponent<ColisScript>());
+            }
+        }
+
+        if (TutoManager.instance != null)
+        {
+            if (listColisPresent[1].name.Equals("TutoColis3") && listColisPresent[2].name.Equals("TutoColis2"))
+            {
+                ColisScript temporaire = listColisPresent[2];
+                listColisPresent[2] = listColisPresent[1];
+                listColisPresent[1] = temporaire;
+            }
+            if (listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[1].name.Equals("TutoColis2"))
+            {
+                ColisScript temporaire = listColisPresent[1];
+                listColisPresent[1] = listColisPresent[0];
+                listColisPresent[0] = temporaire;
+            }
+            if(listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[1].name.Equals("TutoColis2Vide"))
+            {
+                ColisScript temporaire = listColisPresent[1];
+                listColisPresent[1] = listColisPresent[0];
+                listColisPresent[0] = temporaire;
+            }
+
+            foreach (ColisScript colis in listColisPresent)
+            {
+                Debug.Log("------" + colis.colisScriptable.name);
             }
         }
     }

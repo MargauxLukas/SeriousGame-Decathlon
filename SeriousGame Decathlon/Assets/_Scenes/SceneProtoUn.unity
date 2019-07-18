@@ -8813,11 +8813,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.30876237
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -8842,6 +8837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -9240,7 +9240,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1848907645}
   m_OnClick:
     m_PersistentCalls:
@@ -18750,6 +18750,8 @@ MonoBehaviour:
   detectAnomalie: {fileID: 1512090501580459130}
   managerIway: {fileID: 1157788047}
   manageDialog: {fileID: 1399314697}
+  CB01: {fileID: 1848907644}
+  CB02: {fileID: 429090919}
   listAnomalies: []
   n: 0
   toggleOnNb: 0
@@ -26064,7 +26066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listeColisTraiter.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4cf6fff017549fc4980c64fa3ddfc89a,
+      objectReference: {fileID: 11400000, guid: e2f1b2d1802d5744aa31fc7b5b7ae412,
         type: 2}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}

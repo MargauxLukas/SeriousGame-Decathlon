@@ -60,7 +60,6 @@ public class ColliderRenvoieColis : MonoBehaviour
                         obj.SetActive(false);
                     }
                 }
-
             }
         }
     }
