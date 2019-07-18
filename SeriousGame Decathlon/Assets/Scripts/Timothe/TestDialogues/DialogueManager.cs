@@ -59,10 +59,8 @@ public class DialogueManager : MonoBehaviour
 
                 if(actualDialogueLine < actualDialogue.phraseDites.Count-1)
                 {
-                    Debug.Log("PréTest");
                     if (touch.phase == TouchPhase.Began)
                     {
-                        Debug.Log("Test");
                         actualDialogueLine++;
                         AffichageDialogue(actualDialogueLine);
                     }
@@ -117,7 +115,6 @@ public class DialogueManager : MonoBehaviour
 
     public void DialogueChoice(int nbDialogueChoisit)
     {
-        Debug.Log("Test");
         if(actualDialogue.dialoguesSuivant[nbDialogueChoisit] != null)
         {
             Dialogue newDialogue = actualDialogue.dialoguesSuivant[nbDialogueChoisit];

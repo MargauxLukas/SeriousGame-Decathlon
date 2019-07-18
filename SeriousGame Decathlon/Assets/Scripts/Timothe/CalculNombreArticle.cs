@@ -9,7 +9,7 @@ public class CalculNombreArticle : MonoBehaviour
 
     public GameObject tutoMan;
 
-    public int currentNumber;
+    public int currentNumber = 0;
 
     public PileArticle pileScript;
     public int nbColisAffecte;
@@ -35,8 +35,6 @@ public class CalculNombreArticle : MonoBehaviour
     public void UpdateAffichage()
     {
         affichageNumber.text = currentNumber.ToString();
-        Debug.Log("AffichageNumber : " + affichageNumber.text);
-        Debug.Log("ArticlesNum : " + tutoMan);
         if(TutoManager.instance != null && affichageNumber.text == tutoMan.GetComponent<TutoManager>().articlesNum)
         {
             TutoManager.instance.Manager(46);

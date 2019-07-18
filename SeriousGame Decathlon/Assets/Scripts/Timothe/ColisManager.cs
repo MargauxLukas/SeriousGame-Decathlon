@@ -76,7 +76,6 @@ public class ColisManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("test");
                 colisTemporaire = listeColisTuto[0];         
             }
 
@@ -184,7 +183,6 @@ public class ColisManager : MonoBehaviour
                 Scoring.instance.sendColisWithoutMalus();
                 if(listeColisTraiter.Count<=0)
                 {
-                    Debug.Log("End Level");
                     Scoring.instance.EndLevel();
                 }
             }

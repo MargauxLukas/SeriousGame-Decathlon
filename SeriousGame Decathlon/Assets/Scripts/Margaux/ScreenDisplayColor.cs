@@ -48,7 +48,6 @@ public class ScreenDisplayColor : MonoBehaviour
                     lampAnimator.SetBool("hasAnomalie", true);
                     screenColorAnimator.SetBool("hasAnomalie", true);
                     screenColor.SetActive(true);
-                    Debug.Log("Test 1");
                 }
                 else if (affichageAnomalie.toggleOnNb == nbAnom)
                 {
@@ -74,7 +73,6 @@ public class ScreenDisplayColor : MonoBehaviour
                     lampAnimator.SetBool("hasAnomalie", true);
                     screenColorAnimator.SetBool("hasAnomalie", true);
                     screenColor.SetActive(true);
-                    Debug.Log("Test 2");
                 }
                 else if (affichageAnomalie.toggleOnNb == nbAnom)
                 {
