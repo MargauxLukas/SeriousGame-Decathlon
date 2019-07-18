@@ -35,6 +35,10 @@ public class TapisRoulant : MonoBehaviour
             {
                 if (colisTap.GetComponent<ScriptColisRecep>() != null && colisTap.GetComponent<ScriptColisRecep>().canMove)
                 {
+                    if (colisTap.GetComponent<ScriptColisRecep>().colisScriptable.estAbime)
+                    {
+                        Scoring.instance.RecepMalus(100);
+                    }
                     colisTap.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
                 }
             }

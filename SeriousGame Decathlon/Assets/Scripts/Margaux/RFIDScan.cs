@@ -22,6 +22,7 @@ public class RFIDScan : MonoBehaviour
     private int numRFID2  = 0;
 
     public bool isActive = false;
+    public GameObject spriteScan;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -31,6 +32,7 @@ public class RFIDScan : MonoBehaviour
                                                     && !collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByRFID 
                                                     &&  collision.gameObject.GetComponent<ColisScript>().hasBeenScannedByPistol)
             {
+                spriteScan.SetActive(true);
                 scriptColis = collision.gameObject.GetComponent<ColisScript>();
 
                 //if (scriptColis.colisScriptable.listArticles[0].rfid != null)//Vérification si RFID est nul ou pas
@@ -94,6 +96,10 @@ public class RFIDScan : MonoBehaviour
                     recountTab.refRFID1 = infoRFID.refIntRFID;
                     recountTab.refRFID2 = infoRFID2.refIntRFID;
                 }           
+            }
+            else
+            {
+                spriteScan.SetActive(false);
             }
         }
     }

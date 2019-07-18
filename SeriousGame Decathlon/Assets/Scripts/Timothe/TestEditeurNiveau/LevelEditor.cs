@@ -35,6 +35,7 @@ public class LevelEditor : MonoBehaviour
     public InputField inputFieldColisMF;
     public InputField inputFieldLevel;
     public InputField inputFieldNombreColisRecep;
+    public Colis colisToAdd;
 
     //Les Canvas
     [Header("Canvas à Activer/Désactiver")]
@@ -108,6 +109,17 @@ public class LevelEditor : MonoBehaviour
 
     public void OpenMenuRecep()
     {
+        if (newLevel.colisDuNiveauNomReception == null)
+        {
+            newLevel.colisDuNiveauNomReception = new List<string>();
+        }
+
+        if (!newLevel.colisDuNiveauNomReception.Contains(colisToAdd.name))
+        {
+            newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
+            newLevel.colisDuNiveauNomReception.Add(colisToAdd.name); //Pour augmenter les chances de tomber sur ce colis
+            newLevel.colisDuNiveauNomReception.Add(colisToAdd.name); //Pour augmenter encore plus les chances de tomber sur ce colis
+        }
         creationNiveau.SetActive(false);
         ongletReception.SetActive(true);
         newLevel.doesNeedRecep = true;

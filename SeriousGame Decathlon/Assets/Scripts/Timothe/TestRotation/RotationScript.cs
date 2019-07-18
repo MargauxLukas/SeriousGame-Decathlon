@@ -345,12 +345,6 @@ public class RotationScript : MonoBehaviour
     private int yAxisMajeur;
     private int RotaAxis;
 
-    public void MettreColisSurPalette(GameObject target)
-    {
-        //Mettre les malus ou autres
-        Destroy(target);
-    }
-
     public void ChangeRotation()
     {
         Debug.Log("Test Rotation");
