@@ -38,6 +38,9 @@ public class ZoneAffichageAnomalieFiche : MonoBehaviour
         posXInitial = listButton[0].transform.position.x;
     }
 
+    /*******************************************************************
+    *   Coroutine qui permet de ranger l'anomalie vers la droite       *
+    *******************************************************************/
     public IEnumerator AnomalieMove(Button button)
     {
         button.transform.position = Vector3.MoveTowards(button.transform.position, new Vector3(posXInitial + 7f, button.transform.position.y, button.transform.position.z), 1f);

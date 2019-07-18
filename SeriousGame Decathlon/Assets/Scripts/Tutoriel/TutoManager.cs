@@ -2400,11 +2400,11 @@ public class TutoManager : MonoBehaviour
 
         if (canPlaySecond)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.blackScreen).transform.localPosition = new Vector3(-20.1f, 0.23f, 30f);
+            gameObjectsManager.GameObjectToTransform     (gameObjectsManager.blackScreen).transform.localPosition = new Vector3(-20.1f, 0.23f, 30f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(-15.08f, 3.29f);
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.67f, 1.97f);
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = true;
+            gameObjectsManager.GameObjectToTransform     (gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(-15.08f, 3.29f);
+            gameObjectsManager.GameObjectToTransform     (gameObjectsManager.squareSpriteMask01).transform.localScale = new Vector2(2.67f, 1.97f);
+            gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.squareSpriteMask01).enabled = true;
 
             phaseNum++;
             canPlayFirst = true;
