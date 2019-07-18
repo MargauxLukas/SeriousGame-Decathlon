@@ -161,6 +161,13 @@ public class PileArticle : MonoBehaviour
                 listColisPresent[1] = listColisPresent[0];
                 listColisPresent[0] = temporaire;
             }
+            if(listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[1].name.Equals("TutoColis2Vide"))
+            {
+                ColisScript temporaire = listColisPresent[1];
+                listColisPresent[1] = listColisPresent[0];
+                listColisPresent[0] = temporaire;
+            }
+
             foreach (ColisScript colis in listColisPresent)
             {
                 Debug.Log("------" + colis.colisScriptable.name);
