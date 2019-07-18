@@ -55,7 +55,7 @@ public class ScriptColisRecep : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && !tapisScript.tapisGeneral.doesStop)
+            if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn)
             {
                 canMove = true;
             }
@@ -83,7 +83,7 @@ public class ScriptColisRecep : MonoBehaviour
                 MalusScript.instance.HaveAMalus();                                  //Je le met ici car je pense qu'il peut être sympa de donner un malus tant qu'il le garde dans les mains (Le malus doit être faible du coup)
                 if (touch.phase == TouchPhase.Ended)
                 {
-                    if(!isOnTapis || tapisScript.tapisGeneral.doesStop)
+                    if(!isOnTapis || !tapisScript.tapisGeneral.convoyeur.isOn)
                     {
                         Scoring.instance.RecepMalus(15);
                         transform.position = startPosition;
@@ -145,10 +145,8 @@ public class ScriptColisRecep : MonoBehaviour
 
     public void Tourner(string face, float rotation)
     {
-        Debug.Log("Test Orientation Fonction");
         if ((face == "Up" || face =="Down") && ((rotation >= 85 && rotation <= 95) || (rotation >= 265 && rotation <= 275)))
         {
-            Debug.Log("Test Orientation");
             colisScriptable.isBadOriented = false;
         }
         else

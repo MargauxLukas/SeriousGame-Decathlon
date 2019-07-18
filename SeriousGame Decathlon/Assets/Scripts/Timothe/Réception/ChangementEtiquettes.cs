@@ -30,7 +30,7 @@ public class ChangementEtiquettes : MonoBehaviour
     {
         if (nbEtiquettes <= 0)
         {
-            tapisGeneral.doesStop = true;
+            tapisGeneral.doesStop();
         }
        
         if(Input.touchCount > 0)
@@ -45,10 +45,6 @@ public class ChangementEtiquettes : MonoBehaviour
                 ampouleOrange       .SetActive(false);
                 ampouleClignotante  .SetActive(false);
                 bulle               .SetActive(false);
-                if (!detectAnomRecep.gotAnomalie)
-                {
-                    tapisGeneral.doesStop = false;
-                }
                 doesTouch = false;
             }
         }

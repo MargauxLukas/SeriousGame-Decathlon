@@ -165,6 +165,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         }
         else
         {
+            doesTouch = false;
             if (circleImage.transform.parent.gameObject.activeSelf)
             {
                 circleImage.transform.parent.gameObject.SetActive(false);
@@ -226,7 +227,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                 Jeter();
                 TellSomething(1);
                 break;
-            case 0:
+            case 2:
                 OpenTurnMenu();
                 TellSomething(3);
                 break;
@@ -264,7 +265,6 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         paletteManager.colisDeCote.Add(colisScriptable);
         Destroy(detect.colisATraiter);
         GetComponent<SpriteRenderer>().sprite = null;
-        detect.tapisGeneral.doesStop = false;
         detect.ResolveAnomalie();
     }
 }

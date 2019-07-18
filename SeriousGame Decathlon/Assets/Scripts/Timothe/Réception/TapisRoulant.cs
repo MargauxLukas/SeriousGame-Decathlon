@@ -29,7 +29,7 @@ public class TapisRoulant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (colisSurLeTapis.Count > 0 && !tapisGeneral.doesStop)
+        if (colisSurLeTapis.Count > 0 && tapisGeneral.convoyeur.isOn)
         {
             foreach (GameObject colisTap in colisSurLeTapis)
             {
