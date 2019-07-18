@@ -229,7 +229,7 @@ public class LevelEditor : MonoBehaviour
         ongletMultifonction.SetActive(true);
         foreach (Button bouton in boutonAnomalies)
         {
-            bouton.interactable = true;
+            bouton.interactable = false;
         }
         newLevel.doesNeedMF = true;
     }

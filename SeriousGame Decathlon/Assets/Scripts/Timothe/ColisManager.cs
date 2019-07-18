@@ -171,7 +171,7 @@ public class ColisManager : MonoBehaviour
                 listeColisTraiter.Add(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
                 Scoring.instance.sendColis();
                 Scoring.instance.ResetComboColisSansMalus();
-                Scoring.instance.AffichageErreur("Renvoie de colis avec anomalies");
+                Scoring.instance.AffichageErreur("Renvoie de colis avec anomalies : " + colisRenvoye.GetComponent<ColisScript>().colisScriptable.listAnomalies + " Nombre de colis : " + colisRenvoye.GetComponent<ColisScript>().colisScriptable.listAnomalies.Count);
                 Scoring.instance.WhatTheFuck();
                 
                 for (int m = 0; m < colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie; m++)

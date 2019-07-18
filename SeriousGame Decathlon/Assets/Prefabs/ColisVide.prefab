@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246706536070355173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.28, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.61, y: 0.34, z: 0}
+  m_LocalScale: {x: 0.625, y: 0.683, z: 1}
   m_Children: []
   m_Father: {fileID: 246706537573853407}
   m_RootOrder: 0
@@ -241,7 +241,6 @@ MonoBehaviour:
   tournerMenu: {fileID: 0}
   spriteArticleTableUn: {fileID: 0}
   spriteArticleTableDeux: {fileID: 0}
-  changeDirection: 0
   estSecoue: 0
   hasBeenScannedByRFID: 0
   hasBeenScannedByPistol: 0

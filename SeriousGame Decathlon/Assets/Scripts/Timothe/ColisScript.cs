@@ -272,7 +272,7 @@ public class ColisScript : MonoBehaviour
         }
         else if (doesRenvoie)
         {
-            transform.position += new Vector3(0, 1, 0) * 2 * Time.deltaTime;
+            transform.position += new Vector3(0, 1, 0) *2 * Time.deltaTime;
             transform.localScale = transform.localScale - (new Vector3(1, 1, 1) * 0.3f * Time.deltaTime);
             if(transform.position.y >= 3.4f)
                 Destroy(gameObject);
