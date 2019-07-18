@@ -6,6 +6,8 @@ using TMPro;
 
 public class GameObjectsManager : MonoBehaviour
 {
+    public static GameObjectsManager instance;
+
     [Header("General")]
     public GameObject pedal;
     public GameObject pistolet;

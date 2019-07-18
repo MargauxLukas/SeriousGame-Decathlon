@@ -25,7 +25,6 @@ public class ColliderRenvoieColis : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<ColisScript>() != null && !collision.gameObject.GetComponent<ColisScript>().doesEntrance && !collision.gameObject.GetComponent<ColisScript>().doesEntranceSecond && !collision.gameObject.GetComponent<ColisScript>().doesRenvoie)
         {
-            Debug.Log(collision.gameObject.GetComponent<ColisScript>().colisScriptable.listArticles.Count);
             if (collision.gameObject.GetComponent<ColisScript>().colisScriptable.listArticles.Count > 0)
             {
                 if (isFinalRenvoie)

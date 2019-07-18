@@ -23,6 +23,9 @@ public class AffichageAnomalie : MonoBehaviour
     public IWayInfoManager managerIway;
     private List<Dialogue> actualUsableDialogue;
     public DialogueManager manageDialog;
+    public Button CB01;
+    public Button CB02;
+
 
     [HideInInspector]
     public List<string> listAnomalies;
@@ -55,6 +58,8 @@ public class AffichageAnomalie : MonoBehaviour
         n = 0;
         if (listAnomalies != null)
         {
+            CB01.interactable = true;
+            CB02.interactable = true;
             ongletManager.DesactivateAll();
             foreach (string anomalie in listAnomalies)
             {
@@ -76,7 +81,8 @@ public class AffichageAnomalie : MonoBehaviour
                             actualUsableDialogue.Add(dialogueList[1]);
                             ongletManager.ActivateOngletRepack();
                             ongletManager.ActivateOngletRecount();
-                            //Desactiver Fiche Carton
+                            CB01.interactable = false;
+                            CB02.interactable = false;
                             break;
                         case "RFID tags to be applied":
                             actualUsableDialogue.Add(dialogueList[2]);
@@ -97,7 +103,7 @@ public class AffichageAnomalie : MonoBehaviour
                         case "TU too heavy (20-25)":
                             actualUsableDialogue.Add(dialogueList[6]);
                             ongletManager.ActivateOngletRepack();
-                            //Desactiver Fiche Carton
+                            
                             break;
                         case "RFID tag scanned for unknown product":
                             actualUsableDialogue.Add(dialogueList[7]);
@@ -106,12 +112,14 @@ public class AffichageAnomalie : MonoBehaviour
                         case "Dimensions out of tolerance":
                             actualUsableDialogue.Add(dialogueList[8]);
                             ongletManager.ActivateOngletRepack();
-                            //Desactiver Fiche Carton
+                            CB01.interactable = false;
+                            CB02.interactable = false;
                             break;
                         case "Dimensions out of dimension for tray":
                             actualUsableDialogue.Add(dialogueList[9]);
                             ongletManager.ActivateOngletRepack();
-                            //Desactiver Fiche Carton
+                            CB01.interactable = false;
+                            CB02.interactable = false;
                             break;
                     }
                     n++;
