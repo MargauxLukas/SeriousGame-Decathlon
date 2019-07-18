@@ -8734,6 +8734,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.30876237
       objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -8758,11 +8763,6 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}

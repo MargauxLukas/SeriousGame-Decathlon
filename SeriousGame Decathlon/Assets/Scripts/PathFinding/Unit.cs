@@ -36,6 +36,7 @@ public class Unit : MonoBehaviour
                 {
                     case TouchPhase.Ended:
                         target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
+                        StopAllCoroutines();
                         StartCoroutine(UpdatePath());
                         break;
 
@@ -121,7 +122,7 @@ public class Unit : MonoBehaviour
                 if (pathIndex >= path.slowDownIndex && stoppingDst > 0)
                 {
                     speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos2D) / stoppingDst);
-                    if(speedPercent < 0.01f)
+                    if (speedPercent < 0.01f)
                     {
                         followingPath = false;
                     }

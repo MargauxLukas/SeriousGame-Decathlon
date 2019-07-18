@@ -187,56 +187,12 @@ public class RotationScript : MonoBehaviour
                     if (xAxis > 0)
                     {
                         newFace = theNewFace.rightVoisin;
-                        /*switch(nbQuaterRotateMore)
-                        {
-                            case 0:
-                                newFace = actualFace.rightVoisin;
-                                //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
-                                //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
-                                break;
-                            case 1:
-                                newFace = actualFace.upVoisin;
-                                //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
-                                //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
-                                break;
-                            case 2:
-                                newFace = actualFace.leftVoisin;
-                                //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
-                                //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
-                                break;
-                            case 3:
-                                newFace = actualFace.downVoisin;
-                                //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
-                                //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
-                                break;
-                        }*/
+                        
                     }
                     else
                     {
                         newFace = theNewFace.leftVoisin;
-                        /*switch (nbQuaterRotateMore)
-                        {
-                            case 0:
-                                newFace = actualFace.leftVoisin;
-                                //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
-                                //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
-                                break;
-                            case 1:
-                                newFace = actualFace.downVoisin;
-                                //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
-                                //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
-                                break;
-                            case 2:
-                                newFace = actualFace.rightVoisin;
-                                //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
-                                //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
-                                break;
-                            case 3:
-                                newFace = actualFace.upVoisin;
-                                //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
-                                //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
-                                break;
-                        }*/
+                        
                     }
                     theNewFace = newFace;
                 }
@@ -245,56 +201,12 @@ public class RotationScript : MonoBehaviour
                     if (yAxis > 0)
                     {
                         newFace = theNewFace.upVoisin;
-                        /*switch (nbQuaterRotateMore)
-                        {
-                            case 0:
-                                newFace = actualFace.upVoisin;
-                                //GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
-                                //GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
-                                break;
-                            case 1:
-                                newFace = actualFace.leftVoisin;
-                                //GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
-                                //GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
-                                break;
-                            case 2:
-                                newFace = actualFace.downVoisin;
-                                //GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
-                                //GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
-                                break;
-                            case 3:
-                                newFace = actualFace.rightVoisin;
-                                //GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
-                                //GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
-                                break;
-                        }*/
+                        
                     }
                     else
                     {
                         newFace = theNewFace.downVoisin;
-                        /*switch (nbQuaterRotateMore)
-                        {
-                            case 0:
-                                newFace = actualFace.downVoisin;
-                                GetVoisonFromRotation(actualFace, "Right").fullRotation -= 90;
-                                GetVoisonFromRotation(actualFace, "Left").fullRotation -= 90;
-                                break;
-                            case 1:
-                                newFace = actualFace.rightVoisin;
-                                GetVoisonFromRotation(actualFace, "Up").fullRotation += 90;
-                                GetVoisonFromRotation(actualFace, "Down").fullRotation += 90;
-                                break;
-                            case 2:
-                                newFace = actualFace.upVoisin;
-                                GetVoisonFromRotation(actualFace, "Right").fullRotation += 90;
-                                GetVoisonFromRotation(actualFace, "Left").fullRotation += 90;
-                                break;
-                            case 3:
-                                newFace = actualFace.leftVoisin;
-                                GetVoisonFromRotation(actualFace, "Up").fullRotation -= 90;
-                                GetVoisonFromRotation(actualFace, "Down").fullRotation -= 90;
-                                break;
-                        }*/
+                        
                     }
                     theNewFace = newFace;
                 }
@@ -349,8 +261,8 @@ public class RotationScript : MonoBehaviour
             //Debug.Log(actualFace.face);
             //Debug.Log(actualFace.fullRotation);
             Debug.Log(theNewFace);
-            return theNewFace;
             ancientTopView = theNewFace;
+            return theNewFace;
         }
         return theNewFace;
     }
@@ -411,54 +323,33 @@ public class RotationScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.D))
-        {
-            ChangeRotation(1, 0, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            ChangeRotation(-1, 0, 0);
-        }
-        else if(Input.GetKeyDown(KeyCode.Z))
-        {
-            ChangeRotation(0, 1, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            ChangeRotation(0, -1, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            ChangeRotation(0, 0, 90);
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            ChangeRotation(0, 0, -90);
-            UpdateSprite(new List<Sprite>(), carton);
-        }*/
-    }
-
     public void GetxAxis(int xAxis)
     {
-        xAxisMajeur = xAxis; 
+        xAxisMajeur = xAxis;
+        Debug.Log("TestRota1");
     }
 
     public void GetyAxis(int xAxis)
     {
         yAxisMajeur = xAxis;
+        Debug.Log("TestRota2");
     }
 
     public void GetRotaAxis(int xAxis)
     {
         RotaAxis = xAxis;
+        Debug.Log("TestRota3");
     }
 
     private int xAxisMajeur;
     private int yAxisMajeur;
     private int RotaAxis;
+
+    public void MettreColisSurPalette(GameObject target)
+    {
+        //Mettre les malus ou autres
+        Destroy(target);
+    }
 
     public void ChangeRotation()
     {

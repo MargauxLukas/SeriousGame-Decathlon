@@ -85,7 +85,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
                 {
                     //Afficher les feedbacks de l'anomalie
-                    tapisGeneral.doesStop = true;
+                    tapisGeneral.doesStop();
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrange          .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true );
@@ -97,7 +97,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
                 {
                     //Afficher les feedbacks de l'anomalie
-                    tapisGeneral.doesStop = true;
+                    tapisGeneral.doesStop();
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrange          .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true );
@@ -109,7 +109,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                 {
                     //Afficher les feedbacks de l'anomalie
-                    tapisGeneral.doesStop = true;
+                    tapisGeneral.doesStop();
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrange          .SetActive(true );
                     signalBoiteOrangeClignotant.SetActive(false);
@@ -123,7 +123,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     gotAnomalie = false;
                     if (etiquettesManager.nbEtiquettes > 0)
                     {
-                        tapisGeneral.doesStop = false;
                         signalBoiteVert.SetActive(true);
                         signalBoiteOrange.SetActive(false);
                         signalBoiteOrangeClignotant.SetActive(false);
@@ -161,7 +160,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 if (currentColis.colisScriptable.isBadOriented)
                 {
                     affichageAnomalieRecep.ChangeText("badOriented");
-                    tapisGeneral.doesStop = true;
+                    tapisGeneral.doesStop();
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
@@ -177,7 +176,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("dimension");
-                    tapisGeneral.doesStop = true;
+                    tapisGeneral.doesStop();
                     signalBoiteVert            .SetActive(false);
                     signalBoiteOrangeClignotant.SetActive(true);
                     ampouleClignotante         .SetActive(true);
@@ -191,7 +190,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     gotAnomalie = true;
                     affichageAnomalieRecep.ChangeText("heavy");
-                    tapisGeneral.doesStop = true;
+                    tapisGeneral.doesStop();
                     signalBoiteVert  .SetActive(false);
                     signalBoiteOrange.SetActive(true);
                     ampouleOrange    .SetActive(true);

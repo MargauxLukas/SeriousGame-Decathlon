@@ -5,11 +5,19 @@ using UnityEngine;
 public class TapisRoulantGeneral : MonoBehaviour
 {
     public float speed;
-    public bool doesStop;
+    public ConvoyeurButton boutonConvoyeur;
+    public ConvoyeurManager convoyeur;
+
+    public void doesStop()
+    {
+        convoyeur.isOn = false;
+        boutonConvoyeur.isOffAmpoule.SetActive(true);
+        boutonConvoyeur.isOnAmpoule.SetActive(false);
+    }
 
     private void Update()
     {
-        if(doesStop)
+        if(!convoyeur.isOn)
         {
             GetComponent<BoxCollider2D>().enabled = false;
         }
@@ -21,7 +29,7 @@ public class TapisRoulantGeneral : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision != null && collision.tag == "Colis" && !doesStop)
+        if(collision != null && collision.tag == "Colis" && convoyeur.isOn)
         {
             collision.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
         }
