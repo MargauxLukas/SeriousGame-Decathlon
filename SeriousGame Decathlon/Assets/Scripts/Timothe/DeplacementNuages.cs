@@ -12,6 +12,11 @@ public class DeplacementNuages : MonoBehaviour
     public List<GameObject> etoilesDisponibles;
     public Transform parentEtoiles;
 
+    private Vector2 lastPosition;
+
+    public bool movedUp = false;
+    public bool movedDown = false;
+
     private void Start()
     {
         //Placement des étoiles
@@ -31,7 +36,7 @@ public class DeplacementNuages : MonoBehaviour
             {
                 transform.localPosition = new Vector3(10.37f, transform.localPosition.y, 0);
             }
-            transform.localPosition += new Vector3(1, 0, 0) * (speed + diffWithPlanete);
+            transform.localPosition += new Vector3(-1, 0, 0) * (speed + diffWithPlanete);
         }
         else
         {
@@ -40,6 +45,46 @@ public class DeplacementNuages : MonoBehaviour
                 transform.localPosition = new Vector3(-1.97f, transform.localPosition.y, 0);
             }
             transform.localPosition += new Vector3(1, 0, 0) * speed;
+        }
+
+        if(Input.touchCount>0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector2 touchPosition = touch.position;
+            if (touch.phase == TouchPhase.Began)
+            {
+                movedUp = false;
+                movedDown = false;
+                lastPosition = touchPosition;
+            }
+            if (touch.phase == TouchPhase.Ended)
+            {
+                movedUp = false;
+                movedDown = false;
+            }
+            else if(touch.phase == TouchPhase.Moved)
+            {
+                Debug.Log(Vector2.Distance(touchPosition, lastPosition));
+                if (touchPosition.x > lastPosition.x && touchPosition.y > lastPosition.y && Vector2.Distance(touchPosition, lastPosition) > 200f && !movedDown)
+                {
+                    movedUp = true;
+                    speed += Time.deltaTime * 0.75f;
+                    if(speed > 3)
+                    {
+                        speed = 3;
+                    }
+                }
+                if (touchPosition.x < lastPosition.x && touchPosition.y < lastPosition.y && !movedUp && Vector2.Distance(touchPosition, lastPosition) > 100f)
+                {
+                    movedDown = true;
+                    speed -= Time.deltaTime * 0.75f;
+                    if(speed < 0)
+                    {
+                        speed = 0;
+                    }
+                }
+            }
+
         }
     }
 }
