@@ -149,25 +149,28 @@ public class PileArticle : MonoBehaviour
 
         if (TutoManager.instance != null)
         {
-            Debug.Log("------0 :" + listColisPresent[0].name + " ------1 :" + listColisPresent[1].name + " ------2 :" + listColisPresent[2].name);
+            Debug.Log("------0 :" + listColisPresent[0].name + " ------1 :" + listColisPresent[1].name);
 
-            if (listColisPresent[1].name.Equals("TutoColis3") && listColisPresent[2].name.Equals("TutoColis2"))
+            if (listColisPresent.Count > 2)
             {
-                ColisScript temporaire = listColisPresent[2];
-                listColisPresent[2] = listColisPresent[1];
-                listColisPresent[1] = temporaire;
-            }
-            if (listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[1].name.Equals("TutoColis2"))
-            {
-                ColisScript temporaire = listColisPresent[1];
-                listColisPresent[1] = listColisPresent[0];
-                listColisPresent[0] = temporaire;
-            }
-            if(listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[2].name.Equals("TutoColis2Vide"))
-            {
-                ColisScript temporaire = listColisPresent[2];
-                listColisPresent[2] = listColisPresent[0];
-                listColisPresent[0] = temporaire;
+                if (listColisPresent[1].name.Equals("TutoColis3") && listColisPresent[2].name.Equals("TutoColis2"))
+                {
+                    ColisScript temporaire = listColisPresent[2];
+                    listColisPresent[2] = listColisPresent[1];
+                    listColisPresent[1] = temporaire;
+                }
+                if (listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[1].name.Equals("TutoColis2"))
+                {
+                    ColisScript temporaire = listColisPresent[1];
+                    listColisPresent[1] = listColisPresent[0];
+                    listColisPresent[0] = temporaire;
+                }
+                if (listColisPresent[0].name.Equals("TutoColis3") && listColisPresent[2].name.Equals("TutoColis2Vide"))
+                {
+                    ColisScript temporaire = listColisPresent[2];
+                    listColisPresent[2] = listColisPresent[0];
+                    listColisPresent[0] = temporaire;
+                }
             }
 
             foreach (ColisScript colis in listColisPresent)

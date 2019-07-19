@@ -58,8 +58,11 @@ public class AffichageAnomalie : MonoBehaviour
         n = 0;
         if (listAnomalies != null)
         {
-            CB01.interactable = true;
-            CB02.interactable = true;
+            if (TutoManager.instance == null)
+            {
+                CB01.interactable = true;
+                CB02.interactable = true;
+            }   
             ongletManager.DesactivateAll();
             foreach (string anomalie in listAnomalies)
             {
