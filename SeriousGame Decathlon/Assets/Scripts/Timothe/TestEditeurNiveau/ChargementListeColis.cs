@@ -70,6 +70,19 @@ public class ChargementListeColis : MonoBehaviour
         LoadNewScene(sceneFinNiveau);
     }
 
+    public void QuitMfLevel(List<Colis> colisMulti, List<int> RFIDknowned)
+    {
+        colisProcessMulti = colisMulti;
+        RFIDKnowed = RFIDknowned;
+        SceneManager.LoadScene(6);
+    }
+
+    public void QuitReceptionLevel(int nombreColisRestant, bool hasBeenReturn)
+    {
+        nombreColisRecep = nombreColisRestant;
+        SceneManager.LoadScene(6);
+    }
+
     public void LoadNewLevelScript(int currentLevelTempo)
     {
         if (nomDuJoueur != null)

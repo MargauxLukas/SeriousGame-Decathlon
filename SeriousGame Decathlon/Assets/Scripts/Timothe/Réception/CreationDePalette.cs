@@ -181,6 +181,15 @@ public class CreationDePalette : MonoBehaviour
                 }
             }
 
+            for(int i = 0; i < colisActuels.Count; i++)
+            {
+                if(colisActuels[i] == null)
+                {
+                    colisActuels.RemoveAt(i);
+                    i--;
+                }
+            }
+
             foreach (ScriptColisRecep colis in colisToRemove)
             {
                 colisActuels.Remove(colis);

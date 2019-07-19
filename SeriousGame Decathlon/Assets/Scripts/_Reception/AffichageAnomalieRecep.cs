@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class AffichageAnomalieRecep : MonoBehaviour
@@ -83,11 +84,19 @@ public class AffichageAnomalieRecep : MonoBehaviour
         //Seulement si replier a fond
         if(paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
         {
-            //Mettre la fin du niveau + bonus si le container était bien défectueux
+            if (ChargementListeColis.instance == null)
+            {
+                Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                SceneManager.LoadScene(6);
+            }
+            else
+            {
+                ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
+            }
         }
         else
         {
-            //Mettre un gros malus
+            Scoring.instance.RecepMalus(50 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite) + 500);
         }
     }
 
