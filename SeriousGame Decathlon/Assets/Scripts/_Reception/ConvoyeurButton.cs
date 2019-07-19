@@ -23,6 +23,9 @@ public class ConvoyeurButton : MonoBehaviour
     public GameObject  isOnAmpoule;
     public GameObject isOffAmpoule;
 
+    public DetectionAnomalieRecep detectAnom;
+    public ChangementEtiquettes etiquettesManager;
+
     private void Update()
     {
         if (convoyeur.isOn)
@@ -51,7 +54,7 @@ public class ConvoyeurButton : MonoBehaviour
             isOnAmpoule .SetActive(false);
             convoyeur.isOn = false;
         }
-        else
+        else if (detectAnom.gotAnomalie || etiquettesManager.nbEtiquettes<=0)
         {
             isOnAmpoule .SetActive(true);
             isOffAmpoule.SetActive(false);

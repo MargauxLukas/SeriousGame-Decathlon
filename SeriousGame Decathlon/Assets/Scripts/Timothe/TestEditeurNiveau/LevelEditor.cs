@@ -44,6 +44,7 @@ public class LevelEditor : MonoBehaviour
     public GameObject ongletReception;
     public GameObject ongletAddColis;
     public List<Button> boutonAnomalies;
+    public GameObject containerEstDefaillant;
 
 
     // Start is called before the first frame update
@@ -137,6 +138,11 @@ public class LevelEditor : MonoBehaviour
         if(newLevel.chanceReceptionColisHaveAnomalie > 100)
         {
             newLevel.chanceReceptionColisHaveAnomalie = 10;
+            containerEstDefaillant.SetActive(false);
+        }
+        else
+        {
+            containerEstDefaillant.SetActive(true);
         }
     }
 
