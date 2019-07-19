@@ -47,9 +47,51 @@ public class SaveAllScriptableBeginning : MonoBehaviour
         }
     }
 
+    int dellNumber = 0;
+    public SpriteRenderer feedbackSuppression;
+
+    public void DesinstallFirst()
+    {
+        if(dellNumber==0)
+        {
+            dellNumber = 1;
+            StartCoroutine(FeedbackDeleteFonction());
+        }
+    }
+    public void DesinstallSecond()
+    {
+        if (dellNumber == 1)
+        {
+            dellNumber = 2;
+            StartCoroutine(FeedbackDeleteFonction());
+        }
+    }
+    public void DesinstallThird()
+    {
+        if (dellNumber == 2)
+        {
+            dellNumber = 3;
+            StartCoroutine(FeedbackDeleteFonction());
+        }
+    }
     public void Desinstall()
     {
-        SaveLoadSystem.instance.DeleteAllFile();
+        if (dellNumber == 3)
+        {
+            Debug.Log("Data has been delete");
+            StartCoroutine(FeedbackDeleteFonction());
+            SaveLoadSystem.instance.DeleteAllFile();
+        }
+    }
+
+    IEnumerator FeedbackDeleteFonction()
+    {
+        Color newColor = new Color();
+        newColor.a = 1;
+        feedbackSuppression.color = newColor;
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
+        newColor.a = 0;
+        feedbackSuppression.color = newColor;
     }
 
 }
