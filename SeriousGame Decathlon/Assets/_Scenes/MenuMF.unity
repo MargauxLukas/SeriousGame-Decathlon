@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8b1ede2ecb557479ab45b358c5b418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.15
-  diffWithPlanete: -0.15
+  speed: 0.15
+  diffWithPlanete: 0.15
   isStar: 1
   nombreEtoiles: 100
   etoilesDisponibles:
@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8b1ede2ecb557479ab45b358c5b418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.15
-  diffWithPlanete: -0.1
+  speed: 0.15
+  diffWithPlanete: 0.1
   isStar: 1
   nombreEtoiles: 50
   etoilesDisponibles:
@@ -654,8 +654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8b1ede2ecb557479ab45b358c5b418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.15
-  diffWithPlanete: -0.2
+  speed: 0.15
+  diffWithPlanete: 0.2
   isStar: 1
   nombreEtoiles: 150
   etoilesDisponibles:
