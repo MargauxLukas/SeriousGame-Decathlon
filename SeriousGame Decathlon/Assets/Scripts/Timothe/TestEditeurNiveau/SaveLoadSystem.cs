@@ -188,6 +188,7 @@ public class SaveLoadSystem : MonoBehaviour
         }
 
         BinaryFormatter bf = new BinaryFormatter();
+        dataToSave = Versionning(dataToSave);
         if (!File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
         {
             FileStream file = File.Create(Application.persistentDataPath + "/game_save/generalData.txt");

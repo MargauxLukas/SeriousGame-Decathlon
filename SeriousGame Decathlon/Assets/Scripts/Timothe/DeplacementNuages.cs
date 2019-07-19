@@ -67,16 +67,16 @@ public class DeplacementNuages : MonoBehaviour
             else if(touch.phase == TouchPhase.Moved)
             {
                 Debug.Log(Vector2.Distance(touchPosition, lastPosition));
-                if (touchPosition.x > lastPosition.x && touchPosition.y > lastPosition.y && Vector2.Distance(touchPosition, lastPosition) > 200f && !movedDown)
+                if (touchPosition.x > lastPosition.x && touchPosition.y > lastPosition.y && Vector2.Distance(touchPosition, lastPosition) > 50f && !movedDown)
                 {
                     movedUp = true;
                     speed += Time.deltaTime * 0.75f;
-                    if(speed > 3)
+                    if(speed > 1.2f)
                     {
-                        speed = 3;
+                        speed = 1.2f;
                     }
                 }
-                if (touchPosition.x < lastPosition.x && touchPosition.y < lastPosition.y && !movedUp && Vector2.Distance(touchPosition, lastPosition) > 100f)
+                if (touchPosition.x < lastPosition.x && touchPosition.y < lastPosition.y && !movedUp && Vector2.Distance(touchPosition, lastPosition) > 50f)
                 {
                     movedDown = true;
                     speed -= Time.deltaTime * 0.75f;
@@ -86,7 +86,7 @@ public class DeplacementNuages : MonoBehaviour
                     }
                 }
             }
-
+            lastPosition = touchPosition;
         }
 
         if (animator != null)
