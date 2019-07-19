@@ -911,7 +911,7 @@ public class TutoManager : MonoBehaviour
     IEnumerator ReturnToMenu(float time)
     {
         yield return new WaitForSeconds(time);
-        gameObjectsManager.quitButtonToMenu.GetComponent<BoutonChangementScene>().LoadNewScene(4);
+        gameObjectsManager.quitButtonToMenu.GetComponent<BoutonChangementScene>().LoadNewScene(0);
     }
 
         /*****************/
