@@ -240,7 +240,6 @@ public class CreationDePalette : MonoBehaviour
             }
             for (int m = 0; m < palettes[i].rangees[j].collones[k].colis.Count; m++)
             {
-                Debug.Log(i + " " + j + " " + k + " " + l);
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().canBePicked = true;
                 colisActuels.Add(palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>());
                 feedbackPileEtage.fillAmount = ((float)palettes[i].rangees[j].collones[k].colis[m].GetComponent<ScriptColisRecep>().currentHauteur+1f) / 5f;
@@ -251,8 +250,8 @@ public class CreationDePalette : MonoBehaviour
                 theColor.a = 1;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<SpriteRenderer>().color = theColor;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
-                
             }
+            Debug.Log(i + " " + j + " " + k + " " + l);
         }
     }
 
