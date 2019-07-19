@@ -3375,6 +3375,7 @@ MonoBehaviour:
   errorTextZone: {fileID: 0}
   score: 0
   gotNewColis: 0
+  currentTime: 0
   pauseCombo: 0
 --- !u!4 &391081040
 Transform:
@@ -4867,6 +4868,7 @@ MonoBehaviour:
   colisObj: {fileID: 1005884344527145885, guid: 8bf4acf09eac5d94f8138b18578bcc56,
     type: 3}
   chanceHavingAnomaliesMF: 15
+  nbColisAvecAnomalie: 0
   colisPossibles:
   - {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f, type: 2}
   - {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09, type: 2}
@@ -4889,7 +4891,7 @@ MonoBehaviour:
   coefPosColonne: 1.8
   coefPosRangee: 1.8
   coefPosPalette: 7
-  nbColisTotal: 27
+  nbColisTotal: 100
   barreProgression: {fileID: 1853158960}
   feedbackPileEtage: {fileID: 1312704498}
   nbColisTraite: 0
@@ -4902,7 +4904,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566546637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -5978,7 +5980,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723152952}
-  - component: {fileID: 723152951}
   - component: {fileID: 723152950}
   - component: {fileID: 723152949}
   - component: {fileID: 723152948}
@@ -6056,14 +6057,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!33 &723152951
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723152947}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &723152952
 Transform:
   m_ObjectHideFlags: 0
@@ -16838,7 +16831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.799988, y: -21.5}
+  m_AnchoredPosition: {x: 20.799927, y: -21.5}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962551371

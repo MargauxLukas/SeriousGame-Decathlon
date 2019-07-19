@@ -13,7 +13,11 @@ public class BoutonMettreSurPalette : MonoBehaviour
             {
                 if(!tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
                 {
-                    Scoring.instance.RecepMalus(150);
+                    Scoring.instance.RecepMalus(100);
+                }
+                else
+                {
+                    Scoring.instance.RecepRenvoieColis();
                 }
                 tapisRoule.turnMenu.SetActive(false);
                 tapisRoule.colisSurLeTapis.Remove(tapisRoule.lastColis);
