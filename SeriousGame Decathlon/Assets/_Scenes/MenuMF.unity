@@ -246,9 +246,12 @@ MonoBehaviour:
   diffWithPlanete: 0.15
   isStar: 1
   nombreEtoiles: 100
+  animator: {fileID: 0}
   etoilesDisponibles:
   - {fileID: 159890000}
   parentEtoiles: {fileID: 60562190}
+  movedUp: 0
+  movedDown: 0
 --- !u!1 &119269811
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,9 +379,12 @@ MonoBehaviour:
   diffWithPlanete: 0.1
   isStar: 1
   nombreEtoiles: 50
+  animator: {fileID: 0}
   etoilesDisponibles:
   - {fileID: 331356484}
   parentEtoiles: {fileID: 153459744}
+  movedUp: 0
+  movedDown: 0
 --- !u!1 &159890000
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,8 +596,11 @@ MonoBehaviour:
   diffWithPlanete: 0
   isStar: 0
   nombreEtoiles: 0
+  animator: {fileID: 175795668}
   etoilesDisponibles: []
   parentEtoiles: {fileID: 0}
+  movedUp: 0
+  movedDown: 0
 --- !u!4 &225586051
 Transform:
   m_ObjectHideFlags: 0
@@ -658,9 +667,12 @@ MonoBehaviour:
   diffWithPlanete: 0.2
   isStar: 1
   nombreEtoiles: 150
+  animator: {fileID: 0}
   etoilesDisponibles:
   - {fileID: 347058506}
   parentEtoiles: {fileID: 253318085}
+  movedUp: 0
+  movedDown: 0
 --- !u!1 &331356484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001400349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9, y: -1.9, z: 0}
+  m_LocalPosition: {x: -3, y: -1.9, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 153459744}
@@ -5399,7 +5411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -594.73, y: 304.18}
+  m_AnchoredPosition: {x: -618.7, y: -366.8}
   m_SizeDelta: {x: 24.08, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932482028

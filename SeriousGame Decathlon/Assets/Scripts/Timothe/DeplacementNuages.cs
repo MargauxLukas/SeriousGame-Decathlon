@@ -9,6 +9,8 @@ public class DeplacementNuages : MonoBehaviour
     public bool isStar;
     public int nombreEtoiles;
 
+    public Animator animator;
+
     public List<GameObject> etoilesDisponibles;
     public Transform parentEtoiles;
 
@@ -36,7 +38,7 @@ public class DeplacementNuages : MonoBehaviour
             {
                 transform.localPosition = new Vector3(10.37f, transform.localPosition.y, 0);
             }
-            transform.localPosition += new Vector3(-1, 0, 0) * (speed + diffWithPlanete);
+            transform.localPosition += new Vector3(-1, 0, 0) * (speed + (diffWithPlanete * (speed / 0.15f)));
         }
         else
         {
@@ -86,5 +88,11 @@ public class DeplacementNuages : MonoBehaviour
             }
 
         }
+
+        if (animator != null)
+        {
+            animator.speed = 1 * (speed / 0.15f);
+        }
+
     }
 }
