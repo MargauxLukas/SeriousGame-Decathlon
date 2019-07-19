@@ -96,7 +96,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
         }
         else
         {
-            Scoring.instance.RecepMalus(50 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite) + 500);
+            Scoring.instance.RecepMalus(50 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite) + 250);
         }
     }
 

@@ -38,7 +38,7 @@ public class Scoring : MonoBehaviour
     int comboPallier=6;
     float pointToLoseWithTime = 0;
     float recepCombo = 1;
-    float currentTime;
+    public float currentTime;
     int currentColisInCombo;
     public bool pauseCombo;
 
@@ -136,32 +136,32 @@ public class Scoring : MonoBehaviour
 
     #region Réception
 
-    public void LosePointOnTime()
+    public void LosePointOnTime(int coef)
     {
-        pointToLoseWithTime += Time.deltaTime;
+        pointToLoseWithTime += Time.deltaTime*coef;
     }
 
     public void EndLosePointOnTime()
     {
-        score += (int)pointToLoseWithTime;
+        score -= (int)pointToLoseWithTime;
         pointToLoseWithTime = 0;
     }
 
-    public void PauseCombo()
+    public void PauseCombo(float time)
     {
-        StartCoroutine(PauseComboWait());
+        StartCoroutine(PauseComboWait(time));
     }
 
-    public IEnumerator PauseComboWait()
+    public IEnumerator PauseComboWait(float timeToWait)
     {
         pauseCombo = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(timeToWait);
         pauseCombo = false;
     }
 
     public void RecepMalus(int valeurMalus)
     {
-        Debug.Log("Malus Recep");
+        Debug.Log("Malus Recep : " + valeurMalus);
         score -= valeurMalus;
         ResetComboRpcep();
     }
@@ -356,7 +356,7 @@ public class Scoring : MonoBehaviour
     // +50
     public void solveAnomalie()
     {
-        score += (int)(50 * multiplicator);
+        score += (int)(100 * multiplicator);
         solveAnomalieCombo++;
     }
 
@@ -365,7 +365,7 @@ public class Scoring : MonoBehaviour
     {
         if (!hadMalusAnomalie)
         {
-            score += (int)(200 * multiplicator);
+            score += (int)(400 * multiplicator);
             solveAnomalieComboWithoutMalus++;
         }
         else
@@ -377,7 +377,7 @@ public class Scoring : MonoBehaviour
     // +100
     public void sendColis()
     {
-        score += (int)(100 * multiplicator);
+        score += (int)(200 * multiplicator);
         sendColisCombo++;
         if(!tookHelp)
         {
@@ -391,7 +391,7 @@ public class Scoring : MonoBehaviour
     {
         if (!hadMalusColis)
         {
-            score += (int)(450 * multiplicator);
+            score += (int)(900 * multiplicator);
             sendColisComboWithoutMalus++;
             if (!tookHelp)
             {
@@ -407,7 +407,7 @@ public class Scoring : MonoBehaviour
 
     public float TimeBonus()
     {
-        float calcul = (5 * 60 - timeColisMaking) * 3f; //Calcul le temps bonus (Temps mit pour le colis - 3 fois 60 secondes (3 minutes)) * 3
+        float calcul = (6 * 60 - timeColisMaking) * 6f; //Calcul le temps bonus (Temps mit pour le colis - 3 fois 60 secondes (3 minutes)) * 3
         timeColisMaking = 0;
         gotNewColis = false;
         if (calcul <= 0)
@@ -450,7 +450,7 @@ public class Scoring : MonoBehaviour
 
     public void CalculMultiplicator()
     {
-        multiplicator = 1 + ((solveAnomalieCombo * 2 + solveAnomalieComboWithoutMalus * 4 + sendColisCombo * 5 + sendColisComboWithoutMalus * 10 + noHelp * 2)/ 100);
+        multiplicator = 1 + ((solveAnomalieCombo * 3 + solveAnomalieComboWithoutMalus * 6 + sendColisCombo * 7 + sendColisComboWithoutMalus * 13 + noHelp * 3)/ 100);
     }
 
     #endregion
