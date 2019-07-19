@@ -79,6 +79,18 @@ public class AffichageAnomalieRecep : MonoBehaviour
         }
     }
 
+    public void Quit()
+    {
+        if (ChargementListeColis.instance == null)
+        {
+            SceneManager.LoadScene(6);
+        }
+        else
+        {
+            ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
+        }
+    }
+
     public void ContenerReturn()
     {
         //Seulement si replier a fond
@@ -91,6 +103,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
             }
             else
             {
+                Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                 ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
             }
         }

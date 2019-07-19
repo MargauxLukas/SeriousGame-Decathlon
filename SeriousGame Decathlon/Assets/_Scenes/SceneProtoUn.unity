@@ -8456,9 +8456,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1748831892}
-        m_MethodName: LoadNewScene
-        m_Mode: 3
+      - m_Target: {fileID: 857046845}
+        m_MethodName: Quit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8813,6 +8813,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.30876237
       objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -8837,11 +8842,6 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -25924,61 +25924,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.019996643
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1512090500757680970, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: listeColisTraiter.Array.size
@@ -26124,6 +26069,61 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 86071048a4e6ab34e999341e8782fea2,
         type: 2}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.019996643
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512090500757680968, guid: 4b92a7cf7a914224cb91594c005fe6f5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1512090500757680969, guid: 4b92a7cf7a914224cb91594c005fe6f5,
         type: 3}
       propertyPath: RFIDtagKnowned.Array.size

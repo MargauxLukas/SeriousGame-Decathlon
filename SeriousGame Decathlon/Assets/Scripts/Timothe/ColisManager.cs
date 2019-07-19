@@ -205,4 +205,16 @@ public class ColisManager : MonoBehaviour
         }
 
     }
+
+    public void Quit()
+    {
+        if (ChargementListeColis.instance == null)
+        {
+            SceneManager.LoadScene(6);
+        }
+        else
+        {
+            ChargementListeColis.instance.QuitMfLevel(listeColisTraiter, anomDetect.RFIDtagKnowned);
+        }
+    }
 }
