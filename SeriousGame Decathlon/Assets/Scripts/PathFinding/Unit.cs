@@ -18,9 +18,11 @@ public class Unit : MonoBehaviour
     public PathFinding pf;
 
     public bool stuck = false;
+    private bool doesPlayerHaveTarget;
 
     public void DeplacementPlayer(Vector3 newPos)
     {
+        doesPlayerHaveTarget = true;
         target.localPosition = newPos;
         StartCoroutine(UpdatePath());
     }
@@ -35,9 +37,16 @@ public class Unit : MonoBehaviour
                 switch (touch.phase)
                 {
                     case TouchPhase.Ended:
-                        target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
-                        StopAllCoroutines();
-                        StartCoroutine(UpdatePath());
+                        if (!doesPlayerHaveTarget)
+                        {
+                            target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
+                            StopAllCoroutines();
+                            StartCoroutine(UpdatePath());
+                        }
+                        else
+                        {
+                            doesPlayerHaveTarget = false;
+                        }
                         break;
 
                     case TouchPhase.Moved:
@@ -87,6 +96,7 @@ public class Unit : MonoBehaviour
             if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold)
             {
                 PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+                Debug.Log("Test Pathfinding");
                 targetPosOld = target.position;
             }
         }

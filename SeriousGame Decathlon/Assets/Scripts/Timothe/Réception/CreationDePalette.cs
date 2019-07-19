@@ -26,7 +26,7 @@ public class CreationDePalette : MonoBehaviour
     public GameObject colisObj;
 
     public float chanceHavingAnomaliesMF;
-    private int nbColisAvecAnomalie;
+    public int nbColisAvecAnomalie;
 
     public List<Colis> colisPossibles;
     public List<Colis> colisAvecAnomalieMF;
@@ -81,7 +81,7 @@ public class CreationDePalette : MonoBehaviour
         }
         else
         {
-            nbColisAvecAnomalie = Mathf.RoundToInt(nbColisTotal * chanceHavingAnomaliesMF);
+            nbColisAvecAnomalie = (int)(nbColisTotal * (chanceHavingAnomaliesMF/100));
         }
 
         for (i = 0; i < nbPalettesMax; i++)
@@ -110,9 +110,11 @@ public class CreationDePalette : MonoBehaviour
                             if ((Random.Range(0, nbColisTotal-nbCurrentColis) < nbColisAvecAnomalie /*(chanceHavingAnomaliesMF != 0 && Random.Range(0f, 1f) <= chanceHavingAnomaliesMF / 100f)*/ || chanceHavingAnomaliesMF>= 100) && colisAvecAnomalieMF.Count > 0)
                             {
                                 nbColisAvecAnomalie--;
+                                int currentCartonPossible = Random.Range(0, colisPossibles.Count);
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = Instantiate(colisAvecAnomalieMF[Random.Range(0, colisAvecAnomalieMF.Count)]);
-                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.carton = colisPossibles[Random.Range(0, colisPossibles.Count)].carton;
-                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented = colisPossibles[Random.Range(0, colisPossibles.Count)].isBadOriented;
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.carton = colisPossibles[currentCartonPossible].carton;
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented = colisPossibles[currentCartonPossible].isBadOriented;
+                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.estAbime = colisPossibles[currentCartonPossible].estAbime;
                             }
                             else if (colisPossibles.Count > 0)
                             {
@@ -181,6 +183,15 @@ public class CreationDePalette : MonoBehaviour
                 }
             }
 
+            for(int i = 0; i < colisActuels.Count; i++)
+            {
+                if(colisActuels[i] == null)
+                {
+                    colisActuels.RemoveAt(i);
+                    i--;
+                }
+            }
+
             foreach (ScriptColisRecep colis in colisToRemove)
             {
                 colisActuels.Remove(colis);
@@ -191,9 +202,17 @@ public class CreationDePalette : MonoBehaviour
         {
             colisActuels = new List<ScriptColisRecep>();
             k--;
+            if (Scoring.instance != null)
+            {
+                Scoring.instance.PauseCombo(4f);
+            }
             if (k < 0)
             {
                 j--;
+                if (Scoring.instance != null)
+                {
+                    Scoring.instance.PauseCombo(10f);
+                }
                 if (j < 0)
                 {
                     i--;
@@ -232,10 +251,7 @@ public class CreationDePalette : MonoBehaviour
                 theColor.a = 1;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<SpriteRenderer>().color = theColor;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
-                if(Scoring.instance != null)
-                {
-                   Scoring.instance.PauseCombo();
-                }
+                
             }
         }
     }

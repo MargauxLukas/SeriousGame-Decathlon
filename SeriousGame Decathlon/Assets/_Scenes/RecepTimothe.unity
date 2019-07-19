@@ -3375,6 +3375,7 @@ MonoBehaviour:
   errorTextZone: {fileID: 0}
   score: 0
   gotNewColis: 0
+  currentTime: 0
   pauseCombo: 0
 --- !u!4 &391081040
 Transform:
@@ -4866,7 +4867,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colisObj: {fileID: 1005884344527145885, guid: 8bf4acf09eac5d94f8138b18578bcc56,
     type: 3}
-  chanceHavingAnomaliesMF: 100
+  chanceHavingAnomaliesMF: 15
+  nbColisAvecAnomalie: 0
   colisPossibles:
   - {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f, type: 2}
   - {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09, type: 2}
@@ -4902,7 +4904,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566546637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -5007,7 +5009,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573627934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.04, y: 1.81, z: 0}
+  m_LocalPosition: {x: -11.67, y: 1.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 604575680}
@@ -5978,7 +5980,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723152952}
-  - component: {fileID: 723152951}
   - component: {fileID: 723152950}
   - component: {fileID: 723152949}
   - component: {fileID: 723152948}
@@ -6056,14 +6057,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!33 &723152951
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723152947}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &723152952
 Transform:
   m_ObjectHideFlags: 0
@@ -13151,6 +13144,7 @@ GameObject:
   - component: {fileID: 1656485965}
   - component: {fileID: 1656485964}
   - component: {fileID: 1656485963}
+  - component: {fileID: 1656485966}
   m_Layer: 5
   m_Name: Palette
   m_TagString: Untagged
@@ -13220,8 +13214,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4239822756992051926}
-        m_MethodName: Jeter
+      - m_Target: {fileID: 1656485966}
+        m_MethodName: PoserSurPalette
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13270,6 +13264,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656485961}
   m_CullTransparentMesh: 0
+--- !u!114 &1656485966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656485961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eba261a3e0f51f479f4c24cf1807a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapisRoule: {fileID: 110519613}
 --- !u!1 &1688369558
 GameObject:
   m_ObjectHideFlags: 0
@@ -14193,7 +14200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1803507321
 AudioListener:
   m_ObjectHideFlags: 0
@@ -16824,7 +16831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.799988, y: -21.5}
+  m_AnchoredPosition: {x: 20.799927, y: -21.5}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962551371
