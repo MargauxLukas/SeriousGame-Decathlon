@@ -50,13 +50,13 @@ public class ConvoyeurButton : MonoBehaviour
         //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
         if (convoyeur.isOn)
         {
-            isOffAmpoule.SetActive(true);
-            isOnAmpoule.SetActive(false);
+            isOffAmpoule.SetActive(true );
+            isOnAmpoule .SetActive(false);
             convoyeur.isOn = false;
         }
         else if (!detectAnom.gotAnomalie && etiquettesManager.nbEtiquettes > 0)
         {
-            isOnAmpoule.SetActive(true);
+            isOnAmpoule .SetActive(true );
             isOffAmpoule.SetActive(false);
             convoyeur.isOn = true;
         }        
