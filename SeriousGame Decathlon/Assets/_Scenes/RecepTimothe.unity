@@ -4694,8 +4694,8 @@ MonoBehaviour:
   isCollide: 0
   isOnAmpoule: {fileID: 1808123149}
   isOffAmpoule: {fileID: 1229339469}
-  detectAnom: {fileID: 0}
-  etiquettesManager: {fileID: 0}
+  detectAnom: {fileID: 1644104637}
+  etiquettesManager: {fileID: 1078470767}
 --- !u!65 &545736226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8451,11 +8451,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7327219
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -8480,6 +8475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}
