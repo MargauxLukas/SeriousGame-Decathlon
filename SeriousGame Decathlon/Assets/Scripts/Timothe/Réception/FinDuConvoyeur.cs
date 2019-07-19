@@ -22,6 +22,12 @@ public class FinDuConvoyeur : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 2);
         dechargeBar.UpdateProgression(0);
     }
 
