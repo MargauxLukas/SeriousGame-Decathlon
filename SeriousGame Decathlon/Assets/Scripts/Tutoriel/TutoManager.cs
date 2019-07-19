@@ -911,7 +911,7 @@ public class TutoManager : MonoBehaviour
     IEnumerator ReturnToMenu(float time)
     {
         yield return new WaitForSeconds(time);
-        gameObjectsManager.quitButtonToMenu.GetComponent<BoutonChangementScene>().LoadNewScene(4);
+        gameObjectsManager.quitButtonToMenu.GetComponent<BoutonChangementScene>().LoadNewScene(0);
     }
 
         /*****************/
@@ -2693,7 +2693,7 @@ public class TutoManager : MonoBehaviour
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = new Vector3(4.23f, 2.02f, 30f);
         fingerPosition = new Vector3(4.23f, 2.02f, 30f);
         targetPosition = new Vector3(3.38f, -1.52f, 30f);
-        fingerSpeed = 4f;
+        fingerSpeed = 2f;
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = true;
         gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = true;
