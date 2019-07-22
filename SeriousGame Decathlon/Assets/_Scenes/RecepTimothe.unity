@@ -9814,6 +9814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096355360}
   - component: {fileID: 1096355361}
+  - component: {fileID: 1096355362}
   m_Layer: 9
   m_Name: "RECEP barri\xE8re  "
   m_TagString: Untagged
@@ -9883,6 +9884,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1096355362
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096355359}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.017355047, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.68, y: 3.56}
+    newSize: {x: 0.68, y: 3.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.41388828, y: 3.56}
+  m_EdgeRadius: 0
 --- !u!1 &1100095625
 GameObject:
   m_ObjectHideFlags: 0
@@ -15513,7 +15540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1803507321
 AudioListener:
   m_ObjectHideFlags: 0
@@ -17886,6 +17913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923212519}
   - component: {fileID: 1923212520}
+  - component: {fileID: 1923212521}
   m_Layer: 9
   m_Name: "RECEP barri\xE8re (1)"
   m_TagString: Untagged
@@ -17955,6 +17983,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1923212521
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923212518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.017355025, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.68, y: 3.56}
+    newSize: {x: 0.68, y: 3.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3907485, y: 3.56}
+  m_EdgeRadius: 0
 --- !u!1 &1929283563
 GameObject:
   m_ObjectHideFlags: 0
