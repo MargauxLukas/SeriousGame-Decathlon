@@ -80,43 +80,62 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 gestionAnomalie.SetActive(false);
                 GetComponent<BoxCollider2D>().enabled = true;
                 player.stuck = false;
-                colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
+                if (colisATraiter != null)
+                {
+                    colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
-                if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
-                {
-                    //Afficher les feedbacks de l'anomalie
-                    tapisGeneral.doesStop();
-                    signalBoiteVert            .SetActive(false);
-                    signalBoiteOrange          .SetActive(false);
-                    signalBoiteOrangeClignotant.SetActive(true );
-                    ampouleClignotante         .SetActive(true );
-                    ampouleOrange              .SetActive(false);
-                    bulle                      .SetActive(true );
-                    Scoring.instance.RecepMalus(15);
-                }
-                else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
-                {
-                    //Afficher les feedbacks de l'anomalie
-                    tapisGeneral.doesStop();
-                    signalBoiteVert            .SetActive(false);
-                    signalBoiteOrange          .SetActive(false);
-                    signalBoiteOrangeClignotant.SetActive(true );
-                    ampouleClignotante         .SetActive(true );
-                    ampouleOrange              .SetActive(false);
-                    bulle                      .SetActive(true );
-                    Scoring.instance.RecepMalus(15);
-                }
-                else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
-                {
-                    //Afficher les feedbacks de l'anomalie
-                    tapisGeneral.doesStop();
-                    signalBoiteVert            .SetActive(false);
-                    signalBoiteOrange          .SetActive(true );
-                    signalBoiteOrangeClignotant.SetActive(false);
-                    ampouleClignotante         .SetActive(false);
-                    ampouleOrange              .SetActive(true );
-                    bulle                      .SetActive(true );
-                    Scoring.instance.RecepMalus(15);
+
+                    if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
+                    {
+                        //Afficher les feedbacks de l'anomalie
+                        tapisGeneral.doesStop();
+                        signalBoiteVert.SetActive(false);
+                        signalBoiteOrange.SetActive(false);
+                        signalBoiteOrangeClignotant.SetActive(true);
+                        ampouleClignotante.SetActive(true);
+                        ampouleOrange.SetActive(false);
+                        bulle.SetActive(true);
+                        Scoring.instance.RecepMalus(15);
+                    }
+                    else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
+                    {
+                        //Afficher les feedbacks de l'anomalie
+                        tapisGeneral.doesStop();
+                        signalBoiteVert.SetActive(false);
+                        signalBoiteOrange.SetActive(false);
+                        signalBoiteOrangeClignotant.SetActive(true);
+                        ampouleClignotante.SetActive(true);
+                        ampouleOrange.SetActive(false);
+                        bulle.SetActive(true);
+                        Scoring.instance.RecepMalus(15);
+                    }
+                    else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
+                    {
+                        //Afficher les feedbacks de l'anomalie
+                        tapisGeneral.doesStop();
+                        signalBoiteVert.SetActive(false);
+                        signalBoiteOrange.SetActive(true);
+                        signalBoiteOrangeClignotant.SetActive(false);
+                        ampouleClignotante.SetActive(false);
+                        ampouleOrange.SetActive(true);
+                        bulle.SetActive(true);
+                        Scoring.instance.RecepMalus(15);
+                    }
+                    else
+                    {
+                        gotAnomalie = false;
+                        if (etiquettesManager.nbEtiquettes > 0)
+                        {
+                            signalBoiteVert.SetActive(true);
+                            signalBoiteOrange.SetActive(false);
+                            signalBoiteOrangeClignotant.SetActive(false);
+                            ampouleClignotante.SetActive(false);
+                            ampouleOrange.SetActive(false);
+                            bulle.SetActive(false);
+                        }
+                        colisATraiter = null;
+                        Scoring.instance.RecepBonus(350);
+                    }
                 }
                 else
                 {

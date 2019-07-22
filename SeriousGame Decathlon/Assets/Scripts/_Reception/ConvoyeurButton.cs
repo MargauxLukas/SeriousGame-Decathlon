@@ -23,6 +23,9 @@ public class ConvoyeurButton : MonoBehaviour
     public GameObject  isOnAmpoule;
     public GameObject isOffAmpoule;
 
+    public DetectionAnomalieRecep detectAnom;
+    public ChangementEtiquettes etiquettesManager;
+
     private void Update()
     {
         if (convoyeur.isOn)
@@ -45,18 +48,18 @@ public class ConvoyeurButton : MonoBehaviour
     public void OnOrOff()
     {
         //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
-        if(convoyeur.isOn)
+        if (convoyeur.isOn)
         {
-            isOffAmpoule.SetActive(true);
+            isOffAmpoule.SetActive(true );
             isOnAmpoule .SetActive(false);
             convoyeur.isOn = false;
         }
-        else
+        else if (!detectAnom.gotAnomalie && etiquettesManager.nbEtiquettes > 0)
         {
-            isOnAmpoule .SetActive(true);
+            isOnAmpoule .SetActive(true );
             isOffAmpoule.SetActive(false);
-            convoyeur.isOn = true ;
-        }
+            convoyeur.isOn = true;
+        }        
     }
 
     public void ValidationPointerDown()

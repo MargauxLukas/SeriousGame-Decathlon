@@ -53,6 +53,11 @@ public class ChargementListeColis : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this);
+
+        if(nomDuJoueur != null)
+        {
+            nomDuJoueur.characterLimit = 20;
+        }
     }
 
     private void Start()

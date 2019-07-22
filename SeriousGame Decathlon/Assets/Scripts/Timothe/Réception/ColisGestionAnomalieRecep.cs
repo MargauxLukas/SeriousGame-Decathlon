@@ -231,6 +231,10 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                 OpenTurnMenu();
                 TellSomething(3);
                 break;
+            case 0:
+                OpenTurnMenu();
+                TellSomething(3);
+                break;
         }
     }
 
