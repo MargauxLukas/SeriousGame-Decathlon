@@ -18,10 +18,15 @@ public class ChoixTutorielScript : MonoBehaviour
     {
         nbTutoToLoad = nb;
 
+        if(ChargementListeColis.instance != null)
+        {
+            Destroy(ChargementListeColis.instance.gameObject);
+        }
+
         switch (nb)
         {
             case 9:
-                detailTuto.text = "Détail tuto MF";
+                detailTuto.text = "Ce tutoriel va t'apprendre les bases de la Mutifonction. Tu y apprendras différentes technique pour résoudre les anomalies que tu rencontrera.";
                 break;
             case 10:
                 detailTuto.text = "Détail tuto Recep";
