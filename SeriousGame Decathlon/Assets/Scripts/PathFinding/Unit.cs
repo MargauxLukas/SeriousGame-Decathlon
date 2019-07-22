@@ -50,9 +50,17 @@ public class Unit : MonoBehaviour
                         break;
 
                     case TouchPhase.Moved:
-                    /*target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
-                    StartCoroutine(UpdatePath());
-                    break;*/
+                        if (!doesPlayerHaveTarget)
+                        {
+                            target.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 32.08f));
+                            StopAllCoroutines();
+                            StartCoroutine(UpdatePath());
+                        }
+                        else
+                        {
+                            doesPlayerHaveTarget = false;
+                        }
+                        break;
 
                     case TouchPhase.Began:
                         //Debug.Log("ENDED not supported");
