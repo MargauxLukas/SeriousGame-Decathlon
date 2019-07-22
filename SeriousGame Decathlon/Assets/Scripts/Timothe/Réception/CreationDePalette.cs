@@ -200,6 +200,7 @@ public class CreationDePalette : MonoBehaviour
         }
         else
         {
+            feedbackPileEtage.fillAmount = 0;
             colisActuels = new List<ScriptColisRecep>();
             k--;
             if (Scoring.instance != null)
