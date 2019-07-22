@@ -2727,9 +2727,9 @@ public class TutoManager : MonoBehaviour
         if (canPlayFirst)
         {
             fingerSpeed = 0;
-            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = false;
-            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = false;
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = false;
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay)          .enabled = false;
+            gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtStay)          .enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtStaySpriteMask).enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
