@@ -7,6 +7,8 @@ TagManager:
   - Colis
   - IWay
   - Tapis
+  - ArticleGTP
+  - ColisGTP
   layers:
   - Default
   - TransparentFX
