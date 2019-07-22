@@ -15,28 +15,38 @@ public class Monitor : MonoBehaviour
     public GameObject colisAPrelever1;
     public GameObject colisAPrelever2;
 
-    public void UpdateAffichage()
+    public void UpdateAffichage() //Soit on l'appelle de l'endroit ou on connait le nombre, soit on l'assigne ici et on le récupère
     {
         //Colis desactivé
         //change nb    
     }
 
-    public void Colis1Actif()
-    {
-        //Colis1 est actif (Vert)
-    }
-    public void Colis2Actif()
+    public void Colis1Actif() //Il faut savoir comment on définit quel colis sera actif
     {
         //Colis1 est actif (Vert)
     }
 
-    public void Colis3Actif()
+    public void Colis2Actif() //Il faut savoir comment on définit quel colis sera actif
+    {
+        //Colis1 est actif (Vert)
+    }
+
+    public void Colis3Actif() //Il faut savoir comment on définit quel colis sera actif
     {
         //Colis1 est actif (Vert)
     }
 
     public void UpdateColisAPrelever()
     {
-        //Echanger colisAPrelever1 et colisAPrelever2 et vice versa
+        /*if(colisAPrelever1.isActiver)
+        {
+            colisAPrelever1.isActiver = false;
+            colisAPrelever2.isActiver = true;
+        }
+        if (colisAPrelever2.isActiver)
+        {
+            colisAPrelever1.isActiver = true;
+            colisAPrelever2.isActiver = false;
+        }*/
     }
 }

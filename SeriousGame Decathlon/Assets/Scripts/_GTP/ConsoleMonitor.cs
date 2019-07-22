@@ -8,7 +8,7 @@ public class ConsoleMonitor : MonoBehaviour
     public TextMeshProUGUI text;
     public int nb;
 
-    public void UpdateAffichage(int nb)
+    public void UpdateAffichage(int nb) 
     {
         //Recuperer le nouveau nombre de Console - Valider() ou directement de l'écran si c'est un nouveau
     }

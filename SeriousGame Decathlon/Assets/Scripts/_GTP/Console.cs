@@ -17,28 +17,28 @@ public class Console : MonoBehaviour
         nbText.text = nb.ToString();
     }
 
-    public void UpdateAffichage()
+    public void UpdateAffichage() //Toujours 0 au commencement
     {
         nbText.text = nb.ToString();
     }
 
     public void Plus()
     {
-        //A voir si y'a une condition
+        //A voir si y'a une condition empêchant d'aller trop bas
         nb++;
         UpdateAffichage();
     }
 
     public void Moins()
     {
-        //A voir si y'a une condition
+        //A voir si y'a une condition empêchant d'aller trop bas
         nb--;
         UpdateAffichage();
     }
 
-    public void Valider()
+    public void Valider() 
     {
-        //nb sur ecran poste se met à jour
+        //monitor.UpdateAffichage();
         cm.UpdateAffichage(nb);
         nb = 0;
     }
