@@ -3482,8 +3482,9 @@ GameObject:
   m_Component:
   - component: {fileID: 827525606}
   - component: {fileID: 827525607}
+  - component: {fileID: 827525608}
   m_Layer: 0
-  m_Name: Sample Sprite (1)
+  m_Name: Tapis2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3551,6 +3552,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &827525608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827525605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e41205854906284c9a33dfc3ef9a0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  console: {fileID: 1347513758}
+  cm: {fileID: 1987281621}
 --- !u!1 &842265209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5085,10 +5100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbText: {fileID: 11360217}
-  nb: 0
-  colis1: {fileID: 378054302}
-  colis2: {fileID: 319500688}
-  colis3: {fileID: 183226848}
+  nbMonitor: 0
+  Tapis1: {fileID: 1929869660}
+  Tapis2: {fileID: 827525605}
+  Tapis3: {fileID: 1802423009}
   colisAPrelever1: {fileID: 600451218}
   colisAPrelever2: {fileID: 1925213861}
 --- !u!1 &1290852598
@@ -7091,8 +7106,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1802423010}
   - component: {fileID: 1802423011}
+  - component: {fileID: 1802423012}
   m_Layer: 0
-  m_Name: Sample Sprite (2)
+  m_Name: Tapis3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7160,6 +7176,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1802423012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802423009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e41205854906284c9a33dfc3ef9a0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  console: {fileID: 981386121}
+  cm: {fileID: 994102619}
 --- !u!1 &1823492425
 GameObject:
   m_ObjectHideFlags: 0
@@ -7670,8 +7700,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1929869661}
   - component: {fileID: 1929869662}
+  - component: {fileID: 1929869663}
   m_Layer: 0
-  m_Name: Sample Sprite
+  m_Name: Tapis1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7739,6 +7770,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1929869663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929869660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e41205854906284c9a33dfc3ef9a0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  console: {fileID: 1577642546}
+  cm: {fileID: 980227254}
 --- !u!1 &1982905429
 GameObject:
   m_ObjectHideFlags: 0

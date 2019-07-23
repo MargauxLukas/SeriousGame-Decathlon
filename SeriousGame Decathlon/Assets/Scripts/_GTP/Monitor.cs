@@ -8,10 +8,6 @@ public class Monitor : MonoBehaviour
     public TextMeshProUGUI nbText;
     public int nbMonitor = 0;
 
-    public GameObject colis1;
-    public GameObject colis2;
-    public GameObject colis3;
-
     public GameObject Tapis1;
     public GameObject Tapis2;
     public GameObject Tapis3;
