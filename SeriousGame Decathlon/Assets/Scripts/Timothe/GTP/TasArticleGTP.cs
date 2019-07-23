@@ -23,12 +23,15 @@ public class TasArticleGTP : MonoBehaviour
             }
             if (doesTouch)
             {
-                GameObject nouvelArticle = Instantiate(articleUnit, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Quaternion.identity);
-                nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
-                articlesPresents.RemoveAt(articlesPresents.Count - 1);
-                nouvelArticle.GetComponent<ArticleUnitGTP>().tasParent = this;
-                nouvelArticle.GetComponent<ArticleUnitGTP>().doesTouch = true;
-                nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spriteGTP;
+                if (articlesPresents.Count > 0)
+                {
+                    GameObject nouvelArticle = Instantiate(articleUnit, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Quaternion.identity);
+                    nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
+                    articlesPresents.RemoveAt(articlesPresents.Count - 1);
+                    nouvelArticle.GetComponent<ArticleUnitGTP>().tasParent = this;
+                    nouvelArticle.GetComponent<ArticleUnitGTP>().doesTouch = true;
+                    nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spriteGTP;
+                }
                 doesTouch = false;
             }
         }

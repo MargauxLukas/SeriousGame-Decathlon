@@ -9541,6 +9541,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -9565,11 +9570,6 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -15630,7 +15630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1803507321
 AudioListener:
   m_ObjectHideFlags: 0
