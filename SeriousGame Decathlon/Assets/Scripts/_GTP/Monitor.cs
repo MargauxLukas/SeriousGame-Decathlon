@@ -6,33 +6,49 @@ using TMPro;
 public class Monitor : MonoBehaviour
 {
     public TextMeshProUGUI nbText;
-    public int nb;
+    public int nbMonitor = 0;
 
     public GameObject colis1;
     public GameObject colis2;
     public GameObject colis3;
 
+    public GameObject Tapis1;
+    public GameObject Tapis2;
+    public GameObject Tapis3;
+
     public GameObject colisAPrelever1;
     public GameObject colisAPrelever2;
 
-    public void UpdateAffichage() //Soit on l'appelle de l'endroit ou on connait le nombre, soit on l'assigne ici et on le récupère
+    public void Start()
     {
-        //Colis desactivé
-        //change nb    
+        nbText.text = "";
+    }
+
+    public void UpdateAffichage(int nb)
+    {
+        nbMonitor = nb;
+        nbText.text = nb.ToString();
     }
 
     public void Colis1Actif() //Il faut savoir comment on définit quel colis sera actif
     {
-        //Animator Colis1
+        Tapis1.GetComponent<ColisLink>().console.UpdateAffichage();
+        Tapis1.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
+        //Animator Colis1 activé SUR ECRAN
+        //Animator Colis1 activé sur poste
     }
 
     public void Colis2Actif() //Il faut savoir comment on définit quel colis sera actif
     {
+        Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
+        Tapis2.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
         //Animator Colis2
     }
 
     public void Colis3Actif() //Il faut savoir comment on définit quel colis sera actif
     {
+        Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
+        Tapis3.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
         //Animator Colis3
     }
 

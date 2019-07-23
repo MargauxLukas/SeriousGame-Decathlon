@@ -11,7 +11,7 @@ public class ConsoleMonitor : MonoBehaviour
 
     public void Start()
     {
-        text.text = "7";   
+        text.text = "";   
     }
 
     public void UpdateAffichage(int nb) 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ManagerColisAttendu : MonoBehaviour
 {
+    public Monitor monitor;
     public List<Colis> colisVoulus = new List<Colis>();
 
     public void Start()
@@ -20,6 +21,20 @@ public class ManagerColisAttendu : MonoBehaviour
         for(int j = 0; j < nombreArtVoulu; j++)
         {
             colisVoulus[emplacement].listArticles.Add(art);
+        }
+        monitor.UpdateAffichage(nombreArtVoulu);
+        
+        switch(emplacement)
+        {
+            case 0:
+                monitor.Colis1Actif();
+                break;
+            case 1:
+                monitor.Colis2Actif();
+                break;
+            case 2:
+                monitor.Colis3Actif();
+                break;
         }
     }
 

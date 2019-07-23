@@ -9,12 +9,11 @@ public class Console : MonoBehaviour
     public Monitor monitor;
     public ConsoleMonitor cm;
 
-    public int nb;
+    public int nb = 0;
 
     public void Start()
     {
-        nb = 0;
-        nbText.text = nb.ToString();
+        nbText.text = "";
     }
 
     public void UpdateAffichage() //Toujours 0 au commencement
