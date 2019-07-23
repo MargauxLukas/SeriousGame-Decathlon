@@ -8,4 +8,5 @@ public class Article : ScriptableObject
     public float poids;
     public RFID rfid;
     public List<Sprite> spriteList;
+    public Sprite spriteGTP;
 }

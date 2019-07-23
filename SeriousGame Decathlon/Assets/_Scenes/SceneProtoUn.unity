@@ -7223,6 +7223,12 @@ PrefabInstance:
       propertyPath: dialManage
       value: 
       objectReference: {fileID: 549190863}
+    - target: {fileID: 1444291607340359613, guid: 60823b829bbfb7d4791b5e60bf88386e,
+        type: 3}
+      propertyPath: dialogueList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 86db5fc38b85bf64691056756f693b6d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60823b829bbfb7d4791b5e60bf88386e, type: 3}
 --- !u!1 &1525681021
@@ -27067,7 +27073,7 @@ PrefabInstance:
     - target: {fileID: 7995028860357241552, guid: f46ade70557b3964b938c348fa4ce932,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7995028860268631596, guid: f46ade70557b3964b938c348fa4ce932,
         type: 3}

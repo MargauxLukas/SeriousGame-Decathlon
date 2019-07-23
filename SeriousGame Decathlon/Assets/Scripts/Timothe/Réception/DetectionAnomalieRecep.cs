@@ -84,7 +84,6 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 {
                     colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable = colisAnomalie.colisScriptable;
 
-
                     if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
                     {
                         //Afficher les feedbacks de l'anomalie
