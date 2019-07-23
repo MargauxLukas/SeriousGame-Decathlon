@@ -74,6 +74,8 @@ public class ConvoyeurButton : MonoBehaviour
 
     public void UpPointerDown()
     {
+        //Vérifier que le tutoriel en a besoin
+        //Sinon, ne rien faire et mettre un message d'avertissement
         UpPressed = true;
     }
 

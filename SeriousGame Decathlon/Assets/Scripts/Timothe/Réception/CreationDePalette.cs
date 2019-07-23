@@ -301,6 +301,8 @@ public class CreationDePalette : MonoBehaviour
                 theColor.a = 1;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<SpriteRenderer>().color = theColor;
                 palettes[i].rangees[j].collones[k].colis[m].GetComponent<BoxCollider2D>().enabled = true;
+                //Mettre à jour la Phase Colis du tuto
+
             }
             Debug.Log(i + " " + j + " " + k + " " + l);
         }

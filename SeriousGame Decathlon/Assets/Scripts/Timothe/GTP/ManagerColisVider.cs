@@ -17,12 +17,22 @@ public class ManagerColisVider : MonoBehaviour
 
     public ManagerColisAttendu managerColis;
 
+    int emplacementTempo;
     // Start is called before the first frame update
     void Start()
     {
         etatColis.Add(false);
         etatColis.Add(false);
         StartCoroutine(FaireVenirPremiersColis());
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            FairePartirUnColis(emplacementTempo);
+            emplacementTempo = (emplacementTempo+1)%2;
+        }
     }
 
     public IEnumerator FaireVenirPremiersColis()
@@ -58,7 +68,7 @@ public class ManagerColisVider : MonoBehaviour
         return newColis;
     }
 
-    void FaireVenirNouveauColis(int emplacement)
+    public void FaireVenirNouveauColis(int emplacement)
     {
         etatColis[emplacement] = true;
         StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColis(emplacementsScripts[emplacement]));
@@ -74,7 +84,8 @@ public class ManagerColisVider : MonoBehaviour
         etatColis[emplacement] = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
         emplacementsScripts[emplacement].SetActive(false);
-        if(colisVider != null)
+        StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
+        if (colisVider != null)
         {
             //emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
         }
@@ -89,8 +100,9 @@ public class ManagerColisVider : MonoBehaviour
         for(int m = 0; m < 100; m++)
         {
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = true;
-            emplacementsScripts[emplacement].transform.position += new Vector3(0, 1, 0)  * Time.deltaTime * 0.3f;
-            if(m>=99)
+            emplacementsScripts[emplacement].transform.position += new Vector3(0, 1, 0)  * Time.fixedDeltaTime * 0.3f;
+            emplacementsScripts[(emplacement+1)%2].transform.position -= new Vector3(0, 1, 0) * Time.fixedDeltaTime * 0.3f;
+            if (m>=99)
             {
                 managerColis.AjoutArticleColisVoulu(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0], Random.Range(0,2), Random.Range(1,7));
             }
