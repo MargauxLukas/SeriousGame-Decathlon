@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CartonVide : MonoBehaviour
 {
-    private bool doesTouch;
+    public bool doesTouch;
 
     private Vector3 startPosition;
 
@@ -47,21 +47,30 @@ public class CartonVide : MonoBehaviour
                 Debug.Log(collision.gameObject.name);
                 if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
                 {
+                    cvl.PutAnotherColis(startPosition);
                     startPosition = new Vector3(62.40f, -3.20f, 0f);
                     cvl.isFree1 = false;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
                     stuck = true;
+                    this.enabled = false;
                 }
                 else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
                 {
+                    cvl.PutAnotherColis(startPosition);
                     startPosition = new Vector3(65.5f, -3.20f, 0f);
                     cvl.isFree2 = false;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
                     stuck = true;
+                    this.enabled = false;
                 }
                 else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
                 {
+                    cvl.PutAnotherColis(startPosition);
                     startPosition = new Vector3(68.40f, -3.20f, 0f);
                     cvl.isFree3 = false;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
                     stuck = true;
+                    this.enabled = false;
                 }
 
 
