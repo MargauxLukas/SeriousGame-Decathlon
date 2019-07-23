@@ -23,30 +23,28 @@ public class Monitor : MonoBehaviour
 
     public void Colis1Actif() //Il faut savoir comment on définit quel colis sera actif
     {
-        //Colis1 est actif (Vert)
+        //Animator Colis1
     }
 
     public void Colis2Actif() //Il faut savoir comment on définit quel colis sera actif
     {
-        //Colis1 est actif (Vert)
+        //Animator Colis2
     }
 
     public void Colis3Actif() //Il faut savoir comment on définit quel colis sera actif
     {
-        //Colis1 est actif (Vert)
+        //Animator Colis3
     }
 
     public void UpdateColisAPrelever()
     {
         /*if(colisAPrelever1.isActiver)
         {
-            colisAPrelever1.isActiver = false;
-            colisAPrelever2.isActiver = true;
+            Animator.getBool()
         }
         if (colisAPrelever2.isActiver)
         {
-            colisAPrelever1.isActiver = true;
-            colisAPrelever2.isActiver = false;
+            Animator.GetBool()
         }*/
     }
 }
