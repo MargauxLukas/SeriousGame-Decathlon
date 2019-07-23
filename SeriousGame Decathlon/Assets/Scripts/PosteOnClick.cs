@@ -72,6 +72,4 @@ public class PosteOnClick : MonoBehaviour
             player.transform.position = positionVoulue.position;
         }
     }
-
-
 }

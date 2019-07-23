@@ -23,11 +23,11 @@ public class ConsoleMonitor : MonoBehaviour
     public void UpdateAffichageConsole(int nb)
     {
         text.text = (nbMonitor + nb).ToString();
-        nbMonitor = nbMonitor + nb;
+        nbMonitor =  nbMonitor + nb;
     }
 
-    public void Envoyer(int emplacement)
+    public void Envoyer(int emplacement) 
     {
-        //mcv.FairePartirUnColis(emplacement);
+        mcv.FairePartirUnColis(emplacement);
     }
 }
