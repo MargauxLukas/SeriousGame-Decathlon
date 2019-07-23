@@ -41,5 +41,6 @@ public class Console : MonoBehaviour
         //monitor.UpdateAffichage();
         cm.UpdateAffichage(nb);
         nb = 0;
+        UpdateAffichage();
     }
 }

@@ -6,11 +6,16 @@ using TMPro;
 public class ConsoleMonitor : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public int nb;
+    public int nbMonitor = 7;
+
+    public void Start()
+    {
+        text.text = "7";   
+    }
 
     public void UpdateAffichage(int nb) 
     {
-        //Recuperer le nouveau nombre de Console - Valider() ou directement de l'écran si c'est un nouveau
+        text.text = (nbMonitor + nb).ToString();
     }
 
     public void Envoyer()
