@@ -14,8 +14,6 @@ public class CartonVide : MonoBehaviour
     private Vector3 tapis2Pos;
     private Vector3 tapis3Pos;
 
-    private bool stuck = false;
-
     public void Start()
     {
         tapis1Pos = cvl.tapis1GameObject.transform.position;
@@ -31,7 +29,7 @@ public class CartonVide : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             touchCarton();
 
-            if(doesTouch && !stuck)
+            if(doesTouch)
             {
                 transform.position = new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0);
             }
@@ -56,7 +54,7 @@ public class CartonVide : MonoBehaviour
                 transform.position = startPosition;
                 cvl.isFree1 = false;
                 cvl.cs1 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
-                stuck = true;
+                enabled = false;
             }
             else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
             {
@@ -64,7 +62,7 @@ public class CartonVide : MonoBehaviour
                 transform.position = startPosition;
                 cvl.isFree2 = false;
                 cvl.cs2 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
-                stuck = true;
+                enabled = false;
             }
             else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
             {
@@ -72,7 +70,7 @@ public class CartonVide : MonoBehaviour
                 transform.position = startPosition;
                 cvl.isFree3 = false;
                 cvl.cs3 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
-                stuck = true;
+                enabled = false;
             }
         }
     }
