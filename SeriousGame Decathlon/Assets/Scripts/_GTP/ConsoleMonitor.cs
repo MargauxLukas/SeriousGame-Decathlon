@@ -7,6 +7,8 @@ public class ConsoleMonitor : MonoBehaviour
 {
     public ManagerColisVider mcv;
     public TextMeshProUGUI text;
+    public ManagerColisAttendu colisAttenduManage;
+    public RemplissageColisGTP colisActuelPoste;
     public int nbMonitor = 0;
 
     public void Start()
@@ -28,6 +30,7 @@ public class ConsoleMonitor : MonoBehaviour
 
     public void Envoyer(int emplacement) 
     {
-        mcv.FairePartirUnColis(emplacement);
+        //mcv.FairePartirUnColis(emplacement);
+        colisAttenduManage.DetectionColis(colisActuelPoste.colisScriptable, emplacement);
     }
 }
