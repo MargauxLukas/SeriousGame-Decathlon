@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManagerColisVider : MonoBehaviour
 {
-    private List<bool> etatColis = new List<bool>();
+    public List<bool> etatColis = new List<bool>();
 
     public List<GameObject> colisAnimationVenir;
 
@@ -17,6 +17,9 @@ public class ManagerColisVider : MonoBehaviour
 
     public ManagerColisAttendu managerColis;
 
+    private int emplacement = 0;
+
+    private float tempsReponseChangementColis;
     int emplacementTempo;
     // Start is called before the first frame update
     void Start()
@@ -28,19 +31,21 @@ public class ManagerColisVider : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if(tempsReponseChangementColis>0)
         {
-            FairePartirUnColis(emplacementTempo);
-            emplacementTempo = (emplacementTempo+1)%2;
+            tempsReponseChangementColis -= Time.deltaTime;
         }
     }
 
     public IEnumerator FaireVenirPremiersColis()
     {
-        FaireVenirNouveauColis(0);
+        FaireVenirNouveauColis(emplacement);
+        emplacement++;
         StartCoroutine(ActiverAutreColis(0));
         yield return new WaitForSeconds(3f);
-        FaireVenirNouveauColis(1);
+
+        FaireVenirNouveauColis(emplacement);
+        emplacement = 0;
     }
 
     public Colis ChoixNouveauColis()
@@ -70,7 +75,6 @@ public class ManagerColisVider : MonoBehaviour
 
     public void FaireVenirNouveauColis(int emplacement)
     {
-        etatColis[emplacement] = true;
         StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColis(emplacementsScripts[emplacement]));
         if (colisVider != null)
         {
@@ -79,19 +83,27 @@ public class ManagerColisVider : MonoBehaviour
     }
 
 
-    public void FairePartirUnColis(int emplacement)
+    public void FairePartirUnColis()
     {
-        etatColis[emplacement] = false;
-        emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
-        emplacementsScripts[emplacement].SetActive(false);
-        StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
-        if (colisVider != null)
+        if (tempsReponseChangementColis <= 0)
         {
-            //emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
-        }
-        if (emplacementsScripts[(emplacement + 1) % 2] != null)
-        {
-            StartCoroutine(ActiverAutreColis((emplacement + 1) % 2));
+            tempsReponseChangementColis = 0.7f;
+            if (emplacementsScripts[0].activeSelf && emplacementsScripts[0].activeSelf)
+            {
+                etatColis[emplacement] = false;
+                emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
+                emplacementsScripts[emplacement].SetActive(false);
+                StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
+                if (colisVider != null)
+                {
+                    //emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
+                }
+                if (emplacementsScripts[(emplacement + 1) % 2] != null)
+                {
+                    StartCoroutine(ActiverAutreColis((emplacement + 1) % 2));
+                }
+                emplacement = (emplacement + 1) % 2;
+            }
         }
     }
 
@@ -101,9 +113,11 @@ public class ManagerColisVider : MonoBehaviour
         {
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = true;
             emplacementsScripts[emplacement].transform.position += new Vector3(0, 1, 0)  * Time.fixedDeltaTime * 0.3f;
+            emplacementsScripts[(emplacement + 1) % 2].GetComponent<BoxCollider2D>().enabled = false;
             emplacementsScripts[(emplacement+1)%2].transform.position -= new Vector3(0, 1, 0) * Time.fixedDeltaTime * 0.3f;
             if (m>=99)
             {
+                emplacementsScripts[emplacement].GetComponent<BoxCollider2D>().enabled = true;
                 managerColis.AjoutArticleColisVoulu(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0], Random.Range(0,2), Random.Range(1,7));
             }
             yield return new WaitForSeconds(Time.deltaTime);
