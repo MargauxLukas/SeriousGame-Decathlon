@@ -613,7 +613,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!1001 &171931901
 PrefabInstance:
@@ -1471,7 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5da3063a823a2b4fa78db1c86d15d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cvl: {fileID: 0}
+  cvl: {fileID: 1435407245}
 --- !u!61 &464970665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2389,7 +2389,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: c1605b75de9f09e40a372655c7e4bdf0, type: 3}
   m_Color: {r: 0.9056604, g: 0.8231634, b: 0.54254186, a: 1}
   m_FlipX: 0
@@ -3550,7 +3550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5da3063a823a2b4fa78db1c86d15d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cvl: {fileID: 0}
+  cvl: {fileID: 1435407245}
 --- !u!61 &824746997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3918,7 +3918,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: ef936284ca0ff9143addbaca1c34f347, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3962,6 +3962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionVisee: {fileID: 1446761732}
   speed: 3
+  emplacement: 1
 --- !u!212 &850428004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4926,7 +4927,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!1 &1025696354
 GameObject:
@@ -5154,7 +5155,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: ef936284ca0ff9143addbaca1c34f347, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5763,7 +5764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5da3063a823a2b4fa78db1c86d15d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cvl: {fileID: 0}
+  cvl: {fileID: 1435407245}
 --- !u!61 &1360190182
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5911,7 +5912,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!1 &1421512775
 GameObject:
@@ -5980,7 +5981,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: ef936284ca0ff9143addbaca1c34f347, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9321,6 +9322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionVisee: {fileID: 558531028}
   speed: 3
+  emplacement: 0
 --- !u!212 &4588864375355896061
 SpriteRenderer:
   m_ObjectHideFlags: 0

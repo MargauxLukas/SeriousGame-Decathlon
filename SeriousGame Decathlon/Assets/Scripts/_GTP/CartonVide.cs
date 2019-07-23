@@ -9,6 +9,7 @@ public class CartonVide : MonoBehaviour
     private Vector3 startPosition;
 
     public CartonVideLink cvl;
+    private bool stuck = false;
 
     public void Start()
     {
@@ -22,7 +23,7 @@ public class CartonVide : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             touchCarton();
 
-            if(doesTouch)
+            if(doesTouch && !stuck)
             {
                 transform.position = new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0);
             }
@@ -48,17 +49,21 @@ public class CartonVide : MonoBehaviour
                 {
                     startPosition = new Vector3(62.40f, -3.20f, 0f);
                     cvl.isFree1 = false;
+                    stuck = true;
                 }
                 else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
                 {
                     startPosition = new Vector3(65.5f, -3.20f, 0f);
                     cvl.isFree2 = false;
+                    stuck = true;
                 }
                 else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
                 {
                     startPosition = new Vector3(68.40f, -3.20f, 0f);
                     cvl.isFree3 = false;
+                    stuck = true;
                 }
+
 
                 transform.position = startPosition;
             }
