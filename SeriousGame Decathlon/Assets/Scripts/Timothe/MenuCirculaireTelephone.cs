@@ -63,7 +63,7 @@ public class MenuCirculaireTelephone : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
             if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject)
             {
-                if (TutoManager.instance != null) {TutoManager.instance.Manager(39);}
+                if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(39);}
                 doesTouch = true;
             }
         }

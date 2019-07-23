@@ -337,7 +337,7 @@ public class Scoring : MonoBehaviour
 
     public void AffichageErreur(string errorText)
     {
-        if (errorTextZone != null && TutoManager.instance == null)
+        if (errorTextZone != null && TutoManagerMulti.instance == null)
         {
             StopAllCoroutines();
             errorTextZone.gameObject.SetActive(true);

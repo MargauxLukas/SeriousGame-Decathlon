@@ -11,9 +11,9 @@ public class Pedale : MonoBehaviour
         colisManag.AppelColis();
         //Debug.Log(TutoManager.instance != null);
 
-        if (TutoManager.instance != null)
+        if (TutoManagerMulti.instance != null)
         {
-            TutoManager.instance.Manager(1);
+            TutoManagerMulti.instance.Manager(1);
         }
     }
 }

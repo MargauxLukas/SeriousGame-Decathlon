@@ -77,7 +77,7 @@ public class RFIDScan : MonoBehaviour
                 }
                 
                 scriptColis.hasBeenScannedByRFID = true;
-                if (TutoManager.instance != null) {TutoManager.instance.Manager(8);}
+                if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(8);}
 
                 infoRFID.numIntRFID  = numRFID ;
                 infoRFID2.numIntRFID = numRFID2;

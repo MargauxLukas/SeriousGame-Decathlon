@@ -37,9 +37,9 @@ public class CreateHUScript : MonoBehaviour
     {
         packagingMat = input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text;
 
-        if (TutoManager.instance != null && packagingMat == "CB01")
+        if (TutoManagerMulti.instance != null && packagingMat == "CB01")
         {
-            TutoManager.instance.Manager(35);
+            TutoManagerMulti.instance.Manager(35);
         }
     }
 
@@ -53,10 +53,10 @@ public class CreateHUScript : MonoBehaviour
         Debug.Log("Set Reference");
         reference = int.Parse(input.GetComponent<TMP_Dropdown>().options[input.GetComponent<TMP_Dropdown>().value].text);
 
-        if(TutoManager.instance != null && reference == 9712)
+        if(TutoManagerMulti.instance != null && reference == 9712)
         {
             Debug.Log("Set Reference if Tuto");
-            TutoManager.instance.Manager(36);
+            TutoManagerMulti.instance.Manager(36);
         }
 
         //reference =int.Parse(dropdownReference.itemText.ToString());
@@ -76,9 +76,9 @@ public class CreateHUScript : MonoBehaviour
     {
         textQuantity.text = quantity.ToString();
         
-        if(TutoManager.instance != null && textQuantity.text == "5")
+        if(TutoManagerMulti.instance != null && textQuantity.text == "5")
         {
-            TutoManager.instance.Manager(37);
+            TutoManagerMulti.instance.Manager(37);
         }
     }
     
@@ -99,7 +99,7 @@ public class CreateHUScript : MonoBehaviour
 
     public void ClickOK()
     {
-        if(TutoManager.instance != null) {TutoManager.instance.Manager(38);}
+        if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(38);}
         if(reference != 0 && quantity != 0)
         {
             om.CreateHUOK(quantity, reference);

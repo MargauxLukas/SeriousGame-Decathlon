@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutoManager : MonoBehaviour
+public class TutoManagerMulti : MonoBehaviour
 {
-    public static TutoManager instance;
+    public static TutoManagerMulti instance;
 
-    public DialogueManager       dialogueManager;
-    public GameObjectsManager gameObjectsManager;
-    public ColisManager             colisManager;
+    public DialogueManager            dialogueManager;
+    public GameObjectsManagerMulti gameObjectsManager;
+    public ColisManager                  colisManager;
 
     public List<Dialogue> listDialogues;
     public List<Colis   >     listColis;

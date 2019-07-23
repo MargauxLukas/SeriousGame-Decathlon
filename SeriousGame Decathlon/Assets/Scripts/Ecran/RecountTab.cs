@@ -42,7 +42,7 @@ public class RecountTab : MonoBehaviour
             Scoring.instance.MinorPenalty();
             Scoring.instance.AffichageErreur("Colis non scanné");
         }
-        if (TutoManager.instance != null) { TutoManager.instance.Manager(6); }
+        if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(6); }
     }
 
     /******************************************************************
@@ -50,7 +50,7 @@ public class RecountTab : MonoBehaviour
     *******************************************************************/
     public void Inventory()
     {
-        if(TutoManager.instance != null) {TutoManager.instance.Manager(16);}
+        if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(16);}
         if (colis != null && colis.GetComponent<ColisScript>().hasBeenScannedByRFID 
                           && (int.Parse(infoRFID.numStringRFID) > 0) 
                           && (int.Parse(infoRFID.numStringRFID) < colis.GetComponent<ColisScript>().colisScriptable.wayTicket.PCB))
@@ -90,7 +90,7 @@ public class RecountTab : MonoBehaviour
     **********************************************/
     public void PrintHU() 
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(17);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(17);}
         if (isInventory)
         {
             Destroy(ticketgo);
@@ -141,7 +141,7 @@ public class RecountTab : MonoBehaviour
     *************************************/
     public void PrintRFID1()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(30);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(30);}
         bool refAlreadyExist = false;
         RefArticle refArt = null;
 

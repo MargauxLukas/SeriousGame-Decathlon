@@ -25,7 +25,7 @@ public class RepackTab : MonoBehaviour
     private Article art;
     private bool comptage= false;
 
-    public GameObjectsManager gameObjectsManager;
+    public GameObjectsManagerMulti gameObjectsManager;
 
     public void Update()
     {
@@ -46,10 +46,10 @@ public class RepackTab : MonoBehaviour
                 comptage = true;
 
                 Debug.Log("Quantity 1 : " + textCurrentQuantity1.text + "TutoQuantity 1 : " + gameObjectsManager.quantity1 + "Quantity 2 : " + textCurrentQuantity2.text + "TutoQuantity 2 : " + gameObjectsManager.quantity2);
-                if (TutoManager.instance != null && textCurrentQuantity1.text == gameObjectsManager.quantity1 && textCurrentQuantity2.text == gameObjectsManager.quantity2)
+                if (TutoManagerMulti.instance != null && textCurrentQuantity1.text == gameObjectsManager.quantity1 && textCurrentQuantity2.text == gameObjectsManager.quantity2)
                 {
                     Debug.Log("Repack quantity is good");
-                    TutoManager.instance.Manager(41);
+                    TutoManagerMulti.instance.Manager(41);
                 }
             }
         }
@@ -84,7 +84,7 @@ public class RepackTab : MonoBehaviour
 
     public void Moins1()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(42);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(42);}
 
         if (colis != null && colisVide != null)
         {
@@ -112,7 +112,7 @@ public class RepackTab : MonoBehaviour
 
     public void NouveauColis()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(40);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(40);}
 
         textRef2.text = "7357";
         string codeCarton = colis.GetComponent<ColisScript>().colisScriptable.carton.codeRef;
@@ -139,7 +139,7 @@ public class RepackTab : MonoBehaviour
 
     public void print2()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(43);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(43);}
         int pcb = colisVide.GetComponent<ColisScript>().colisScriptable.PCB;
         int refArticle = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[0].rfid.refArticle.numeroRef;
         float poids = colisVide.GetComponent<ColisScript>().colisScriptable.poids;
