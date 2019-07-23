@@ -23,7 +23,8 @@ public class ManagerColisAttendu : MonoBehaviour
             colisVoulus[emplacement].listArticles.Add(art);
         }
         monitor.UpdateAffichage(nombreArtVoulu);
-        
+        monitor.ResetMonitor();
+
         switch(emplacement)
         {
             case 0:

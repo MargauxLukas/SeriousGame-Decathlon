@@ -8,6 +8,10 @@ public class Monitor : MonoBehaviour
     public TextMeshProUGUI nbText;
     public int nbMonitor = 0;
 
+    public GameObject colis1;
+    public GameObject colis2;
+    public GameObject colis3;
+
     public GameObject Tapis1;
     public GameObject Tapis2;
     public GameObject Tapis3;
@@ -26,10 +30,18 @@ public class Monitor : MonoBehaviour
         nbText.text = nb.ToString();
     }
 
+    public void ResetMonitor()
+    {
+        colis1.GetComponent<SpriteRenderer>().color = Color.white;
+        colis2.GetComponent<SpriteRenderer>().color = Color.white;
+        colis3.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
     public void Colis1Actif() //Il faut savoir comment on définit quel colis sera actif
     {
         Tapis1.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
+        colis1.GetComponent<SpriteRenderer>().color = Color.green;
         //Animator Colis1 activé SUR ECRAN
         //Animator Colis1 activé sur poste
     }
@@ -38,6 +50,7 @@ public class Monitor : MonoBehaviour
     {
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis2.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
+        colis2.GetComponent<SpriteRenderer>().color = Color.green;
         //Animator Colis2
     }
 
@@ -45,6 +58,7 @@ public class Monitor : MonoBehaviour
     {
         Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis3.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
+        colis3.GetComponent<SpriteRenderer>().color = Color.green;
         //Animator Colis3
     }
 
