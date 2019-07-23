@@ -69,7 +69,7 @@ public class ManagerColisVider : MonoBehaviour
     }
 
 
-    void FairePartirUnColis(int emplacement)
+    public void FairePartirUnColis(int emplacement)
     {
         etatColis[emplacement] = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;

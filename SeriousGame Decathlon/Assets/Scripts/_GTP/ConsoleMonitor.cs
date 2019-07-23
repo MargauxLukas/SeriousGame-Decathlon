@@ -5,6 +5,7 @@ using TMPro;
 
 public class ConsoleMonitor : MonoBehaviour
 {
+    public ManagerColisVider mcv;
     public TextMeshProUGUI text;
     public int nbMonitor = 7;
 
@@ -18,8 +19,8 @@ public class ConsoleMonitor : MonoBehaviour
         text.text = (nbMonitor + nb).ToString();
     }
 
-    public void Envoyer()
+    public void Envoyer(int emplacement)
     {
-        //OnClick colis part
+        //mcv.FairePartirUnColis(emplacement);
     }
 }
