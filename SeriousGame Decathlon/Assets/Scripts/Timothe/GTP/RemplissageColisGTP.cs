@@ -16,6 +16,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public List<GameObject> tasArticle;
 
     public int currentPhase = 0;
+    public float tauxRemplissage;
 
     private void Start()
     {
@@ -113,6 +114,7 @@ public class RemplissageColisGTP : MonoBehaviour
             colisScriptable.listArticles = new List<Article>();
         }
         colisScriptable.listArticles.Add(articleToHad);
+        tauxRemplissage = colisScriptable.listArticles.Count / 10;
     }
 
     public IEnumerator AnimationColisRenvoie()
