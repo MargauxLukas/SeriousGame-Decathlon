@@ -227,4 +227,57 @@ public class ManagerColisAttendu : MonoBehaviour
         phasesColisVoulus.Add(nbPhaseTempo);
         colisVoulus.Add(colisTempo);
     }
+
+    public void CorrectPickQuantity(int emplacement, Colis colisRempli, int nombreArticleVoulu, Article articleEnQuestion)
+    {
+        int nbArticleTotal = 0;
+        foreach(Article art in colisVoulus[emplacement].listArticles)
+        {
+            if(art == articleEnQuestion)
+            {
+                nbArticleTotal++;
+            }
+        }
+
+        ClosePickTU(emplacement, colisRempli);
+
+        for(int i = 0; i < colisVoulus[emplacement].listArticles.Count; i++)
+        {
+            if(i<0)
+            {
+                i++;
+            }
+
+            if (colisVoulus[emplacement].listArticles[i] == articleEnQuestion)
+            {
+                colisVoulus[emplacement].listArticles.RemoveAt(i);
+                i--;
+            }
+        }
+
+        for (int i = 0; i < colisVoulus[3].listArticles.Count; i++)
+        {
+            if (i < 0)
+            {
+                i++;
+            }
+
+            if (colisVoulus[3].listArticles[i] == articleEnQuestion)
+            {
+                colisVoulus[3].listArticles.RemoveAt(i);
+                i--;
+            }
+        }
+
+        for(int l = 0; l < nombreArticleVoulu; l ++)
+        {
+            colisVoulus[emplacement].listArticles.Add(articleEnQuestion);
+        }
+
+        for(int m = 0; m < nbArticleTotal - nombreArticleVoulu; m++)
+        {
+            colisVoulus[3].listArticles.Add(articleEnQuestion);
+        }
+
+    }
 }
