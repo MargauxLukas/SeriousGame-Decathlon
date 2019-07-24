@@ -14,6 +14,8 @@ public class CartonVide : MonoBehaviour
     private Vector3 tapis2Pos;
     private Vector3 tapis3Pos;
 
+    public int nbEmplacementCarton;
+
     private bool lectureEnCours = false;
 
     public void Start()
@@ -92,10 +94,11 @@ public class CartonVide : MonoBehaviour
             {
                 cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
+                //Tableau[0]
                 startPosition = new Vector3(62.40f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree1 = false;
-                cvl.cs1 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 GetComponent<RemplissageColisGTP>().enabled = true;
                 enabled = false;
                 return;
@@ -104,10 +107,11 @@ public class CartonVide : MonoBehaviour
             {
                 cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
+                //Tableau[1]
                 startPosition = new Vector3(65.5f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree2 = false;
-                cvl.cs2 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 GetComponent<RemplissageColisGTP>().enabled = true;
                 enabled = false;
                 return;
@@ -116,10 +120,11 @@ public class CartonVide : MonoBehaviour
             {
                 cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
+                //Tableau[2]
                 startPosition = new Vector3(68.40f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree3 = false;
-                cvl.cs3 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 GetComponent<RemplissageColisGTP>().enabled = true;
                 enabled = false;
                 return;

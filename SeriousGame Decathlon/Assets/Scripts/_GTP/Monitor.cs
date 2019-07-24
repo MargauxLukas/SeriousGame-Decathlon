@@ -7,6 +7,7 @@ public class Monitor : MonoBehaviour
 {
     public TextMeshProUGUI nbText;
     public int nbMonitor = 0;
+    public int emplacement;
 
     public GameObject colis1;
     public GameObject colis2;
@@ -41,8 +42,8 @@ public class Monitor : MonoBehaviour
 
     public void Colis1Actif() //Il faut savoir comment on définit quel colis sera actif
     {
-        Tapis1.GetComponent<ColisLink>().console.UpdateAffichage();
-        Tapis1.GetComponent<ColisLink>().cm.UpdateAffichage(nbMonitor);
+        Tapis1.GetComponent<ColisLink>().console.UpdateAffichage(         );
+        Tapis1.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
         colis1.GetComponent<SpriteRenderer>().color = Color.green;
         //Animator Colis1 activé SUR ECRAN
         //Animator Colis1 activé sur poste

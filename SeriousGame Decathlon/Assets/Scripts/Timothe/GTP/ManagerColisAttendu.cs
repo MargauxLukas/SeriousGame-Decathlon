@@ -12,6 +12,8 @@ public class ManagerColisAttendu : MonoBehaviour
     public List<ConsoleMonitor> cm;
 
     public int nombreColisVoulu;
+    public int nbEmplacement   ;
+    public int nbArticleVoulu;
 
     float chanceAvoirTropArticlePrevu = 0.05f;
 
@@ -72,16 +74,20 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         monitor.UpdateAffichage(nombreArtVoulu);
         monitor.ResetMonitor();
+        nbArticleVoulu = nombreArtVoulu;
 
         switch (emplacement)
         {
             case 0:
+                nbEmplacement = 0;
                 monitor.Colis1Actif();
                 break;
             case 1:
+                nbEmplacement = 1;
                 monitor.Colis2Actif();
                 break;
             case 2:
+                nbEmplacement = 2;
                 monitor.Colis3Actif();
                 break;
         }
