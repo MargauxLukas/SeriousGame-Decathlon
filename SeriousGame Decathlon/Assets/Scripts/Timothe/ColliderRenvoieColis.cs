@@ -34,7 +34,7 @@ public class ColliderRenvoieColis : MonoBehaviour
                     StartCoroutine(RenvoieFinalAnim(collision.gameObject));
                     collision.gameObject.GetComponent<ColisScript>().doesRenvoie = true;
                     canReturn = false;
-                    if (TutoManager.instance != null) { TutoManager.instance.Manager(29); }
+                    if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(29); }
                 }
                 else if (canReturn)
                 {
@@ -43,7 +43,7 @@ public class ColliderRenvoieColis : MonoBehaviour
                     collision.gameObject.GetComponent<ColisScript>().canMoveVertical = true;
                     collision.gameObject.GetComponent<ColisScript>().entrancePosition = colisPosition.position;
                     collision.gameObject.GetComponent<ColisScript>().doesEntranceSecond = true;
-                    if (TutoManager.instance != null) { TutoManager.instance.Manager(24); }
+                    if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(24); }
                 }
                 if(listToActive.Count>0)
                 {

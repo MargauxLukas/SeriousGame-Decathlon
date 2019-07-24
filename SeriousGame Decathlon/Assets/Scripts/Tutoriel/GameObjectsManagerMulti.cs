@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameObjectsManager : MonoBehaviour
+public class GameObjectsManagerMulti : MonoBehaviour
 {
-    public static GameObjectsManager instance;
+    public static GameObjectsManagerMulti instance;
 
     [Header("General")]
     public GameObject pedal;

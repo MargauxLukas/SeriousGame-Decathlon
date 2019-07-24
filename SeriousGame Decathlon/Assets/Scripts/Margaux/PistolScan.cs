@@ -79,7 +79,7 @@ public class PistolScan : MonoBehaviour
                 listAnomalie.GetComponent<AffichageAnomalie>().listAnomalies = scriptColis.colisScriptable.listAnomalies;                            //On donne la liste d'anomalie
             }
 
-            if (TutoManager.instance != null) {TutoManager.instance.Manager(2);}
+            if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(2);}
         }
         else
         {

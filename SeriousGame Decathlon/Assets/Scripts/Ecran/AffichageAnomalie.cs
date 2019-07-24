@@ -58,7 +58,7 @@ public class AffichageAnomalie : MonoBehaviour
         n = 0;
         if (listAnomalies != null)
         {
-            if (TutoManager.instance == null)
+            if (TutoManagerMulti.instance == null)
             {
                 CB01.interactable = true;
                 CB02.interactable = true;
@@ -137,7 +137,7 @@ public class AffichageAnomalie : MonoBehaviour
         toggleOnNb = 0;
         if (toggleCanActivate)
         {
-            if (TutoManager.instance != null) { TutoManager.instance.Manager(19); }
+            if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(19); }
             if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product" && ongletManager.fillingRate.GetComponent<FillingRateTab>().fillingRate != 0)
 
             if (listAnomalies[nbBouton] == "RFID tag scanned for unknown product")

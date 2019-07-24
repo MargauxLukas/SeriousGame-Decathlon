@@ -56,11 +56,11 @@ public class PileArticle : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if(menuInfoIsOpen && ((TutoManager.instance == null) || (TutoManager.instance != null && TutoManager.instance.canCloseFicheInfo)))
+            if(menuInfoIsOpen && ((TutoManagerMulti.instance == null) || (TutoManagerMulti.instance != null && TutoManagerMulti.instance.canCloseFicheInfo)))
             {
                 menuInfoIsOpen = false;
                 canvasInfo.SetActive(false);
-                if (TutoManager.instance != null) {TutoManager.instance.Manager(14);}
+                if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(14);}
             }
 
             if (doesTouch)
@@ -88,7 +88,7 @@ public class PileArticle : MonoBehaviour
                 if (timeTouched > timeBeforeOpen && menuCanOpen)
                 {
                     menuIsOpen = true;
-                    if(TutoManager.instance != null) {TutoManager.instance.Manager(12);}
+                    if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(12);}
                     circleImage.transform.parent.gameObject.SetActive(true);
                     circleImage.transform.parent.gameObject.transform.position = transform.position;
                     circleImage.fillAmount = 1f / itemNumber;
@@ -147,7 +147,7 @@ public class PileArticle : MonoBehaviour
             }
         }
 
-        if (TutoManager.instance != null)
+        if (TutoManagerMulti.instance != null)
         {
             Debug.Log("------0 :" + listColisPresent[0].name + " ------1 :" + listColisPresent[1].name);
 
@@ -267,7 +267,7 @@ public class PileArticle : MonoBehaviour
     public void ShowInfo()
     {
         canvasInfo.SetActive(true);
-        if(TutoManager.instance != null) {TutoManager.instance.Manager(13);}
+        if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(13);}
         textNbArticle.text = listArticles.Count.ToString();
         int nbRFID = 0;
         foreach (Article art in listArticles)
@@ -293,20 +293,20 @@ public class PileArticle : MonoBehaviour
         switch (nb)
         {
             case 1:
-                if ((TutoManager.instance == null || TutoManager.instance.canColis2) && listColisPresent[1] != null)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis2) && listColisPresent[1] != null)
                 {
                     ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
             case 2:
-                if ((TutoManager.instance == null || TutoManager.instance.canColis1) && listColisPresent[0] != null)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis1) && listColisPresent[0] != null)
                 {
                     ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
-                    if (TutoManager.instance != null) { TutoManager.instance.Manager(15); }
+                    if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(15); }
                 }
                 break;
             case 0:
-                if (TutoManager.instance == null || TutoManager.instance.canInfo)
+                if (TutoManagerMulti.instance == null || TutoManagerMulti.instance.canInfo)
                 {
                     ShowInfo();
                 }

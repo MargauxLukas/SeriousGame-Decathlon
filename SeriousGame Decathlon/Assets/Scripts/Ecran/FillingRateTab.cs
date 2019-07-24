@@ -18,7 +18,7 @@ public class FillingRateTab : MonoBehaviour
 
     public void setFillingRate()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(21);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(21);}
         if (ancientButton != null)
         {
             ancientButton.interactable = true;
@@ -36,7 +36,7 @@ public class FillingRateTab : MonoBehaviour
 
     public void canMecaOpen()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(22);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(22);}
         if (!toggle.isOn)
         {
             bCanMecaOpen = false;
