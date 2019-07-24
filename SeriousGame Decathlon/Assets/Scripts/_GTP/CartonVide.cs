@@ -9,10 +9,16 @@ public class CartonVide : MonoBehaviour
     private Vector3 startPosition;
 
     public CartonVideLink cvl;
-    private bool stuck = false;
+
+    private Vector3 tapis1Pos;
+    private Vector3 tapis2Pos;
+    private Vector3 tapis3Pos;
 
     public void Start()
     {
+        tapis1Pos = cvl.tapis1GameObject.transform.position;
+        tapis2Pos = cvl.tapis2GameObject.transform.position;
+        tapis3Pos = cvl.tapis3GameObject.transform.position;
         startPosition = transform.position;    
     }
 
@@ -23,7 +29,7 @@ public class CartonVide : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             touchCarton();
 
-            if(doesTouch && !stuck)
+            if(doesTouch)
             {
                 transform.position = new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0);
             }
@@ -41,40 +47,30 @@ public class CartonVide : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Ended)
+            Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
             {
-                Debug.Log(collision.gameObject.name);
-                if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
-                {
-                    cvl.PutAnotherColis(startPosition);
-                    startPosition = new Vector3(62.40f, -3.20f, 0f);
-                    cvl.isFree1 = false;
-                    GetComponent<RemplissageColisGTP>().enabled = true;
-                    stuck = true;
-                    this.enabled = false;
-                }
-                else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
-                {
-                    cvl.PutAnotherColis(startPosition);
-                    startPosition = new Vector3(65.5f, -3.20f, 0f);
-                    cvl.isFree2 = false;
-                    GetComponent<RemplissageColisGTP>().enabled = true;
-                    stuck = true;
-                    this.enabled = false;
-                }
-                else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
-                {
-                    cvl.PutAnotherColis(startPosition);
-                    startPosition = new Vector3(68.40f, -3.20f, 0f);
-                    cvl.isFree3 = false;
-                    GetComponent<RemplissageColisGTP>().enabled = true;
-                    stuck = true;
-                    this.enabled = false;
-                }
-
-
+                startPosition = new Vector3(62.40f, -3.20f, 0f);
                 transform.position = startPosition;
+                cvl.isFree1 = false;
+                cvl.cs1 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                enabled = false;
+            }
+            else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
+            {
+                startPosition = new Vector3(65.5f, -3.20f, 0f);
+                transform.position = startPosition;
+                cvl.isFree2 = false;
+                cvl.cs2 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                enabled = false;
+            }
+            else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
+            {
+                startPosition = new Vector3(68.40f, -3.20f, 0f);
+                transform.position = startPosition;
+                cvl.isFree3 = false;
+                cvl.cs3 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                enabled = false;
             }
         }
     }
