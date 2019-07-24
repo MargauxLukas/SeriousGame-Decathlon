@@ -14,6 +14,8 @@ public class CartonVide : MonoBehaviour
     private Vector3 tapis2Pos;
     private Vector3 tapis3Pos;
 
+    private bool lectureEnCours = false;
+
     public void Start()
     {
         tapis1Pos = cvl.tapis1GameObject.transform.position;
@@ -49,7 +51,7 @@ public class CartonVide : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             Debug.Log(collision.gameObject.name);
 
-            if(touch.phase == TouchPhase.Ended)
+            /*if(touch.phase == TouchPhase.Ended)
             {
                 Debug.Log(collision.gameObject.name);
                 if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
@@ -82,34 +84,42 @@ public class CartonVide : MonoBehaviour
                     //stuck = true;
                     this.enabled = false;
                 }
-            }
+            }*/
 
             //Je pense pas que ce système pour magnétiser le colis puisse marcher
 
-            if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
+            if (collision.gameObject.name == "Tapis1" && cvl.isFree1 && !lectureEnCours)
             {
+                lectureEnCours = true;
                 startPosition = new Vector3(62.40f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree1 = false;
                 cvl.cs1 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 enabled = false;
+                return;
             }
-            else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
+            else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
             {
+                lectureEnCours = true;
                 startPosition = new Vector3(65.5f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree2 = false;
                 cvl.cs2 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 enabled = false;
+                return;
             }
-            else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
+            else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
             {
+                lectureEnCours = true;
                 startPosition = new Vector3(68.40f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree3 = false;
                 cvl.cs3 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 enabled = false;
+                return;
             }
+
+            lectureEnCours = false;
         }
     }
 
