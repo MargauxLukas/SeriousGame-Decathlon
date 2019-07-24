@@ -90,31 +90,37 @@ public class CartonVide : MonoBehaviour
 
             if (collision.gameObject.name == "Tapis1" && cvl.isFree1 && !lectureEnCours)
             {
+                cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
                 startPosition = new Vector3(62.40f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree1 = false;
                 cvl.cs1 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                GetComponent<RemplissageColisGTP>().enabled = true;
                 enabled = false;
                 return;
             }
             else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
             {
+                cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
                 startPosition = new Vector3(65.5f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree2 = false;
                 cvl.cs2 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                GetComponent<RemplissageColisGTP>().enabled = true;
                 enabled = false;
                 return;
             }
             else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
             {
+                cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
                 startPosition = new Vector3(68.40f, -3.20f, 0f);
                 transform.position = startPosition;
                 cvl.isFree3 = false;
                 cvl.cs3 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                GetComponent<RemplissageColisGTP>().enabled = true;
                 enabled = false;
                 return;
             }
