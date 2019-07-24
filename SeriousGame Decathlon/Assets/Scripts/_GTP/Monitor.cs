@@ -19,6 +19,8 @@ public class Monitor : MonoBehaviour
     public GameObject colisAPrelever1;
     public GameObject colisAPrelever2;
 
+    public GameObject anomalyWindow;
+
     public void Start()
     {
         nbText.text = "";
