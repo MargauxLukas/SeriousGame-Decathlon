@@ -48,6 +48,44 @@ public class CartonVide : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Debug.Log(collision.gameObject.name);
+
+            if(touch.phase == TouchPhase.Ended)
+            {
+                Debug.Log(collision.gameObject.name);
+                if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
+                {
+                    cvl.PutAnotherColis(startPosition);
+                    startPosition = new Vector3(62.40f, -3.20f, 0f);
+                    cvl.isFree1 = false;
+                    cvl.cs1 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
+                    //stuck = true;
+                    this.enabled = false;
+                }
+                else if (collision.gameObject.name == "Tapis2" && cvl.isFree2)
+                {
+                    cvl.PutAnotherColis(startPosition);
+                    startPosition = new Vector3(65.5f, -3.20f, 0f);
+                    cvl.isFree2 = false;
+                    cvl.cs2 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
+                    //stuck = true;
+                    this.enabled = false;
+                }
+                else if (collision.gameObject.name == "Tapis3" && cvl.isFree3)
+                {
+                    cvl.PutAnotherColis(startPosition);
+                    startPosition = new Vector3(68.40f, -3.20f, 0f);
+                    cvl.isFree3 = false;
+                    cvl.cs3 = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
+                    //stuck = true;
+                    this.enabled = false;
+                }
+            }
+
+            //Je pense pas que ce système pour magnétiser le colis puisse marcher
+
             if (collision.gameObject.name == "Tapis1" && cvl.isFree1)
             {
                 startPosition = new Vector3(62.40f, -3.20f, 0f);
