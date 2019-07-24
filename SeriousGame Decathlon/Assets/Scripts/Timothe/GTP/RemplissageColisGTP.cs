@@ -15,6 +15,8 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public List<GameObject> tasArticle;
 
+    public int currentPhase = 0;
+
     private void Start()
     {
         colisScriptable = Instantiate(colisScriptable);
