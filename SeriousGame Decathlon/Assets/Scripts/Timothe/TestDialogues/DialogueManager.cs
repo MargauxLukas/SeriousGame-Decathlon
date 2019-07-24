@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if(TutoManager.instance != null)
+        if(TutoManagerMulti.instance != null)
         {
             fond.enabled = false;
         }

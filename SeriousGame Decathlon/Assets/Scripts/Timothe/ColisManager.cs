@@ -66,11 +66,11 @@ public class ColisManager : MonoBehaviour
         listeColisActuel = new GameObject[0];
         listeColisActuel = GameObject.FindGameObjectsWithTag("Colis");
 
-        if ((listeColisActuel.Length <= 0 && listeColisTraiter.Count > 0) || TutoManager.instance != null)
+        if ((listeColisActuel.Length <= 0 && listeColisTraiter.Count > 0) || TutoManagerMulti.instance != null)
         {
             GameObject colisTemporaire = null;
 
-            if (TutoManager.instance == null && listeColisTuto.Count <= 0)
+            if (TutoManagerMulti.instance == null && listeColisTuto.Count <= 0)
             {
                 colisTemporaire = Instantiate(colisGameObject, positionApparition.position, Quaternion.identity);
             }
@@ -199,7 +199,7 @@ public class ColisManager : MonoBehaviour
         float div = (float)listeColisTraiter.Count / (float)colisTotal;
         //nbColisRestant.fillAmount = div;
 
-        if(TutoManager.instance != null)
+        if(TutoManagerMulti.instance != null)
         {
             listeColisTuto.RemoveAt(0);
         }

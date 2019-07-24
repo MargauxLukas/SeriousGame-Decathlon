@@ -144,7 +144,7 @@ public class ColisScript : MonoBehaviour
                             circleImage.transform.parent.gameObject.SetActive(true);
                             circleImage.transform.parent.gameObject.transform.position = transform.position;
                             circleImage.fillAmount = 1f / itemNumber;
-                            if (TutoManager.instance != null) { TutoManager.instance.Manager(9); }
+                            if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(9); }
 
                             if (touch.phase == TouchPhase.Moved)
                             {
@@ -234,14 +234,14 @@ public class ColisScript : MonoBehaviour
                 {
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
-                    if (tournerMenuIsOpen && TutoManager.instance != null && TutoManager.instance.canCloseMenuToruner == true)
+                    if (tournerMenuIsOpen && TutoManagerMulti.instance != null && TutoManagerMulti.instance.canCloseMenuToruner == true)
                     {
                         tournerMenu.SetActive(false);
                         tournerMenuIsOpen = false;
 
-                        if (TutoManager.instance != null) { TutoManager.instance.Manager(28); }
+                        if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(28); }
                     }
-                    else if (tournerMenuIsOpen && TutoManager.instance == null)
+                    else if (tournerMenuIsOpen && TutoManagerMulti.instance == null)
                     {
                         tournerMenu.SetActive(false);
                         tournerMenuIsOpen = false;
@@ -329,28 +329,28 @@ public class ColisScript : MonoBehaviour
         switch (nb)
         {
             case 1:
-                if ((TutoManager.instance == null || TutoManager.instance.canJeter) && canJeter)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canJeter) && canJeter)
                 {
                     Jeter();
                     TellSomething(1);
                 }
                 break;
             case 2:
-                if ((TutoManager.instance == null || TutoManager.instance.canOuvrirFermer) && canOpen)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canOuvrirFermer) && canOpen)
                 {
                     OuvrirFermer();
                     TellSomething(2);
                 }
                 break;
             case 3:
-                if ((TutoManager.instance == null || TutoManager.instance.canVider) && canVide)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canVider) && canVide)
                 {
                     Vider();
                     TellSomething(5);
                 }
                 break;
             case 0:
-                if ((TutoManager.instance == null || TutoManager.instance.canOpenTurnMenu) && canTurn)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canOpenTurnMenu) && canTurn)
                 {
                     OpenTurnMenu();
                     TellSomething(3);
@@ -368,7 +368,7 @@ public class ColisScript : MonoBehaviour
 
     void OuvrirFermer()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(10);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(10);}
         colisScriptable.OuvrirFermer();
         if (colisScriptable.estOuvert)
         {
@@ -404,7 +404,7 @@ public class ColisScript : MonoBehaviour
 
     void OpenTurnMenu()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(25);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(25);}
         if (!colisScriptable.estOuvert)
         {
             circleImage.transform.parent.gameObject.SetActive(false);
@@ -431,7 +431,7 @@ public class ColisScript : MonoBehaviour
         if (colisScriptable.estOuvert)
         {
             colisScriptable.aEteVide = true;
-            if(TutoManager.instance != null) {TutoManager.instance.Manager(11);}
+            if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(11);}
             articleOnTableUn = spriteArticleTableUn.GetComponent<PileArticle>().listArticles;
             articleOnTableDeux = spriteArticleTableDeux.GetComponent<PileArticle>().listArticles;
 
@@ -595,7 +595,7 @@ public class ColisScript : MonoBehaviour
         if(colisScriptable.PCB == 0)
         {
             Destroy(gameObject);
-            if (TutoManager.instance != null) { TutoManager.instance.Manager(44); }
+            if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(44); }
         }
     }
 }

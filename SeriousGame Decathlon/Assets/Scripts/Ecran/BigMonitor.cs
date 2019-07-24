@@ -66,7 +66,7 @@ public class BigMonitor : MonoBehaviour
         {
             isOpen = true;
             monitorOpening = false;
-            if (TutoManager.instance != null && !openMonitorTuto) {TutoManager.instance.Manager(3);}
+            if (TutoManagerMulti.instance != null && !openMonitorTuto) {TutoManagerMulti.instance.Manager(3);}
             openMonitorTuto = false;
         }
     }
@@ -83,7 +83,7 @@ public class BigMonitor : MonoBehaviour
 
         if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
         {
-            if (TutoManager.instance != null && !closeMonitorTuto) { TutoManager.instance.Manager(7); }
+            if (TutoManagerMulti.instance != null && !closeMonitorTuto) { TutoManagerMulti.instance.Manager(7); }
             isOpen = false;
             closeMonitorTuto = false;
             miniMonitor.monitorClosing = false;  

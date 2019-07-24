@@ -15,4 +15,11 @@ public class CartonVideLink : MonoBehaviour
     public GameObject tapis1GameObject;
     public GameObject tapis2GameObject;
     public GameObject tapis3GameObject;
+
+    public GameObject ColisPrefab;
+
+    public void PutAnotherColis(Vector3 position)
+    {
+        Instantiate(ColisPrefab, position, Quaternion.identity);
+    }
 }

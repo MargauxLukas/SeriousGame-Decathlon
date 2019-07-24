@@ -14,7 +14,7 @@ public class OngletManager : MonoBehaviour
     public GameObject        repack;
     public GameObject      createHU;
 
-    public GameObjectsManager gameObjectsManager;
+    public GameObjectsManagerMulti gameObjectsManager;
 
     private bool needFillingRate = false;
     private bool needRecount = false;
@@ -74,7 +74,7 @@ public class OngletManager : MonoBehaviour
         fillingRate.SetActive(true );
         recount    .SetActive(false);
         repack     .SetActive(false);
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(20);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(20);}
     }
 
     public void RecountOpen()
@@ -82,7 +82,7 @@ public class OngletManager : MonoBehaviour
         fillingRate.SetActive(false);
         recount    .SetActive(true );
         repack     .SetActive(false);
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(5);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(5);}
     }
 
     public void RepackOpen()
@@ -94,7 +94,7 @@ public class OngletManager : MonoBehaviour
 
     public void ReturnToMeca()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(23);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(23);}
         if (allValidate)
         {
             recount.GetComponent<RecountTab>().rfidScan.artFind.ResetAll();
@@ -123,7 +123,7 @@ public class OngletManager : MonoBehaviour
 
     public void CreateHU()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(34);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(34);}
         homeScreen   .SetActive(false);
         ongletButton .SetActive(false);
         fillingRate  .SetActive(false);
@@ -158,13 +158,13 @@ public class OngletManager : MonoBehaviour
 
     public void CanReturnToMeca()
     {
-        if(TutoManager.instance != null)
+        if(TutoManagerMulti.instance != null)
         {
             allValidate = true;
             ColorBlock cb = gameObjectsManager.GameObjectToButton(gameObjectsManager.returnMecaButton).colors;
             cb.disabledColor = new Color32(255, 255, 255, 255);
         }
-        else if (TutoManager.instance == null)
+        else if (TutoManagerMulti.instance == null)
         {
             returnToMeca.interactable = true;
             allValidate = true;

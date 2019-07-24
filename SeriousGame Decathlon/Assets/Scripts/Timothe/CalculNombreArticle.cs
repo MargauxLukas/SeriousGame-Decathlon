@@ -35,15 +35,15 @@ public class CalculNombreArticle : MonoBehaviour
     public void UpdateAffichage()
     {
         affichageNumber.text = currentNumber.ToString();
-        if(TutoManager.instance != null && affichageNumber.text == tutoMan.GetComponent<TutoManager>().articlesNum)
+        if(TutoManagerMulti.instance != null && affichageNumber.text == tutoMan.GetComponent<TutoManagerMulti>().articlesNum)
         {
-            TutoManager.instance.Manager(46);
+            TutoManagerMulti.instance.Manager(46);
         }
     }
 
     public void ValideAjout()
     {
-        if (TutoManager.instance != null) {TutoManager.instance.Manager(47);}
+        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(47);}
         pileScript.RemplirColis(pileScript.listColisPresent[nbColisAffecte].colisScriptable, pileScript.listColisPresent[nbColisAffecte], currentNumber);
         currentNumber = 0;
         UpdateAffichage();
