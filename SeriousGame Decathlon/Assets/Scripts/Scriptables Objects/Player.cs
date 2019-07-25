@@ -15,4 +15,8 @@ public class Player : ScriptableObject
     public List<string> erreursReception;
     public List<string> erreursMultifonction;
     public List<string> erreursGTP;
+
+    public List<int> nbErreursReception;
+    public List<int> nbErreursMultifonction;
+    public List<int> nbErreursGTP;
 }
