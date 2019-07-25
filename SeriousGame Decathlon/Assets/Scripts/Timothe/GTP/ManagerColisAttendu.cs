@@ -33,14 +33,12 @@ public class ManagerColisAttendu : MonoBehaviour
 
             for (int k = 0; k < nb; k++)
             {
+                nbPhase++;
                 int articleAlea = Random.Range(0, colisViderManage.colisVider.Count - 1);
-                for (int p = 0; p < Random.Range(2, 5); p++)
+                int rngNumber = Random.Range(2, 5);
+                for (int p = 0; p < rngNumber; p++)
                 {
                     colisVoulus[i].listArticles.Add(colisViderManage.colisVider[articleAlea].listArticles[0]);
-                    if (!colisVoulus[i].listArticles.Contains(colisViderManage.colisVider[articleAlea].listArticles[0]))
-                    {
-                        nbPhase++;
-                    }
                 }
             }
 
@@ -59,6 +57,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisActuellementTraite.Add(colisVoulus[q]);
             cm[q].phaseActuelle = phasesColisVoulus[q];
+            Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
     }
 
@@ -72,6 +71,7 @@ public class ManagerColisAttendu : MonoBehaviour
             Debug.Log(colisVoulus[3]);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
+            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
         else if(colisVoulus.Count<=0)
         {

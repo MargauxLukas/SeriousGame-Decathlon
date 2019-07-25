@@ -25,13 +25,7 @@ MonoBehaviour:
   carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
   nomWayTicket: 
   wayTicket: {fileID: 0}
-  listArticles:
-  - {fileID: 11400000, guid: c61ca34a50ed6e043a85e1ac9e41d5e9, type: 2}
-  - {fileID: 11400000, guid: c61ca34a50ed6e043a85e1ac9e41d5e9, type: 2}
-  - {fileID: 11400000, guid: c61ca34a50ed6e043a85e1ac9e41d5e9, type: 2}
-  - {fileID: 11400000, guid: c61ca34a50ed6e043a85e1ac9e41d5e9, type: 2}
-  - {fileID: 11400000, guid: 8b9a39e12d47e6448ae70845ca661419, type: 2}
-  - {fileID: 11400000, guid: 8b9a39e12d47e6448ae70845ca661419, type: 2}
+  listArticles: []
   nbAnomalie: 0
   listAnomalies: []
   provenance: 

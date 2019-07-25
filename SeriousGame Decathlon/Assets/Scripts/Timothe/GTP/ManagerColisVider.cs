@@ -87,14 +87,14 @@ public class ManagerColisVider : MonoBehaviour
                 Debug.Log("Test Fin Creation Colis à vider");
                 newColis = Instantiate(colisVider[0]);
             }
-            /*if (Random.Range(0, 100) < chanceColisPasRemplit)
+            if (Random.Range(0, 100) < chanceColisPasRemplit)
             {
                 int nbArticleDebut = newColis.listArticles.Count;
                 for (int i = 0; i < nbArticleDebut / 2; i++)
                 {
                     newColis.listArticles.RemoveAt(newColis.listArticles.Count);
                 }
-            }*/
+            }
             //Rajouter une fonction pour mettre un article aléatoire à la fin du colis (article autre que celui déjà dedans)
         }
         return newColis;

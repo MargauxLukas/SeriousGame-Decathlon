@@ -102,6 +102,7 @@ MonoBehaviour:
   doesTouch: 0
   cvl: {fileID: 0}
   mcv: {fileID: 0}
+  cm: {fileID: 0}
   nbEmplacementCarton: 0
 --- !u!61 &2672122063606575616
 BoxCollider2D:
@@ -157,14 +158,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2672122063606575628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 504e567d4877a9f4386f7b7456ba61d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colisScriptable: {fileID: 11400000, guid: 64589b96714ec1e4ba98095472271530, type: 2}
+  colisScriptable: {fileID: 11400000, guid: bc82c7123ed11554bb930dd0bc958310, type: 2}
   positionVisee: {fileID: 0}
-  speed: 1
+  speed: 3
+  startPosition: {x: 0, y: 0, z: 0}
   tasArticle:
   - {fileID: 5516937118254268380}
   - {fileID: 8015257109059381090}
@@ -172,7 +174,9 @@ MonoBehaviour:
   - {fileID: 5994682812306196855}
   currentPhase: 0
   tauxRemplissage: 0
+  besoinEtreVide: 0
   isOpen: 0
+  boxDesactivee: {fileID: 0}
 --- !u!1001 &487899350679136528
 PrefabInstance:
   m_ObjectHideFlags: 0

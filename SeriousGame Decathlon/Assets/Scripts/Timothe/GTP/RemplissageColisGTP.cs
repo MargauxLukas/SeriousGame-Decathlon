@@ -20,6 +20,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public bool besoinEtreVide;
 
     public bool isOpen;
+    public BoxCollider2D boxDesactivee;
 
     private void Start()
     {
@@ -128,16 +129,21 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public IEnumerator AnimationColisRenvoie()
     {
-        if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
+        Debug.Log("The coroutine of partir");
+        if(!boxDesactivee.enabled)
+        {
+            boxDesactivee.enabled = true;
+        }
+        if (Vector3.Distance(startPosition, transform.position) < 0.8f && !didArrive)
         {
             transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f   ;
             transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.13f;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }
-        else if (Vector3.Distance(positionVisee.position, transform.position) > 0.1f)
+        else if (Vector3.Distance(startPosition, transform.position) < 15f)
         {
-            transform.position -= (positionVisee.position - transform.position).normalized * Time.deltaTime * speed;
+            transform.position -= new Vector3(-1,0,0) * Time.deltaTime * speed;
             yield return new WaitForSeconds(Time.deltaTime);
             StartCoroutine(AnimationColisRenvoie());
             didArrive = true;
