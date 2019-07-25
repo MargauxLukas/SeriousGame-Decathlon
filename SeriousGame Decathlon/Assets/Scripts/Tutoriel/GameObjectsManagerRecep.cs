@@ -14,6 +14,20 @@ public class GameObjectsManagerRecep : MonoBehaviour
 
     [Header("Colis")]
     public GameObject colis1;
+    public GameObject colis2;
+    public GameObject colis3;
+    public GameObject colis4;
+    public GameObject colis5;
+    public GameObject colis6;
+
+    [Header("Menu Tourner")]
+    public GameObject upArrow;
+    public GameObject downArrow;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
+    public GameObject leftRotaArrow;
+    public GameObject rightRotaArrow;
+    public GameObject palette;
 
     [Header("Sprite Masks")]
     public GameObject blackScreen;
@@ -21,6 +35,8 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject squareSpriteMask02;
     public GameObject circleSpriteMask01;
     public GameObject circleSpriteMask02;
+    public GameObject upArrowTurnSpriteMask;
+    public GameObject rightRotaArrowTurnSpriteMask;
 
     [Header("Doigt")]
     public GameObject doigtClick;
@@ -31,6 +47,9 @@ public class GameObjectsManagerRecep : MonoBehaviour
     [Header("Flèche")]
     public GameObject arrow;
     public GameObject arrowSpriteMask;
+
+    [Header("Canvas")]
+    public GameObject quitButton;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
     {

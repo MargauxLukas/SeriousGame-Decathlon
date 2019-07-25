@@ -3856,9 +3856,15 @@ MonoBehaviour:
   playerScriptable: {fileID: 11400000, guid: c055a72da539aa043972ba532629577c, type: 2}
   errorTextZone: {fileID: 0}
   score: 0
+  scoreGTP: 0
+  scoreReception: 0
+  scoreMultifonction: 0
   gotNewColis: 0
   currentTime: 0
   pauseCombo: 0
+  isReception: 0
+  isMf: 0
+  isGTP: 0
 --- !u!4 &391081040
 Transform:
   m_ObjectHideFlags: 0
@@ -9328,7 +9334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &923888297
 Transform:
   m_ObjectHideFlags: 0
@@ -13764,7 +13770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1412038556
 Transform:
   m_ObjectHideFlags: 0
@@ -16785,7 +16791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1803507321
 AudioListener:
   m_ObjectHideFlags: 0

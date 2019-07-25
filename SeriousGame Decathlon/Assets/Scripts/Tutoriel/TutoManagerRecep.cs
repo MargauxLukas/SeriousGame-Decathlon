@@ -17,9 +17,11 @@ public class TutoManagerRecep : MonoBehaviour
     public bool canPlayFirst = true;
     public bool canPlaySecond = false;
     public float interactionNum = 0;
-    public string stringInteractionNum;
-    /*public float chapterNum = 0;
-    public string stringChapterNum;*/
+
+    [Header("Menu Colis")]
+    public bool canPalette          = false;
+    public bool canOpenTurnMenu     = false;
+    public bool canCloseMenuTourner = false;
 
 
     //Déplacement doigt
@@ -187,20 +189,22 @@ public class TutoManagerRecep : MonoBehaviour
         Manager(4);
     }
 
+    IEnumerator CloseTurnMenu(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canCloseMenuTourner = true;
+    }
+
     public void Manager(float interaction)
     {
-        /*stringChapterNum = chapterNum.ToString();*/
         interactionNum = interaction;
-        stringInteractionNum = interactionNum.ToString();
 
-        Debug.Log(/*"Chapter : " + chapterNum + */"Interaction : " + interactionNum + " Phase : " + phaseNum);
+        Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
 
-        switch (/*stringChapterNum + "|" + */stringInteractionNum)
+        switch (interactionNum)
         {
-            #region Chapter1 - Convoyeur
-
             #region 0 - Initial State
-            case (/*"0 |"*/ "0"):
+            case (0):
                 switch (phaseNum)
                 {
                     case (0):
@@ -211,7 +215,7 @@ public class TutoManagerRecep : MonoBehaviour
                 #endregion
 
             #region 1 - Interaction bouton On/Off
-            case (/*"0 |"*/ "1"):
+            case (1):
                 switch (phaseNum)
                 {
                     case (1):
@@ -222,7 +226,7 @@ public class TutoManagerRecep : MonoBehaviour
                 #endregion
 
             #region 2 - Interaction bouton Déplier
-            case (/*"0 |"*/ "2"):
+            case (2):
                 switch (phaseNum)
                 {
                     case (2):
@@ -233,7 +237,7 @@ public class TutoManagerRecep : MonoBehaviour
                 #endregion
 
             #region 3 - Convoyeur déplié au max.
-            case (/*"0 |"*/ "3"):
+            case (3):
                 switch (phaseNum)
                 {
                     case (3):
@@ -244,18 +248,22 @@ public class TutoManagerRecep : MonoBehaviour
             #endregion
 
             #region 4 - Skip Automatique
-            case (/*"0 |"*/ "4"):
+            case (4):
                 switch (phaseNum)
                 {
                     case (4):
                         Phase04();
+                        break;
+
+                    case (14):
+                        Phase14();
                         break;
                 }
                 break;
             #endregion
 
             #region 5 - Interaction bouton Monter
-            case (/*"0 |"*/ "5"):
+            case (5):
                 switch (phaseNum)
                 {
                     case (5):
@@ -266,7 +274,7 @@ public class TutoManagerRecep : MonoBehaviour
             #endregion
 
             #region 6 - Jauge Convoyeur 3e étage
-            case (/*"0 |"*/ "6"):
+            case (6):
                 switch (phaseNum)
                 {
                     case (6):
@@ -276,8 +284,125 @@ public class TutoManagerRecep : MonoBehaviour
                 break;
             #endregion
 
-                #endregion
+            #region 7 - Colis sur convoyeur
+            case (7):
+                switch (phaseNum)
+                {
+                    case (7):
+                        Phase07();
+                        break;
 
+                    case (10):
+                        Phase10();
+                        break;
+
+                    case (19):
+                        Phase19();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 8 - Envoi Colis
+            case (8):
+                switch (phaseNum)
+                {
+                    case (8):
+                        Phase08();
+                        break;
+
+                    case (13):
+                        Phase13();
+                        break;
+
+                    case (15):
+                        Phase15();
+                        break;
+
+                    case (22):
+                        Phase22();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 9 - Click Colis
+            case (9):
+                switch (phaseNum)
+                {
+                    case (9):
+                        Phase09();
+                        break;
+
+                    case (18):
+                        Phase18();
+                        break;
+
+                    case (21):
+                        Phase21();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 10 - Click Flèches tourner
+            case (10):
+                switch (phaseNum)
+                {
+                    case (11):
+                        Phase11();
+                        break;
+
+                    case (12):
+                        Phase12();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 11 - Interaction bouton Descendre
+            case (11):
+                switch (phaseNum)
+                {
+                    case (16):
+                        Phase16();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 12 - Jauge convoyeur 2e étage
+            case (12):
+                switch (phaseNum)
+                {
+                    case (17):
+                        Phase17();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 13 - Interaction bouton Palette
+            case (13):
+                switch (phaseNum)
+                {
+                    case (20):
+                        Phase20();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 14 - Interaction bouton Quitter
+            case (14):
+                switch (phaseNum)
+                {
+                    case (23):
+                        Phase23();
+                        break;
+                }
+                break;
+            #endregion
         }
     }
 
@@ -359,7 +484,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-           Indications(new Vector2(5.1f, 1.24f), new Vector2(0.98f, 1.79f),
+           Indications(new Vector2(5.1f, -7.28f), new Vector2(0.98f, 1.79f),
                        new Vector2(0, 0), new Vector2(0, 0),
                        new Vector2(0, 0), new Vector2(0, 0),
                        new Vector2(0, 0), new Vector2(0, 0),
@@ -383,11 +508,11 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(5.1f, 1.24f), new Vector2(0.98f, 1.79f),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(-3.21f, -3.67f), new Vector2(1,1),
+                        new Vector2(-3.21f, -12.21f), new Vector2(1,1),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(63.44f, -4.32f, 0), new Vector3(0, 0, 0), 0, false,
-                        new Vector2(72.2f, 1.21f), 0, 0, 270);
+                        new Vector3(63.44f, -12.86f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(72.2f, -7.31f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.ascendButton).interactable = true;
 
@@ -431,18 +556,437 @@ public class TutoManagerRecep : MonoBehaviour
         if (canPlaySecond)
         {
             Indications(new Vector2(-2.87f, -8.75f), new Vector2(0.84f, 0.9f),
-                        new Vector2(/*Convoyeur Pos*/), new Vector2(/*Convoyeur Scale*/),
+                        new Vector2(-0.1f, -5.1f), new Vector2(2.35f, 1.5f),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(63.91f, 9.27f, 0), new Vector3(/*Convoyeur Pos*/), 4f, true,
+                        new Vector3(63.91f, 9.27f, 0), new Vector3(66.77f, -5.6f), 4f, true,
                         new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
         }
     }
 
     void Phase07()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0,0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(70.89f, -4.88f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+
+            StartCoroutine(CloseTurnMenu(1f));
+        }
+    }
+
+    void Phase08()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-1.07f, -8.72f), new Vector2(0.88f, 0.89f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase09()
+    {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
+        phaseNum++;
+    }
+
+    void Phase10()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(66.97f, -7.23f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.upArrowTurnSpriteMask).enabled = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase11()
+    {
+        gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.upArrowTurnSpriteMask).enabled = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
+
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(3.07f, -6.4f), new Vector2(1.2f, 1.2f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(69.96f, -7.37f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = true;
+    }
+
+    void Phase12()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(70.89f, -4.88f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+
+            StartCoroutine(CloseTurnMenu(1f));
+        }
+    }
+
+    void Phase13()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+        
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3).enabled = true;
+            
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow)       .interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow)     .interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.leftArrow)     .interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightArrow)    .interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.leftRotaArrow) .interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = true;
+
+            canCloseMenuTourner = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+
+            Manager(4);
+        }
+    }
+
+    void Phase14()
+    {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3).enabled = false;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis4).enabled = true;
+
+        phaseNum++;
+    }
+
+    void Phase15()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis4).enabled = true;
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.leftArrow).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightArrow).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.leftRotaArrow).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
+
+            canCloseMenuTourner = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(65.68f, -12.74f, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(72.2f, -8f), 0, 0, 270);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.descendButton).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase16()
+    {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(72.2f, -8f), 0, 0, 270);
+
+        phaseNum++;
+    }
+
+    void Phase17()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.descendButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-2.87f, -8.75f), new Vector2(0.84f, 0.9f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis5).enabled = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase18()
+    {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+        phaseNum++;
+    }
+
+    void Phase19()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis5).enabled = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-6.15f, -6.42f), new Vector2(1.26f, 1.48f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(60.89f, -7.48f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.palette).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase20()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.palette).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-1.07f, -8.72f), new Vector2(0.88f, 0.89f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis6).enabled = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase21()
+    {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+        phaseNum++;
+    }
+
+    void Phase22()
+    {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis6).enabled = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-9.17f, -3.58f), new Vector2(0.35f, 0.34f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(57.62f, -4.45f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButton).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase23()
     {
 
     }

@@ -36,7 +36,11 @@ public class ConvoyeurButton : MonoBehaviour
                 convoyeur.MoveZ("up");                                          //Boutton Monter
             }
 
-            if (downPressed) { convoyeur.MoveZ("down"); }                       //Boutton Descendre
+            if (downPressed)
+            {
+                if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(11); }
+                convoyeur.MoveZ("down");
+            }                       //Boutton Descendre
             if (!isCollide)
             {
                 if (deplierPressed)
