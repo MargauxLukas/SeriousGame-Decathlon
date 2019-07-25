@@ -13,11 +13,14 @@ public class CartonVideLink : MonoBehaviour
     public GameObject tapis3GameObject;
 
     public GameObject ColisPrefab;
+    public ManagerColisVider managerVide;
 
     public Colis[] csTab = new Colis[2];
 
     public void PutAnotherColis(Vector3 position)
     {
-        Instantiate(ColisPrefab, position, Quaternion.identity);
+        GameObject gm = Instantiate(ColisPrefab, position, Quaternion.identity);
+        gm.GetComponent<CartonVide>().cvl = this;
+        gm.GetComponent<CartonVide>().mcv = managerVide;
     }
 }

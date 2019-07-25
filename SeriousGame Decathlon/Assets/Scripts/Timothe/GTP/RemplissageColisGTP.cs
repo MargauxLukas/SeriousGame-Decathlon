@@ -18,6 +18,8 @@ public class RemplissageColisGTP : MonoBehaviour
     public int currentPhase = 0;
     public float tauxRemplissage;
 
+    public bool isOpen;
+
     private void Start()
     {
         colisScriptable = Instantiate(colisScriptable);
@@ -39,7 +41,6 @@ public class RemplissageColisGTP : MonoBehaviour
                 doesTouch = false;
                 Debug.Log("Test");
                 List<List<Article>> newListes    = new List<List<Article>>();
-                List<Article> articleRestant     = new List     <Article> ();
                 List<Article> articlesDejaConnus = new List     <Article> ();
 
                 if (!tasArticle[0].activeSelf)
@@ -75,6 +76,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
                         }
                     }
+                    isOpen = true;
                 }
                 else
                 {
@@ -90,6 +92,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             repack = true;
                         }
                     }
+                    isOpen = false;
 
                     if (repack)
                     {

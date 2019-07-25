@@ -5,7 +5,7 @@ using UnityEngine;
 public class TasArticleGTP : MonoBehaviour
 {
     public List<Article> articlesPresents;
-    private List<GameObject> affichageTas;
+    public List<GameObject> affichageTas;
 
     public GameObject prefabAffichageArticlePiece;
     public GameObject articleUnit;
@@ -23,7 +23,7 @@ public class TasArticleGTP : MonoBehaviour
             }
             if (doesTouch)
             {
-                if (articlesPresents.Count > 0)
+                /*if (articlesPresents.Count > 0)
                 {
                     GameObject nouvelArticle = Instantiate(articleUnit, Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Quaternion.identity);
                     nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
@@ -31,7 +31,7 @@ public class TasArticleGTP : MonoBehaviour
                     nouvelArticle.GetComponent<ArticleUnitGTP>().tasParent = this;
                     nouvelArticle.GetComponent<ArticleUnitGTP>().doesTouch = true;
                     nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spriteGTP;
-                }
+                }*/
                 doesTouch = false;
             }
         }
@@ -56,18 +56,27 @@ public class TasArticleGTP : MonoBehaviour
         }
 
         affichageTas = new List<GameObject>();
-        articlesPresents = lesArticles;
-        for(int j = 0; j < articlesPresents.Count; j++)
+        articlesPresents = new List<Article>(lesArticles);
+        int nbMax = articlesPresents.Count;
+        for (int j = 0; j < nbMax; j++)
         {
             Debug.Log("Test ");
-            affichageTas.Add(Instantiate(prefabAffichageArticlePiece, transform, false));
-            affichageTas[j].GetComponent<SpriteRenderer>().sprite = articlesPresents[0].spriteGTP;
-            affichageTas[j].transform.localPosition += new Vector3(Random.Range(-1f, 1f), Random.Range(-1f,1f), 0);
+            GameObject nouvelArticle = Instantiate(articleUnit, transform.position+new Vector3(Random.Range(-0.5f,0.5f), Random.Range(-0.5f, 0.5f),0), Quaternion.identity);
+            nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
+            articlesPresents.RemoveAt(articlesPresents.Count - 1);
+            nouvelArticle.GetComponent<ArticleUnitGTP>().tasParent = this;
+            //nouvelArticle.GetComponent<ArticleUnitGTP>().doesTouch = true;
+            nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spriteGTP;
+            affichageTas.Add(nouvelArticle);
         }
     }
 
     public List<Article> CloseTasArticle()
     {
+        foreach(GameObject gm in affichageTas)
+        {
+            Destroy(gm);
+        }
         return articlesPresents;
     }
 

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6dc3b85cb60008d4a8c0eec7764cd3ab, type: 3}
-  m_Name: Doudoune notOK 1
+  m_Name: GTP Sac
   m_EditorClassIdentifier: 
   poids: 2
-  rfid: {fileID: 11400000, guid: 6bab9c19affe1d445985bb429f4c1c7b, type: 2}
+  rfid: {fileID: 11400000, guid: 8c33c56e3ce5bbd47b4b6ec56e55eb2b, type: 2}
   spriteList:
-  - {fileID: 21300000, guid: a7d47bc8deb5e4e439c1e95e49d2f49e, type: 3}
-  - {fileID: 21300000, guid: 49d1c66de3d0b19478e617f09ef1763b, type: 3}
-  - {fileID: 21300000, guid: 414c02e6975c5df4686d766f9db34037, type: 3}
-  spriteGTP: {fileID: 21300000, guid: 35c46473a1477794ba7704e8abfa2e8d, type: 3}
+  - {fileID: 21300000, guid: d6d2649cf6c486142b24de3fe183f6e1, type: 3}
+  - {fileID: 21300000, guid: a76317b08a1f6554385290af0da470de, type: 3}
+  - {fileID: 21300000, guid: 9d0310bad798d7945be3cbdae237a95f, type: 3}
+  spriteGTP: {fileID: 21300000, guid: e2dd18119f897564581b4d52d5112b4a, type: 3}
