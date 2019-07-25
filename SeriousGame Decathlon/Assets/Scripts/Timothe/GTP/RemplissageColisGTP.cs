@@ -8,7 +8,7 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public Transform positionVisee;
     public float speed = 1;
-    Vector3 startPosition;
+    public Vector3 startPosition;
 
     bool didArrive;
     private bool doesTouch;
@@ -17,6 +17,7 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public int currentPhase = 0;
     public float tauxRemplissage;
+    public bool besoinEtreVide;
 
     public bool isOpen;
 
@@ -77,6 +78,10 @@ public class RemplissageColisGTP : MonoBehaviour
                         }
                     }
                     isOpen = true;
+                    if(besoinEtreVide)
+                    {
+                        besoinEtreVide = false;
+                    }
                 }
                 else
                 {

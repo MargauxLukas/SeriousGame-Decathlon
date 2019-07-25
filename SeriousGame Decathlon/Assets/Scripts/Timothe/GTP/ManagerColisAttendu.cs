@@ -9,8 +9,8 @@ public class ManagerColisAttendu : MonoBehaviour
     public ManagerColisVider colisViderManage;
 
     [Header("Liste")]
-    public List<Colis> colisVoulus             = new List<Colis>();
-    public List<Colis> colisActuellementTraite = new List<Colis>();
+    public List<Colis> colisVoulus             = new List<Colis>(); //Tous les colis voulus
+    public List<Colis> colisActuellementTraite = new List<Colis>(); //Tous les colis actuel
     public List<int  > phasesColisVoulus       = new List<int  >();
     public List<ConsoleMonitor> cm;
 

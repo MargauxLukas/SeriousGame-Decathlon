@@ -101,6 +101,7 @@ public class CartonVide : MonoBehaviour
                 cvl.isFree1 = false;
                 cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 GetComponent<RemplissageColisGTP>().enabled = true;
+                GetComponent<RemplissageColisGTP>().startPosition = startPosition;
                 mcv.colisActuellementsPose[0] = GetComponent<RemplissageColisGTP>();
                 enabled = false;
                 return;
@@ -115,6 +116,7 @@ public class CartonVide : MonoBehaviour
                 cvl.isFree2 = false;
                 cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 GetComponent<RemplissageColisGTP>().enabled = true;
+                GetComponent<RemplissageColisGTP>().startPosition = startPosition;
                 mcv.colisActuellementsPose[1] = GetComponent<RemplissageColisGTP>();
                 enabled = false;
                 return;
@@ -129,6 +131,7 @@ public class CartonVide : MonoBehaviour
                 cvl.isFree3 = false;
                 cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                 GetComponent<RemplissageColisGTP>().enabled = true;
+                GetComponent<RemplissageColisGTP>().startPosition = startPosition;
                 mcv.colisActuellementsPose[2] = GetComponent<RemplissageColisGTP>();
                 enabled = false;
                 return;
