@@ -19,12 +19,16 @@ public class CartonVide : MonoBehaviour
 
     private bool lectureEnCours = false;
 
+
+    Vector2 freezedPosition;
+
     public void Start()
     {
         tapis1Pos = cvl.tapis1GameObject.transform.position;
         tapis2Pos = cvl.tapis2GameObject.transform.position;
         tapis3Pos = cvl.tapis3GameObject.transform.position;
-        startPosition = transform.position;    
+        startPosition = transform.position;
+        freezedPosition = Vector2.zero;
     }
 
     private void Update()
@@ -36,7 +40,14 @@ public class CartonVide : MonoBehaviour
 
             if(doesTouch)
             {
-                transform.position = new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0);
+                if (Vector2.Distance(new Vector2(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y), freezedPosition) > 1f)
+                {
+                    transform.position = new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y, 0);
+                }
+                else
+                {
+                    transform.position = freezedPosition;
+                }
             }
 
             if(touch.phase == TouchPhase.Ended)
@@ -91,46 +102,74 @@ public class CartonVide : MonoBehaviour
 
             //Je pense pas que ce système pour magnétiser le colis puisse marcher
 
+            if (touch.phase == TouchPhase.Ended)
+            {
+                if (collision.gameObject.name == "Tapis1" && cvl.isFree1 && !lectureEnCours)
+                {
+                    cvl.PutAnotherColis(startPosition);
+                    lectureEnCours = true;
+                    //Tableau[0]
+                    startPosition = new Vector3(62.40f, -3.20f, 0f);
+                    transform.position = startPosition;
+                    cvl.isFree1 = false;
+                    cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
+                    GetComponent<RemplissageColisGTP>().startPosition = startPosition;
+                    mcv.colisActuellementsPose[0] = GetComponent<RemplissageColisGTP>();
+                    enabled = false;
+                    return;
+                }
+                else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
+                {
+                    cvl.PutAnotherColis(startPosition);
+                    lectureEnCours = true;
+                    //Tableau[1]
+                    startPosition = new Vector3(65.5f, -3.20f, 0f);
+                    transform.position = startPosition;
+                    cvl.isFree2 = false;
+                    cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
+                    GetComponent<RemplissageColisGTP>().startPosition = startPosition;
+                    mcv.colisActuellementsPose[1] = GetComponent<RemplissageColisGTP>();
+                    enabled = false;
+                    return;
+                }
+                else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
+                {
+                    cvl.PutAnotherColis(startPosition);
+                    lectureEnCours = true;
+                    //Tableau[2]
+                    startPosition = new Vector3(68.40f, -3.20f, 0f);
+                    transform.position = startPosition;
+                    cvl.isFree3 = false;
+                    cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    GetComponent<RemplissageColisGTP>().enabled = true;
+                    GetComponent<RemplissageColisGTP>().startPosition = startPosition;
+                    mcv.colisActuellementsPose[2] = GetComponent<RemplissageColisGTP>();
+                    enabled = false;
+                    return;
+                }
+            }
+
             if (collision.gameObject.name == "Tapis1" && cvl.isFree1 && !lectureEnCours)
             {
-                cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
-                //Tableau[0]
-                startPosition = new Vector3(62.40f, -3.20f, 0f);
-                transform.position = startPosition;
-                cvl.isFree1 = false;
-                cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
-                GetComponent<RemplissageColisGTP>().enabled = true;
-                mcv.colisActuellementsPose[0] = GetComponent<RemplissageColisGTP>();
-                enabled = false;
+                freezedPosition = new Vector3(62.40f, -3.20f, 0f);
+                //transform.position = freezedPosition;
                 return;
             }
             else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
             {
-                cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
-                //Tableau[1]
-                startPosition = new Vector3(65.5f, -3.20f, 0f);
-                transform.position = startPosition;
-                cvl.isFree2 = false;
-                cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
-                GetComponent<RemplissageColisGTP>().enabled = true;
-                mcv.colisActuellementsPose[1] = GetComponent<RemplissageColisGTP>();
-                enabled = false;
+                freezedPosition = new Vector3(65.5f, -3.20f, 0f);
+                //transform.position = freezedPosition;
                 return;
             }
             else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
             {
-                cvl.PutAnotherColis(startPosition);
                 lectureEnCours = true;
-                //Tableau[2]
-                startPosition = new Vector3(68.40f, -3.20f, 0f);
-                transform.position = startPosition;
-                cvl.isFree3 = false;
-                cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
-                GetComponent<RemplissageColisGTP>().enabled = true;
-                mcv.colisActuellementsPose[2] = GetComponent<RemplissageColisGTP>();
-                enabled = false;
+                freezedPosition = new Vector3(68.40f, -3.20f, 0f);
+                //transform.position = freezedPosition;
                 return;
             }
 

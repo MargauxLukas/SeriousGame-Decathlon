@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2672122063606575618}
   m_Layer: 0
   m_Name: ColisVidePrefab
-  m_TagString: Untagged
+  m_TagString: ColisGTP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 5994682812306196855}
   currentPhase: 0
   tauxRemplissage: 0
+  isOpen: 0
 --- !u!1001 &487899350679136528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,11 +252,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3968450500629824349, guid: ca93215e54f7dbc4baca92aaed5d72dd,
         type: 3}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0895b599a9570a49995ffe395b04307, type: 3}
 --- !u!1 &1732441307247730626 stripped
@@ -349,11 +345,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3968450500629824349, guid: ca93215e54f7dbc4baca92aaed5d72dd,
         type: 3}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0895b599a9570a49995ffe395b04307, type: 3}
 --- !u!1 &5994682812306196855 stripped
@@ -447,11 +438,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3968450500629824349, guid: ca93215e54f7dbc4baca92aaed5d72dd,
         type: 3}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0895b599a9570a49995ffe395b04307, type: 3}
 --- !u!1 &5516937118254268380 stripped
@@ -545,11 +531,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3968450500629824349, guid: ca93215e54f7dbc4baca92aaed5d72dd,
         type: 3}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0895b599a9570a49995ffe395b04307, type: 3}
 --- !u!1 &8015257109059381090 stripped
