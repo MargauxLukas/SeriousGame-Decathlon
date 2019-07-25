@@ -9,10 +9,12 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
     public GameObject tasArticle;
 
+    public bool isOpen;
+
     // Start is called before the first frame update
     void Start()
     {
-        currentColis = Instantiate(currentColis);
+        //currentColis = Instantiate(currentColis);
     }
 
     // Update is called once per frame
@@ -29,13 +31,15 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
             if(doesTouch)
             {
-                if (!tasArticle.activeSelf)
+                if (!tasArticle.activeSelf && currentColis.listArticles != null && currentColis.listArticles.Count > 0)
                 {
+                    isOpen = true;
                     tasArticle.SetActive(true);
                     tasArticle.GetComponent<TasArticleGTP>().OpenTasArticle(currentColis.listArticles);
                 }
                 else
                 {
+                    isOpen = false;
                     tasArticle.SetActive(false);
                     currentColis.listArticles = tasArticle.GetComponent<TasArticleGTP>().CloseTasArticle();
                 }

@@ -19,7 +19,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbArticleVoulu  ;
     public int nbEmplacement;
 
-    float chanceAvoirTropArticlePrevu = 0.05f;
+    float chanceAvoirTropArticlePrevu = 0;
 
     public void Start()
     {
@@ -28,13 +28,13 @@ public class ManagerColisAttendu : MonoBehaviour
             colisVoulus.Add(new Colis());
             colisVoulus[i].listArticles = new List<Article>();
 
-            int nb = Random.Range(2, 3);
+            int nb = Random.Range(2, 4);
             int nbPhase = 0;
 
             for (int k = 0; k < nb; k++)
             {
                 int articleAlea = Random.Range(0, colisViderManage.colisVider.Count - 1);
-                for (int p = 0; p < Random.Range(2, 4); p++)
+                for (int p = 0; p < Random.Range(2, 5); p++)
                 {
                     colisVoulus[i].listArticles.Add(colisViderManage.colisVider[articleAlea].listArticles[0]);
                     if (!colisVoulus[i].listArticles.Contains(colisViderManage.colisVider[articleAlea].listArticles[0]))
@@ -44,7 +44,7 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
 
-            if ((float)Random.Range(0, 1) <= chanceAvoirTropArticlePrevu)
+            if ((float)Random.Range(0, 1) < chanceAvoirTropArticlePrevu)
             {
                 while (colisVoulus[i].listArticles.Count <= 11)
                 {

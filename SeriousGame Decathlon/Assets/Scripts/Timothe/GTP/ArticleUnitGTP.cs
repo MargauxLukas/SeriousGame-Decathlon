@@ -28,6 +28,8 @@ public class ArticleUnitGTP : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
+            touchObject();
+
             if (doesTouch)
             {
                 transform.position = touchPosition;
@@ -36,13 +38,18 @@ public class ArticleUnitGTP : MonoBehaviour
                     doesTouch = false;
                     if(remplisColis == null)
                     {
-                        tasParent.LetArticleFall(currentArticle);
+                        if(transform.position.x < 61.5f || transform.position.x > 78.5f || transform.position.y > -0.35f || transform.position.y < -2.5f)
+                        {
+                            transform.position = new Vector3(73, -1.2f, 0);
+                        }
                     }
                     else
                     {
                         remplisColis.AddArticle(currentArticle);
+                        tasParent.affichageTas.Remove(gameObject);
+                        Destroy(gameObject);
                     }
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
             }
         }
@@ -65,6 +72,18 @@ public class ArticleUnitGTP : MonoBehaviour
         if(collision.tag == "ColisGTP")
         {
             remplisColis = null;
+        }
+    }
+
+    void touchObject()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+            if (hit.collider != null && hit.collider.gameObject != null && gameObject != null && hit.collider.gameObject == gameObject && hit.collider.gameObject.name == gameObject.name)
+            {
+                doesTouch = true;
+            }
         }
     }
 }
