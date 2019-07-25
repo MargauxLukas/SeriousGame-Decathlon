@@ -73,6 +73,10 @@ public class ManagerColisAttendu : MonoBehaviour
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
         }
+        else if(colisVoulus.Count<=0)
+        {
+            //Affichage de la fin du niveau
+        }
     }
 
     public void AjoutArticleColisVoulu(int emplacement, int nombreArtVoulu)

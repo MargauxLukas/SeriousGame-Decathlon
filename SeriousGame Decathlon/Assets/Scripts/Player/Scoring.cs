@@ -16,6 +16,9 @@ public class Scoring : MonoBehaviour
 
     [Header("Score")]
     public int score;
+    public int scoreGTP;
+    public int scoreReception;
+    public int scoreMultifonction;
 
     [Header("---")]
     public bool gotNewColis;
@@ -42,6 +45,10 @@ public class Scoring : MonoBehaviour
     int currentColisInCombo;
     public bool pauseCombo;
 
+    public bool isReception;
+    public bool isMf;
+    public bool isGTP;
+
     void Awake()
     {
         if(instance == null)
@@ -62,6 +69,10 @@ public class Scoring : MonoBehaviour
         {
             playerScriptable = ChargementListeColis.instance.currentPlayerScriptable;
             score = playerScriptable.score;
+
+            scoreGTP = playerScriptable.scoreGTP;
+            scoreReception = playerScriptable.scoreReception;
+            scoreMultifonction = playerScriptable.scoreMultifonction;
         }
     }
 
@@ -82,10 +93,25 @@ public class Scoring : MonoBehaviour
         {
             score = 0;
         }
+        if(scoreGTP<0)
+        {
+            scoreGTP = 0;
+        }
+        if(scoreMultifonction<0)
+        {
+            scoreMultifonction = 0;
+        }
+        if(scoreReception<0)
+        {
+            scoreReception = 0;
+        }
 
         if(playerScriptable != null && score != playerScriptable.score)
         {
             playerScriptable.score = score;
+            playerScriptable.scoreGTP = scoreGTP;
+            playerScriptable.scoreReception = scoreReception;
+            playerScriptable.scoreMultifonction = scoreMultifonction;
             if (ChargementListeColis.instance != null)
             {
                 ChargementListeColis.instance.currentPlayerScriptable = playerScriptable;
@@ -143,7 +169,7 @@ public class Scoring : MonoBehaviour
 
     public void EndLosePointOnTime()
     {
-        score -= (int)pointToLoseWithTime;
+        scoreReception -= (int)pointToLoseWithTime;
         pointToLoseWithTime = 0;
     }
 
@@ -162,13 +188,13 @@ public class Scoring : MonoBehaviour
     public void RecepMalus(int valeurMalus)
     {
         Debug.Log("Malus Recep : " + valeurMalus);
-        score -= valeurMalus;
+        scoreReception -= valeurMalus;
         ResetComboRpcep();
     }
 
     public void RecepBonus(int valeurBonus)
     {
-        score += valeurBonus;
+        scoreReception += valeurBonus;
     }
 
     public void UpCombo()
@@ -237,7 +263,7 @@ public class Scoring : MonoBehaviour
 
     public void RecepRenvoieColis()
     {
-        score += (int)Mathf.Pow(75, recepCombo);
+        scoreReception += (int)Mathf.Pow(75, recepCombo);
     }
 
     public void ResetComboRpcep()
@@ -264,8 +290,8 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        score = score - 15;
-        player.GetComponent<PlayerTest>().player.score = score;
+        scoreMultifonction = scoreMultifonction - 15;
+        player.GetComponent<PlayerTest>().player.scoreMultifonction = scoreMultifonction;
         
     }
 
@@ -282,8 +308,8 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        score = score - 30;
-        player.GetComponent<PlayerTest>().player.score = score;
+        scoreMultifonction = scoreMultifonction - 30;
+        player.GetComponent<PlayerTest>().player.scoreMultifonction = scoreMultifonction;
     }
 
     // -70
@@ -299,8 +325,8 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        score = score - 70;
-        player.GetComponent<PlayerTest>().player.score = score;
+        scoreMultifonction -= 70;
+        player.GetComponent<PlayerTest>().player.scoreMultifonction = scoreMultifonction;
     }
 
     // -150
@@ -321,7 +347,7 @@ public class Scoring : MonoBehaviour
 
     public void WhatTheFuck()
     {
-        score -= (int)TimeBonus();
+        scoreMultifonction -= (int)TimeBonus();
         if (!hadMalusColis)
         {
             hadMalusColis = true;
@@ -344,6 +370,77 @@ public class Scoring : MonoBehaviour
             errorTextZone.text = errorText;
             StartCoroutine(TempsAffichageErreur());
         }
+        
+        if(isMf)
+        {
+            if (playerScriptable.erreursMultifonction == null)
+            {
+                playerScriptable.erreursMultifonction = new List<string>();
+                playerScriptable.nbErreursMultifonction = new List<int>();
+            }
+            if(!playerScriptable.erreursMultifonction.Contains(errorText))
+            {
+                playerScriptable.erreursMultifonction.Add(errorText);
+                playerScriptable.nbErreursMultifonction.Add(1);
+            }
+            else
+            {
+                for(int i = 0; i < playerScriptable.erreursMultifonction.Count; i++)
+                {
+                    if (playerScriptable.erreursMultifonction[i] == errorText)
+                    {
+                        playerScriptable.nbErreursMultifonction[i]++;
+                    }
+                }
+            }
+            
+        }
+        else if(isGTP)
+        {
+            if (playerScriptable.erreursGTP == null)
+            {
+                playerScriptable.erreursGTP = new List<string>();
+                playerScriptable.nbErreursGTP = new List<int>();
+            }
+            if (!playerScriptable.erreursGTP.Contains(errorText))
+            {
+                playerScriptable.erreursGTP.Add(errorText);
+                playerScriptable.nbErreursGTP.Add(1);
+            }
+            else
+            {
+                for (int i = 0; i < playerScriptable.erreursGTP.Count; i++)
+                {
+                    if (playerScriptable.erreursGTP[i] == errorText)
+                    {
+                        playerScriptable.nbErreursGTP[i]++;
+                    }
+                }
+            }
+        }
+        else if(isReception)
+        {
+            if (playerScriptable.erreursReception == null)
+            {
+                playerScriptable.erreursReception = new List<string>();
+                playerScriptable.nbErreursReception = new List<int>();
+            }
+            if (!playerScriptable.erreursReception.Contains(errorText))
+            {
+                playerScriptable.erreursReception.Add(errorText);
+                playerScriptable.nbErreursReception.Add(1);
+            }
+            else
+            {
+                for (int i = 0; i < playerScriptable.erreursReception.Count; i++)
+                {
+                    if (playerScriptable.erreursReception[i] == errorText)
+                    {
+                        playerScriptable.nbErreursReception[i]++;
+                    }
+                }
+            }
+        }
     }
 
     IEnumerator TempsAffichageErreur()
@@ -356,7 +453,7 @@ public class Scoring : MonoBehaviour
     // +50
     public void solveAnomalie()
     {
-        score += (int)(100 * multiplicator);
+        scoreMultifonction += (int)(100 * multiplicator);
         solveAnomalieCombo++;
     }
 
@@ -365,7 +462,7 @@ public class Scoring : MonoBehaviour
     {
         if (!hadMalusAnomalie)
         {
-            score += (int)(400 * multiplicator);
+            scoreMultifonction += (int)(400 * multiplicator);
             solveAnomalieComboWithoutMalus++;
         }
         else
@@ -377,7 +474,7 @@ public class Scoring : MonoBehaviour
     // +100
     public void sendColis()
     {
-        score += (int)(200 * multiplicator);
+        scoreMultifonction += (int)(200 * multiplicator);
         sendColisCombo++;
         if(!tookHelp)
         {
@@ -391,13 +488,13 @@ public class Scoring : MonoBehaviour
     {
         if (!hadMalusColis)
         {
-            score += (int)(900 * multiplicator);
+            scoreMultifonction += (int)(900 * multiplicator);
             sendColisComboWithoutMalus++;
             if (!tookHelp)
             {
                 noHelp++;
             }
-            score += (int)TimeBonus();
+            scoreMultifonction += (int)TimeBonus();
         }
         else
         {

@@ -78,8 +78,6 @@ public class RecountTab : MonoBehaviour
             newTicket.numeroCodeBarre = 0;
 
             ticket.    GetComponent<GetIWayFromObject>().IWayTicket = newTicket;
-
-            Scoring.instance.MinorPenalty();                                                                                       //Test de scoring
         }
 
         isInventory = true;
