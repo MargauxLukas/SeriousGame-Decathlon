@@ -11,6 +11,8 @@ public class ConsoleMonitor : MonoBehaviour
     public RemplissageColisGTP colisActuelPoste;
     public int nbMonitor = 0;
 
+    public int phaseActuelle;
+
     public void Start()
     {
         text.text = "";   
@@ -30,7 +32,22 @@ public class ConsoleMonitor : MonoBehaviour
 
     public void Envoyer(int emplacement) 
     {
-        //mcv.FairePartirUnColis(emplacement);
-        colisAttenduManage.DetectionColis(colisActuelPoste.colisScriptable, emplacement);
+        if (mcv.PeutFairePartirColis())
+        {
+            if (colisActuelPoste.currentPhase < phaseActuelle)
+            {
+                colisActuelPoste.currentPhase++;
+            }
+            else
+            {
+                //Renvoyer le colis qui vient d'être géré
+                bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
+                mcv.FairePartirUnColis();
+                if (noAnomalie)
+                {
+                    colisAttenduManage.RenvoieColis(emplacement);
+                }
+            }
+        }
     }
 }

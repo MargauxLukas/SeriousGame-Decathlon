@@ -39,6 +39,7 @@ public class ManagerColisVider : MonoBehaviour
 
     public IEnumerator FaireVenirPremiersColis()
     {
+        yield return new WaitForSeconds(1f);
         FaireVenirNouveauColis(emplacement);
         emplacement++;
         StartCoroutine(ActiverAutreColis(0));
@@ -55,7 +56,14 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (colisVider.Count > 1)
             {
-                newColis = Instantiate(colisVider[Random.Range(0, colisVider.Count - 1)]);
+                for(int m = 0; m < colisVider.Count; m++)
+                {
+                    int emplacementTempo = Random.Range(0, 2);
+                    if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[0].rfid == colisVider[m].listArticles[0].rfid)
+                    {
+                        newColis = Instantiate(colisVider[m]);
+                    }
+                }
             }
             else if (colisVider.Count > 0)
             {
@@ -83,28 +91,41 @@ public class ManagerColisVider : MonoBehaviour
     }
 
 
-    public void FairePartirUnColis()
+    public bool PeutFairePartirColis()
     {
         if (tempsReponseChangementColis <= 0)
         {
-            tempsReponseChangementColis = 0.7f;
             if (emplacementsScripts[0].activeSelf && emplacementsScripts[0].activeSelf)
             {
-                etatColis[emplacement] = false;
-                emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
-                emplacementsScripts[emplacement].SetActive(false);
-                StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
-                if (colisVider != null)
-                {
-                    //emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
-                }
-                if (emplacementsScripts[(emplacement + 1) % 2] != null)
-                {
-                    StartCoroutine(ActiverAutreColis((emplacement + 1) % 2));
-                }
-                emplacement = (emplacement + 1) % 2;
+                return true;
             }
         }
+        return false;
+    }
+
+    public void FairePartirUnColis()
+    {
+        /*if (tempsReponseChangementColis <= 0)
+        {
+            tempsReponseChangementColis = 0.7f;
+            if (emplacementsScripts[0].activeSelf && emplacementsScripts[0].activeSelf)
+            {*/
+        tempsReponseChangementColis = 0.7f;
+        etatColis[emplacement] = false;
+        emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
+        emplacementsScripts[emplacement].SetActive(false);
+        StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
+        if (colisVider != null)
+        {
+            emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
+        }
+        if (emplacementsScripts[(emplacement + 1) % 2] != null)
+        {
+            StartCoroutine(ActiverAutreColis((emplacement + 1) % 2));
+        }
+        emplacement = (emplacement + 1) % 2;
+        /*}
+    }*/
     }
 
     IEnumerator ActiverAutreColis(int emplacement)
@@ -118,7 +139,32 @@ public class ManagerColisVider : MonoBehaviour
             if (m>=99)
             {
                 emplacementsScripts[emplacement].GetComponent<BoxCollider2D>().enabled = true;
-                managerColis.AjoutArticleColisVoulu(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0], Random.Range(0,2), Random.Range(1,7));
+                //managerColis.AjoutArticleColisVoulu(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0], Random.Range(0,2), Random.Range(1,7));
+                List<int> emplacementsConcerne = new List<int>();
+                List<int> nombreArticles = new List<int>();
+                for (int i = 0; i < managerColis.colisActuellementTraite.Count; i++)
+                {
+                    for (int p = 0; p < managerColis.colisActuellementTraite[i].listArticles.Count; p++)
+                    {
+                        if (managerColis.colisActuellementTraite[i].listArticles[p].rfid == emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].rfid)
+                        {
+                            if(!emplacementsConcerne.Contains(i))
+                            {
+                                emplacementsConcerne.Add(i);
+                                nombreArticles.Add(1);
+                            }
+                            else
+                            {
+                                nombreArticles[i]++;
+                            }
+                        }
+                    }
+                }
+                managerColis.AjoutArticleColisVoulu(emplacementsConcerne[0], nombreArticles[0]);
+                /* for (int u = 0; u < emplacementsConcerne.Count; u++)
+                 {
+                     managerColis.AjoutArticleColisVoulu(emplacementsConcerne[u], nombreArticles[u]);
+                 }*/
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }

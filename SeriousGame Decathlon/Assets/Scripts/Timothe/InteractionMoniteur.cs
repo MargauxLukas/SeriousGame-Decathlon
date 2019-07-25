@@ -6,7 +6,7 @@ public class InteractionMoniteur : MonoBehaviour
 {
     private bool doesTouch;
 
-    public DialogueManager dialManage;
+    public DialogueManager  dialManage;
     public List<Dialogue> dialogueList;
 
     // Update is called once per frame
