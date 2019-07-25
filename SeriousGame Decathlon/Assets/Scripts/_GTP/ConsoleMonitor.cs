@@ -64,6 +64,7 @@ public class ConsoleMonitor : MonoBehaviour
                 {
                     colisAttenduManage.RenvoieColis(emplacement);
                 }
+                UpdateAffichage(0);
             }
         }
     }
