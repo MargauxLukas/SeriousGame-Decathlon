@@ -10558,9 +10558,11 @@ MonoBehaviour:
   tapis1GameObject: {fileID: 1929869660}
   tapis2GameObject: {fileID: 827525605}
   tapis3GameObject: {fileID: 1802423009}
-  ColisPrefab: {fileID: 0}
-  managerVide: {fileID: 0}
+  ColisPrefab: {fileID: 2672122063606575628, guid: deb4dff78b23a3d44bfdd0f4def0f0a4,
+    type: 3}
+  managerVide: {fileID: 882313604}
   csTab:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1446761731
