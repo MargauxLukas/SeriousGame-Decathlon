@@ -16,6 +16,9 @@ public class Scoring : MonoBehaviour
 
     [Header("Score")]
     public int score;
+    public int scoreGTP;
+    public int scoreReception;
+    public int scoreMultifonction;
 
     [Header("---")]
     public bool gotNewColis;
@@ -41,6 +44,10 @@ public class Scoring : MonoBehaviour
     public float currentTime;
     int currentColisInCombo;
     public bool pauseCombo;
+
+    public bool isReception;
+    public bool isMf;
+    public bool isGTP;
 
     void Awake()
     {
@@ -344,6 +351,7 @@ public class Scoring : MonoBehaviour
             errorTextZone.text = errorText;
             StartCoroutine(TempsAffichageErreur());
         }
+        if()
     }
 
     IEnumerator TempsAffichageErreur()

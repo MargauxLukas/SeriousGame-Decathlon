@@ -115,6 +115,7 @@ public class RemplissageColisGTP : MonoBehaviour
         }
         colisScriptable.listArticles.Add(articleToHad);
         tauxRemplissage = colisScriptable.listArticles.Count / 10;
+        //Mettre à jour la barre de remplissage
     }
 
     public IEnumerator AnimationColisRenvoie()
