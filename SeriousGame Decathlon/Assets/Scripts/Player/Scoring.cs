@@ -351,7 +351,7 @@ public class Scoring : MonoBehaviour
             errorTextZone.text = errorText;
             StartCoroutine(TempsAffichageErreur());
         }
-        if()
+        
     }
 
     IEnumerator TempsAffichageErreur()
