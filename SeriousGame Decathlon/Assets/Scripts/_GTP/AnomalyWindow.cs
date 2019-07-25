@@ -7,6 +7,7 @@ public class AnomalyWindow : MonoBehaviour
     public GameObject ecranDeBase;
     public GameObject ecranCorrectQuantity;
     
+    
     public void CorrectQuantityInSourceTU()
     {
         ecranCorrectQuantity.SetActive(true);

@@ -38,9 +38,9 @@ public class RemplissageColisGTP : MonoBehaviour
             {
                 doesTouch = false;
                 Debug.Log("Test");
-                List<List<Article>> newListes = new List<List<Article>>();
-                List<Article> articleRestant = new List<Article>();
-                List<Article> articlesDejaConnus = new List<Article>();
+                List<List<Article>> newListes    = new List<List<Article>>();
+                List<Article> articleRestant     = new List     <Article> ();
+                List<Article> articlesDejaConnus = new List     <Article> ();
 
                 if (!tasArticle[0].activeSelf)
                 {
@@ -49,9 +49,9 @@ public class RemplissageColisGTP : MonoBehaviour
                         if (!articlesDejaConnus.Contains(colisScriptable.listArticles[i]))
                         {
                             Debug.Log("Test");
-                            newListes.Add(new List<Article>());
+                            newListes                     .Add(new List<Article>());
                             newListes[newListes.Count - 1].Add(colisScriptable.listArticles[i]);
-                            articlesDejaConnus.Add(colisScriptable.listArticles[i]);
+                            articlesDejaConnus            .Add(colisScriptable.listArticles[i]);
                         }
                         else
                         {
@@ -122,8 +122,8 @@ public class RemplissageColisGTP : MonoBehaviour
     {
         if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
         {
-            transform.position += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f;
-            transform.localScale -= Vector3.one * Time.fixedDeltaTime * 0.13f;
+            transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f   ;
+            transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.13f;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }

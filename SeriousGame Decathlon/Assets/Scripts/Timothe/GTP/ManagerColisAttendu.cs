@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class ManagerColisAttendu : MonoBehaviour
 {
+    [Header("A Assigner")]
     public Monitor monitor;
-    public List<Colis> colisVoulus = new List<Colis>();
-    public List<Colis> colisActuellementTraite = new List<Colis>();
-    public List<int> phasesColisVoulus = new List<int>();
     public ManagerColisVider colisViderManage;
+
+    [Header("Liste")]
+    public List<Colis> colisVoulus             = new List<Colis>();
+    public List<Colis> colisActuellementTraite = new List<Colis>();
+    public List<int  > phasesColisVoulus       = new List<int  >();
     public List<ConsoleMonitor> cm;
 
+    [Header("INT")]
     public int nombreColisVoulu;
+    public int nbArticleVoulu  ;
+    public int nbEmplacement;
 
     float chanceAvoirTropArticlePrevu = 0.05f;
 
@@ -21,6 +27,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisVoulus.Add(new Colis());
             colisVoulus[i].listArticles = new List<Article>();
+
             int nb = Random.Range(2, 3);
             int nbPhase = 0;
 
@@ -74,18 +81,22 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public void AjoutArticleColisVoulu(int emplacement, int nombreArtVoulu)
     {
+        nbArticleVoulu = nombreArtVoulu;
         monitor.UpdateAffichage(nombreArtVoulu);
         monitor.ResetMonitor();
 
         switch (emplacement)
         {
             case 0:
+                nbEmplacement = 0;
                 monitor.Colis1Actif();
                 break;
             case 1:
+                nbEmplacement = 1;
                 monitor.Colis2Actif();
                 break;
             case 2:
+                nbEmplacement = 2;
                 monitor.Colis3Actif();
                 break;
         }
@@ -94,7 +105,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public bool DetectionAllColis(Colis colisToCompare, int emplacement)
     {
         List<Article> articleEnvoye = new List<Article>();
-        List<Article> articleVoulu = new List<Article>();
+        List<Article> articleVoulu  = new List<Article>();
 
         foreach (Article art in colisToCompare.listArticles)
         {
@@ -108,31 +119,24 @@ public class ManagerColisAttendu : MonoBehaviour
         //articleVoulu = colisVoulus[emplacement].listArticles;
 
         Debug.Log(articleEnvoye.Count);
-        Debug.Log(articleVoulu.Count);
+        Debug.Log(articleVoulu .Count);
 
         for (int i = 0; i < articleEnvoye.Count; i++)
         {
             for (int j = 0; j < articleVoulu.Count; j++)
             {
-                if (j < 0)
-                {
-                    j = 0;
-                }
-                if (i < 0)
-                {
-                    i = 0;
-                }
+                if (j < 0){j = 0;}
+                if (i < 0){i = 0;}
                 Debug.Log("I : " + i + " et J : " + j);
                 if (articleEnvoye.Count > 0 && articleVoulu.Count > 0)
                 {
                     if (articleEnvoye[i] == articleVoulu[j])
                     {
                         Debug.Log("Test Detect");
-                        articleVoulu.RemoveAt(j);
+                        articleVoulu .RemoveAt(j);
                         articleEnvoye.RemoveAt(i);
                         j--;
                         i--;
-
                     }
                 }
             }
@@ -170,7 +174,7 @@ public class ManagerColisAttendu : MonoBehaviour
         Colis colisRestant = Colis.CreateInstance<Colis>();
 
         List<Article> articleEnvoye = new List<Article>();
-        List<Article> articleVoulu = new List<Article>();
+        List<Article> articleVoulu  = new List<Article>();
 
         foreach (Article art in colisRempli.listArticles)
         {
@@ -184,25 +188,18 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             for (int j = 0; j < articleVoulu.Count; j++)
             {
-                if (j < 0)
-                {
-                    j = 0;
-                }
-                if (i < 0)
-                {
-                    i = 0;
-                }
+                if (j < 0){j = 0;}
+                if (i < 0){i = 0;}
                 Debug.Log("I : " + i + " et J : " + j);
                 if (articleEnvoye.Count > 0 && articleVoulu.Count > 0)
                 {
                     if (articleEnvoye[i] == articleVoulu[j])
                     {
                         Debug.Log("Test Detect");
-                        articleVoulu.RemoveAt(j);
+                        articleVoulu .RemoveAt(j);
                         articleEnvoye.RemoveAt(i);
                         j--;
                         i--;
-
                     }
                 }
             }
@@ -212,7 +209,7 @@ public class ManagerColisAttendu : MonoBehaviour
         int nbPhaseTempo = phasesColisVoulus[3];
 
         colisRestant.listArticles = articleVoulu;
-        List<Article> artInColis = new List<Article>();
+        List<Article> artInColis  = new List<Article>();
 
         foreach(Article art in colisRestant.listArticles)
         {
@@ -229,7 +226,7 @@ public class ManagerColisAttendu : MonoBehaviour
         phasesColisVoulus[emplacement] = 0;
 
         phasesColisVoulus.Add(nbPhaseTempo);
-        colisVoulus.Add(colisTempo);
+        colisVoulus      .Add(colisTempo  );
     }
 
     public void CorrectPickQuantity(int emplacement, Colis colisRempli, int nombreArticleVoulu, Article articleEnQuestion)
@@ -247,10 +244,7 @@ public class ManagerColisAttendu : MonoBehaviour
 
         for(int i = 0; i < colisVoulus[emplacement].listArticles.Count; i++)
         {
-            if(i<0)
-            {
-                i++;
-            }
+            if(i<0){i++;}
 
             if (colisVoulus[emplacement].listArticles[i] == articleEnQuestion)
             {
@@ -261,10 +255,7 @@ public class ManagerColisAttendu : MonoBehaviour
 
         for (int i = 0; i < colisVoulus[3].listArticles.Count; i++)
         {
-            if (i < 0)
-            {
-                i++;
-            }
+            if (i < 0){i++;}
 
             if (colisVoulus[3].listArticles[i] == articleEnQuestion)
             {
@@ -282,6 +273,5 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisVoulus[3].listArticles.Add(articleEnQuestion);
         }
-
     }
 }
