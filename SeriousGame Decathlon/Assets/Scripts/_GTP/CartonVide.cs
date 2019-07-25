@@ -106,6 +106,7 @@ public class CartonVide : MonoBehaviour
             {
                 if (collision.gameObject.name == "Tapis1" && cvl.isFree1 && !lectureEnCours)
                 {
+                    collision.GetComponent<BoxCollider2D>().enabled = false;
                     cvl.PutAnotherColis(startPosition);
                     lectureEnCours = true;
                     //Tableau[0]
@@ -115,12 +116,14 @@ public class CartonVide : MonoBehaviour
                     cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                     GetComponent<RemplissageColisGTP>().enabled = true;
                     GetComponent<RemplissageColisGTP>().startPosition = startPosition;
+                    GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
                     mcv.colisActuellementsPose[0] = GetComponent<RemplissageColisGTP>();
                     enabled = false;
                     return;
                 }
                 else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
                 {
+                    collision.GetComponent<BoxCollider2D>().enabled = false;
                     cvl.PutAnotherColis(startPosition);
                     lectureEnCours = true;
                     //Tableau[1]
@@ -130,12 +133,14 @@ public class CartonVide : MonoBehaviour
                     cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                     GetComponent<RemplissageColisGTP>().enabled = true;
                     GetComponent<RemplissageColisGTP>().startPosition = startPosition;
+                    GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
                     mcv.colisActuellementsPose[1] = GetComponent<RemplissageColisGTP>();
                     enabled = false;
                     return;
                 }
                 else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
                 {
+                    collision.GetComponent<BoxCollider2D>().enabled = false;
                     cvl.PutAnotherColis(startPosition);
                     lectureEnCours = true;
                     //Tableau[2]
@@ -145,6 +150,7 @@ public class CartonVide : MonoBehaviour
                     cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
                     GetComponent<RemplissageColisGTP>().enabled = true;
                     GetComponent<RemplissageColisGTP>().startPosition = startPosition;
+                    GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
                     mcv.colisActuellementsPose[2] = GetComponent<RemplissageColisGTP>();
                     enabled = false;
                     return;

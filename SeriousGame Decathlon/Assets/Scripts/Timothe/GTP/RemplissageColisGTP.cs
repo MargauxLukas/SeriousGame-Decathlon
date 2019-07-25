@@ -20,6 +20,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public bool besoinEtreVide;
 
     public bool isOpen;
+    public BoxCollider2D boxDesactivee;
 
     private void Start()
     {
@@ -128,6 +129,10 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public IEnumerator AnimationColisRenvoie()
     {
+        if(!boxDesactivee.enabled)
+        {
+            boxDesactivee.enabled = true;
+        }
         if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
         {
             transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f   ;

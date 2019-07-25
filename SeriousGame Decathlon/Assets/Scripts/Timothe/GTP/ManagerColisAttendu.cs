@@ -72,6 +72,7 @@ public class ManagerColisAttendu : MonoBehaviour
             Debug.Log(colisVoulus[3]);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
+            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
         else if(colisVoulus.Count<=0)
         {
