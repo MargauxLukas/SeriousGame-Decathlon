@@ -10,6 +10,7 @@ public class CartonVide : MonoBehaviour
 
     public CartonVideLink cvl;
     public ManagerColisVider mcv;
+    public ConsoleMonitor cm;
 
     private Vector3 tapis1Pos;
     private Vector3 tapis2Pos;
@@ -108,6 +109,7 @@ public class CartonVide : MonoBehaviour
                 {
                     collision.GetComponent<BoxCollider2D>().enabled = false;
                     cvl.PutAnotherColis(startPosition);
+                    mcv.managerColis.cm[0].colisActuelPoste = gameObject.GetComponent<RemplissageColisGTP>();
                     lectureEnCours = true;
                     //Tableau[0]
                     startPosition = new Vector3(62.40f, -3.20f, 0f);
@@ -125,6 +127,7 @@ public class CartonVide : MonoBehaviour
                 {
                     collision.GetComponent<BoxCollider2D>().enabled = false;
                     cvl.PutAnotherColis(startPosition);
+                    mcv.managerColis.cm[1].colisActuelPoste = gameObject.GetComponent<RemplissageColisGTP>();
                     lectureEnCours = true;
                     //Tableau[1]
                     startPosition = new Vector3(65.5f, -3.20f, 0f);
@@ -142,6 +145,7 @@ public class CartonVide : MonoBehaviour
                 {
                     collision.GetComponent<BoxCollider2D>().enabled = false;
                     cvl.PutAnotherColis(startPosition);
+                    mcv.managerColis.cm[2].colisActuelPoste = gameObject.GetComponent<RemplissageColisGTP>();
                     lectureEnCours = true;
                     //Tableau[2]
                     startPosition = new Vector3(68.40f, -3.20f, 0f);

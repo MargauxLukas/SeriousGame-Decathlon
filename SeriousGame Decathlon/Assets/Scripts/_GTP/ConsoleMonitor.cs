@@ -13,7 +13,7 @@ public class ConsoleMonitor : MonoBehaviour
 
     public int phaseActuelle;
 
-    public void Start()
+    public void Start() 
     {
         text.text = "";   
     }
@@ -22,12 +22,29 @@ public class ConsoleMonitor : MonoBehaviour
     {
         nbMonitor = nb;
         text.text = nb.ToString();
+        //colisAttenduManage.nbArticleVoulu
     }
 
-    public void UpdateAffichageConsole(int nb)
+    public void UpdateAffichageConsole(int nb, int emplacement)
     {
         text.text = (nbMonitor + nb).ToString();
         nbMonitor =  nbMonitor + nb;
+
+        for (int compteur = 0; compteur < colisAttenduManage.colisVoulus[emplacement].listArticles.Count; compteur++)
+        {
+            if (compteur > colisAttenduManage.colisVoulus[emplacement].listArticles.Count-nb)
+            {
+                colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+            }
+        }
+        for(int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
+        {
+            if (compteur > colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count - nb)
+            {
+                colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+            }
+        }
+        colisAttenduManage.AjoutArticleColisVoulu(emplacement, nbMonitor);
     }
 
     public void Envoyer(int emplacement) 
