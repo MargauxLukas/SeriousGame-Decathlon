@@ -37,7 +37,7 @@ public class Console : MonoBehaviour
 
     public void Valider() 
     {
-        //monitor.UpdateAffichage();
+        monitor.UpdateAffichage(monitor.nbMonitor + nb);
         cm.UpdateAffichageConsole(nb);
         nb = 0;
         UpdateAffichage();

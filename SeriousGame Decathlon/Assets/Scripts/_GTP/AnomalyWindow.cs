@@ -7,7 +7,6 @@ public class AnomalyWindow : MonoBehaviour
     public GameObject ecranDeBase;
     public GameObject ecranCorrectQuantity;
     
-    
     public void CorrectQuantityInSourceTU()
     {
         ecranCorrectQuantity.SetActive(true);
@@ -27,7 +26,6 @@ public class AnomalyWindow : MonoBehaviour
     public void CuttingDepth()
     {
         gameObject.SetActive(false);
-
     }
 
     public void Back()
