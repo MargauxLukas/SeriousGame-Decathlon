@@ -5499,6 +5499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 679415226}
   - component: {fileID: 679415227}
+  - component: {fileID: 679415228}
   m_Layer: 0
   m_Name: EcranPickTUContent
   m_TagString: Untagged
@@ -5569,6 +5570,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &679415228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679415225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f0c180006279c448331bc961a1f311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mca: {fileID: 882313606}
+  cvl: {fileID: 1435407245}
+  ecranDeBase: {fileID: 1773461723}
 --- !u!1 &711470329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7434,7 +7450,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
   chanceColisPasRemplit: 1
   managerColis: {fileID: 882313606}
-  colisActuellementsPose: []
+  colisActuellementsPose:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
