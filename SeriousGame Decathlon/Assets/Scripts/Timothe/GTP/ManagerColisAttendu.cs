@@ -51,7 +51,7 @@ public class ManagerColisAttendu : MonoBehaviour
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
                 }
             }
-            phasesColisVoulus.Add(nbPhase);
+            phasesColisVoulus.Add(0);
 
             if(Random.Range(0,100)<chanceToComeFromInternet)
             {
@@ -63,7 +63,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisActuellementTraite.Add(colisVoulus[q]);
             cm[q].phaseActuelle = phasesColisVoulus[q];
-            //Debug.Log("Start les phases : " + phasesColisVoulus[q]);
+            Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
     }
 
