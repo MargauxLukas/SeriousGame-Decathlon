@@ -264,7 +264,7 @@ public class ManagerColisVider : MonoBehaviour
                         if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
                         {
                             nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
-                            Debug.Log(nbEmplacementPrendre);
+                            //Debug.Log(nbEmplacementPrendre);
                         }
                         if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                         {

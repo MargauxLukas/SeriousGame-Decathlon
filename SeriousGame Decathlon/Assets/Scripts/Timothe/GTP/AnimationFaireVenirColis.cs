@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationFaireVenirColis : MonoBehaviour
 {
     public Transform positionVisee;
-    public float speed = 1;
+    public float speed = 5;
     Vector3 startPosition;
     Vector3 startScale;
 

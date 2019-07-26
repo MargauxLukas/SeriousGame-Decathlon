@@ -73,7 +73,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisActuellementTraite.Add(colisVoulus[q]);
             cm[q].phaseActuelle = phasesColisVoulus[q];
-            Debug.Log("Start les phases : " + phasesColisVoulus[q]);
+            //Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
     }
 
