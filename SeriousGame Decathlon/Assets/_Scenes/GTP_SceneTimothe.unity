@@ -8508,7 +8508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionVisee: {fileID: 1446761732}
-  speed: 3
+  speed: 5
   emplacement: 1
 --- !u!212 &850428004
 SpriteRenderer:
@@ -18807,7 +18807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionVisee: {fileID: 558531028}
-  speed: 3
+  speed: 5
   emplacement: 0
 --- !u!212 &4588864375355896061
 SpriteRenderer:

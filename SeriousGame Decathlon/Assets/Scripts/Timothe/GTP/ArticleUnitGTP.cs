@@ -33,7 +33,7 @@ public class ArticleUnitGTP : MonoBehaviour
                 if (touch.phase == TouchPhase.Ended)
                 {
                     doesTouch = false;
-                    if(remplisColis == null || remplisColisPrincipal == null)
+                    if(remplisColis == null && remplisColisPrincipal == null)
                     {
                         if(transform.position.x < 61.5f || transform.position.x > 78.5f || transform.position.y > -0.35f || transform.position.y < -2.5f)
                         {
