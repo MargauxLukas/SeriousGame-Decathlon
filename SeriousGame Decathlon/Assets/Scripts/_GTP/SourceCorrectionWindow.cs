@@ -15,6 +15,8 @@ public class SourceCorrectionWindow : MonoBehaviour
 
     public GameObject ecranDeBase;
 
+    public ManagerColisVider mcv;
+
     public void AffichageDamaged()
     {
         textDamaged.text = nbDamaged.ToString();
@@ -83,6 +85,7 @@ public class SourceCorrectionWindow : MonoBehaviour
 
     public void Confirm()
     {
+        mcv.aEteVerifier = true;
         Debug.Log("Pas encore integré");
     }
 

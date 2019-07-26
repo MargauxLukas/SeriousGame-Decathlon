@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManagerColisVider : MonoBehaviour
 {
@@ -14,10 +15,15 @@ public class ManagerColisVider : MonoBehaviour
     public List<Colis> colisVider;
     private int nbCurrentColis = 0;
     public int chanceColisPasRemplit;
+    public int chanceArticlePasBon;
+
+    public Image photoArticle;
 
     public ManagerColisAttendu managerColis;
 
     public List<RemplissageColisGTP> colisActuellementsPose;
+
+    public bool aEteVerifier;
 
     private int emplacement = 0;
 
@@ -94,7 +100,14 @@ public class ManagerColisVider : MonoBehaviour
                     newColis.listArticles.RemoveAt(newColis.listArticles.Count);
                 }
             }
-            //Rajouter une fonction pour mettre un article aléatoire à la fin du colis (article autre que celui déjà dedans)
+
+            if(Random.Range(0,100) < chanceArticlePasBon)
+            {
+                while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count-1])
+                {
+                    newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
+                }
+            }
         }
         return newColis;
     }
@@ -130,6 +143,14 @@ public class ManagerColisVider : MonoBehaviour
             {*/
         tempsReponseChangementColis = 0.7f;
         etatColis[emplacement] = false;
+        for(int p = 1; p < emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count; p++)
+        {
+            if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[p] && !aEteVerifier)
+            {
+                Debug.Log("Le colis n'a pas été signalé alors qu'il a une anomalie");
+            }
+        }
+        aEteVerifier = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
         emplacementsScripts[emplacement].SetActive(false);
         StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
@@ -150,6 +171,11 @@ public class ManagerColisVider : MonoBehaviour
     {
         for(int m = 0; m < 100; m++)
         {
+            if (photoArticle.enabled)
+            {
+                photoArticle.enabled = false;
+            }
+            photoArticle.sprite = null;
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = true;
             emplacementsScripts[emplacement].transform.position += new Vector3(0, 1, 0)  * Time.fixedDeltaTime * 0.3f;
             emplacementsScripts[(emplacement + 1) % 2].GetComponent<BoxCollider2D>().enabled = false;
@@ -186,6 +212,11 @@ public class ManagerColisVider : MonoBehaviour
                     }
                 }
                 managerColis.AjoutArticleColisVoulu(emplacementsConcerne[0], nombreArticles[0]);
+                if(!photoArticle.enabled)
+                {
+                    photoArticle.enabled = true;
+                }
+                photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].spriteGTP;
                 /* for (int u = 0; u < emplacementsConcerne.Count; u++)
                  {
                      managerColis.AjoutArticleColisVoulu(emplacementsConcerne[u], nombreArticles[u]);

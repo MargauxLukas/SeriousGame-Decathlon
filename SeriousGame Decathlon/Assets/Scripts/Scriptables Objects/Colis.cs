@@ -36,6 +36,9 @@ public class Colis : ScriptableObject
     public int nbAnomalie;
     public List<string> listAnomalies;
 
+    //Pour le GTP
+    public bool comeFromInternet;
+
     public string provenance;
     Direction orientation;
 
