@@ -20,6 +20,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbEmplacement;
 
     float chanceAvoirTropArticlePrevu = 0;
+    public float chanceToComeFromInternet = 0;
 
     public void Start()
     {
@@ -51,6 +52,11 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
             phasesColisVoulus.Add(nbPhase);
+
+            if(Random.Range(0,100)<chanceToComeFromInternet)
+            {
+                colisVoulus[i].comeFromInternet = true;
+            }
         }
 
         for (int q = 0; q < 3; q++)

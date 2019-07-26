@@ -23,6 +23,14 @@ public class DetectionColisBombe : MonoBehaviour
                         StartCoroutine(MoveToNeuviemePoste(collision.gameObject));
                     }
                 }
+
+                if (collision.GetComponent<RemplissageColisGTP>().colisScriptable.comeFromInternet)
+                {
+                    if (collision.GetComponent<RemplissageColisGTP>().nbArticleScanned != collision.GetComponent<RemplissageColisGTP>().colisScriptable.listArticles.Count)
+                    {
+                        Debug.Log("Des articles n'ont aps été scanner, mettre un malus ici");
+                    }
+                }
             }
         }
     }

@@ -12,11 +12,7 @@ public class ArticleUnitGTP : MonoBehaviour
 
     private RemplissageColisGTP remplisColis;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool hasBeenScanned;
 
     // Update is called once per frame
     void Update()

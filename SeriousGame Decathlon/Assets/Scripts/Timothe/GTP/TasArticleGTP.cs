@@ -71,6 +71,19 @@ public class TasArticleGTP : MonoBehaviour
         }
     }
 
+    public int ReturnNumberScanned()
+    {
+        int nbScanned = 0;
+        foreach(GameObject gm in affichageTas)
+        {
+            if(gm.GetComponent<ArticleUnitGTP>().hasBeenScanned)
+            {
+                nbScanned++;
+            }
+        }
+        return nbScanned;
+    }
+
     public List<Article> CloseTasArticle()
     {
         foreach(GameObject gm in affichageTas)

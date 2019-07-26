@@ -22,6 +22,8 @@ public class RemplissageColisGTP : MonoBehaviour
     public bool isOpen;
     public BoxCollider2D boxDesactivee;
 
+    public int nbArticleScanned;
+
     private void Start()
     {
         colisScriptable = Instantiate(colisScriptable);
@@ -94,6 +96,7 @@ public class RemplissageColisGTP : MonoBehaviour
                         if (tasArticle[m].activeSelf)
                         {
                             tasArticle[m].SetActive(false);
+                            nbArticleScanned = tasArticle[m].GetComponent<TasArticleGTP>().ReturnNumberScanned();
                             newListes.Add(tasArticle[m].GetComponent<TasArticleGTP>().CloseTasArticle());
                             repack = true;
                         }
