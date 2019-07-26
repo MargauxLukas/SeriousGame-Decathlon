@@ -19,7 +19,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbArticleVoulu  ;
     public int nbEmplacement   ;
 
-    float chanceAvoirTropArticlePrevu = 0;
+    float chanceAvoirTropArticlePrevu     = 0;
     public float chanceToComeFromInternet = 0;
 
     public void Start()
