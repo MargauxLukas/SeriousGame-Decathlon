@@ -234,7 +234,7 @@ public class ColisScript : MonoBehaviour
                 {
                     Debug.Log(Vector3.Distance(Camera.main.ScreenToWorldPoint(touch.position), transform.position));
                     estSecoue = false;
-                    if (tournerMenuIsOpen && TutoManagerMulti.instance != null && TutoManagerMulti.instance.canCloseMenuToruner == true)
+                    if (tournerMenuIsOpen && TutoManagerMulti.instance != null && TutoManagerMulti.instance.canCloseMenuTourner == true)
                     {
                         tournerMenu.SetActive(false);
                         tournerMenuIsOpen = false;

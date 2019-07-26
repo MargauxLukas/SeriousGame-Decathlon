@@ -46,6 +46,7 @@ public class ChangementEtiquettes : MonoBehaviour
                 ampouleClignotante  .SetActive(false);
                 bulle               .SetActive(false);
                 doesTouch = false;
+                if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(22); }
             }
         }
     }

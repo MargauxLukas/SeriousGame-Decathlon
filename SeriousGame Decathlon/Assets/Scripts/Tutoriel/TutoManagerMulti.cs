@@ -22,7 +22,7 @@ public class TutoManagerMulti : MonoBehaviour
     public bool canVider            = false;
     public bool canOuvrirFermer     = false;
     public bool canOpenTurnMenu     = false;
-    public bool canCloseMenuToruner = false;
+    public bool canCloseMenuTourner = false;
 
     [Header("Menu Articles")]
     public bool canColis1         = false;
@@ -923,7 +923,7 @@ public class TutoManagerMulti : MonoBehaviour
     IEnumerator CloseTurnMenu (float time)
     {
         yield return new WaitForSeconds(time);
-        canCloseMenuToruner = true;
+        canCloseMenuTourner = true;
     }
 
     IEnumerator ReturnToMenu  (float time)
@@ -2232,7 +2232,7 @@ public class TutoManagerMulti : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtClick)          .enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
-            canCloseMenuToruner = false;
+            canCloseMenuTourner = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
