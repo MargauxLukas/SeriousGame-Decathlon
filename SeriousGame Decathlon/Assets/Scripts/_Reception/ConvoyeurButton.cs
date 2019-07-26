@@ -30,12 +30,26 @@ public class ConvoyeurButton : MonoBehaviour
     {
         if (convoyeur.isOn)
         {
-            if (UpPressed) { convoyeur.MoveZ("up"); }                       //Boutton Monter
-            if (downPressed) { convoyeur.MoveZ("down"); }                       //Boutton Descendre
+            if (UpPressed)
+            {
+                if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(5); }
+                convoyeur.MoveZ("up");                                          //Boutton Monter
+            }
+
+            if (downPressed)
+            {
+                if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(11); }
+                convoyeur.MoveZ("down");
+            }                       //Boutton Descendre
             if (!isCollide)
             {
-                if (deplierPressed) { convoyeur.MoveY("deplier"); }                       //Boutton Deplier
+                if (deplierPressed)
+                {
+                    if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(2); }
+                    convoyeur.MoveY("deplier");                                 //Boutton Deplier
+                }
             }
+
             if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
             else { return; }
         }
@@ -56,6 +70,7 @@ public class ConvoyeurButton : MonoBehaviour
         }
         else if (!detectAnom.gotAnomalie && etiquettesManager.nbEtiquettes > 0)
         {
+            if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(1); }
             isOnAmpoule .SetActive(true );
             isOffAmpoule.SetActive(false);
             convoyeur.isOn = true;

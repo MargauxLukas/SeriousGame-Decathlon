@@ -47,7 +47,30 @@ public class TapisRoulant : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
 
-            if (menuIsOpen)
+            if (menuIsOpen && TutoManagerRecep.instance != null && TutoManagerRecep.instance.canCloseMenuTourner == true)
+            {
+                turnMenuPosition = turnMenu.transform.position;
+                if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
+                {
+                    turnMenu.SetActive(false);
+                    menuIsOpen = false;
+                }
+
+                if (lastColis.GetComponent<Colis>().isBadOriented)
+                {
+                    OpenTurnMenu();
+                }
+
+                if (!lastColis.GetComponent<Colis>().isBadOriented)
+                {
+
+                    lastColis.GetComponent<ScriptColisRecep>().canMove = true;
+                    lastColis = null;
+
+                    TutoManagerRecep.instance.Manager(8);
+                }
+            }
+            else if (menuIsOpen && TutoManagerRecep.instance == null)
             {
                 turnMenuPosition = turnMenu.transform.position;
                 if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
@@ -73,6 +96,7 @@ public class TapisRoulant : MonoBehaviour
 
     public void OpenTurnMenu()
     {
+        if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(7); }
         if (lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented)
         {
             rotationScr.resetAll();

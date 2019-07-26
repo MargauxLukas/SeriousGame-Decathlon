@@ -166,21 +166,21 @@ public class CartonVide : MonoBehaviour
                 lectureEnCours = true;
                 freezedPosition = new Vector3(62.40f, -3.20f, 0f);
                 //transform.position = freezedPosition;
-                return;
+                //return;
             }
             else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
             {
                 lectureEnCours = true;
                 freezedPosition = new Vector3(65.5f, -3.20f, 0f);
                 //transform.position = freezedPosition;
-                return;
+                //return;
             }
             else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
             {
                 lectureEnCours = true;
                 freezedPosition = new Vector3(68.40f, -3.20f, 0f);
                 //transform.position = freezedPosition;
-                return;
+                //return;
             }
 
             lectureEnCours = false;

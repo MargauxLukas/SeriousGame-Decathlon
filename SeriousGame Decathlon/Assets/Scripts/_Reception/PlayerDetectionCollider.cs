@@ -10,6 +10,7 @@ public class PlayerDetectionCollider : MonoBehaviour
     {
         if (!convoyeurButton.isCollide)
         {
+            if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(3); }
             convoyeurButton.isCollide = true;
         }
     }
