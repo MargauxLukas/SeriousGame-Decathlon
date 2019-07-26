@@ -74,7 +74,7 @@ public class ManagerColisVider : MonoBehaviour
                     }
                     int randomArticleVoulu = 0;
                     int nb = 0;
-                    Debug.Log(emplacementTempo);
+                    //Debug.Log(emplacementTempo);
                     while (managerColis.colisActuellementTraite[emplacementTempo] == null && nb < 10)
                     {
                         emplacementTempo = (emplacementTempo + 1) % 3;
@@ -244,7 +244,7 @@ public class ManagerColisVider : MonoBehaviour
                         if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
                         {
                             nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
-                            Debug.Log(nbEmplacementPrendre);
+                            //Debug.Log(nbEmplacementPrendre);
                         }
                         if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                         {
