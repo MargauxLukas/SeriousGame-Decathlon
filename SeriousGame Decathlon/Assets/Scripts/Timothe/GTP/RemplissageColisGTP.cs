@@ -22,6 +22,8 @@ public class RemplissageColisGTP : MonoBehaviour
     public bool isOpen;
     public BoxCollider2D boxDesactivee;
 
+    public int nbArticleScanned;
+
     private void Start()
     {
         colisScriptable = Instantiate(colisScriptable);
@@ -70,15 +72,15 @@ public class RemplissageColisGTP : MonoBehaviour
                     }
                     colisScriptable.listArticles = new List<Article>();
 
-                    for (int l = 0; l < tasArticle.Count; l++)
+                    for (int l = 0; l < newListes.Count; l++)
                     {
                         if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
                         {
                             tasArticle[l].SetActive(true);
                             tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
+                            isOpen = true;
                         }
                     }
-                    isOpen = true;
                     if(besoinEtreVide)
                     {
                         besoinEtreVide = false;
@@ -94,6 +96,7 @@ public class RemplissageColisGTP : MonoBehaviour
                         if (tasArticle[m].activeSelf)
                         {
                             tasArticle[m].SetActive(false);
+                            nbArticleScanned = tasArticle[m].GetComponent<TasArticleGTP>().ReturnNumberScanned();
                             newListes.Add(tasArticle[m].GetComponent<TasArticleGTP>().CloseTasArticle());
                             repack = true;
                         }
@@ -141,7 +144,7 @@ public class RemplissageColisGTP : MonoBehaviour
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }
-        else if (Vector3.Distance(startPosition, transform.position) < 15f)
+        else if (Vector3.Distance(startPosition, transform.position) < 25f)
         {
             transform.position -= new Vector3(-1,0,0) * Time.deltaTime * speed;
             yield return new WaitForSeconds(Time.deltaTime);

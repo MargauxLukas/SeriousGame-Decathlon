@@ -60,7 +60,7 @@ public class TasArticleGTP : MonoBehaviour
         int nbMax = articlesPresents.Count;
         for (int j = 0; j < nbMax; j++)
         {
-            Debug.Log("Test ");
+            //Debug.Log("Test ");
             GameObject nouvelArticle = Instantiate(articleUnit, transform.position+new Vector3(Random.Range(-0.5f,0.5f), Random.Range(-0.5f, 0.5f),0), Quaternion.identity);
             nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
             articlesPresents.RemoveAt(articlesPresents.Count - 1);
@@ -71,13 +71,29 @@ public class TasArticleGTP : MonoBehaviour
         }
     }
 
-    public List<Article> CloseTasArticle()
+    public int ReturnNumberScanned()
     {
+        int nbScanned = 0;
         foreach(GameObject gm in affichageTas)
         {
+            if(gm.GetComponent<ArticleUnitGTP>().hasBeenScanned)
+            {
+                nbScanned++;
+            }
+        }
+        return nbScanned;
+    }
+
+    public List<Article> CloseTasArticle()
+    {
+        List<Article> laNewListe = new List<Article>();
+
+        foreach(GameObject gm in affichageTas)
+        {
+            laNewListe.Add(gm.GetComponent<ArticleUnitGTP>().currentArticle);
             Destroy(gm);
         }
-        return articlesPresents;
+        return laNewListe;
     }
 
     void touchObject()

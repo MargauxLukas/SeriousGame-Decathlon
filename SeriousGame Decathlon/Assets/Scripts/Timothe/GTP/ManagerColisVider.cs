@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManagerColisVider : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class ManagerColisVider : MonoBehaviour
     public List<Colis> colisVider;
     private int nbCurrentColis = 0;
     public int chanceColisPasRemplit;
+    public int chanceArticlePasBon;
+
+    public Image photoArticle;
 
     public ManagerColisAttendu managerColis;
 
     public List<RemplissageColisGTP> colisActuellementsPose;
 
+    public bool aEteVerifier;
+
     private int emplacement = 0;
+    private int AncientEmplacementTempo = -1;
 
     private float tempsReponseChangementColis;
     int emplacementTempo;
@@ -54,48 +61,77 @@ public class ManagerColisVider : MonoBehaviour
     public Colis ChoixNouveauColis()
     {
         Colis newColis = new Colis();
-        if (colisVider != null)
+        if (managerColis.colisActuellementTraite[0] != null || managerColis.colisActuellementTraite[1] != null || managerColis.colisActuellementTraite[2] != null)
         {
-            if (colisVider.Count > 1)
+            if (colisVider != null)
             {
-                int emplacementTempo = Random.Range(0, 3);
-                int randomArticleVoulu = 0;
-                if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
+                if (colisVider.Count > 1)
                 {
-                    if(colisActuellementsPose[emplacementTempo] != null)
+                    int emplacementTempo = Random.Range(0, 3);
+                    if (emplacementTempo == AncientEmplacementTempo)
                     {
-                        for(int c = 0; c < managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count; c++)
+                        emplacementTempo = (emplacementTempo + 1) % 3;
+                    }
+                    int randomArticleVoulu = 0;
+                    int nb = 0;
+                    Debug.Log(emplacementTempo);
+                    while (managerColis.colisActuellementTraite[emplacementTempo] == null && nb < 10)
+                    {
+                        emplacementTempo = (emplacementTempo + 1) % 3;
+                        nb++;
+                    }
+                    if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
+                    {
+                        if (colisActuellementsPose[emplacementTempo] != null)
                         {
-                            if(!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[c]) && c!=0)
+                            for (int c = 0; c < managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count; c++)
                             {
-                                randomArticleVoulu = c;
+                                if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[c]) && c != 0)
+                                {
+                                    randomArticleVoulu = c;
+                                }
                             }
                         }
                     }
-                }
-                
-                for (int m = 0; m < colisVider.Count; m++)
-                {
-                    if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu] == colisVider[m].listArticles[0])
+
+                    for (int m = 0; m < colisVider.Count; m++)
                     {
-                        newColis = Instantiate(colisVider[m]);
+                        int nbSecond = 0;
+                        while (managerColis.colisActuellementTraite[emplacementTempo] == null && nbSecond < 10)
+                        {
+                            emplacementTempo = (emplacementTempo - 1) % 3;
+                            nbSecond++;
+                        }
+                        if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu] == colisVider[m].listArticles[0])
+                        {
+                            newColis = Instantiate(colisVider[m]);
+                        }
+                    }
+
+                    AncientEmplacementTempo = emplacementTempo;
+                }
+                else if (colisVider.Count > 0)
+                {
+                    Debug.Log("Test Fin Creation Colis à vider");
+                    newColis = Instantiate(colisVider[0]);
+                }
+                if (Random.Range(0, 100) < chanceColisPasRemplit)
+                {
+                    int nbArticleDebut = newColis.listArticles.Count;
+                    for (int i = 0; i < nbArticleDebut / 2; i++)
+                    {
+                        newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
+                    }
+                }
+
+                if (Random.Range(0, 100) < chanceArticlePasBon)
+                {
+                    while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
+                    {
+                        newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
                     }
                 }
             }
-            else if (colisVider.Count > 0)
-            {
-                Debug.Log("Test Fin Creation Colis à vider");
-                newColis = Instantiate(colisVider[0]);
-            }
-            if (Random.Range(0, 100) < chanceColisPasRemplit)
-            {
-                int nbArticleDebut = newColis.listArticles.Count;
-                for (int i = 0; i < nbArticleDebut / 2; i++)
-                {
-                    newColis.listArticles.RemoveAt(newColis.listArticles.Count);
-                }
-            }
-            //Rajouter une fonction pour mettre un article aléatoire à la fin du colis (article autre que celui déjà dedans)
         }
         return newColis;
     }
@@ -114,8 +150,9 @@ public class ManagerColisVider : MonoBehaviour
     {
         if (tempsReponseChangementColis <= 0)
         {
-            if (emplacementsScripts[0].activeSelf && emplacementsScripts[0].activeSelf)
+            if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {
+                if(!emplacementsScripts[0].GetComponent<AffichagePileArticleGTP>().isOpen && !emplacementsScripts[1].GetComponent<AffichagePileArticleGTP>().isOpen && (colisActuellementsPose[0] == null || !colisActuellementsPose[0].isOpen) && (colisActuellementsPose[1] == null || !colisActuellementsPose[1].isOpen) && (colisActuellementsPose[2] == null || !colisActuellementsPose[2].isOpen))
                 return true;
             }
         }
@@ -131,6 +168,14 @@ public class ManagerColisVider : MonoBehaviour
             {*/
         tempsReponseChangementColis = 0.7f;
         etatColis[emplacement] = false;
+        for(int p = 1; p < emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count; p++)
+        {
+            if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[p] && !aEteVerifier)
+            {
+                Debug.Log("Le colis n'a pas été signalé alors qu'il a une anomalie");
+            }
+        }
+        aEteVerifier = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
         emplacementsScripts[emplacement].SetActive(false);
         StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColisRenvoie(this));
@@ -151,6 +196,11 @@ public class ManagerColisVider : MonoBehaviour
     {
         for(int m = 0; m < 100; m++)
         {
+            if (photoArticle.enabled)
+            {
+                photoArticle.enabled = false;
+            }
+            photoArticle.sprite = null;
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = true;
             emplacementsScripts[emplacement].transform.position += new Vector3(0, 1, 0)  * Time.fixedDeltaTime * 0.3f;
             emplacementsScripts[(emplacement + 1) % 2].GetComponent<BoxCollider2D>().enabled = false;
@@ -163,34 +213,61 @@ public class ManagerColisVider : MonoBehaviour
                 List<int> nombreArticles = new List<int>();
                 for (int i = 0; i < managerColis.colisActuellementTraite.Count; i++)
                 {
-                    for (int p = 0; p < managerColis.colisActuellementTraite[i].listArticles.Count; p++)
+                    if (managerColis.colisActuellementTraite[i] != null)
                     {
-                        if (managerColis.colisActuellementTraite[i].listArticles[p].rfid == emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].rfid)
+                        for (int p = 0; p < managerColis.colisActuellementTraite[i].listArticles.Count; p++)
                         {
-                            if(!emplacementsConcerne.Contains(i))
+                            if (managerColis.colisActuellementTraite[i].listArticles[p] == emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0])
                             {
-                                emplacementsConcerne.Add(i);
-                                nombreArticles.Add(1);
-                            }
-                            else
-                            {
-                                for(int q = 0; q < emplacementsConcerne.Count; q++)
+                                if (!emplacementsConcerne.Contains(i))
                                 {
-                                    if(emplacementsConcerne[q] == i)
-                                    {
-                                        nombreArticles[q]++;
-                                    }
+                                    emplacementsConcerne.Add(i);
+                                    nombreArticles.Add(1);
                                 }
-                                
+                                else
+                                {
+                                    for (int q = 0; q < emplacementsConcerne.Count; q++)
+                                    {
+                                        if (emplacementsConcerne[q] == i)
+                                        {
+                                            nombreArticles[q]++;
+                                        }
+                                    }
+
+                                }
                             }
                         }
                     }
+                    int nbEmplacementPrendre = 0;
+                    if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
+                    {
+                        if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
+                        {
+                            nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
+                            Debug.Log(nbEmplacementPrendre);
+                        }
+                        if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
+                        {
+                            if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
+                            {
+                                nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
+                            }
+                        }
+                    }
+                    if (nbEmplacementPrendre < emplacementsConcerne.Count)
+                    {
+                        managerColis.AjoutArticleColisVoulu(emplacementsConcerne[nbEmplacementPrendre], nombreArticles[nbEmplacementPrendre]);
+                    }
+                    if (!photoArticle.enabled)
+                    {
+                        photoArticle.enabled = true;
+                    }
+                    photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].spriteGTP;
+                    /* for (int u = 0; u < emplacementsConcerne.Count; u++)
+                     {
+                         managerColis.AjoutArticleColisVoulu(emplacementsConcerne[u], nombreArticles[u]);
+                     }*/
                 }
-                managerColis.AjoutArticleColisVoulu(emplacementsConcerne[0], nombreArticles[0]);
-                /* for (int u = 0; u < emplacementsConcerne.Count; u++)
-                 {
-                     managerColis.AjoutArticleColisVoulu(emplacementsConcerne[u], nombreArticles[u]);
-                 }*/
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }

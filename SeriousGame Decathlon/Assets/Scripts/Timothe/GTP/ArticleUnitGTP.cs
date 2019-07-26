@@ -11,12 +11,9 @@ public class ArticleUnitGTP : MonoBehaviour
     public bool doesTouchNewColis;
 
     private RemplissageColisGTP remplisColis;
+    private AffichagePileArticleGTP remplisColisPrincipal;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool hasBeenScanned;
 
     // Update is called once per frame
     void Update()
@@ -36,7 +33,7 @@ public class ArticleUnitGTP : MonoBehaviour
                 if (touch.phase == TouchPhase.Ended)
                 {
                     doesTouch = false;
-                    if(remplisColis == null)
+                    if(remplisColis == null && remplisColisPrincipal == null)
                     {
                         if(transform.position.x < 61.5f || transform.position.x > 78.5f || transform.position.y > -0.35f || transform.position.y < -2.5f)
                         {
@@ -45,7 +42,14 @@ public class ArticleUnitGTP : MonoBehaviour
                     }
                     else
                     {
-                        remplisColis.AddArticle(currentArticle);
+                        if (remplisColis != null)
+                        {
+                            remplisColis.AddArticle(currentArticle);
+                        }
+                        else if (remplisColisPrincipal != null)
+                        {
+                            remplisColisPrincipal.AddArticle(currentArticle);
+                        }
                         tasParent.affichageTas.Remove(gameObject);
                         Destroy(gameObject);
                     }
@@ -65,6 +69,10 @@ public class ArticleUnitGTP : MonoBehaviour
         {
             remplisColis = collision.GetComponent<RemplissageColisGTP>();
         }
+        else if (collision.tag == "ColisPrincipauxGTP" && !collision.GetComponent<AffichagePileArticleGTP>().isOpen)
+        {
+            remplisColisPrincipal = collision.GetComponent<AffichagePileArticleGTP>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -72,6 +80,10 @@ public class ArticleUnitGTP : MonoBehaviour
         if(collision.tag == "ColisGTP")
         {
             remplisColis = null;
+        }
+        else if (collision.tag == "ColisPrincipauxGTP")
+        {
+            remplisColisPrincipal = null;
         }
     }
 

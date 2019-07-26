@@ -17,9 +17,10 @@ public class ManagerColisAttendu : MonoBehaviour
     [Header("INT")]
     public int nombreColisVoulu;
     public int nbArticleVoulu  ;
-    public int nbEmplacement;
+    public int nbEmplacement   ;
 
-    float chanceAvoirTropArticlePrevu = 0;
+    float chanceAvoirTropArticlePrevu     = 0;
+    public float chanceToComeFromInternet = 0;
 
     public void Start()
     {
@@ -33,7 +34,6 @@ public class ManagerColisAttendu : MonoBehaviour
 
             for (int k = 0; k < nb; k++)
             {
-                nbPhase++;
                 int articleAlea = Random.Range(0, colisViderManage.colisVider.Count - 1);
                 int rngNumber = Random.Range(2, 5);
                 for (int p = 0; p < rngNumber; p++)
@@ -41,6 +41,17 @@ public class ManagerColisAttendu : MonoBehaviour
                     colisVoulus[i].listArticles.Add(colisViderManage.colisVider[articleAlea].listArticles[0]);
                 }
             }
+
+            List<Article> articleDejaConnus = new List<Article>();
+            foreach(Article art in colisVoulus[i].listArticles)
+            {
+                if(!articleDejaConnus.Contains(art))
+                {
+                    articleDejaConnus.Add(art);
+                    nbPhase++;
+                }
+            }
+
 
             if ((float)Random.Range(0, 1) < chanceAvoirTropArticlePrevu)
             {
@@ -51,6 +62,11 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
             phasesColisVoulus.Add(nbPhase);
+
+            if(Random.Range(0,100)<chanceToComeFromInternet)
+            {
+                colisVoulus[i].comeFromInternet = true;
+            }
         }
 
         for (int q = 0; q < 3; q++)
@@ -65,7 +81,7 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
-            Debug.Log("Test");
+            //Debug.Log("Test");
             colisVoulus[emplacement] = colisVoulus[3];
             colisVoulus.RemoveAt(3);
             Debug.Log(colisVoulus[3]);
@@ -75,7 +91,17 @@ public class ManagerColisAttendu : MonoBehaviour
         }
         else if(colisVoulus.Count<=0)
         {
+            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
+            colisActuellementTraite[emplacement] = null;
+            colisVoulus[emplacement] = null;
             //Affichage de la fin du niveau
+            Debug.Log("Fin de niveau");
+        }
+        else
+        {
+            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
+            colisActuellementTraite[emplacement] = null;
+            colisVoulus[emplacement] = null;
         }
     }
 
@@ -190,12 +216,12 @@ public class ManagerColisAttendu : MonoBehaviour
             {
                 if (j < 0){j = 0;}
                 if (i < 0){i = 0;}
-                Debug.Log("I : " + i + " et J : " + j);
+                //Debug.Log("I : " + i + " et J : " + j);
                 if (articleEnvoye.Count > 0 && articleVoulu.Count > 0)
                 {
                     if (articleEnvoye[i] == articleVoulu[j])
                     {
-                        Debug.Log("Test Detect");
+                        //Debug.Log("Test Detect");
                         articleVoulu .RemoveAt(j);
                         articleEnvoye.RemoveAt(i);
                         j--;

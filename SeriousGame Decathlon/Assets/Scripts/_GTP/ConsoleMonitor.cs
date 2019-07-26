@@ -6,8 +6,9 @@ using TMPro;
 public class ConsoleMonitor : MonoBehaviour
 {
     public ManagerColisVider mcv;
-    public TextMeshProUGUI text;
+    public CartonVideLink cvl;
     public ManagerColisAttendu colisAttenduManage;
+    public TextMeshProUGUI text;
     public RemplissageColisGTP colisActuelPoste;
     public int nbMonitor = 0;
 
@@ -29,19 +30,49 @@ public class ConsoleMonitor : MonoBehaviour
     {
         text.text = (nbMonitor + nb).ToString();
         nbMonitor =  nbMonitor + nb;
+        int nbArticleEnQuestion = 0;
+        int nbArticleEnCours = 0;
+        Article reference = mcv.emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];
 
-        for (int compteur = 0; compteur < colisAttenduManage.colisVoulus[emplacement].listArticles.Count; compteur++)
+        foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
         {
-            if (compteur > colisAttenduManage.colisVoulus[emplacement].listArticles.Count-nb)
+            Debug.Log(art + " == " + reference);
+            if(art == reference)
             {
-                colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+                nbArticleEnQuestion++;
             }
         }
-        for(int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
+        for (int compteur = 0; compteur < colisAttenduManage.colisVoulus[emplacement].listArticles.Count; compteur++)
         {
-            if (compteur > colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count - nb)
+            if (colisAttenduManage.colisVoulus[emplacement].listArticles[compteur] == reference)
             {
-                colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+                nbArticleEnCours++;
+                if(nbArticleEnCours > nbMonitor)
+                {
+                    colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+                }
+            }
+        }
+
+        nbArticleEnQuestion = 0;
+        nbArticleEnCours    = 0;
+
+        foreach (Article art in colisAttenduManage.colisActuellementTraite[emplacement].listArticles)
+        {
+            if (art == reference)
+            {
+                nbArticleEnQuestion++;
+            }
+        }
+        for (int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
+        {
+            if (colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur] == reference)
+            {
+                nbArticleEnCours++;
+                if (nbArticleEnCours > nbMonitor)
+                {
+                    colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+                }
             }
         }
         colisAttenduManage.AjoutArticleColisVoulu(emplacement, nbMonitor);
@@ -55,20 +86,34 @@ public class ConsoleMonitor : MonoBehaviour
             UpdateAffichage(0);
             Debug.Log("La phase actuelle est : " + colisActuelPoste.currentPhase);
             Debug.Log("Et il me faut la phase : " + phaseActuelle);
-            if (colisActuelPoste.currentPhase < phaseActuelle)
+            if (colisActuelPoste.currentPhase < phaseActuelle - 1)
             {
                 colisActuelPoste.currentPhase++;
+                Debug.Log("Je passe par ici");
             }
             else
             {
+                Debug.Log("Allo");
                 //Renvoyer le colis qui vient d'être géré
-                bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
-
-                if (noAnomalie)
+                //bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
+                colisAttenduManage.RenvoieColis(emplacement);
+                switch(emplacement)
                 {
-                    colisAttenduManage.RenvoieColis(emplacement);
+                    case 0:
+                        cvl.isFree1 = true;
+                        cvl.tapis1GameObject.GetComponent<BoxCollider2D>().enabled = true;
+                        break;
+                    case 1:
+                        cvl.isFree2 = true;
+                        cvl.tapis2GameObject.GetComponent<BoxCollider2D>().enabled = true;
+                        break;
+                    case 2:
+                        cvl.isFree3 = true;
+                        cvl.tapis3GameObject.GetComponent<BoxCollider2D>().enabled = true;
+                        break;
+                    default:
+                        break;
                 }
-
             }
         }
     }
