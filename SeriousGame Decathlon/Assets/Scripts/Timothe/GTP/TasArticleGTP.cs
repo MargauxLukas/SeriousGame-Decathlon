@@ -60,7 +60,7 @@ public class TasArticleGTP : MonoBehaviour
         int nbMax = articlesPresents.Count;
         for (int j = 0; j < nbMax; j++)
         {
-            Debug.Log("Test ");
+            //Debug.Log("Test ");
             GameObject nouvelArticle = Instantiate(articleUnit, transform.position+new Vector3(Random.Range(-0.5f,0.5f), Random.Range(-0.5f, 0.5f),0), Quaternion.identity);
             nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
             articlesPresents.RemoveAt(articlesPresents.Count - 1);

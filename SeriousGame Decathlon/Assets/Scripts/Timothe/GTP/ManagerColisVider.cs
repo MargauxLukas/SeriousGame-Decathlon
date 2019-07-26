@@ -150,7 +150,7 @@ public class ManagerColisVider : MonoBehaviour
     {
         if (tempsReponseChangementColis <= 0)
         {
-            if (emplacementsScripts[0].activeSelf && emplacementsScripts[0].activeSelf)
+            if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {
                 return true;
             }

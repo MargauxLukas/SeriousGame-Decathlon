@@ -64,7 +64,7 @@ public class CartonVide : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
 
             /*if(touch.phase == TouchPhase.Ended)
             {
