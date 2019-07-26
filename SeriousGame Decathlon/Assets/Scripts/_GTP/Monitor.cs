@@ -40,26 +40,39 @@ public class Monitor : MonoBehaviour
         colis3.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
-    public void Colis1Actif() //Il faut savoir comment on définit quel colis sera actif
+    public void Colis1Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
     {
         Tapis1.GetComponent<ColisLink>().console.UpdateAffichage(         );
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 0;
         Tapis1.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
+        
         colis1.GetComponent<SpriteRenderer>().color = Color.green;
         //Animator Colis1 activé SUR ECRAN
         //Animator Colis1 activé sur poste
     }
 
-    public void Colis2Actif() //Il faut savoir comment on définit quel colis sera actif
+    public void Colis2Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
     {
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
-        colis2.GetComponent<SpriteRenderer>().color = Color.green;
+        if (phaseActuelle == phaseVoulue - 1)
+        {
+            Color newColor = new Color();
+            newColor.r = 206;
+            newColor.g = 91;
+            newColor.b = 34;
+            colis2.GetComponent<SpriteRenderer>().color = newColor;
+        }
+        else
+        {
+            colis2.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+
         //Animator Colis2
     }
 
-    public void Colis3Actif() //Il faut savoir comment on définit quel colis sera actif
+    public void Colis3Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
     {
         Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 2;

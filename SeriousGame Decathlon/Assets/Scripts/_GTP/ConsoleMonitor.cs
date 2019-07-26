@@ -51,6 +51,8 @@ public class ConsoleMonitor : MonoBehaviour
     {
         if (mcv.PeutFairePartirColis())
         {
+            mcv.FairePartirUnColis();
+            UpdateAffichage(0);
             Debug.Log("La phase actuelle est : " + colisActuelPoste.currentPhase);
             Debug.Log("Et il me faut la phase : " + phaseActuelle);
             if (colisActuelPoste.currentPhase < phaseActuelle)
@@ -61,12 +63,12 @@ public class ConsoleMonitor : MonoBehaviour
             {
                 //Renvoyer le colis qui vient d'être géré
                 bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
-                mcv.FairePartirUnColis();
+
                 if (noAnomalie)
                 {
                     colisAttenduManage.RenvoieColis(emplacement);
                 }
-                UpdateAffichage(0);
+
             }
         }
     }
