@@ -84,8 +84,6 @@ public class ConsoleMonitor : MonoBehaviour
         {
             mcv.FairePartirUnColis();
             UpdateAffichage(0);
-            //Debug.Log("La phase actuelle est : " + colisActuelPoste.currentPhase);
-            //Debug.Log("Et il me faut la phase : " + phaseActuelle);
             if (colisActuelPoste.currentPhase < phaseActuelle - 1)
             {
                 colisActuelPoste.currentPhase++;
