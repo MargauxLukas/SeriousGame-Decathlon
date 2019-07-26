@@ -196,12 +196,12 @@ public class ManagerColisAttendu : MonoBehaviour
             {
                 if (j < 0){j = 0;}
                 if (i < 0){i = 0;}
-                Debug.Log("I : " + i + " et J : " + j);
+                //Debug.Log("I : " + i + " et J : " + j);
                 if (articleEnvoye.Count > 0 && articleVoulu.Count > 0)
                 {
                     if (articleEnvoye[i] == articleVoulu[j])
                     {
-                        Debug.Log("Test Detect");
+                        //Debug.Log("Test Detect");
                         articleVoulu .RemoveAt(j);
                         articleEnvoye.RemoveAt(i);
                         j--;
