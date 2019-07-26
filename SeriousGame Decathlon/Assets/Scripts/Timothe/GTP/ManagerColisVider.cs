@@ -134,7 +134,7 @@ public class ManagerColisVider : MonoBehaviour
                 if (Random.Range(0, 100) < chanceColisPasRemplit)
                 {
                     int nbArticleDebut = newColis.listArticles.Count;
-                    for (int i = 0; i < nbArticleDebut / 2; i++)
+                    for (int i = 0; i < nbArticleDebut * 2 / 3; i++)
                     {
                         newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
                     }
@@ -158,6 +158,10 @@ public class ManagerColisVider : MonoBehaviour
         if (colisVider != null)
         {
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
+            if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count <= 4)
+            {
+                emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = true;
+            }
         }
     }
 
