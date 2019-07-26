@@ -124,6 +124,7 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
                         circleImage.transform.parent.gameObject.SetActive(true);
                         circleImage.transform.parent.gameObject.transform.position = transform.position;
                         circleImage.fillAmount = 1f / itemNumber;
+                        if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(17); }
 
                         if (touch.phase == TouchPhase.Moved)
                         {
@@ -224,16 +225,26 @@ public class ColisGestionAnomalieRecep : MonoBehaviour
         switch (nb)
         {
             case 1:
-                Jeter();
-                TellSomething(1);
+                if(TutoManagerRecep.instance == null || TutoManagerRecep.instance.canPalette)
+                {
+                    if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(18); }
+                    Jeter();
+                    TellSomething(1);
+                }
                 break;
             case 2:
-                OpenTurnMenu();
-                TellSomething(3);
+                if (TutoManagerRecep.instance == null || TutoManagerRecep.instance.canOpenTurnMenu)
+                {
+                    OpenTurnMenu();
+                    TellSomething(3);
+                }
                 break;
             case 0:
-                OpenTurnMenu();
-                TellSomething(3);
+                if (TutoManagerRecep.instance == null || TutoManagerRecep.instance.canOpenTurnMenu)
+                {
+                    OpenTurnMenu();
+                    TellSomething(3);
+                }
                 break;
         }
     }

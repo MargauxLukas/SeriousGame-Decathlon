@@ -63,6 +63,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     colisAnomalie.rotationScr.cartonObj = colisATraiter;
                     colisAnomalie.GetComponent<SpriteRenderer>().sprite = colisATraiter.GetComponent<SpriteRenderer>().sprite;
                     colisAnomalie.colisTapis                            = colisATraiter.GetComponent<SpriteRenderer>();
+                    if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(16); }
                 }
                 if(touch.phase == TouchPhase.Ended)
                 {
@@ -77,7 +78,16 @@ public class DetectionAnomalieRecep : MonoBehaviour
                 colisGestionScript.doesTouch = false;
                 colisGestionScript.timeTouched = 0;
 
-                gestionAnomalie.SetActive(false);
+                
+                if (TutoManagerRecep.instance != null && TutoManagerRecep.instance.canCloseGestAnomalies)
+                {
+                    gestionAnomalie.SetActive(false);
+                    TutoManagerRecep.instance.Manager(19);
+                }
+                else if (TutoManagerRecep.instance == null)
+                {
+                    gestionAnomalie.SetActive(false);
+                }
                 GetComponent<BoxCollider2D>().enabled = true;
                 player.stuck = false;
                 if (colisATraiter != null)

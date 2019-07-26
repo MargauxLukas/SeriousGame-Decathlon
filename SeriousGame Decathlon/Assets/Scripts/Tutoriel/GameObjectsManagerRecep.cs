@@ -11,6 +11,7 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject foldUpButton;
     public GameObject ascendButton;
     public GameObject descendButton;
+    public GameObject posteInteractible;
 
     [Header("Colis")]
     public GameObject colis1;
@@ -19,6 +20,26 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject colis4;
     public GameObject colis5;
     public GameObject colis6;
+    public GameObject colis7;
+    public GameObject colis8;
+    public GameObject colis9;
+    public GameObject colis10;
+    public GameObject colis11;
+    public GameObject colis12;
+
+    [Header("Poste Anomalies")]
+    public GameObject detectAnomaliesDesk;
+    public GameObject cartonGestAnomalies;
+    public GameObject ampoule;
+    public GameObject ampouleSpriteMask;
+    public GameObject etiqueteuse;
+
+    [Header("Menu Circulaire")]
+    public GameObject menuCirculaireTuto;
+    public GameObject menuCirculaireTutoSpriteMask;
+    public GameObject whiteCircle12;
+    public GameObject whiteCircle22;
+    public GameObject menuCirculaireSpriteMask;
 
     [Header("Menu Tourner")]
     public GameObject upArrow;
@@ -47,9 +68,14 @@ public class GameObjectsManagerRecep : MonoBehaviour
     [Header("Flèche")]
     public GameObject arrow;
     public GameObject arrowSpriteMask;
+    public GameObject arrowCameraDezoom;
 
     [Header("Canvas")]
     public GameObject quitButton;
+
+    [Header("Trigger")]
+    public GameObject cameraTriggerUp;
+    public GameObject cameraTriggerDown;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
     {

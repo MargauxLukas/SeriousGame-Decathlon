@@ -101,6 +101,7 @@ public class ConvoyeurManager : MonoBehaviour
     {
         if(height < 1.25f)                          //1st floor
         {
+            if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(21); }
             gauge.SetPosition(0);
             height = 1f;
         }
