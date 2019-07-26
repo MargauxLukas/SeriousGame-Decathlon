@@ -348,7 +348,10 @@ public class RotationScript : MonoBehaviour
     public void ChangeRotation()
     {
         Debug.Log("Test Rotation");
-        if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(26);}
+
+        if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(10); }
+        if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(26); }
+
         if (cartonObj != null)
         {
             if (cartonObj.GetComponent<ColisScript>() != null)

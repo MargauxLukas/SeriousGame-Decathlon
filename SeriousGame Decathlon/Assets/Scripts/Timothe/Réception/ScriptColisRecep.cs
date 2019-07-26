@@ -79,6 +79,7 @@ public class ScriptColisRecep : MonoBehaviour
             }
             else if (doesTouch && canBePicked)
             {
+                if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(9); }
                 transform.position = new Vector2(touchPosition.x, touchPosition.y);
                 MalusScript.instance.HaveAMalus();                                  //Je le met ici car je pense qu'il peut être sympa de donner un malus tant qu'il le garde dans les mains (Le malus doit être faible du coup)
                 if (touch.phase == TouchPhase.Ended)

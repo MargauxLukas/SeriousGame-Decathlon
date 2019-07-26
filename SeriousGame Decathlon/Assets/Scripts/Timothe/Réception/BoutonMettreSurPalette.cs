@@ -7,6 +7,7 @@ public class BoutonMettreSurPalette : MonoBehaviour
     public TapisRoulant tapisRoule;
     public void PoserSurPalette()
     {
+        if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(13); }
         if(tapisRoule.lastColis != null)
         {
             if(tapisRoule.lastColis.GetComponent<ScriptColisRecep>() != null)

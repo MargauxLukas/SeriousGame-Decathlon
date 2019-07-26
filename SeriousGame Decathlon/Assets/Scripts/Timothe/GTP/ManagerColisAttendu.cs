@@ -89,15 +89,15 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             case 0:
                 nbEmplacement = 0;
-                monitor.Colis1Actif();
+                monitor.Colis1Actif(phasesColisVoulus[0], cm[0].phaseActuelle);
                 break;
             case 1:
                 nbEmplacement = 1;
-                monitor.Colis2Actif();
+                monitor.Colis2Actif(phasesColisVoulus[1], cm[0].phaseActuelle);
                 break;
             case 2:
                 nbEmplacement = 2;
-                monitor.Colis3Actif();
+                monitor.Colis3Actif(phasesColisVoulus[2], cm[0].phaseActuelle);
                 break;
         }
     }
