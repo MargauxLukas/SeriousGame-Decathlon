@@ -108,9 +108,9 @@ public class ConsoleMonitor : MonoBehaviour
                         cvl.tapis2GameObject.GetComponent<BoxCollider2D>().enabled = true;
                         break;
                     case 2:
-                        break;
                         cvl.isFree3 = true;
                         cvl.tapis3GameObject.GetComponent<BoxCollider2D>().enabled = true;
+                        break;
                     default:
                         break;
                 }

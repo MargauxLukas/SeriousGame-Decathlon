@@ -48,6 +48,15 @@ public class AffichagePileArticleGTP : MonoBehaviour
         }
     }
 
+    public void AddArticle(Article articleToHad)
+    {
+        if (currentColis.listArticles == null)
+        {
+            currentColis.listArticles = new List<Article>();
+        }
+        currentColis.listArticles.Add(articleToHad);
+    }
+
     void touchObject()
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)

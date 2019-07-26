@@ -152,8 +152,7 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {
-                if(!emplacementsScripts[0].GetComponent<AffichagePileArticleGTP>().isOpen && !emplacementsScripts[1].GetComponent<AffichagePileArticleGTP>().isOpen && !colisActuellementsPose[0].isOpen && !colisActuellementsPose[1
-                    ].isOpen && !colisActuellementsPose[2].isOpen)
+                if(!emplacementsScripts[0].GetComponent<AffichagePileArticleGTP>().isOpen && !emplacementsScripts[1].GetComponent<AffichagePileArticleGTP>().isOpen && (colisActuellementsPose[0] == null || !colisActuellementsPose[0].isOpen) && (colisActuellementsPose[1] == null || !colisActuellementsPose[1].isOpen) && (colisActuellementsPose[2] == null || !colisActuellementsPose[2].isOpen))
                 return true;
             }
         }

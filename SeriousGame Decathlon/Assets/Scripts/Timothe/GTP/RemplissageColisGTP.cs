@@ -78,9 +78,9 @@ public class RemplissageColisGTP : MonoBehaviour
                         {
                             tasArticle[l].SetActive(true);
                             tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
+                            isOpen = true;
                         }
                     }
-                    isOpen = true;
                     if(besoinEtreVide)
                     {
                         besoinEtreVide = false;
