@@ -13849,7 +13849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1412038556
 Transform:
   m_ObjectHideFlags: 0
@@ -14869,7 +14869,9 @@ MonoBehaviour:
   foldUpButton: {fileID: 0}
   ascendButton: {fileID: 0}
   descendButton: {fileID: 0}
+  validateButton: {fileID: 0}
   posteInteractible: {fileID: 0}
+  ventouse: {fileID: 0}
   colis1: {fileID: 0}
   colis2: {fileID: 0}
   colis3: {fileID: 0}
@@ -14882,6 +14884,10 @@ MonoBehaviour:
   colis10: {fileID: 0}
   colis11: {fileID: 0}
   colis12: {fileID: 0}
+  colis13: {fileID: 0}
+  colis14: {fileID: 0}
+  colis15: {fileID: 0}
+  colis16: {fileID: 0}
   detectAnomaliesDesk: {fileID: 0}
   cartonGestAnomalies: {fileID: 0}
   ampoule: {fileID: 0}

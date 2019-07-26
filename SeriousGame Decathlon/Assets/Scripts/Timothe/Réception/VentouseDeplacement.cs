@@ -92,6 +92,7 @@ public class VentouseDeplacement : MonoBehaviour
         {
             colisAttached = collision.gameObject;
             colisAttached.GetComponent<ScriptColisRecep>().doesTouch = true;
+            if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(23); }
         }
     }
 

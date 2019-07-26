@@ -11,7 +11,9 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject foldUpButton;
     public GameObject ascendButton;
     public GameObject descendButton;
+    public GameObject validateButton;
     public GameObject posteInteractible;
+    public GameObject ventouse;
 
     [Header("Colis")]
     public GameObject colis1;
@@ -26,6 +28,10 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject colis10;
     public GameObject colis11;
     public GameObject colis12;
+    public GameObject colis13;
+    public GameObject colis14;
+    public GameObject colis15;
+    public GameObject colis16;
 
     [Header("Poste Anomalies")]
     public GameObject detectAnomaliesDesk;

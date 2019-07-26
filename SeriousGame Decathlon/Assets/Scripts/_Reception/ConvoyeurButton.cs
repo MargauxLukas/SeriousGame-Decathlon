@@ -39,8 +39,8 @@ public class ConvoyeurButton : MonoBehaviour
             if (downPressed)
             {
                 if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(11); }
-                convoyeur.MoveZ("down");
-            }                       //Boutton Descendre
+                convoyeur.MoveZ("down");                                        //Boutton Descendre
+            }
             if (!isCollide)
             {
                 if (deplierPressed)
@@ -50,7 +50,11 @@ public class ConvoyeurButton : MonoBehaviour
                 }
             }
 
-            if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
+            if (replierPressed && validatePressed)
+            {
+                if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(24); }
+                convoyeur.MoveY("replier");                                     //Boutton Replier + Validate
+            }
             else { return; }
         }
         else
