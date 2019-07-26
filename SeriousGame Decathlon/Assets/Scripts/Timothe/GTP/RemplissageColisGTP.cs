@@ -72,7 +72,7 @@ public class RemplissageColisGTP : MonoBehaviour
                     }
                     colisScriptable.listArticles = new List<Article>();
 
-                    for (int l = 0; l < tasArticle.Count; l++)
+                    for (int l = 0; l < newListes.Count; l++)
                     {
                         if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
                         {
@@ -144,7 +144,7 @@ public class RemplissageColisGTP : MonoBehaviour
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }
-        else if (Vector3.Distance(startPosition, transform.position) < 15f)
+        else if (Vector3.Distance(startPosition, transform.position) < 25f)
         {
             transform.position -= new Vector3(-1,0,0) * Time.deltaTime * speed;
             yield return new WaitForSeconds(Time.deltaTime);

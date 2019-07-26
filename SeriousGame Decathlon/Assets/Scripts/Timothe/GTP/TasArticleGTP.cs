@@ -86,11 +86,14 @@ public class TasArticleGTP : MonoBehaviour
 
     public List<Article> CloseTasArticle()
     {
+        List<Article> laNewListe = new List<Article>();
+
         foreach(GameObject gm in affichageTas)
         {
+            laNewListe.Add(gm.GetComponent<ArticleUnitGTP>().currentArticle);
             Destroy(gm);
         }
-        return articlesPresents;
+        return laNewListe;
     }
 
     void touchObject()

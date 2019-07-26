@@ -55,20 +55,17 @@ public class ConsoleMonitor : MonoBehaviour
             UpdateAffichage(0);
             Debug.Log("La phase actuelle est : " + colisActuelPoste.currentPhase);
             Debug.Log("Et il me faut la phase : " + phaseActuelle);
-            if (colisActuelPoste.currentPhase < phaseActuelle)
+            if (colisActuelPoste.currentPhase < phaseActuelle - 1)
             {
                 colisActuelPoste.currentPhase++;
+                Debug.Log("Je passe par ici");
             }
             else
             {
+                Debug.Log("Allo");
                 //Renvoyer le colis qui vient d'être géré
-                bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
-
-                if (noAnomalie)
-                {
-                    colisAttenduManage.RenvoieColis(emplacement);
-                }
-
+                //bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
+                colisAttenduManage.RenvoieColis(emplacement);
             }
         }
     }
