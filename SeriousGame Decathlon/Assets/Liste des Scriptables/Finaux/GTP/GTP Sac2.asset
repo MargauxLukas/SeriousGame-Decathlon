@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc3b85cb60008d4a8c0eec7764cd3ab, type: 3}
+  m_Name: GTP Sac2
+  m_EditorClassIdentifier: 
+  poids: 2
+  rfid: {fileID: 11400000, guid: c9fac5afe72cc92448772484b7838314, type: 2}
+  spriteList:
+  - {fileID: 21300000, guid: 9863b4aa701487e4eaa60a216d414219, type: 3}
+  - {fileID: 21300000, guid: 7606162d76ac99d478df4d2eb5de0008, type: 3}
+  - {fileID: 21300000, guid: c8d92b01d01c6d14dbb3e833b2d18549, type: 3}
+  spriteGTP: {fileID: 21300000, guid: 3f0e66c0ac625ae4abdfa5abf215adf1, type: 3}

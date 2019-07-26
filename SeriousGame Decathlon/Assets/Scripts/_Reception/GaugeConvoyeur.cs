@@ -19,12 +19,12 @@ public class GaugeConvoyeur : MonoBehaviour
 
     public void Up()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.0051f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.021f, transform.position.z);
     }
 
     public void Down()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.0052f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 0.022f, transform.position.z);
     }
 
     public void SetPosition(int floor)
