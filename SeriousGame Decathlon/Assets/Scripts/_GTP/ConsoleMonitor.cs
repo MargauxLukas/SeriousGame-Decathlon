@@ -6,6 +6,7 @@ using TMPro;
 public class ConsoleMonitor : MonoBehaviour
 {
     public ManagerColisVider mcv;
+    public CartonVideLink cvl;
     public ManagerColisAttendu colisAttenduManage;
     public TextMeshProUGUI text;
     public RemplissageColisGTP colisActuelPoste;
@@ -99,6 +100,20 @@ public class ConsoleMonitor : MonoBehaviour
                     colisAttenduManage.RenvoieColis(emplacement);
                 }
 
+                switch(emplacement)
+                {
+                    case 0:
+                        cvl.isFree1 = true;
+                        break;
+                    case 1:
+                        cvl.isFree2 = true;
+                        break;
+                    case 2:
+                        cvl.isFree3 = true;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
