@@ -48,6 +48,10 @@ public class InteractionMoniteur : MonoBehaviour
 
     public void LancementDialogue(int numDial)
     {
+        if (dialManage.playerPath != null)
+        {
+            dialManage.playerPath.enabled = false;
+        }
         Debug.Log("Dialogue : " + numDial);
         dialManage.dialogueGlobal.SetActive(true);
         dialManage.isDialogueOpen = true;

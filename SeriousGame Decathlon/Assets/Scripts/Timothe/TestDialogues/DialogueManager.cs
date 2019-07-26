@@ -19,6 +19,8 @@ public class DialogueManager : MonoBehaviour
 
     public Sprite sprAmpoule;
 
+    public Unit playerPath;
+
     //Variables
     private int actualDialogueLine = 0;
 
@@ -95,10 +97,11 @@ public class DialogueManager : MonoBehaviour
 
     void AffichageDialogue(int nbLigne)
     {
+        Debug.Log("Test");
         texteDialogue.text = actualDialogue.phraseDites[nbLigne];
         if(nbLigne >= actualDialogue.phraseDites.Count-1)
         {
-            for (int j = 0; j < bouttonsChoix.Count; j++)
+            for (int j = 0; j < actualDialogue.choixPossibles.Count; j++)
             {
                 if(actualDialogue.choixPossibles[j] != null)
                 {
@@ -124,6 +127,10 @@ public class DialogueManager : MonoBehaviour
         {
             isDialogueOpen = false;
             dialogueGlobal.SetActive(false);
+            if (playerPath != null)
+            {
+                playerPath.enabled = true;
+            }
         }
     }
 
