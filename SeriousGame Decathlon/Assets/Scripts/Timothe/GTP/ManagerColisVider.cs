@@ -72,8 +72,7 @@ public class ManagerColisVider : MonoBehaviour
                             }
                         }
                     }
-                }
-                
+                }        
                 for (int m = 0; m < colisVider.Count; m++)
                 {
                     if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu] == colisVider[m].listArticles[0])

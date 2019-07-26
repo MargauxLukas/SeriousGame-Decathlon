@@ -8206,6 +8206,7 @@ MonoBehaviour:
   - {fileID: 980227254}
   - {fileID: 1987281621}
   - {fileID: 994102619}
+  articleSaved: {fileID: 0}
   nombreColisVoulu: 5
   nbArticleVoulu: 0
   nbEmplacement: 0

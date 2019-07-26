@@ -17,7 +17,7 @@ public class ManagerColisAttendu : MonoBehaviour
     [Header("INT")]
     public int nombreColisVoulu;
     public int nbArticleVoulu  ;
-    public int nbEmplacement;
+    public int nbEmplacement   ;
 
     float chanceAvoirTropArticlePrevu = 0;
 
@@ -57,7 +57,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisActuellementTraite.Add(colisVoulus[q]);
             cm[q].phaseActuelle = phasesColisVoulus[q];
-            Debug.Log("Start les phases : " + phasesColisVoulus[q]);
+            //Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
     }
 
@@ -65,7 +65,7 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
-            Debug.Log("Test");
+            //Debug.Log("Test");
             colisVoulus[emplacement] = colisVoulus[3];
             colisVoulus.RemoveAt(3);
             Debug.Log(colisVoulus[3]);
