@@ -132,7 +132,6 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public IEnumerator AnimationColisRenvoie()
     {
-        Debug.Log("The coroutine of partir");
         if(!boxDesactivee.enabled)
         {
             boxDesactivee.enabled = true;

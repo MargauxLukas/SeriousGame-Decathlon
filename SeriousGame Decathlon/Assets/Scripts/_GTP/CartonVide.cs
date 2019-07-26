@@ -121,6 +121,7 @@ public class CartonVide : MonoBehaviour
                     GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
                     mcv.colisActuellementsPose[0] = GetComponent<RemplissageColisGTP>();
                     enabled = false;
+                    gameObject.tag = "ColisGTP";
                     return;
                 }
                 else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
@@ -139,6 +140,7 @@ public class CartonVide : MonoBehaviour
                     GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
                     mcv.colisActuellementsPose[1] = GetComponent<RemplissageColisGTP>();
                     enabled = false;
+                    gameObject.tag = "ColisGTP";
                     return;
                 }
                 else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
@@ -157,6 +159,7 @@ public class CartonVide : MonoBehaviour
                     GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
                     mcv.colisActuellementsPose[2] = GetComponent<RemplissageColisGTP>();
                     enabled = false;
+                    gameObject.tag = "ColisGTP";
                     return;
                 }
             }

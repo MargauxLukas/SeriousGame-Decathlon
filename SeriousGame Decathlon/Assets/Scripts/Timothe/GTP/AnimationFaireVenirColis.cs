@@ -63,7 +63,6 @@ public class AnimationFaireVenirColis : MonoBehaviour
             began = true;
             didArriveSecond = false;
         }
-        Debug.Log(didArriveSecond);
         if (Vector3.Distance(positionVisee.position, transform.position) > 0.1f && !didArriveSecond)
         {
             transform.position += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f;
@@ -80,7 +79,6 @@ public class AnimationFaireVenirColis : MonoBehaviour
         }
         else
         {
-            Debug.Log("Test Animation");
             aActiver.FaireVenirNouveauColis(emplacement);
             //transform.position = startPosition;
             //transform.localScale = startScale;
