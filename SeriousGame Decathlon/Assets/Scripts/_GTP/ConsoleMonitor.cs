@@ -104,12 +104,15 @@ public class ConsoleMonitor : MonoBehaviour
                 {
                     case 0:
                         cvl.isFree1 = true;
+                        cvl.tapis1GameObject.GetComponent<BoxCollider2D>().enabled = true;
                         break;
                     case 1:
                         cvl.isFree2 = true;
+                        cvl.tapis2GameObject.GetComponent<BoxCollider2D>().enabled = true;
                         break;
                     case 2:
                         cvl.isFree3 = true;
+                        cvl.tapis3GameObject.GetComponent<BoxCollider2D>().enabled = true;
                         break;
                     default:
                         break;

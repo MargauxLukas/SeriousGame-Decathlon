@@ -8166,11 +8166,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57561e59e22e7454eaf88c747e3980ca, type: 2}
   - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
   chanceColisPasRemplit: 1
+  chanceArticlePasBon: 0
+  photoArticle: {fileID: 0}
   managerColis: {fileID: 882313606}
   colisActuellementsPose:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  aEteVerifier: 0
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
@@ -8206,10 +8209,10 @@ MonoBehaviour:
   - {fileID: 980227254}
   - {fileID: 1987281621}
   - {fileID: 994102619}
-  articleSaved: {fileID: 0}
   nombreColisVoulu: 5
   nbArticleVoulu: 0
   nbEmplacement: 0
+  chanceToComeFromInternet: 0
 --- !u!1 &887417059
 GameObject:
   m_ObjectHideFlags: 0
@@ -9032,8 +9035,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mcv: {fileID: 882313604}
-  text: {fileID: 808659476}
+  cvl: {fileID: 1435407245}
   colisAttenduManage: {fileID: 882313606}
+  text: {fileID: 808659476}
   colisActuelPoste: {fileID: 0}
   nbMonitor: 7
   phaseActuelle: 0
@@ -9182,8 +9186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mcv: {fileID: 882313604}
-  text: {fileID: 786154999}
+  cvl: {fileID: 1435407245}
   colisAttenduManage: {fileID: 882313606}
+  text: {fileID: 786154999}
   colisActuelPoste: {fileID: 0}
   nbMonitor: 7
   phaseActuelle: 0
@@ -12618,6 +12623,7 @@ MonoBehaviour:
   textMissing: {fileID: 562374146}
   textWrong: {fileID: 165264118}
   ecranDeBase: {fileID: 1773461723}
+  mcv: {fileID: 0}
 --- !u!1 &1542563590
 GameObject:
   m_ObjectHideFlags: 0
@@ -15500,8 +15506,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mcv: {fileID: 882313604}
-  text: {fileID: 1476486834}
+  cvl: {fileID: 1435407245}
   colisAttenduManage: {fileID: 882313606}
+  text: {fileID: 1476486834}
   colisActuelPoste: {fileID: 0}
   nbMonitor: 7
   phaseActuelle: 0
