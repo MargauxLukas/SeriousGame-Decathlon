@@ -32,7 +32,7 @@ public class MalusScript : MonoBehaviour
         else
         {
             Scoring.instance.LosePointOnTime(10);
-            Scoring.instance.RecepMalus(30);
+            Scoring.instance.RecepMalus(8);
         }
     }
 }

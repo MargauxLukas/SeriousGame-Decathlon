@@ -17,6 +17,8 @@ public class ManagerColisVider : MonoBehaviour
 
     public ManagerColisAttendu managerColis;
 
+    public List<RemplissageColisGTP> colisActuellementsPose;
+
     private int emplacement = 0;
 
     private float tempsReponseChangementColis;
@@ -56,10 +58,25 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (colisVider.Count > 1)
             {
-                for(int m = 0; m < colisVider.Count; m++)
+                int emplacementTempo = Random.Range(0, 3);
+                int randomArticleVoulu = 0;
+                if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
                 {
-                    int emplacementTempo = Random.Range(0, 2);
-                    if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[0].rfid == colisVider[m].listArticles[0].rfid)
+                    if(colisActuellementsPose[emplacementTempo] != null)
+                    {
+                        for(int c = 0; c < managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count; c++)
+                        {
+                            if(!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[c]) && c!=0)
+                            {
+                                randomArticleVoulu = c;
+                            }
+                        }
+                    }
+                }
+                
+                for (int m = 0; m < colisVider.Count; m++)
+                {
+                    if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu] == colisVider[m].listArticles[0])
                     {
                         newColis = Instantiate(colisVider[m]);
                     }
@@ -67,16 +84,18 @@ public class ManagerColisVider : MonoBehaviour
             }
             else if (colisVider.Count > 0)
             {
+                Debug.Log("Test Fin Creation Colis à vider");
                 newColis = Instantiate(colisVider[0]);
             }
-        }
-        if(Random.Range(0, 100) < chanceColisPasRemplit)
-        {
-            int nbArticleDebut = newColis.listArticles.Count;
-            for (int i = 0; i < nbArticleDebut / 2; i++)
+            if (Random.Range(0, 100) < chanceColisPasRemplit)
             {
-                newColis.listArticles.RemoveAt(newColis.listArticles.Count);
+                int nbArticleDebut = newColis.listArticles.Count;
+                for (int i = 0; i < nbArticleDebut / 2; i++)
+                {
+                    newColis.listArticles.RemoveAt(newColis.listArticles.Count);
+                }
             }
+            //Rajouter une fonction pour mettre un article aléatoire à la fin du colis (article autre que celui déjà dedans)
         }
         return newColis;
     }
@@ -155,7 +174,14 @@ public class ManagerColisVider : MonoBehaviour
                             }
                             else
                             {
-                                nombreArticles[i]++;
+                                for(int q = 0; q < emplacementsConcerne.Count; q++)
+                                {
+                                    if(emplacementsConcerne[q] == i)
+                                    {
+                                        nombreArticles[q]++;
+                                    }
+                                }
+                                
                             }
                         }
                     }

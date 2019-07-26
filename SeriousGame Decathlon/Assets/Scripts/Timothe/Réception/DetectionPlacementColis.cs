@@ -9,6 +9,7 @@ public class DetectionPlacementColis : MonoBehaviour
         if(collision.tag == "Colis")
         {
             Scoring.instance.RecepMalus(50);
+            Scoring.instance.AffichageErreur("Tu as mal positionné ton colis sur le convoyeur");
         }
     }
 }

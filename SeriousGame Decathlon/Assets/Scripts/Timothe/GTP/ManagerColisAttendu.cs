@@ -9,8 +9,8 @@ public class ManagerColisAttendu : MonoBehaviour
     public ManagerColisVider colisViderManage;
 
     [Header("Liste")]
-    public List<Colis> colisVoulus             = new List<Colis>();
-    public List<Colis> colisActuellementTraite = new List<Colis>();
+    public List<Colis> colisVoulus             = new List<Colis>(); //Tous les colis voulus
+    public List<Colis> colisActuellementTraite = new List<Colis>(); //Tous les colis actuel
     public List<int  > phasesColisVoulus       = new List<int  >();
     public List<ConsoleMonitor> cm;
 
@@ -19,7 +19,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbArticleVoulu  ;
     public int nbEmplacement;
 
-    float chanceAvoirTropArticlePrevu = 0.05f;
+    float chanceAvoirTropArticlePrevu = 0;
 
     public void Start()
     {
@@ -28,23 +28,21 @@ public class ManagerColisAttendu : MonoBehaviour
             colisVoulus.Add(new Colis());
             colisVoulus[i].listArticles = new List<Article>();
 
-            int nb = Random.Range(2, 3);
+            int nb = Random.Range(2, 4);
             int nbPhase = 0;
 
             for (int k = 0; k < nb; k++)
             {
+                nbPhase++;
                 int articleAlea = Random.Range(0, colisViderManage.colisVider.Count - 1);
-                for (int p = 0; p < Random.Range(2, 4); p++)
+                int rngNumber = Random.Range(2, 5);
+                for (int p = 0; p < rngNumber; p++)
                 {
                     colisVoulus[i].listArticles.Add(colisViderManage.colisVider[articleAlea].listArticles[0]);
-                    if (!colisVoulus[i].listArticles.Contains(colisViderManage.colisVider[articleAlea].listArticles[0]))
-                    {
-                        nbPhase++;
-                    }
                 }
             }
 
-            if ((float)Random.Range(0, 1) <= chanceAvoirTropArticlePrevu)
+            if ((float)Random.Range(0, 1) < chanceAvoirTropArticlePrevu)
             {
                 while (colisVoulus[i].listArticles.Count <= 11)
                 {
@@ -59,6 +57,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisActuellementTraite.Add(colisVoulus[q]);
             cm[q].phaseActuelle = phasesColisVoulus[q];
+            Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
     }
 
@@ -72,6 +71,7 @@ public class ManagerColisAttendu : MonoBehaviour
             Debug.Log(colisVoulus[3]);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
+            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
         else if(colisVoulus.Count<=0)
         {

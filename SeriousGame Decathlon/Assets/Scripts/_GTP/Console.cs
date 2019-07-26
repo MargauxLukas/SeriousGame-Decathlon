@@ -9,6 +9,7 @@ public class Console : MonoBehaviour
     public Monitor monitor;
     public ConsoleMonitor cm;
 
+    public int emplacementConsole;
     public int nb = 0;
 
     public void Start()
@@ -37,8 +38,8 @@ public class Console : MonoBehaviour
 
     public void Valider() 
     {
-        //monitor.UpdateAffichage();
-        cm.UpdateAffichageConsole(nb);
+        monitor.UpdateAffichage(monitor.nbMonitor + nb);
+        cm.UpdateAffichageConsole(nb, emplacementConsole);
         nb = 0;
         UpdateAffichage();
     }

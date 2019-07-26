@@ -8,7 +8,7 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public Transform positionVisee;
     public float speed = 1;
-    Vector3 startPosition;
+    public Vector3 startPosition;
 
     bool didArrive;
     private bool doesTouch;
@@ -17,6 +17,10 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public int currentPhase = 0;
     public float tauxRemplissage;
+    public bool besoinEtreVide;
+
+    public bool isOpen;
+    public BoxCollider2D boxDesactivee;
 
     private void Start()
     {
@@ -39,7 +43,6 @@ public class RemplissageColisGTP : MonoBehaviour
                 doesTouch = false;
                 Debug.Log("Test");
                 List<List<Article>> newListes    = new List<List<Article>>();
-                List<Article> articleRestant     = new List     <Article> ();
                 List<Article> articlesDejaConnus = new List     <Article> ();
 
                 if (!tasArticle[0].activeSelf)
@@ -75,6 +78,11 @@ public class RemplissageColisGTP : MonoBehaviour
                             tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
                         }
                     }
+                    isOpen = true;
+                    if(besoinEtreVide)
+                    {
+                        besoinEtreVide = false;
+                    }
                 }
                 else
                 {
@@ -90,6 +98,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             repack = true;
                         }
                     }
+                    isOpen = false;
 
                     if (repack)
                     {
@@ -120,16 +129,21 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public IEnumerator AnimationColisRenvoie()
     {
-        if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
+        Debug.Log("The coroutine of partir");
+        if(!boxDesactivee.enabled)
+        {
+            boxDesactivee.enabled = true;
+        }
+        if (Vector3.Distance(startPosition, transform.position) < 0.8f && !didArrive)
         {
             transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f   ;
             transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.13f;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }
-        else if (Vector3.Distance(positionVisee.position, transform.position) > 0.1f)
+        else if (Vector3.Distance(startPosition, transform.position) < 15f)
         {
-            transform.position -= (positionVisee.position - transform.position).normalized * Time.deltaTime * speed;
+            transform.position -= new Vector3(-1,0,0) * Time.deltaTime * speed;
             yield return new WaitForSeconds(Time.deltaTime);
             StartCoroutine(AnimationColisRenvoie());
             didArrive = true;
