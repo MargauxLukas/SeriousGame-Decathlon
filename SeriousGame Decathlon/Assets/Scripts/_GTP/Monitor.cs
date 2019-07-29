@@ -66,7 +66,6 @@ public class Monitor : MonoBehaviour
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
-        Debug.Log((phaseActuelle + 1) + " ==  " + phaseVoulue);
         if (phaseActuelle + 1 == phaseVoulue)
         {
             colis2.GetComponent<Animator>().SetInteger("Color", 2);
