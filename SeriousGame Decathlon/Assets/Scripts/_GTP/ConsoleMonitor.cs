@@ -36,7 +36,6 @@ public class ConsoleMonitor : MonoBehaviour
 
         foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
         {
-            Debug.Log(art + " == " + reference);
             if(art == reference)
             {
                 nbArticleEnQuestion++;

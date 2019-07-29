@@ -8,10 +8,51 @@ public class PickTUContentWindow : MonoBehaviour
     public CartonVideLink      cvl;
     public GameObject ecranDeBase;
 
+    public List<ArticleAffichage> listArticleAffichage;
+
     //Emplacement
     //Colis
     //NB article voulu (int)
     //Article en question (Article)
+
+    public void affichageListe(int nb)
+    {
+        string ArticleName1 = "";
+        string ArticleName2 = "";
+        string ArticleName3 = "";
+        int nb1 = 0;
+        int nb2 = 0;
+        int nb3 = 0;
+
+        foreach (Article art in mca.colisActuellementTraite[nb].listArticles)
+        {
+            if (art.name == ArticleName1 || ArticleName1 == "")
+            {
+                ArticleName1 = art.name;
+                nb1++;
+            }
+            else if (art.name == ArticleName2 || ArticleName2 == "")
+            {
+                ArticleName2 = art.name;
+                nb2++;
+            }
+            else if (art.name == ArticleName3 || ArticleName3 == "")
+            {
+                ArticleName3 = art.name;
+                nb3++;
+            }
+        }
+
+        listArticleAffichage[0].TName.text = ArticleName1;
+        listArticleAffichage[1].TName.text = ArticleName2;
+        listArticleAffichage[2].TName.text = ArticleName3;
+
+        listArticleAffichage[0].TTarget.text = nb1.ToString();
+        listArticleAffichage[1].TTarget.text = nb2.ToString();
+        listArticleAffichage[2].TTarget.text = nb3.ToString();
+
+        //Faire pareil avec le colis en cours pour savoir ce qu'il y'a dedans
+    }
 
     public void ClosePickTU()
     {
