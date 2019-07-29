@@ -39,8 +39,8 @@ public class ConvoyeurButton : MonoBehaviour
             if (downPressed)
             {
                 if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(11); }
-                convoyeur.MoveZ("down");
-            }                       //Boutton Descendre
+                convoyeur.MoveZ("down");                                        //Boutton Descendre
+            }
             if (!isCollide)
             {
                 if (deplierPressed)
@@ -50,7 +50,11 @@ public class ConvoyeurButton : MonoBehaviour
                 }
             }
 
-            if (replierPressed && validatePressed) { convoyeur.MoveY("replier"); }    //Boutton Replier + Validate
+            if (replierPressed && validatePressed)
+            {
+                if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(24); }
+                convoyeur.MoveY("replier");                                     //Boutton Replier + Validate
+            }
             else { return; }
         }
         else
@@ -61,6 +65,8 @@ public class ConvoyeurButton : MonoBehaviour
 
     public void OnOrOff()
     {
+        if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(1); }
+
         //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
         if (convoyeur.isOn)
         {
@@ -70,7 +76,6 @@ public class ConvoyeurButton : MonoBehaviour
         }
         else if (!detectAnom.gotAnomalie && etiquettesManager.nbEtiquettes > 0)
         {
-            if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(1); }
             isOnAmpoule .SetActive(true );
             isOffAmpoule.SetActive(false);
             convoyeur.isOn = true;

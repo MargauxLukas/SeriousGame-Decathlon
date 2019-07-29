@@ -79,7 +79,7 @@ public class ManagerColisVider : MonoBehaviour
                         emplacementTempo = (emplacementTempo + 1) % 3;
                         nb++;
                     }
-                    Debug.Log("L'ancien : " + (AncientEmplacementTempo == emplacementTempo));
+                    Debug.Log("L'ancien : " + AncientEmplacementTempo);
                     Debug.Log("Le nouveau : " + emplacementTempo);
                     AncientEmplacementTempo = emplacementTempo;
                     if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
