@@ -108,7 +108,7 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         nbArticleVoulu = nombreArtVoulu;
         monitor.UpdateAffichage(nombreArtVoulu);
-        //monitor.ResetMonitor();
+        monitor.ResetMonitor();
 
         switch (emplacement)
         {
