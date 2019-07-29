@@ -137,11 +137,12 @@ public class RemplissageColisGTP : MonoBehaviour
         if (!boxDesactivee.enabled)
         {
             boxDesactivee.enabled = true;
+            GetComponent<SpriteRenderer>().sortingOrder--;
         }
-        if (Vector3.Distance(startPosition, transform.position) < 0.8f && !didArrive)
+        if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
         {
-            transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f   ;
-            transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.13f;
+            transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 4f   ;
+            transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.35f;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }
