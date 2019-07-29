@@ -89,9 +89,6 @@ public class ConsoleMonitor : MonoBehaviour
             }
             else
             {
-                //Debug.Log("Allo");
-                //Renvoyer le colis qui vient d'être géré
-                //bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
                 colisAttenduManage.RenvoieColis(emplacement);
                 switch(emplacement)
                 {

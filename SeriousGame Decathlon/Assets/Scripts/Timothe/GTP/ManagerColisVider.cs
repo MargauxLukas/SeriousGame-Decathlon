@@ -168,7 +168,11 @@ public class ManagerColisVider : MonoBehaviour
 
     public bool PeutFairePartirColis()
     {
-        if (tempsReponseChangementColis <= 0)
+        if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
+        {
+            //Faire apparaître l'écran de si le colis est sensé être vide
+        }
+        else if (tempsReponseChangementColis <= 0)
         {
             if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {
@@ -193,8 +197,10 @@ public class ManagerColisVider : MonoBehaviour
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[p] && !aEteVerifier)
             {
                 Debug.Log("Le colis n'a pas été signalé alors qu'il a une anomalie");
+                //Malus
             }
         }
+        //Bonus si validé
         aEteVerifier = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
         emplacementsScripts[emplacement].SetActive(false);

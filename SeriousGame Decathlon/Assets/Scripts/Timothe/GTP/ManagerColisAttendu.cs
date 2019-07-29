@@ -19,7 +19,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbArticleVoulu  ;
     public int nbEmplacement   ;
 
-    float chanceAvoirTropArticlePrevu     = 0;
+    public float chanceAvoirTropArticlePrevu = 0;
     public float chanceToComeFromInternet = 0;
 
     public void Start()
@@ -53,7 +53,7 @@ public class ManagerColisAttendu : MonoBehaviour
             }
 
 
-            if ((float)Random.Range(0, 1) < chanceAvoirTropArticlePrevu)
+            if ((float)Random.Range(0, 100) < chanceAvoirTropArticlePrevu)
             {
                 while (colisVoulus[i].listArticles.Count <= 11)
                 {
@@ -173,7 +173,7 @@ public class ManagerColisAttendu : MonoBehaviour
         bool noAnomalie = true;
         if (articleEnvoye.Count > 0 || articleEnvoye.Count > 0)
         {
-            //Le colis renvoyé n'est pas bon
+            //Ajoute un malus par colis différents
         }
         return noAnomalie;
     }
