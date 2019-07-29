@@ -321,6 +321,14 @@ public class TutoManagerRecep : MonoBehaviour
                     case (52):
                         Phase52();
                         break;
+
+                    case (57):
+                        Phase57();
+                        break;
+
+                    case (58):
+                        Phase58();
+                        break;
                 }
                 break;
             #endregion
@@ -1967,6 +1975,97 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase56()
     {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
 
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.onOffButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-7.63f, -1.46f), new Vector2(1.2f, 0.5f),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
+            StartCoroutine(NewPhase(1f));
+        }
+    }
+
+    void Phase57()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-7.45f, 1.86f), new Vector2(1.78f, 2.48f),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
+            StartCoroutine(NewPhase(1f));
+        }
+    }
+
+    void Phase58()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(-7.63f, -1.46f), new Vector2(1.2f, 0.5f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(1, 1),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(59.41f, -2.34f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.returnContainerButton).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
     }
 }

@@ -78,6 +78,7 @@ public class GameObjectsManagerRecep : MonoBehaviour
 
     [Header("Canvas")]
     public GameObject quitButton;
+    public GameObject returnContainerButton;
 
     [Header("Trigger")]
     public GameObject cameraTriggerUp;

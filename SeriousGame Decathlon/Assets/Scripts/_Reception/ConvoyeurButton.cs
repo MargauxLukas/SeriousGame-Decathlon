@@ -65,6 +65,8 @@ public class ConvoyeurButton : MonoBehaviour
 
     public void OnOrOff()
     {
+        if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(1); }
+
         //Verification si convoyeur est allumé ou pas sinon ça bug lorsque j'appuie sur Replier/Deplier
         if (convoyeur.isOn)
         {
@@ -74,7 +76,6 @@ public class ConvoyeurButton : MonoBehaviour
         }
         else if (!detectAnom.gotAnomalie && etiquettesManager.nbEtiquettes > 0)
         {
-            if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(1); }
             isOnAmpoule .SetActive(true );
             isOffAmpoule.SetActive(false);
             convoyeur.isOn = true;
