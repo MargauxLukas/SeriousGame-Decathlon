@@ -79,6 +79,7 @@ public class ConsoleMonitor : MonoBehaviour
 
     public void Envoyer(int emplacement) 
     {
+        //Si j'appuie 2 fois, ça duplique le colis
         if (mcv.PeutFairePartirColis())
         {
             mcv.FairePartirUnColis();
