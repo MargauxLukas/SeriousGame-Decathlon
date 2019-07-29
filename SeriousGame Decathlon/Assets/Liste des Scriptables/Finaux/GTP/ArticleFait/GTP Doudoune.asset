@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49d1c66de3d0b19478e617f09ef1763b, type: 3}
   - {fileID: 21300000, guid: 414c02e6975c5df4686d766f9db34037, type: 3}
   spriteGTP: {fileID: 21300000, guid: 8199c38b8ec2f2d4888c4d572b6757d7, type: 3}
+  photoGTP: {fileID: 21300000, guid: 2fa5cd74063e96b4aa875cc354e13ceb, type: 3}
