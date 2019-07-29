@@ -35,7 +35,7 @@ public class AnimationFaireVenirColis : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
             StartCoroutine(AnimationColis(aActiver));
         }
-        else if(Vector3.Distance(positionVisee.position, transform.position) < 1.5f)
+        else if(Vector3.Distance(positionVisee.position, transform.position) < 2f)
         {
             didArrive = true;
             transform.position -= new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f;

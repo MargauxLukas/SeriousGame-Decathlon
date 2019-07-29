@@ -131,7 +131,7 @@ public class CartonVide : MonoBehaviour
                     mcv.managerColis.cm[1].colisActuelPoste = gameObject.GetComponent<RemplissageColisGTP>();
                     lectureEnCours = true;
                     //Tableau[1]
-                    startPosition = new Vector3(65.5f, -3.20f, 0f);
+                    startPosition = new Vector3(65.26f, -3.20f, 0f);
                     transform.position = startPosition;
                     cvl.isFree2 = false;
                     cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
@@ -150,7 +150,7 @@ public class CartonVide : MonoBehaviour
                     mcv.managerColis.cm[2].colisActuelPoste = gameObject.GetComponent<RemplissageColisGTP>();
                     lectureEnCours = true;
                     //Tableau[2]
-                    startPosition = new Vector3(68.40f, -3.20f, 0f);
+                    startPosition = new Vector3(68.17f, -3.20f, 0f);
                     transform.position = startPosition;
                     cvl.isFree3 = false;
                     cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
@@ -174,14 +174,14 @@ public class CartonVide : MonoBehaviour
             else if (collision.gameObject.name == "Tapis2" && cvl.isFree2 && !lectureEnCours)
             {
                 lectureEnCours = true;
-                freezedPosition = new Vector3(65.5f, -3.20f, 0f);
+                freezedPosition = new Vector3(65.26f, -3.20f, 0f);
                 //transform.position = freezedPosition;
                 //return;
             }
             else if (collision.gameObject.name == "Tapis3" && cvl.isFree3 && !lectureEnCours)
             {
                 lectureEnCours = true;
-                freezedPosition = new Vector3(68.40f, -3.20f, 0f);
+                freezedPosition = new Vector3(68.17f, -3.20f, 0f);
                 //transform.position = freezedPosition;
                 //return;
             }
