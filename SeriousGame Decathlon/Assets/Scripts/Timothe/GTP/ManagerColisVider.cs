@@ -79,8 +79,8 @@ public class ManagerColisVider : MonoBehaviour
                         emplacementTempo = (emplacementTempo + 1) % 3;
                         nb++;
                     }
-                    Debug.Log("L'ancien : " + AncientEmplacementTempo);
-                    Debug.Log("Le nouveau : " + emplacementTempo);
+                    //Debug.Log("L'ancien : " + AncientEmplacementTempo);
+                    //Debug.Log("Le nouveau : " + emplacementTempo);
                     AncientEmplacementTempo = emplacementTempo;
                     if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
                     {
@@ -98,10 +98,10 @@ public class ManagerColisVider : MonoBehaviour
                                     {
                                         for(int d = 0; d < colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Count; d++)
                                         {
-                                            Debug.Log("La liste actuelle : " + colisActuellementsPose[emplacementTempo].colisScriptable.listArticles[d].name);
+                                            //Debug.Log("La liste actuelle : " + colisActuellementsPose[emplacementTempo].colisScriptable.listArticles[d].name);
                                         }
-                                        Debug.Log("L'article choisit : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[c].name);
-                                        Debug.Log("L'emplacement choisit : " + emplacementTempo + " Et le C actuel : " + c);
+                                        //Debug.Log("L'article choisit : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[c].name);
+                                        //Debug.Log("L'emplacement choisit : " + emplacementTempo + " Et le C actuel : " + c);
                                         randomArticleVoulu = c;
                                     }
                                 }
@@ -119,9 +119,9 @@ public class ManagerColisVider : MonoBehaviour
                         }
                         if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu] == colisVider[m].listArticles[0])
                         {
-                            Debug.Log("randomArticleVoulu : " + randomArticleVoulu);
-                            Debug.Log("Nom du nouvel Article : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu].name);
-                            Debug.Log("Le colis choisit en fonction : " + colisVider[m].listArticles[0]);
+                            //Debug.Log("randomArticleVoulu : " + randomArticleVoulu);
+                            //Debug.Log("Nom du nouvel Article : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu].name);
+                            //Debug.Log("Le colis choisit en fonction : " + colisVider[m].listArticles[0]);
                             newColis = Instantiate(colisVider[m]);
                         }
                     }
@@ -264,7 +264,7 @@ public class ManagerColisVider : MonoBehaviour
                         if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
                         {
                             nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
-                            Debug.Log(nbEmplacementPrendre);
+                            //Debug.Log(nbEmplacementPrendre);
                         }
                         if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                         {
