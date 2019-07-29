@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RemplissageColisGTP : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public int currentPhase = 0;
     public float tauxRemplissage;
     public bool besoinEtreVide;
+    public Image remplissageImage;
 
     public bool isOpen;
     public BoxCollider2D boxDesactivee;
@@ -50,41 +52,45 @@ public class RemplissageColisGTP : MonoBehaviour
 
                 if (!tasArticle[0].activeSelf)
                 {
-                    for (int i = 0; i < colisScriptable.listArticles.Count; i++)
+                    if (colisScriptable.listArticles.Count > 0)
                     {
-                        if (!articlesDejaConnus.Contains(colisScriptable.listArticles[i]))
+                        for (int i = 0; i < colisScriptable.listArticles.Count; i++)
                         {
-                            Debug.Log("Test");
-                            newListes                     .Add(new List<Article>());
-                            newListes[newListes.Count - 1].Add(colisScriptable.listArticles[i]);
-                            articlesDejaConnus            .Add(colisScriptable.listArticles[i]);
-                        }
-                        else
-                        {
-                            for (int j = 0; j < newListes.Count; j++)
+                            if (!articlesDejaConnus.Contains(colisScriptable.listArticles[i]))
                             {
-                                Debug.Log("Test2");
-                                if (newListes[j].Contains(colisScriptable.listArticles[i]))
+                                Debug.Log("Test");
+                                newListes.Add(new List<Article>());
+                                newListes[newListes.Count - 1].Add(colisScriptable.listArticles[i]);
+                                articlesDejaConnus.Add(colisScriptable.listArticles[i]);
+                            }
+                            else
+                            {
+                                for (int j = 0; j < newListes.Count; j++)
                                 {
-                                    newListes[j].Add(colisScriptable.listArticles[i]);
+                                    Debug.Log("Test2");
+                                    if (newListes[j].Contains(colisScriptable.listArticles[i]))
+                                    {
+                                        newListes[j].Add(colisScriptable.listArticles[i]);
+                                    }
                                 }
                             }
                         }
-                    }
-                    colisScriptable.listArticles = new List<Article>();
+                        colisScriptable.listArticles = new List<Article>();
 
-                    for (int l = 0; l < newListes.Count; l++)
-                    {
-                        if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
+                        for (int l = 0; l < newListes.Count; l++)
                         {
-                            tasArticle[l].SetActive(true);
-                            tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
-                            isOpen = true;
+                            if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
+                            {
+                                tasArticle[l].SetActive(true);
+                                tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
+                                isOpen = true;
+                            }
                         }
-                    }
-                    if(besoinEtreVide)
-                    {
-                        besoinEtreVide = false;
+                        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.4f);
+                        if (besoinEtreVide)
+                        {
+                            besoinEtreVide = false;
+                        }
                     }
                 }
                 else
@@ -102,6 +108,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             repack = true;
                         }
                     }
+                    GetComponent<SpriteRenderer>().color = new Color(255,255,255, 1f);
                     isOpen = false;
 
                     if (repack)
@@ -127,8 +134,8 @@ public class RemplissageColisGTP : MonoBehaviour
             colisScriptable.listArticles = new List<Article>();
         }
         colisScriptable.listArticles.Add(articleToHad);
-        tauxRemplissage = colisScriptable.listArticles.Count / 10;
-        //Mettre à jour la barre de remplissage
+        tauxRemplissage = (float)colisScriptable.listArticles.Count / 10f;
+        remplissageImage.fillAmount = tauxRemplissage;
     }
 
     public IEnumerator AnimationColisRenvoie()
@@ -138,6 +145,7 @@ public class RemplissageColisGTP : MonoBehaviour
         {
             boxDesactivee.enabled = true;
             GetComponent<SpriteRenderer>().sortingOrder--;
+            remplissageImage.enabled = false;
         }
         if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
         {

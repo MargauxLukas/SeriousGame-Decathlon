@@ -170,7 +170,7 @@ public class ManagerColisAttendu : MonoBehaviour
         bool noAnomalie = true;
         if (articleEnvoye.Count > 0 || articleEnvoye.Count > 0)
         {
-            //Le colis renvoyé n'est pas bon
+            //Ajoute un malus par colis différents
         }
         return noAnomalie;
     }
