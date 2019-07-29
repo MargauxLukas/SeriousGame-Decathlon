@@ -15,7 +15,7 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "J'ai fais venir un container juste pour toi, afin que tu puisse t'entra\xEEner. "
+  - "J'ai fais venir un container juste pour toi, afin que tu puisses t'entra\xEEner. "
   - "Tu vas pouvoir d\xE9couvrir tous les cas qui se pr\xE9senteront \xE0 toi dans
     ton travail quotidien."
   - "Si plus tard dans ton entra\xEEnement tu rencontres un probl\xE8me ou que tu

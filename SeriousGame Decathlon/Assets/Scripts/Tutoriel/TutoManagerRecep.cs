@@ -63,6 +63,11 @@ public class TutoManagerRecep : MonoBehaviour
 
     public void DialogueIsFinished()
     {
+        if(phaseNum == 0)
+        {
+            Manager(0);
+        }
+
         canPlayFirst = false;
         canPlaySecond = true;
         Manager(interactionNum);
@@ -87,12 +92,15 @@ public class TutoManagerRecep : MonoBehaviour
                             Vector3 doigtStayPos, Vector3 doigtStayTar, float doigtStaySpeed, bool doigtStayIsMoving, 
                             Vector2 arrowPos, float eulerAngX, float eulerAngY, float eulerAngZ)
     {
+        Debug.Log("Je suis entré dans Indications()");
         if((squareSpriteMask01Pos != Vector2.zero && squareSpriteMask01Scale != Vector2.zero)
         || (circleSpriteMask01Pos != Vector2.zero && circleSpriteMask01Scale != Vector2.zero) 
         || (squareSpriteMask02Pos != Vector2.zero && squareSpriteMask02Scale != Vector2.zero) 
         || (circleSpriteMask02Pos != Vector2.zero && circleSpriteMask02Scale != Vector2.zero))
         {
-            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            Debug.Log("BlackScreen Activé");
+            //gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
+            gameObjectsManager.blackScreen.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if(squareSpriteMask01Pos != Vector2.zero && squareSpriteMask01Scale != Vector2.zero)
@@ -104,6 +112,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if(circleSpriteMask01Pos != Vector2.zero && circleSpriteMask01Scale != Vector2.zero)
         {
+            Debug.Log("CircleSpriteMask01 Activé");
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask01).transform.localPosition = circleSpriteMask01Pos;
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask01).transform.localScale = circleSpriteMask01Scale;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask01).enabled = true;
@@ -125,6 +134,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (doigtClickPos != Vector2.zero)
         {
+            Debug.Log("DoigtClick Activé");
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localPosition = doigtClickPos;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = true;
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = true;
@@ -153,7 +163,13 @@ public class TutoManagerRecep : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.arrowSpriteMask).enabled = true;
         }
 
-        else
+        if (squareSpriteMask01Pos == Vector2.zero && squareSpriteMask01Scale == Vector2.zero
+        &&  circleSpriteMask01Pos == Vector2.zero && circleSpriteMask01Scale == Vector2.zero
+        &&  squareSpriteMask02Pos == Vector2.zero && squareSpriteMask02Scale == Vector2.zero
+        &&  circleSpriteMask02Pos == Vector2.zero && circleSpriteMask02Scale == Vector2.zero
+        &&  doigtClickPos == Vector2.zero
+        &&  doigtStayPos == Vector3.zero && doigtStayTar == Vector3.zero && doigtStaySpeed <= 0 && !doigtStayIsMoving
+        &&  arrowPos == Vector2.zero && eulerAngX == 0 && eulerAngY == 0 && eulerAngZ == 0)
         {
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
 
@@ -173,6 +189,28 @@ public class TutoManagerRecep : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.arrow).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.arrowSpriteMask).enabled = false;
         }
+
+        /*else
+        {
+            Debug.Log("J'arrive pas à activer les indications");
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
+
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
+
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask01).enabled = false;
+
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtClickSpriteMask).enabled = false;
+
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = false;
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = false;
+
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.arrow).enabled = false;
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.arrow).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.arrowSpriteMask).enabled = false;
+        }*/
     }
 
     IEnumerator MoveDoigt(Vector3 fingerPos, Vector3 targetPos, float fingerSpeed)
@@ -660,6 +698,7 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase00()
     {
+        Debug.Log("Phase 0 lancée");
         Indications(new Vector2(0,0), new Vector2(0,0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(-5.57f, -3.67f), new Vector2(1,1),

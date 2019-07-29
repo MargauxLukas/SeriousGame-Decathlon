@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: RecepAlea5
+  m_Name: TutoRecepColis06
   m_EditorClassIdentifier: 
-  name: RecepAlea5
-  PCB: 4
-  poids: 8
-  fillPercent: 100
+  name: TutoRecepColis06
+  PCB: 0
+  poids: 45
+  fillPercent: 0
   hasBeenRecount: 0
   isBadOriented: 0
   estOuvert: 0
@@ -24,14 +24,10 @@ MonoBehaviour:
   aEteVide: 0
   carton: {fileID: 11400000, guid: 4c0a7ff2afa1c714e970aba6b62989bf, type: 2}
   nomWayTicket: 
-  wayTicket: {fileID: 11400000, guid: 9013b45dd8a679b4fa7e57ac6d5f0767, type: 2}
-  listArticles:
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  nbAnomalie: 2
+  wayTicket: {fileID: 0}
+  listArticles: []
+  nbAnomalie: 1
   listAnomalies:
   - RFID tags to be applied
-  - RFID tag under Tolerance
+  comeFromInternet: 0
   provenance: 

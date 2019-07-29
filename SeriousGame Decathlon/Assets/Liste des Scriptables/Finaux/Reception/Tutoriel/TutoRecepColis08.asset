@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: RecepAbimePetit
+  m_Name: TutoRecepColis08
   m_EditorClassIdentifier: 
-  name: RecepAbimePetit
+  name: TutoRecepColis08
   PCB: 0
   poids: 0
   fillPercent: 0
   hasBeenRecount: 0
-  isBadOriented: 0
+  isBadOriented: 1
   estOuvert: 0
-  estAbime: 1
+  estAbime: 0
   needQualityControl: 0
   aEteVide: 0
-  carton: {fileID: 11400000, guid: 1f7f1e49a3f110840954aa86a8b717b0, type: 2}
+  carton: {fileID: 11400000, guid: debd2d380404d334ea93ccc9f2626925, type: 2}
   nomWayTicket: 
   wayTicket: {fileID: 0}
   listArticles: []
-  nbAnomalie: 0
-  listAnomalies: []
+  nbAnomalie: 1
+  listAnomalies:
+  - New Product
+  comeFromInternet: 0
   provenance: 

@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
-  m_Name: RecepAlea2
+  m_Name: TutoRecepColis09
   m_EditorClassIdentifier: 
-  name: RecepAlea2
-  PCB: 3
-  poids: 6
-  fillPercent: 100
+  name: TutoRecepColis09
+  PCB: 0
+  poids: 0
+  fillPercent: 0
   hasBeenRecount: 0
-  isBadOriented: 1
+  isBadOriented: 0
   estOuvert: 0
   estAbime: 0
   needQualityControl: 0
   aEteVide: 0
-  carton: {fileID: 11400000, guid: 4c0a7ff2afa1c714e970aba6b62989bf, type: 2}
+  carton: {fileID: 11400000, guid: a03d2839a3ab9824296672723400d2b7, type: 2}
   nomWayTicket: 
-  wayTicket: {fileID: 11400000, guid: c573498402169404b96bbf88659fb497, type: 2}
-  listArticles:
-  - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
-  - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
-  - {fileID: 11400000, guid: a60ec9b0a04f4c348b32cea203935519, type: 2}
+  wayTicket: {fileID: 0}
+  listArticles: []
   nbAnomalie: 0
   listAnomalies: []
+  comeFromInternet: 0
   provenance: 
