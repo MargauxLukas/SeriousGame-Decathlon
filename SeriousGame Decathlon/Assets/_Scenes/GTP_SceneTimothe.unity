@@ -5185,7 +5185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &679415226
 Transform:
   m_ObjectHideFlags: 0
@@ -5873,13 +5873,14 @@ GameObject:
   m_Component:
   - component: {fileID: 718988489}
   - component: {fileID: 718988490}
+  - component: {fileID: 718988491}
   m_Layer: 0
   m_Name: RemainingQuantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &718988489
 Transform:
   m_ObjectHideFlags: 0
@@ -5943,6 +5944,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &718988491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718988488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5afb9986eb763ba4998dfeabf6de1f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainingQuantitynb: {fileID: 771316886}
+  tunb: {fileID: 151396433}
+  expectednb: {fileID: 1492666179}
+  nb: 0
 --- !u!1 &751342028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7873,6 +7890,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  RemainingQuantityWindow: {fileID: 0}
   aEteVerifier: 0
 --- !u!4 &882313605
 Transform:
@@ -13740,22 +13758,22 @@ PrefabInstance:
     - target: {fileID: 2480178996055085717, guid: 77c888cc8d1a85c43a6da043eea3051c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 58
+      value: 372
       objectReference: {fileID: 0}
     - target: {fileID: 2480178996055085717, guid: 77c888cc8d1a85c43a6da043eea3051c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 122
+      value: 215
       objectReference: {fileID: 0}
     - target: {fileID: 2480178996055085717, guid: 77c888cc8d1a85c43a6da043eea3051c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 116.875
       objectReference: {fileID: 0}
     - target: {fileID: 2480178996055085717, guid: 77c888cc8d1a85c43a6da043eea3051c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 2480178996055085717, guid: 77c888cc8d1a85c43a6da043eea3051c,
         type: 3}
