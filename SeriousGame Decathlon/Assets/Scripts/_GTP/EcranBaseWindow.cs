@@ -9,7 +9,6 @@ public class EcranBaseWindow : MonoBehaviour
 
     public void AnomalyWindow()
     {
-        gameObject   .SetActive(false);
         anomalyWindow.SetActive(true );
     }
 
@@ -21,7 +20,6 @@ public class EcranBaseWindow : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
             PickTUContentWindow.SetActive(true);
             PickTUContentWindow.GetComponent<PickTUContentWindow>().affichageListe(nb);
         }

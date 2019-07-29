@@ -46,7 +46,8 @@ public class Monitor : MonoBehaviour
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 0;
         Tapis1.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
-        if (phaseActuelle == phaseVoulue - 2)
+        Debug.Log((phaseActuelle+1) + " ==  " +phaseVoulue);
+        if (phaseActuelle + 1 == phaseVoulue)
         {
             colis1.GetComponent<Animator>().SetInteger("Color", 2);
         }
@@ -64,7 +65,9 @@ public class Monitor : MonoBehaviour
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
-        if (phaseActuelle == phaseVoulue - 2)
+
+        Debug.Log((phaseActuelle + 1) + " ==  " + phaseVoulue);
+        if (phaseActuelle + 1 == phaseVoulue)
         {
             colis2.GetComponent<Animator>().SetInteger("Color", 2);
         }
@@ -72,7 +75,6 @@ public class Monitor : MonoBehaviour
         {
             colis2.GetComponent<Animator>().SetInteger("Color", 1);
         }
-
         //Animator Colis2
     }
 
@@ -82,7 +84,8 @@ public class Monitor : MonoBehaviour
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 2;
         Tapis3.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
-        if (phaseActuelle == phaseVoulue - 2)
+        Debug.Log((phaseActuelle + 1) + " ==  " + phaseVoulue);
+        if (phaseActuelle + 1 == phaseVoulue)
         {
             colis3.GetComponent<Animator>().SetInteger("Color", 2);
         }

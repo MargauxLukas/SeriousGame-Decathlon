@@ -13,8 +13,6 @@ public class SourceCorrectionWindow : MonoBehaviour
     private int nbMissing = 0;
     private int nbWrong   = 0;
 
-    public GameObject ecranDeBase;
-
     public ManagerColisVider mcv;
 
     public void AffichageDamaged()
@@ -80,7 +78,6 @@ public class SourceCorrectionWindow : MonoBehaviour
     public void Back()
     {
         gameObject.SetActive(false);
-        ecranDeBase.SetActive(true);
     }
 
     public void Confirm()

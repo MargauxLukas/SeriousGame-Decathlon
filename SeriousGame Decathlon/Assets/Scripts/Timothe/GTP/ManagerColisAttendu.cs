@@ -114,15 +114,18 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             case 0:
                 nbEmplacement = 0;
-                monitor.Colis1Actif(phasesColisVoulus[0], cm[0].phaseActuelle);
+                if (cm[0].colisActuelPoste == null){monitor.Colis1Actif(phasesColisVoulus[0],    0                               );}
+                else                               {monitor.Colis1Actif(phasesColisVoulus[0], cm[0].colisActuelPoste.currentPhase);}
                 break;
             case 1:
                 nbEmplacement = 1;
-                monitor.Colis2Actif(phasesColisVoulus[1], cm[0].phaseActuelle);
+                if (cm[1].colisActuelPoste == null){monitor.Colis2Actif(phasesColisVoulus[1],    0                               );}
+                else                               {monitor.Colis2Actif(phasesColisVoulus[1], cm[1].colisActuelPoste.currentPhase);}
                 break;
             case 2:
                 nbEmplacement = 2;
-                monitor.Colis3Actif(phasesColisVoulus[2], cm[0].phaseActuelle);
+                if (cm[2].colisActuelPoste == null){monitor.Colis3Actif(phasesColisVoulus[2],    0                               );}
+                else                               {monitor.Colis3Actif(phasesColisVoulus[2], cm[2].colisActuelPoste.currentPhase);}
                 break;
         }
     }

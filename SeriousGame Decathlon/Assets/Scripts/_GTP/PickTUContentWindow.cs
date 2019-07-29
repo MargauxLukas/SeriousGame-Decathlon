@@ -6,7 +6,6 @@ public class PickTUContentWindow : MonoBehaviour
 {
     public ManagerColisAttendu mca;
     public CartonVideLink      cvl;
-    public GameObject  ecranDeBase;
 
     public List<ArticleAffichage> listArticleAffichage;
 
@@ -89,7 +88,6 @@ public class PickTUContentWindow : MonoBehaviour
 
     public void Back()
     {
-        ecranDeBase.SetActive(true );
         gameObject .SetActive(false);
     }
 }
