@@ -74,8 +74,6 @@ public class PickTUContentWindow : MonoBehaviour
         listArticleAffichage[0].TActual.text = nb1.ToString();
         listArticleAffichage[1].TActual.text = nb2.ToString();
         listArticleAffichage[2].TActual.text = nb3.ToString();
-
-        //Faire pareil avec le colis en cours pour savoir ce qu'il y'a dedans
     }
 
     public void ClosePickTU()
