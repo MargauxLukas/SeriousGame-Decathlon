@@ -73,6 +73,7 @@ public class ConvoyeurManager : MonoBehaviour
             {
                 PlayerNotMove();
                 isReplierMax = true;
+                if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(25); }
             }
         }
         else

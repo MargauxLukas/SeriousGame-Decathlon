@@ -6,7 +6,7 @@ public class PickTUContentWindow : MonoBehaviour
 {
     public ManagerColisAttendu mca;
     public CartonVideLink      cvl;
-    public GameObject ecranDeBase;
+    public GameObject  ecranDeBase;
 
     public List<ArticleAffichage> listArticleAffichage;
 
@@ -50,6 +50,30 @@ public class PickTUContentWindow : MonoBehaviour
         listArticleAffichage[0].TTarget.text = nb1.ToString();
         listArticleAffichage[1].TTarget.text = nb2.ToString();
         listArticleAffichage[2].TTarget.text = nb3.ToString();
+
+        nb1 = 0;
+        nb2 = 0;
+        nb3 = 0;
+
+        foreach (Article art in mca.colisViderManage.colisActuellementsPose[nb].GetComponent<RemplissageColisGTP>().colisScriptable.listArticles)
+        {
+            if (art.name == ArticleName1)
+            {
+                nb1++;
+            }
+            else if (art.name == ArticleName2)
+            {
+                nb2++;
+            }
+            else if (art.name == ArticleName3)
+            {
+                nb3++;
+            }
+        }
+
+        listArticleAffichage[0].TActual.text = nb1.ToString();
+        listArticleAffichage[1].TActual.text = nb2.ToString();
+        listArticleAffichage[2].TActual.text = nb3.ToString();
 
         //Faire pareil avec le colis en cours pour savoir ce qu'il y'a dedans
     }
