@@ -2004,6 +2004,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140399159}
   m_CullTransparentMesh: 0
+--- !u!1 &186403606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 438091824154200820, guid: 7f39eaa1951a910459f525be8675b095,
+    type: 3}
+  m_PrefabInstance: {fileID: 133706050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204444573
 GameObject:
   m_ObjectHideFlags: 0
@@ -11716,7 +11722,40 @@ MonoBehaviour:
   dialogueManager: {fileID: 131562597}
   gameObjectsManager: {fileID: 1605658281}
   etiqueteuse: {fileID: 1078470767}
-  listDialogues: []
+  listDialogues:
+  - {fileID: 11400000, guid: 7427f86d84a929646a8ed1f7b1103bb2, type: 2}
+  - {fileID: 11400000, guid: cbf8178b07b00b443b21da5178aaeade, type: 2}
+  - {fileID: 11400000, guid: aaa290626deac7845abc2d815516eba9, type: 2}
+  - {fileID: 11400000, guid: 2cfcb4b34cc81d44e9539b035599dd57, type: 2}
+  - {fileID: 11400000, guid: 0e13958a7b2263441b3e036cafb75f65, type: 2}
+  - {fileID: 11400000, guid: 66a144effb067f04f8d10513f8f7579e, type: 2}
+  - {fileID: 11400000, guid: 970d9d856a25795419016f770afb0466, type: 2}
+  - {fileID: 11400000, guid: 605c8a8dd35dc6743b53b72282112652, type: 2}
+  - {fileID: 11400000, guid: 3e80f436fde905349b26e29f1f4c2bd1, type: 2}
+  - {fileID: 11400000, guid: 7a816d731ce61c948917c9a76bb3043d, type: 2}
+  - {fileID: 11400000, guid: 63e37b7da3cb4a94e880ff18ef2525bc, type: 2}
+  - {fileID: 11400000, guid: 1fcf0b26d26882e4b8192631f6ca5e40, type: 2}
+  - {fileID: 11400000, guid: 06c0644a3b98915479a40e712bbfceec, type: 2}
+  - {fileID: 11400000, guid: b62b36956e22a2046b4d4d9e668cae05, type: 2}
+  - {fileID: 11400000, guid: e59fe36e38779144b9eaf16793b8fe93, type: 2}
+  - {fileID: 11400000, guid: 0a74f596452611d42895cd998db4b5f7, type: 2}
+  - {fileID: 11400000, guid: 403c9ee8db8b449478c23c34b148597a, type: 2}
+  - {fileID: 11400000, guid: e5f244bab3cf2724d8b3ccc30f1cb7d7, type: 2}
+  - {fileID: 11400000, guid: 127f8631f913492458b7236e1bac6f02, type: 2}
+  - {fileID: 11400000, guid: 5b5912211b58c2e4780613d4b6ed25ec, type: 2}
+  - {fileID: 11400000, guid: 5f1822e1c4716c64a81789957130ca21, type: 2}
+  - {fileID: 11400000, guid: 78eca51b7c2a6ec459182ed32e34d86d, type: 2}
+  - {fileID: 11400000, guid: 1f7c5141d80d66f478f0e9ffc79070d3, type: 2}
+  - {fileID: 11400000, guid: 50ec2cdf6655b924abe1588583f50e52, type: 2}
+  - {fileID: 11400000, guid: 01319e983cf5ef74ba928626199261c7, type: 2}
+  - {fileID: 11400000, guid: fda21372e76bb614ca7b271dafd5ac69, type: 2}
+  - {fileID: 11400000, guid: c2d45f9cf2cdbed41848ab9cb240b458, type: 2}
+  - {fileID: 11400000, guid: 14d3d210354ea7140ae04e162228ec01, type: 2}
+  - {fileID: 11400000, guid: 00c76a0180d89034290ddab563f81999, type: 2}
+  - {fileID: 11400000, guid: 7e381e90c3eda5a49806814259b76df8, type: 2}
+  - {fileID: 11400000, guid: e3278b2c244bd9c4dae2229789204d5c, type: 2}
+  - {fileID: 11400000, guid: 37fd35a87fcdb6943892d615d42b9b39, type: 2}
+  - {fileID: 11400000, guid: 9a78cd70df1da374e9a64f754b7e639a, type: 2}
   phaseNum: 0
   dialogNum: 0
   canPlayFirst: 1
@@ -14998,14 +15037,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07249afb5da798418c1ef6eaa724dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onOffButton: {fileID: 0}
-  unfoldButton: {fileID: 0}
-  foldUpButton: {fileID: 0}
-  ascendButton: {fileID: 0}
-  descendButton: {fileID: 0}
-  validateButton: {fileID: 0}
-  posteInteractible: {fileID: 0}
-  ventouse: {fileID: 0}
+  onOffButton: {fileID: 1635012309}
+  unfoldButton: {fileID: 64364836}
+  foldUpButton: {fileID: 1853504297}
+  ascendButton: {fileID: 885405498}
+  descendButton: {fileID: 106399711}
+  validateButton: {fileID: 1786879395}
+  posteInteractible: {fileID: 723152947}
+  ventouse: {fileID: 60075431}
   colis1: {fileID: 0}
   colis2: {fileID: 0}
   colis3: {fileID: 0}
@@ -15022,11 +15061,11 @@ MonoBehaviour:
   colis14: {fileID: 0}
   colis15: {fileID: 0}
   colis16: {fileID: 0}
-  detectAnomaliesDesk: {fileID: 0}
-  cartonGestAnomalies: {fileID: 0}
-  ampoule: {fileID: 0}
+  detectAnomaliesDesk: {fileID: 1644104634}
+  cartonGestAnomalies: {fileID: 4239822756992051924}
+  ampoule: {fileID: 186403606}
   ampouleSpriteMask: {fileID: 0}
-  etiqueteuse: {fileID: 0}
+  etiqueteuse: {fileID: 1078470765}
   menuCirculaireTuto: {fileID: 0}
   menuCirculaireTutoSpriteMask: {fileID: 0}
   whiteCircle12: {fileID: 0}
@@ -15046,17 +15085,17 @@ MonoBehaviour:
   circleSpriteMask02: {fileID: 0}
   upArrowTurnSpriteMask: {fileID: 0}
   rightRotaArrowTurnSpriteMask: {fileID: 0}
-  doigtClick: {fileID: 0}
-  doigtClickSpriteMask: {fileID: 0}
-  doigtStay: {fileID: 0}
-  doigtStaySpriteMask: {fileID: 0}
-  arrow: {fileID: 0}
-  arrowSpriteMask: {fileID: 0}
+  doigtClick: {fileID: 885230973}
+  doigtClickSpriteMask: {fileID: 1866853872}
+  doigtStay: {fileID: 635250545}
+  doigtStaySpriteMask: {fileID: 1988846826}
+  arrow: {fileID: 1685319128}
+  arrowSpriteMask: {fileID: 1163624261}
   arrowCameraDezoom: {fileID: 0}
-  quitButton: {fileID: 0}
-  returnContainerButton: {fileID: 0}
-  cameraTriggerUp: {fileID: 0}
-  cameraTriggerDown: {fileID: 0}
+  quitButton: {fileID: 1860393203}
+  returnContainerButton: {fileID: 134437210}
+  cameraTriggerUp: {fileID: 1849846393}
+  cameraTriggerDown: {fileID: 837068118}
 --- !u!1 &1632182015
 GameObject:
   m_ObjectHideFlags: 0
@@ -15275,7 +15314,7 @@ GameObject:
   - component: {fileID: 1644104637}
   - component: {fileID: 1644104638}
   m_Layer: 9
-  m_Name: DtectionAnomaliesOrientation
+  m_Name: DetectionAnomaliesOrientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19162,7 +19201,7 @@ GameObject:
   - component: {fileID: 1866853873}
   - component: {fileID: 1866853874}
   m_Layer: 0
-  m_Name: SpriteMask
+  m_Name: DoigtClickSpriteMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20993,7 +21032,7 @@ GameObject:
   - component: {fileID: 1988846827}
   - component: {fileID: 1988846828}
   m_Layer: 0
-  m_Name: SpriteMask
+  m_Name: DoigtStaySpriteMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

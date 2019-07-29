@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase24
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Le convoyeur vient effectivement de s'arr\xEAter car quelque chose emp\xEAche
+    son bon fonctionnement."
+  - "La LED orange t'indique s'il y a un probl\xE8me sur le convoyeur et sa nature."
+  - "Ici elle est orange fixe, cela signifie qu'il y a un probl\xE8me bloquant sur
+    le convoyeur et donc qu'il a d\xFB s'arr\xEAter pour \xE9viter tout accident.\r\n"
+  - Clique sur le poste de gestion des anomalies afin de voir ce que tu peux faire
+    avec le colis.
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}
