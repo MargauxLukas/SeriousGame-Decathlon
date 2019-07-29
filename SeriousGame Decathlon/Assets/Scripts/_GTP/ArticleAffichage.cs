@@ -11,7 +11,7 @@ public class ArticleAffichage : MonoBehaviour
 
     public void Start()
     {
-        TName.text = "";
+        TName.text   = "";
         TTarget.text = "";
         TActual.text = "";
     }

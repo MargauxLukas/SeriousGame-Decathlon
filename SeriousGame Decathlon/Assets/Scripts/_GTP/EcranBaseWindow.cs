@@ -15,8 +15,15 @@ public class EcranBaseWindow : MonoBehaviour
 
     public void PickTUWindow(int nb)
     {
-        gameObject         .SetActive(false);
-        PickTUContentWindow.SetActive(true );
-        PickTUContentWindow.GetComponent<PickTUContentWindow>().affichageListe(nb);
+        if (PickTUContentWindow.GetComponent<PickTUContentWindow>().mca.colisViderManage.colisActuellementsPose[nb] == null)
+        {
+            return;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            PickTUContentWindow.SetActive(true);
+            PickTUContentWindow.GetComponent<PickTUContentWindow>().affichageListe(nb);
+        }
     }
 }
