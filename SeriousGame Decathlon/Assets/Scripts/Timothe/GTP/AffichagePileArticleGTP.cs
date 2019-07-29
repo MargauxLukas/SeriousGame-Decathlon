@@ -10,6 +10,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
     public GameObject tasArticle;
 
     public bool isOpen;
+    public bool isSupposedToBeEmpty;
 
     // Start is called before the first frame update
     void Start()

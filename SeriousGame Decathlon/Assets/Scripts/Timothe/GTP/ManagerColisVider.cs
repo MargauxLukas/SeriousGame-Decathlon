@@ -134,7 +134,7 @@ public class ManagerColisVider : MonoBehaviour
                 if (Random.Range(0, 100) < chanceColisPasRemplit)
                 {
                     int nbArticleDebut = newColis.listArticles.Count;
-                    for (int i = 0; i < nbArticleDebut / 2; i++)
+                    for (int i = 0; i < nbArticleDebut * 2 / 3; i++)
                     {
                         newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
                     }
@@ -158,6 +158,10 @@ public class ManagerColisVider : MonoBehaviour
         if (colisVider != null)
         {
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis();
+            if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count <= 4)
+            {
+                emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = true;
+            }
         }
     }
 
@@ -260,7 +264,7 @@ public class ManagerColisVider : MonoBehaviour
                         if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
                         {
                             nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
-                            //Debug.Log(nbEmplacementPrendre);
+                            Debug.Log(nbEmplacementPrendre);
                         }
                         if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                         {
@@ -278,7 +282,7 @@ public class ManagerColisVider : MonoBehaviour
                     {
                         photoArticle.enabled = true;
                     }
-                    photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].spriteGTP;
+                    photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].photoGTP;
                     /* for (int u = 0; u < emplacementsConcerne.Count; u++)
                      {
                          managerColis.AjoutArticleColisVoulu(emplacementsConcerne[u], nombreArticles[u]);

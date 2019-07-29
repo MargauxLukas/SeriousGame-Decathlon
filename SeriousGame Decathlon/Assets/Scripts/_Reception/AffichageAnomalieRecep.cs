@@ -20,6 +20,8 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public CreationDePalette paletteManager;
 
+    public ConvoyeurManager cm;
+
     public void Start()
     {
         fondTextAnomalieDezoom.SetActive(false);
@@ -81,36 +83,41 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public void Quit()
     {
-        if (ChargementListeColis.instance == null)
+        if(!cm.isOn && cm.isReplierMax)
         {
-            SceneManager.LoadScene(6);
-        }
-        else
-        {
-            ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
+            if (ChargementListeColis.instance == null)
+            {
+                SceneManager.LoadScene(6);
+            }
+            else
+            {
+                ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
+            }
         }
     }
 
     public void ContenerReturn()
     {
-        //Seulement si replier a fond
-        if(paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
+        if (!cm.isOn && cm.isReplierMax)
         {
-            if (ChargementListeColis.instance == null)
+            if (paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
             {
-                Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
-                SceneManager.LoadScene(6);
+                if (ChargementListeColis.instance == null)
+                {
+                    Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                    SceneManager.LoadScene(6);
+                }
+                else
+                {
+                    Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                    ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
+                }
             }
             else
             {
-                Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
-                ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
+                Scoring.instance.RecepMalus(50 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite) + 250);
+                Scoring.instance.AffichageErreur("Tu as essayé de renvoyer un conteneur qui n'était pas défaillant !");
             }
-        }
-        else
-        {
-            Scoring.instance.RecepMalus(50 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite) + 250);
-            Scoring.instance.AffichageErreur("Tu as essayé de renvoyer un conteneur qui n'était pas défaillant !");
         }
     }
 
