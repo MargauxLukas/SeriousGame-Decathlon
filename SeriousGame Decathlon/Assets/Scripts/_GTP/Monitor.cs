@@ -72,7 +72,6 @@ public class Monitor : MonoBehaviour
         {
             colis2.GetComponent<Animator>().SetInteger("Color", 1);
         }
-
         //Animator Colis2
     }
 

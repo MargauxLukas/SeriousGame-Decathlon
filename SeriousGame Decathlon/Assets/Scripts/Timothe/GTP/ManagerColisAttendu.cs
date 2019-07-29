@@ -108,7 +108,7 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         nbArticleVoulu = nombreArtVoulu;
         monitor.UpdateAffichage(nombreArtVoulu);
-        monitor.ResetMonitor();
+        //monitor.ResetMonitor();
 
         switch (emplacement)
         {
@@ -118,11 +118,11 @@ public class ManagerColisAttendu : MonoBehaviour
                 break;
             case 1:
                 nbEmplacement = 1;
-                monitor.Colis2Actif(phasesColisVoulus[1], cm[0].phaseActuelle);
+                monitor.Colis2Actif(phasesColisVoulus[1], cm[1].phaseActuelle);
                 break;
             case 2:
                 nbEmplacement = 2;
-                monitor.Colis3Actif(phasesColisVoulus[2], cm[0].phaseActuelle);
+                monitor.Colis3Actif(phasesColisVoulus[2], cm[2].phaseActuelle);
                 break;
         }
     }
