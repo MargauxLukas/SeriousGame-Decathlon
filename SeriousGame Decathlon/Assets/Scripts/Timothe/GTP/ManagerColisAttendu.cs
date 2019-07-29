@@ -187,7 +187,9 @@ public class ManagerColisAttendu : MonoBehaviour
                 if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
                 {
                     colisVoulus[emplacement] = new Colis();
+                    Debug.Log("Un colis a été mal fait");
                     return false;
+                    
                 }
             }
             colisVoulus[emplacement] = new Colis();
