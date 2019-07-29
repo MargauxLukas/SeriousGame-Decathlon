@@ -73,7 +73,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisActuellementTraite.Add(colisVoulus[q]);
             cm[q].phaseActuelle = phasesColisVoulus[q];
-            Debug.Log("Start les phases : " + phasesColisVoulus[q]);
+            //Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
     }
 
@@ -84,7 +84,6 @@ public class ManagerColisAttendu : MonoBehaviour
             //Debug.Log("Test");
             colisVoulus[emplacement] = colisVoulus[3];
             colisVoulus.RemoveAt(3);
-            Debug.Log(colisVoulus[3]);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());

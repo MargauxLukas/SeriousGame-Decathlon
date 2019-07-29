@@ -23,6 +23,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public BoxCollider2D boxDesactivee;
 
     public int nbArticleScanned;
+    private bool estParti;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class RemplissageColisGTP : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !estParti)
         {
             touchObject();
 
@@ -132,8 +133,8 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public IEnumerator AnimationColisRenvoie()
     {
-        Debug.Log("The coroutine of partir");
-        if(!boxDesactivee.enabled)
+        estParti = true;
+        if (!boxDesactivee.enabled)
         {
             boxDesactivee.enabled = true;
         }

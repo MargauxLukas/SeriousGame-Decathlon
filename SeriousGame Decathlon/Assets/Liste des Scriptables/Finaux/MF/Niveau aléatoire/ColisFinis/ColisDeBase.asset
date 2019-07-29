@@ -28,4 +28,5 @@ MonoBehaviour:
   listArticles: []
   nbAnomalie: 0
   listAnomalies: []
+  comeFromInternet: 0
   provenance: 

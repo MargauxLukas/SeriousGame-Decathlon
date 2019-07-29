@@ -6313,6 +6313,7 @@ MonoBehaviour:
   textAnomalieGestion: {fileID: 1230046567}
   fondTextAnomalieDezoom: {fileID: 1230046565}
   paletteManager: {fileID: 566546638}
+  cm: {fileID: 0}
 --- !u!65 &652738258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9547,11 +9548,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -9581,6 +9577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e14c14e297de043909cce304004371, type: 3}
@@ -10757,6 +10758,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817322106}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2782788211582557478, guid: 79982186ad8ef814d8a030e168f68beb,
         type: 3}
       propertyPath: m_Name
@@ -10891,22 +10908,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2782788211582557474, guid: 79982186ad8ef814d8a030e168f68beb,
         type: 3}
@@ -11880,7 +11881,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6d3ed27790d498342918213836d2618b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2b8088eb7fa078438cb7aa30f79368a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15712,7 +15713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1803507321
 AudioListener:
   m_ObjectHideFlags: 0
@@ -18504,7 +18505,6 @@ GameObject:
   - component: {fileID: 1962551374}
   - component: {fileID: 1962551373}
   - component: {fileID: 1962551372}
-  - component: {fileID: 1962551371}
   m_Layer: 5
   m_Name: Quit (1)
   m_TagString: Untagged
@@ -18531,18 +18531,6 @@ RectTransform:
   m_AnchoredPosition: {x: 20.799927, y: -21.5}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1962551371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962551369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa44dab90fee764684a0c62a1a7b436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1962551372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18586,9 +18574,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1962551371}
-        m_MethodName: LoadNewScene
-        m_Mode: 3
+      - m_Target: {fileID: 652738257}
+        m_MethodName: Quit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
