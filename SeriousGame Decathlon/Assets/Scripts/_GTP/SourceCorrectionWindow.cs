@@ -86,6 +86,12 @@ public class SourceCorrectionWindow : MonoBehaviour
     public void Confirm()
     {
         mcv.aEteVerifier = true;
+        nbDamaged = 0;
+        nbWrong = 0;
+        nbMissing = 0;
+        AffichageWrong();
+        AffichageDamaged();
+        AffichageMissing();
         Debug.Log("Pas encore integré");
     }
 

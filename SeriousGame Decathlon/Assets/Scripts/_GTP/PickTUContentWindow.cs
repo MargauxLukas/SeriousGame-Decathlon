@@ -78,12 +78,13 @@ public class PickTUContentWindow : MonoBehaviour
 
     public void ClosePickTU()
     {
-        mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement]);
+        mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, cvl.csTab[mca.nbEmplacement]);
+
     }
 
     public void CorrectPickedQty()
     {
-        mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement], mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].listArticles[0]);
+        mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0]);
     }
 
     public void Back()

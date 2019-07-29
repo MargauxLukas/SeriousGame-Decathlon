@@ -194,7 +194,7 @@ public class ManagerColisAttendu : MonoBehaviour
         return false;
     }
 
-    public void ClosePickTU(int emplacement, Colis colisRempli)
+    public void ClosePickTU(int emplacement, Colis colisRempli, RemplissageColisGTP colisScript)
     {
         Colis colisRestant = Colis.CreateInstance<Colis>();
 
@@ -230,28 +230,57 @@ public class ManagerColisAttendu : MonoBehaviour
             }
         }
 
-        Colis colisTempo = colisVoulus[3];
-        int nbPhaseTempo = phasesColisVoulus[3];
+        Colis colisTempo = Colis.CreateInstance<Colis>();
+        int nbPhaseTempo = -1;
+        if (colisVoulus.Count >= 4 && colisVoulus[3] != null)
+        {
+            colisTempo = colisVoulus[3];
+            nbPhaseTempo = phasesColisVoulus[3];
+        }
+
 
         colisRestant.listArticles = articleVoulu;
+        Debug.Log(articleVoulu);
         List<Article> artInColis  = new List<Article>();
+        List <int> nbArticleIdentique = new List<int>();
+        Article previousArticle = new Article();
 
         foreach(Article art in colisRestant.listArticles)
         {
+            if(art == previousArticle)
+            {
+                nbArticleIdentique[nbArticleIdentique.Count - 1]++;
+            }
             if(!artInColis.Contains(art))
             {
                 artInColis.Add(art);
+                nbArticleIdentique.Add(1);
+            }
+            previousArticle = art;
+        }
+
+        if (colisRestant.listArticles.Count > 0)
+        {
+            if (colisVoulus.Count >= 4 && colisVoulus[3] != null)
+            {
+                phasesColisVoulus[3] = artInColis.Count - 1;
+                colisVoulus[3] = colisRestant;
+            }
+            else
+            {
+                phasesColisVoulus.Add(artInColis.Count - 1);
+                colisVoulus.Add(colisRestant);
             }
         }
 
-        phasesColisVoulus[3] = artInColis.Count - 1;
-        colisVoulus[3] = colisRestant;
-
         colisVoulus[emplacement] = Instantiate(colisRempli);
         phasesColisVoulus[emplacement] = 0;
-
-        phasesColisVoulus.Add(nbPhaseTempo);
-        colisVoulus      .Add(colisTempo  );
+        colisScript.currentPhase = 12;
+        if (nbPhaseTempo >= 0)
+        {
+            phasesColisVoulus.Add(nbPhaseTempo);
+            colisVoulus.Add(colisTempo);
+        }
     }
 
     public void CorrectPickQuantity(int emplacement, Colis colisRempli, int nombreArticleVoulu, Article articleEnQuestion)
@@ -265,7 +294,7 @@ public class ManagerColisAttendu : MonoBehaviour
             }
         }
 
-        ClosePickTU(emplacement, colisRempli);
+        //ClosePickTU(emplacement, colisRempli);
 
         for(int i = 0; i < colisVoulus[emplacement].listArticles.Count; i++)
         {

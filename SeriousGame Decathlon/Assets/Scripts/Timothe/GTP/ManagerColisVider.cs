@@ -139,8 +139,7 @@ public class ManagerColisVider : MonoBehaviour
                         newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
                     }
                 }
-
-                if (Random.Range(0, 100) < chanceArticlePasBon)
+                else if (Random.Range(0, 100) < chanceArticlePasBon)
                 {
                     while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
                     {
@@ -168,11 +167,11 @@ public class ManagerColisVider : MonoBehaviour
 
     public bool PeutFairePartirColis()
     {
-        if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
+        /*if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
         {
             //Faire apparaître l'écran de si le colis est sensé être vide
         }
-        else if (tempsReponseChangementColis <= 0)
+        else*/ if (tempsReponseChangementColis <= 0)
         {
             if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {

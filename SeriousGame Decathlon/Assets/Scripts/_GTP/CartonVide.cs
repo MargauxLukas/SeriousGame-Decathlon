@@ -115,7 +115,7 @@ public class CartonVide : MonoBehaviour
                     startPosition = new Vector3(62.40f, -3.20f, 0f);
                     transform.position = startPosition;
                     cvl.isFree1 = false;
-                    cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>();
                     GetComponent<RemplissageColisGTP>().enabled = true;
                     GetComponent<RemplissageColisGTP>().startPosition = startPosition;
                     GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
@@ -134,7 +134,7 @@ public class CartonVide : MonoBehaviour
                     startPosition = new Vector3(65.26f, -3.20f, 0f);
                     transform.position = startPosition;
                     cvl.isFree2 = false;
-                    cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    cvl.csTab[1] = gameObject.GetComponent<RemplissageColisGTP>();
                     GetComponent<RemplissageColisGTP>().enabled = true;
                     GetComponent<RemplissageColisGTP>().startPosition = startPosition;
                     GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
@@ -153,7 +153,7 @@ public class CartonVide : MonoBehaviour
                     startPosition = new Vector3(68.17f, -3.20f, 0f);
                     transform.position = startPosition;
                     cvl.isFree3 = false;
-                    cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>().colisScriptable;
+                    cvl.csTab[2] = gameObject.GetComponent<RemplissageColisGTP>();
                     GetComponent<RemplissageColisGTP>().enabled = true;
                     GetComponent<RemplissageColisGTP>().startPosition = startPosition;
                     GetComponent<RemplissageColisGTP>().boxDesactivee = GetComponent<BoxCollider2D>();
