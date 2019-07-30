@@ -22,6 +22,8 @@ public class ManagerColisAttendu : MonoBehaviour
     public float chanceAvoirTropArticlePrevu = 0;
     public float chanceToComeFromInternet = 0;
 
+    public GameObject ecranFinNiveau;
+
     public void Start()
     {
         for (int i = 0; i < nombreColisVoulu; i++)
@@ -93,7 +95,7 @@ public class ManagerColisAttendu : MonoBehaviour
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;
             //Affichage de la fin du niveau
-            Debug.Log("Fin de niveau");
+            ecranFinNiveau.SetActive(true);
         }
         else
         {
