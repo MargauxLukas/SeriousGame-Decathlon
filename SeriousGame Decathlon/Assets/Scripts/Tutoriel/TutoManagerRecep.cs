@@ -229,9 +229,9 @@ public class TutoManagerRecep : MonoBehaviour
     {
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
 
-        if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPosition) <= 0.2f)
+        if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPosition;
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
         }
         else
@@ -841,7 +841,7 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
-                    new Vector2(72.2f, 1.21f), 0, 0, 270);
+                    new Vector2(72.2f, -7.08f), 0, 0, 270);
 
         phaseNum++;
     }
@@ -871,7 +871,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(63.91f, 9.27f, 0), new Vector3(66.77f, -5.6f), 4f, true,
+                        new Vector3(63.91f, -9.27f, 0), new Vector3(66.77f, -5.6f), 4f, true,
                         new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = true;
@@ -967,11 +967,12 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase10()
     {
+        Debug.Log(dialogNum);
         if (canPlayFirst)
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = false;
 
-            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogueManager.LoadDialogue(listDialogues[7]);
             dialogNum++;
         }
 
@@ -987,7 +988,7 @@ public class TutoManagerRecep : MonoBehaviour
 
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.upArrowTurnSpriteMask).enabled = true;
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
+            //gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -997,8 +998,9 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase11()
     {
+        Debug.Log("Phase11");
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.upArrowTurnSpriteMask).enabled = false;
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
+        //gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
 
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
@@ -1008,7 +1010,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = true;
+        //gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = true;
     }
 
     void Phase12()
@@ -1023,7 +1025,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
+            //gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
