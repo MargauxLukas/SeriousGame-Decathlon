@@ -228,22 +228,16 @@ public class Colis : ScriptableObject
         }
     }*/
 
-    public void UpdateRotation(List<SquareFace> listFace)
+    public void UpdateRotation(string face)
     {
-        foreach(SquareFace face in listFace)
+        if (face != "Forward")
         {
-            if(face.isCurrentlyPick)
-            {
-                if (face.face != "Forward")
-                {
-                    isBadOriented = true;
-                }
-                else if (isBadOriented)
-                {
-                    if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(27);}
-                    isBadOriented = false;
-                }
-            }
+            isBadOriented = true;
+        }
+        else if (isBadOriented)
+        {
+            if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(27); }
+            isBadOriented = false;
         }
     }
 

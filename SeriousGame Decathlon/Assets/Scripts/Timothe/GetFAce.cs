@@ -22,6 +22,10 @@ public class GetFAce : MonoBehaviour
                 cartonSprite = colis.colisScriptable.carton.spriteCartonsListe;
                 GetComponent<SpriteRenderer>().sprite = scriptRot.GetUpFace(cartonSprite);
             }
+            if(colis.colisScriptable.isBadOriented)
+            {
+                transform.Rotate(new Vector3(0, 0, 90));
+            }
             UpdateThisFace();
         }
     }
