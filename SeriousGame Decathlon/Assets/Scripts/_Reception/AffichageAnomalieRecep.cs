@@ -100,7 +100,11 @@ public class AffichageAnomalieRecep : MonoBehaviour
     {
         if (!cm.isOn && cm.isReplierMax)
         {
-            if (paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
+            if(TutoManagerRecep.instance != null)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else if (paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
             {
                 if (ChargementListeColis.instance == null)
                 {

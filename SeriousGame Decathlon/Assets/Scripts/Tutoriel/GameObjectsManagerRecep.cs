@@ -63,7 +63,6 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject circleSpriteMask01;
     public GameObject circleSpriteMask02;
     public GameObject upArrowTurnSpriteMask;
-    public GameObject rightRotaArrowTurnSpriteMask;
 
     [Header("Doigt")]
     public GameObject doigtClick;

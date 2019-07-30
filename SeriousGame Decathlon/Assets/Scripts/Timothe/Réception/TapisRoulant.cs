@@ -56,12 +56,12 @@ public class TapisRoulant : MonoBehaviour
                     menuIsOpen = false;
                 }
 
-                if (lastColis.GetComponent<Colis>().isBadOriented)
+                if (lastColis.GetComponent<Colis>().isBadOriented || lastColis.GetComponent<Colis>().estAbime || lastColis.GetComponent<Carton>().codeRef == "CBGrand")
                 {
                     OpenTurnMenu();
                 }
 
-                if (!lastColis.GetComponent<Colis>().isBadOriented)
+                if (!lastColis.GetComponent<Colis>().isBadOriented && !lastColis.GetComponent<Colis>().estAbime && lastColis.GetComponent<Carton>().codeRef != "CBGrand")
                 {
 
                     lastColis.GetComponent<ScriptColisRecep>().canMove = true;

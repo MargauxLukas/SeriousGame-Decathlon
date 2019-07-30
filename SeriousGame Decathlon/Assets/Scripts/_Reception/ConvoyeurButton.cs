@@ -41,12 +41,18 @@ public class ConvoyeurButton : MonoBehaviour
                 if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(11); }
                 convoyeur.MoveZ("down");                                        //Boutton Descendre
             }
-            if (!isCollide)
+
+            if ((TutoManagerRecep.instance == null && !isCollide) || (TutoManagerRecep.instance != null && convoyeur.camera.transform.position.y > convoyeur.maxDeplier))
             {
                 if (deplierPressed)
                 {
                     if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(2); }
                     convoyeur.MoveY("deplier");                                 //Boutton Deplier
+                }
+
+                if(TutoManagerRecep.instance != null && convoyeur.camera.transform.position.y <= convoyeur.maxDeplier)
+                {
+                    TutoManagerRecep.instance.Manager(3);
                 }
             }
 
