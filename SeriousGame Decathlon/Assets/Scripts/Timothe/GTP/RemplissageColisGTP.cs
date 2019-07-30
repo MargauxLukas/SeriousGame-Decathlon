@@ -25,7 +25,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public BoxCollider2D boxDesactivee;
 
     public int nbArticleScanned;
-    private bool estParti;
+    public bool estParti;
 
     private void Start()
     {
@@ -37,6 +37,7 @@ public class RemplissageColisGTP : MonoBehaviour
         if (Input.touchCount > 0 && !estParti)
         {
             touchObject();
+            Debug.Log("Test touch 1");
 
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
@@ -46,7 +47,7 @@ public class RemplissageColisGTP : MonoBehaviour
             if (doesTouch)
             {
                 doesTouch = false;
-                Debug.Log("Test");
+                Debug.Log("Test touch 2");
                 List<List<Article>> newListes    = new List<List<Article>>();
                 List<Article> articlesDejaConnus = new List     <Article> ();
 
@@ -82,7 +83,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
                             {
                                 tasArticle[l].SetActive(true);
-                                tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
+                                tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l], 0);
                                 isOpen = true;
                             }
                         }

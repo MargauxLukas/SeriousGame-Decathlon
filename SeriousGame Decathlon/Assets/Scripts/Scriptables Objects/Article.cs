@@ -9,5 +9,6 @@ public class Article : ScriptableObject
     public RFID rfid;
     public List<Sprite> spriteList;
     public Sprite spriteGTP;
+    public Sprite spritePackGTP;
     public Sprite photoGTP;
 }

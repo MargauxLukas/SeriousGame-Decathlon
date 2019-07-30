@@ -17,7 +17,7 @@ public class ConvoyeurManager : MonoBehaviour
     private float minHeight = 1f  ;          //Hauteur minimum
     private float maxHeight = 2.6f;          //Hauteur maximum
     public float maxReplier;
-    private float maxDeplier;
+    public float maxDeplier;
 
     [Header("Boolean")]
     public bool isOn;
@@ -27,7 +27,7 @@ public class ConvoyeurManager : MonoBehaviour
     public void Start()
     {
         maxReplier = camera.transform.position.y;
-        //maxdeplier
+        maxDeplier = camera.transform.position.y - 8.3f;
     }
 
     /********************************************************
@@ -58,6 +58,11 @@ public class ConvoyeurManager : MonoBehaviour
     ********************************************************/
     public void MoveY(string direction)
     {
+        if (TutoManagerRecep.instance != null && camera.transform.position.y <= maxDeplier)
+        {
+            PlayerNotMove();
+        }
+
         if (direction.Equals("replier"))
         {
             Debug.Log(camera.transform.position.y);

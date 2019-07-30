@@ -7,6 +7,14 @@ public class DetectionColisBombe : MonoBehaviour
     private bool haveAlreadySomething;
     public GameObject colisRevoir;
 
+    private void Update()
+    {
+        if(colisRevoir != null && !colisRevoir.GetComponent<RemplissageColisGTP>().besoinEtreVide)
+        {
+            RenvoieColis();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "ColisGTP")
@@ -21,6 +29,7 @@ public class DetectionColisBombe : MonoBehaviour
                         collision.GetComponent<RemplissageColisGTP>().StopAllCoroutines();
                         colisRevoir = collision.gameObject;
                         collision.GetComponent<RemplissageColisGTP>().besoinEtreVide = true;
+                        collision.GetComponent<RemplissageColisGTP>().estParti = false;
                         StartCoroutine(MoveToNeuviemePoste(collision.gameObject));
                     }
                 }
@@ -38,11 +47,12 @@ public class DetectionColisBombe : MonoBehaviour
 
     IEnumerator MoveToNeuviemePoste(GameObject colisToMove)
     {
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 15; i++)
         {
-            colisToMove.transform.position -= new Vector3(0, -1, 0) * Time.deltaTime * 2;
+            colisToMove.transform.position -= new Vector3(0, 1, 0) * Time.deltaTime * 2;
             transform.localScale += Vector3.one * Time.fixedDeltaTime * 0.13f;
             yield return new WaitForSeconds(Time.deltaTime);
+            Debug.Log("Test : " + i);
         }
     }
 
@@ -50,8 +60,10 @@ public class DetectionColisBombe : MonoBehaviour
     {
         if (!colisRevoir.GetComponent<RemplissageColisGTP>().besoinEtreVide)
         {
+            Debug.Log("Renvoie colis poste 9");
             colisRevoir.GetComponent<RemplissageColisGTP>().AnimationColisRenvoie();
             colisRevoir.GetComponent<RemplissageColisGTP>().tauxRemplissage = 0;
+            colisRevoir = null;
         }
     }
 

@@ -45,7 +45,7 @@ public class TasArticleGTP : MonoBehaviour
         affichageTas[articlesPresents.Count-1].transform.localPosition += new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
     }
 
-    public void OpenTasArticle(List<Article> lesArticles)
+    public void OpenTasArticle(List<Article> lesArticles, int nbPackArticle)
     {
         if (affichageTas != null)
         {
@@ -61,12 +61,17 @@ public class TasArticleGTP : MonoBehaviour
         for (int j = 0; j < nbMax; j++)
         {
             //Debug.Log("Test ");
-            GameObject nouvelArticle = Instantiate(articleUnit, transform.position+new Vector3(Random.Range(-0.5f,0.5f), Random.Range(-0.5f, 0.5f),0), Quaternion.identity);
+            GameObject nouvelArticle = Instantiate(articleUnit, transform.position+new Vector3(Random.Range(-1f,1f), Random.Range(-0.3f, 0.3f),0), Quaternion.identity);
             nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle = articlesPresents[articlesPresents.Count - 1];
             articlesPresents.RemoveAt(articlesPresents.Count - 1);
             nouvelArticle.GetComponent<ArticleUnitGTP>().tasParent = this;
             //nouvelArticle.GetComponent<ArticleUnitGTP>().doesTouch = true;
             nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spriteGTP;
+            if (nbPackArticle > 0)
+            {
+                nouvelArticle.GetComponent<ArticleUnitGTP>().isPack = nbPackArticle;
+                nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spritePackGTP;
+            }
             affichageTas.Add(nouvelArticle);
         }
     }
