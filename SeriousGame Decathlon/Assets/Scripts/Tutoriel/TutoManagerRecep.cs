@@ -186,8 +186,10 @@ public class TutoManagerRecep : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
 
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask02).enabled = false;
 
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask01).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask02).enabled = false;
 
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtClick).enabled = false;
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick).enabled = false;
@@ -276,7 +278,7 @@ public class TutoManagerRecep : MonoBehaviour
     {
         interactionNum = interaction;
 
-        Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
+        Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum + " Dialogue : " + dialogNum);
 
         switch (interactionNum)
         {
@@ -988,7 +990,7 @@ public class TutoManagerRecep : MonoBehaviour
 
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.upArrowTurnSpriteMask).enabled = true;
-            //gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1000,17 +1002,19 @@ public class TutoManagerRecep : MonoBehaviour
     {
         Debug.Log("Phase11");
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.upArrowTurnSpriteMask).enabled = false;
-        //gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
 
         Indications(new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(3.07f, -6.4f), new Vector2(1.2f, 1.2f),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(69.96f, -7.37f),
-                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
-                        new Vector2(0, 0), 0, 0, 0);
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(3.09f, -6.2f), new Vector2(1.2f, 1.2f),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(69.96f, -7.37f),
+                    new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
 
-        //gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = true;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = true;
+
+        phaseNum++;
     }
 
     void Phase12()
@@ -1025,7 +1029,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
-            //gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
