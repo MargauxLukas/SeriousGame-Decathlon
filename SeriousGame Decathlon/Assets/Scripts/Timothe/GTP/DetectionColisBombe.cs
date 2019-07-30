@@ -47,7 +47,7 @@ public class DetectionColisBombe : MonoBehaviour
 
     IEnumerator MoveToNeuviemePoste(GameObject colisToMove)
     {
-        for(int i = 0; i < 15; i++)
+        for(int i = 0; i < 20; i++)
         {
             colisToMove.transform.position -= new Vector3(0, 1, 0) * Time.deltaTime * 2;
             transform.localScale += Vector3.one * Time.fixedDeltaTime * 0.13f;
@@ -61,7 +61,9 @@ public class DetectionColisBombe : MonoBehaviour
         if (!colisRevoir.GetComponent<RemplissageColisGTP>().besoinEtreVide)
         {
             Debug.Log("Renvoie colis poste 9");
-            colisRevoir.GetComponent<RemplissageColisGTP>().AnimationColisRenvoie();
+            colisRevoir.GetComponent<RemplissageColisGTP>().startPosition = colisRevoir.transform.position;
+            colisRevoir.GetComponent<RemplissageColisGTP>().didArrive = false;
+            StartCoroutine(colisRevoir.GetComponent<RemplissageColisGTP>().AnimationColisRenvoie());
             colisRevoir.GetComponent<RemplissageColisGTP>().tauxRemplissage = 0;
             colisRevoir = null;
         }

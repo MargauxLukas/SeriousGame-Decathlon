@@ -11,7 +11,7 @@ public class RemplissageColisGTP : MonoBehaviour
     public float speed = 1;
     public Vector3 startPosition;
 
-    bool didArrive;
+    public bool didArrive;
     private bool doesTouch;
 
     public List<GameObject> tasArticle;
@@ -88,10 +88,6 @@ public class RemplissageColisGTP : MonoBehaviour
                             }
                         }
                         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.4f);
-                        if (besoinEtreVide)
-                        {
-                            besoinEtreVide = false;
-                        }
                     }
                 }
                 else
@@ -122,6 +118,11 @@ public class RemplissageColisGTP : MonoBehaviour
                                 colisScriptable.listArticles.Add(newListes[i][p]);
                             }
                         }
+                    }
+
+                    if (besoinEtreVide)
+                    {
+                        besoinEtreVide = false;
                     }
                 }
             }
