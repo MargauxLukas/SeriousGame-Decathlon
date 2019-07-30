@@ -4773,13 +4773,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643206315}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15e6bd098e1c8149943b1454d3ad2d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cbc40bda1493c040803bec113f06ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 681326125}
-  offset: 0
+  offset: -0.5
 --- !u!81 &643206318
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4796,11 +4796,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643206315}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 11.6, y: 1.2, z: -32.08}
+  m_LocalPosition: {x: 6.5, y: 6, z: -32.08}
   m_LocalScale: {x: 1.2175002, y: 1.2175002, z: 1.2175}
   m_Children: []
   m_Father: {fileID: 1183120174}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644881749
 GameObject:
@@ -5580,7 +5580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &679415226
 Transform:
   m_ObjectHideFlags: 0
@@ -5717,7 +5717,7 @@ PrefabInstance:
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -10076,12 +10076,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183120173}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.97, y: 16.93, z: 0}
+  m_LocalPosition: {x: 0.97, y: -8.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 616438297}
-  - {fileID: 681326128}
   - {fileID: 643206319}
+  - {fileID: 681326128}
   - {fileID: 1698985116}
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -11133,11 +11133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9e7f13ba095f24ea19a64e430f604e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 0
+  displayGridGizmos: 1
   notTraversableMask:
     serializedVersion: 2
     m_Bits: 512
-  gridWorldSize: {x: 31.69, y: 100.4}
+  gridWorldSize: {x: 31.69, y: 58.62}
   nodeRadius: 0.15
   traversableRegions: []
   obstacleProximityPenalty: 30
@@ -14104,7 +14104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670701378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.4300003, y: 30.13, z: -0.20868778}
+  m_LocalPosition: {x: 4.4300003, y: 2.4, z: -0.20868778}
   m_LocalScale: {x: 9.848944, y: 0.6541702, z: 0.65417}
   m_Children: []
   m_Father: {fileID: 0}

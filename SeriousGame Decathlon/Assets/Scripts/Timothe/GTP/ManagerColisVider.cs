@@ -169,12 +169,12 @@ public class ManagerColisVider : MonoBehaviour
 
     public bool PeutFairePartirColis()
     {
-        /*if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
+        if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
         {
             RemainingQuantityWindow.SetActive(true);
             RemainingQuantityWindow.GetComponent<RemainingQuantityWindow>().articleNb = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count;
         }
-        else*/ if (tempsReponseChangementColis <= 0)
+        else if (tempsReponseChangementColis <= 0)
         {
             if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {
