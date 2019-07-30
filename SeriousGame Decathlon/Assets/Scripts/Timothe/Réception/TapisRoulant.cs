@@ -54,33 +54,36 @@ public class TapisRoulant : MonoBehaviour
                 {
                     turnMenu.SetActive(false);
                     menuIsOpen = false;
-                }
 
-                if (lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented || lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime || lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
-                {
-                    OpenTurnMenu();
-                }
+                    if (lastColis != null)
+                    {
+                        if (lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented || lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime || lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
+                        {
+                            OpenTurnMenu();
+                        }
 
-                if (!lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented && !lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
-                {
+                        if (!lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented && !lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
+                        {
 
-                    lastColis.GetComponent<ScriptColisRecep>().canMove = true;
-                    lastColis = null;
+                            lastColis.GetComponent<ScriptColisRecep>().canMove = true;
+                            lastColis = null;
 
-                    TutoManagerRecep.instance.Manager(8);
+                            TutoManagerRecep.instance.Manager(8);
+                        }
+                    }
+                    else if (menuIsOpen && TutoManagerRecep.instance == null)
+                    {
+                        turnMenuPosition = turnMenu.transform.position;
+                        if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
+                        {
+                            turnMenu.SetActive(false);
+                            menuIsOpen = false;
+                            lastColis.GetComponent<ScriptColisRecep>().canMove = true;
+                            lastColis = null;
+                        }
+                    }
                 }
-            }
-            else if (menuIsOpen && TutoManagerRecep.instance == null)
-            {
-                turnMenuPosition = turnMenu.transform.position;
-                if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
-                {
-                    turnMenu.SetActive(false);
-                    menuIsOpen = false;
-                    lastColis.GetComponent<ScriptColisRecep>().canMove = true;
-                    lastColis = null;
-                }
-            }
+            }  
         }
     }
 

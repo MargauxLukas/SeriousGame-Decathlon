@@ -18,7 +18,7 @@ public class BoutonMettreSurPalette : MonoBehaviour
            else
            {
                 tapisRoule.turnMenu.SetActive(false);
-                tapisRoule.OpenTurnMenu();
+                //tapisRoule.OpenTurnMenu();
            }
         }
 
