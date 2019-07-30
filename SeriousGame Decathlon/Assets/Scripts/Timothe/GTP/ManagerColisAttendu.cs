@@ -60,7 +60,7 @@ public class ManagerColisAttendu : MonoBehaviour
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
                 }
             }
-            phasesColisVoulus.Add(0); //A changer
+            phasesColisVoulus.Add(nbPhase); //A changer
 
             if(Random.Range(0,100)<chanceToComeFromInternet)
             {
@@ -113,18 +113,18 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             case 0:
                 nbEmplacement = 0;
-                if (cm[0].colisActuelPoste == null){monitor.Colis1Actif(phasesColisVoulus[0],    0                               );}
-                else                               {monitor.Colis1Actif(phasesColisVoulus[0], cm[0].colisActuelPoste.currentPhase);}
+                if (cm[0].colisActuelPoste == null){monitor.Colis1Actif(phasesColisVoulus[0],    0                               , colisActuellementTraite[0].comeFromInternet);}
+                else                               {monitor.Colis1Actif(phasesColisVoulus[0], cm[0].colisActuelPoste.currentPhase, colisActuellementTraite[0].comeFromInternet);}
                 break;
             case 1:
                 nbEmplacement = 1;
-                if (cm[1].colisActuelPoste == null){monitor.Colis2Actif(phasesColisVoulus[1],    0                               );}
-                else                               {monitor.Colis2Actif(phasesColisVoulus[1], cm[1].colisActuelPoste.currentPhase);}
+                if (cm[1].colisActuelPoste == null){monitor.Colis2Actif(phasesColisVoulus[1],    0                               , colisActuellementTraite[1].comeFromInternet);}
+                else                               {monitor.Colis2Actif(phasesColisVoulus[1], cm[1].colisActuelPoste.currentPhase, colisActuellementTraite[1].comeFromInternet);}
                 break;
             case 2:
                 nbEmplacement = 2;
-                if (cm[2].colisActuelPoste == null){monitor.Colis3Actif(phasesColisVoulus[2],    0                               );}
-                else                               {monitor.Colis3Actif(phasesColisVoulus[2], cm[2].colisActuelPoste.currentPhase);}
+                if (cm[2].colisActuelPoste == null){monitor.Colis3Actif(phasesColisVoulus[2],    0                               , colisActuellementTraite[2].comeFromInternet);}
+                else                               {monitor.Colis3Actif(phasesColisVoulus[2], cm[2].colisActuelPoste.currentPhase, colisActuellementTraite[2].comeFromInternet);}
                 break;
         }
     }
