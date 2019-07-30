@@ -23,6 +23,8 @@ public class ManagerColisVider : MonoBehaviour
 
     public List<RemplissageColisGTP> colisActuellementsPose;
 
+    public GameObject RemainingQuantityWindow;
+
     public bool aEteVerifier;
 
     private int emplacement = 0;
@@ -169,7 +171,8 @@ public class ManagerColisVider : MonoBehaviour
     {
         /*if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
         {
-            //Faire apparaître l'écran de si le colis est sensé être vide
+            RemainingQuantityWindow.SetActive(true);
+            RemainingQuantityWindow.GetComponent<RemainingQuantityWindow>().articleNb = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count;
         }
         else*/ if (tempsReponseChangementColis <= 0)
         {
