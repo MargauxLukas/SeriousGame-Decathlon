@@ -146,8 +146,8 @@ public class RemplissageColisGTP : MonoBehaviour
         }
         if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
         {
-            transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 4f   ;
-            transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.35f;
+            transform.position   += new Vector3(0, 1, 0) * Time.fixedDeltaTime * 2f;
+            transform.localScale -=     Vector3.one      * Time.fixedDeltaTime * 0.13f;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
             StartCoroutine(AnimationColisRenvoie());
         }
