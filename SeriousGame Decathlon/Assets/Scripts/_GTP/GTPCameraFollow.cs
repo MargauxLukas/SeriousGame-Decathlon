@@ -13,11 +13,6 @@ public class GTPCameraFollow : MonoBehaviour
     private float maxX = 20f;
     private float minX = -8f;
 
-    void Start()
-    {
-        //offset = transform.position.y - player.transform.position.y;
-    }
-
     void Update()
     {
         // Y déplacement

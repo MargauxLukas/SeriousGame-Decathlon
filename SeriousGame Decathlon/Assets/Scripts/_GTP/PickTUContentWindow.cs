@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class PickTUContentWindow : MonoBehaviour
 {
+    [Header("ManagerColisAttendu et CartonVideLink")]
     public ManagerColisAttendu mca;
     public CartonVideLink      cvl;
 
+    [Header("Article dans ListArticle en Enfant")]
     public List<ArticleAffichage> listArticleAffichage;
 
-    //Emplacement
-    //Colis
-    //NB article voulu (int)
-    //Article en question (Article)
-
+        /********************************************************************************
+         *      **Affichage de la Liste d'article à mettre dans le colis à Remplir**    *
+         *                                                                              *
+         *      (On y accède en appuyant sur les loupes sur l'écran, il faut qu'il      *
+         *          y est un colis à l'emplacement pour pouvoir voir la liste)          *
+         ********************************************************************************/
     public void affichageListe(int nb)
     {
-        string ArticleName1 = "";
+        string ArticleName1 = "";                                                             //Je Reset à chaque fois pour éviter tous problèmes.
         string ArticleName2 = "";
         string ArticleName3 = "";
         int nb1 = 0;
         int nb2 = 0;
         int nb3 = 0;
 
-        foreach (Article art in mca.colisActuellementTraite[nb].listArticles)
+        foreach (Article art in mca.colisActuellementTraite[nb].listArticles)                 //
         {
             if (art.name == ArticleName1 || ArticleName1 == "")
             {
