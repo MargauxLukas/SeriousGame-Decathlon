@@ -202,7 +202,10 @@ public class ManagerColisVider : MonoBehaviour
                 //Malus
             }
         }
-        //Bonus si validé
+        if(aEteVerifier)
+        {
+            Scoring.instance.WinPointGTP(70);
+        }
         aEteVerifier = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
         emplacementsScripts[emplacement].SetActive(false);
@@ -222,6 +225,8 @@ public class ManagerColisVider : MonoBehaviour
 
     IEnumerator ActiverAutreColis(int emplacement)
     {
+        Scoring.instance.BeginComboGTP(90);
+
         for(int m = 0; m < 100; m++)
         {
             if (photoArticle.enabled)

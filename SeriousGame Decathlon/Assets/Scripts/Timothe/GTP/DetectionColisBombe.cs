@@ -13,10 +13,11 @@ public class DetectionColisBombe : MonoBehaviour
         {
             if(collision.GetComponent<RemplissageColisGTP>() != null)
             {
-                if(collision.GetComponent<RemplissageColisGTP>().tauxRemplissage >= 10)
+                if(collision.GetComponent<RemplissageColisGTP>().tauxRemplissage >= 1)
                 {
                     if (!haveAlreadySomething)
                     {
+                        Scoring.instance.LosePointGTP(25, "Renvoie d'un colis trop chargé");
                         collision.GetComponent<RemplissageColisGTP>().StopAllCoroutines();
                         colisRevoir = collision.gameObject;
                         collision.GetComponent<RemplissageColisGTP>().besoinEtreVide = true;
@@ -28,7 +29,7 @@ public class DetectionColisBombe : MonoBehaviour
                 {
                     if (collision.GetComponent<RemplissageColisGTP>().nbArticleScanned != collision.GetComponent<RemplissageColisGTP>().colisScriptable.listArticles.Count)
                     {
-                        Debug.Log("Des articles n'ont aps été scanner, mettre un malus ici");
+                        Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
                     }
                 }
             }
