@@ -41,6 +41,7 @@ public class RemainingQuantityWindow : MonoBehaviour
             //Pas bien
         }
 
+        nb = 0;
         gameObject.SetActive(false);
     }
 }

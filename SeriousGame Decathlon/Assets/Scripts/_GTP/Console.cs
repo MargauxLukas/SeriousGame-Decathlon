@@ -14,7 +14,7 @@ public class Console : MonoBehaviour
 
     public void Start()
     {
-        nbText.text = "";
+        nbText.text = "0";
     }
 
     public void UpdateAffichage() //Toujours 0 au commencement
