@@ -138,7 +138,7 @@ public class ManagerColisVider : MonoBehaviour
                                     }
                                 }
 
-                                if(nbMemeArticle%3 == 0 && Random.Range(0,100) < 100 && nbMemeArticle != 0)
+                                if(nbMemeArticle%3 == 0 && Random.Range(0,100) < 100 && nbMemeArticle != 0 && colisAvecPack[m] != null)
                                 {
                                     Debug.Log("Test Pack d'article 1");
                                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = nbMemeArticle;
@@ -179,7 +179,7 @@ public class ManagerColisVider : MonoBehaviour
                         newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
                     }
                 }
-                else if (Random.Range(0, 100) < chanceArticlePasBon)
+                else if (Random.Range(0, 100) < chanceArticlePasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
                 {
                     newColis.gtpSupposedToBe = newColis.listArticles[0];
                     Article newArticleMauvais = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
