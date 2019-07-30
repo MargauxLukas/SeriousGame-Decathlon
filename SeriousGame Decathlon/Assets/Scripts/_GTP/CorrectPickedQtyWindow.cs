@@ -41,7 +41,7 @@ public class CorrectPickedQtyWindow : MonoBehaviour
         nb++;
         Affichage();
     }
-
+    //
     public void OK()
     {
         gameObject        .SetActive(false);
