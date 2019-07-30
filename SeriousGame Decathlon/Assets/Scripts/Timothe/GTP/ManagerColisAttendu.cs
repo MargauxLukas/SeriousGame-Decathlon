@@ -173,7 +173,7 @@ public class ManagerColisAttendu : MonoBehaviour
         bool noAnomalie = true;
         if (articleEnvoye.Count > 0 || articleEnvoye.Count > 0)
         {
-            //Ajoute un malus par colis différents
+            noAnomalie = false;
         }
         return noAnomalie;
     }
@@ -188,19 +188,27 @@ public class ManagerColisAttendu : MonoBehaviour
                 {
                     colisVoulus[emplacement] = new Colis();
                     Debug.Log("Un colis a été mal fait");
+                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
                     return false;
                     
                 }
             }
             colisVoulus[emplacement] = new Colis();
+            Scoring.instance.WinPointGTP(150);
             return true;
         }
         colisVoulus[emplacement] = new Colis();
+        Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
         return false;
     }
 
     public void ClosePickTU(int emplacement, Colis colisRempli, RemplissageColisGTP colisScript)
     {
+        if(colisRempli.listArticles.Count >=9)
+        {
+            Scoring.instance.WinPointGTP(70);
+        }
+
         Colis colisRestant = Colis.CreateInstance<Colis>();
 
         List<Article> articleEnvoye = new List<Article>();

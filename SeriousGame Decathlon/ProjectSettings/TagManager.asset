@@ -9,6 +9,7 @@ TagManager:
   - Tapis
   - ArticleGTP
   - ColisGTP
+  - ColisPrincipauxGTP
   layers:
   - Default
   - TransparentFX
