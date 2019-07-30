@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class PickTUContentWindow : MonoBehaviour
 {
-    [Header("ManagerColisAttendu et CartonVideLink")]
+    [Header("ManagerColisAttendu /CartonVideLink")]
     public ManagerColisAttendu mca;
     public CartonVideLink      cvl;
+
+    [Header("ecranCorrectPickedQty")]
+    public GameObject ecranCorrectPickedQty;
 
     [Header("Article dans ListArticle en Enfant")]
     public List<ArticleAffichage> listArticleAffichage;
 
-        /********************************************************************************
-         *      **Affichage de la Liste d'article à mettre dans le colis à Remplir**    *
-         *                                                                              *
-         *      (On y accède en appuyant sur les loupes sur l'écran, il faut qu'il      *
-         *          y est un colis à l'emplacement pour pouvoir voir la liste)          *
-         ********************************************************************************/
+    /********************************************************************************
+    *      **Affichage de la Liste d'article à mettre dans le colis à Remplir**    *
+    *                                                                              *
+    *      (On y accède en appuyant sur les loupes sur l'écran, il faut qu'il      *
+    *          y est un colis à l'emplacement pour pouvoir voir la liste)          *
+    ********************************************************************************/
     public void affichageListe(int nb)
     {
-        string ArticleName1 = "";                                                             //Je Reset à chaque fois pour éviter tous problèmes.
+        string ArticleName1 = "";                                                             // Je Reset à chaque fois pour éviter tous problèmes.
         string ArticleName2 = "";
         string ArticleName3 = "";
         int nb1 = 0;
         int nb2 = 0;
         int nb3 = 0;
 
-        foreach (Article art in mca.colisActuellementTraite[nb].listArticles)                 //
+        foreach (Article art in mca.colisActuellementTraite[nb].listArticles)                 // Je regarde à quoi le colis doit ressembler
         {
-            if (art.name == ArticleName1 || ArticleName1 == "")
+            if (art.name == ArticleName1 || ArticleName1 == "")                               // Je regarde si le colis est pareil ou si le nom est vide(Dans ce cas, je lui met le nom de l'article)
             {
                 ArticleName1 = art.name;
                 nb1++;
@@ -45,7 +48,7 @@ public class PickTUContentWindow : MonoBehaviour
             }
         }
 
-        listArticleAffichage[0].TName.text = ArticleName1;
+        listArticleAffichage[0].TName.text = ArticleName1;                                     // Affichage de la liste (Nom + Nombre voulu)                            
         listArticleAffichage[1].TName.text = ArticleName2;
         listArticleAffichage[2].TName.text = ArticleName3;
 
@@ -53,13 +56,13 @@ public class PickTUContentWindow : MonoBehaviour
         listArticleAffichage[1].TTarget.text = nb2.ToString();
         listArticleAffichage[2].TTarget.text = nb3.ToString();
 
-        nb1 = 0;
+        nb1 = 0;                                                                               // Je réutilise une variable qui me sert plus (#Recyclage)
         nb2 = 0;
         nb3 = 0;
 
-        foreach (Article art in mca.colisViderManage.colisActuellementsPose[nb].GetComponent<RemplissageColisGTP>().colisScriptable.listArticles)
+        foreach (Article art in mca.colisViderManage.colisActuellementsPose[nb].GetComponent<RemplissageColisGTP>().colisScriptable.listArticles)   //Je regarde ce qu'il y'a dans le colis
         {
-            if (art.name == ArticleName1)
+            if (art.name == ArticleName1)                                                      // Pour chaque article, j'incrémente
             {
                 nb1++;
             }
@@ -73,7 +76,7 @@ public class PickTUContentWindow : MonoBehaviour
             }
         }
 
-        listArticleAffichage[0].TActual.text = nb1.ToString();
+        listArticleAffichage[0].TActual.text = nb1.ToString();                               //Affichage de la liste (Nombre Actuel) 
         listArticleAffichage[1].TActual.text = nb2.ToString();
         listArticleAffichage[2].TActual.text = nb3.ToString();
     }
@@ -81,12 +84,24 @@ public class PickTUContentWindow : MonoBehaviour
     public void ClosePickTU()
     {
         mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, cvl.csTab[mca.nbEmplacement]);
-
     }
 
+    /****************************************************************************************
+     *   Permet de changer le nombre de l'article actuel qu'on met dans le colis à remplir  *
+     ****************************************************************************************/
     public void CorrectPickedQty()
     {
-        mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0]);
+        gameObject           .SetActive(false);
+
+        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0].name, mca.nbArticleVoulu);
+        ecranCorrectPickedQty.SetActive(true );
+
+        //mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0]);
+    }
+
+    public void UpdatingArticle(string name, int nbUpdate)
+    {
+
     }
 
     public void Back()

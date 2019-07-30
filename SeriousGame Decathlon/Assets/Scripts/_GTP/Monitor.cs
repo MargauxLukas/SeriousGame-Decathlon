@@ -46,7 +46,7 @@ public class Monitor : MonoBehaviour
         lumieresVertes[2].SetActive(false);*/
     }
 
-    public void Colis1Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
+    public void Colis1Actif(int phaseVoulue, int phaseActuelle)
     {
         Tapis1.GetComponent<ColisLink>().console.UpdateAffichage(         );
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 0;
@@ -68,7 +68,7 @@ public class Monitor : MonoBehaviour
         //Animator Colis1 activé sur poste
     }
 
-    public void Colis2Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
+    public void Colis2Actif(int phaseVoulue, int phaseActuelle)
     {
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
@@ -87,7 +87,7 @@ public class Monitor : MonoBehaviour
         //Animator Colis2
     }
 
-    public void Colis3Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
+    public void Colis3Actif(int phaseVoulue, int phaseActuelle)
     {
         Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 2;
