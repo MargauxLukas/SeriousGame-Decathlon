@@ -89,11 +89,15 @@ public class SourceCorrectionWindow : MonoBehaviour
         AffichageWrong();
         AffichageDamaged();
         AffichageMissing();
-        Debug.Log("Pas encore integré");
     }
 
     public void ResetButton()
     {
-        Debug.Log("Pas encore integré");
+        nbDamaged = 0;
+        nbWrong = 0;
+        nbMissing = 0;
+        AffichageWrong();
+        AffichageDamaged();
+        AffichageMissing();
     }
 }

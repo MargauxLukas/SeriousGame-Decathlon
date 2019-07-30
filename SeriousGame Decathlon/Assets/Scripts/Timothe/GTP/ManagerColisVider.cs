@@ -141,7 +141,7 @@ public class ManagerColisVider : MonoBehaviour
                                 if(nbMemeArticle%3 == 0 && Random.Range(0,100) < 100 && nbMemeArticle != 0 && colisAvecPack[m] != null)
                                 {
                                     Debug.Log("Test Pack d'article 1");
-                                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = nbMemeArticle;
+                                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 3;
                                 }
                                 else
                                 {
@@ -318,14 +318,14 @@ public class ManagerColisVider : MonoBehaviour
                     int nbEmplacementPrendre = 0;
                     if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                     {
-                        if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
+                        if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe))
                         {
                             nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
                             //Debug.Log(nbEmplacementPrendre);
                         }
                         if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                         {
-                            if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
+                            if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe))
                             {
                                 nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
                             }

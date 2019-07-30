@@ -23,6 +23,7 @@ public class Monitor : MonoBehaviour
     public GameObject anomalyWindow;
 
     public List<GameObject> lumieresVertes;
+    public List<GameObject> commandesInternets;
 
     public void Start()
     {
@@ -41,18 +42,23 @@ public class Monitor : MonoBehaviour
         colis2.GetComponent<Animator>().SetInteger("Color", 0);
         colis3.GetComponent<Animator>().SetInteger("Color", 0);
 
-        /*lumieresVertes[0].SetActive(false);
+        lumieresVertes[0].SetActive(false);
         lumieresVertes[1].SetActive(false);
-        lumieresVertes[2].SetActive(false);*/
+        lumieresVertes[2].SetActive(false);
+
+        commandesInternets[0].SetActive(false);
+        commandesInternets[0].SetActive(false);
+        commandesInternets[0].SetActive(false);
     }
 
-    public void Colis1Actif(int phaseVoulue, int phaseActuelle)
+    public void Colis1Actif(int phaseVoulue, int phaseActuelle, bool comeFromInternet)
     {
         Tapis1.GetComponent<ColisLink>().console.UpdateAffichage(         );
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 0;
         Tapis1.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
-        Debug.Log((phaseActuelle+1) + " ==  " +phaseVoulue);
+        commandesInternets[0].SetActive(comeFromInternet);
+
         if (phaseActuelle + 1 == phaseVoulue)
         {
             colis1.GetComponent<Animator>().SetInteger("Color", 2);
@@ -68,11 +74,13 @@ public class Monitor : MonoBehaviour
         //Animator Colis1 activé sur poste
     }
 
-    public void Colis2Actif(int phaseVoulue, int phaseActuelle)
+    public void Colis2Actif(int phaseVoulue, int phaseActuelle, bool comeFromInternet)
     {
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
+
+        commandesInternets[1].SetActive(comeFromInternet);
 
         if (phaseActuelle + 1 == phaseVoulue)
         {
@@ -87,11 +95,13 @@ public class Monitor : MonoBehaviour
         //Animator Colis2
     }
 
-    public void Colis3Actif(int phaseVoulue, int phaseActuelle)
+    public void Colis3Actif(int phaseVoulue, int phaseActuelle, bool comeFromInternet)
     {
         Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 2;
         Tapis3.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
+
+        commandesInternets[2].SetActive(comeFromInternet);
 
         if (phaseActuelle + 1 == phaseVoulue)
         {
