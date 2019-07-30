@@ -100,9 +100,33 @@ public class PickTUContentWindow : MonoBehaviour
         ecranCorrectPickedQty.SetActive(true);
     }
 
-    public void UpdatingArticle(string name, int nbUpdate)
+    public void UpdatingArticle(int nbUpdate)
     {
+        mca.cm[emplacement].UpdateAffichageConsole(nbUpdate, emplacement);
+        affichageListe(emplacement);
 
+        int nbReference = 0;
+        
+        if (nbReference < nbUpdate)
+        {
+            while (nbUpdate != 0)
+            {
+                mca.colisActuellementTraite[emplacement].listArticles.Add(mca.colisActuellementTraite[emplacement].listArticles[0]);
+                nbUpdate--;
+            }
+        }
+        else if(nbReference > nbUpdate)
+        {
+            while (nbUpdate != 0)
+            {
+                mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
+                nbUpdate++;
+            }
+        }
+        else
+        {
+            //Nothing
+        }
     }
 
     public void Back()
