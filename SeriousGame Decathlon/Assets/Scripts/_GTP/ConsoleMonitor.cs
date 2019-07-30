@@ -79,8 +79,10 @@ public class ConsoleMonitor : MonoBehaviour
 
     public void Envoyer(int emplacement) 
     {
+        //Si j'appuie 2 fois, ça duplique le colis
         if (mcv.PeutFairePartirColis())
         {
+            Scoring.instance.StopComboGTP(15);
             mcv.FairePartirUnColis();
             UpdateAffichage(0);
             if (colisActuelPoste.currentPhase < phaseActuelle - 1)
@@ -89,10 +91,11 @@ public class ConsoleMonitor : MonoBehaviour
             }
             else
             {
-                //Debug.Log("Allo");
-                //Renvoyer le colis qui vient d'être géré
-                //bool noAnomalie = colisAttenduManage.DetectionAllColis(colisActuelPoste.colisScriptable, emplacement);
                 colisAttenduManage.RenvoieColis(emplacement);
+                if(colisAttenduManage.DetectionColis(colisActuelPoste.colisScriptable, emplacement))
+                {
+                    Debug.Log("There were no error in this colis");
+                }
                 switch(emplacement)
                 {
                     case 0:

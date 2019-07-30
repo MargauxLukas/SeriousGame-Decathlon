@@ -35,12 +35,14 @@ public class AffichagePileArticleGTP : MonoBehaviour
                 if (!tasArticle.activeSelf && currentColis.listArticles != null && currentColis.listArticles.Count > 0)
                 {
                     isOpen = true;
+                    GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.4f);
                     tasArticle.SetActive(true);
                     tasArticle.GetComponent<TasArticleGTP>().OpenTasArticle(currentColis.listArticles);
                 }
                 else
                 {
                     isOpen = false;
+                    GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
                     tasArticle.SetActive(false);
                     currentColis.listArticles = tasArticle.GetComponent<TasArticleGTP>().CloseTasArticle();
                 }

@@ -15,7 +15,7 @@ public class CartonVideLink : MonoBehaviour
     public GameObject ColisPrefab;
     public ManagerColisVider managerVide;
 
-    public Colis[] csTab = new Colis[2];
+    public RemplissageColisGTP[] csTab = new RemplissageColisGTP[3];
 
     public void PutAnotherColis(Vector3 position)
     {

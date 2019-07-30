@@ -23,6 +23,8 @@ public class ManagerColisVider : MonoBehaviour
 
     public List<RemplissageColisGTP> colisActuellementsPose;
 
+    public GameObject RemainingQuantityWindow;
+
     public bool aEteVerifier;
 
     private int emplacement = 0;
@@ -79,8 +81,8 @@ public class ManagerColisVider : MonoBehaviour
                         emplacementTempo = (emplacementTempo + 1) % 3;
                         nb++;
                     }
-                    Debug.Log("L'ancien : " + AncientEmplacementTempo);
-                    Debug.Log("Le nouveau : " + emplacementTempo);
+                    //Debug.Log("L'ancien : " + AncientEmplacementTempo);
+                    //Debug.Log("Le nouveau : " + emplacementTempo);
                     AncientEmplacementTempo = emplacementTempo;
                     if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
                     {
@@ -98,10 +100,10 @@ public class ManagerColisVider : MonoBehaviour
                                     {
                                         for(int d = 0; d < colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Count; d++)
                                         {
-                                            Debug.Log("La liste actuelle : " + colisActuellementsPose[emplacementTempo].colisScriptable.listArticles[d].name);
+                                            //Debug.Log("La liste actuelle : " + colisActuellementsPose[emplacementTempo].colisScriptable.listArticles[d].name);
                                         }
-                                        Debug.Log("L'article choisit : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[c].name);
-                                        Debug.Log("L'emplacement choisit : " + emplacementTempo + " Et le C actuel : " + c);
+                                        //Debug.Log("L'article choisit : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[c].name);
+                                        //Debug.Log("L'emplacement choisit : " + emplacementTempo + " Et le C actuel : " + c);
                                         randomArticleVoulu = c;
                                     }
                                 }
@@ -119,9 +121,9 @@ public class ManagerColisVider : MonoBehaviour
                         }
                         if (managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu] == colisVider[m].listArticles[0])
                         {
-                            Debug.Log("randomArticleVoulu : " + randomArticleVoulu);
-                            Debug.Log("Nom du nouvel Article : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu].name);
-                            Debug.Log("Le colis choisit en fonction : " + colisVider[m].listArticles[0]);
+                            //Debug.Log("randomArticleVoulu : " + randomArticleVoulu);
+                            //Debug.Log("Nom du nouvel Article : " + managerColis.colisActuellementTraite[emplacementTempo].listArticles[randomArticleVoulu].name);
+                            //Debug.Log("Le colis choisit en fonction : " + colisVider[m].listArticles[0]);
                             newColis = Instantiate(colisVider[m]);
                         }
                     }
@@ -139,8 +141,7 @@ public class ManagerColisVider : MonoBehaviour
                         newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
                     }
                 }
-
-                if (Random.Range(0, 100) < chanceArticlePasBon)
+                else if (Random.Range(0, 100) < chanceArticlePasBon)
                 {
                     while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
                     {
@@ -168,7 +169,12 @@ public class ManagerColisVider : MonoBehaviour
 
     public bool PeutFairePartirColis()
     {
-        if (tempsReponseChangementColis <= 0)
+        /*if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
+        {
+            RemainingQuantityWindow.SetActive(true);
+            RemainingQuantityWindow.GetComponent<RemainingQuantityWindow>().articleNb = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count;
+        }
+        else*/ if (tempsReponseChangementColis <= 0)
         {
             if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
             {
@@ -193,7 +199,12 @@ public class ManagerColisVider : MonoBehaviour
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[p] && !aEteVerifier)
             {
                 Debug.Log("Le colis n'a pas été signalé alors qu'il a une anomalie");
+                //Malus
             }
+        }
+        if(aEteVerifier)
+        {
+            Scoring.instance.WinPointGTP(70);
         }
         aEteVerifier = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
@@ -214,6 +225,8 @@ public class ManagerColisVider : MonoBehaviour
 
     IEnumerator ActiverAutreColis(int emplacement)
     {
+        Scoring.instance.BeginComboGTP(90);
+
         for(int m = 0; m < 100; m++)
         {
             if (photoArticle.enabled)
@@ -264,7 +277,7 @@ public class ManagerColisVider : MonoBehaviour
                         if (colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]].colisScriptable.listArticles.Contains(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0]))
                         {
                             nbEmplacementPrendre = (nbEmplacementPrendre + 1) % 3;
-                            Debug.Log(nbEmplacementPrendre);
+                            //Debug.Log(nbEmplacementPrendre);
                         }
                         if (nbEmplacementPrendre < emplacementsConcerne.Count && colisActuellementsPose[emplacementsConcerne[nbEmplacementPrendre]] != null)
                         {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AnomalyWindow : MonoBehaviour
 {
-    public GameObject ecranDeBase;
     public GameObject ecranCorrectQuantity;
     
     public void CorrectQuantityInSourceTU()
@@ -31,6 +30,5 @@ public class AnomalyWindow : MonoBehaviour
     public void Back()
     {
         gameObject .SetActive(false);
-        ecranDeBase.SetActive(true );
     }
 }

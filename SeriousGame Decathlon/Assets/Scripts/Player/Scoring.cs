@@ -49,6 +49,8 @@ public class Scoring : MonoBehaviour
     public bool isMf;
     public bool isGTP;
 
+    public float timeForGTP;
+
     void Awake()
     {
         if(instance == null)
@@ -83,7 +85,12 @@ public class Scoring : MonoBehaviour
 
     private void Update()
     {
-        if(gotNewColis)
+        if (timeForGTP > 0)
+        {
+            timeForGTP -= Time.deltaTime;
+        }
+
+        if (gotNewColis)
         {
             timeColisMaking += Time.deltaTime;
         }
@@ -158,7 +165,35 @@ public class Scoring : MonoBehaviour
                 }
                 break;
         }
+
     }
+
+    #region GTP
+    public void LosePointGTP(int amount, string text)
+    {
+        Debug.Log("Lose Some Point");
+        scoreGTP -= amount;
+        AffichageErreur(text);
+    }
+
+    public void WinPointGTP(int amount)
+    {
+        Debug.Log("Win Some Point");
+        scoreGTP += amount;
+    }
+
+    public void BeginComboGTP(float amountOfTime)
+    {
+        timeForGTP = amountOfTime;
+    }
+
+    public void StopComboGTP(float amountOfPointPerSecond)
+    {
+        scoreGTP += Mathf.RoundToInt(timeForGTP * amountOfPointPerSecond);
+        timeForGTP = 0;
+    }
+
+    #endregion
 
     #region Réception
 
@@ -397,7 +432,7 @@ public class Scoring : MonoBehaviour
         }
         else if(isGTP)
         {
-            if (playerScriptable.erreursGTP == null)
+            if (playerScriptable == null || playerScriptable.erreursGTP == null)
             {
                 playerScriptable.erreursGTP = new List<string>();
                 playerScriptable.nbErreursGTP = new List<int>();

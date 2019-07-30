@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 2672306495849255137}
   - component: {fileID: 2672306495849255136}
   - component: {fileID: 2672306495849255139}
-  - component: {fileID: 926738646}
+  - component: {fileID: 171931903}
   m_Layer: 0
   m_Name: CartonUn
-  m_TagString: ColisGTP
+  m_TagString: ColisPrincipauxGTP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2672306495849255137
 Transform:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
   tasArticle: {fileID: 0}
   isOpen: 0
   isSupposedToBeEmpty: 0
---- !u!212 &926738646
+--- !u!212 &171931903
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

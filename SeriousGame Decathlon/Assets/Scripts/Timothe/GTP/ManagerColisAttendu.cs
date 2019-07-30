@@ -19,7 +19,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbArticleVoulu  ;
     public int nbEmplacement   ;
 
-    float chanceAvoirTropArticlePrevu     = 0;
+    public float chanceAvoirTropArticlePrevu = 0;
     public float chanceToComeFromInternet = 0;
 
     public void Start()
@@ -53,7 +53,7 @@ public class ManagerColisAttendu : MonoBehaviour
             }
 
 
-            if ((float)Random.Range(0, 1) < chanceAvoirTropArticlePrevu)
+            if ((float)Random.Range(0, 100) < chanceAvoirTropArticlePrevu)
             {
                 while (colisVoulus[i].listArticles.Count <= 11)
                 {
@@ -114,15 +114,18 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             case 0:
                 nbEmplacement = 0;
-                monitor.Colis1Actif(phasesColisVoulus[0], cm[0].phaseActuelle);
+                if (cm[0].colisActuelPoste == null){monitor.Colis1Actif(phasesColisVoulus[0],    0                               );}
+                else                               {monitor.Colis1Actif(phasesColisVoulus[0], cm[0].colisActuelPoste.currentPhase);}
                 break;
             case 1:
                 nbEmplacement = 1;
-                monitor.Colis2Actif(phasesColisVoulus[1], cm[0].phaseActuelle);
+                if (cm[1].colisActuelPoste == null){monitor.Colis2Actif(phasesColisVoulus[1],    0                               );}
+                else                               {monitor.Colis2Actif(phasesColisVoulus[1], cm[1].colisActuelPoste.currentPhase);}
                 break;
             case 2:
                 nbEmplacement = 2;
-                monitor.Colis3Actif(phasesColisVoulus[2], cm[0].phaseActuelle);
+                if (cm[2].colisActuelPoste == null){monitor.Colis3Actif(phasesColisVoulus[2],    0                               );}
+                else                               {monitor.Colis3Actif(phasesColisVoulus[2], cm[2].colisActuelPoste.currentPhase);}
                 break;
         }
     }
@@ -170,7 +173,7 @@ public class ManagerColisAttendu : MonoBehaviour
         bool noAnomalie = true;
         if (articleEnvoye.Count > 0 || articleEnvoye.Count > 0)
         {
-            //Le colis renvoyé n'est pas bon
+            noAnomalie = false;
         }
         return noAnomalie;
     }
@@ -184,18 +187,28 @@ public class ManagerColisAttendu : MonoBehaviour
                 if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
                 {
                     colisVoulus[emplacement] = new Colis();
+                    Debug.Log("Un colis a été mal fait");
+                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
                     return false;
+                    
                 }
             }
             colisVoulus[emplacement] = new Colis();
+            Scoring.instance.WinPointGTP(150);
             return true;
         }
         colisVoulus[emplacement] = new Colis();
+        Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
         return false;
     }
 
-    public void ClosePickTU(int emplacement, Colis colisRempli)
+    public void ClosePickTU(int emplacement, Colis colisRempli, RemplissageColisGTP colisScript)
     {
+        if(colisRempli.listArticles.Count >=9)
+        {
+            Scoring.instance.WinPointGTP(70);
+        }
+
         Colis colisRestant = Colis.CreateInstance<Colis>();
 
         List<Article> articleEnvoye = new List<Article>();
@@ -230,28 +243,57 @@ public class ManagerColisAttendu : MonoBehaviour
             }
         }
 
-        Colis colisTempo = colisVoulus[3];
-        int nbPhaseTempo = phasesColisVoulus[3];
+        Colis colisTempo = Colis.CreateInstance<Colis>();
+        int nbPhaseTempo = -1;
+        if (colisVoulus.Count >= 4 && colisVoulus[3] != null)
+        {
+            colisTempo = colisVoulus[3];
+            nbPhaseTempo = phasesColisVoulus[3];
+        }
+
 
         colisRestant.listArticles = articleVoulu;
+        Debug.Log(articleVoulu);
         List<Article> artInColis  = new List<Article>();
+        List <int> nbArticleIdentique = new List<int>();
+        Article previousArticle = new Article();
 
         foreach(Article art in colisRestant.listArticles)
         {
+            if(art == previousArticle)
+            {
+                nbArticleIdentique[nbArticleIdentique.Count - 1]++;
+            }
             if(!artInColis.Contains(art))
             {
                 artInColis.Add(art);
+                nbArticleIdentique.Add(1);
+            }
+            previousArticle = art;
+        }
+
+        if (colisRestant.listArticles.Count > 0)
+        {
+            if (colisVoulus.Count >= 4 && colisVoulus[3] != null)
+            {
+                phasesColisVoulus[3] = artInColis.Count - 1;
+                colisVoulus[3] = colisRestant;
+            }
+            else
+            {
+                phasesColisVoulus.Add(artInColis.Count - 1);
+                colisVoulus.Add(colisRestant);
             }
         }
 
-        phasesColisVoulus[3] = artInColis.Count - 1;
-        colisVoulus[3] = colisRestant;
-
         colisVoulus[emplacement] = Instantiate(colisRempli);
         phasesColisVoulus[emplacement] = 0;
-
-        phasesColisVoulus.Add(nbPhaseTempo);
-        colisVoulus      .Add(colisTempo  );
+        colisScript.currentPhase = 12;
+        if (nbPhaseTempo >= 0)
+        {
+            phasesColisVoulus.Add(nbPhaseTempo);
+            colisVoulus.Add(colisTempo);
+        }
     }
 
     public void CorrectPickQuantity(int emplacement, Colis colisRempli, int nombreArticleVoulu, Article articleEnQuestion)
@@ -265,7 +307,7 @@ public class ManagerColisAttendu : MonoBehaviour
             }
         }
 
-        ClosePickTU(emplacement, colisRempli);
+        //ClosePickTU(emplacement, colisRempli);
 
         for(int i = 0; i < colisVoulus[emplacement].listArticles.Count; i++)
         {

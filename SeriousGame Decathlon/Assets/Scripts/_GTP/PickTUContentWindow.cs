@@ -6,7 +6,6 @@ public class PickTUContentWindow : MonoBehaviour
 {
     public ManagerColisAttendu mca;
     public CartonVideLink      cvl;
-    public GameObject  ecranDeBase;
 
     public List<ArticleAffichage> listArticleAffichage;
 
@@ -74,23 +73,21 @@ public class PickTUContentWindow : MonoBehaviour
         listArticleAffichage[0].TActual.text = nb1.ToString();
         listArticleAffichage[1].TActual.text = nb2.ToString();
         listArticleAffichage[2].TActual.text = nb3.ToString();
-
-        gameObject.SetActive(true);
     }
 
     public void ClosePickTU()
     {
-        mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement]);
+        mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, cvl.csTab[mca.nbEmplacement]);
+
     }
 
     public void CorrectPickedQty()
     {
-        mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement], mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].listArticles[0]);
+        mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0]);
     }
 
     public void Back()
     {
-        ecranDeBase.SetActive(true );
         gameObject .SetActive(false);
     }
 }

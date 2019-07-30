@@ -35,9 +35,9 @@ public class Monitor : MonoBehaviour
 
     public void ResetMonitor()
     {
-        colis1.GetComponent<SpriteRenderer>().color = Color.white;
-        colis2.GetComponent<SpriteRenderer>().color = Color.white;
-        colis3.GetComponent<SpriteRenderer>().color = Color.white;
+        colis1.GetComponent<Animator>().SetInteger("Color", 0);
+        colis2.GetComponent<Animator>().SetInteger("Color", 0);
+        colis3.GetComponent<Animator>().SetInteger("Color", 0);
     }
 
     public void Colis1Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
@@ -46,14 +46,14 @@ public class Monitor : MonoBehaviour
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 0;
         Tapis1.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
-        if (phaseActuelle == phaseVoulue - 1)
+        Debug.Log((phaseActuelle+1) + " ==  " +phaseVoulue);
+        if (phaseActuelle + 1 == phaseVoulue)
         {
-            Color newColor = new Color(206, 91, 34);
-            colis1.GetComponent<SpriteRenderer>().color = newColor;
+            colis1.GetComponent<Animator>().SetInteger("Color", 2);
         }
         else
         {
-            colis1.GetComponent<SpriteRenderer>().color = Color.green;
+            colis1.GetComponent<Animator>().SetInteger("Color", 1);
         }
 
         //Animator Colis1 activé SUR ECRAN
@@ -65,16 +65,15 @@ public class Monitor : MonoBehaviour
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
-        if (phaseActuelle == phaseVoulue - 1)
+
+        if (phaseActuelle + 1 == phaseVoulue)
         {
-            Color newColor = new Color(206,91,34);
-            colis2.GetComponent<SpriteRenderer>().color = newColor;
+            colis2.GetComponent<Animator>().SetInteger("Color", 2);
         }
         else
         {
-            colis2.GetComponent<SpriteRenderer>().color = Color.green;
+            colis2.GetComponent<Animator>().SetInteger("Color", 1);
         }
-
         //Animator Colis2
     }
 
@@ -84,14 +83,14 @@ public class Monitor : MonoBehaviour
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 2;
         Tapis3.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
-        if (phaseActuelle == phaseVoulue - 1)
+        Debug.Log((phaseActuelle + 1) + " ==  " + phaseVoulue);
+        if (phaseActuelle + 1 == phaseVoulue)
         {
-            Color newColor = new Color(206, 91, 34);
-            colis3.GetComponent<SpriteRenderer>().color = newColor;
+            colis3.GetComponent<Animator>().SetInteger("Color", 2);
         }
         else
         {
-            colis3.GetComponent<SpriteRenderer>().color = Color.green;
+            colis3.GetComponent<Animator>().SetInteger("Color", 1);
         }
         //Animator Colis3
     }

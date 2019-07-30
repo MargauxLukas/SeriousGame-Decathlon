@@ -35,7 +35,7 @@ public class ArticleUnitGTP : MonoBehaviour
                     doesTouch = false;
                     if(remplisColis == null && remplisColisPrincipal == null)
                     {
-                        if(transform.position.x < 61.5f || transform.position.x > 78.5f || transform.position.y > -0.35f || transform.position.y < -2.5f)
+                        if(transform.position.x < 61.5f || transform.position.x > 78.5f || transform.position.y > 0.3f || transform.position.y < -2.5f)
                         {
                             transform.position = new Vector3(73, -1.2f, 0);
                         }
