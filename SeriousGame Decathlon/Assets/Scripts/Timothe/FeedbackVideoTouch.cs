@@ -21,7 +21,6 @@ public class FeedbackVideoTouch : MonoBehaviour
             Destroy(instance.gameObject);
             instance = this;
         }
-        DontDestroyOnLoad(this);
     }
     // Update is called once per frame
     void Update()

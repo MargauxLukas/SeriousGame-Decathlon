@@ -82,7 +82,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
                             {
                                 tasArticle[l].SetActive(true);
-                                tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l]);
+                                tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l], 0);
                                 isOpen = true;
                             }
                         }

@@ -52,7 +52,6 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
 
-
             if ((float)Random.Range(0, 100) < chanceAvoirTropArticlePrevu)
             {
                 while (colisVoulus[i].listArticles.Count <= 11)

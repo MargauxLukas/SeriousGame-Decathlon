@@ -19,4 +19,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 79a45d5ff426cf244b17ef33ec757aa8, type: 3}
   - {fileID: 21300000, guid: d87e90396242263439402e865e0cbc47, type: 3}
   spriteGTP: {fileID: 21300000, guid: a8e1204d6facfeb47a08eafb3bb6923d, type: 3}
+  spritePackGTP: {fileID: 21300000, guid: 36134edadbcfd0548932a0c58f6ab22d, type: 3}
   photoGTP: {fileID: 21300000, guid: aa5c84f367304214ab5ea06caa4c34c7, type: 3}

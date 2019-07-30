@@ -11,6 +11,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
     public bool isOpen;
     public bool isSupposedToBeEmpty;
+    public int isFulledWithPack;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
                     isOpen = true;
                     GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.4f);
                     tasArticle.SetActive(true);
-                    tasArticle.GetComponent<TasArticleGTP>().OpenTasArticle(currentColis.listArticles);
+                    tasArticle.GetComponent<TasArticleGTP>().OpenTasArticle(currentColis.listArticles, isFulledWithPack);
                 }
                 else
                 {
