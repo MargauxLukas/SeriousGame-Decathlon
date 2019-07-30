@@ -20,7 +20,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public int nbEmplacement   ;
 
     public float chanceAvoirTropArticlePrevu = 0;
-    public float chanceToComeFromInternet = 0;
+    public float chanceToComeFromInternet    = 0;
 
     public GameObject ecranFinNiveau;
 

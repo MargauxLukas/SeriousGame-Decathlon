@@ -5,10 +5,12 @@ using TMPro;
 
 public class CorrectPickedQtyWindow : MonoBehaviour
 {
+    [Header("Texte en enfant")]
     public TextMeshProUGUI articleName;
     public TextMeshProUGUI quantitynb ;
     public TextMeshProUGUI expectednb ;
 
+    [Header("EcranPickTUContent")]
     public GameObject ecranPickTUContent;
 
     public int nb;
@@ -22,7 +24,8 @@ public class CorrectPickedQtyWindow : MonoBehaviour
     public void AffichageStart(string name, int nbArticle)
     {
         articleName.text = name;
-        nb = nbArticle;
+        nb               = nbArticle;
+        quantitynb.text = nb       .ToString();
         expectednb.text = nbArticle.ToString();
     }
 
