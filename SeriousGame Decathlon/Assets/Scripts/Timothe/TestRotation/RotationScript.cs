@@ -443,6 +443,7 @@ public class RotationScript : MonoBehaviour
                     }*/
                 }
                 actualFace = newFace;
+                actualFace.fullRotation = 0;
             }
             else if (yAxis != 0)
             {
@@ -501,6 +502,7 @@ public class RotationScript : MonoBehaviour
                     }*/
                 }
                 actualFace = newFace;
+                actualFace.fullRotation = 0;
             }
             else if (rotation != 0)
             {

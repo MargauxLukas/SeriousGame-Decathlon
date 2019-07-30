@@ -60,7 +60,7 @@ public class ManagerColisAttendu : MonoBehaviour
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
                 }
             }
-            phasesColisVoulus.Add(nbPhase);
+            phasesColisVoulus.Add(0); //A changer
 
             if(Random.Range(0,100)<chanceToComeFromInternet)
             {

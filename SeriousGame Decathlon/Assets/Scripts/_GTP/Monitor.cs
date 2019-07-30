@@ -41,9 +41,9 @@ public class Monitor : MonoBehaviour
         colis2.GetComponent<Animator>().SetInteger("Color", 0);
         colis3.GetComponent<Animator>().SetInteger("Color", 0);
 
-        lumieresVertes[0].SetActive(false);
+        /*lumieresVertes[0].SetActive(false);
         lumieresVertes[1].SetActive(false);
-        lumieresVertes[2].SetActive(false);
+        lumieresVertes[2].SetActive(false);*/
     }
 
     public void Colis1Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
