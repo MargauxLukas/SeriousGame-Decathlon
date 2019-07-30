@@ -28,7 +28,7 @@ public class ManagerColisVider : MonoBehaviour
 
     public bool aEteVerifier;
 
-    private int emplacement = 0;
+    public int emplacement = 0;
     private int AncientEmplacementTempo = -1;
 
     private float tempsReponseChangementColis;

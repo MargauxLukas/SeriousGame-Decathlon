@@ -676,7 +676,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 73066401}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690653493}
+        m_MethodName: OK
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &73066401
@@ -1303,7 +1314,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 148984389}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690653493}
+        m_MethodName: Moins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &148984389
@@ -3945,7 +3967,7 @@ GameObject:
   - component: {fileID: 438061861}
   - component: {fileID: 438061860}
   m_Layer: 0
-  m_Name: TNumber
+  m_Name: TQuantityNb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6450,7 +6472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mca: {fileID: 882313606}
   cvl: {fileID: 1435407245}
-  ecranCorrectPickedQty: {fileID: 0}
+  ecranCorrectPickedQty: {fileID: 1690653491}
   listArticleAffichage:
   - {fileID: 1130866082}
   - {fileID: 562911584}
@@ -9423,6 +9445,7 @@ MonoBehaviour:
   - {fileID: 0}
   RemainingQuantityWindow: {fileID: 0}
   aEteVerifier: 0
+  emplacement: 0
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
@@ -9594,7 +9617,7 @@ GameObject:
   - component: {fileID: 930107421}
   - component: {fileID: 930107420}
   m_Layer: 0
-  m_Name: TTitle
+  m_Name: TArticleName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13047,7 +13070,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1420434641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690653493}
+        m_MethodName: Plus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1420434641
@@ -15957,6 +15991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690653492}
   - component: {fileID: 1690653494}
+  - component: {fileID: 1690653493}
   m_Layer: 0
   m_Name: EcranCorrectPickedQty
   m_TagString: Untagged
@@ -15979,6 +16014,23 @@ Transform:
   m_Father: {fileID: 1276711366}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690653493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690653491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e745d13fc8ed17e4387cb37d633717e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  articleName: {fileID: 930107420}
+  quantitynb: {fileID: 438061860}
+  expectednb: {fileID: 663810898}
+  ecranPickTUContent: {fileID: 679415225}
+  nb: 0
 --- !u!212 &1690653494
 SpriteRenderer:
   m_ObjectHideFlags: 0
