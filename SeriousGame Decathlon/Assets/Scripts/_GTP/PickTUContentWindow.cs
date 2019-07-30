@@ -106,26 +106,29 @@ public class PickTUContentWindow : MonoBehaviour
         affichageListe(emplacement);
 
         int nbReference = 0;
-        
-        if (nbReference < nbUpdate)
+
+        if (nbUpdate != 0)
         {
-            while (nbUpdate != 0)
+            if (nbReference < nbUpdate)
             {
-                mca.colisActuellementTraite[emplacement].listArticles.Add(mca.colisActuellementTraite[emplacement].listArticles[0]);
-                nbUpdate--;
+                while (nbUpdate != 0)
+                {
+                    mca.colisActuellementTraite[emplacement].listArticles.Add(mca.colisActuellementTraite[emplacement].listArticles[0]);
+                    nbUpdate--;
+                }
             }
-        }
-        else if(nbReference > nbUpdate)
-        {
-            while (nbUpdate != 0)
+            else if (nbReference > nbUpdate)
             {
-                mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
-                nbUpdate++;
+                while (nbUpdate != 0)
+                {
+                    mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
+                    nbUpdate++;
+                }
             }
-        }
-        else
-        {
-            //Nothing
+            else
+            {
+                //Nothing
+            }
         }
     }
 

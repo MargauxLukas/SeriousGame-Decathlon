@@ -14,17 +14,19 @@ public class CorrectPickedQtyWindow : MonoBehaviour
     public GameObject ecranPickTUContent;
 
     public int nb = 0;
+    private int nbBase;
 
     public void Affichage()
     {
         //Mettre a jour affichage
-        quantitynb.text = nb.ToString();
+        quantitynb.text = (nbBase + nb).ToString();
     }
 
     public void AffichageStart(string name, int nbArticle)
     {
+        nbBase = nbArticle;
         articleName.text = name;
-        quantitynb.text = (nbArticle - nb).ToString();
+        quantitynb.text = nbArticle.ToString();
         expectednb.text = nbArticle.ToString();
     }
 
@@ -45,6 +47,7 @@ public class CorrectPickedQtyWindow : MonoBehaviour
         gameObject        .SetActive(false);
         ecranPickTUContent.GetComponent<PickTUContentWindow>().UpdatingArticle(nb);
         ecranPickTUContent.SetActive(true );
+        nb = 0;
     }
 }
 
