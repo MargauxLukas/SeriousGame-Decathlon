@@ -4251,7 +4251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &502053889
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9314,8 +9314,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
   - {fileID: 11400000, guid: 7521e02d571fcbb42b88d6ed50a45594, type: 2}
-  chanceColisPasRemplit: 1
-  chanceArticlePasBon: 0
+  chanceColisPasRemplit: 10
+  chanceArticlePasBon: 15
   photoArticle: {fileID: 1572741195}
   managerColis: {fileID: 882313606}
   colisActuellementsPose:

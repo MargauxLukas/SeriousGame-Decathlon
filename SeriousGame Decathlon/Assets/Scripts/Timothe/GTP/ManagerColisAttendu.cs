@@ -271,7 +271,7 @@ public class ManagerColisAttendu : MonoBehaviour
             previousArticle = art;
         }
 
-        if (colisRestant.listArticles.Count > 0)
+        /*if (colisRestant.listArticles.Count > 0)
         {
             if (colisVoulus.Count >= 4 && colisVoulus[3] != null)
             {
@@ -283,16 +283,16 @@ public class ManagerColisAttendu : MonoBehaviour
                 phasesColisVoulus.Add(artInColis.Count - 1);
                 colisVoulus.Add(colisRestant);
             }
-        }
+        }*/
 
         colisVoulus[emplacement] = Instantiate(colisRempli);
         phasesColisVoulus[emplacement] = 0;
         colisScript.currentPhase = 12;
-        if (nbPhaseTempo >= 0)
+        /*if (nbPhaseTempo >= 0)
         {
             phasesColisVoulus.Add(nbPhaseTempo);
             colisVoulus.Add(colisTempo);
-        }
+        }*/
     }
 
     public void CorrectPickQuantity(int emplacement, Colis colisRempli, int nombreArticleVoulu, Article articleEnQuestion)

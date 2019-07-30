@@ -37,7 +37,6 @@ public class RemplissageColisGTP : MonoBehaviour
         if (Input.touchCount > 0 && !estParti)
         {
             touchObject();
-            Debug.Log("Test touch 1");
 
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
@@ -47,7 +46,6 @@ public class RemplissageColisGTP : MonoBehaviour
             if (doesTouch)
             {
                 doesTouch = false;
-                Debug.Log("Test touch 2");
                 List<List<Article>> newListes    = new List<List<Article>>();
                 List<Article> articlesDejaConnus = new List     <Article> ();
 
@@ -59,7 +57,6 @@ public class RemplissageColisGTP : MonoBehaviour
                         {
                             if (!articlesDejaConnus.Contains(colisScriptable.listArticles[i]))
                             {
-                                Debug.Log("Test");
                                 newListes.Add(new List<Article>());
                                 newListes[newListes.Count - 1].Add(colisScriptable.listArticles[i]);
                                 articlesDejaConnus.Add(colisScriptable.listArticles[i]);
@@ -68,7 +65,6 @@ public class RemplissageColisGTP : MonoBehaviour
                             {
                                 for (int j = 0; j < newListes.Count; j++)
                                 {
-                                    Debug.Log("Test2");
                                     if (newListes[j].Contains(colisScriptable.listArticles[i]))
                                     {
                                         newListes[j].Add(colisScriptable.listArticles[i]);
@@ -94,7 +90,6 @@ public class RemplissageColisGTP : MonoBehaviour
                 {
 
                     bool repack = false;
-                    Debug.Log("Test3");
                     for (int m = 0; m < tasArticle.Count; m++)
                     {
                         if (tasArticle[m].activeSelf)

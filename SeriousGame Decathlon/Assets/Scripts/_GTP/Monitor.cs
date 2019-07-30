@@ -59,7 +59,6 @@ public class Monitor : MonoBehaviour
 
         commandesInternets[0].SetActive(comeFromInternet);
 
-        Debug.Log((phaseActuelle+1) + " ==  " +phaseVoulue);
         if (phaseActuelle + 1 == phaseVoulue)
         {
             colis1.GetComponent<Animator>().SetInteger("Color", 2);

@@ -52,7 +52,6 @@ public class DetectionColisBombe : MonoBehaviour
             colisToMove.transform.position -= new Vector3(0, 1, 0) * Time.deltaTime * 2;
             transform.localScale += Vector3.one * Time.fixedDeltaTime * 0.13f;
             yield return new WaitForSeconds(Time.deltaTime);
-            Debug.Log("Test : " + i);
         }
     }
 
@@ -60,7 +59,6 @@ public class DetectionColisBombe : MonoBehaviour
     {
         if (!colisRevoir.GetComponent<RemplissageColisGTP>().besoinEtreVide)
         {
-            Debug.Log("Renvoie colis poste 9");
             colisRevoir.GetComponent<RemplissageColisGTP>().startPosition = colisRevoir.transform.position;
             colisRevoir.GetComponent<RemplissageColisGTP>().didArrive = false;
             StartCoroutine(colisRevoir.GetComponent<RemplissageColisGTP>().AnimationColisRenvoie());
