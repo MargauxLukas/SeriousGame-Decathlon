@@ -38,6 +38,7 @@ public class Colis : ScriptableObject
 
     //Pour le GTP
     public bool comeFromInternet;
+    public Article gtpSupposedToBe;
 
     public string provenance;
     Direction orientation;

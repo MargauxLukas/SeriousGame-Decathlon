@@ -14,6 +14,7 @@ public class ArticleUnitGTP : MonoBehaviour
     private AffichagePileArticleGTP remplisColisPrincipal;
 
     public bool hasBeenScanned;
+    public int isPack;
 
     // Update is called once per frame
     void Update()
@@ -44,11 +45,33 @@ public class ArticleUnitGTP : MonoBehaviour
                     {
                         if (remplisColis != null)
                         {
-                            remplisColis.AddArticle(currentArticle);
+                            if (isPack != 0)
+                            {
+                                Debug.Log("Test Pack d'article 5");
+                                for (int l = 0; l < isPack; l++)
+                                {
+                                    remplisColis.AddArticle(currentArticle);
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("Test Pack d'article 6");
+                                remplisColis.AddArticle(currentArticle);
+                            }
                         }
                         else if (remplisColisPrincipal != null)
                         {
-                            remplisColisPrincipal.AddArticle(currentArticle);
+                            if (isPack != 0)
+                            {
+                                for (int l = 0; l < isPack; l++)
+                                {
+                                    remplisColisPrincipal.AddArticle(currentArticle);
+                                }
+                            }
+                            else
+                            {
+                                remplisColisPrincipal.AddArticle(currentArticle);
+                            }
                         }
                         tasParent.affichageTas.Remove(gameObject);
                         Destroy(gameObject);

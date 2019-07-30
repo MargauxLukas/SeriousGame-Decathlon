@@ -22,6 +22,8 @@ public class Monitor : MonoBehaviour
 
     public GameObject anomalyWindow;
 
+    public List<GameObject> lumieresVertes;
+
     public void Start()
     {
         nbText.text = "";
@@ -38,6 +40,10 @@ public class Monitor : MonoBehaviour
         colis1.GetComponent<Animator>().SetInteger("Color", 0);
         colis2.GetComponent<Animator>().SetInteger("Color", 0);
         colis3.GetComponent<Animator>().SetInteger("Color", 0);
+
+        /*lumieresVertes[0].SetActive(false);
+        lumieresVertes[1].SetActive(false);
+        lumieresVertes[2].SetActive(false);*/
     }
 
     public void Colis1Actif(int phaseVoulue, int phaseActuelle) //Il faut savoir comment on définit quel colis sera actif
@@ -55,6 +61,8 @@ public class Monitor : MonoBehaviour
         {
             colis1.GetComponent<Animator>().SetInteger("Color", 1);
         }
+
+        lumieresVertes[0].SetActive(true);
 
         //Animator Colis1 activé SUR ECRAN
         //Animator Colis1 activé sur poste
@@ -74,6 +82,8 @@ public class Monitor : MonoBehaviour
         {
             colis2.GetComponent<Animator>().SetInteger("Color", 1);
         }
+
+        lumieresVertes[1].SetActive(true);
         //Animator Colis2
     }
 
@@ -91,6 +101,8 @@ public class Monitor : MonoBehaviour
         {
             colis3.GetComponent<Animator>().SetInteger("Color", 1);
         }
+
+        lumieresVertes[2].SetActive(true);
         //Animator Colis3
     }
 

@@ -3591,6 +3591,7 @@ MonoBehaviour:
   isReception: 0
   isMf: 0
   isGTP: 0
+  timeForGTP: 0
 --- !u!4 &391081040
 Transform:
   m_ObjectHideFlags: 0
@@ -6313,7 +6314,7 @@ MonoBehaviour:
   textAnomalieGestion: {fileID: 1230046567}
   fondTextAnomalieDezoom: {fileID: 1230046565}
   paletteManager: {fileID: 566546638}
-  cm: {fileID: 0}
+  cm: {fileID: 110519614}
 --- !u!65 &652738258
 BoxCollider:
   m_ObjectHideFlags: 0
