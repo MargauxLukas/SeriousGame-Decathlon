@@ -51,6 +51,23 @@ public class TutoManagerRecep : MonoBehaviour
 
     private void Start()
     {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis1).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis2).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis3).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis4).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis5).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis6).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis7).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis8).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis9).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis10).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis11).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis12).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis13).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis14).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis15).enabled = false;
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis16).enabled = false;
+
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
     }
@@ -63,11 +80,6 @@ public class TutoManagerRecep : MonoBehaviour
 
     public void DialogueIsFinished()
     {
-        if(phaseNum == 0)
-        {
-            Manager(0);
-        }
-
         canPlayFirst = false;
         canPlaySecond = true;
         Manager(interactionNum);
@@ -775,7 +787,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-           Indications(new Vector2(5.1f, -7.28f), new Vector2(0.98f, 1.79f),
+           Indications(new Vector2(5.1f, -7.04f), new Vector2(0.98f, 1.79f),
                        new Vector2(0, 0), new Vector2(0, 0),
                        new Vector2(0, 0), new Vector2(0, 0),
                        new Vector2(0, 0), new Vector2(0, 0),
@@ -797,13 +809,13 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(5.1f, 1.24f), new Vector2(0.98f, 1.79f),
+            Indications(new Vector2(5.1f, -7.04f), new Vector2(0.98f, 1.79f),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(-3.21f, -12.21f), new Vector2(1,1),
+                        new Vector2(-3.21f, -11.96f), new Vector2(1,1),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(63.44f, -12.86f, 0), new Vector3(0, 0, 0), 0, false,
-                        new Vector2(72.2f, -7.31f), 0, 0, 270);
+                        new Vector3(63.44f, -12.42f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(72.2f, -7.08f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.ascendButton).interactable = true;
 
@@ -815,6 +827,14 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase05()
     {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),

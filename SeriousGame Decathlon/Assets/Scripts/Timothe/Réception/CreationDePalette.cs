@@ -108,8 +108,8 @@ public class CreationDePalette : MonoBehaviour
                             {
                                 nbCurrentColis++;
                                 Vector2 newPos = startPos + new Vector2(l * coefPosColonne, i * coefPosPalette + j * coefPosRangee);
-                                palettes[i].rangees[j].collones[k].colis.Add(colisDansOrdre[0]);
-                                palettes[i].rangees[j].collones[k].colis[l].GetComponent<Transform>().position = newPos;
+                                palettes[i].rangees[j].collones[k].colis.Add(colisDansOrdre[nbCurrentColis-1]);
+                                palettes[i].rangees[j].collones[k].colis[l].transform.position = newPos;
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<SpriteRenderer>().sortingOrder = k + 2;
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().canBePicked = false;
                                 palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().currentHauteur = k;
@@ -117,14 +117,14 @@ public class CreationDePalette : MonoBehaviour
                                 {
                                     nbColisAvecAnomalie--;
                                     int currentCartonPossible = Random.Range(0, colisPossibles.Count);
-                                    palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = colisDansOrdre[nbCurrentColis-1].GetComponent<Colis>();
+                                    palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = colisDansOrdre[nbCurrentColis-1].GetComponent<ScriptColisRecep>().colisScriptable;
                                     //palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.carton = colisPossibles[currentCartonPossible].carton;
                                     //palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented = colisPossibles[currentCartonPossible].isBadOriented;
                                     //palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable.estAbime = colisPossibles[currentCartonPossible].estAbime;
                                 }
                                 else if (colisPossibles.Count > 0)
                                 {
-                                    palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = colisDansOrdre[nbCurrentColis - 1].GetComponent<Colis>();
+                                    palettes[i].rangees[j].collones[k].colis[l].GetComponent<ScriptColisRecep>().colisScriptable = colisDansOrdre[nbCurrentColis - 1].GetComponent<ScriptColisRecep>().colisScriptable;
                                 }
                             }
                         }

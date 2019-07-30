@@ -4687,6 +4687,7 @@ MonoBehaviour:
   isReception: 0
   isMf: 0
   isGTP: 0
+  timeForGTP: 0
 --- !u!4 &391081040
 Transform:
   m_ObjectHideFlags: 0
