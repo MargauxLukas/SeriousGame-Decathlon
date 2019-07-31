@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/******************************************************************************************
+ *      Rescence tout ce qui concerne les places de tapis et les colis s'y trouvant       *
+ ******************************************************************************************/
 public class CartonVideLink : MonoBehaviour
 {
     public bool isFree1 = true;

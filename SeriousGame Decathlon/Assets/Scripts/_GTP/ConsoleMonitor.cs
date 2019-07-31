@@ -5,34 +5,47 @@ using TMPro;
 
 public class ConsoleMonitor : MonoBehaviour
 {
+    [Header("Script a assigner")]
     public ManagerColisVider mcv;
     public CartonVideLink cvl;
     public ManagerColisAttendu colisAttenduManage;
-    public TextMeshProUGUI text;
     public RemplissageColisGTP colisActuelPoste;
-    public int nbMonitor = 0;
 
+    [Header("Texte en enfant")]
+    public TextMeshProUGUI text;
+
+    [Header("Phase du colis")]
     public int phaseActuelle;
+
+    private int nbMonitor = 0;
 
     public void Start() 
     {
         text.text = "";   
     }
 
+    /*****************************************
+    *   Update le chiffre d'écran console    *
+    *****************************************/
     public void UpdateAffichage(int nb ) 
     {
         nbMonitor = nb;
         text.text = nb.ToString();
-        //colisAttenduManage.nbArticleVoulu
     }
 
+    /*************************************************************
+    *   Update le chiffre d'écran console apres un changement    *
+    **************************************************************/
     public void UpdateAffichageConsole(int nb, int emplacement)
     {
         text.text = (nbMonitor + nb).ToString();
         nbMonitor =  nbMonitor + nb;
+
         int nbArticleEnQuestion = 0;
-        int nbArticleEnCours = 0;
-        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];
+        int nbArticleEnCours    = 0;
+
+        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];          //L'article dont on est entrain de changer le nombre
+
         foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
         {
             if(art == reference)
@@ -47,7 +60,7 @@ public class ConsoleMonitor : MonoBehaviour
                 nbArticleEnCours++;
                 if(nbArticleEnCours > nbMonitor)
                 {
-                    colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+                    colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);                                                    //Si il dépasse le compteur, c'est que y'en a trop du coup on delete
                 }
             }
         }
@@ -69,16 +82,18 @@ public class ConsoleMonitor : MonoBehaviour
                 nbArticleEnCours++;
                 if (nbArticleEnCours > nbMonitor)
                 {
-                    colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
+                    colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
                 }
             }
         }
         colisAttenduManage.AjoutArticleColisVoulu(emplacement, nbMonitor);
     }
 
+    /******************************************
+     *      Bouton envoyer (Bouton noir)      *
+     ******************************************/
     public void Envoyer(int emplacement) 
     {
-        //Si j'appuie 2 fois, ça duplique le colis
         if (mcv.PeutFairePartirColis())
         {
             Scoring.instance.StopComboGTP(15);
@@ -94,6 +109,7 @@ public class ConsoleMonitor : MonoBehaviour
                 {
                     Debug.Log("There were no error in this colis");
                 }
+
                 switch(emplacement)
                 {
                     case 0:
