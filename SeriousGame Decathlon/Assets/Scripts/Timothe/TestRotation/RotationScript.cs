@@ -308,8 +308,8 @@ public class RotationScript : MonoBehaviour
             squareList[5].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             UpdateSprite(cartonsSprites, carton);
-            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
-            cartonObj.GetComponent<ColisScript>().Tourner();
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(actualFace.face);
+            cartonObj.GetComponent<ColisScript>().Tourner(actualFace.face);
         }
         else
         {
@@ -318,8 +318,8 @@ public class RotationScript : MonoBehaviour
             actualFace = GetCurrentFace();
             //Debug.Log(actualFace.face);
             UpdateSprite(cartonsSprites, carton);
-            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
-            cartonObj.GetComponent<ColisScript>().Tourner();
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(actualFace.face);
+            cartonObj.GetComponent<ColisScript>().Tourner(actualFace.face);
         }
     }
 
@@ -522,8 +522,8 @@ public class RotationScript : MonoBehaviour
         UpdateSprite(cartonsSprites, carton);
         if (cartonObj.GetComponent<ColisScript>() != null)
         {
-            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(squareList);
-            cartonObj.GetComponent<ColisScript>().Tourner();
+            cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(actualFace.face);
+            cartonObj.GetComponent<ColisScript>().Tourner(actualFace.face);
         }
         else if (cartonObj.GetComponent<ScriptColisRecep>() != null)
         {

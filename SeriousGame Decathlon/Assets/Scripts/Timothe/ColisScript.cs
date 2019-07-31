@@ -414,15 +414,22 @@ public class ColisScript : MonoBehaviour
         }
     }
 
-    public void Tourner()
+    public void Tourner(string face)
     {
-        if(colisScriptable.isBadOriented && IWayEtiquette.activeSelf)
-        {
-            IWayEtiquette.SetActive(false);
-        }
-        else if(!colisScriptable.isBadOriented && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
+        IWayEtiquette.SetActive(false);
+        if (face == "Forward" && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
         {
             IWayEtiquette.SetActive(true);
+            colisScriptable.isBadOriented = false;
+        }
+        else if(face == "Backward")
+        {
+            IWayEtiquette.SetActive(false);
+            colisScriptable.isBadOriented = false;
+        }
+        else if(!colisScriptable.isBadOriented)
+        {
+            colisScriptable.isBadOriented = true;
         }
     }
 
