@@ -17,6 +17,7 @@ public class ManagerColisVider : MonoBehaviour
     private int nbCurrentColis = 0;
     public int chanceColisPasRemplit;
     public int chanceArticlePasBon;
+    public int chanceColisPasBon;
 
     public Image photoArticle;
 
@@ -36,6 +37,13 @@ public class ManagerColisVider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            chanceColisPasRemplit = (int)ChargementListeColis.instance.chancePasRemplit;
+            chanceArticlePasBon = (int)ChargementListeColis.instance.chanceMauvaisArticle;
+            chanceColisPasBon = (int)ChargementListeColis.instance.chanceAllMauvaisArticle;
+        }
+
         etatColis.Add(false);
         etatColis.Add(false);
         StartCoroutine(FaireVenirPremiersColis());
@@ -179,7 +187,7 @@ public class ManagerColisVider : MonoBehaviour
                         newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
                     }
                 }
-                else if (Random.Range(0, 100) < chanceArticlePasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
+                else if (Random.Range(0, 100) < chanceColisPasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
                 {
                     newColis.gtpSupposedToBe = newColis.listArticles[0];
                     Article newArticleMauvais = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];

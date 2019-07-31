@@ -22,7 +22,6 @@ public class ChargementListeColis : MonoBehaviour
 
     //Pour le GTP
     public float nbColisVoulu;
-    public float chanceTropPlein;
     public float chanceMauvaisArticle;
     public float chanceAllMauvaisArticle;
     public float chancePasRemplit;
@@ -154,7 +153,6 @@ public class ChargementListeColis : MonoBehaviour
 
             //Pour le GTP
             nbColisVoulu = levelScript.nbColisVoulu;
-            chanceTropPlein = levelScript.chanceTropPlein;
             chanceMauvaisArticle = levelScript.chanceMauvaisArticle;
             chanceAllMauvaisArticle = levelScript.chanceAllMauvaisArticle;
             chancePasRemplit = levelScript.chancePasRemplit;
