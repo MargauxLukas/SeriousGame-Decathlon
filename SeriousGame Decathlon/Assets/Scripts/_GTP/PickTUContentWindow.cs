@@ -14,6 +14,8 @@ public class PickTUContentWindow : MonoBehaviour
     [Header("Article dans ListArticle en Enfant")]
     public List<ArticleAffichage> listArticleAffichage;
 
+    private int emplacement;
+
     /********************************************************************************
     *      **Affichage de la Liste d'article à mettre dans le colis à Remplir**    *
     *                                                                              *
@@ -22,6 +24,7 @@ public class PickTUContentWindow : MonoBehaviour
     ********************************************************************************/
     public void affichageListe(int nb)
     {
+        emplacement = nb;
         string ArticleName1 = "";                                                             // Je Reset à chaque fois pour éviter tous problèmes.
         string ArticleName2 = "";
         string ArticleName3 = "";
@@ -91,17 +94,42 @@ public class PickTUContentWindow : MonoBehaviour
      ****************************************************************************************/
     public void CorrectPickedQty()
     {
-        gameObject           .SetActive(false);
-
-        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0].name, mca.nbArticleVoulu);
-        ecranCorrectPickedQty.SetActive(true );
-
-        //mca.CorrectPickQuantity(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, mca.nbArticleVoulu, cvl.csTab[mca.nbEmplacement].colisScriptable.listArticles[0]);
+        gameObject.SetActive(false);
+        Debug.Log((mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name));
+        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);
+        ecranCorrectPickedQty.SetActive(true);
     }
 
-    public void UpdatingArticle(string name, int nbUpdate)
+    public void UpdatingArticle(int nbUpdate)
     {
+        mca.cm[emplacement].UpdateAffichageConsole(nbUpdate, emplacement);
+        affichageListe(emplacement);
 
+        int nbReference = 0;
+
+        if (nbUpdate != 0)
+        {
+            if (nbReference < nbUpdate)
+            {
+                while (nbUpdate != 0)
+                {
+                    mca.colisActuellementTraite[emplacement].listArticles.Add(mca.colisActuellementTraite[emplacement].listArticles[0]);
+                    nbUpdate--;
+                }
+            }
+            else if (nbReference > nbUpdate)
+            {
+                while (nbUpdate != 0)
+                {
+                    mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
+                    nbUpdate++;
+                }
+            }
+            else
+            {
+                //Nothing
+            }
+        }
     }
 
     public void Back()

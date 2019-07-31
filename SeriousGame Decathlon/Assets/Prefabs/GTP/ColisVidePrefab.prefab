@@ -240,8 +240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colisScriptable: {fileID: 11400000, guid: bc82c7123ed11554bb930dd0bc958310, type: 2}
   positionVisee: {fileID: 0}
-  speed: 3
+  speed: 5
   startPosition: {x: 0, y: 0, z: 0}
+  didArrive: 0
   tasArticle:
   - {fileID: 5516937118254268380}
   - {fileID: 8015257109059381090}
@@ -254,6 +255,7 @@ MonoBehaviour:
   isOpen: 0
   boxDesactivee: {fileID: 2672122063606575616}
   nbArticleScanned: 0
+  estParti: 0
 --- !u!1 &7888647433185922189
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,17 +32,14 @@ public class GTPCameraFollow : MonoBehaviour
         // X déplacement
         if (player.transform.position.x < minX)
         {
-            Debug.Log("Min");
             transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
         }
         else if (player.transform.position.x > maxX)
         {
-            Debug.Log("Max");
             transform.position = new Vector3(20f ,transform.position.y , transform.position.z);
         }
         else
         {
-            Debug.Log("Else");
             transform.position = new Vector3(player.transform.position.x + offset, transform.position.y, transform.position.z);
         }
     }
