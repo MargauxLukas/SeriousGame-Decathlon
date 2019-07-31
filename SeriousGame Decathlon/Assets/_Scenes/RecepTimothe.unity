@@ -1423,6 +1423,7 @@ MonoBehaviour:
   player: {fileID: 90880731}
   gauge: {fileID: 531473662}
   maxReplier: 0
+  maxDeplier: 0
   isOn: 0
   isReplierMax: 1
 --- !u!1001 &133706050
@@ -3588,7 +3589,7 @@ MonoBehaviour:
   gotNewColis: 0
   currentTime: 0
   pauseCombo: 0
-  isReception: 0
+  isReception: 1
   isMf: 0
   isGTP: 0
   timeForGTP: 0
