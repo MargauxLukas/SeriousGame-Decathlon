@@ -13,13 +13,11 @@ public class AffichagePileArticleGTP : MonoBehaviour
     public bool isSupposedToBeEmpty;
     public int isFulledWithPack;
 
-    // Start is called before the first frame update
     void Start()
     {
         //currentColis = Instantiate(currentColis);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.touchCount>0)

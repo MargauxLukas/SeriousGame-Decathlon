@@ -190,8 +190,7 @@ public class ManagerColisAttendu : MonoBehaviour
                     colisVoulus[emplacement] = new Colis();
                     Debug.Log("Un colis a été mal fait");
                     Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
-                    return false;
-                    
+                    return false; 
                 }
             }
             colisVoulus[emplacement] = new Colis();

@@ -9443,7 +9443,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  RemainingQuantityWindow: {fileID: 0}
+  RemainingQuantityWindow: {fileID: 718988488}
   aEteVerifier: 0
   emplacement: 0
 --- !u!4 &882313605
@@ -10485,9 +10485,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcb27abc7f7b8d4c8d10d9ebc5b956c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbText: {fileID: 547136535}
   monitor: {fileID: 1276711367}
   cm: {fileID: 994102619}
+  nbText: {fileID: 547136535}
+  moins: {fileID: 0}
+  plus: {fileID: 0}
+  validate: {fileID: 0}
   emplacementConsole: 0
   nb: 0
 --- !u!1 &986554013
@@ -12426,9 +12429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcb27abc7f7b8d4c8d10d9ebc5b956c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbText: {fileID: 1025696355}
   monitor: {fileID: 1276711367}
   cm: {fileID: 1987281621}
+  nbText: {fileID: 1025696355}
+  moins: {fileID: 0}
+  plus: {fileID: 0}
+  validate: {fileID: 0}
   emplacementConsole: 0
   nb: 0
 --- !u!1 &1354219659
@@ -15453,9 +15459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcb27abc7f7b8d4c8d10d9ebc5b956c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbText: {fileID: 319609686}
   monitor: {fileID: 1276711367}
   cm: {fileID: 980227254}
+  nbText: {fileID: 319609686}
+  moins: {fileID: 0}
+  plus: {fileID: 0}
+  validate: {fileID: 0}
   emplacementConsole: 0
   nb: 0
 --- !u!1001 &1579628232

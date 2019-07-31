@@ -19,6 +19,7 @@ public class AnomalyWindow : MonoBehaviour
 
     public void WrongProduct()
     {
+        //Signalement Mauvais article 
         gameObject.SetActive(false);
     }
 
