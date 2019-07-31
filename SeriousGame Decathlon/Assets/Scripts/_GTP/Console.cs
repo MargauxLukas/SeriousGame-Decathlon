@@ -55,7 +55,7 @@ public class Console : MonoBehaviour
             monitor.UpdateAffichage(monitor.nbMonitor + nb);
             cm.UpdateAffichageConsole(nb, emplacementConsole);
             nb = 0;
-            UpdateAffichage();
+            nbText.text = nb.ToString();
         }
     }
 
