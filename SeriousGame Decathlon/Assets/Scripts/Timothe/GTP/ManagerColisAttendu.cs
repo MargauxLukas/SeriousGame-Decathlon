@@ -98,11 +98,12 @@ public class ManagerColisAttendu : MonoBehaviour
         }
         else if(colisVoulus.Count<=0)
         {
+            Debug.Log("Fin de niveau");
+            ecranFinNiveau.SetActive(true);
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;
             //Affichage de la fin du niveau
-            ecranFinNiveau.SetActive(true);
         }
         else
         {
@@ -206,9 +207,12 @@ public class ManagerColisAttendu : MonoBehaviour
                 Scoring.instance.WinPointGTP(150);
                 return true;
             }
-            colisVoulus[emplacement] = new Colis();
-            Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
-            return false;
+            else
+            {
+                colisVoulus[emplacement] = new Colis();
+                Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
+                return false;
+            }
         }
         return true;
     }

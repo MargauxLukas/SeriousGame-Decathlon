@@ -9,6 +9,8 @@ public class RemainingQuantityWindow : MonoBehaviour
     public TextMeshProUGUI tunb;
     public TextMeshProUGUI expectednb;
 
+    public ManagerColisVider mcv;
+
     public int articleNb;
     public int nb = 0;
 
@@ -40,6 +42,8 @@ public class RemainingQuantityWindow : MonoBehaviour
         {
             //Pas bien
         }
+
+        mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = false;
 
         nb = 0;
         gameObject.SetActive(false);

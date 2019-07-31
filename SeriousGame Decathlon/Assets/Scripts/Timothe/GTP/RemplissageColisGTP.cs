@@ -73,6 +73,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             }
                         }
                         colisScriptable.listArticles = new List<Article>();
+                        tauxRemplissage = colisScriptable.listArticles.Count;
 
                         for (int l = 0; l < newListes.Count; l++)
                         {
@@ -111,6 +112,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             for (int p = 0; p < newListes[i].Count; p++)
                             {
                                 colisScriptable.listArticles.Add(newListes[i][p]);
+                                tauxRemplissage = colisScriptable.listArticles.Count;
                             }
                         }
                     }
@@ -138,9 +140,9 @@ public class RemplissageColisGTP : MonoBehaviour
     public IEnumerator AnimationColisRenvoie()
     {
         estParti = true;
-        if (!boxDesactivee.enabled)
+        if (boxDesactivee.enabled)
         {
-            boxDesactivee.enabled = true;
+            boxDesactivee.enabled = false;
             GetComponent<SpriteRenderer>().sortingOrder--;
             remplissageImage.enabled = false;
         }
