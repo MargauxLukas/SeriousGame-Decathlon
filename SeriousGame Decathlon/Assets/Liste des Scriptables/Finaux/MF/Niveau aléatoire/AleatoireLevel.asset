@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doesNeedMF: 1
   doesNeedRecep: 1
+  doesNeedGTP: 1
   colisDuNiveauNoms:
   - ColisMFAlea1
   - ColisMFAlea2
@@ -35,3 +36,10 @@ MonoBehaviour:
   - RecepAbimePetit
   chanceReceptionColisHaveAnomalie: 5
   nombreColisReception: 27
+  nbColisVoulu: 10
+  chanceTropPlein: 5
+  chanceMauvaisArticle: 5
+  chanceAllMauvaisArticle: 10
+  chancePasRemplit: 5
+  chanceInternet: 25
+  ChanceTropArticle: 15
