@@ -15,4 +15,11 @@ public class ScanRfidGtp : MonoBehaviour
             }
         }
     }
+
+    IEnumerator AffichageEclairage()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(0.7f);
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
 }

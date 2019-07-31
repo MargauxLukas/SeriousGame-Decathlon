@@ -71,6 +71,10 @@ public class ChoixNiveauManager : MonoBehaviour
         {
             boutonsAffichageReception.interactable = true;
         }
+        if(level.doesNeedGTP)
+        {
+            //Mettre le bouton pour le GTP
+        }
 
         currentColisLevel = new List<Colis>();
 

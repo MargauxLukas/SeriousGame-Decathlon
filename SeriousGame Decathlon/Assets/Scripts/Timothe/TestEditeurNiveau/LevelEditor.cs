@@ -36,12 +36,20 @@ public class LevelEditor : MonoBehaviour
     public InputField inputFieldLevel;
     public InputField inputFieldNombreColisRecep;
     public Colis colisToAdd;
+    public InputField GtpInputfieldNombreColis;
+    public InputField GtpInputfieldColisTropPlein;
+    public InputField GtpInputfieldMauvaisArticle;
+    public InputField GtpInputfieldAllMauvaisArticle;
+    public InputField GtpInputfieldColisPeuRemplit;
+    public InputField GtpInputfieldColisInternet;
+    public InputField GtpInputfieldColisVeutTropArticle;
 
     //Les Canvas
     [Header("Canvas à Activer/Désactiver")]
     public GameObject creationNiveau;
     public GameObject ongletMultifonction;
     public GameObject ongletReception;
+    public GameObject ongletGTP;
     public GameObject ongletAddColis;
     public List<Button> boutonAnomalies;
     public GameObject containerEstDefaillant;
@@ -105,6 +113,34 @@ public class LevelEditor : MonoBehaviour
 
         SaveLoadSystem.instance.SaveLevel(newLevel, colisNewLevel);
     }
+
+    #region GTP
+
+    public void OpenMenuGTP()
+    {
+        creationNiveau.SetActive(false);
+        ongletGTP.SetActive(true);
+        newLevel.doesNeedGTP = true;
+    }
+
+    public void CloseMenuGTP()
+    {
+        ongletGTP.SetActive(false);
+        creationNiveau.SetActive(true);
+    }
+
+    public void ValidateAllField()
+    {
+        newLevel.nbColisVoulu = int.Parse(GtpInputfieldNombreColis.text);
+        newLevel.chanceTropPlein = int.Parse(GtpInputfieldColisTropPlein.text);
+        newLevel.chanceMauvaisArticle = int.Parse(GtpInputfieldMauvaisArticle.text);
+        newLevel.chanceAllMauvaisArticle = int.Parse(GtpInputfieldAllMauvaisArticle.text);
+        newLevel.chancePasRemplit = int.Parse(GtpInputfieldColisPeuRemplit.text);
+        newLevel.chanceInternet = int.Parse(GtpInputfieldColisInternet.text);
+        newLevel.ChanceTropArticle = int.Parse(GtpInputfieldColisVeutTropArticle.text);
+    }
+
+    #endregion
 
     #region Réception
 
