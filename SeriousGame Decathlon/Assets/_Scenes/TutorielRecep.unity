@@ -23350,6 +23350,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884343001017007
@@ -23389,6 +23390,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884343013730629
@@ -23597,6 +23599,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!212 &1005884343468227102
@@ -23751,6 +23754,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884343586308397
@@ -23870,6 +23874,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884343845785923
@@ -24038,6 +24043,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!212 &1005884344019482126
@@ -24124,6 +24130,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884344188392597
@@ -24271,6 +24278,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884344277779217
@@ -24458,6 +24466,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884344470747255
@@ -24694,6 +24703,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884344500773620
@@ -24733,6 +24743,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!61 &1005884344500773622
@@ -24859,6 +24870,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884344525698293
@@ -25027,6 +25039,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!61 &1005884344678018390
@@ -25242,6 +25255,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!61 &1005884344849050506
@@ -25429,6 +25443,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!114 &1005884344944056752
@@ -25447,6 +25462,7 @@ MonoBehaviour:
   doesTouch: 0
   canMove: 0
   canBePicked: 0
+  canBePickedTuto: 0
   currentHauteur: 0
   isOneSecondScreen: 0
 --- !u!50 &1005884344944056753

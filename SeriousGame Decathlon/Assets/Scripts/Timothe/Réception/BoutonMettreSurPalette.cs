@@ -9,11 +9,12 @@ public class BoutonMettreSurPalette : MonoBehaviour
     {
         if(TutoManagerRecep.instance != null && tapisRoule.lastColis != null)
         {
-           if(tapisRoule.lastColis.GetComponent<Colis>().estAbime || tapisRoule.lastColis.GetComponent<Carton>().codeRef == "CBGrand")
+           if(tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime || tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
            {
                 tapisRoule.turnMenu.SetActive(false);
                 tapisRoule.colisSurLeTapis.Remove(tapisRoule.lastColis);
                 Destroy(tapisRoule.lastColis);
+                TutoManagerRecep.instance.Manager(13);
            }
            else
            {

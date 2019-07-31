@@ -9,6 +9,7 @@ public class ScriptColisRecep : MonoBehaviour
     public bool doesTouch;
     public bool canMove = false;
     public bool canBePicked = true;
+    public bool canBePickedTuto = false;
     private bool isOnTapis;
 
     public int currentHauteur = 0;
@@ -22,6 +23,11 @@ public class ScriptColisRecep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(colisScriptable!=null)
+        {
+            colisScriptable = Instantiate(colisScriptable);
+        }
+
         if (canBePicked)
         {
             Color theColor = new Color();
@@ -54,10 +60,19 @@ public class ScriptColisRecep : MonoBehaviour
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
-
-            if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn)
+            if (TutoManagerRecep.instance == null)
             {
-                canMove = true;
+                if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn)
+                {
+                    canMove = true;
+                }
+            }
+            else if(TutoManagerRecep.instance != null)
+            {
+                if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn && TutoManagerRecep.instance.canMoveTuto)
+                {
+                    canMove = true;
+                }
             }
             if (!canMove && (tapisScript == null || tapisScript.colisSurLeTapis.Count>0 || !tapisScript.colisSurLeTapis.Contains(gameObject)))
             {
@@ -72,33 +87,68 @@ public class ScriptColisRecep : MonoBehaviour
                 doesTouch = false;
             }
 
-            if (isOnTapis && !doesTouch && !tapisScript.colisSurLeTapis.Contains(gameObject) && !tapisScript.colisEnvoye.Contains(gameObject))
+            if (TutoManagerRecep.instance == null)
             {
-                transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
-                tapisScript.AddColis(this.gameObject);
-            }
-            else if (doesTouch && canBePicked)
-            {
-                if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(9); }
-                transform.position = new Vector2(touchPosition.x, touchPosition.y);
-                MalusScript.instance.HaveAMalus();                                  //Je le met ici car je pense qu'il peut être sympa de donner un malus tant qu'il le garde dans les mains (Le malus doit être faible du coup)
-                if (touch.phase == TouchPhase.Ended)
+                if (isOnTapis && !doesTouch && !tapisScript.colisSurLeTapis.Contains(gameObject) && !tapisScript.colisEnvoye.Contains(gameObject))
                 {
-                    if(!isOnTapis || !tapisScript.tapisGeneral.convoyeur.isOn)
+                    transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
+                    tapisScript.AddColis(this.gameObject);
+                }
+                else if (doesTouch && canBePicked)
+                {
+                    transform.position = new Vector2(touchPosition.x, touchPosition.y);
+                    MalusScript.instance.HaveAMalus();                                  //Je le met ici car je pense qu'il peut être sympa de donner un malus tant qu'il le garde dans les mains (Le malus doit être faible du coup)
+                    if (touch.phase == TouchPhase.Ended)
                     {
-                        Scoring.instance.RecepMalus(15);
-                        transform.position = startPosition;
-                        Scoring.instance.EndLosePointOnTime();
-                    }
-                    else
-                    {
-                        transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
-                        tapisScript.AddColis(this.gameObject);
-                        Scoring.instance.UpCombo();
-                        Scoring.instance.EndLosePointOnTime();
+                        if (!isOnTapis || !tapisScript.tapisGeneral.convoyeur.isOn)
+                        {
+                            Scoring.instance.RecepMalus(15);
+                            transform.position = startPosition;
+                            Scoring.instance.EndLosePointOnTime();
+                        }
+                        else
+                        {
+                            transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
+                            tapisScript.AddColis(this.gameObject);
+                            Scoring.instance.UpCombo();
+                            Scoring.instance.EndLosePointOnTime();
+                        }
                     }
                 }
-            }     
+            }
+            
+            if(TutoManagerRecep.instance != null)
+            {
+                Debug.Log("Tuto / DoesTouch " + doesTouch);
+                if (isOnTapis && !doesTouch && !tapisScript.colisSurLeTapis.Contains(gameObject) && !tapisScript.colisEnvoye.Contains(gameObject))
+                {
+                    Debug.Log("Jsp ce que c'est mais il y passe");
+                    transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
+                    tapisScript.AddColis(this.gameObject);
+                }
+                else if (doesTouch && canBePicked && canBePickedTuto)
+                {
+                    Debug.Log("canBePickedTuto");
+                    if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(9); }
+                    transform.position = new Vector2(touchPosition.x, touchPosition.y);
+                    if (touch.phase == TouchPhase.Ended)
+                    {
+                        if (!isOnTapis || !tapisScript.tapisGeneral.convoyeur.isOn)
+                        {
+                            Scoring.instance.RecepMalus(15);
+                            transform.position = startPosition;
+                            Scoring.instance.EndLosePointOnTime();
+                        }
+                        else
+                        {
+                            transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
+                            tapisScript.AddColis(this.gameObject);
+                            Scoring.instance.UpCombo();
+                            Scoring.instance.EndLosePointOnTime();
+                        }
+                    }
+                }
+            }
         }
         else
         {

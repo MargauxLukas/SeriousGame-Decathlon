@@ -30,4 +30,5 @@ MonoBehaviour:
   listAnomalies:
   - RFID over tolerance
   comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 0}
   provenance: 
