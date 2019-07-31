@@ -5,6 +5,8 @@ using UnityEngine;
 public class AnomalyWindow : MonoBehaviour
 {
     public GameObject ecranCorrectQuantity;
+
+    public ManagerColisVider mcv;
     
     public void CorrectQuantityInSourceTU()
     {
@@ -19,7 +21,11 @@ public class AnomalyWindow : MonoBehaviour
 
     public void WrongProduct()
     {
-        //Signalement Mauvais article 
+        if (mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe)
+        {
+            Scoring.instance.LosePointGTP(100, "Tu as envoyé un colis sans problème en Multifonction");
+        }
+        mcv.FairePartirUnColis();
         gameObject.SetActive(false);
     }
 

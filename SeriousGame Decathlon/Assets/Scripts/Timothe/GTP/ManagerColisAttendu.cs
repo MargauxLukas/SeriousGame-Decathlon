@@ -26,6 +26,13 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            nombreColisVoulu = (int)ChargementListeColis.instance.nbColisVoulu;
+            chanceAvoirTropArticlePrevu = (int)ChargementListeColis.instance.ChanceTropArticle;
+            chanceToComeFromInternet = (int)ChargementListeColis.instance.chanceInternet;
+        }
+
         for (int i = 0; i < nombreColisVoulu; i++)
         {
             colisVoulus.Add(new Colis());

@@ -37,7 +37,6 @@ public class LevelEditor : MonoBehaviour
     public InputField inputFieldNombreColisRecep;
     public Colis colisToAdd;
     public InputField GtpInputfieldNombreColis;
-    public InputField GtpInputfieldColisTropPlein;
     public InputField GtpInputfieldMauvaisArticle;
     public InputField GtpInputfieldAllMauvaisArticle;
     public InputField GtpInputfieldColisPeuRemplit;
@@ -132,7 +131,6 @@ public class LevelEditor : MonoBehaviour
     public void ValidateAllField()
     {
         newLevel.nbColisVoulu = int.Parse(GtpInputfieldNombreColis.text);
-        newLevel.chanceTropPlein = int.Parse(GtpInputfieldColisTropPlein.text);
         newLevel.chanceMauvaisArticle = int.Parse(GtpInputfieldMauvaisArticle.text);
         newLevel.chanceAllMauvaisArticle = int.Parse(GtpInputfieldAllMauvaisArticle.text);
         newLevel.chancePasRemplit = int.Parse(GtpInputfieldColisPeuRemplit.text);

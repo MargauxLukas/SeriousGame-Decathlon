@@ -21,7 +21,6 @@ public class LevelScriptable : ScriptableObject
 
     //GTP
     public float nbColisVoulu;
-    public float chanceTropPlein;
     public float chanceMauvaisArticle;
     public float chanceAllMauvaisArticle;
     public float chancePasRemplit;
