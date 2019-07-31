@@ -13000,7 +13000,7 @@ PrefabInstance:
     - target: {fileID: 3206920690174992283, guid: e05404e310ac9c64782555c0b29fbbaf,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3206920690174992283, guid: e05404e310ac9c64782555c0b29fbbaf,
         type: 3}
@@ -13800,7 +13800,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1464237832}
   m_OnClick:
     m_PersistentCalls:
