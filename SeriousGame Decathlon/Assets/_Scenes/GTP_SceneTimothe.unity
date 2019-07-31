@@ -9488,7 +9488,7 @@ MonoBehaviour:
   nbArticleVoulu: 0
   nbEmplacement: 0
   chanceAvoirTropArticlePrevu: 10
-  chanceToComeFromInternet: 100
+  chanceToComeFromInternet: 15
   ecranFinNiveau: {fileID: 2118144035}
 --- !u!1 &887417059
 GameObject:
