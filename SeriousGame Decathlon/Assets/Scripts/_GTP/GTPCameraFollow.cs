@@ -6,7 +6,7 @@ public class GTPCameraFollow : MonoBehaviour
 {
     public GameObject player;
     public float offset = -0.5f;
-    public float lerpCoef = 0.7f;
+    public float lerpCoef = 0.05f;
 
     private float maxY = 6f;
     private float minY = -4f;

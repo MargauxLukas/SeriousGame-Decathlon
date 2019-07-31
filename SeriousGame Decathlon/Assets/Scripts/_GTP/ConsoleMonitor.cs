@@ -90,7 +90,6 @@ public class ConsoleMonitor : MonoBehaviour
             }
             else
             {
-                colisAttenduManage.RenvoieColis(emplacement);
                 if(colisAttenduManage.DetectionColis(colisActuelPoste.colisScriptable, emplacement))
                 {
                     Debug.Log("There were no error in this colis");
@@ -112,6 +111,7 @@ public class ConsoleMonitor : MonoBehaviour
                     default:
                         break;
                 }
+                colisAttenduManage.RenvoieColis(emplacement);
             }
         }
     }

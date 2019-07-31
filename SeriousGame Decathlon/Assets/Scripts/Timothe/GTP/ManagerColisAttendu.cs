@@ -188,25 +188,29 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public bool DetectionColis(Colis colisCompare, int emplacement)
     {
-        if (colisCompare.listArticles.Count == colisVoulus[emplacement].listArticles.Count)
+        if (colisVoulus[emplacement].listArticles.Count > 0)
         {
-            for (int i = 0; i < colisCompare.listArticles.Count; i++)
+            if (colisCompare.listArticles.Count == colisVoulus[emplacement].listArticles.Count)
             {
-                if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
+                for (int i = 0; i < colisCompare.listArticles.Count; i++)
                 {
-                    colisVoulus[emplacement] = new Colis();
-                    Debug.Log("Un colis a été mal fait");
-                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
-                    return false; 
+                    if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
+                    {
+                        colisVoulus[emplacement] = new Colis();
+                        Debug.Log("Un colis a été mal fait");
+                        Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                        return false;
+                    }
                 }
+                colisVoulus[emplacement] = new Colis();
+                Scoring.instance.WinPointGTP(150);
+                return true;
             }
             colisVoulus[emplacement] = new Colis();
-            Scoring.instance.WinPointGTP(150);
-            return true;
+            Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
+            return false;
         }
-        colisVoulus[emplacement] = new Colis();
-        Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
-        return false;
+        return true;
     }
 
     public void ClosePickTU(int emplacement, Colis colisRempli, RemplissageColisGTP colisScript)

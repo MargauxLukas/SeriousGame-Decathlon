@@ -250,13 +250,19 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[p] && !aEteVerifier)
             {
-                Debug.Log("Le colis n'a pas été signalé alors qu'il a une anomalie");
-                //Malus
+                Scoring.instance.LosePointGTP(50, "Tu as oublié de signaler un anomalie sur le SHU");
             }
         }
         if(aEteVerifier)
         {
-            Scoring.instance.WinPointGTP(70);
+            if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count])
+            {
+                Scoring.instance.WinPointGTP(70);
+            }
+            else
+            {
+                Scoring.instance.LosePointGTP(50, "Tu as signaler un anomalie inexistante sur le SHU");
+            }
         }
         aEteVerifier = false;
         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().enabled = false;
