@@ -24,6 +24,7 @@ public class CorrectPickedQtyWindow : MonoBehaviour
 
     public void AffichageStart(string name, int nbArticle)
     {
+        nb = 0;
         nbBase = nbArticle;
         articleName.text = name;
         quantitynb.text = nbArticle.ToString();
@@ -46,8 +47,6 @@ public class CorrectPickedQtyWindow : MonoBehaviour
     {
         gameObject        .SetActive(false);
         ecranPickTUContent.GetComponent<PickTUContentWindow>().UpdatingArticle(nb);
-        ecranPickTUContent.SetActive(true );
-        nb = 0;
     }
 }
 

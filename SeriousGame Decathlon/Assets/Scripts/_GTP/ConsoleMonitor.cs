@@ -32,8 +32,7 @@ public class ConsoleMonitor : MonoBehaviour
         nbMonitor =  nbMonitor + nb;
         int nbArticleEnQuestion = 0;
         int nbArticleEnCours = 0;
-        Article reference = mcv.emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];
-
+        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];
         foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
         {
             if(art == reference)

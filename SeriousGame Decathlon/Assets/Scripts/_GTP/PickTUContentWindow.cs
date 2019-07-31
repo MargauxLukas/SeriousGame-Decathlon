@@ -94,7 +94,6 @@ public class PickTUContentWindow : MonoBehaviour
      ****************************************************************************************/
     public void CorrectPickedQty()
     {
-        gameObject.SetActive(false);
         Debug.Log((mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name));
         ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);
         ecranCorrectPickedQty.SetActive(true);
@@ -103,7 +102,6 @@ public class PickTUContentWindow : MonoBehaviour
     public void UpdatingArticle(int nbUpdate)
     {
         mca.cm[emplacement].UpdateAffichageConsole(nbUpdate, emplacement);
-        affichageListe(emplacement);
 
         int nbReference = 0;
 
@@ -121,7 +119,7 @@ public class PickTUContentWindow : MonoBehaviour
             {
                 while (nbUpdate != 0)
                 {
-                    mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
+                    //mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
                     nbUpdate++;
                 }
             }
@@ -130,6 +128,8 @@ public class PickTUContentWindow : MonoBehaviour
                 //Nothing
             }
         }
+
+        affichageListe(emplacement);
     }
 
     public void Back()
