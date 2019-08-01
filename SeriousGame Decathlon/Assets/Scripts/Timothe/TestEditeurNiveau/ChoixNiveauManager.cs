@@ -124,7 +124,6 @@ public class ChoixNiveauManager : MonoBehaviour
         }
 
         affichageNombreColisRecep.text = level.nombreColisReception.ToString();
-        convoyeurDefaillant.gameObject.SetActive(level.chanceReceptionColisHaveAnomalie >= 95);
 
         //Instantiate un prefab d'affichage pour chaque anomalie
     }
