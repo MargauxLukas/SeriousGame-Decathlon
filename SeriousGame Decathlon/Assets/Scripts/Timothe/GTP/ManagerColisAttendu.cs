@@ -96,7 +96,7 @@ public class ManagerColisAttendu : MonoBehaviour
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
-        else if(colisVoulus.Count<=0)
+        else if(colisVoulus[0] == null && colisVoulus[1] == null && colisVoulus[2] == null)
         {
             Debug.Log("Fin de niveau");
             ecranFinNiveau.SetActive(true);
@@ -107,6 +107,7 @@ public class ManagerColisAttendu : MonoBehaviour
         }
         else
         {
+            Debug.Log("Allo");
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;

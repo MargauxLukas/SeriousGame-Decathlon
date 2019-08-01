@@ -252,6 +252,7 @@ MonoBehaviour:
   tauxRemplissage: 0
   besoinEtreVide: 0
   remplissageImage: {fileID: 1074062802342545034}
+  barreCanvas: {fileID: 8257301726697521808}
   isOpen: 0
   boxDesactivee: {fileID: 2672122063606575616}
   nbArticleScanned: 0

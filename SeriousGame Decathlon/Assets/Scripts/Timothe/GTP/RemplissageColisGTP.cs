@@ -21,6 +21,8 @@ public class RemplissageColisGTP : MonoBehaviour
     public bool besoinEtreVide;
     public Image remplissageImage;
 
+    public Canvas barreCanvas;
+
     public bool isOpen;
     public BoxCollider2D boxDesactivee;
 
@@ -144,6 +146,7 @@ public class RemplissageColisGTP : MonoBehaviour
         {
             boxDesactivee.enabled = false;
             GetComponent<SpriteRenderer>().sortingOrder--;
+            barreCanvas.sortingOrder-=2;
             remplissageImage.enabled = false;
         }
         if (Vector3.Distance(startPosition, transform.position) < 1.5f && !didArrive)
