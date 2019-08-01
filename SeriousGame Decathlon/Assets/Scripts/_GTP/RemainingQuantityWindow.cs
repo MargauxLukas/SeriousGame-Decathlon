@@ -46,6 +46,7 @@ public class RemainingQuantityWindow : MonoBehaviour
         mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = false;
 
         nb = 0;
+        Affichage();
         gameObject.SetActive(false);
     }
 }
