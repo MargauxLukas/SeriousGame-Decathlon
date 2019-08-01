@@ -94,7 +94,9 @@ public class PickTUContentWindow : MonoBehaviour
      ****************************************************************************************/
     public void CorrectPickedQty()
     {
-        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);    //Je lui donne le nom de l'article et le nombre prévu
+        //Soucis si le carton est vide, il faudrait prendre l'article en cours comme reference
+        //ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);    //Je lui donne le nom de l'article et le nombre prévu
+        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().artReference.name, mca.nbArticleVoulu);
         ecranCorrectPickedQty.SetActive(true);
     }
 

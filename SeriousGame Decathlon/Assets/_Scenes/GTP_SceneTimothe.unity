@@ -9574,6 +9574,7 @@ MonoBehaviour:
   aEteVerifier: 0
   emplacement: 0
   AncientEmplacementTempo: -1
+  artReference: {fileID: 0}
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0

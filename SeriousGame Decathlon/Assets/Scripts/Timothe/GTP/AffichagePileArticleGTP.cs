@@ -13,6 +13,8 @@ public class AffichagePileArticleGTP : MonoBehaviour
     public bool isSupposedToBeEmpty;
     public int isFulledWithPack;
 
+    public Article artReference;
+
     void Start()
     {
         //currentColis = Instantiate(currentColis);
