@@ -5,42 +5,69 @@ using TMPro;
 
 public class Console : MonoBehaviour
 {
-    public TextMeshProUGUI nbText;
+    [Header("Monitor et ConsoleMonitor lié")]
     public Monitor monitor;
     public ConsoleMonitor cm;
 
+    [Header("Texte Nb")]
+    public TextMeshProUGUI nbText;
+
     public int emplacementConsole;
     public int nb = 0;
+
+    private bool canActivate = false;
 
     public void Start()
     {
         nbText.text = "0";
     }
 
-    public void UpdateAffichage() //Toujours 0 au commencement
+    /*****************************************
+     *   Update le chiffre sur la console    *
+     *****************************************/
+    public void UpdateAffichage()
     {
         nbText.text = nb.ToString();
     }
 
     public void Plus()
     {
-        //A voir si y'a une condition empêchant d'aller trop bas
-        nb++;
-        UpdateAffichage();
+        if (canActivate)
+        {
+            nb++;
+            UpdateAffichage();
+        }
     }
 
     public void Moins()
     {
-        //A voir si y'a une condition empêchant d'aller trop bas
-        nb--;
-        UpdateAffichage();
+        if (canActivate)
+        {
+            nb--;
+            UpdateAffichage();
+        }
     }
 
     public void Valider() 
     {
-        monitor.UpdateAffichage(monitor.nbMonitor + nb);
-        cm.UpdateAffichageConsole(nb, emplacementConsole);
-        nb = 0;
-        UpdateAffichage();
+        if (canActivate)
+        {
+            monitor.UpdateAffichage(monitor.nbMonitor + nb);
+            cm.UpdateAffichageConsole(nb, emplacementConsole);
+            nb = 0;
+            nbText.text = nb.ToString();
+        }
+    }
+
+    public void IsActivate(bool activate)
+    {
+        if(activate)
+        {
+            canActivate = true;
+        }
+        else
+        {
+            canActivate = false;
+        }
     }
 }

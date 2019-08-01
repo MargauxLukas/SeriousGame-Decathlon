@@ -6,6 +6,7 @@ public class GTPCameraFollow : MonoBehaviour
 {
     public GameObject player;
     public float offset = -0.5f;
+    public float lerpCoef = 0.05f;
 
     private float maxY = 6f;
     private float minY = -4f;
@@ -18,29 +19,29 @@ public class GTPCameraFollow : MonoBehaviour
         // Y déplacement
         if (player.transform.position.y < minY)
         {
-            transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
         }
         else if (player.transform.position.y > maxY)
         {
-            transform.position = new Vector3(transform.position.x, 6f, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, 6f, transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, player.transform.position.y + offset, transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y,player.transform.position.y + offset, lerpCoef), transform.position.z);
         }
 
         // X déplacement
         if (player.transform.position.x < minX)
         {
-            transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
+            //transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
         }
         else if (player.transform.position.x > maxX)
         {
-            transform.position = new Vector3(20f ,transform.position.y , transform.position.z);
+            //transform.position = new Vector3(20f ,transform.position.y , transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(player.transform.position.x + offset, transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, player.transform.position.x + offset, lerpCoef), transform.position.y, transform.position.z);
         }
     }
 }

@@ -47,7 +47,6 @@ public class ArticleUnitGTP : MonoBehaviour
                         {
                             if (isPack != 0)
                             {
-                                Debug.Log("Test Pack d'article 5");
                                 for (int l = 0; l < isPack; l++)
                                 {
                                     remplisColis.AddArticle(currentArticle);
@@ -55,7 +54,6 @@ public class ArticleUnitGTP : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("Test Pack d'article 6");
                                 remplisColis.AddArticle(currentArticle);
                             }
                         }

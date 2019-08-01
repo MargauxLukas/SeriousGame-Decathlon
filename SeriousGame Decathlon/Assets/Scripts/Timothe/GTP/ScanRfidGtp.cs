@@ -11,8 +11,16 @@ public class ScanRfidGtp : MonoBehaviour
             if(collision.GetComponent<ArticleUnitGTP>()!=null)
             {
                 collision.GetComponent<ArticleUnitGTP>().hasBeenScanned = true;
+                StartCoroutine(AffichageEclairage());
                 Debug.Log("HasBeenScanned");
             }
         }
+    }
+
+    IEnumerator AffichageEclairage()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(0.7f);
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

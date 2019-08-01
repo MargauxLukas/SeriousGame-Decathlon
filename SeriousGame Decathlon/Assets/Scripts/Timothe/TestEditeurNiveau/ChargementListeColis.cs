@@ -20,6 +20,15 @@ public class ChargementListeColis : MonoBehaviour
     public float chanceAnomalieRecep;
     public int nombreColisRecep;
 
+    //Pour le GTP
+    public float nbColisVoulu;
+    public float chanceMauvaisArticle;
+    public float chanceAllMauvaisArticle;
+    public float chancePasRemplit;
+    public float chanceInternet;
+    public float ChanceTropArticle;
+
+    //Général
     public AnomalieDetection anomDetect;
 
     public ColisManager manageColis;
@@ -114,7 +123,7 @@ public class ChargementListeColis : MonoBehaviour
 
         if (levelScript != null)
         {
-            //Debug.Log(levelScript);
+            //Pour la MF
             if (levelScript.colisDuNiveauNoms != null)
             {
                 for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
@@ -127,6 +136,8 @@ public class ChargementListeColis : MonoBehaviour
                 }
                 colisProcessMulti = newList;
             }
+
+            //Pour la réception
             nombreColisRecep = levelScript.nombreColisReception;
             chanceAnomalieRecep = levelScript.chanceReceptionColisHaveAnomalie;
 
@@ -139,6 +150,15 @@ public class ChargementListeColis : MonoBehaviour
 
                 colisProcessReception = newListRecep;
             }
+
+            //Pour le GTP
+            nbColisVoulu = levelScript.nbColisVoulu;
+            chanceMauvaisArticle = levelScript.chanceMauvaisArticle;
+            chanceAllMauvaisArticle = levelScript.chanceAllMauvaisArticle;
+            chancePasRemplit = levelScript.chancePasRemplit;
+            chanceInternet = levelScript.chanceInternet;
+            ChanceTropArticle = levelScript.ChanceTropArticle;
+
         }
         //affichageNouveauLevel.text = levelScript.colisDuNiveauNoms[3].ToString();         Ceci est pour le debug
 

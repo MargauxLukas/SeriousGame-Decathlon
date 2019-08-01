@@ -7,6 +7,7 @@ public class DeplacementNuages : MonoBehaviour
     public float speed;
     public float diffWithPlanete;
     public bool isStar;
+    public bool isLorris;
     public int nombreEtoiles;
 
     public Animator animator;
@@ -34,9 +35,19 @@ public class DeplacementNuages : MonoBehaviour
     {
         if (isStar)
         {
-            if (transform.localPosition.x <= 10.37f -(12.3f * (1 + ((Mathf.Abs(diffWithPlanete)+Mathf.Abs(speed))/ Mathf.Abs(speed)))))
+            if (!isLorris)
             {
-                transform.localPosition = new Vector3(10.37f, transform.localPosition.y, 0);
+                if (transform.localPosition.x <= 10.37f - (12.3f * (1 + ((Mathf.Abs(diffWithPlanete) + Mathf.Abs(speed)) / Mathf.Abs(speed)))))
+                {
+                    transform.localPosition = new Vector3(10.37f, transform.localPosition.y, 0);
+                }
+            }
+            else
+            {
+                if (transform.localPosition.x <= 10.37f - (12.3f * 3 * (1 + ((Mathf.Abs(diffWithPlanete) + Mathf.Abs(speed)) / Mathf.Abs(speed)))))
+                {
+                    transform.localPosition = new Vector3(10.37f, transform.localPosition.y, 0);
+                }
             }
             transform.localPosition += new Vector3(-1, 0, 0) * (speed + (diffWithPlanete * (speed / 0.15f)));
         }

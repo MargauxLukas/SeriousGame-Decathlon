@@ -47,8 +47,12 @@ public class Monitor : MonoBehaviour
         lumieresVertes[2].SetActive(false);
 
         commandesInternets[0].SetActive(false);
-        commandesInternets[0].SetActive(false);
-        commandesInternets[0].SetActive(false);
+        commandesInternets[1].SetActive(false);
+        commandesInternets[2].SetActive(false);
+
+        Tapis1.GetComponent<ColisLink>().console.IsActivate(false);
+        Tapis2.GetComponent<ColisLink>().console.IsActivate(false);
+        Tapis3.GetComponent<ColisLink>().console.IsActivate(false);
     }
 
     public void Colis1Actif(int phaseVoulue, int phaseActuelle, bool comeFromInternet)
@@ -70,14 +74,13 @@ public class Monitor : MonoBehaviour
 
         lumieresVertes[0].SetActive(true);
 
-        //Animator Colis1 activé SUR ECRAN
-        //Animator Colis1 activé sur poste
+        Tapis1.GetComponent<ColisLink>().console.IsActivate(true );
     }
 
     public void Colis2Actif(int phaseVoulue, int phaseActuelle, bool comeFromInternet)
     {
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
-        Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 1;
+        Tapis2.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
         commandesInternets[1].SetActive(comeFromInternet);
@@ -92,13 +95,14 @@ public class Monitor : MonoBehaviour
         }
 
         lumieresVertes[1].SetActive(true);
-        //Animator Colis2
+
+        Tapis2.GetComponent<ColisLink>().console.IsActivate(true );
     }
 
     public void Colis3Actif(int phaseVoulue, int phaseActuelle, bool comeFromInternet)
     {
         Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
-        Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 2;
+        Tapis3.GetComponent<ColisLink>().console.emplacementConsole = 2;
         Tapis3.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
 
         commandesInternets[2].SetActive(comeFromInternet);
@@ -113,18 +117,7 @@ public class Monitor : MonoBehaviour
         }
 
         lumieresVertes[2].SetActive(true);
-        //Animator Colis3
-    }
 
-    public void UpdateColisAPrelever()
-    {
-        /*if(colisAPrelever1.isActiver)
-        {
-            Animator.getBool()
-        }
-        if (colisAPrelever2.isActiver)
-        {
-            Animator.GetBool()
-        }*/
+        Tapis3.GetComponent<ColisLink>().console.IsActivate(true );
     }
 }

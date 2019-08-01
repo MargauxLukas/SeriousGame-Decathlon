@@ -26,6 +26,13 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            nombreColisVoulu = (int)ChargementListeColis.instance.nbColisVoulu;
+            chanceAvoirTropArticlePrevu = (int)ChargementListeColis.instance.ChanceTropArticle;
+            chanceToComeFromInternet = (int)ChargementListeColis.instance.chanceInternet;
+        }
+
         for (int i = 0; i < nombreColisVoulu; i++)
         {
             colisVoulus.Add(new Colis());
@@ -82,23 +89,24 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
-            //Debug.Log("Test");
             colisVoulus[emplacement] = colisVoulus[3];
             colisVoulus.RemoveAt(3);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
-        else if(colisVoulus.Count<=0)
+        else if(colisVoulus[0] == null && colisVoulus[1] == null && colisVoulus[2] == null)
         {
+            Debug.Log("Fin de niveau");
+            ecranFinNiveau.SetActive(true);
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;
             //Affichage de la fin du niveau
-            ecranFinNiveau.SetActive(true);
         }
         else
         {
+            Debug.Log("Allo");
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;
@@ -181,26 +189,32 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public bool DetectionColis(Colis colisCompare, int emplacement)
     {
-        if (colisCompare.listArticles.Count == colisVoulus[emplacement].listArticles.Count)
+        if (colisVoulus[emplacement].listArticles.Count > 0)
         {
-            for (int i = 0; i < colisCompare.listArticles.Count; i++)
+            if (colisCompare.listArticles.Count == colisVoulus[emplacement].listArticles.Count)
             {
-                if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
+                for (int i = 0; i < colisCompare.listArticles.Count; i++)
                 {
-                    colisVoulus[emplacement] = new Colis();
-                    Debug.Log("Un colis a été mal fait");
-                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
-                    return false;
-                    
+                    if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
+                    {
+                        colisVoulus[emplacement] = new Colis();
+                        Debug.Log("Un colis a été mal fait");
+                        Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                        return false;
+                    }
                 }
+                colisVoulus[emplacement] = new Colis();
+                Scoring.instance.WinPointGTP(150);
+                return true;
             }
-            colisVoulus[emplacement] = new Colis();
-            Scoring.instance.WinPointGTP(150);
-            return true;
+            else
+            {
+                colisVoulus[emplacement] = new Colis();
+                Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
+                return false;
+            }
         }
-        colisVoulus[emplacement] = new Colis();
-        Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
-        return false;
+        return true;
     }
 
     public void ClosePickTU(int emplacement, Colis colisRempli, RemplissageColisGTP colisScript)

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PosteOnClick : MonoBehaviour
 {
     [Header("Camera du Poste")]
-    public GameObject  cameraPoste;   //Camera vers laquelle on souhaite aller
+    public GameObject  cameraPoste;         //Camera vers laquelle on souhaite aller
 
     [Header("Camera de la vue dézoom")]
-    public GameObject cameraDezoom;   //Camera vue Dezoom
-    public GameObject       player;
+    public GameObject cameraDezoom;         //Camera vue Dezoom
+    public GameObject       player; 
     public GameObject     moniteur;
     public GameObject        aStar;
 

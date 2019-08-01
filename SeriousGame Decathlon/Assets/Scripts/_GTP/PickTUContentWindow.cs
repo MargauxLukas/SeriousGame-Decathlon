@@ -65,7 +65,7 @@ public class PickTUContentWindow : MonoBehaviour
 
         foreach (Article art in mca.colisViderManage.colisActuellementsPose[nb].GetComponent<RemplissageColisGTP>().colisScriptable.listArticles)   //Je regarde ce qu'il y'a dans le colis
         {
-            if (art.name == ArticleName1)                                                      // Pour chaque article, j'incrémente
+            if (art.name == ArticleName1)                                                     // Pour chaque article, j'incrémente
             {
                 nb1++;
             }
@@ -94,16 +94,16 @@ public class PickTUContentWindow : MonoBehaviour
      ****************************************************************************************/
     public void CorrectPickedQty()
     {
-        gameObject.SetActive(false);
-        Debug.Log((mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name));
-        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);
+        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);    //Je lui donne le nom de l'article et le nombre prévu
         ecranCorrectPickedQty.SetActive(true);
     }
 
+    /************************************
+    *   Update l'affichage de la liste  *
+    *************************************/
     public void UpdatingArticle(int nbUpdate)
     {
         mca.cm[emplacement].UpdateAffichageConsole(nbUpdate, emplacement);
-        affichageListe(emplacement);
 
         int nbReference = 0;
 
@@ -121,15 +121,12 @@ public class PickTUContentWindow : MonoBehaviour
             {
                 while (nbUpdate != 0)
                 {
-                    mca.colisActuellementTraite[emplacement].listArticles.RemoveAt(0);
                     nbUpdate++;
                 }
             }
-            else
-            {
-                //Nothing
-            }
         }
+
+        affichageListe(emplacement);
     }
 
     public void Back()

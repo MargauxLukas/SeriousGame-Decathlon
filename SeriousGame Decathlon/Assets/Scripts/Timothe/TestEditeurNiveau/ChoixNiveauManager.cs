@@ -71,6 +71,10 @@ public class ChoixNiveauManager : MonoBehaviour
         {
             boutonsAffichageReception.interactable = true;
         }
+        if(level.doesNeedGTP)
+        {
+            //Mettre le bouton pour le GTP
+        }
 
         currentColisLevel = new List<Colis>();
 
@@ -120,7 +124,6 @@ public class ChoixNiveauManager : MonoBehaviour
         }
 
         affichageNombreColisRecep.text = level.nombreColisReception.ToString();
-        convoyeurDefaillant.gameObject.SetActive(level.chanceReceptionColisHaveAnomalie >= 95);
 
         //Instantiate un prefab d'affichage pour chaque anomalie
     }
