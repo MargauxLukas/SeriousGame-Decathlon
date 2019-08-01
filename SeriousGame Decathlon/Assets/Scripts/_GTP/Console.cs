@@ -12,10 +12,6 @@ public class Console : MonoBehaviour
     [Header("Texte Nb")]
     public TextMeshProUGUI nbText;
 
-    public GameObject    moins;
-    public GameObject     plus;
-    public GameObject validate;
-
     public int emplacementConsole;
     public int nb = 0;
 
@@ -26,7 +22,10 @@ public class Console : MonoBehaviour
         nbText.text = "0";
     }
 
-    public void UpdateAffichage() //Toujours 0 au commencement
+    /*****************************************
+     *   Update le chiffre sur la console    *
+     *****************************************/
+    public void UpdateAffichage()
     {
         nbText.text = nb.ToString();
     }
@@ -56,7 +55,7 @@ public class Console : MonoBehaviour
             monitor.UpdateAffichage(monitor.nbMonitor + nb);
             cm.UpdateAffichageConsole(nb, emplacementConsole);
             nb = 0;
-            UpdateAffichage();
+            nbText.text = nb.ToString();
         }
     }
 

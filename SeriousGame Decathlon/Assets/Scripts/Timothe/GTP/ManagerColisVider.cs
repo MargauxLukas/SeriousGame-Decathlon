@@ -310,7 +310,7 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[p] && !aEteVerifier)
             {
-                Scoring.instance.LosePointGTP(50, "Tu as oublié de signaler un anomalie sur le SHU");
+                Scoring.instance.LosePointGTP(50, "Tu as oublié de signaler une anomalie sur le SHU");
             }
         }
         if(aEteVerifier)
@@ -321,7 +321,7 @@ public class ManagerColisVider : MonoBehaviour
             }
             else
             {
-                Scoring.instance.LosePointGTP(50, "Tu as signaler un anomalie inexistante sur le SHU");
+                Scoring.instance.LosePointGTP(50, "Tu as signaler une anomalie inexistante sur le SHU");
             }
         }
         aEteVerifier = false;
