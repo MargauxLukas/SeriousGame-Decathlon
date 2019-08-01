@@ -89,7 +89,6 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
-            //Debug.Log("Test");
             colisVoulus[emplacement] = colisVoulus[3];
             colisVoulus.RemoveAt(3);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
