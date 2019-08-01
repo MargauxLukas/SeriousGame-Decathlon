@@ -18,6 +18,8 @@ public class ArticleUnitGTP : MonoBehaviour
 
     private Vector3 startPosition;
 
+    public GameObject animationApparition;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -57,25 +59,29 @@ public class ArticleUnitGTP : MonoBehaviour
                                 for (int l = 0; l < isPack; l++)
                                 {
                                     remplisColis.AddArticle(currentArticle);
+                                    Instantiate(animationApparition, transform.position, Quaternion.identity);
                                 }
                             }
                             else
                             {
                                 remplisColis.AddArticle(currentArticle);
+                                Instantiate(animationApparition, transform.position, Quaternion.identity);
                             }
                         }
-                        else if (remplisColisPrincipal != null && remplisColisPrincipal.)
+                        else if (remplisColisPrincipal != null && remplisColisPrincipal.isFulledWithPack == 0)
                         {
                             if (isPack != 0)
                             {
                                 for (int l = 0; l < isPack; l++)
                                 {
                                     remplisColisPrincipal.AddArticle(currentArticle);
+                                    Instantiate(animationApparition, transform.position, Quaternion.identity);
                                 }
                             }
                             else
                             {
                                 remplisColisPrincipal.AddArticle(currentArticle);
+                                Instantiate(animationApparition, transform.position, Quaternion.identity);
                             }
                         }
                         tasParent.affichageTas.Remove(gameObject);

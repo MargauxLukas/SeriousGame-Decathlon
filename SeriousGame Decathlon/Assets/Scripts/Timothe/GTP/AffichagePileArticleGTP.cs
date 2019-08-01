@@ -15,6 +15,8 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
     public Article artReference;
 
+    private int nbAddedArticle = 0;
+
     void Start()
     {
         //currentColis = Instantiate(currentColis);
