@@ -19,6 +19,8 @@ public class ConsoleMonitor : MonoBehaviour
 
     private int nbMonitor = 0;
 
+    private bool canRemove;
+
     public void Start() 
     {
         text.text = "";   
@@ -41,49 +43,62 @@ public class ConsoleMonitor : MonoBehaviour
         text.text = (nbMonitor + nb).ToString();
         nbMonitor =  nbMonitor + nb;
 
+        if(nb > 0){canRemove = false;}
+        else      {canRemove = true ;}
+
         int nbArticleEnQuestion = 0;
         int nbArticleEnCours    = 0;
 
         Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];          //L'article dont on est entrain de changer le nombre
 
-        foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
+        if (canRemove)
         {
-            if(art == reference)
+            foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
             {
-                nbArticleEnQuestion++;
-            }
-        }
-        for (int compteur = 0; compteur < colisAttenduManage.colisVoulus[emplacement].listArticles.Count; compteur++)
-        {
-            if (colisAttenduManage.colisVoulus[emplacement].listArticles[compteur] == reference)
-            {
-                nbArticleEnCours++;
-                if(nbArticleEnCours > nbMonitor)
+                if (art == reference)
                 {
-                    colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);                                                    //Si il dépasse le compteur, c'est que y'en a trop du coup on delete
+                    nbArticleEnQuestion++;
+                }
+            }
+            for (int compteur = 0; compteur < colisAttenduManage.colisVoulus[emplacement].listArticles.Count; compteur++)
+            {
+                if (colisAttenduManage.colisVoulus[emplacement].listArticles[compteur] == reference)
+                {
+                    nbArticleEnCours++;
+                    if (nbArticleEnCours > nbMonitor)
+                    {
+                        colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);                                                    //Si il dépasse le compteur, c'est que y'en a trop du coup on delete
+                    }
+                }
+            }
+
+            nbArticleEnQuestion = 0;
+            nbArticleEnCours = 0;
+
+            foreach (Article art in colisAttenduManage.colisActuellementTraite[emplacement].listArticles)
+            {
+                if (art == reference)
+                {
+                    nbArticleEnQuestion++;
+                }
+            }
+            for (int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
+            {
+                if (colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur] == reference)
+                {
+                    nbArticleEnCours++;
+                    if (nbArticleEnCours > nbMonitor)
+                    {
+                        colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
+                    }
                 }
             }
         }
-
-        nbArticleEnQuestion = 0;
-        nbArticleEnCours    = 0;
-
-        foreach (Article art in colisAttenduManage.colisActuellementTraite[emplacement].listArticles)
+        else
         {
-            if (art == reference)
+            for (int compteur = 0; compteur < nb; compteur++)
             {
-                nbArticleEnQuestion++;
-            }
-        }
-        for (int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
-        {
-            if (colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur] == reference)
-            {
-                nbArticleEnCours++;
-                if (nbArticleEnCours > nbMonitor)
-                {
-                    colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
-                }
+                colisAttenduManage.colisVoulus[emplacement].listArticles.Add(reference);
             }
         }
         colisAttenduManage.AjoutArticleColisVoulu(emplacement, nbMonitor);
