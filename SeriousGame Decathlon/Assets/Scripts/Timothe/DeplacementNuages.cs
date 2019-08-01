@@ -27,6 +27,7 @@ public class DeplacementNuages : MonoBehaviour
         {
             GameObject gm = Instantiate(etoilesDisponibles[Random.Range(0, etoilesDisponibles.Count - 1)], parentEtoiles);
             gm.transform.localPosition = new Vector3(Random.Range(10.37f - (12.3f * (1 + ((diffWithPlanete + speed) / speed))), 10.37f *3), Random.Range(-15f, 6f), 0);
+            gm.transform.Rotate(new Vector3(0, 0, Random.Range(0, 360)));
         }
     }
 
