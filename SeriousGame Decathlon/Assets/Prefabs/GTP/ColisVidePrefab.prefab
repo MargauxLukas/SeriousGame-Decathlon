@@ -177,8 +177,6 @@ MonoBehaviour:
   doesTouch: 0
   cvl: {fileID: 0}
   mcv: {fileID: 0}
-  cm: {fileID: 0}
-  nbEmplacementCarton: 0
 --- !u!61 &2672122063606575616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,7 +313,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &5181403722702017512
 MonoBehaviour:
