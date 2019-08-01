@@ -35,6 +35,8 @@ public class ManagerColisVider : MonoBehaviour
 
     private float tempsReponseChangementColis;
     int emplacementTempo;
+
+    public Article artReference;
     // Start is called before the first frame update
     void Start()
     {
@@ -257,6 +259,10 @@ public class ManagerColisVider : MonoBehaviour
                     }
                 }
             }
+        }
+        if (newColis.listArticles[0] != null)
+        {
+            emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
         }
         return newColis;
     }

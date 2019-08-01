@@ -49,7 +49,7 @@ public class ConsoleMonitor : MonoBehaviour
         int nbArticleEnQuestion = 0;
         int nbArticleEnCours    = 0;
 
-        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];          //L'article dont on est entrain de changer le nombre
+        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().artReference;          //L'article dont on est entrain de changer le nombre
 
         if (canRemove)
         {
