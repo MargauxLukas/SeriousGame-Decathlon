@@ -1098,7 +1098,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
                         new Vector3(65.68f, -12.74f, 0), new Vector3(0, 0, 0), 0, false,
-                        new Vector2(72.2f, -8f), 0, 0, 270);
+                        new Vector2(72.2f, -7.8f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.descendButton).interactable = true;
 
@@ -1111,12 +1111,20 @@ public class TutoManagerRecep : MonoBehaviour
     void Phase16()
     {
         Indications(new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0),
-                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
-                        new Vector2(72.2f, -8f), 0, 0, 270);
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                    new Vector2(72.2f, -7.8f), 0, 0, 270);
 
         phaseNum++;
     }
@@ -1141,7 +1149,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(-2.87f, -8.75f), new Vector2(0.84f, 0.9f),
+            Indications(new Vector2(-2.87f, -8.74f), new Vector2(0.64f, 0.7f),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
@@ -1182,7 +1190,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(-6.15f, -6.42f), new Vector2(1.26f, 1.48f),
+            Indications(new Vector2(-6.15f, -6.21f), new Vector2(1.26f, 1.48f),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
@@ -1244,18 +1252,17 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
+        canCloseMenuTourner = true;
+        canMoveTuto = true;
+
         phaseNum++;
     }
 
     void Phase22()
     {
-        Debug.Log("Phase22");
         if (canPlayFirst)
         {
             gameObjectsManager.colis6.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
-
-            canCloseMenuTourner = true;
-            canMoveTuto = true;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -1263,11 +1270,11 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(-9.17f, -3.58f), new Vector2(0.35f, 0.34f),
+            Indications(new Vector2(-9.17f, -3.35f), new Vector2(0.35f, 0.34f),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(57.62f, -4.45f),
+                        new Vector2(57.53f, -4.15f),
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
@@ -1301,6 +1308,8 @@ public class TutoManagerRecep : MonoBehaviour
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.cameraTriggerUp).enabled = false;
 
+            gameObjectsManager.player.GetComponent<Unit>().enabled = false;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
@@ -1325,7 +1334,17 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase25()
     {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
+
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.detectAnomaliesDesk).enabled = false;
+
+        gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreenDezoom).enabled = true;
 
         Indications(new Vector2(-66.71f, 31.71f), new Vector2(3.13f, 0.69f),
                     new Vector2(0, 0), new Vector2(0, 0),
@@ -1455,6 +1474,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreenDezoom).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.menuCirculaireSpriteMask).enabled = false;
 
             canPalette = false;
@@ -1488,12 +1508,12 @@ public class TutoManagerRecep : MonoBehaviour
     void Phase33()
     {
         Indications(new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0),
-                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
-                        new Vector2(0, 0), 0, 0, 0);
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                    new Vector2(0, 0), 0, 0, 0);
 
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localRotation = Quaternion.Euler(0, 0, 0);
 
@@ -1504,6 +1524,8 @@ public class TutoManagerRecep : MonoBehaviour
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.arrowCameraDezoom).enabled = true;
 
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.cameraTriggerDown).enabled = true;
+
+        gameObjectsManager.player.GetComponent<Unit>().enabled = true;
 
         phaseNum++;
     }
