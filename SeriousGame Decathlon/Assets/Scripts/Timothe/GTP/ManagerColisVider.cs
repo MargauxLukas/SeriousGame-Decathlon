@@ -237,7 +237,7 @@ public class ManagerColisVider : MonoBehaviour
                             newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
                         }
                     }
-                    else if (Random.Range(0, 100) < chanceArticlePasBon)
+                    else if (Random.Range(0, 100) < chanceArticlePasBon && emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack <= 0)
                     {
                         while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
                         {
@@ -246,6 +246,7 @@ public class ManagerColisVider : MonoBehaviour
                     }
                     else if (Random.Range(0, 100) < chanceColisPasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
                     {
+                        emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 0;
                         newColis.gtpSupposedToBe = newColis.listArticles[0];
                         Article newArticleMauvais = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
                         while (newArticleMauvais == newColis.listArticles[0])
@@ -260,7 +261,7 @@ public class ManagerColisVider : MonoBehaviour
                 }
             }
         }
-        if (newColis.listArticles[0] != null)
+        if (newColis != null && newColis.listArticles != null && newColis.listArticles.Count > 0 && newColis.listArticles[0] != null)
         {
             emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
         }
@@ -294,7 +295,7 @@ public class ManagerColisVider : MonoBehaviour
         }
         else if (tempsReponseChangementColis <= 0)
         {
-            if (emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf)
+            if ((emplacementsScripts[0].activeSelf && emplacementsScripts[1].activeSelf) || (etatColis[0] && etatColis[1]))
             {
                 if(!emplacementsScripts[0].GetComponent<AffichagePileArticleGTP>().isOpen && !emplacementsScripts[1].GetComponent<AffichagePileArticleGTP>().isOpen && (colisActuellementsPose[0] == null || !colisActuellementsPose[0].isOpen) && (colisActuellementsPose[1] == null || !colisActuellementsPose[1].isOpen) && (colisActuellementsPose[2] == null || !colisActuellementsPose[2].isOpen))
                 return true;

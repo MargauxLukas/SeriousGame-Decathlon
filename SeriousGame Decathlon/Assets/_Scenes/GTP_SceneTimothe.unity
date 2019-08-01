@@ -2292,7 +2292,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d318aa392ab9ca44089b7eeddbc13592, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9563,7 +9563,7 @@ MonoBehaviour:
   positionVoulueParEmplacement: 0000000000000000
   chanceColisPasRemplit: 10
   chanceArticlePasBon: 15
-  chanceColisPasBon: 0
+  chanceColisPasBon: 3
   photoArticle: {fileID: 1572741195}
   managerColis: {fileID: 882313606}
   colisActuellementsPose:
@@ -9610,7 +9610,7 @@ MonoBehaviour:
   - {fileID: 980227254}
   - {fileID: 1987281621}
   - {fileID: 994102619}
-  nombreColisVoulu: 5
+  nombreColisVoulu: 12
   nbArticleVoulu: 0
   nbEmplacement: 0
   chanceAvoirTropArticlePrevu: 10
@@ -13351,6 +13351,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2.0427427
       objectReference: {fileID: 0}
+    - target: {fileID: 8257301726697521808, guid: deb4dff78b23a3d44bfdd0f4def0f0a4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9142830304822594308, guid: deb4dff78b23a3d44bfdd0f4def0f0a4,
         type: 3}
       propertyPath: m_IsActive
@@ -13359,11 +13364,6 @@ PrefabInstance:
     - target: {fileID: 7888647433185922189, guid: deb4dff78b23a3d44bfdd0f4def0f0a4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8257301726697521808, guid: deb4dff78b23a3d44bfdd0f4def0f0a4,
-        type: 3}
-      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
