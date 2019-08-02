@@ -68,6 +68,58 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (int.Parse(GtpInputfieldNombreColis.text) < 3)
+        {
+            GtpInputfieldNombreColis.text = "3";
+        }
+
+        if (int.Parse(GtpInputfieldMauvaisArticle.text) > 100)
+        {
+            GtpInputfieldMauvaisArticle.text = "100";
+        }
+        else if(int.Parse(GtpInputfieldMauvaisArticle.text) < 0)
+        {
+            GtpInputfieldMauvaisArticle.text = "0";
+        }
+
+        if (int.Parse(GtpInputfieldAllMauvaisArticle.text) > 100)
+        {
+            GtpInputfieldAllMauvaisArticle.text = "100";
+        }
+        else if (int.Parse(GtpInputfieldAllMauvaisArticle.text) < 0)
+        {
+            GtpInputfieldAllMauvaisArticle.text = "0";
+        }
+
+        if (int.Parse(GtpInputfieldColisPeuRemplit.text) > 100)
+        {
+            GtpInputfieldColisPeuRemplit.text = "100";
+        }
+        else if (int.Parse(GtpInputfieldColisPeuRemplit.text) < 0)
+        {
+            GtpInputfieldColisPeuRemplit.text = "0";
+        }
+
+        if (int.Parse(GtpInputfieldColisInternet.text) > 100)
+        {
+            GtpInputfieldColisInternet.text = "100";
+        }
+        else if (int.Parse(GtpInputfieldColisInternet.text) < 0)
+        {
+            GtpInputfieldColisInternet.text = "0";
+        }
+
+        if (int.Parse(GtpInputfieldColisVeutTropArticle.text) > 100)
+        {
+            GtpInputfieldColisVeutTropArticle.text = "100";
+        }
+        else if (int.Parse(GtpInputfieldColisVeutTropArticle.text) < 0)
+        {
+            GtpInputfieldColisVeutTropArticle.text = "0";
+        }
+    }
     public void OpenEditor()
     {
         creationNiveau.SetActive(true);

@@ -12,6 +12,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
     public bool isOpen;
     public bool isSupposedToBeEmpty;
     public int isFulledWithPack;
+    public ManagerColisAttendu mca;
 
     public Article artReference;
 
@@ -24,7 +25,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
     void Update()
     {
-        if(Input.touchCount>0)
+        if(Input.touchCount>0 && !mca.isLevelEnded)
         {
             touchObject();
 
