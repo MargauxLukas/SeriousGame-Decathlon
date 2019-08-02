@@ -12,8 +12,14 @@ public class TasArticleGTP : MonoBehaviour
 
     private bool doesTouch;
 
+    public Animator animationApparition;
+
     void Update()
     {
+        /*if(animationApparition.GetBool("IsOpen"))
+        {
+            animationApparition.SetBool("IsOpen", false);
+        }*/
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -45,8 +51,14 @@ public class TasArticleGTP : MonoBehaviour
         affichageTas[articlesPresents.Count-1].transform.localPosition += new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
     }
 
+    public IEnumerator ApparitionArticle(List<Article> lesArticles, int nbPackArticle)
+    {
+        yield return new WaitForSeconds(0.5f);
+        OpenTasArticle(lesArticles, nbPackArticle);
+    }
     public void OpenTasArticle(List<Article> lesArticles, int nbPackArticle)
     {
+        //animationApparition.SetBool("IsOpen", true);
         if (affichageTas != null)
         {
             for (int i = 0; i < affichageTas.Count; i++)

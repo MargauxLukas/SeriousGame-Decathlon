@@ -58,6 +58,7 @@ public class GameObjectsManagerRecep : MonoBehaviour
 
     [Header("Sprite Masks")]
     public GameObject blackScreen;
+    public GameObject blackScreenDezoom;
     public GameObject squareSpriteMask01;
     public GameObject squareSpriteMask02;
     public GameObject circleSpriteMask01;
@@ -82,6 +83,9 @@ public class GameObjectsManagerRecep : MonoBehaviour
     [Header("Trigger")]
     public GameObject cameraTriggerUp;
     public GameObject cameraTriggerDown;
+
+    [Header("Player")]
+    public GameObject player;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
     {

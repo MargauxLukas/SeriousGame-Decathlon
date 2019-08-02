@@ -15,6 +15,8 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
     public Article artReference;
 
+    private int nbAddedArticle = 0;
+
     void Start()
     {
         //currentColis = Instantiate(currentColis);
@@ -38,7 +40,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
                     isOpen = true;
                     GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.4f);
                     tasArticle.SetActive(true);
-                    tasArticle.GetComponent<TasArticleGTP>().OpenTasArticle(currentColis.listArticles, isFulledWithPack);
+                    StartCoroutine(tasArticle.GetComponent<TasArticleGTP>().ApparitionArticle(currentColis.listArticles, isFulledWithPack));
                 }
                 else
                 {

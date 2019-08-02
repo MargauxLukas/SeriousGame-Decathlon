@@ -13,6 +13,7 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public bool didArrive;
     private bool doesTouch;
+    private bool canBeTouch = true;
 
     public List<GameObject> tasArticle;
 
@@ -45,7 +46,7 @@ public class RemplissageColisGTP : MonoBehaviour
                 doesTouch = false;
             }
 
-            if (doesTouch)
+            if (doesTouch && canBeTouch)
             {
                 doesTouch = false;
                 List<List<Article>> newListes    = new List<List<Article>>();
@@ -82,7 +83,7 @@ public class RemplissageColisGTP : MonoBehaviour
                             if (!tasArticle[l].activeSelf && newListes != null && newListes[l] != null)
                             {
                                 tasArticle[l].SetActive(true);
-                                tasArticle[l].GetComponent<TasArticleGTP>().OpenTasArticle(newListes[l], 0);
+                                StartCoroutine(tasArticle[l].GetComponent<TasArticleGTP>().ApparitionArticle(newListes[l], 0));
                                 isOpen = true;
                             }
                         }
@@ -142,9 +143,9 @@ public class RemplissageColisGTP : MonoBehaviour
     public IEnumerator AnimationColisRenvoie()
     {
         estParti = true;
-        if (boxDesactivee.enabled)
+        if (canBeTouch)
         {
-            boxDesactivee.enabled = false;
+            canBeTouch = false;
             GetComponent<SpriteRenderer>().sortingOrder--;
             barreCanvas.sortingOrder-=2;
             remplissageImage.enabled = false;

@@ -69,7 +69,34 @@ public class ManagerColisAttendu : MonoBehaviour
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
                 }
             }
-            phasesColisVoulus.Add(nbPhase); //A changer
+
+            List<int> nbMemeArticle = new List<int>();
+            List<Article> articleConnu = new List<Article>();
+            for (int m = 0; m < colisVoulus[i].listArticles.Count; m++)
+            {
+                if(!articleConnu.Contains(colisVoulus[i].listArticles[m]))
+                {
+                    articleConnu.Add(colisVoulus[i].listArticles[m]);
+                    nbMemeArticle.Add(1);
+                }
+                else
+                {
+                    nbMemeArticle[nbMemeArticle.Count - 1]++;
+                }
+            }
+            for (int m = 0; m < nbMemeArticle.Count; m++)
+            {
+                if(nbMemeArticle[m]>=10)
+                {
+                    for(int l = 0; l < nbMemeArticle[m]-9; l++)
+                    {
+                        colisVoulus[i].listArticles.Remove(articleConnu[m]);
+                    }
+                }
+            }
+
+
+            phasesColisVoulus.Add(nbPhase);
 
             if(Random.Range(0,100)<chanceToComeFromInternet)
             {
@@ -91,6 +118,8 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             colisVoulus[emplacement] = colisVoulus[3];
             colisVoulus.RemoveAt(3);
+            phasesColisVoulus[emplacement] = phasesColisVoulus[3];
+            phasesColisVoulus.RemoveAt(3);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());

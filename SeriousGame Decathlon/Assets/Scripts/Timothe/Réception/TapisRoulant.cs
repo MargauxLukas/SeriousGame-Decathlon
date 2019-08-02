@@ -46,12 +46,14 @@ public class TapisRoulant : MonoBehaviour
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
-
+            Debug.Log("J'appuie pour fermer");
             if (menuIsOpen && TutoManagerRecep.instance != null && TutoManagerRecep.instance.canCloseMenuTourner == true)
             {
+                Debug.Log("Le Tuto existe et je peux fermer le menu");
                 turnMenuPosition = turnMenu.transform.position;
                 if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
                 {
+                    Debug.Log("Je ferme le menu");
                     turnMenu.SetActive(false);
                     menuIsOpen = false;
 
@@ -59,31 +61,34 @@ public class TapisRoulant : MonoBehaviour
                     {
                         if (lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented || lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime || lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
                         {
+                            Debug.Log("Le colis a un problème, je peux pas l'envoyer");
+                            lastColis.GetComponent<ScriptColisRecep>().canMove = false;
                             OpenTurnMenu();
                         }
 
                         if (!lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented && !lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
                         {
-
+                            Debug.Log("Le colis est bien, je l'envoie");
                             lastColis.GetComponent<ScriptColisRecep>().canMove = true;
                             lastColis = null;
 
                             TutoManagerRecep.instance.Manager(8);
                         }
                     }
-                    else if (menuIsOpen && TutoManagerRecep.instance == null)
-                    {
-                        turnMenuPosition = turnMenu.transform.position;
-                        if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
-                        {
-                            turnMenu.SetActive(false);
-                            menuIsOpen = false;
-                            lastColis.GetComponent<ScriptColisRecep>().canMove = true;
-                            lastColis = null;
-                        }
-                    }
                 }
-            }  
+            }
+            else if (menuIsOpen && TutoManagerRecep.instance == null)
+            {
+                Debug.Log("Le Tuto n'existe pas wtf");
+                turnMenuPosition = turnMenu.transform.position;
+                if (Vector2.Distance(touchPosition, turnMenuPosition) > 6f)
+                {
+                    turnMenu.SetActive(false);
+                    menuIsOpen = false;
+                    lastColis.GetComponent<ScriptColisRecep>().canMove = true;
+                    lastColis = null;
+                }
+            }
         }
     }
 

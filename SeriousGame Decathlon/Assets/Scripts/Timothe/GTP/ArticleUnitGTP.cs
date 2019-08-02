@@ -16,6 +16,15 @@ public class ArticleUnitGTP : MonoBehaviour
     public bool hasBeenScanned;
     public int isPack;
 
+    private Vector3 startPosition;
+
+    public GameObject animationApparition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +47,7 @@ public class ArticleUnitGTP : MonoBehaviour
                     {
                         if(transform.position.x < 61.5f || transform.position.x > 78.5f || transform.position.y > 0.3f || transform.position.y < -2.5f)
                         {
-                            transform.position = new Vector3(73, -1.2f, 0);
+                            transform.position = startPosition;
                         }
                     }
                     else
@@ -50,25 +59,29 @@ public class ArticleUnitGTP : MonoBehaviour
                                 for (int l = 0; l < isPack; l++)
                                 {
                                     remplisColis.AddArticle(currentArticle);
+                                    Instantiate(animationApparition, transform.position, Quaternion.identity);
                                 }
                             }
                             else
                             {
                                 remplisColis.AddArticle(currentArticle);
+                                Instantiate(animationApparition, transform.position, Quaternion.identity);
                             }
                         }
-                        else if (remplisColisPrincipal != null)
+                        else if (remplisColisPrincipal != null && remplisColisPrincipal.isFulledWithPack == 0)
                         {
                             if (isPack != 0)
                             {
                                 for (int l = 0; l < isPack; l++)
                                 {
                                     remplisColisPrincipal.AddArticle(currentArticle);
+                                    Instantiate(animationApparition, transform.position, Quaternion.identity);
                                 }
                             }
                             else
                             {
                                 remplisColisPrincipal.AddArticle(currentArticle);
+                                Instantiate(animationApparition, transform.position, Quaternion.identity);
                             }
                         }
                         tasParent.affichageTas.Remove(gameObject);
