@@ -32,22 +32,25 @@ public class PickTUContentWindow : MonoBehaviour
         int nb2 = 0;
         int nb3 = 0;
 
-        foreach (Article art in mca.colisActuellementTraite[nb].listArticles)                 // Je regarde à quoi le colis doit ressembler
+        if (mca.colisActuellementTraite[nb] != null)
         {
-            if (art.name == ArticleName1 || ArticleName1 == "")                               // Je regarde si le colis est pareil ou si le nom est vide(Dans ce cas, je lui met le nom de l'article)
+            foreach (Article art in mca.colisActuellementTraite[nb].listArticles)                 // Je regarde à quoi le colis doit ressembler
             {
-                ArticleName1 = art.name;
-                nb1++;
-            }
-            else if (art.name == ArticleName2 || ArticleName2 == "")
-            {
-                ArticleName2 = art.name;
-                nb2++;
-            }
-            else if (art.name == ArticleName3 || ArticleName3 == "")
-            {
-                ArticleName3 = art.name;
-                nb3++;
+                if (art.name == ArticleName1 || ArticleName1 == "")                               // Je regarde si le colis est pareil ou si le nom est vide(Dans ce cas, je lui met le nom de l'article)
+                {
+                    ArticleName1 = art.name;
+                    nb1++;
+                }
+                else if (art.name == ArticleName2 || ArticleName2 == "")
+                {
+                    ArticleName2 = art.name;
+                    nb2++;
+                }
+                else if (art.name == ArticleName3 || ArticleName3 == "")
+                {
+                    ArticleName3 = art.name;
+                    nb3++;
+                }
             }
         }
 

@@ -24,6 +24,8 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public GameObject ecranFinNiveau;
 
+    private int decompteFinNiveau;
+
     public void Start()
     {
         if(ChargementListeColis.instance != null)
@@ -114,6 +116,10 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public void RenvoieColis(int emplacement)
     {
+        Debug.Log("Colis null 0 : " + colisVoulus[0] == null);
+        Debug.Log("Colis null 1 : " + colisVoulus[1] == null);
+        Debug.Log("Colis null 2 : " + colisVoulus[2] == null);
+
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
             colisVoulus[emplacement] = colisVoulus[3];
@@ -124,7 +130,7 @@ public class ManagerColisAttendu : MonoBehaviour
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
-        else if(colisVoulus[0] == null && colisVoulus[1] == null && colisVoulus[2] == null)
+        else if(decompteFinNiveau>=2)
         {
             Debug.Log("Fin de niveau");
             ecranFinNiveau.SetActive(true);
@@ -135,6 +141,7 @@ public class ManagerColisAttendu : MonoBehaviour
         }
         else
         {
+            decompteFinNiveau++;
             Debug.Log("Allo");
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
@@ -224,7 +231,7 @@ public class ManagerColisAttendu : MonoBehaviour
             {
                 for (int i = 0; i < colisCompare.listArticles.Count; i++)
                 {
-                    if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
+                    if (colisCompare.listArticles[i] != colisVoulus[emplacement].listArticles[i])
                     {
                         colisVoulus[emplacement] = new Colis();
                         Debug.Log("Un colis a été mal fait");
