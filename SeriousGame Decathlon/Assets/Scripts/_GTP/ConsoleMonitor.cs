@@ -113,7 +113,7 @@ public class ConsoleMonitor : MonoBehaviour
     {
         if (mcv.PeutFairePartirColis() && !neuviemePos.haveAlreadySomething)
         {
-            Scoring.instance.StopComboGTP(15);
+            Scoring.instance.StopComboGTP(5);
             mcv.FairePartirUnColis();
             UpdateAffichage(0);
             if (colisActuelPoste.currentPhase < phaseActuelle - 1)
