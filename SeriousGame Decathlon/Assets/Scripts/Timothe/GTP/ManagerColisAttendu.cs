@@ -224,7 +224,7 @@ public class ManagerColisAttendu : MonoBehaviour
             {
                 for (int i = 0; i < colisCompare.listArticles.Count; i++)
                 {
-                    if (colisCompare.listArticles[i].rfid != colisVoulus[emplacement].listArticles[i].rfid)
+                    if (colisCompare.listArticles[i] != colisVoulus[emplacement].listArticles[i])
                     {
                         colisVoulus[emplacement] = new Colis();
                         Debug.Log("Un colis a été mal fait");

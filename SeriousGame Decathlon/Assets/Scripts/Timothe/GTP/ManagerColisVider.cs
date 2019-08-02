@@ -171,7 +171,7 @@ public class ManagerColisVider : MonoBehaviour
                             int nbSecond = 0;
                             while (managerColis.colisActuellementTraite[emplacementTempo] == null && nbSecond < 9 && emplacementTempo != AncientEmplacementTempo)
                             {
-                                emplacementTempo = (emplacementTempo - 1) % 3;
+                                emplacementTempo = (emplacementTempo + 1) % 3;
                                 Debug.Log("Test Choix colis déjà traité 2 : " + emplacementTempo);
                                 nbSecond++;
                             }

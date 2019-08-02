@@ -51,10 +51,18 @@ public class TasArticleGTP : MonoBehaviour
         affichageTas[articlesPresents.Count-1].transform.localPosition += new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
     }
 
-    public IEnumerator ApparitionArticle(List<Article> lesArticles, int nbPackArticle)
+    public IEnumerator ApparitionArticle(List<Article> lesArticles, int nbPackArticle, RemplissageColisGTP rcg)
     {
-        yield return new WaitForSeconds(0.5f);
+        if(rcg!=null)
+        {
+            rcg.canBeTouch = false;
+        }
+        yield return new WaitForSeconds(0.3f);
         OpenTasArticle(lesArticles, nbPackArticle);
+        if (rcg != null)
+        {
+            rcg.canBeTouch = true;
+        }
     }
     public void OpenTasArticle(List<Article> lesArticles, int nbPackArticle)
     {

@@ -21,6 +21,8 @@ public class ConsoleMonitor : MonoBehaviour
 
     private bool canRemove;
 
+    public DetectionColisBombe neuviemePos;
+
     public void Start() 
     {
         text.text = "";   
@@ -109,7 +111,7 @@ public class ConsoleMonitor : MonoBehaviour
      ******************************************/
     public void Envoyer(int emplacement) 
     {
-        if (mcv.PeutFairePartirColis())
+        if (mcv.PeutFairePartirColis() && !neuviemePos.haveAlreadySomething)
         {
             Scoring.instance.StopComboGTP(15);
             mcv.FairePartirUnColis();
