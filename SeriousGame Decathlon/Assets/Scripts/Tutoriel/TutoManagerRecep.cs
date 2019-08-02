@@ -78,6 +78,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if(colisNum >= colisNum + 3)
         {
+            Debug.Log("colisNum = " + colisNum);
             phaseNum++;
             Manager(8);
         }
@@ -420,10 +421,6 @@ public class TutoManagerRecep : MonoBehaviour
                         Phase22();
                         break;
 
-                    case (37):
-                        Phase37();
-                        break;
-
                     case (38):
                         Phase38();
                         break;
@@ -517,6 +514,10 @@ public class TutoManagerRecep : MonoBehaviour
                 {
                     case (20):
                         Phase20();
+                        break;
+
+                    case (37):
+                        Phase37();
                         break;
                 }
                 break;
@@ -1588,7 +1589,15 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase36()
     {
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis7).enabled = true;
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
+
+        gameObjectsManager.colis7.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
         gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = true;
@@ -1605,9 +1614,9 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase37()
     {
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis7).enabled = false;
+        gameObjectsManager.colis7.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis8).enabled = true;
+        gameObjectsManager.colis8.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
         phaseNum++;
     }
@@ -1616,7 +1625,7 @@ public class TutoManagerRecep : MonoBehaviour
     {
         if (canPlayFirst)
         {
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis8).enabled = false;
+            gameObjectsManager.colis8.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = false;
@@ -1644,9 +1653,9 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase39()
     {
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis9).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis10).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis11).enabled = true;
+        gameObjectsManager.colis9.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+        gameObjectsManager.colis10.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+        gameObjectsManager.colis11.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
         gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = true;
@@ -1661,11 +1670,11 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase40()
     {
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis9).enabled = false;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis10).enabled = false;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis11).enabled = false;
+        gameObjectsManager.colis9.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
+        gameObjectsManager.colis10.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
+        gameObjectsManager.colis11.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis12).enabled = true;
+        gameObjectsManager.colis12.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
         phaseNum++;
     }
@@ -1674,7 +1683,7 @@ public class TutoManagerRecep : MonoBehaviour
     {
         if (canPlayFirst)
         {
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis12).enabled = false;
+            gameObjectsManager.colis12.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = false;
