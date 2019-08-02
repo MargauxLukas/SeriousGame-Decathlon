@@ -60,6 +60,8 @@ public class Monitor : MonoBehaviour
         Tapis1.GetComponent<ColisLink>().console.UpdateAffichage(         );
         Tapis1.GetComponent<ColisLink>().console.emplacementConsole = 0;
         Tapis1.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
+        Tapis2.GetComponent<ColisLink>().cm.UpdateAffichage(0);
+        Tapis3.GetComponent<ColisLink>().cm.UpdateAffichage(0);
 
         commandesInternets[0].SetActive(comeFromInternet);
 
@@ -82,6 +84,8 @@ public class Monitor : MonoBehaviour
         Tapis2.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis2.GetComponent<ColisLink>().console.emplacementConsole = 1;
         Tapis2.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
+        Tapis1.GetComponent<ColisLink>().cm.UpdateAffichage(0);
+        Tapis3.GetComponent<ColisLink>().cm.UpdateAffichage(0);
 
         commandesInternets[1].SetActive(comeFromInternet);
 
@@ -104,6 +108,8 @@ public class Monitor : MonoBehaviour
         Tapis3.GetComponent<ColisLink>().console.UpdateAffichage();
         Tapis3.GetComponent<ColisLink>().console.emplacementConsole = 2;
         Tapis3.GetComponent<ColisLink>().cm     .UpdateAffichage(nbMonitor);
+        Tapis2.GetComponent<ColisLink>().cm.UpdateAffichage(0);
+        Tapis1.GetComponent<ColisLink>().cm.UpdateAffichage(0);
 
         commandesInternets[2].SetActive(comeFromInternet);
 

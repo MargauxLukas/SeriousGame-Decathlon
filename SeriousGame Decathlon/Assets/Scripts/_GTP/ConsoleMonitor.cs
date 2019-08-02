@@ -21,6 +21,8 @@ public class ConsoleMonitor : MonoBehaviour
 
     private bool canRemove;
 
+    public DetectionColisBombe neuviemePos;
+
     public void Start() 
     {
         text.text = "";   
@@ -49,7 +51,7 @@ public class ConsoleMonitor : MonoBehaviour
         int nbArticleEnQuestion = 0;
         int nbArticleEnCours    = 0;
 
-        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];          //L'article dont on est entrain de changer le nombre
+        Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().artReference;          //L'article dont on est entrain de changer le nombre
 
         if (canRemove)
         {
@@ -109,9 +111,9 @@ public class ConsoleMonitor : MonoBehaviour
      ******************************************/
     public void Envoyer(int emplacement) 
     {
-        if (mcv.PeutFairePartirColis())
+        if (mcv.PeutFairePartirColis() && !neuviemePos.haveAlreadySomething)
         {
-            Scoring.instance.StopComboGTP(15);
+            Scoring.instance.StopComboGTP(5);
             mcv.FairePartirUnColis();
             UpdateAffichage(0);
             if (colisActuelPoste.currentPhase < phaseActuelle - 1)
