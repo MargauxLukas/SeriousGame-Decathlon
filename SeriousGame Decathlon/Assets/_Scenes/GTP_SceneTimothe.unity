@@ -9633,8 +9633,8 @@ MonoBehaviour:
   nombreColisVoulu: 12
   nbArticleVoulu: 0
   nbEmplacement: 0
-  chanceAvoirTropArticlePrevu: 10
-  chanceToComeFromInternet: 15
+  chanceAvoirTropArticlePrevu: 5
+  chanceToComeFromInternet: 10
   ecranFinNiveau: {fileID: 2118144035}
 --- !u!1 &887417059
 GameObject:
@@ -15732,11 +15732,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TasArticleUn
       objectReference: {fileID: 0}
-    - target: {fileID: 2220138205782046418, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2220138205782046421, guid: d0895b599a9570a49995ffe395b04307,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15791,38 +15786,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220138205782046419, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: articleUnit
-      value: 
-      objectReference: {fileID: 3968450500629824349, guid: ca93215e54f7dbc4baca92aaed5d72dd,
-        type: 3}
-    - target: {fileID: 2220138205782046419, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: prefabAffichageArticlePiece
-      value: 
-      objectReference: {fileID: 5086252624620739269, guid: 0390066942949fc4ebad160c3eae65f3,
-        type: 3}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.017050385
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.4156318
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.017051697
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220138205782046422, guid: d0895b599a9570a49995ffe395b04307,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 5.5528107
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0895b599a9570a49995ffe395b04307, type: 3}
@@ -19446,10 +19409,6 @@ PrefabInstance:
       propertyPath: cartonFond
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 171931903, guid: c7a499f8ff2f2e04ca3d51a298ddc362, type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7786027123145613099, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -19459,6 +19418,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 171931903, guid: c7a499f8ff2f2e04ca3d51a298ddc362, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a499f8ff2f2e04ca3d51a298ddc362, type: 3}

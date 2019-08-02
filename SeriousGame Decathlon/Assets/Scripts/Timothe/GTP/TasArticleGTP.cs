@@ -51,6 +51,11 @@ public class TasArticleGTP : MonoBehaviour
         affichageTas[articlesPresents.Count-1].transform.localPosition += new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
     }
 
+    public IEnumerator ApparitionArticle(List<Article> lesArticles, int nbPackArticle)
+    {
+        yield return new WaitForSeconds(0.5f);
+        OpenTasArticle(lesArticles, nbPackArticle);
+    }
     public void OpenTasArticle(List<Article> lesArticles, int nbPackArticle)
     {
         //animationApparition.SetBool("IsOpen", true);
