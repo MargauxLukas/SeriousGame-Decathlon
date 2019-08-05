@@ -43,7 +43,7 @@ public class RemplissageColisGTP : MonoBehaviour
         {
             spriteRemplit.SetActive(true);
         }
-        else if (spriteRemplit.activeSelf)
+        else if (tauxRemplissage <= 1 && spriteRemplit.activeSelf)
         {
             spriteRemplit.SetActive(false);
         }
