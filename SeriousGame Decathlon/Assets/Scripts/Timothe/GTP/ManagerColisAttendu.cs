@@ -268,7 +268,7 @@ public class ManagerColisAttendu : MonoBehaviour
                 Debug.Log("Un colis a été mal fait");
                 if (articleEnvoye.Count == 0 || articleVoulu.Count == 0)
                 {
-                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                    Scoring.instance.LosePointGTP(50, "Il y a plus/moins d'articles que ce qu'il devrait y avoir dans le colis");
                 }
                 else
                 {

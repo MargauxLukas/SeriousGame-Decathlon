@@ -8,10 +8,14 @@ public class GTPCameraFollow : MonoBehaviour
     public float offset = -0.5f;
     public float lerpCoef = 0.05f;
 
+    [SerializeField]
     private float maxY = 6f;
+    [SerializeField]
     private float minY = -4f;
 
+    [SerializeField]
     private float maxX = 20f;
+    [SerializeField]
     private float minX = -8f;
 
     void Update()
