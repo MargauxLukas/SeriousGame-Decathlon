@@ -30,6 +30,8 @@ public class RemplissageColisGTP : MonoBehaviour
     public int nbArticleScanned;
     public bool estParti;
 
+    public GameObject spriteRemplit;
+
     private void Start()
     {
         colisScriptable = Instantiate(colisScriptable);
@@ -37,6 +39,14 @@ public class RemplissageColisGTP : MonoBehaviour
 
     void Update()
     {
+        if(tauxRemplissage>1 && !spriteRemplit.activeSelf)
+        {
+            spriteRemplit.SetActive(true);
+        }
+        else if (spriteRemplit.activeSelf)
+        {
+            spriteRemplit.SetActive(false);
+        }
         if (Input.touchCount > 0 && !estParti)
         {
             touchObject();

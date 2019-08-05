@@ -9636,6 +9636,7 @@ MonoBehaviour:
   chanceAvoirTropArticlePrevu: 5
   chanceToComeFromInternet: 10
   ecranFinNiveau: {fileID: 2118144035}
+  isLevelEnded: 0
 --- !u!1 &887417059
 GameObject:
   m_ObjectHideFlags: 0
@@ -17349,7 +17350,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -17385,8 +17386,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 304, y: 0}
-  m_SizeDelta: {x: 664.1, y: 30}
+  m_AnchoredPosition: {x: 224.3, y: -16.2}
+  m_SizeDelta: {x: 823.5, y: 62.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1873200394
 GameObject:
@@ -19504,10 +19505,6 @@ PrefabInstance:
       propertyPath: cartonFond
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 171931903, guid: c7a499f8ff2f2e04ca3d51a298ddc362, type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7786027123145613099, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -19517,6 +19514,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 171931903, guid: c7a499f8ff2f2e04ca3d51a298ddc362, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a499f8ff2f2e04ca3d51a298ddc362, type: 3}
