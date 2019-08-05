@@ -69,7 +69,11 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            if (touch.phase == TouchPhase.Moved)
+            if(touch.phase == TouchPhase.Began)
+            {
+                lastPosition = touchPosition;
+            }
+            else if (touch.phase == TouchPhase.Moved)
             {
                 Debug.Log(Vector2.Distance(touchPosition, lastPosition));
                 if (touchPosition.x > lastPosition.x)
@@ -78,9 +82,9 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
                     foreach (GameObject go in allPerso)
                     {
                         go.transform.position += new Vector3(1, 0, 0) * Vector2.Distance(touchPosition, lastPosition);
-                        if (Vector3.Distance(transform.position, go.transform.position) < 1)
+                        if (Vector3.Distance(transform.position, go.transform.position) < 3)
                         {
-                            go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 2);
+                            go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 6) * 3;
                         }
                     }
                 }
@@ -90,12 +94,35 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
                     foreach (GameObject go in allPerso)
                     {
                         go.transform.position -= new Vector3(1, 0, 0) * Vector2.Distance(touchPosition, lastPosition);
-                        if (Vector3.Distance(transform.position, go.transform.position) < 1)
+                        if (Vector3.Distance(transform.position, go.transform.position) < 3)
                         {
-                            go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 2);
+                            go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 6) * 3;
                         }
                     }
                 }
+            }
+            else if(touch.phase == TouchPhase.Ended)
+            {
+                float distance = 50f;
+                GameObject goToTake = allPerso[0];
+                foreach (GameObject go in allPerso)
+                {
+                    if (Vector3.Distance(transform.position, go.transform.position) < distance)
+                    {
+                        distance = Vector3.Distance(transform.position, go.transform.position);
+                        goToTake = go;
+                    }
+                }
+
+                Vector3 newPos = new Vector3(transform.position.x - goToTake.transform.position.x, 0, 0);
+
+                foreach (GameObject go in allPerso)
+                {
+                    go.transform.position += newPos;
+                    go.transform.localScale = Vector3.one * 3;
+                }
+                goToTake.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, goToTake.transform.position) / 6) * 3;
+                ManagerPersoChoisit.instance.Personnage = goToTake.GetComponent<MenuPersoChoice>().numDuPerso;
             }
             lastPosition = touchPosition;
         }
