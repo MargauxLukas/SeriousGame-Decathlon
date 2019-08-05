@@ -6835,6 +6835,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 3453611145928882421, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8d8744d6e5e80ed46a3d69c8e75268a8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e14c14e297de043909cce304004371, type: 3}
 --- !u!1 &681326125 stripped
@@ -13017,7 +13022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1368504375
 MonoBehaviour:
   m_ObjectHideFlags: 0
