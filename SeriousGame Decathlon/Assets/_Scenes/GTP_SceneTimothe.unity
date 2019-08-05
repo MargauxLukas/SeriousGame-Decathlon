@@ -2297,6 +2297,11 @@ PrefabInstance:
       propertyPath: cartonFond
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2672306495849255139, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
+        type: 3}
+      propertyPath: mca
+      value: 
+      objectReference: {fileID: 882313606}
     - target: {fileID: 2672306495849255136, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -3372,6 +3377,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScriptable: {fileID: 11400000, guid: 102b2024fc666df4b90dee48902c3d57, type: 2}
   errorTextZone: {fileID: 1869365279}
+  errorTextZoneDeux: {fileID: 0}
   score: 0
   scoreGTP: 0
   scoreReception: 0
@@ -5653,6 +5659,10 @@ MonoBehaviour:
   player: {fileID: 681326125}
   offset: -0.5
   lerpCoef: 0.7
+  maxY: 6
+  minY: -4
+  maxX: 20
+  minX: -8
 --- !u!81 &643206318
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5669,7 +5679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643206315}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 6.5, y: 6, z: -32.08}
+  m_LocalPosition: {x: 6.5, y: 8.91, z: -32.08}
   m_LocalScale: {x: 1.2175002, y: 1.2175002, z: 1.2175}
   m_Children: []
   m_Father: {fileID: 1183120174}
@@ -6718,7 +6728,7 @@ PrefabInstance:
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.2
+      value: 14.37
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -6780,11 +6790,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7327219
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -6814,6 +6819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -19748,6 +19758,11 @@ PrefabInstance:
       propertyPath: cartonFond
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2672306495849255139, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
+        type: 3}
+      propertyPath: mca
+      value: 
+      objectReference: {fileID: 882313606}
     - target: {fileID: 7786027123145613099, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
         type: 3}
       propertyPath: m_LocalPosition.y

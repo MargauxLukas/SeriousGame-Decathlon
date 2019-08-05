@@ -36,8 +36,7 @@ MonoBehaviour:
   - RecepAbimePetit
   chanceReceptionColisHaveAnomalie: 5
   nombreColisReception: 27
-  nbColisVoulu: 10
-  chanceTropPlein: 5
+  nbColisVoulu: 7
   chanceMauvaisArticle: 5
   chanceAllMauvaisArticle: 10
   chancePasRemplit: 5
