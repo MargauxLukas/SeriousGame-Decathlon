@@ -13,6 +13,7 @@ public class Scoring : MonoBehaviour
 
     [Header("Texte Anomalie")]
     public Text errorTextZone;
+    public Text errorTextZoneDeux;
 
     [Header("Score")]
     public int score;
@@ -405,6 +406,13 @@ public class Scoring : MonoBehaviour
             errorTextZone.text = errorText;
             StartCoroutine(TempsAffichageErreur());
         }
+        if(errorTextZoneDeux != null && TutoManagerMulti.instance == null)
+        {
+            StopAllCoroutines();
+            errorTextZoneDeux.gameObject.SetActive(true);
+            errorTextZoneDeux.text = errorText;
+            StartCoroutine(TempsAffichageErreur());
+        }
         
         if(isMf)
         {
@@ -482,6 +490,7 @@ public class Scoring : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         errorTextZone.gameObject.SetActive(false);
+        errorTextZoneDeux.gameObject.SetActive(false);
     }
 
     //BONUS

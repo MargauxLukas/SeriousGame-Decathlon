@@ -32,25 +32,12 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(speed > 0.1f)
-        {
-            speed -= Time.deltaTime * 0.3f;
-        }
-        else if (speed < -0.1f)
-        {
-            speed += Time.deltaTime * 0.3f;
-        }
-        else
-        {
-            speed = 0;
-        }
-
-        if (speed != 0)
+       /* if (speed != 0)
         {
             isStop = false;
             foreach (GameObject go in allPerso)
             {
-                go.transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+                //go.transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
                 if(Vector3.Distance(transform.position, go.transform.position) < 1)
                 {
                     go.transform.localScale =Vector3.one*(2 - Vector3.Distance(transform.position, go.transform.position));
@@ -76,29 +63,37 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
             }
             isStop = true;
             //Prendre le script dans le GO permettant d'avoir le perso
-        }
+        }*/
 
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            Vector2 touchPosition = touch.position;
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             if (touch.phase == TouchPhase.Moved)
             {
                 Debug.Log(Vector2.Distance(touchPosition, lastPosition));
                 if (touchPosition.x > lastPosition.x)
                 {
-                    speed += Time.deltaTime * 0.75f;
-                    if (speed > 1.2f)
+                    speed = 1;
+                    foreach (GameObject go in allPerso)
                     {
-                        speed = 1.2f;
+                        go.transform.position += new Vector3(1, 0, 0) * Vector2.Distance(touchPosition, lastPosition);
+                        if (Vector3.Distance(transform.position, go.transform.position) < 1)
+                        {
+                            go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 2);
+                        }
                     }
                 }
-                if (touchPosition.x < lastPosition.x)
+                else if (touchPosition.x < lastPosition.x)
                 {
-                    speed -= Time.deltaTime * 0.75f;
-                    if (speed < 0)
+                    speed = -1;
+                    foreach (GameObject go in allPerso)
                     {
-                        speed = 0;
+                        go.transform.position -= new Vector3(1, 0, 0) * Vector2.Distance(touchPosition, lastPosition);
+                        if (Vector3.Distance(transform.position, go.transform.position) < 1)
+                        {
+                            go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 2);
+                        }
                     }
                 }
             }

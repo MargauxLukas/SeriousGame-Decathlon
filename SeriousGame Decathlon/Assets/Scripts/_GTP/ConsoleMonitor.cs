@@ -111,6 +111,11 @@ public class ConsoleMonitor : MonoBehaviour
      ******************************************/
     public void Envoyer(int emplacement) 
     {
+        if(emplacement != mcv.positionVoulueParEmplacement[(mcv.emplacement+1)%2])
+        {
+            Scoring.instance.LosePointGTP(150, "Tu as valider le mauvais colis");
+        }
+
         if (mcv.PeutFairePartirColis() && !neuviemePos.haveAlreadySomething)
         {
             Scoring.instance.StopComboGTP(5);

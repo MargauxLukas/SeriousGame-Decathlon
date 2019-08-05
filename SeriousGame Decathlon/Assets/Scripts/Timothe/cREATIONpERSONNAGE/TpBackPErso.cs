@@ -8,13 +8,20 @@ public class TpBackPErso : MonoBehaviour
     public bool needSupp;
     public DeroulementMenuChoixPerso menu;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if ((menu.speed > 0 && needSupp) || (menu.speed < 0 && !needSupp))
         {
             if (collision.tag == "PlayerChoice")
             {
-                collision.transform.position = whereToTp.position;
+                if (menu.speed > 0 && needSupp)
+                {
+                    collision.transform.position -= new Vector3(Vector3.Distance(whereToTp.position, transform.position), 0, 0);
+                }
+                else if (menu.speed < 0 && !needSupp)
+                {
+                    collision.transform.position += new Vector3(Vector3.Distance(whereToTp.position, transform.position), 0, 0);
+                }
             }
         }
     }
