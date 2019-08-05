@@ -108,10 +108,6 @@ public class ManagerColisVider : MonoBehaviour
                         emplacementTempo = (emplacementTempo + 1) % 3;
                         nb++;
                     }
-                    Debug.Log(managerColis.colisActuellementTraite[emplacementTempo] != null);
-                    Debug.Log(managerColis.colisActuellementTraite[0] != null);
-                    Debug.Log(managerColis.colisActuellementTraite[1] != null);
-                    //Debug.Log(managerColis.colisActuellementTraite[2] != null);
                     if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
                     {
                         //Debug.Log("Test Here");

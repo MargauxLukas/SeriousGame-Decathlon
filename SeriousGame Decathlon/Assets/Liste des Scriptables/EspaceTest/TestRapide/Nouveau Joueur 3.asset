@@ -15,3 +15,28 @@ MonoBehaviour:
   name: Dovakhin
   date: "36 de la 3e \xE8re des Thalmors"
   score: 876543
+  scoreGTP: 4321
+  scoreReception: 736924
+  scoreMultifonction: 333452
+  erreursReception:
+  - Erreur 1 Test
+  - Erreur 1 Test 2
+  - Erreur 1 Test 3
+  erreursMultifonction:
+  - Erreur 1 Test 4
+  - Erreur 1 Test 5
+  - Erreur 1 Test 6
+  - Erreur 1 Test 7
+  erreursGTP:
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  - Erreur 1 Test
+  nbErreursReception: 030000000100000006000000
+  nbErreursMultifonction: 0c000000220000000700000003000000
+  nbErreursGTP: 4a000000050000002100000001000000d7110000972200009a0200000700000003000000
