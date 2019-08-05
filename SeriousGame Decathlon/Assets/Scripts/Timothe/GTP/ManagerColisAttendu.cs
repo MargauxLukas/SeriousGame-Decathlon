@@ -26,6 +26,8 @@ public class ManagerColisAttendu : MonoBehaviour
 
     private int decompteFinNiveau;
 
+    public bool isLevelEnded = false;
+
     public void Start()
     {
         if(ChargementListeColis.instance != null)
@@ -133,6 +135,7 @@ public class ManagerColisAttendu : MonoBehaviour
         else if(decompteFinNiveau>=2)
         {
             Debug.Log("Fin de niveau");
+            isLevelEnded = true;
             ecranFinNiveau.SetActive(true);
             StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
@@ -227,27 +230,50 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if (colisVoulus[emplacement].listArticles.Count > 0)
         {
-            if (colisCompare.listArticles.Count == colisVoulus[emplacement].listArticles.Count)
+            List<Article> articleEnvoye = new List<Article>();
+            List<Article> articleVoulu = new List<Article>();
+
+            foreach (Article art in colisCompare.listArticles)
             {
-                for (int i = 0; i < colisCompare.listArticles.Count; i++)
+                articleEnvoye.Add(art);
+            }
+            foreach (Article art in colisVoulus[emplacement].listArticles)
+            {
+                articleVoulu.Add(art);
+            }
+            for (int i = 0; i < articleEnvoye.Count; i++)
+            {
+                for (int j = 0; j < articleVoulu.Count; j++)
                 {
-                    if (colisCompare.listArticles[i] != colisVoulus[emplacement].listArticles[i])
+                    if (j < 0) { j = 0; }
+                    if (i < 0) { i = 0; }
+                    //Debug.Log("I : " + i + " et J : " + j);
+                    if (articleEnvoye.Count > 0 && articleVoulu.Count > 0)
                     {
-                        colisVoulus[emplacement] = new Colis();
-                        Debug.Log("Un colis a été mal fait");
-                        Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
-                        return false;
+                        if (articleEnvoye[i] == articleVoulu[j])
+                        {
+                            //Debug.Log("Test Detect");
+                            articleVoulu.RemoveAt(j);
+                            articleEnvoye.RemoveAt(i);
+                            j--;
+                            i--;
+                        }
                     }
                 }
+            }
+
+            if(articleEnvoye.Count>0 || articleVoulu.Count>0)
+            {
                 colisVoulus[emplacement] = new Colis();
-                Scoring.instance.WinPointGTP(150);
-                return true;
+                Debug.Log("Un colis a été mal fait");
+                Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                return false;
             }
             else
             {
                 colisVoulus[emplacement] = new Colis();
-                Scoring.instance.LosePointGTP(50, "Il y a trop ou pas assez d'articles dans ton colis");
-                return false;
+                Scoring.instance.WinPointGTP(150);
+                return true;
             }
         }
         return true;
