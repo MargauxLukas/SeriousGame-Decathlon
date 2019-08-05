@@ -6723,12 +6723,12 @@ PrefabInstance:
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.1
+      value: 9.4
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.37
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -9751,7 +9751,7 @@ MonoBehaviour:
   positionVoulueParEmplacement: 0000000000000000
   chanceColisPasRemplit: 10
   chanceArticlePasBon: 15
-  chanceColisPasBon: 3
+  chanceColisPasBon: 2
   photoArticle: {fileID: 1572741195}
   managerColis: {fileID: 882313606}
   colisActuellementsPose:

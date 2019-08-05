@@ -38,7 +38,7 @@ MonoBehaviour:
   nombreColisReception: 27
   nbColisVoulu: 7
   chanceMauvaisArticle: 5
-  chanceAllMauvaisArticle: 10
+  chanceAllMauvaisArticle: 2
   chancePasRemplit: 5
   chanceInternet: 25
   ChanceTropArticle: 15

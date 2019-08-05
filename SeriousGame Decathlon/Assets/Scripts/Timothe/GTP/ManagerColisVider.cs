@@ -253,22 +253,14 @@ public class ManagerColisVider : MonoBehaviour
 
                 if (newColis != null)
                 {
-                    if (Random.Range(0, 100) < chanceColisPasRemplit)
-                    {
-                        int nbArticleDebut = newColis.listArticles.Count;
-                        for (int i = 0; i < nbArticleDebut * 2 / 3; i++)
-                        {
-                            newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
-                        }
-                    }
-                    else if (Random.Range(0, 100) < chanceArticlePasBon && emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack <= 0)
+                    if (Random.Range(0, 100) < chanceArticlePasBon && emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack <= 0)
                     {
                         while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
                         {
                             newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
                         }
                     }
-                    else if (Random.Range(0, 100) < chanceColisPasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
+                    if (Random.Range(0, 100) < chanceColisPasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
                     {
                         emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 0;
                         newColis.gtpSupposedToBe = newColis.listArticles[0];
@@ -282,12 +274,27 @@ public class ManagerColisVider : MonoBehaviour
                             newColis.listArticles[m] = newArticleMauvais;
                         }
                     }
+                    if (Random.Range(0, 100) < chanceColisPasRemplit)
+                    {
+                        int nbArticleDebut = newColis.listArticles.Count;
+                        for (int i = 0; i < nbArticleDebut * 2 / 3; i++)
+                        {
+                            newColis.listArticles.RemoveAt(newColis.listArticles.Count - 1);
+                        }
+                    }
                 }
             }
         }
         if (newColis != null && newColis.listArticles != null && newColis.listArticles.Count > 0 && newColis.listArticles[0] != null)
         {
-            emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
+            if (newColis.gtpSupposedToBe != null)
+            {
+                emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.gtpSupposedToBe;
+            }
+            else
+            {
+                emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
+            }
         }
         return newColis;
     }

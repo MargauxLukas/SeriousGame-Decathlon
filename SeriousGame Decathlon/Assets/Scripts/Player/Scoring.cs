@@ -490,7 +490,10 @@ public class Scoring : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         errorTextZone.gameObject.SetActive(false);
-        errorTextZoneDeux.gameObject.SetActive(false);
+        if (errorTextZoneDeux != null)
+        {
+            errorTextZoneDeux.gameObject.SetActive(false);
+        }
     }
 
     //BONUS
