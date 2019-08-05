@@ -37,6 +37,7 @@ public class PosteOnClick : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Interaction 20 touch count");
                     if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(20); }
                     cameraPoste .SetActive(true);
                     cameraDezoom.SetActive(false);
@@ -51,12 +52,14 @@ public class PosteOnClick : MonoBehaviour
         {
             if (Vector2.Distance(player.transform.position, gameObject.transform.position) < distance)
             {
+                Debug.Log("Interaction 20 isMoving");
                 if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(20); }
                 cameraPoste .SetActive(true);
                 cameraDezoom.SetActive(false);
                 aStar       .SetActive(false);
                 moniteur    .SetActive(false);
                 player      .SetActive(false);
+                isMoving = false;
             }
         }
     }
