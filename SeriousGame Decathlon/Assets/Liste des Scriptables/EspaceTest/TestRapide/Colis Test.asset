@@ -26,8 +26,8 @@ MonoBehaviour:
   nomWayTicket: 
   wayTicket: {fileID: 11400000, guid: f95215e725ae15d449f4d79b36a534b1, type: 2}
   listArticles: []
-  nbAnomalie: 2
-  listAnomalies:
-  - RFID tags to be applied
-  - RFID tag over Tolerance
+  nbAnomalie: 0
+  listAnomalies: []
+  comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 0}
   provenance: Gland

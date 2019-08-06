@@ -95,7 +95,7 @@ public class RFIDScan : MonoBehaviour
                     printRFID2.SetActive(true);
                     recountTab.refRFID1 = infoRFID.refIntRFID;
                     recountTab.refRFID2 = infoRFID2.refIntRFID;
-                }           
+                }
             }
             else
             {
