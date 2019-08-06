@@ -683,7 +683,7 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector2(0, 0)          , new Vector2(0, 0)   ,
                     new Vector2(-5.57f, -3.67f), new Vector2(1, 1)   ,
                     new Vector2(0, 0)          , new Vector2(0, 0)   ,
-                    new Vector2(61.32f, -4.54f),
+                    new Vector2(61.15f, -4.42f),
                     new Vector3(0, 0, 0)       , new Vector3(0, 0, 0), 0, false,
                     new Vector2(0, 0)          , 0                   , 0, 0    );
 
@@ -717,9 +717,9 @@ public class TutoManagerRecep : MonoBehaviour
             Indications(new Vector2(0, 0)         , new Vector2(0, 0),
                         new Vector2(0, 0)         , new Vector2(0, 0),
                         new Vector2(1.46f, -3.67f), new Vector2(1, 1),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0),
-                        new Vector3(68.13f, -4.32f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0)         , new Vector2(0, 0),
+                        new Vector2(0, 0)         ,
+                        new Vector3(67.88f, -4.15f, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.unfoldButton).interactable = true;
@@ -782,7 +782,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(-3.21f, -11.96f), new Vector2(1,1),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(63.44f, -12.42f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector3(63.2f, -12.45f, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(72.2f, -7.08f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.ascendButton).interactable = true;
@@ -1097,7 +1097,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(65.68f, -12.74f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector3(65.5f, -12.44f, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(72.2f, -7.8f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.descendButton).interactable = true;
@@ -1586,7 +1586,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(61.22f, -12.91f),
+                        new Vector2(61.15f, -12.72f),
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
@@ -1721,7 +1721,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(63.24f, 1.72f),
+                        new Vector2(63.08f, -5.3f),
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
@@ -1869,7 +1869,7 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(61.22f, -12.91f),
+                    new Vector2(61.15f, -12.76f),
                     new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
 
