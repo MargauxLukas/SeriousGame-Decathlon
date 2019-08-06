@@ -16,6 +16,10 @@ public class ChargementListeColis : MonoBehaviour
     public List<Colis> colisProcessMulti;
     public List<Colis> colisProcessReception;
 
+    public bool needMF = true;
+    public bool needGTP = true;
+    public bool needRecep = true;
+
     //Pour le réception
     public float chanceAnomalieRecep;
     public int nombreColisRecep;
@@ -96,6 +100,13 @@ public class ChargementListeColis : MonoBehaviour
         nombreColisRecep = nombreColisRestant;
         SceneManager.LoadScene(6);
     }
+
+    public void QuitGTPLevel(int nombreColisRestant)
+    {
+        nbColisVoulu = nombreColisRestant;
+        SceneManager.LoadScene(6);
+    }
+
 
     public void LoadNewLevelScript(int currentLevelTempo)
     {

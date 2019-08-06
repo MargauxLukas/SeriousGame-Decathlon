@@ -300,7 +300,7 @@ public class ManagerColisVider : MonoBehaviour
                 emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = true;
             }
         }
-        if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null)
+        if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null && !managerColis.isLevelEnded)
         {
             StartCoroutine(colisAnimationVenir[emplacement].GetComponent<AnimationFaireVenirColis>().AnimationColis(emplacementsScripts[emplacement]));
         }

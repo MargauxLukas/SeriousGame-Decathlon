@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerColisAttendu : MonoBehaviour
 {
@@ -423,6 +424,29 @@ public class ManagerColisAttendu : MonoBehaviour
         for(int m = 0; m < nbArticleTotal - nombreArticleVoulu; m++)
         {
             colisVoulus[3].listArticles.Add(articleEnQuestion);
+        }
+    }
+
+    public void Quit()
+    {
+        if (ChargementListeColis.instance == null)
+        {
+            SceneManager.LoadScene(6);
+        }
+        else
+        {
+            if (colisVoulus.Count > 3)
+            {
+                ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
+            }
+            else
+            {
+                ChargementListeColis.instance.QuitGTPLevel(3);
+            }
+            if(isLevelEnded)
+            {
+                ChargementListeColis.instance.QuitGTPLevel(0);
+            }
         }
     }
 }
