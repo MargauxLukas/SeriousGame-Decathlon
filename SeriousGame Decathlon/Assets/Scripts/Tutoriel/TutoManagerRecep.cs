@@ -73,13 +73,16 @@ public class TutoManagerRecep : MonoBehaviour
 
     public void RenvoiColis()
     {
+        Debug.Log("Renvoi Colis");
         colisNum++;
 
+        Debug.Log("ColisNum : " + colisNum);
         if (colisNum >= 3)
         {
             colisNum = 0;
             phaseNum++;
             Manager(8);
+            Debug.Log("PhaseNum : " + phaseNum);
         }
     }
 
@@ -122,9 +125,9 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (circleSpriteMask02Pos != Vector2.zero && circleSpriteMask02Scale != Vector2.zero)
         {
-            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask01).transform.localPosition =   circleSpriteMask02Pos;
-            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask01).transform.localScale    = circleSpriteMask02Scale;
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask01).enabled = true;
+            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask02).transform.localPosition =   circleSpriteMask02Pos;
+            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask02).transform.localScale    = circleSpriteMask02Scale;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask02).enabled = true;
         }
 
         if (doigtClickPos != Vector2.zero)
@@ -516,6 +519,10 @@ public class TutoManagerRecep : MonoBehaviour
                         break;
 
                     case (39):
+                        RenvoiColis();
+                        break;
+
+                    case (52):
                         RenvoiColis();
                         break;
                 }
@@ -1747,6 +1754,8 @@ public class TutoManagerRecep : MonoBehaviour
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.ampouleSpriteMask).enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.ampoule).interactable = false;
 
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.detectAnomaliesDesk).enabled = false;
+
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.arrowCameraDezoom).transform.localPosition = new Vector3(-4.29f, 4.67f, 2);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.arrowCameraDezoom).transform.localScale = new Vector3(1.5f, 1.5f, 1);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.arrowCameraDezoom).transform.localRotation = Quaternion.Euler(0, 0, 180);
@@ -1865,6 +1874,8 @@ public class TutoManagerRecep : MonoBehaviour
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.posteInteractible).enabled = false;
 
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.detectAnomaliesDesk).enabled = true;
+
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
@@ -1964,6 +1975,7 @@ public class TutoManagerRecep : MonoBehaviour
         {
             canPlayFirst = true;
             canPlaySecond = false;
+            colisNum = 0;
             phaseNum++;
 
             Manager(4);
@@ -1972,7 +1984,6 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase52()
     {
-        colisNum = 13;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = true;
 
         gameObjectsManager.colis14.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
@@ -1990,11 +2001,12 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase53()
     {
+        Debug.Log("Phase53");
         if (canPlayFirst)
         {
+            Debug.Log("Phase53 First");
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = false;
 
-            gameObjectsManager.colis14.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
             gameObjectsManager.colis15.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
             gameObjectsManager.colis16.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
@@ -2014,8 +2026,8 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(-7.85f, -12.19f), new Vector2(1, 1),
-                    new Vector2(3.85f, -12.19f), new Vector2(1, 1),
+                    new Vector2(-7.85f, -11.98f), new Vector2(1, 1),
+                    new Vector2(3.85f, -11.98f), new Vector2(1, 1),
                     new Vector2(0, 0),
                     new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
@@ -2155,7 +2167,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(1, 1),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(59.41f, -2.34f),
+                        new Vector2(59.19f, -2.3f),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
