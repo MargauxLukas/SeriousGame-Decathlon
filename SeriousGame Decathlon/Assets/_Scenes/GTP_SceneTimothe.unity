@@ -8473,7 +8473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ecranCorrectQuantity: {fileID: 1542462229}
-  mcv: {fileID: 0}
+  mcv: {fileID: 882313604}
 --- !u!1 &798927084
 GameObject:
   m_ObjectHideFlags: 0
