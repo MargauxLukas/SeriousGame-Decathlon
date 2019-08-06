@@ -102,20 +102,11 @@ public class ManagerColisVider : MonoBehaviour
                     }
                     int randomArticleVoulu = 0;
                     int nb = 0;
-                    while (((managerColis.colisActuellementTraite[emplacementTempo] == null || managerColis.colisActuellementTraite[emplacementTempo].Equals(null))||AncientEmplacementTempo==emplacementTempo)&& nb < 9)
+                    while ((managerColis.colisActuellementTraite[emplacementTempo] == null || managerColis.colisActuellementTraite[emplacementTempo].Equals(null))&& nb < 9)
                     {
                         Debug.Log("Test Choix colis déjà traité : " + emplacementTempo);
                         emplacementTempo = (emplacementTempo + 1) % 3;
                         nb++;
-                    }
-                    nb = 0;
-                    if(emplacementTempo == AncientEmplacementTempo)
-                    {
-                        while ((managerColis.colisActuellementTraite[emplacementTempo] == null || managerColis.colisActuellementTraite[emplacementTempo].Equals(null))&& nb < 3)
-                        {
-                            emplacementTempo = (emplacementTempo + 1) % 3;
-                            nb++;
-                        }
                     }
                     if (colisActuellementsPose != null && colisActuellementsPose.Count > emplacementTempo)
                     {
@@ -153,7 +144,7 @@ public class ManagerColisVider : MonoBehaviour
                                                     for (int g = managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count - 1; g > c; g--)
                                                     {
                                                         Debug.Log("Test here G : " + g);
-                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
+                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[(emplacement+1)%2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
                                                         {
                                                             randomArticleVoulu = g;
                                                             Debug.Log("Test here 6 : " + randomArticleVoulu);
@@ -165,7 +156,7 @@ public class ManagerColisVider : MonoBehaviour
                                                     for (int g = c; g < managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count - 1; g++)
                                                     {
                                                         Debug.Log("Test here G2 : " + g);
-                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
+                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[(emplacement+1)%2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
                                                         {
                                                             randomArticleVoulu = g;
                                                             Debug.Log("Test here 6.5 : " + randomArticleVoulu);
@@ -253,13 +244,6 @@ public class ManagerColisVider : MonoBehaviour
 
                 if (newColis != null)
                 {
-                    if (Random.Range(0, 100) < chanceArticlePasBon && emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack <= 0)
-                    {
-                        while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
-                        {
-                            newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
-                        }
-                    }
                     if (Random.Range(0, 100) < chanceColisPasBon)//Mettre un nouveau flaot de chance d'avoir le colis pas bon
                     {
                         emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 0;
@@ -274,7 +258,14 @@ public class ManagerColisVider : MonoBehaviour
                             newColis.listArticles[m] = newArticleMauvais;
                         }
                     }
-                    if (Random.Range(0, 100) < chanceColisPasRemplit)
+                    else if (Random.Range(0, 100) < chanceArticlePasBon && emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack <= 0)
+                    {
+                        while (newColis.listArticles[0] == newColis.listArticles[newColis.listArticles.Count - 1])
+                        {
+                            newColis.listArticles[newColis.listArticles.Count - 1] = colisVider[Random.Range(0, colisVider.Count - 1)].listArticles[0];
+                        }
+                    }
+                    else if (Random.Range(0, 100) < chanceColisPasRemplit)
                     {
                         int nbArticleDebut = newColis.listArticles.Count;
                         for (int i = 0; i < nbArticleDebut * 2 / 3; i++)

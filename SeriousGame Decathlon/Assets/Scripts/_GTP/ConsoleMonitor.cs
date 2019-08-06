@@ -76,28 +76,17 @@ public class ConsoleMonitor : MonoBehaviour
                 }
             }*/
 
-            nbArticleEnQuestion = 0;
             nbArticleEnCours = 0;
-
-            foreach (Article art in colisAttenduManage.colisActuellementTraite[emplacement].listArticles)
-            {
-                if (art == reference)
-                {
-                    Debug.Log("Test bonne ref");
-                    nbArticleEnQuestion++;
-                }
-            }
-            Debug.Log("Test nbMonitor : "+ nbMonitor);
+            Debug.Log("Test nbMonitor : "+ nb);
             for (int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
             {
                 if (colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur] == reference)
                 {
                     nbArticleEnCours++;
-                    if (nbArticleEnCours <= nbArticleEnQuestion)
+                    if (nbArticleEnCours <= Mathf.Abs(nb))
                     {
                         Debug.Log("Is removing : " + colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur].name);
                         colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
-                        colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);
                         compteur--;
                     }
                 }
