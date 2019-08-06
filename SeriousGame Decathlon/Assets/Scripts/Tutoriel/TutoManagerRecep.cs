@@ -2069,7 +2069,7 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(61.32f, -4.54f),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
@@ -2089,7 +2089,7 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
@@ -2150,12 +2150,12 @@ public class TutoManagerRecep : MonoBehaviour
         if (canPlayFirst)
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(1, 1),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0),
-                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
-                    new Vector2(0, 0), 0, 0, 0);
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(1, 1),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
