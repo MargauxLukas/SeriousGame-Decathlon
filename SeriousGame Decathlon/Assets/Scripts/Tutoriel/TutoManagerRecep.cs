@@ -1975,9 +1975,9 @@ public class TutoManagerRecep : MonoBehaviour
         colisNum = 13;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = true;
 
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis14).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis15).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis16).enabled = true;
+        gameObjectsManager.colis14.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+        gameObjectsManager.colis15.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+        gameObjectsManager.colis16.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
         gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = true;
@@ -1994,9 +1994,9 @@ public class TutoManagerRecep : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = false;
 
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis14).enabled = false;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis15).enabled = false;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis16).enabled = false;
+            gameObjectsManager.colis14.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
+            gameObjectsManager.colis15.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
+            gameObjectsManager.colis16.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = false;
