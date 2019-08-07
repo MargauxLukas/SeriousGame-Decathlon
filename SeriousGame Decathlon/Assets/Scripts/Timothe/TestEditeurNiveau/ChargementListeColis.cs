@@ -32,6 +32,8 @@ public class ChargementListeColis : MonoBehaviour
     public float chanceInternet;
     public float ChanceTropArticle;
 
+    public int apparitionPos = 0;
+
     //Général
     public AnomalieDetection anomDetect;
 
@@ -93,18 +95,21 @@ public class ChargementListeColis : MonoBehaviour
     {
         colisProcessMulti = colisMulti;
         RFIDKnowed = RFIDknowned;
+        apparitionPos = 1;
         SceneManager.LoadScene(6);
     }
 
     public void QuitReceptionLevel(int nombreColisRestant, bool hasBeenReturn)
     {
         nombreColisRecep = nombreColisRestant;
+        apparitionPos = 2;
         SceneManager.LoadScene(6);
     }
 
     public void QuitGTPLevel(int nombreColisRestant)
     {
         nbColisVoulu = nombreColisRestant;
+        apparitionPos = 2;
         SceneManager.LoadScene(6);
     }
 
