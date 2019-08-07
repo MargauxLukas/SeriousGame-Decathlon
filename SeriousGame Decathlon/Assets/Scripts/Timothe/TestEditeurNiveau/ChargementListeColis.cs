@@ -76,6 +76,7 @@ public class ChargementListeColis : MonoBehaviour
     private void Start()
     {
         //LoadNewLevelScript(currentLevel);
+        currentPlayerScriptable = Instantiate(currentPlayerScriptable);
     }
 
     public void QuitGame()

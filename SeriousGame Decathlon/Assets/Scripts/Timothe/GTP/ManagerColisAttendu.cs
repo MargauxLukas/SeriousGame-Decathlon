@@ -219,6 +219,14 @@ public class ManagerColisAttendu : MonoBehaviour
             }
         }
 
+        if (colisActuellementTraite[emplacement].comeFromInternet)
+        {
+            if (colisViderManage.emplacementsScripts[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisToCompare.listArticles.Count)
+            {
+                Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
+            }
+        }
+
         bool noAnomalie = true;
         if (articleEnvoye.Count > 0 || articleEnvoye.Count > 0)
         {

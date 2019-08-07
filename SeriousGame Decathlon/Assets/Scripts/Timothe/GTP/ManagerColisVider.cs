@@ -121,33 +121,25 @@ public class ManagerColisVider : MonoBehaviour
                                 {
                                     if (randomArticleVoulu == -2)
                                     {
-                                        Debug.Log("Test Here 3 : " + c);
-                                        if (colisActuellementsPose[emplacementTempo] == null)
+                                        if (colisActuellementsPose[emplacementTempo] == null && emplacementTempo != AncientEmplacementTempo)
                                         {
-                                            if (emplacementTempo != AncientEmplacementTempo)
-                                            {
-                                                Debug.Log("Test Here 4");
-                                                randomArticleVoulu = 0;
-                                            }
+                                            randomArticleVoulu = 0;
                                         }
                                         else if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[c]))
                                         {
-                                            if (emplacementTempo != AncientEmplacementTempo)
+                                            if (emplacementTempo != AncientEmplacementTempo && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[c]) && !emplacementsScripts[(emplacement + 1) % 2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[c]))
                                             {
-                                                Debug.Log("Test Here 5");
                                                 randomArticleVoulu = c;
                                             }
                                             else
                                             {
-                                                if(colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Count>0)
+                                                if (colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Count > 0)
                                                 {
                                                     for (int g = managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count - 1; g > c; g--)
                                                     {
-                                                        Debug.Log("Test here G : " + g);
-                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[(emplacement+1)%2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
+                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[(emplacement + 1) % 2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
                                                         {
                                                             randomArticleVoulu = g;
-                                                            Debug.Log("Test here 6 : " + randomArticleVoulu);
                                                         }
                                                     }
                                                 }
@@ -155,11 +147,9 @@ public class ManagerColisVider : MonoBehaviour
                                                 {
                                                     for (int g = c; g < managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count - 1; g++)
                                                     {
-                                                        Debug.Log("Test here G2 : " + g);
-                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[(emplacement+1)%2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
+                                                        if (!colisActuellementsPose[emplacementTempo].colisScriptable.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]) && !emplacementsScripts[(emplacement + 1) % 2].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Contains(managerColis.colisActuellementTraite[emplacementTempo].listArticles[g]))
                                                         {
                                                             randomArticleVoulu = g;
-                                                            Debug.Log("Test here 6.5 : " + randomArticleVoulu);
                                                         }
                                                     }
                                                 }
@@ -170,7 +160,6 @@ public class ManagerColisVider : MonoBehaviour
                                         else if (c + 1 == managerColis.colisActuellementTraite[emplacementTempo].listArticles.Count)
                                         {
                                             randomArticleVoulu = -1;
-                                            Debug.Log("Test ici 2");
                                         }
                                     }
                                 }
@@ -231,11 +220,8 @@ public class ManagerColisVider : MonoBehaviour
                         etatColis[0] = true;
                         etatColis[1] = true;
                     }
-                    Debug.Log("L'ancien : " + AncientEmplacementTempo);
-                    Debug.Log("Le nouveau : " + emplacementTempo);
                     positionVoulueParEmplacement[empalcementColisCree] = emplacementTempo;
                     AncientEmplacementTempo = emplacementTempo;
-                    Debug.Log(randomArticleVoulu);
                 }
                 else if (colisVider.Count > 0)
                 {
@@ -375,7 +361,7 @@ public class ManagerColisVider : MonoBehaviour
 
     IEnumerator ActiverAutreColis(int emplacement)
     {
-        Scoring.instance.BeginComboGTP(90);
+        Scoring.instance.BeginComboGTP(45);
 
         for(int m = 0; m < 100; m++)
         {
