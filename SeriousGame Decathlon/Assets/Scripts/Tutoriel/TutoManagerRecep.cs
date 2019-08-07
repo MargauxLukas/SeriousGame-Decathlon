@@ -2094,6 +2094,9 @@ public class TutoManagerRecep : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.validateButton).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.foldUpButton).interactable = false;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
@@ -2104,7 +2107,7 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(61.32f, -4.54f),
+                    new Vector2(61.13f, -4.43f),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
 

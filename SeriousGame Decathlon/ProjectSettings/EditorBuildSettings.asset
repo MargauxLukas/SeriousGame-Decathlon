@@ -45,12 +45,12 @@ EditorBuildSettings:
     path: Assets/_Scenes/TutorielMF.unity
     guid: 66f9048f87598914eb7514ee85ea3dc8
   - enabled: 1
-    path: Assets/_Scenes/TutorielRecep.unity
-    guid: 6482a76d5359d464bbcdf2c729d4e9d4
-  - enabled: 1
     path: Assets/_Scenes/GTP_SceneTimothe.unity
     guid: 42bd423f57c2e754babed602d4d8a6ff
   - enabled: 1
     path: Assets/_Scenes/Timothe Test/ChoixPersonnage.unity
     guid: 714de1ae0afb64149a15658e31f3e253
+  - enabled: 1
+    path: Assets/_Scenes/TutorielRecep.unity
+    guid: 6482a76d5359d464bbcdf2c729d4e9d4
   m_configObjects: {}
