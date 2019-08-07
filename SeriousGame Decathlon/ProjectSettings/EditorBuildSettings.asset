@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/MenuMF.unity
     guid: 7bfab139be9b9e543bade9337b981886
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/SceneProtoUn.unity
     guid: 3eb357cae4b94c34cb6489b13f924e37
   - enabled: 0
@@ -17,31 +17,31 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/SceneProtoUn  Timothe1.unity
     guid: 2e04abbc7aff9f349ab9ea357f6c1d9e
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Timothe Test/ChoixDeNiveauMF.unity
     guid: 80b9679d633b03b4ea552d2ea3a678d0
   - enabled: 0
     path: Assets/_Scenes/Timothe Test/SceneTutoTempo.unity
     guid: 5814cae61690de8459233eb9cbb00090
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Timothe Test/ChoixDeTutoriel.unity
     guid: d891107454b123940b408bbb6e7b7f50
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Timothe Test/AffichageScore.unity
     guid: f381a957bd7d0c840be16ed9dc206a6e
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/EditeurLeveLTest.unity
     guid: 12380f7f1fa617e44b8385708d342a0b
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/BrouillonSceneGenerale.unity
     guid: 90f0fa47be179554aa4eda763be8591b
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/RecepTimothe.unity
     guid: 1bb53bdaff083fd478ffaaa2a9cc3d7e
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Timothe Test/HallOfFame.unity
     guid: 744190abba1f2e8438115845770f68ce
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/TutorielMF.unity
     guid: 66f9048f87598914eb7514ee85ea3dc8
   - enabled: 1

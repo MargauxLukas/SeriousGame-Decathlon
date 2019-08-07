@@ -104,6 +104,7 @@ public class ChargementListeColis : MonoBehaviour
             if (nomDuJoueur.text != null)
             {
                 currentPlayerScriptable.name = nomDuJoueur.text;
+                Client.instance.SendCreateAccount(currentPlayerScriptable.name);
             }
             else
             {
@@ -173,5 +174,10 @@ public class ChargementListeColis : MonoBehaviour
 
         //Ajouter le choix des process pour le level load.
         LoadNewScene(sceneToLoad);
+    }
+
+    public void ChangeAuthentificationMessage(string msg)
+    {
+        Debug.Log(msg);
     }
 }

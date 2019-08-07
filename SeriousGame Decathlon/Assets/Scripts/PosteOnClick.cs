@@ -38,7 +38,7 @@ public class PosteOnClick : MonoBehaviour
                 else
                 {
                     if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(20); }
-                    cameraPoste .SetActive(true);
+                    cameraPoste .SetActive(true );
                     cameraDezoom.SetActive(false);
                     aStar       .SetActive(false);
                     moniteur    .SetActive(false);
@@ -52,7 +52,7 @@ public class PosteOnClick : MonoBehaviour
             if (Vector2.Distance(player.transform.position, gameObject.transform.position) < distance)
             {
                 if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(20); }
-                cameraPoste .SetActive(true);
+                cameraPoste .SetActive(true );
                 cameraDezoom.SetActive(false);
                 aStar       .SetActive(false);
                 moniteur    .SetActive(false);
@@ -66,10 +66,10 @@ public class PosteOnClick : MonoBehaviour
         if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(45);}
         if (TutoManagerRecep.instance != null) {TutoManagerRecep.instance.Manager(14);}
         cameraPoste .SetActive(false);
-        cameraDezoom.SetActive(true);
-        aStar       .SetActive(true);
-        moniteur    .SetActive(true);
-        player      .SetActive(true);
+        cameraDezoom.SetActive(true );
+        aStar       .SetActive(true );
+        moniteur    .SetActive(true );
+        player      .SetActive(true );
 
         if (managerConvoie)
         {
