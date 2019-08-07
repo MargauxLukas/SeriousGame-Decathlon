@@ -96,14 +96,28 @@ public class ChargementListeColis : MonoBehaviour
         colisProcessMulti = colisMulti;
         RFIDKnowed = RFIDknowned;
         apparitionPos = 1;
-        SceneManager.LoadScene(6);
+        if(TutoManagerMulti.instance != null)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     public void QuitReceptionLevel(int nombreColisRestant, bool hasBeenReturn)
     {
         nombreColisRecep = nombreColisRestant;
         apparitionPos = 2;
-        SceneManager.LoadScene(6);
+        if(TutoManagerRecep.instance != null)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     public void QuitGTPLevel(int nombreColisRestant)
