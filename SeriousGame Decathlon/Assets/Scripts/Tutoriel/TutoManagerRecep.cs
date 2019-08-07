@@ -195,14 +195,29 @@ public class TutoManagerRecep : MonoBehaviour
     {
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
 
-        if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
+        if(phaseNum >= 47)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
-            gameObjectsManager.GameObjectToAnimator (gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.25f)
+            {
+                gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            }
+            else
+            {
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            }
         }
         else
         {
-            gameObjectsManager.GameObjectToAnimator (gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
+            {
+                gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            }
+            else
+            {
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            }
         }
 
         yield return new WaitForSeconds(Time.fixedDeltaTime);
@@ -213,7 +228,15 @@ public class TutoManagerRecep : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        phaseNum++;
+        if(phaseNum == 54.1f)
+        {
+            phaseNum += 0.9f;
+        }
+        else
+        {
+            phaseNum++;
+        }
+
         canPlayFirst  =  true;
         canPlaySecond = false;
 
@@ -337,6 +360,10 @@ public class TutoManagerRecep : MonoBehaviour
 
                     case (52):
                         Phase52();
+                        break;
+
+                    case (55):
+                        Phase55();
                         break;
 
                     case (57):
@@ -674,8 +701,8 @@ public class TutoManagerRecep : MonoBehaviour
             case (25):
                 switch (phaseNum)
                 {
-                    case (55):
-                        Phase55();
+                    case (54.1f):
+                        Phase54bis();
                         break;
                 }
                 break;
@@ -1190,6 +1217,7 @@ public class TutoManagerRecep : MonoBehaviour
         if (canPlayFirst)
         {
             gameObjectsManager.colis5.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.palette).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -1690,7 +1718,6 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase40()
     {
-        gameObjectsManager.colis10.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
         gameObjectsManager.colis11.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
         gameObjectsManager.colis12.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
@@ -1901,22 +1928,23 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
 
+            gameObjectsManager.colis13.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(-2.87f, -8.75f), new Vector2(0.84f, 0.9f),
+            Indications(new Vector2(-2.88f, -8.75f), new Vector2(0.65f, 0.72f),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(1.2f, -4.67f), new Vector2(0.6f, 0.6f),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(67.82f, -5.51f, 0), new Vector3(63.79f, -9.39f, 0), 4, true,
+                        new Vector3(67.63f, -5.1f, 0), new Vector3(63.64f, -9.21f, 0), 4, true,
                         new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = true;
-            gameObjectsManager.colis13.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -2051,16 +2079,21 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
 
-        phaseNum++;
+        phaseNum += 0.1f;
+    }
+
+    void Phase54bis()
+    {
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.validateButton).interactable = false;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.foldUpButton).interactable = false;
+
+        StartCoroutine(NewPhase(0.5f));
     }
 
     void Phase55()
     {
         if (canPlayFirst)
         {
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.validateButton).interactable = false;
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.foldUpButton).interactable = false;
-
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
@@ -2133,7 +2166,7 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(-7.45f, 1.86f), new Vector2(1.78f, 2.48f),
+            Indications(new Vector2(-6.01f, 2.37f), new Vector2(3.17f, 2.02f),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(1, 1),
                     new Vector2(0, 0), new Vector2(0, 0),

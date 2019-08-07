@@ -53,6 +53,8 @@ public class ConvoyeurManager : MonoBehaviour
         }
     }
 
+    bool didTheTuto = false;
+
     /********************************************************
     *   Permet de faire avancer ou reculer le convoyeur     *
     ********************************************************/
@@ -78,7 +80,11 @@ public class ConvoyeurManager : MonoBehaviour
             {
                 PlayerNotMove();
                 isReplierMax = true;
-                if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(25); }
+                if(!didTheTuto)
+                {
+                    if (TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(25); }
+                    didTheTuto = true;
+                }
             }
         }
         else
