@@ -8,16 +8,6 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
     public List<int> listPersos;
 
     public float speed;
-    public float diffWithPlanete;
-    public bool isStar;
-    public bool isLorris;
-    public int nombreEtoiles;
-
-    public Animator animator;
-
-    public List<GameObject> etoilesDisponibles;
-    public Transform parentEtoiles;
-
     private Vector2 lastPosition;
 
     public int currentPErso;
@@ -26,7 +16,7 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        allPerso[1].GetComponent<MenuPersoChoice>().StartAnim();
     }
 
     // Update is called once per frame
@@ -119,7 +109,9 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
                 {
                     go.transform.position += newPos;
                     go.transform.localScale = Vector3.one * 3;
+                    go.GetComponent<MenuPersoChoice>().StopAnim();
                 }
+                goToTake.GetComponent<MenuPersoChoice>().StartAnim();
                 goToTake.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, goToTake.transform.position) / 6) * 3;
                 ManagerPersoChoisit.instance.Personnage = goToTake.GetComponent<MenuPersoChoice>().numDuPerso;
             }

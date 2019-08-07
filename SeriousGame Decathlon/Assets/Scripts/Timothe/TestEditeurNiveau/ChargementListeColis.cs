@@ -32,6 +32,8 @@ public class ChargementListeColis : MonoBehaviour
     public float chanceInternet;
     public float ChanceTropArticle;
 
+    public int apparitionPos = 0;
+
     //Général
     public AnomalieDetection anomDetect;
 
@@ -76,6 +78,7 @@ public class ChargementListeColis : MonoBehaviour
     private void Start()
     {
         //LoadNewLevelScript(currentLevel);
+        currentPlayerScriptable = Instantiate(currentPlayerScriptable);
     }
 
     public void QuitGame()
@@ -92,18 +95,35 @@ public class ChargementListeColis : MonoBehaviour
     {
         colisProcessMulti = colisMulti;
         RFIDKnowed = RFIDknowned;
-        SceneManager.LoadScene(6);
+        apparitionPos = 1;
+        if(TutoManagerMulti.instance != null)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     public void QuitReceptionLevel(int nombreColisRestant, bool hasBeenReturn)
     {
         nombreColisRecep = nombreColisRestant;
-        SceneManager.LoadScene(6);
+        apparitionPos = 2;
+        if(TutoManagerRecep.instance != null)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     public void QuitGTPLevel(int nombreColisRestant)
     {
         nbColisVoulu = nombreColisRestant;
+        apparitionPos = 2;
         SceneManager.LoadScene(6);
     }
 

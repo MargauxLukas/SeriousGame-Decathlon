@@ -70,54 +70,57 @@ public class LevelEditor : MonoBehaviour
 
     private void Update()
     {
-        if (int.Parse(GtpInputfieldNombreColis.text) < 3)
+        if (ongletGTP.activeSelf)
         {
-            GtpInputfieldNombreColis.text = "3";
-        }
+            if (!string.IsNullOrEmpty(GtpInputfieldNombreColis.text) && int.Parse(GtpInputfieldNombreColis.text) < 3)
+            {
+                GtpInputfieldNombreColis.text = "3";
+            }
 
-        if (int.Parse(GtpInputfieldMauvaisArticle.text) > 100)
-        {
-            GtpInputfieldMauvaisArticle.text = "100";
-        }
-        else if(int.Parse(GtpInputfieldMauvaisArticle.text) < 0)
-        {
-            GtpInputfieldMauvaisArticle.text = "0";
-        }
+            if (!string.IsNullOrEmpty(GtpInputfieldMauvaisArticle.text) && int.Parse(GtpInputfieldMauvaisArticle.text) > 100)
+            {
+                GtpInputfieldMauvaisArticle.text = "100";
+            }
+            else if (!string.IsNullOrEmpty(GtpInputfieldMauvaisArticle.text) && int.Parse(GtpInputfieldMauvaisArticle.text) < 0)
+            {
+                GtpInputfieldMauvaisArticle.text = "0";
+            }
 
-        if (int.Parse(GtpInputfieldAllMauvaisArticle.text) > 100)
-        {
-            GtpInputfieldAllMauvaisArticle.text = "100";
-        }
-        else if (int.Parse(GtpInputfieldAllMauvaisArticle.text) < 0)
-        {
-            GtpInputfieldAllMauvaisArticle.text = "0";
-        }
+            if (!string.IsNullOrEmpty(GtpInputfieldAllMauvaisArticle.text) && int.Parse(GtpInputfieldAllMauvaisArticle.text) > 100)
+            {
+                GtpInputfieldAllMauvaisArticle.text = "100";
+            }
+            else if (!string.IsNullOrEmpty(GtpInputfieldAllMauvaisArticle.text) && int.Parse(GtpInputfieldAllMauvaisArticle.text) < 0)
+            {
+                GtpInputfieldAllMauvaisArticle.text = "0";
+            }
 
-        if (int.Parse(GtpInputfieldColisPeuRemplit.text) > 100)
-        {
-            GtpInputfieldColisPeuRemplit.text = "100";
-        }
-        else if (int.Parse(GtpInputfieldColisPeuRemplit.text) < 0)
-        {
-            GtpInputfieldColisPeuRemplit.text = "0";
-        }
+            if (!string.IsNullOrEmpty(GtpInputfieldColisPeuRemplit.text) && int.Parse(GtpInputfieldColisPeuRemplit.text) > 100)
+            {
+                GtpInputfieldColisPeuRemplit.text = "100";
+            }
+            else if (!string.IsNullOrEmpty(GtpInputfieldColisPeuRemplit.text) && int.Parse(GtpInputfieldColisPeuRemplit.text) < 0)
+            {
+                GtpInputfieldColisPeuRemplit.text = "0";
+            }
 
-        if (int.Parse(GtpInputfieldColisInternet.text) > 100)
-        {
-            GtpInputfieldColisInternet.text = "100";
-        }
-        else if (int.Parse(GtpInputfieldColisInternet.text) < 0)
-        {
-            GtpInputfieldColisInternet.text = "0";
-        }
+            if (!string.IsNullOrEmpty(GtpInputfieldColisInternet.text) && int.Parse(GtpInputfieldColisInternet.text) > 100)
+            {
+                GtpInputfieldColisInternet.text = "100";
+            }
+            else if (!string.IsNullOrEmpty(GtpInputfieldColisInternet.text) && int.Parse(GtpInputfieldColisInternet.text) < 0)
+            {
+                GtpInputfieldColisInternet.text = "0";
+            }
 
-        if (int.Parse(GtpInputfieldColisVeutTropArticle.text) > 100)
-        {
-            GtpInputfieldColisVeutTropArticle.text = "100";
-        }
-        else if (int.Parse(GtpInputfieldColisVeutTropArticle.text) < 0)
-        {
-            GtpInputfieldColisVeutTropArticle.text = "0";
+            if (!string.IsNullOrEmpty(GtpInputfieldColisVeutTropArticle.text) && int.Parse(GtpInputfieldColisVeutTropArticle.text) > 100)
+            {
+                GtpInputfieldColisVeutTropArticle.text = "100";
+            }
+            else if (!string.IsNullOrEmpty(GtpInputfieldColisVeutTropArticle.text) && int.Parse(GtpInputfieldColisVeutTropArticle.text) < 0)
+            {
+                GtpInputfieldColisVeutTropArticle.text = "0";
+            }
         }
     }
     public void OpenEditor()
@@ -247,6 +250,10 @@ public class LevelEditor : MonoBehaviour
         if(!newLevel.colisDuNiveauNomReception.Contains(colisToAdd.name))
         {
             newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
+            if(colisToAdd.name == "RecepMalOriente")
+            {
+                newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
+            }
         }
     }
 
@@ -284,31 +291,34 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveColis()
     {
-        if (inputFieldColisMF.text != null)
+        if (!colisNewLevel.Contains(currentColis))
         {
-            currentColis.name = inputFieldColisMF.text.ToString();
-            Debug.Log(currentColis.name);
-            //Mise à jour du colis après toutes les modifs
-            currentColis.PCB = currentColis.listArticles.Count;
-            currentColis.poids = currentColis.PCB * listArticleBonEtat[randomArticle].poids;
-            if (currentColis.poids > 20)
+            if (inputFieldColisMF.text != null)
             {
-                currentColis.fillPercent = 125;
-            }
-            else if (currentColis.poids <= 5)
-            {
-                currentColis.fillPercent = 50;
-            }
-            else
-            {
-                currentColis.fillPercent = 100;
-            }
-            currentColis.wayTicket = newIway;
+                currentColis.name = inputFieldColisMF.text.ToString();
+                Debug.Log(currentColis.name);
+                //Mise à jour du colis après toutes les modifs
+                currentColis.PCB = currentColis.listArticles.Count;
+                currentColis.poids = currentColis.PCB * listArticleBonEtat[randomArticle].poids;
+                if (currentColis.poids > 20)
+                {
+                    currentColis.fillPercent = 125;
+                }
+                else if (currentColis.poids <= 5)
+                {
+                    currentColis.fillPercent = 50;
+                }
+                else
+                {
+                    currentColis.fillPercent = 100;
+                }
+                currentColis.wayTicket = newIway;
 
-            //Sauvegarde du colis
-            SaveLoadSystem.instance.SaveColis(currentColis);
+                //Sauvegarde du colis
+                SaveLoadSystem.instance.SaveColis(currentColis);
+            }
+            colisNewLevel.Add(currentColis);
         }
-        colisNewLevel.Add(currentColis);
     }
 
     public void AddColis(int nbColis)

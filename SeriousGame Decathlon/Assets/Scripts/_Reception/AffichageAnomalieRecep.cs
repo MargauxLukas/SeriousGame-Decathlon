@@ -85,7 +85,11 @@ public class AffichageAnomalieRecep : MonoBehaviour
     {
         if(!cm.isOn && cm.isReplierMax)
         {
-            if (ChargementListeColis.instance == null)
+            if(TutoManagerRecep.instance != null)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else if (ChargementListeColis.instance == null)
             {
                 SceneManager.LoadScene(6);
             }
