@@ -73,13 +73,16 @@ public class TutoManagerRecep : MonoBehaviour
 
     public void RenvoiColis()
     {
+        Debug.Log("Renvoi Colis");
         colisNum++;
 
+        Debug.Log("ColisNum : " + colisNum);
         if (colisNum >= 3)
         {
             colisNum = 0;
             phaseNum++;
             Manager(8);
+            Debug.Log("PhaseNum : " + phaseNum);
         }
     }
 
@@ -122,9 +125,9 @@ public class TutoManagerRecep : MonoBehaviour
 
         if (circleSpriteMask02Pos != Vector2.zero && circleSpriteMask02Scale != Vector2.zero)
         {
-            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask01).transform.localPosition =   circleSpriteMask02Pos;
-            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask01).transform.localScale    = circleSpriteMask02Scale;
-            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask01).enabled = true;
+            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask02).transform.localPosition =   circleSpriteMask02Pos;
+            gameObjectsManager.GameObjectToTransform (gameObjectsManager.circleSpriteMask02).transform.localScale    = circleSpriteMask02Scale;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask02).enabled = true;
         }
 
         if (doigtClickPos != Vector2.zero)
@@ -518,6 +521,10 @@ public class TutoManagerRecep : MonoBehaviour
                     case (39):
                         RenvoiColis();
                         break;
+
+                    case (52):
+                        RenvoiColis();
+                        break;
                 }
                 break;
             #endregion
@@ -683,7 +690,7 @@ public class TutoManagerRecep : MonoBehaviour
                     new Vector2(0, 0)          , new Vector2(0, 0)   ,
                     new Vector2(-5.57f, -3.67f), new Vector2(1, 1)   ,
                     new Vector2(0, 0)          , new Vector2(0, 0)   ,
-                    new Vector2(61.32f, -4.54f),
+                    new Vector2(61.15f, -4.42f),
                     new Vector3(0, 0, 0)       , new Vector3(0, 0, 0), 0, false,
                     new Vector2(0, 0)          , 0                   , 0, 0    );
 
@@ -717,9 +724,9 @@ public class TutoManagerRecep : MonoBehaviour
             Indications(new Vector2(0, 0)         , new Vector2(0, 0),
                         new Vector2(0, 0)         , new Vector2(0, 0),
                         new Vector2(1.46f, -3.67f), new Vector2(1, 1),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0),
-                        new Vector3(68.13f, -4.32f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0)         , new Vector2(0, 0),
+                        new Vector2(0, 0)         ,
+                        new Vector3(67.88f, -4.15f, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.unfoldButton).interactable = true;
@@ -782,7 +789,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(-3.21f, -11.96f), new Vector2(1,1),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(63.44f, -12.42f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector3(63.2f, -12.45f, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(72.2f, -7.08f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.ascendButton).interactable = true;
@@ -1097,7 +1104,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(65.68f, -12.74f, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector3(65.5f, -12.44f, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(72.2f, -7.8f), 0, 0, 270);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.descendButton).interactable = true;
@@ -1586,7 +1593,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(61.22f, -12.91f),
+                        new Vector2(61.15f, -12.72f),
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
@@ -1721,7 +1728,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(63.24f, 1.72f),
+                        new Vector2(63.08f, -5.3f),
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
@@ -1746,6 +1753,8 @@ public class TutoManagerRecep : MonoBehaviour
 
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.ampouleSpriteMask).enabled = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.ampoule).interactable = false;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.detectAnomaliesDesk).enabled = false;
 
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.arrowCameraDezoom).transform.localPosition = new Vector3(-4.29f, 4.67f, 2);
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.arrowCameraDezoom).transform.localScale = new Vector3(1.5f, 1.5f, 1);
@@ -1865,11 +1874,13 @@ public class TutoManagerRecep : MonoBehaviour
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.posteInteractible).enabled = false;
 
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.detectAnomaliesDesk).enabled = true;
+
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(61.22f, -12.91f),
+                    new Vector2(61.15f, -12.76f),
                     new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
 
@@ -1964,6 +1975,7 @@ public class TutoManagerRecep : MonoBehaviour
         {
             canPlayFirst = true;
             canPlaySecond = false;
+            colisNum = 0;
             phaseNum++;
 
             Manager(4);
@@ -1972,12 +1984,11 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase52()
     {
-        colisNum = 13;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = true;
 
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis14).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis15).enabled = true;
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis16).enabled = true;
+        gameObjectsManager.colis14.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+        gameObjectsManager.colis15.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
+        gameObjectsManager.colis16.GetComponent<ScriptColisRecep>().canBePickedTuto = true;
 
         gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = true;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = true;
@@ -1990,13 +2001,14 @@ public class TutoManagerRecep : MonoBehaviour
 
     void Phase53()
     {
+        Debug.Log("Phase53");
         if (canPlayFirst)
         {
+            Debug.Log("Phase53 First");
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.ventouse).enabled = false;
 
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis14).enabled = false;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis15).enabled = false;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colis16).enabled = false;
+            gameObjectsManager.colis15.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
+            gameObjectsManager.colis16.GetComponent<ScriptColisRecep>().canBePickedTuto = false;
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.upArrow).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.downArrow).interactable = false;
@@ -2014,8 +2026,8 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(-7.85f, -12.19f), new Vector2(1, 1),
-                    new Vector2(3.85f, -12.19f), new Vector2(1, 1),
+                    new Vector2(-7.85f, -11.98f), new Vector2(1, 1),
+                    new Vector2(3.85f, -11.98f), new Vector2(1, 1),
                     new Vector2(0, 0),
                     new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                     new Vector2(0, 0), 0, 0, 0);
@@ -2057,7 +2069,7 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(61.32f, -4.54f),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
@@ -2077,7 +2089,7 @@ public class TutoManagerRecep : MonoBehaviour
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(1, 1),
+                    new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
@@ -2138,12 +2150,12 @@ public class TutoManagerRecep : MonoBehaviour
         if (canPlayFirst)
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(1, 1),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0),
-                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
-                    new Vector2(0, 0), 0, 0, 0);
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(1, 1),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2155,7 +2167,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(1, 1),
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(59.41f, -2.34f),
+                        new Vector2(59.19f, -2.3f),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 

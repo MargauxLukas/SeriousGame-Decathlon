@@ -4354,6 +4354,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScriptable: {fileID: 11400000, guid: c055a72da539aa043972ba532629577c, type: 2}
   errorTextZone: {fileID: 0}
+  errorTextZoneDeux: {fileID: 0}
   score: 0
   scoreGTP: 0
   scoreReception: 0
@@ -9305,7 +9306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885230973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 67.3, y: -4.6, z: 12.2300005}
+  m_LocalPosition: {x: 59.19, y: -2.3, z: 12.2300005}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 1866853873}
@@ -12404,20 +12405,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37fd35a87fcdb6943892d615d42b9b39, type: 2}
   - {fileID: 11400000, guid: 9a78cd70df1da374e9a64f754b7e639a, type: 2}
   phaseNum: 0
+  interactionNum: 0
   dialogNum: 0
   canPlayFirst: 1
   canPlaySecond: 0
-  interactionNum: 0
   canPalette: 0
   canOpenTurnMenu: 0
   canMoveTuto: 0
   canCloseMenuTourner: 0
   canCloseGestAnomalies: 0
-  arrowSpriteMask: {fileID: 1163624263}
   arrowRotation: 0
   arrowEulerAngleX: 0
   arrowEulerAngleY: 0
   arrowEulerAngleZ: 0
+  arrowSpriteMask: {fileID: 1163624263}
 --- !u!1 &1199485889
 GameObject:
   m_ObjectHideFlags: 0
@@ -13649,7 +13650,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6d3ed27790d498342918213836d2618b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2b8088eb7fa078438cb7aa30f79368a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23197,7 +23198,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6d3ed27790d498342918213836d2618b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2b8088eb7fa078438cb7aa30f79368a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

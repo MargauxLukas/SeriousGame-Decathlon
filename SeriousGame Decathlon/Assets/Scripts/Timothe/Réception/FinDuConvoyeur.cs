@@ -35,12 +35,24 @@ public class FinDuConvoyeur : MonoBehaviour
     {
         if(collision.tag == "Colis")
         {
-            detect.CheckColis  (collision.GetComponent<ScriptColisRecep>().colisScriptable);
-            UpdateAffichage    (collision.GetComponent<ScriptColisRecep>().colisScriptable);
-            listColisEnvoye.Add(collision.GetComponent<ScriptColisRecep>().colisScriptable);
-            dechargeBar.UpdateProgression(listColisEnvoye.Count);
+            if (TutoManagerRecep.instance != null && collision.GetComponent<ScriptColisRecep>().colisScriptable.listAnomalies.Count >= 1)
+            {
+                Debug.Log("Affiche Anomalie");
+                UpdateAffichage(collision.GetComponent<ScriptColisRecep>().colisScriptable);
+                listColisEnvoye.Add(collision.GetComponent<ScriptColisRecep>().colisScriptable);
+                dechargeBar.UpdateProgression(listColisEnvoye.Count);
 
-            Destroy(collision.gameObject);
+                Destroy(collision.gameObject);
+            }
+            else if(TutoManagerRecep.instance == null)
+            {
+                detect.CheckColis(collision.GetComponent<ScriptColisRecep>().colisScriptable);
+                UpdateAffichage(collision.GetComponent<ScriptColisRecep>().colisScriptable);
+                listColisEnvoye.Add(collision.GetComponent<ScriptColisRecep>().colisScriptable);
+                dechargeBar.UpdateProgression(listColisEnvoye.Count);
+
+                Destroy(collision.gameObject);
+            }
         }
     }
 
