@@ -576,12 +576,72 @@ MonoBehaviour:
   - {fileID: 310219703}
   - {fileID: 1440169453}
   - {fileID: 1376793710}
-  nomDesVipMF: []
-  scoreDesVipMF: []
-  nomDesVipGTP: []
-  scoreDesVipGTP: []
-  nomDesVipRecep: []
-  scoreDesVipRecep: []
+  nomDesVipMF:
+  - {fileID: 167041284}
+  - {fileID: 1669110390}
+  - {fileID: 804504936}
+  - {fileID: 1421309519}
+  - {fileID: 1423018434}
+  - {fileID: 784996523}
+  - {fileID: 1503245782}
+  - {fileID: 840430317}
+  - {fileID: 1007288132}
+  - {fileID: 176446778}
+  scoreDesVipMF:
+  - {fileID: 1910226574}
+  - {fileID: 1555261685}
+  - {fileID: 1547850984}
+  - {fileID: 885456763}
+  - {fileID: 164730028}
+  - {fileID: 754319700}
+  - {fileID: 1591258328}
+  - {fileID: 1187687453}
+  - {fileID: 820950091}
+  - {fileID: 330522781}
+  nomDesVipGTP:
+  - {fileID: 1023168326}
+  - {fileID: 794223071}
+  - {fileID: 1083213601}
+  - {fileID: 589119859}
+  - {fileID: 360913064}
+  - {fileID: 1485126207}
+  - {fileID: 629858605}
+  - {fileID: 222706939}
+  - {fileID: 1278195620}
+  - {fileID: 68821964}
+  scoreDesVipGTP:
+  - {fileID: 2063747679}
+  - {fileID: 509773564}
+  - {fileID: 407540454}
+  - {fileID: 1747035593}
+  - {fileID: 1125863184}
+  - {fileID: 2067135415}
+  - {fileID: 1356702644}
+  - {fileID: 1016115695}
+  - {fileID: 1974846918}
+  - {fileID: 369625927}
+  nomDesVipRecep:
+  - {fileID: 69498659}
+  - {fileID: 273048009}
+  - {fileID: 2129926134}
+  - {fileID: 1968304459}
+  - {fileID: 969452383}
+  - {fileID: 381080130}
+  - {fileID: 1820744939}
+  - {fileID: 965287684}
+  - {fileID: 1351998122}
+  - {fileID: 356593013}
+  scoreDesVipRecep:
+  - {fileID: 758113200}
+  - {fileID: 1978460483}
+  - {fileID: 1627780343}
+  - {fileID: 1981308627}
+  - {fileID: 1262165850}
+  - {fileID: 1156362574}
+  - {fileID: 1056081737}
+  - {fileID: 636584392}
+  - {fileID: 2140240141}
+  - {fileID: 356593013}
 --- !u!1 &140995579
 GameObject:
   m_ObjectHideFlags: 0

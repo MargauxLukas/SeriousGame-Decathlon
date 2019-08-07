@@ -110,8 +110,17 @@ public class ScriptColisRecep : MonoBehaviour
                         {
                             transform.position = new Vector2(transform.position.x, tapisScript.positionTapisZoom.position.y);
                             tapisScript.AddColis(this.gameObject);
-                            Scoring.instance.UpCombo();
-                            Scoring.instance.EndLosePointOnTime();
+                            if (colisScriptable.estAbime || colisScriptable.carton.codeRef == "CBGrand")
+                            {
+                                Scoring.instance.EndLosePointOnTime();
+                                Scoring.instance.RecepMalus(50);
+                                Scoring.instance.ResetComboRpcep();
+                            }
+                            else
+                            {
+                                Scoring.instance.UpCombo();
+                                Scoring.instance.EndLosePointOnTime();
+                            }
                         }
                     }
                 }

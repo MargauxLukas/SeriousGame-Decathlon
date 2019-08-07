@@ -11,6 +11,8 @@ public class GetFAce : MonoBehaviour
     public List<Sprite> cartonSprite;
     public SquareFace newFace;
 
+    public GameObject wayTicket;
+
     private void Update()
     {
         if (colis != null)
@@ -24,7 +26,7 @@ public class GetFAce : MonoBehaviour
             }
             if(colis.colisScriptable.isBadOriented)
             {
-                transform.Rotate(new Vector3(0, 0, 90));
+                //transform.Rotate(new Vector3(0, 0, 90));
             }
             UpdateThisFace();
         }
@@ -37,25 +39,47 @@ public class GetFAce : MonoBehaviour
             newFace = scriptRot.actualFace.upVoisin;
         }
 
-        //Debug.Log(cartonSprite.Count);
-        /*if(scriptRot.actualFace.face == "Right")
+        switch(scriptRot.actualFace.face)
         {
-            newFace.fullRotation = 90;
+            case "Up":
+                GetComponent<SpriteRenderer>().sprite = cartonSprite[5];
+                transform.rotation = Quaternion.identity;
+                wayTicket.SetActive(false);
+                break;
+            case "Down":
+                GetComponent<SpriteRenderer>().sprite = cartonSprite[4];
+                transform.rotation = Quaternion.identity;
+                if (colis.colisScriptable.wayTicket != null)
+                {
+                    wayTicket.SetActive(true);
+                    Debug.Log("Pourletest");
+                }
+                break;
+            case "Right":
+                GetComponent<SpriteRenderer>().sprite = cartonSprite[0];
+                transform.rotation = Quaternion.identity;
+                transform.Rotate(new Vector3(0, 0, 90));
+                wayTicket.SetActive(false);
+                break;
+            case "Left":
+                GetComponent<SpriteRenderer>().sprite = cartonSprite[0];
+                transform.rotation = Quaternion.identity;
+                transform.Rotate(new Vector3(0, 0, 90));
+                wayTicket.SetActive(false);
+                break;
+            case "Forward":
+                GetComponent<SpriteRenderer>().sprite = cartonSprite[0];
+                transform.rotation = Quaternion.identity;
+                wayTicket.SetActive(false);
+                break;
+            case "Backward":
+                GetComponent<SpriteRenderer>().sprite = cartonSprite[0];
+                transform.rotation = Quaternion.identity;
+                transform.Rotate(new Vector3(0, 0, 180));
+                wayTicket.SetActive(false);
+                break;
         }
-        else if(scriptRot.actualFace.face == "Backward")
-        {
-            newFace.fullRotation = 180;
-        }
-        else if (scriptRot.actualFace.face == "Left")
-        {
-            newFace.fullRotation = 270;
-        }
-
-        SquareFace temporaryFace = scriptRot.actualFace;
-        scriptRot.actualFace = newFace;*/
-        newFace = scriptRot.UpdateVueHaut(cartonSprite, GetComponent<SpriteRenderer>(), newFace);
-        /*scriptRot.UpdateSprite(cartonSprite, GetComponent<SpriteRenderer>());
-        scriptRot.actualFace = temporaryFace;*/
-        //Debug.Log(newFace.face);
+        
+        //newFace = scriptRot.UpdateVueHaut(cartonSprite, GetComponent<SpriteRenderer>(), newFace);
     }
 }

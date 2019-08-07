@@ -87,7 +87,7 @@ public class AnomalieDetection : MonoBehaviour
                 colis.listAnomalies.Add("RFID tags to be applied");
             }
 
-            if (colis.wayTicket != null || RFIDnb != colis.wayTicket.PCB)
+            if (colis.wayTicket != null && RFIDnb != colis.wayTicket.PCB)
             {
                 if (RFIDnb > colis.wayTicket.PCB)
                 {
@@ -126,8 +126,6 @@ public class AnomalieDetection : MonoBehaviour
             bool isCompatible = false; //Scanner le colis, Scanner les RFID, faire un inventaire pour ajouter les nouveaux RFID.
             for (int i = 0; i < RFIDtagKnowned.Count; i++)
             {
-                Debug.Log(gameObject.name);
-
                 if (colis.wayTicket != null && colis.listArticles.Count > 0 && colis.wayTicket.refArticle.numeroRef == RFIDtagKnowned[i])
                 {
                     isCompatible = true;
