@@ -13,8 +13,7 @@ public class Client : MonoBehaviour
     private const int PORT      = 26000;
     private const int WEB_PORT  = 26001;
     private const int BYTE_SIZE = 1024 ;
-    private const string SERVER_IP = "127.0.0.1";
-
+    private const string SERVER_IP = "192.168.43.178";
     private byte reliableChannel;
     private byte error;
 
@@ -56,7 +55,7 @@ public class Client : MonoBehaviour
         Debug.Log("Connecting from Web");
 #elif UNITY_ANDROID && !UNITY_EDITOR
         // Android Client
-        connectionId = NetworkTransport.Connect(hostId, SERVER_IP, WEB_PORT, 0, out error);
+        connectionId = NetworkTransport.Connect(hostId, SERVER_IP, PORT, 0, out error);
         Debug.Log("Connecting from Android");
 #else
         // Standalone Client

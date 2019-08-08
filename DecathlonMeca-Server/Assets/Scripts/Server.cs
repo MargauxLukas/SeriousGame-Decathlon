@@ -21,11 +21,29 @@ public class Server : MonoBehaviour
     private bool isStarted;
     private byte error;
 
+
     #region Monobehaviour
     private void Start()
     {
+        GetLocalIPAddress();
+        //Debug.Log(System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable());
         DontDestroyOnLoad(gameObject);
         Init();
+    }
+
+    public static string GetLocalIPAddress()
+    {
+        var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                Debug.Log(ip.ToString());
+                return ip.ToString();
+            }
+        }
+
+        throw new System.Exception("No network adapters with an IPv4 address in the system!");
     }
 
     private void Update()

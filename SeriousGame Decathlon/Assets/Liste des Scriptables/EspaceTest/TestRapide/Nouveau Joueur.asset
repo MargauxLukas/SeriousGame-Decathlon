@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ae88f932754044284e0e1639c42dd6, type: 3}
   m_Name: Nouveau Joueur
   m_EditorClassIdentifier: 
-  name: dede
+  name: Mere castor
   date: "08 ao\xFBt 2019"
-  score: 40
+  score: 51
   scoreGTP: 0
   scoreReception: 0
-  scoreMultifonction: 40
+  scoreMultifonction: 51
   erreursReception:
   - "Tu as pos\xE9 un colis abim\xE9 ou trop grand sur le convoyeur"
   erreursMultifonction: []
