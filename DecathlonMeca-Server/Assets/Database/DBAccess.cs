@@ -27,8 +27,8 @@ public class DBAccess : MonoBehaviour
         reader = dbcmd.ExecuteReader();
 
         //Insert dans la table
-        /*IDbCommand cmnd = dbcon.CreateCommand();
-        cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (1, 'moi1', 50)";
+        //IDbCommand cmnd = dbcon.CreateCommand();
+       /* cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (1, 'moi1', 50)";
         cmnd.ExecuteNonQuery();
         cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (2, 'moi2', 45)";
         cmnd.ExecuteNonQuery();
@@ -45,13 +45,13 @@ public class DBAccess : MonoBehaviour
         cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (8, 'moi8', 10)";
         cmnd.ExecuteNonQuery();
         cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (9, 'moi9', 5)";
-        cmnd.ExecuteNonQuery();
-        cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (10, 'moi10', 1)";
         cmnd.ExecuteNonQuery();*/
+        //cmnd.CommandText = "INSERT INTO 'RankingTab' (rank, name, score) VALUES (10, 'moi10', 1)";
+        //cmnd.ExecuteNonQuery();
 
         //Delete All
-        /*IDbCommand cmnd = dbcon.CreateCommand();
-        cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 1;
+        //IDbCommand cmnd = dbcon.CreateCommand();
+        /*cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 1;
         cmnd.ExecuteNonQuery();
         cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 2;
         cmnd.ExecuteNonQuery();
@@ -68,9 +68,9 @@ public class DBAccess : MonoBehaviour
         cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 8;
         cmnd.ExecuteNonQuery();
         cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 9;
-        cmnd.ExecuteNonQuery();
-        cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 10;
         cmnd.ExecuteNonQuery();*/
+        //cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 10;
+       // cmnd.ExecuteNonQuery();
 
         //Lire toute la table
         IDbCommand cmnd_read = dbcon.CreateCommand();
@@ -86,6 +86,11 @@ public class DBAccess : MonoBehaviour
         dbcon.Close();
     }
 
+    public void CanCloseDB()
+    {
+        //
+    }
+
     #region GetHallOfFame
     /**************************************************
      *      Permet d'avoir le nom des joueurs         *
@@ -98,11 +103,10 @@ public class DBAccess : MonoBehaviour
 
         IDbCommand cmnd_read = dbcon.CreateCommand();
 
-        cmnd_read.CommandText = "SELECT name FROM 'RankingTab' where rank =" + rank.ToString();
+        cmnd_read.CommandText = "SELECT name FROM 'RankingTab' where rank =" + rank;
         IDataReader reader = cmnd_read.ExecuteReader();
 
         return reader[0].ToString();
-
     }
 
     /**************************************************
@@ -115,11 +119,65 @@ public class DBAccess : MonoBehaviour
         dbcon.Open();
 
         IDbCommand cmnd_read = dbcon.CreateCommand();
-
-        cmnd_read.CommandText = "SELECT score FROM 'RankingTab' where rank =" + rank.ToString();
+        cmnd_read.CommandText = "SELECT score FROM 'RankingTab' where rank =" + rank;
         IDataReader reader = cmnd_read.ExecuteReader();
 
         return int.Parse(reader[0].ToString());
     }
-    #endregion
+
+    public void SetRanking(int score, string name)
+    {
+        string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
+        IDbConnection dbcon = new SqliteConnection(connection);
+        dbcon.Open();
+
+        int rank = 0;
+        for(int i = 10; i > 0; i--)
+        {
+            IDbCommand cmnd_read = dbcon.CreateCommand();
+            cmnd_read.CommandText = "SELECT score FROM 'RankingTab' where rank =" + i.ToString();
+            IDataReader reader = cmnd_read.ExecuteReader();
+
+            if (int.Parse(reader[0].ToString()) >= score){break   ;}                                           //STOP
+            else                                         {rank = i;}
+        }
+
+        if(rank != 0)
+        {
+            dbcon.Close();
+            TriRanking(score, name, rank);
+        }
+        else { return; }
+    }
+
+    public void TriRanking(int scoreT, string nameT, int rankT)
+    {
+        string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
+        IDbConnection dbcon = new SqliteConnection(connection);
+        dbcon.Open();
+
+        IDbCommand cmnd = dbcon.CreateCommand();
+        cmnd.CommandText = "DELETE FROM 'RankingTab' where rank = " + 10;
+        cmnd.ExecuteNonQuery();
+
+        for (int i = 10; i>0; i--)
+        {
+            if(rankT == i)
+            {
+                cmnd.CommandText = "INSERT INTO 'RankingTab' VALUES ( '" + rankT  + "' , '" +  
+                                                                                               nameT  + "' , '" +  
+                                                                                               scoreT + "')" ;
+                cmnd.ExecuteNonQuery();
+                dbcon.Close();
+                break;
+            }
+            else
+            {
+                int nbToUpdate = i - 1;
+                cmnd.CommandText = "UPDATE 'RankingTab' SET rank = " + i + " WHERE rank = " + nbToUpdate;
+                cmnd.ExecuteNonQuery();
+            }
+        }
+    }
+#endregion
 }

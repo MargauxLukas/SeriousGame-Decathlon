@@ -124,6 +124,10 @@ public class Server : MonoBehaviour
             case NetOP.RequestHallOfFame:
                 HallOfFame(connectId, channelId, recHostId, (Net_RequestHallOfFame)msg);
                 break;
+
+            case NetOP.SetRank:
+                SetRanking(connectId, channelId, recHostId, (Net_SetRank)msg);
+                break;
         }
     }
 
@@ -181,6 +185,13 @@ public class Server : MonoBehaviour
 
             SendClient(recHostId, connectId, oshof);                                                            //On lui envois le classement 1 par 1, peut importe dans l'ordre ou arrive les paquets puisque je lui donne aussi le rank, du coup il sait ou le ranger même si il reçoit le 7eme avant le 1er
         }
+
+        //dbAccess.CanCloseDB();
+    }
+
+    public void SetRanking(int connectId, int channelId, int recHostId, Net_SetRank sr)
+    {
+        dbAccess.SetRanking(sr.score, sr.name);
     }
     #endregion
 }

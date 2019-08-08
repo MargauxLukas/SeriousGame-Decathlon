@@ -27,6 +27,8 @@ public class AffichageScoreFin : MonoBehaviour
             affichageNom.text = ChargementListeColis.instance.currentPlayerScriptable.name.ToString();
             affichageDate.text = ChargementListeColis.instance.currentPlayerScriptable.date.ToString();
 
+            Client.instance.SendMyRank(ChargementListeColis.instance.currentPlayerScriptable.score, ChargementListeColis.instance.currentPlayerScriptable.name);
+
             Player currentPlayer = ChargementListeColis.instance.currentPlayerScriptable;
             textScoreParProcess[0].text = currentPlayer.scoreMultifonction.ToString();
             textScoreParProcess[1].text = currentPlayer.scoreReception.ToString();

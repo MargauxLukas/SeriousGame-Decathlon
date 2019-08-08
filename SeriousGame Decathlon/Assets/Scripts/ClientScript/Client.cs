@@ -179,6 +179,10 @@ public class Client : MonoBehaviour
 
     }
 
+    #region HallOfFame
+    /******************************************
+     *   Demande au serveur des informations  *
+     ******************************************/
     public void RequestHallOfFame(bool request)
     {
         Net_RequestHallOfFame rhof = new Net_RequestHallOfFame();
@@ -187,8 +191,21 @@ public class Client : MonoBehaviour
         SendServer(rhof);
     }
 
+    /**********************************
+     *   Reception des informations   *
+    ***********************************/
     public void ReceiveHallOfFame(Net_OnSendingHallOfFame oshof)
     {
         AffichageHallOfFame.instance.SetScore(oshof.name , oshof.score, oshof.rank);
     }
+
+    public void SendMyRank(int score, string name)
+    {
+        Net_SetRank sr = new Net_SetRank();
+        sr.score = score;
+        sr.name = name;
+
+        SendServer(sr);
+    }
+    #endregion
 }
