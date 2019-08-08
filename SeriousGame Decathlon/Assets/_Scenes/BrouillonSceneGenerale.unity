@@ -7795,10 +7795,10 @@ MonoBehaviour:
   player: {fileID: 1865166380}
   offset: -0.5
   lerpCoef: 0.05
-  maxY: 39.9
-  minY: -27.5
-  maxX: 85.9
-  minX: -87.7
+  maxY: 41.9
+  minY: -28.5
+  maxX: 86.9
+  minX: -88.7
 --- !u!1 &1923303347
 GameObject:
   m_ObjectHideFlags: 0

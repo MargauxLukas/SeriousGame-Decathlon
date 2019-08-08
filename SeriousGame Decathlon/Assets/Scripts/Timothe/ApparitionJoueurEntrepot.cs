@@ -10,6 +10,8 @@ public class ApparitionJoueurEntrepot : MonoBehaviour
     public Transform posMF;
     public Transform posRecep;
     public Transform posGTP;
+
+    public GameObject camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +21,19 @@ public class ApparitionJoueurEntrepot : MonoBehaviour
             {
                 case 0:
                     player.transform.position = posEntree.position;
+                    camera.transform.position = posEntree.position;
                     break;
                 case 1:
                     player.transform.position = posMF.position;
+                    camera.transform.position = posMF.position;
                     break;
                 case 2:
                     player.transform.position = posRecep.position;
+                    camera.transform.position = posRecep.position;
                     break;
                 case 3:
                     player.transform.position = posGTP.position;
+                    camera.transform.position = posGTP.position;
                     break;
             }
         }

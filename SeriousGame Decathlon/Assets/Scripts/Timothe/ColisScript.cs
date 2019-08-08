@@ -466,7 +466,7 @@ public class ColisScript : MonoBehaviour
                             needSecond = true;
                             Article articleToHad = Article.CreateInstance<Article>();
                             articleToHad = Instantiate(art);
-                            listTemporairePremiere.Add(articleToHad);
+                            listTemporaireSeconde.Add(articleToHad);
                         }
                         else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
                         {

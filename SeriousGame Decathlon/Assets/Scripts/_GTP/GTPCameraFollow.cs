@@ -8,6 +8,8 @@ public class GTPCameraFollow : MonoBehaviour
     public float offset = -0.5f;
     public float lerpCoef = 0.05f;
 
+    private Vector3 newPos;
+
     [SerializeField]
     private float maxY = 6f;
     [SerializeField]
@@ -18,34 +20,42 @@ public class GTPCameraFollow : MonoBehaviour
     [SerializeField]
     private float minX = -8f;
 
+    private void Start()
+    {
+        newPos = transform.position;
+    }
+
     void Update()
     {
         // Y déplacement
         if (player.transform.position.y < minY)
         {
-            //transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
+            newPos = new Vector3(newPos.x, minY, newPos.z);
         }
         else if (player.transform.position.y > maxY)
         {
-            //transform.position = new Vector3(transform.position.x, 6f, transform.position.z);
+            newPos = new Vector3(newPos.x, maxY, newPos.z);
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y,player.transform.position.y + offset, lerpCoef), transform.position.z);
+            newPos = new Vector3(newPos.x, player.transform.position.y, newPos.z);
         }
 
-        // X déplacement
         if (player.transform.position.x < minX)
         {
-            //transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
+            newPos = new Vector3(minX, newPos.y, newPos.z);
         }
         else if (player.transform.position.x > maxX)
         {
-            //transform.position = new Vector3(20f ,transform.position.y , transform.position.z);
+            newPos = new Vector3(maxX, newPos.y, newPos.z);
         }
         else
         {
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, player.transform.position.x + offset, lerpCoef), transform.position.y, transform.position.z);
+            newPos = new Vector3(player.transform.position.x, newPos.y, newPos.z);
         }
+        Debug.Log(newPos);
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, newPos.x + offset, lerpCoef), Mathf.Lerp(transform.position.y, newPos.y + offset, lerpCoef), transform.position.z);
+
+
     }
 }

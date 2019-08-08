@@ -230,7 +230,7 @@ public class Colis : ScriptableObject
 
     public void UpdateRotation(string face)
     {
-        if (face != "Forward")
+        if (face != "Forward" && face != "Backward")
         {
             isBadOriented = true;
         }

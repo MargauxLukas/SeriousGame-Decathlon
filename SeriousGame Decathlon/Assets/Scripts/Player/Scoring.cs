@@ -121,7 +121,6 @@ public class Scoring : MonoBehaviour
             playerScriptable.scoreReception = scoreReception;
             playerScriptable.scoreMultifonction = scoreMultifonction;
 
-            Debug.Log("Test");
             if (ChargementListeColis.instance != null)
             {
                 ChargementListeColis.instance.currentPlayerScriptable = playerScriptable;

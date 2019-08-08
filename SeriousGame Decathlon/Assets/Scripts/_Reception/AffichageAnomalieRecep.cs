@@ -110,8 +110,10 @@ public class AffichageAnomalieRecep : MonoBehaviour
             }
             else if (paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
             {
+                Debug.Log("Test");
                 if (ChargementListeColis.instance == null)
                 {
+                    Debug.Log("Test2");
                     Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     SceneManager.LoadScene(6);
                 }
