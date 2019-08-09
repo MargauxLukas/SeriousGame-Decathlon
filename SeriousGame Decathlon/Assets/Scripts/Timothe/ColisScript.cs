@@ -419,6 +419,7 @@ public class ColisScript : MonoBehaviour
         IWayEtiquette.SetActive(false);
         if (face == "Forward" && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
         {
+            if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(27); }
             IWayEtiquette.SetActive(true);
             colisScriptable.isBadOriented = false;
         }

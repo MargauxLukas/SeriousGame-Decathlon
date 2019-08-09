@@ -31,6 +31,9 @@ public class Server : MonoBehaviour
         Init();
     }
 
+    /*********************************************************************************************
+    *   Permet de connaître l'adresse IP du serveur (Le client en a besoin pour s'y connecter)   *
+    **********************************************************************************************/
     public static string GetLocalIPAddress()
     {
         var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
@@ -146,7 +149,21 @@ public class Server : MonoBehaviour
             case NetOP.SetRank:
                 SetRanking(connectId, channelId, recHostId, (Net_SetRank)msg);
                 break;
+
+            case NetOP.LoadWayticket:
+                LoadWayticket(connectId, channelId, recHostId, (Net_LoadWayticket)msg);
+                break;
+
         }
+    }
+
+    private void LoadWayticket(int connectId, int channelId, int recHostId, Net_LoadWayticket lwt)
+    {
+        Net_OnCreateAccount oca = new Net_OnCreateAccount();
+        oca.Success = 0;
+        oca.Information = "Wayticket reçu";
+
+        SaveLoadSystem.instance.SaveWayTicket(lwt.json, lwt.name);
     }
 
     //A CHANGER PART AUTRE CHOSE

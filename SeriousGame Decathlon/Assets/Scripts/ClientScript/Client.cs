@@ -13,7 +13,7 @@ public class Client : MonoBehaviour
     private const int PORT      = 26000;
     private const int WEB_PORT  = 26001;
     private const int BYTE_SIZE = 1024 ;
-    private const string SERVER_IP = "192.168.43.178";
+    private const string SERVER_IP = "192.168.137.6";
     private byte reliableChannel;
     private byte error;
 
@@ -131,8 +131,6 @@ public class Client : MonoBehaviour
             case NetOP.SendingHallOfFame:
                 ReceiveHallOfFame((Net_OnSendingHallOfFame)msg);
                 break;
-
-
         }
     }
 
@@ -159,6 +157,7 @@ public class Client : MonoBehaviour
         // This is where you would crush your data into a byte[]
         BinaryFormatter formatter = new BinaryFormatter();
         MemoryStream ms = new MemoryStream(buffer);
+
         formatter.Serialize(ms, msg);
 
         NetworkTransport.Send(hostId, connectionId, reliableChannel, buffer, BYTE_SIZE, out error);
@@ -207,4 +206,13 @@ public class Client : MonoBehaviour
         SendServer(sr);
     }
     #endregion
+
+    public void SendWayticket(string json, string name)
+    {
+        Net_LoadWayticket lwt = new Net_LoadWayticket();
+        lwt.json = json;
+        lwt.name = name;
+
+        SendServer(lwt);
+    }
 }

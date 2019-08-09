@@ -125,6 +125,9 @@ public class DBAccess : MonoBehaviour
         return int.Parse(reader[0].ToString());
     }
 
+    /******************************************************************
+    *      Met à jour le classement avec les informations reçu        *
+    *******************************************************************/
     public void SetRanking(int score, string name)
     {
         string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
@@ -147,9 +150,17 @@ public class DBAccess : MonoBehaviour
             dbcon.Close();
             TriRanking(score, name, rank);
         }
-        else { return; }
+        else
+        {
+            dbcon.Close();
+            return;
+        }
     }
 
+
+    /************************************
+    *    C'est pour trier le top 10     *
+    *************************************/
     public void TriRanking(int scoreT, string nameT, int rankT)
     {
         string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";

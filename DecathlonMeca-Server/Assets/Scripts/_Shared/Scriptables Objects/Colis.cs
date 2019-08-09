@@ -43,8 +43,6 @@ public class Colis : ScriptableObject
     public string provenance;
     Direction orientation;
 
-    public SquareFace face;
-
     public void Initialize()
     {
         PCB = listArticles.Count;
@@ -236,7 +234,7 @@ public class Colis : ScriptableObject
         }
         else if (isBadOriented)
         {
-            if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(27); }
+            
             isBadOriented = false;
         }
     }

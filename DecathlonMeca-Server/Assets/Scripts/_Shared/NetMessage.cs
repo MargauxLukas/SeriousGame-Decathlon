@@ -12,6 +12,7 @@ public static class NetOP
     public const int RequestHallOfFame = 4;
     public const int SendingHallOfFame = 5;
     public const int SetRank           = 6;
+    public const int LoadWayticket     = 7;
 }
 
 [System.Serializable]

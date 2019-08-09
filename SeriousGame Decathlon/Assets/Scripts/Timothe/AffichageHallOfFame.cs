@@ -33,7 +33,7 @@ public class AffichageHallOfFame : MonoBehaviour
 
     public void SetScore(string name, int score , int rank)
     {
-        nomDesVIP[rank - 1].text = name;
+        nomDesVIP  [rank - 1].text = name;
         scoreDesVIP[rank - 1].text = score.ToString();
     }
 }

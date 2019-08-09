@@ -13,7 +13,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
     
     void Start()
     {
-        if(!SaveLoadSystem.instance.IsSaveFile())
+        /*if(!SaveLoadSystem.instance.IsSaveFile())
         {
             foreach(Colis coli in allColisCreated)
             {
@@ -44,7 +44,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
             }
 
             SaveLoadSystem.instance.SaveBestBegin(beginScore);
-        }
+        }*/
     }
 
     int dellNumber = 0;
