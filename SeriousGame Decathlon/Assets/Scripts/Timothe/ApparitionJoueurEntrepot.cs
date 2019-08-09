@@ -21,19 +21,19 @@ public class ApparitionJoueurEntrepot : MonoBehaviour
             {
                 case 0:
                     player.transform.position = posEntree.position;
-                    camera.transform.position = posEntree.position;
+                    camera.transform.position = posEntree.position + new Vector3(0, 0, -10);
                     break;
                 case 1:
                     player.transform.position = posMF.position;
-                    camera.transform.position = posMF.position;
+                    camera.transform.position = posMF.position + new Vector3(0,0,-10);
                     break;
                 case 2:
                     player.transform.position = posRecep.position;
-                    camera.transform.position = posRecep.position;
+                    camera.transform.position = posRecep.position + new Vector3(0, 0, -10);
                     break;
                 case 3:
                     player.transform.position = posGTP.position;
-                    camera.transform.position = posGTP.position;
+                    camera.transform.position = posGTP.position + new Vector3(0, 0, -10);
                     break;
             }
         }
