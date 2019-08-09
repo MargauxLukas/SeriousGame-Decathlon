@@ -23,6 +23,7 @@ public class CartonVideLink : MonoBehaviour
     public void PutAnotherColis(Vector3 position)
     {
         GameObject gm = Instantiate(ColisPrefab, position, Quaternion.identity);
+        //Si le tuto existe, 
         gm.GetComponent<CartonVide>().cvl = this;
         gm.GetComponent<CartonVide>().mcv = managerVide;
     }

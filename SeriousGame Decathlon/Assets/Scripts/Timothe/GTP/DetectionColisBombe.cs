@@ -40,14 +40,7 @@ public class DetectionColisBombe : MonoBehaviour
                         StartCoroutine(MoveToNeuviemePoste(collision.gameObject));
                     }
                 }
-
-                if (collision.GetComponent<RemplissageColisGTP>().colisScriptable.comeFromInternet)
-                {
-                    if (collision.GetComponent<RemplissageColisGTP>().nbArticleScanned != collision.GetComponent<RemplissageColisGTP>().colisScriptable.listArticles.Count)
-                    {
-                        Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
-                    }
-                }
+                
             }
         }
     }

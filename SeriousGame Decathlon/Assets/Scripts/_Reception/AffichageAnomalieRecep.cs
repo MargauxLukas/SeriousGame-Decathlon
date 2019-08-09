@@ -85,7 +85,11 @@ public class AffichageAnomalieRecep : MonoBehaviour
     {
         if(!cm.isOn && cm.isReplierMax)
         {
-            if (ChargementListeColis.instance == null)
+            if(TutoManagerRecep.instance != null)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else if (ChargementListeColis.instance == null)
             {
                 SceneManager.LoadScene(6);
             }
@@ -106,14 +110,17 @@ public class AffichageAnomalieRecep : MonoBehaviour
             }
             else if (paletteManager.chanceHavingAnomaliesMF >= 100 || paletteManager.nbColisTraite >= paletteManager.nbColisTotal)
             {
+                Debug.Log("Test");
                 if (ChargementListeColis.instance == null)
                 {
+                    Debug.Log("Test2");
                     Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     SceneManager.LoadScene(6);
                 }
                 else
                 {
                     Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                    ChargementListeColis.instance.hasBeenReturned = true;
                     ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
                 }
             }

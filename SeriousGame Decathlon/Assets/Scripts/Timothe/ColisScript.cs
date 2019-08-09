@@ -417,15 +417,21 @@ public class ColisScript : MonoBehaviour
     public void Tourner(string face)
     {
         IWayEtiquette.SetActive(false);
-        if (face == "Forward" && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
+        if (face == "Forward")
         {
             if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(27); }
-            IWayEtiquette.SetActive(true);
+            if (!IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
+            {
+                IWayEtiquette.SetActive(true);
+            }
             colisScriptable.isBadOriented = false;
         }
         else if(face == "Backward")
         {
-            IWayEtiquette.SetActive(false);
+            if (!IWayEtiquette.activeSelf)
+            {
+                IWayEtiquette.SetActive(false);
+            }
             colisScriptable.isBadOriented = false;
         }
         else if(!colisScriptable.isBadOriented)
@@ -467,7 +473,7 @@ public class ColisScript : MonoBehaviour
                             needSecond = true;
                             Article articleToHad = Article.CreateInstance<Article>();
                             articleToHad = Instantiate(art);
-                            listTemporairePremiere.Add(articleToHad);
+                            listTemporaireSeconde.Add(articleToHad);
                         }
                         else if (spriteArticleTableDeux.GetComponent<PileArticle>().listArticles.Count <= 0 && listTemporaire[0].rfid != null && art.rfid.refArticle.numeroRef != refBase)
                         {

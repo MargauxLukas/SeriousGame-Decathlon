@@ -32,8 +32,9 @@ public class AnomalyWindow : MonoBehaviour
     *****************************************************************************************************************/
     public void WrongProduct()
     {
-        if (mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] == mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe)
+        if (mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe == null || mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] == mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe)
         {
+            Debug.Log("Erreur Wrong product");
             Scoring.instance.LosePointGTP(100, "Tu as envoyé un colis sans problème en Multifonction");
         }
         mcv.FairePartirUnColis();

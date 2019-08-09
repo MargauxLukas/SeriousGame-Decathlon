@@ -90,6 +90,7 @@ public class VentouseDeplacement : MonoBehaviour
     {
         if (doesTouch && collision.tag == "Colis" && colisAttached == null && collision.GetComponent<ScriptColisRecep>().canBePicked && !collision.GetComponent<ScriptColisRecep>().canMove)
         {
+            Debug.Log("Atrappe Colis");
             colisAttached = collision.gameObject;
             colisAttached.GetComponent<ScriptColisRecep>().doesTouch = true;
             if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(23); }

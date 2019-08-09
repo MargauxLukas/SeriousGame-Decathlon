@@ -47,4 +47,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/GTP_SceneTimothe.unity
     guid: 42bd423f57c2e754babed602d4d8a6ff
+  - enabled: 1
+    path: Assets/_Scenes/Timothe Test/ChoixPersonnage.unity
+    guid: 714de1ae0afb64149a15658e31f3e253
+  - enabled: 1
+    path: Assets/_Scenes/TutorielRecep.unity
+    guid: 6482a76d5359d464bbcdf2c729d4e9d4
+  - enabled: 1
+    path: "Assets/_Scenes/Cr\xE9dit.unity"
+    guid: 872f6bb1af0a55f4281b6f63a3adb056
   m_configObjects: {}

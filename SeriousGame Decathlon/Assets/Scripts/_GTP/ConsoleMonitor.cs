@@ -53,9 +53,11 @@ public class ConsoleMonitor : MonoBehaviour
 
         Article reference = mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().artReference;          //L'article dont on est entrain de changer le nombre
 
+        Debug.Log(reference.name);
         if (canRemove)
         {
-            foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
+            Debug.Log("Test can remove");
+            /*foreach (Article art in colisAttenduManage.colisVoulus[emplacement].listArticles)
             {
                 if (art == reference)
                 {
@@ -72,26 +74,20 @@ public class ConsoleMonitor : MonoBehaviour
                         colisAttenduManage.colisVoulus[emplacement].listArticles.RemoveAt(compteur);                                                    //Si il dépasse le compteur, c'est que y'en a trop du coup on delete
                     }
                 }
-            }
+            }*/
 
-            nbArticleEnQuestion = 0;
             nbArticleEnCours = 0;
-
-            foreach (Article art in colisAttenduManage.colisActuellementTraite[emplacement].listArticles)
-            {
-                if (art == reference)
-                {
-                    nbArticleEnQuestion++;
-                }
-            }
+            Debug.Log("Test nbMonitor : "+ nb);
             for (int compteur = 0; compteur < colisAttenduManage.colisActuellementTraite[emplacement].listArticles.Count; compteur++)
             {
                 if (colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur] == reference)
                 {
                     nbArticleEnCours++;
-                    if (nbArticleEnCours > nbMonitor)
+                    if (nbArticleEnCours <= Mathf.Abs(nb))
                     {
+                        Debug.Log("Is removing : " + colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur].name);
                         colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
+                        compteur--;
                     }
                 }
             }
@@ -111,9 +107,14 @@ public class ConsoleMonitor : MonoBehaviour
      ******************************************/
     public void Envoyer(int emplacement) 
     {
+        if(emplacement != mcv.positionVoulueParEmplacement[mcv.emplacement])
+        {
+            Scoring.instance.LosePointGTP(150, "Tu as valider le mauvais colis");
+        }
+
         if (mcv.PeutFairePartirColis() && !neuviemePos.haveAlreadySomething)
         {
-            Scoring.instance.StopComboGTP(5);
+            Scoring.instance.StopComboGTP(4);
             mcv.FairePartirUnColis();
             UpdateAffichage(0);
             if (colisActuelPoste.currentPhase < phaseActuelle - 1)

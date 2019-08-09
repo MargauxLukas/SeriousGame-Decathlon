@@ -23,6 +23,12 @@ public class AffichageScoreFin : MonoBehaviour
     {
         if(ChargementListeColis.instance != null)
         {
+            ChargementListeColis.instance.currentPlayerScriptable.score = ChargementListeColis.instance.currentPlayerScriptable.scoreMultifonction + ChargementListeColis.instance.currentPlayerScriptable.scoreGTP + ChargementListeColis.instance.currentPlayerScriptable.scoreReception;
+            if (SaveLoadSystem.instance!=null)
+            {
+                SaveLoadSystem.instance.SaveScore(ChargementListeColis.instance.currentPlayerScriptable);
+            }
+
             affichageScore.text = ChargementListeColis.instance.currentPlayerScriptable.score.ToString();
             affichageNom.text = ChargementListeColis.instance.currentPlayerScriptable.name.ToString();
             affichageDate.text = ChargementListeColis.instance.currentPlayerScriptable.date.ToString();

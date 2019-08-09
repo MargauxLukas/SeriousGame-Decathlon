@@ -133,7 +133,7 @@ public class RotationScript : MonoBehaviour
                 {
                     ancientTopView.fullRotation = 0;
                 }
-                theNewFace.fullRotation = 0;
+                //theNewFace.fullRotation = 0;
                 ancientTopView = theNewFace;
             }
             lastTopViewFaceIsWrong = false;
@@ -162,10 +162,6 @@ public class RotationScript : MonoBehaviour
                 xAxis = -1;
                 rotation = 0;
             }
-
-            Debug.Log(xAxis);
-            Debug.Log(yAxis);
-            Debug.Log(rotation);
 
             theNewFace.fullRotation = theNewFace.fullRotation % 360;
             if (theNewFace.fullRotation >= 360)
@@ -260,8 +256,11 @@ public class RotationScript : MonoBehaviour
                 spriteCarton.gameObject.transform.eulerAngles = new Vector3(0, 0, -theNewFace.fullRotation);
             //Debug.Log(actualFace.face);
             //Debug.Log(actualFace.fullRotation);
-            Debug.Log(theNewFace);
+            Debug.Log(actualFace.face);
+            Debug.Log(theNewFace.face);
+            Debug.Log(ancientTopView.face);
             ancientTopView = theNewFace;
+            
             return theNewFace;
         }
         return theNewFace;
@@ -305,7 +304,7 @@ public class RotationScript : MonoBehaviour
         if (cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
         {
             resetAll();
-            squareList[5].isCurrentlyPick = true;
+            squareList[3].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(actualFace.face);

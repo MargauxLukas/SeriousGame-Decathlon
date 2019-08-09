@@ -40,7 +40,7 @@ public class RemainingQuantityWindow : MonoBehaviour
         }
         else
         {
-            //Pas bien
+            Scoring.instance.LosePointGTP(50, "Tu n'as pas donner le bon nombre d'article restant dans le SHU");
         }
 
         mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = false;

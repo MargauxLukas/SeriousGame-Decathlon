@@ -16,30 +16,26 @@ MonoBehaviour:
   doesNeedRecep: 1
   doesNeedGTP: 1
   colisDuNiveauNoms:
-  - ColisMFAlea1
   - ColisMFAlea2
   - ColisMFAlea3
-  - ColisMFAlea4
   - ColisMFAlea5
-  - ColisMFAlea6
-  - ColisMFAlea7
   - ColisMFAlea8
   - ColisMFAlea9
-  nbColisParNomColis: 010000000100000001000000010000000100000001000000010000000100000001000000
-  name: Niveau de Base
+  nbColisParNomColis: 0100000001000000010000000100000001000000
+  name: Les Bases du jeu 1
   nbLevel: 1
   colisDuNiveauNomReception:
   - ColisBaseRecep
   - RecepGrosCarton
   - RecepMalOriente
-  - RecepTropLourd
   - RecepAbimePetit
-  chanceReceptionColisHaveAnomalie: 5
+  - ColisBaseRecep
+  - RecepMalOriente
+  chanceReceptionColisHaveAnomalie: 10
   nombreColisReception: 27
-  nbColisVoulu: 10
-  chanceTropPlein: 5
-  chanceMauvaisArticle: 5
-  chanceAllMauvaisArticle: 10
-  chancePasRemplit: 5
-  chanceInternet: 25
-  ChanceTropArticle: 15
+  nbColisVoulu: 7
+  chanceMauvaisArticle: 25
+  chanceAllMauvaisArticle: 2
+  chancePasRemplit: 15
+  chanceInternet: 5
+  ChanceTropArticle: 2

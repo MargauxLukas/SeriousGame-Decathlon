@@ -13,6 +13,7 @@ public class Scoring : MonoBehaviour
 
     [Header("Texte Anomalie")]
     public Text errorTextZone;
+    public Text errorTextZoneDeux;
 
     [Header("Score")]
     public int score;
@@ -113,15 +114,17 @@ public class Scoring : MonoBehaviour
             scoreReception = 0;
         }
 
-        if(playerScriptable != null && score != playerScriptable.score)
+        if(playerScriptable != null)
         {
             playerScriptable.score = score;
             playerScriptable.scoreGTP = scoreGTP;
             playerScriptable.scoreReception = scoreReception;
             playerScriptable.scoreMultifonction = scoreMultifonction;
+
             if (ChargementListeColis.instance != null)
             {
                 ChargementListeColis.instance.currentPlayerScriptable = playerScriptable;
+                Debug.Log("Test 2");
             }
         }
 
@@ -189,7 +192,7 @@ public class Scoring : MonoBehaviour
 
     public void StopComboGTP(float amountOfPointPerSecond)
     {
-        scoreGTP += Mathf.RoundToInt(timeForGTP * amountOfPointPerSecond);
+        scoreGTP += 50 + Mathf.RoundToInt(timeForGTP * amountOfPointPerSecond);
         timeForGTP = 0;
     }
 
@@ -326,7 +329,6 @@ public class Scoring : MonoBehaviour
             ResetComboAnomalieSansMalus();
         }
         scoreMultifonction = scoreMultifonction - 15;
-        player.GetComponent<PlayerTest>().player.scoreMultifonction = scoreMultifonction;
         
     }
 
@@ -344,7 +346,6 @@ public class Scoring : MonoBehaviour
             ResetComboAnomalieSansMalus();
         }
         scoreMultifonction = scoreMultifonction - 30;
-        player.GetComponent<PlayerTest>().player.scoreMultifonction = scoreMultifonction;
     }
 
     // -70
@@ -361,7 +362,6 @@ public class Scoring : MonoBehaviour
             ResetComboAnomalieSansMalus();
         }
         scoreMultifonction -= 70;
-        player.GetComponent<PlayerTest>().player.scoreMultifonction = scoreMultifonction;
     }
 
     // -150
@@ -405,8 +405,15 @@ public class Scoring : MonoBehaviour
             errorTextZone.text = errorText;
             StartCoroutine(TempsAffichageErreur());
         }
-        
-        if(isMf)
+        if(errorTextZoneDeux != null && TutoManagerMulti.instance == null)
+        {
+            StopAllCoroutines();
+            errorTextZoneDeux.gameObject.SetActive(true);
+            errorTextZoneDeux.text = errorText;
+            StartCoroutine(TempsAffichageErreur());
+        }
+        Debug.Log("Test-1");
+        if (isMf)
         {
             if (playerScriptable.erreursMultifonction == null)
             {
@@ -482,6 +489,10 @@ public class Scoring : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         errorTextZone.gameObject.SetActive(false);
+        if (errorTextZoneDeux != null)
+        {
+            errorTextZoneDeux.gameObject.SetActive(false);
+        }
     }
 
     //BONUS

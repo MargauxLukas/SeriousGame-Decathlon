@@ -19,7 +19,7 @@ MonoBehaviour:
     tu as envoy\xE9 sur le convoyeur. "
   - "Selon le pourcentage de colis d\xE9fectueux dans le container, tu peux d\xE9cider
     de le renvoyer pour qu'il soit trait\xE9 manuellement par une autre \xE9quipe. "
-  - "Pour renvoyer un conainer de ce type, tu peux te servir du bouton Return \xE0
+  - "Pour renvoyer un container de ce type, tu peux te servir du bouton Return \xE0
     tout moment ce qui terminera le niveau instantan\xE9ment."
   - "Attention cependant si tu renvoie un container sans anomalies, un important malus
     te sera attribu\xE9 sur ton score final. "

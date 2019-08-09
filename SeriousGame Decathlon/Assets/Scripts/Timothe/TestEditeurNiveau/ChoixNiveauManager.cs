@@ -39,8 +39,9 @@ public class ChoixNiveauManager : MonoBehaviour
 
     //Réception
     public Text affichageNombreColisRecep;
-    public Image convoyeurDefaillant;
-    public GameObject zoneAffichageAnomalieRecep;
+
+    //GTP
+    public Text affichageNombreColisGtp;
 
 
     // Start is called before the first frame update 
@@ -56,6 +57,8 @@ public class ChoixNiveauManager : MonoBehaviour
             nouveauBouton.GetComponentInChildren<Text>().text = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel.name;
             nouveauBouton.GetComponent<GetCurrentLevelButton>().nbLevel = i;
             nouveauBouton.GetComponent<GetCurrentLevelButton>().managerLevel = this;
+            RectTransform rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.sizeDelta += new Vector2(0, 130);
             //currentChoiceLevel = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel;
         }
         listAffAnomalies = new List<GameObject>();
@@ -63,17 +66,21 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public void ShowGeneralInfoLevel(LevelScriptable level)
     {
-        if(level.doesNeedMF)
+        boutonsAffichageGTP.interactable = false;
+        boutonsAffichageMF.interactable = false;
+        boutonsAffichageReception.interactable = false;
+
+        if (level.doesNeedMF && level.colisDuNiveauNoms != null && level.colisDuNiveauNoms.Count>0)
         {
             boutonsAffichageMF.interactable = true;
         }
-        if(level.doesNeedRecep)
+        if(level.doesNeedRecep && level.nombreColisReception > 0)
         {
             boutonsAffichageReception.interactable = true;
         }
-        if(level.doesNeedGTP)
+        if(level.doesNeedGTP && level.nbColisVoulu > 3)
         {
-            //Mettre le bouton pour le GTP
+            boutonsAffichageGTP.interactable = true;
         }
 
         currentColisLevel = new List<Colis>();
@@ -124,6 +131,7 @@ public class ChoixNiveauManager : MonoBehaviour
         }
 
         affichageNombreColisRecep.text = level.nombreColisReception.ToString();
+        affichageNombreColisGtp.text = level.nbColisVoulu.ToString();
 
         //Instantiate un prefab d'affichage pour chaque anomalie
     }

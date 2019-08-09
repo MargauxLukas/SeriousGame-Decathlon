@@ -29,12 +29,12 @@ public class BoutonMettreSurPalette : MonoBehaviour
             {
                 if(!tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
                 {
-                    Scoring.instance.RecepRenvoieColis();
+                    Scoring.instance.RecepMalus(90);
+                    Scoring.instance.AffichageErreur("Tu as posé un colis sans problème sur la palette");
                 }
                 else
                 {
-                    Scoring.instance.RecepMalus(100);
-                    Scoring.instance.AffichageErreur("Tu as posé un colis abimé ou trop grand sur le convoyeur");
+                    Scoring.instance.RecepRenvoieColis();
                 }
                 tapisRoule.turnMenu.SetActive(false);
                 tapisRoule.colisSurLeTapis.Remove(tapisRoule.lastColis);

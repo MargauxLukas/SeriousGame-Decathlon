@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerColisAttendu : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class ManagerColisAttendu : MonoBehaviour
     public GameObject ecranFinNiveau;
 
     private int decompteFinNiveau;
+    private int nbColisCree;
 
     public bool isLevelEnded = false;
 
@@ -65,7 +67,7 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
 
-            if ((float)Random.Range(0, 100) < chanceAvoirTropArticlePrevu)
+            if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
                 while (colisVoulus[i].listArticles.Count <= 11)
                 {
@@ -102,10 +104,11 @@ public class ManagerColisAttendu : MonoBehaviour
 
             phasesColisVoulus.Add(nbPhase);
 
-            if(Random.Range(0,100)<chanceToComeFromInternet)
+            if(Random.Range(0, nombreColisVoulu-nbColisCree) < chanceToComeFromInternet)
             {
                 colisVoulus[i].comeFromInternet = true;
             }
+            nbColisCree++;
         }
 
         for (int q = 0; q < 3; q++)
@@ -118,10 +121,6 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public void RenvoieColis(int emplacement)
     {
-        Debug.Log("Colis null 0 : " + colisVoulus[0] == null);
-        Debug.Log("Colis null 1 : " + colisVoulus[1] == null);
-        Debug.Log("Colis null 2 : " + colisVoulus[2] == null);
-
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
             colisVoulus[emplacement] = colisVoulus[3];
@@ -218,6 +217,16 @@ public class ManagerColisAttendu : MonoBehaviour
             }
         }
 
+        if (colisActuellementTraite[emplacement].comeFromInternet)
+        {
+            Debug.Log("Test ici");
+            if (colisViderManage.emplacementsScripts[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisToCompare.listArticles.Count)
+            {
+                Debug.Log("Et là");
+                Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
+            }
+        }
+
         bool noAnomalie = true;
         if (articleEnvoye.Count > 0 || articleEnvoye.Count > 0)
         {
@@ -262,11 +271,28 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
 
-            if(articleEnvoye.Count>0 || articleVoulu.Count>0)
+            if (colisActuellementTraite[emplacement].comeFromInternet)
+            {
+                Debug.Log("Articles scanné " + colisViderManage.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned);
+                Debug.Log("Nombre Articles " + colisCompare.listArticles.Count);
+                if (colisViderManage.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisCompare.listArticles.Count)
+                {
+                    Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
+                }
+            }
+
+            if (articleEnvoye.Count>0 || articleVoulu.Count>0)
             {
                 colisVoulus[emplacement] = new Colis();
                 Debug.Log("Un colis a été mal fait");
-                Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                if (articleEnvoye.Count == 0 || articleVoulu.Count == 0)
+                {
+                    Scoring.instance.LosePointGTP(50, "Il y a plus/moins d'articles que ce qu'il devrait y avoir dans le colis");
+                }
+                else
+                {
+                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                }
                 return false;
             }
             else
@@ -416,6 +442,29 @@ public class ManagerColisAttendu : MonoBehaviour
         for(int m = 0; m < nbArticleTotal - nombreArticleVoulu; m++)
         {
             colisVoulus[3].listArticles.Add(articleEnQuestion);
+        }
+    }
+
+    public void Quit()
+    {
+        if (ChargementListeColis.instance == null)
+        {
+            SceneManager.LoadScene(6);
+        }
+        else
+        {
+            if (colisVoulus.Count > 3)
+            {
+                ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
+            }
+            else
+            {
+                ChargementListeColis.instance.QuitGTPLevel(3);
+            }
+            if(isLevelEnded)
+            {
+                ChargementListeColis.instance.QuitGTPLevel(0);
+            }
         }
     }
 }

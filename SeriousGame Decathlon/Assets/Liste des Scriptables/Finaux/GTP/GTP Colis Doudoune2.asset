@@ -39,4 +39,5 @@ MonoBehaviour:
   nbAnomalie: 0
   listAnomalies: []
   comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 0}
   provenance: 

@@ -227,7 +227,7 @@ public class CreationDePalette : MonoBehaviour
         {
             foreach(ScriptColisRecep colis in colisActuels)
             {
-                if(colis.canMove)
+                if(colis.canMove || colis==null)
                 {
                     colisToRemove.Add(colis);
                     nbColisTraite++;

@@ -58,13 +58,13 @@ public class ArticleUnitGTP : MonoBehaviour
                             {
                                 for (int l = 0; l < isPack; l++)
                                 {
-                                    remplisColis.AddArticle(currentArticle);
+                                    remplisColis.AddArticle(currentArticle, hasBeenScanned);
                                     Instantiate(animationApparition, transform.position, Quaternion.identity);
                                 }
                             }
                             else
                             {
-                                remplisColis.AddArticle(currentArticle);
+                                remplisColis.AddArticle(currentArticle, hasBeenScanned);
                                 Instantiate(animationApparition, transform.position, Quaternion.identity);
                             }
                         }
