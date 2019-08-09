@@ -109,7 +109,6 @@ public class RemplissageColisGTP : MonoBehaviour
                         if (tasArticle[m].activeSelf)
                         {
                             tasArticle[m].SetActive(false);
-                            nbArticleScanned = tasArticle[m].GetComponent<TasArticleGTP>().ReturnNumberScanned();
                             newListes.Add(tasArticle[m].GetComponent<TasArticleGTP>().CloseTasArticle());
                             repack = true;
                         }
@@ -140,7 +139,7 @@ public class RemplissageColisGTP : MonoBehaviour
         }
     }
 
-    public void AddArticle(Article articleToHad)
+    public void AddArticle(Article articleToHad, bool hasBeenScanned)
     {
         if(colisScriptable.listArticles == null)
         {
@@ -149,6 +148,14 @@ public class RemplissageColisGTP : MonoBehaviour
         colisScriptable.listArticles.Add(articleToHad);
         tauxRemplissage = (float)colisScriptable.listArticles.Count / 10f;
         remplissageImage.fillAmount = tauxRemplissage;
+        if(hasBeenScanned)
+        {
+            nbArticleScanned++;
+        }
+        if(nbArticleScanned > colisScriptable.listArticles.Count)
+        {
+            nbArticleScanned = colisScriptable.listArticles.Count;
+        }
     }
 
     public IEnumerator AnimationColisRenvoie()

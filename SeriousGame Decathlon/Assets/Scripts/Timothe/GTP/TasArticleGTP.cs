@@ -99,10 +99,12 @@ public class TasArticleGTP : MonoBehaviour
     public int ReturnNumberScanned()
     {
         int nbScanned = 0;
-        foreach(GameObject gm in affichageTas)
+        Debug.Log("Test Article scann -1");
+        foreach (GameObject gm in affichageTas)
         {
             if(gm.GetComponent<ArticleUnitGTP>().hasBeenScanned)
             {
+                Debug.Log("Test Article scann");
                 nbScanned++;
             }
         }

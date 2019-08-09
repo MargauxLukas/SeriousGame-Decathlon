@@ -44,7 +44,7 @@ public class BoutonChangementScene : MonoBehaviour
     {
         if (ChargementListeColis.instance != null)
         {
-            if (ChargementListeColis.instance.nombreColisRecep > 0)
+            if (!ChargementListeColis.instance.hasBeenReturned)
             {
                 SceneManager.LoadScene(7);
             }

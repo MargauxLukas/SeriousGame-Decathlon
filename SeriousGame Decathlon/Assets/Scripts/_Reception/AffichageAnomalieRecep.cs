@@ -120,6 +120,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
                 else
                 {
                     Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                    ChargementListeColis.instance.hasBeenReturned = true;
                     ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
                 }
             }

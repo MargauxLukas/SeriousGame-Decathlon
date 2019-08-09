@@ -273,6 +273,8 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if (colisActuellementTraite[emplacement].comeFromInternet)
             {
+                Debug.Log("Articles scanné " + colisViderManage.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned);
+                Debug.Log("Nombre Articles " + colisCompare.listArticles.Count);
                 if (colisViderManage.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisCompare.listArticles.Count)
                 {
                     Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");

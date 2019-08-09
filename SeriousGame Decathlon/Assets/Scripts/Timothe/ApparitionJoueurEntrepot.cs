@@ -37,6 +37,7 @@ public class ApparitionJoueurEntrepot : MonoBehaviour
                     break;
             }
         }
+        camera.GetComponent<GTPCameraFollow>().enabled = true;
     }
 
     // Update is called once per frame

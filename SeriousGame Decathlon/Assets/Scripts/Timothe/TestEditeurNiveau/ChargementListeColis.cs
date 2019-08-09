@@ -23,6 +23,7 @@ public class ChargementListeColis : MonoBehaviour
     //Pour le réception
     public float chanceAnomalieRecep;
     public int nombreColisRecep;
+    public bool hasBeenReturned;
 
     //Pour le GTP
     public float nbColisVoulu;
@@ -123,7 +124,7 @@ public class ChargementListeColis : MonoBehaviour
     public void QuitGTPLevel(int nombreColisRestant)
     {
         nbColisVoulu = nombreColisRestant;
-        apparitionPos = 2;
+        apparitionPos = 3;
         SceneManager.LoadScene(6);
     }
 
