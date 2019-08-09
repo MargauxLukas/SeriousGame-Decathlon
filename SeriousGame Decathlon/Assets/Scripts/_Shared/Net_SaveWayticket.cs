@@ -1,9 +1,9 @@
 ﻿[System.Serializable]
-public class Net_LoadWayticket : NetMessage
+public class Net_SaveWayticket : NetMessage
 {
-    public Net_LoadWayticket()
+    public Net_SaveWayticket()
     {
-        OperationCode = NetOP.LoadWayticket;
+        OperationCode = NetOP.SaveWayticket;
     }
 
     public string json { set; get; }

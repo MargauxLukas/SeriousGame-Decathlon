@@ -5,7 +5,7 @@ public class Net_OnSendingHallOfFame : NetMessage
 {
    public Net_OnSendingHallOfFame()
     {
-        OperationCode = NetOP.SendingHallOfFame;
+        OperationCode = NetOP.ReceiveHallOfFame;
     }
 
     public string name { set; get; }

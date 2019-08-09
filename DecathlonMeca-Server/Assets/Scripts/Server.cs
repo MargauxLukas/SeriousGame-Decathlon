@@ -126,7 +126,7 @@ public class Server : MonoBehaviour
 
     #region onData
     /***********************************************
-     *    Quand le client me demande des trucs     *
+     *    Quand le client m'envois des trucs       *
      ***********************************************/
     private void OnData(int connectId, int channelId, int recHostId, NetMessage msg)
     {
@@ -138,8 +138,8 @@ public class Server : MonoBehaviour
                 Debug.Log("Unexpected NETOP");
                 break;
 
-            case NetOP.CreateAccount:
-                CreateAccount(connectId, channelId, recHostId, (Net_CreateAccount)msg);
+            case NetOP.SendName:
+                ReceiveName(connectId, channelId, recHostId, (Net_GiveName)msg);
                 break;
 
             case NetOP.RequestHallOfFame:
@@ -150,32 +150,31 @@ public class Server : MonoBehaviour
                 SetRanking(connectId, channelId, recHostId, (Net_SetRank)msg);
                 break;
 
-            case NetOP.LoadWayticket:
-                LoadWayticket(connectId, channelId, recHostId, (Net_LoadWayticket)msg);
+            case NetOP.SaveWayticket:
+                LoadWayticket(connectId, channelId, recHostId, (Net_SaveWayticket)msg);
                 break;
-
         }
     }
 
-    private void LoadWayticket(int connectId, int channelId, int recHostId, Net_LoadWayticket lwt)
+    private void LoadWayticket(int connectId, int channelId, int recHostId, Net_SaveWayticket lwt)
     {
-        Net_OnCreateAccount oca = new Net_OnCreateAccount();
-        oca.Success = 0;
-        oca.Information = "Wayticket reçu";
+        Net_Information info = new Net_Information();
+        info.Success = 0;
+        info.Information = "Wayticket reçu";
 
         SaveLoadSystem.instance.SaveWayTicket(lwt.json, lwt.name);
     }
 
     //A CHANGER PART AUTRE CHOSE
-    private void CreateAccount(int connectId, int channelId, int recHostId, Net_CreateAccount ca)
+    private void ReceiveName(int connectId, int channelId, int recHostId, Net_GiveName gn)
     {
-        Debug.Log(string.Format("{0}", ca.Username));
+        Debug.Log(string.Format("{0}", gn.Username));
 
-        Net_OnCreateAccount oca = new Net_OnCreateAccount();
-        oca.Success = 0;
-        oca.Information = "Account was created :)";
+        Net_Information info = new Net_Information();
+        info.Success = 0;
+        info.Information = "Account was created :)";
 
-        SendClient(recHostId, connectId, oca);
+        SendClient(recHostId, connectId, info);
     }
     #endregion
 
@@ -203,12 +202,12 @@ public class Server : MonoBehaviour
      *************************************************************************************************/
     public void HallOfFame(int connectId, int channelId, int recHostId, Net_RequestHallOfFame rhof)
     {
-        Net_OnCreateAccount oca = new Net_OnCreateAccount();
+        Net_Information info = new Net_Information();
 
-        oca.Success = 0;
-        oca.Information = "On cherche dans la bd";                                                              //On lui informe juste qu'on a reçu sa requête (Peut servir à afficher un message d'attente ou autre)
+        info.Success = 0;
+        info.Information = "On cherche dans la bd";                                                              //On lui informe juste qu'on a reçu sa requête (Peut servir à afficher un message d'attente ou autre)
 
-        SendClient(recHostId, connectId, oca);                                                                  
+        SendClient(recHostId, connectId, info);                                                                  
 
         Net_OnSendingHallOfFame oshof = new Net_OnSendingHallOfFame();
 

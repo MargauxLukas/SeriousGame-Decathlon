@@ -136,7 +136,7 @@ public class ChargementListeColis : MonoBehaviour
             if (nomDuJoueur.text != null)
             {
                 currentPlayerScriptable.name = nomDuJoueur.text;
-                Client.instance.SendCreateAccount(currentPlayerScriptable.name);
+                Client.instance.SendName(currentPlayerScriptable.name);
             }
             else
             {

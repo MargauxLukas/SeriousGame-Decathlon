@@ -1,9 +1,9 @@
 ﻿[System.Serializable]
-public class Net_OnCreateAccount : NetMessage
+public class Net_Information : NetMessage
 {
-    public Net_OnCreateAccount()
+    public Net_Information()
     {
-        OperationCode = NetOP.OnCreateAccount;
+        OperationCode = NetOP.Information;
     }
 
     public byte Success { set; get; }

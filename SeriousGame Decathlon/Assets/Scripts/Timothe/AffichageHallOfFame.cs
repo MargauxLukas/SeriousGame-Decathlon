@@ -28,6 +28,7 @@ public class AffichageHallOfFame : MonoBehaviour
         if (instance == null) { instance = this; }
         else { Destroy(instance); }
 
+        Client.instance.RequestHallOfFame(true);
         /*if (SaveLoadSystem.instance != null)
         {
             BestScoreScript newBest = SaveLoadSystem.instance.LoadBestScore();
@@ -103,6 +104,12 @@ public class AffichageHallOfFame : MonoBehaviour
                 }
             }
             gm.transform.position += new Vector3(1, 0, 0) * coef * 4;
-        }
+        }*/
+    }
+
+    public void SetScore(string name, int score, int rank)
+    {
+        nomDesVIP  [rank - 1].text = name;
+        scoreDesVIP[rank - 1].text = score.ToString();
     }
 }

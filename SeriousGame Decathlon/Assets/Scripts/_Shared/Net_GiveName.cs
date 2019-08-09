@@ -1,9 +1,9 @@
 ﻿[System.Serializable]
-public class Net_CreateAccount : NetMessage
+public class Net_GiveName : NetMessage
 {
-    public Net_CreateAccount()
+    public Net_GiveName()
     {
-        OperationCode = NetOP.CreateAccount;
+        OperationCode = NetOP.SendName;
     }
 
     public string Username { set; get; }

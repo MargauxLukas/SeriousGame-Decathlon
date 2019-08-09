@@ -110,9 +110,11 @@ public class Client : MonoBehaviour
                 Debug.Log("Unexpected network event type");
                 break;
         }
-
     }
 
+    /********************************
+     *   Ce que le client reçoit    *
+     ********************************/
     #region onData
     private void OnData(int connectId, int channelId, int recHostId, NetMessage msg)
     {
@@ -124,20 +126,20 @@ public class Client : MonoBehaviour
                 Debug.Log("Unexpected NETOP");
                 break;
 
-            case NetOP.OnCreateAccount:
-                OnCreateAccount((Net_OnCreateAccount)msg);
+            case NetOP.Information:
+                GiveInformation((Net_Information)msg);
                 break;
 
-            case NetOP.SendingHallOfFame:
+            case NetOP.ReceiveHallOfFame:
                 ReceiveHallOfFame((Net_OnSendingHallOfFame)msg);
                 break;
         }
     }
 
-    private void OnCreateAccount(Net_OnCreateAccount oca)
+    private void GiveInformation(Net_Information info)
     {
-        ChargementListeColis.instance.ChangeAuthentificationMessage(oca.Information);
-        if(oca.Success != 0)
+        ChargementListeColis.instance.ChangeAuthentificationMessage(info.Information);
+        if(info.Success != 0)
         {
             //Unable
         }
@@ -164,17 +166,12 @@ public class Client : MonoBehaviour
     }
     #endregion
     
-    public void SendCreateAccount(string username)
+    public void SendName(string username)
     {
-        Net_CreateAccount ca = new Net_CreateAccount();
-        ca.Username = username;
+        Net_GiveName gn = new Net_GiveName();
+        gn.Username = username;
 
-        SendServer(ca);
-    }
-
-    public void sendLoginRequest(string userName, string password)
-    {
-
+        SendServer(gn);
     }
 
     #region HallOfFame
@@ -209,7 +206,7 @@ public class Client : MonoBehaviour
 
     public void SendWayticket(string json, string name)
     {
-        Net_LoadWayticket lwt = new Net_LoadWayticket();
+        Net_SaveWayticket lwt = new Net_SaveWayticket();
         lwt.json = json;
         lwt.name = name;
 
