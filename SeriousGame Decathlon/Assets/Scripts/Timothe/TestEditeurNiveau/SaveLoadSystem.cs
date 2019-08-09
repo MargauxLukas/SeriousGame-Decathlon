@@ -14,11 +14,11 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
-        else if(instance != this)
+        else if (instance != this)
         {
             Destroy(instance.gameObject);
             instance = this;
@@ -28,17 +28,17 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void DeleteAllFile()
     {
-        
+
     }
 
     public void DeleteFileInDirectory(string direc)
     {
-        
+
     }
 
     public void DeleteLevel(int levelNb)
     {
-        
+
     }
 
     public void SaveColis(Colis colisToSave)
@@ -64,7 +64,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SaveGeneralData(SavedData dataToSave)
     {
-       
+
     }
 
     public SavedData LoadGeneralData()
@@ -74,12 +74,12 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SaveLevelWithoutColis(LevelScriptable levelToSave)
     {
-        
+
     }
 
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
     {
-        
+
     }
 
     public LevelScriptable LoadLevel(int levelNb)
@@ -89,80 +89,25 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SaveScore(Player playerToSave)
     {
-        
-        if (!IsSaveFile())
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
 
-        string path = Application.persistentDataPath + "/game_save/allScoringSave.txt";
-        string content = playerToSave.name + ";" + System.DateTime.Now.ToString("dd MMMM yyyy") + ";" + playerToSave.score + "\r\n";
-
-        SaveBestScore(playerToSave.score, playerToSave.name);
-        SaveBestScoreMF(playerToSave.scoreMultifonction, playerToSave.name);
-        SaveBestScoreGTP(playerToSave.scoreGTP, playerToSave.name);
-        SaveBestScoreRecep(playerToSave.scoreReception, playerToSave.name);
-
-        if (!File.Exists(path))
-        {
-            File.WriteAllText(path, content);
-        }
-        else
-        {
-            File.AppendAllText(path, content);
-        }
     }
 
     public void SaveBestBegin(BestScoreScript bestBegin)
     {
-        
-        if (!IsSaveFile())
-        {
-            Debug.Log("Test");
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
 
-        BinaryFormatter bf = new BinaryFormatter();
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFame.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFameMF.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFameMF.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFameGTP.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFameGTP.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFameRecep.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFameRecep.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
     }
 
     public void SaveBestScore(int score, string nom)
     {
-        
+
     }
 
-    public void SaveBestScoreMF(int score, string nom)
+    public BestScoreScript LoadBestScore()
+    {
+        return null;
+    }
+
+   /* public void SaveBestScoreMF(int score, string nom)
     {
         if (!IsSaveFile())
         {
@@ -321,11 +266,6 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    public BestScoreScript LoadBestScore()
-    {
-        return null;
-    }
-
     public BestScoreScript LoadBestScoreMF()
     {
         if (!IsSaveFile())
@@ -378,5 +318,5 @@ public class SaveLoadSystem : MonoBehaviour
             file.Close();
         }
         return hallToLoad;
-    }
+    }*/
 }
