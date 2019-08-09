@@ -307,6 +307,10 @@ public class ManagerColisVider : MonoBehaviour
             {
                 newColis = colisViderTuto[currentColisNumberTuto];
                 positionVoulueParEmplacement[empalcementColisCree] = listPosVoulue[currentColisNumberTuto];
+                if(needPack[currentColisNumberTuto])
+                {
+                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 3;
+                }
                 currentColisNumberTuto++;
             }
             else
