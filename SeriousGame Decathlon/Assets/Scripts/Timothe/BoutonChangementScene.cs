@@ -54,4 +54,9 @@ public class BoutonChangementScene : MonoBehaviour
             SceneManager.LoadScene(7);
         }
     }
+
+    public void OpenURL()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSde8JlUbdVpTeYeKS_inLRQDctyKbsr0iGuwH6LuEbcf5U7-A/viewform?usp=sf_link");
+    }
 }
