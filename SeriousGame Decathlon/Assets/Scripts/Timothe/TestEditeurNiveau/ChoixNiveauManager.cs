@@ -57,6 +57,8 @@ public class ChoixNiveauManager : MonoBehaviour
             nouveauBouton.GetComponentInChildren<Text>().text = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel.name;
             nouveauBouton.GetComponent<GetCurrentLevelButton>().nbLevel = i;
             nouveauBouton.GetComponent<GetCurrentLevelButton>().managerLevel = this;
+            RectTransform rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.sizeDelta += new Vector2(0, 130);
             //currentChoiceLevel = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel;
         }
         listAffAnomalies = new List<GameObject>();

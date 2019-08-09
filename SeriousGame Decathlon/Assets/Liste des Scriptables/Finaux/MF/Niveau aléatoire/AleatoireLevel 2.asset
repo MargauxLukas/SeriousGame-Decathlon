@@ -10,32 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d51ced4f9d60e0948aa8593f4a8d093d, type: 3}
-  m_Name: AleatoireLevel
+  m_Name: AleatoireLevel 2
   m_EditorClassIdentifier: 
   doesNeedMF: 1
   doesNeedRecep: 1
   doesNeedGTP: 1
   colisDuNiveauNoms:
+  - ColisMFAlea1
   - ColisMFAlea2
   - ColisMFAlea3
+  - ColisMFAlea4
   - ColisMFAlea5
+  - ColisMFAlea6
+  - ColisMFAlea7
   - ColisMFAlea8
   - ColisMFAlea9
-  nbColisParNomColis: 0100000001000000010000000100000001000000
-  name: Les Bases du jeu 1
-  nbLevel: 1
+  nbColisParNomColis: 010000000100000001000000010000000100000001000000010000000100000001000000
+  name: Niveau complet
+  nbLevel: 3
   colisDuNiveauNomReception:
   - ColisBaseRecep
   - RecepGrosCarton
   - RecepMalOriente
   - RecepAbimePetit
+  - RecepTropLourd
   - ColisBaseRecep
-  - RecepMalOriente
+  - ColisBaseRecep
   chanceReceptionColisHaveAnomalie: 10
-  nombreColisReception: 27
-  nbColisVoulu: 7
-  chanceMauvaisArticle: 25
-  chanceAllMauvaisArticle: 2
-  chancePasRemplit: 15
-  chanceInternet: 5
-  ChanceTropArticle: 2
+  nombreColisReception: 100
+  nbColisVoulu: 20
+  chanceMauvaisArticle: 13
+  chanceAllMauvaisArticle: 4
+  chancePasRemplit: 6
+  chanceInternet: 10
+  ChanceTropArticle: 4
