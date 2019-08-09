@@ -304,7 +304,7 @@ public class RotationScript : MonoBehaviour
         if (cartonObj.GetComponent<ColisScript>().colisScriptable.isBadOriented)
         {
             resetAll();
-            squareList[5].isCurrentlyPick = true;
+            squareList[3].isCurrentlyPick = true;
             actualFace = GetCurrentFace();
             UpdateSprite(cartonsSprites, carton);
             cartonObj.GetComponent<ColisScript>().colisScriptable.UpdateRotation(actualFace.face);

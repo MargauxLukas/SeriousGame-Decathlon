@@ -417,14 +417,20 @@ public class ColisScript : MonoBehaviour
     public void Tourner(string face)
     {
         IWayEtiquette.SetActive(false);
-        if (face == "Forward" && !IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
+        if (face == "Forward")
         {
-            IWayEtiquette.SetActive(true);
+            if (!IWayEtiquette.activeSelf && colisScriptable.wayTicket != null)
+            {
+                IWayEtiquette.SetActive(true);
+            }
             colisScriptable.isBadOriented = false;
         }
         else if(face == "Backward")
         {
-            IWayEtiquette.SetActive(false);
+            if (!IWayEtiquette.activeSelf)
+            {
+                IWayEtiquette.SetActive(false);
+            }
             colisScriptable.isBadOriented = false;
         }
         else if(!colisScriptable.isBadOriented)

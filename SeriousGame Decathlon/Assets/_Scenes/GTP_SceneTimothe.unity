@@ -9754,9 +9754,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
   - {fileID: 11400000, guid: 7521e02d571fcbb42b88d6ed50a45594, type: 2}
   positionVoulueParEmplacement: 0000000000000000
-  chanceColisPasRemplit: 10
-  chanceArticlePasBon: 15
-  chanceColisPasBon: 2
+  chanceColisPasRemplit: 0
+  chanceArticlePasBon: 0
+  chanceColisPasBon: 0
   photoArticle: {fileID: 1572741195}
   managerColis: {fileID: 882313606}
   colisActuellementsPose:
@@ -9768,6 +9768,15 @@ MonoBehaviour:
   emplacement: 0
   AncientEmplacementTempo: -1
   artReference: {fileID: 0}
+  colisViderTuto:
+  - {fileID: 11400000, guid: 5a35fadede0e27245b718214fcaa267f, type: 2}
+  - {fileID: 11400000, guid: 30683e55eb4c6384caabcf732e780b5a, type: 2}
+  - {fileID: 11400000, guid: 6ccbb5841875f6a40a46d75e2b9374b8, type: 2}
+  - {fileID: 11400000, guid: e472c9ee8c698464f879941850f959e9, type: 2}
+  - {fileID: 11400000, guid: 6ccbb5841875f6a40a46d75e2b9374b8, type: 2}
+  needPack: 0000000100
+  currentColisNumberTuto: 0
+  listPosVoulue: 0000000001000000020000000000000000000000
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
@@ -9796,18 +9805,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monitor: {fileID: 1276711367}
   colisViderManage: {fileID: 882313604}
-  colisVoulus: []
-  colisActuellementTraite: []
-  phasesColisVoulus: 
+  colisVoulus:
+  - {fileID: 11400000, guid: 1860087830c1c2d4b98ca75eef018d4e, type: 2}
+  - {fileID: 11400000, guid: 9e935f3b62c294d488f8273a50c9ea94, type: 2}
+  - {fileID: 11400000, guid: f3f72d7eb1dd5664f9d65c6d5a14e2e5, type: 2}
+  - {fileID: 11400000, guid: d85a963147b17e543bacd53e64ac677b, type: 2}
+  colisActuellementTraite:
+  - {fileID: 11400000, guid: 1860087830c1c2d4b98ca75eef018d4e, type: 2}
+  - {fileID: 11400000, guid: 9e935f3b62c294d488f8273a50c9ea94, type: 2}
+  - {fileID: 11400000, guid: f3f72d7eb1dd5664f9d65c6d5a14e2e5, type: 2}
+  phasesColisVoulus: 01000000010000000100000002000000
   cm:
   - {fileID: 980227254}
   - {fileID: 1987281621}
   - {fileID: 994102619}
-  nombreColisVoulu: 3
+  nombreColisVoulu: 0
   nbArticleVoulu: 0
   nbEmplacement: 0
-  chanceAvoirTropArticlePrevu: 1
-  chanceToComeFromInternet: 3
+  chanceAvoirTropArticlePrevu: 0
+  chanceToComeFromInternet: 0
   ecranFinNiveau: {fileID: 2118144035}
   isLevelEnded: 0
 --- !u!1 &887417059

@@ -21,5 +21,7 @@ MonoBehaviour:
     pas bonne, et c'est \xE0 toi de faire attention \xE0 \xE7a."
   choixPossibles:
   - Merci !
+  - J'aurais besoin d'une autre information
   dialoguesSuivant:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 67542b4871485cc42a6fddeab8b4a04d, type: 2}
