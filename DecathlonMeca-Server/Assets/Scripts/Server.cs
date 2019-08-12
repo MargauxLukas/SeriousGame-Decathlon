@@ -142,8 +142,8 @@ public class Server : MonoBehaviour
                 ReceiveName(connectId, channelId, recHostId, (Net_GiveName)msg);
                 break;
 
-            case NetOP.RequestHallOfFame:
-                HallOfFame(connectId, channelId, recHostId, (Net_RequestHallOfFame)msg);
+            case NetOP.Request:
+                RequestAnalyze(connectId, channelId, recHostId, (Net_Request)msg);
                 break;
 
             case NetOP.SetRank:
@@ -153,28 +153,19 @@ public class Server : MonoBehaviour
             case NetOP.SaveWayticket:
                 LoadWayticket(connectId, channelId, recHostId, (Net_SaveWayticket)msg);
                 break;
+
+            case NetOP.SaveColis:
+                LoadColis(connectId, channelId, recHostId, (Net_SaveColis)msg);
+                break;
+
+            case NetOP.SaveLevel:
+                LoadLevel(connectId, channelId, recHostId, (Net_SaveLevel)msg);
+                break;
+
+            case NetOP.SaveLevelWithoutColis:
+                LoadLevelWithoutColis(connectId, channelId, recHostId, (Net_SaveLevelWithoutColis)msg);
+                break;
         }
-    }
-
-    private void LoadWayticket(int connectId, int channelId, int recHostId, Net_SaveWayticket lwt)
-    {
-        Net_Information info = new Net_Information();
-        info.Success = 0;
-        info.Information = "Wayticket reçu";
-
-        SaveLoadSystem.instance.SaveWayTicket(lwt.json, lwt.name);
-    }
-
-    //A CHANGER PART AUTRE CHOSE
-    private void ReceiveName(int connectId, int channelId, int recHostId, Net_GiveName gn)
-    {
-        Debug.Log(string.Format("{0}", gn.Username));
-
-        Net_Information info = new Net_Information();
-        info.Success = 0;
-        info.Information = "Account was created :)";
-
-        SendClient(recHostId, connectId, info);
     }
     #endregion
 
@@ -196,11 +187,52 @@ public class Server : MonoBehaviour
     }
     #endregion
 
+    #region UsersInformation
+    private void ReceiveName(int connectId, int channelId, int recHostId, Net_GiveName gn)
+    {
+        Debug.Log(string.Format("{0}", gn.Username));
+
+        Net_Information info = new Net_Information();
+        info.Success = 0;
+        info.Information = "Account was created :)";
+
+        SendClient(recHostId, connectId, info);
+    }
+    #endregion
+
+    #region Request
+    public void RequestAnalyze(int connectId, int channelId, int recHostId, Net_Request request)
+    {
+        switch(request.stringRequest)
+        {
+            case "HallOfFame":
+                HallOfFame(connectId, channelId, recHostId);
+                break;
+
+            case "WayTicket":
+                SendWayTicket(connectId, channelId, recHostId, request);
+                break;
+
+            case "Level":
+                SendLevel(connectId, channelId, recHostId, request);
+                break;
+
+            case "Colis":
+                SendColis(connectId, channelId, recHostId, request);
+                break;
+
+            case "GeneralData":
+                SendGeneralData(connectId, channelId, recHostId);
+                break;
+        }
+    }
+    #endregion
+
     #region HallOfFameRequest
     /*************************************************************************************************
      *     Lorsque le client fait une Requête pour acceder au Hall Of Fame, il se retrouve ici       *
      *************************************************************************************************/
-    public void HallOfFame(int connectId, int channelId, int recHostId, Net_RequestHallOfFame rhof)
+    public void HallOfFame(int connectId, int channelId, int recHostId)
     {
         Net_Information info = new Net_Information();
 
@@ -219,13 +251,73 @@ public class Server : MonoBehaviour
 
             SendClient(recHostId, connectId, oshof);                                                            //On lui envois le classement 1 par 1, peut importe dans l'ordre ou arrive les paquets puisque je lui donne aussi le rank, du coup il sait ou le ranger même si il reçoit le 7eme avant le 1er
         }
-
-        //dbAccess.CanCloseDB();
     }
 
     public void SetRanking(int connectId, int channelId, int recHostId, Net_SetRank sr)
     {
         dbAccess.SetRanking(sr.score, sr.name);
+    }
+    #endregion
+
+    #region SaveLoadSystem
+    private void LoadWayticket(int connectId, int channelId, int recHostId, Net_SaveWayticket lwt)
+    {
+        Net_Information info = new Net_Information();
+        info.Success = 0;
+        info.Information = "Wayticket reçu";
+
+        SaveLoadSystem.instance.SaveWayTicket(lwt.json, lwt.name);
+    }
+
+    private void SendWayTicket(int connectId, int channelId, int recHostId, Net_Request request)
+    {
+        Net_SendWayTicket sw = new Net_SendWayTicket();
+
+        sw.file = SaveLoadSystem.instance.LoadWayTicket(request.colis);
+
+        SendClient(recHostId, connectId, sw);     
+    }
+
+    private void LoadColis(int connectId, int channelId, int recHostId, Net_SaveColis sc)
+    {
+        SaveLoadSystem.instance.SaveColis(sc.json, sc.name);
+    }
+
+    private void SendColis(int connectId, int channelId, int recHostId, Net_Request request)
+    {
+        Net_SendColis sc = new Net_SendColis();
+
+        sc.file = SaveLoadSystem.instance.LoadColis(request.colis);
+
+        SendClient(recHostId, connectId, sc);
+    }
+
+    private void LoadLevel(int connectId, int channelId, int recHostId, Net_SaveLevel sl)
+    {
+        SaveLoadSystem.instance.SaveLevel(sl.json, sl.nbLevel);
+    }
+
+    private void SendLevel(int connectId, int channelId, int recHostId, Net_Request request)
+    {
+        Net_SendLevel sl = new Net_SendLevel();
+
+        sl.file = SaveLoadSystem.instance.LoadLevel(request.integer);
+
+        SendClient(recHostId, connectId, sl);
+    }
+
+    private void LoadLevelWithoutColis(int connectId, int channelId, int recHostId, Net_SaveLevelWithoutColis slwc)
+    {
+        SaveLoadSystem.instance.SaveLevelWithoutColis(slwc.json, slwc.nbLevel);
+    }
+
+    private void SendGeneralData(int connectId, int channelId, int recHostId)
+    {
+        Net_SendGeneralData sgd = new Net_SendGeneralData();
+
+        sgd.file = SaveLoadSystem.instance.LoadGeneralData();
+
+        SendClient(recHostId, connectId, sgd);
     }
     #endregion
 }

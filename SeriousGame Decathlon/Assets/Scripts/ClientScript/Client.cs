@@ -13,7 +13,8 @@ public class Client : MonoBehaviour
     private const int PORT      = 26000;
     private const int WEB_PORT  = 26001;
     private const int BYTE_SIZE = 1024 ;
-    private const string SERVER_IP = "192.168.137.6";
+    private const string SERVER_IP = "127.0.0.1";                //Use 127.0.0.1 for local (When tablet is connected to PC)
+
     private byte reliableChannel;
     private byte error;
 
@@ -22,12 +23,24 @@ public class Client : MonoBehaviour
 
     private bool isStarted;
 
+    //Tests
+    public Net_SendLevel slSave;
+    public Net_SendColis scSave;
+    public Net_SendWayTicket swSave;
+    public Net_SendGeneralData gdSave;
+
     #region Monobehaviour
     private void Start()
     {
-        if (instance == null){instance = this;}
-        else{Destroy(instance);}
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this);
         Init();
     }
     #endregion
@@ -133,6 +146,22 @@ public class Client : MonoBehaviour
             case NetOP.ReceiveHallOfFame:
                 ReceiveHallOfFame((Net_OnSendingHallOfFame)msg);
                 break;
+
+            case NetOP.ReceiveWayTicket:
+                swSave = (Net_SendWayTicket)msg;
+                break;
+
+            case NetOP.ReceiveColis:
+                scSave = (Net_SendColis)msg;
+                break;
+
+            case NetOP.ReceiveLevel:
+                slSave = (Net_SendLevel)msg;
+                break;
+
+            case NetOP.ReceiveDataGeneral:
+                gdSave = (Net_SendGeneralData)msg;
+                break;
         }
     }
 
@@ -178,12 +207,12 @@ public class Client : MonoBehaviour
     /******************************************
      *   Demande au serveur des informations  *
      ******************************************/
-    public void RequestHallOfFame(bool request)
+    public void RequestHallOfFame()
     {
-        Net_RequestHallOfFame rhof = new Net_RequestHallOfFame();
-        rhof.isRequest = true;
+        Net_Request request = new Net_Request();
+        request.stringRequest = "HallOfFame";
 
-        SendServer(rhof);
+        SendServer(request);
     }
 
     /**********************************
@@ -206,10 +235,37 @@ public class Client : MonoBehaviour
 
     public void SendWayticket(string json, string name)
     {
-        Net_SaveWayticket lwt = new Net_SaveWayticket();
-        lwt.json = json;
-        lwt.name = name;
+        Net_SaveWayticket swt = new Net_SaveWayticket();
+        swt.json = json;
+        swt.name = name;
 
-        SendServer(lwt);
+        SendServer(swt);
+    }
+
+    public void SendColis(string json, string name)
+    {
+        Net_SaveColis sc = new Net_SaveColis();
+        sc.json = json;
+        sc.name = name;
+
+        SendServer(sc);
+    }
+
+    public void SendLevel(string json, int nbLevel)
+    {
+        Net_SaveLevel sl = new Net_SaveLevel();
+        sl.json = json;
+        sl.nbLevel = nbLevel;
+
+        SendServer(sl);
+    }
+
+    public void SendLevelWithoutColis(string json, int nbLevel)
+    {
+        Net_SaveLevelWithoutColis slwc = new Net_SaveLevelWithoutColis();
+        slwc.json = json;
+        slwc.nbLevel = nbLevel;
+
+        SendServer(slwc);
     }
 }

@@ -5,13 +5,20 @@
  ************************************************************************/
 public static class NetOP
 {
-    public const int None              = 0;
-    public const int SendName          = 1;
-    public const int Information       = 2;
-    public const int RequestHallOfFame = 3;
-    public const int ReceiveHallOfFame = 5;
-    public const int SetRank           = 6;
-    public const int SaveWayticket     = 7;
+    public const int None                  = 0;
+    public const int SendName              = 1;
+    public const int Information           = 2;
+    public const int Request               = 3;
+    public const int ReceiveHallOfFame     = 5;
+    public const int SetRank               = 6;
+    public const int SaveWayticket         = 7;
+    public const int ReceiveWayTicket      = 8;
+    public const int SaveColis             = 9;
+    public const int SaveLevel             = 10;
+    public const int SaveLevelWithoutColis = 11;
+    public const int ReceiveColis          = 12;
+    public const int ReceiveLevel          = 13;
+    public const int ReceiveDataGeneral    = 14;
 }
 
 [System.Serializable]

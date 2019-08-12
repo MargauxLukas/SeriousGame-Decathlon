@@ -28,7 +28,7 @@ public class AffichageHallOfFame : MonoBehaviour
         if (instance == null) { instance = this; }
         else { Destroy(instance); }
 
-        Client.instance.RequestHallOfFame(true);
+        Client.instance.RequestHallOfFame();
         /*if (SaveLoadSystem.instance != null)
         {
             BestScoreScript newBest = SaveLoadSystem.instance.LoadBestScore();

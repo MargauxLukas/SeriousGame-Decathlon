@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem instance;
+    public bool hasReponse = false;
 
     //private Colis colisToSave;
 
@@ -41,11 +42,23 @@ public class SaveLoadSystem : MonoBehaviour
 
     }
 
+    //FAIT
     public void SaveColis(Colis colisToSave)
     {
+        if (colisToSave.wayTicket != null)
+        {
+            colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
+
+            //SaveWayTicket(colisToSave.wayTicket);
+        }
+
+        string json = JsonUtility.ToJson(colisToSave);
+        Client.instance.SendColis(json, colisToSave.name);
+
         SaveWayTicket(colisToSave.wayTicket);
     }
 
+    //FAIT
     public void SaveWayTicket(WayTicket ticket)
     {
         string json = JsonUtility.ToJson(ticket);
@@ -54,12 +67,33 @@ public class SaveLoadSystem : MonoBehaviour
 
     public Colis LoadColis(string colisName)
     {
-        return null;
+        Colis colisToLoad = Colis.CreateInstance<Colis>();
+
+        Net_Request request = new Net_Request();
+        request.stringRequest = "Colis";
+        request.colis = colisName;
+        Client.instance.SendServer(request);
+
+        JsonUtility.FromJsonOverwrite(Client.instance.swSave.file , colisToLoad);
+
+        colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
+
+        return colisToLoad;
     }
 
+    //FAIT
     public WayTicket LoadWayTicket(string ticket)
     {
-        return null;
+        WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
+
+        Net_Request request = new Net_Request();
+        request.stringRequest = "WayTicket";
+        request.colis = ticket;
+        Client.instance.SendServer(request);
+
+        JsonUtility.FromJsonOverwrite(Client.instance.swSave.file, newTicket);
+
+        return newTicket;
     }
 
     public void SaveGeneralData(SavedData dataToSave)
@@ -69,22 +103,58 @@ public class SaveLoadSystem : MonoBehaviour
 
     public SavedData LoadGeneralData()
     {
-        return null;
+        SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
+
+        Net_Request request = new Net_Request();
+        request.stringRequest = "GeneralData";
+        Client.instance.SendServer(request);
+
+        JsonUtility.FromJsonOverwrite(Client.instance.gdSave.file , dataToLoad);
+
+        return dataToLoad;
     }
 
+    //FAIT
     public void SaveLevelWithoutColis(LevelScriptable levelToSave)
     {
-
+        string json = JsonUtility.ToJson(levelToSave);
+        Client.instance.SendLevelWithoutColis(json, levelToSave.nbLevel);
     }
 
+
+    //FAIT
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
     {
+        if (levelToSave.name == null)
+        {
+            levelToSave.name = "Niveau " + levelToSave.nbLevel.ToString();
+        }
 
+        string json = JsonUtility.ToJson(levelToSave);
+        Client.instance.SendLevel(json, levelToSave.nbLevel);
+
+        if (colisDuLevel != null && colisDuLevel.Count > 0)
+        {
+            foreach (Colis lisco in colisDuLevel)
+            {
+                SaveColis(lisco);
+            }
+        }
     }
 
+    //FAIT
     public LevelScriptable LoadLevel(int levelNb)
     {
-        return null;
+        LevelScriptable levelToSave = LevelScriptable.CreateInstance<LevelScriptable>();
+
+        Net_Request request = new Net_Request();
+        request.stringRequest = "Level";
+        request.integer = levelNb;
+        Client.instance.SendServer(request);
+
+        JsonUtility.FromJsonOverwrite(Client.instance.slSave.file, levelToSave);
+
+        return levelToSave;
     }
 
     public void SaveScore(Player playerToSave)
