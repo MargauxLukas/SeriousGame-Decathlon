@@ -1636,6 +1636,7 @@ MonoBehaviour:
   textNbArticle: {fileID: 1822718941395914177}
   textNbRFID: {fileID: 8587947933902220565}
   textRefRFID: {fileID: 5871945748843923883}
+  calculArt: {fileID: 5856178237461049665}
 --- !u!1 &9195246262686473077
 GameObject:
   m_ObjectHideFlags: 0

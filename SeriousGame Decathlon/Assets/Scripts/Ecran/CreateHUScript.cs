@@ -12,7 +12,7 @@ public class CreateHUScript : MonoBehaviour
     private string madeIn         = "";
     private string dateExpiration = "";
     private int quantity          =  0;
-    private int reference         =  0;
+    private int reference         =  4635;
 
     public TMP_Dropdown dropdownPackaging;
     public TMP_Dropdown dropdownWorkStation;
