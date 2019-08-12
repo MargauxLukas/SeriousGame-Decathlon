@@ -138,31 +138,31 @@ public class Scoring : MonoBehaviour
         switch(comboPallier)
         {
             case 1:
-                if (currentTime > 1f)
-                {
-                    comboPallier++;
-                }
-                break;
-            case 2:
                 if (currentTime > 2f)
                 {
                     comboPallier++;
                 }
                 break;
-            case 3:
+            case 2:
                 if (currentTime > 4f)
                 {
                     comboPallier++;
                 }
                 break;
-            case 4:
+            case 3:
                 if (currentTime > 8f)
                 {
                     comboPallier++;
                 }
                 break;
+            case 4:
+                if (currentTime > 16f)
+                {
+                    comboPallier++;
+                }
+                break;
             case 5:
-                if (currentTime > 15f)
+                if (currentTime > 30f)
                 {
                     comboPallier++;
                 }
@@ -241,25 +241,25 @@ public class Scoring : MonoBehaviour
         switch (comboPallier)
         {
             case 1:
-                if (currentTime > 1f)
-                {
-                    currentColisInCombo++;
-                }
-                break;
-            case 2:
                 if (currentTime > 2f)
                 {
                     currentColisInCombo++;
                 }
                 break;
-            case 3:
+            case 2:
                 if (currentTime > 4f)
                 {
                     currentColisInCombo++;
                 }
                 break;
-            case 4:
+            case 3:
                 if (currentTime > 8f)
+                {
+                    currentColisInCombo++;
+                }
+                break;
+            case 4:
+                if (currentTime > 16f)
                 {
                     currentColisInCombo++;
                 }
@@ -279,19 +279,19 @@ public class Scoring : MonoBehaviour
         switch (comboPallier)
         {
             case 1:
-                recepCombo = 1.6f + 0.02f * currentColisInCombo;
+                recepCombo = 1.65f + 0.03f * currentColisInCombo;
                 break;
             case 2:
-                recepCombo = 1.45f + 0.03f * currentColisInCombo;
+                recepCombo = 1.5f + 0.03f * currentColisInCombo;
                 break;
             case 3:
-                recepCombo = 1.3f + 0.03f * currentColisInCombo;
+                recepCombo = 1.35f + 0.03f * currentColisInCombo;
                 break;
             case 4:
-                recepCombo = 1.15f + 0.03f * currentColisInCombo;
+                recepCombo = 1.2f + 0.03f * currentColisInCombo;
                 break;
             case 5:
-                recepCombo = 1f + 0.03f * currentColisInCombo;
+                recepCombo = 1.05f + 0.03f * currentColisInCombo;
                 break;
             case 6:
                 recepCombo = 1f;
@@ -303,7 +303,7 @@ public class Scoring : MonoBehaviour
     {
         if (ChargementListeColis.instance != null)
         {
-            scoreReception += (int)Mathf.Pow(75, recepCombo + 50 / (75 * ChargementListeColis.instance.nombreColisRecep));
+            scoreReception += (int)Mathf.Pow(75, recepCombo + 50 / (68 * ChargementListeColis.instance.nombreColisRecep));
         }
         else
         {
@@ -352,7 +352,7 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        scoreMultifonction = scoreMultifonction - 50;
+        scoreMultifonction = scoreMultifonction - 100;
     }
 
     // -150
@@ -368,7 +368,7 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        scoreMultifonction -= 150;
+        scoreMultifonction -= 200;
     }
 
     // -300
@@ -557,7 +557,7 @@ public class Scoring : MonoBehaviour
 
     public float TimeBonus()
     {
-        float calcul = (6 * 60 - timeColisMaking) * 6f; //Calcul le temps bonus (Temps mit pour le colis - 3 fois 60 secondes (3 minutes)) * 3
+        float calcul = (3 * 60 - timeColisMaking) * 3f; //Calcul le temps bonus (Temps mit pour le colis - 3 fois 60 secondes (3 minutes)) * 3
         timeColisMaking = 0;
         gotNewColis = false;
         if (calcul <= 0)

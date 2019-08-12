@@ -92,7 +92,7 @@ public class PileArticle : MonoBehaviour
                     menuIsOpen = true;
                     if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(12);}
                     circleImage.transform.parent.gameObject.SetActive(true);
-                    circleImage.transform.parent.gameObject.transform.position = transform.position;
+                    circleImage.transform.parent.gameObject.transform.position = transform.position + new Vector3(0,1,0);
                     circleImage.fillAmount = 1f / itemNumber;
 
                     if (touch.phase == TouchPhase.Moved)

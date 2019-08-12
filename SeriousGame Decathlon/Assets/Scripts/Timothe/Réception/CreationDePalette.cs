@@ -256,14 +256,14 @@ public class CreationDePalette : MonoBehaviour
             k--;
             if (Scoring.instance != null)
             {
-                Scoring.instance.PauseCombo(4f);
+                Scoring.instance.PauseCombo(6f);
             }
             if (k < 0)
             {
                 j--;
                 if (Scoring.instance != null)
                 {
-                    Scoring.instance.PauseCombo(10f);
+                    Scoring.instance.PauseCombo(12f);
                 }
                 if (j < 0)
                 {
