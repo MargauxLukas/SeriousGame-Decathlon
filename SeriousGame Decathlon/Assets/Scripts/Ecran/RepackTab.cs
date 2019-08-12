@@ -45,7 +45,6 @@ public class RepackTab : MonoBehaviour
                 }
                 comptage = true;
 
-                Debug.Log("Quantity 1 : " + textCurrentQuantity1.text + "TutoQuantity 1 : " + gameObjectsManager.quantity1 + "Quantity 2 : " + textCurrentQuantity2.text + "TutoQuantity 2 : " + gameObjectsManager.quantity2);
                 if (TutoManagerMulti.instance != null && textCurrentQuantity1.text == gameObjectsManager.quantity1 && textCurrentQuantity2.text == gameObjectsManager.quantity2)
                 {
                     Debug.Log("Repack quantity is good");
@@ -63,9 +62,10 @@ public class RepackTab : MonoBehaviour
             {
                 art = colisVide.GetComponent<ColisScript>().colisScriptable.listArticles[colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1];
 
+                colis.GetComponent<ColisScript>().spriteArticleDansColis.sprite = art.spriteList[1];
                 colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
                 colis    .GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
-
+                
                 colis    .GetComponent<ColisScript>().colisScriptable.PCB++;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB--;
 
@@ -73,6 +73,11 @@ public class RepackTab : MonoBehaviour
                 colisVide.GetComponent<ColisScript>().colisScriptable.UpdateWeight();
 
                 comptage = false;
+            }
+
+            if (colisVide.GetComponent<ColisScript>().colisScriptable.PCB <= 0)
+            {
+                colisVide.GetComponent<ColisScript>().spriteArticleDansColis.sprite = null;
             }
         }
     }
@@ -92,7 +97,9 @@ public class RepackTab : MonoBehaviour
             {
                 art = colis.GetComponent<ColisScript>().colisScriptable.listArticles[colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count-1];
 
-                colis    .GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
+                colisVide.GetComponent<ColisScript>().spriteArticleDansColis.sprite = colis.GetComponent<ColisScript>().colisScriptable.listArticles[colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1].spriteList[1];
+
+                colis.GetComponent<ColisScript>().colisScriptable.listArticles.RemoveAt(colis.GetComponent<ColisScript>().colisScriptable.listArticles.Count - 1);
                 colisVide.GetComponent<ColisScript>().colisScriptable.listArticles.Add(art);
                 colis    .GetComponent<ColisScript>().colisScriptable.PCB--;
                 colisVide.GetComponent<ColisScript>().colisScriptable.PCB++;
@@ -101,6 +108,11 @@ public class RepackTab : MonoBehaviour
                 colisVide.GetComponent<ColisScript>().colisScriptable.UpdateWeight();
 
                 comptage = false;
+            }
+
+            if(colis.GetComponent<ColisScript>().colisScriptable.PCB <= 0)
+            {
+                colis.GetComponent<ColisScript>().spriteArticleDansColis.sprite = null;
             }
         }
     }

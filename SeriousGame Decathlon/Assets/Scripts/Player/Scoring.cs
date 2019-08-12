@@ -279,19 +279,19 @@ public class Scoring : MonoBehaviour
         switch (comboPallier)
         {
             case 1:
-                recepCombo = 1.4f + 0.02f * currentColisInCombo;
+                recepCombo = 1.6f + 0.02f * currentColisInCombo;
                 break;
             case 2:
-                recepCombo = 1.3f + 0.02f * currentColisInCombo;
+                recepCombo = 1.45f + 0.03f * currentColisInCombo;
                 break;
             case 3:
-                recepCombo = 1.2f + 0.02f * currentColisInCombo;
+                recepCombo = 1.3f + 0.03f * currentColisInCombo;
                 break;
             case 4:
-                recepCombo = 1.1f + 0.02f * currentColisInCombo;
+                recepCombo = 1.15f + 0.03f * currentColisInCombo;
                 break;
             case 5:
-                recepCombo = 1f + 0.02f * currentColisInCombo;
+                recepCombo = 1f + 0.03f * currentColisInCombo;
                 break;
             case 6:
                 recepCombo = 1f;
@@ -301,7 +301,14 @@ public class Scoring : MonoBehaviour
 
     public void RecepRenvoieColis()
     {
-        scoreReception += (int)Mathf.Pow(75, recepCombo);
+        if (ChargementListeColis.instance != null)
+        {
+            scoreReception += (int)Mathf.Pow(75, recepCombo + 50 / (75 * ChargementListeColis.instance.nombreColisRecep));
+        }
+        else
+        {
+            scoreReception += (int)Mathf.Pow(75, recepCombo);
+        }
     }
 
     public void ResetComboRpcep()
@@ -315,7 +322,7 @@ public class Scoring : MonoBehaviour
     #region Multifonction
 
     //MALUS
-    // -15
+    // -25
     public void MinorPenalty()
     {
         if(!hadMalusColis)
@@ -328,11 +335,11 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        scoreMultifonction = scoreMultifonction - 15;
+        scoreMultifonction = scoreMultifonction - 25;
         
     }
 
-    // -30
+    // -50
     public void MidPenalty()
     {
         if (!hadMalusColis)
@@ -345,10 +352,10 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        scoreMultifonction = scoreMultifonction - 30;
+        scoreMultifonction = scoreMultifonction - 50;
     }
 
-    // -70
+    // -150
     public void MajorPenalty()
     {
         if (!hadMalusColis)
@@ -361,10 +368,10 @@ public class Scoring : MonoBehaviour
             hadMalusAnomalie = true;
             ResetComboAnomalieSansMalus();
         }
-        scoreMultifonction -= 70;
+        scoreMultifonction -= 150;
     }
 
-    // -150
+    // -300
     public void Danger()
     {
 
@@ -499,7 +506,7 @@ public class Scoring : MonoBehaviour
     // +50
     public void solveAnomalie()
     {
-        scoreMultifonction += (int)(100 * multiplicator);
+        scoreMultifonction += (int)(50 * multiplicator);
         solveAnomalieCombo++;
     }
 
@@ -508,7 +515,7 @@ public class Scoring : MonoBehaviour
     {
         if (!hadMalusAnomalie)
         {
-            scoreMultifonction += (int)(400 * multiplicator);
+            scoreMultifonction += (int)(200 * multiplicator);
             solveAnomalieComboWithoutMalus++;
         }
         else
@@ -520,7 +527,7 @@ public class Scoring : MonoBehaviour
     // +100
     public void sendColis()
     {
-        scoreMultifonction += (int)(200 * multiplicator);
+        scoreMultifonction += (int)(100 * multiplicator);
         sendColisCombo++;
         if(!tookHelp)
         {
@@ -529,12 +536,12 @@ public class Scoring : MonoBehaviour
         //score += (int)TimeBonus();
     }
 
-    // +450
+    // +500
     public void sendColisWithoutMalus()
     {
         if (!hadMalusColis)
         {
-            scoreMultifonction += (int)(900 * multiplicator);
+            scoreMultifonction += (int)(500 * multiplicator);
             sendColisComboWithoutMalus++;
             if (!tookHelp)
             {

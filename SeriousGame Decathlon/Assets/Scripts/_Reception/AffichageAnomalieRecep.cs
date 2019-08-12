@@ -114,12 +114,12 @@ public class AffichageAnomalieRecep : MonoBehaviour
                 if (ChargementListeColis.instance == null)
                 {
                     Debug.Log("Test2");
-                    Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                    Scoring.instance.RecepBonus(90 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     SceneManager.LoadScene(6);
                 }
                 else
                 {
-                    Scoring.instance.RecepBonus(100 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
+                    Scoring.instance.RecepBonus(90 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     ChargementListeColis.instance.hasBeenReturned = true;
                     ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
                 }

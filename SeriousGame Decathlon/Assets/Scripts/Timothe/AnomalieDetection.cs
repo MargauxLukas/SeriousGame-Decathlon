@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnomalieDetection : MonoBehaviour
 {
     public List<int> RFIDtagKnowned;
-    private bool isAwakning = true;
+    public bool isAwakning = true;
 
     /* Anomalie actuellement traitées :
      * - PCB différents (1)
@@ -32,20 +32,7 @@ public class AnomalieDetection : MonoBehaviour
     {
         if (colis.listArticles.Count > 0)
         {
-            if (!isAwakning && colis.listAnomalies != null)
-            {
-                if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
-                {
-                    Scoring.instance.MidPenalty();
-                    Scoring.instance.AffichageErreur("Quality control : Colis non vidé");
-                }
 
-                if (colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount)
-                {
-                    Scoring.instance.MidPenalty();
-                    Scoring.instance.AffichageErreur("Repack from FP : Colis non recompté");
-                }
-            }
             colis.nbAnomalie = 0;
             colis.listAnomalies = new List<string>();
 
@@ -168,6 +155,21 @@ public class AnomalieDetection : MonoBehaviour
             else
             {
                 //Debug.Log("T'arrive là ?");
+            }
+
+            if (!isAwakning && colis.listAnomalies != null)
+            {
+                if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
+                {
+                    Scoring.instance.MidPenalty();
+                    Scoring.instance.AffichageErreur("Quality control : Colis non vidé");
+                }
+
+                if (colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount)
+                {
+                    Scoring.instance.MidPenalty();
+                    Scoring.instance.AffichageErreur("Repack from FP : Colis non recompté");
+                }
             }
         }
         else
