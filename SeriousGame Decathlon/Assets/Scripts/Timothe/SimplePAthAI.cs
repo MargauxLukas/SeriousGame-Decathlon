@@ -17,14 +17,14 @@ public class SimplePAthAI : MonoBehaviour
         {
             if (Vector2.Distance(positionsVoulues[currentPosVoulue].position, transform.position) > 0.5f)
             {
-                GetComponent<Animator>().SetBool("DoesWalk", true);
+                //GetComponent<Animator>().SetBool("DoesWalk", true);
                 transform.position += (positionsVoulues[currentPosVoulue].position - transform.position).normalized * Time.fixedDeltaTime * speed;
             }
             else
             {
                 if (needWait[currentPosVoulue])
                 {
-                    GetComponent<Animator>().SetBool("DoesWalk", false);
+                    //GetComponent<Animator>().SetBool("DoesWalk", false);
                     StartCoroutine(WaitHere(Random.Range(3, 7)));
                 }
                 currentPosVoulue++;
