@@ -5343,8 +5343,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f, type: 2}
   - {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09, type: 2}
   - {fileID: 11400000, guid: c396131450bf62a46a775cce3e6e2a7c, type: 2}
-  - {fileID: 11400000, guid: e91916b19aedadb42a2f8aed328cbb09, type: 2}
-  - {fileID: 11400000, guid: e811fa1ad51285c43a058e2317b57132, type: 2}
+  - {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f, type: 2}
+  - {fileID: 11400000, guid: b479050d108912c46bf38d2917a75b2f, type: 2}
   - {fileID: 11400000, guid: 47bad980ec8d7aa468a4e75fb7f55fda, type: 2}
   colisAvecAnomalieMF:
   - {fileID: 11400000, guid: 9b05a4b3e31343c4f9d483d5eca29ae0, type: 2}
@@ -5361,7 +5361,7 @@ MonoBehaviour:
   coefPosColonne: 1.8
   coefPosRangee: 1.8
   coefPosPalette: 7
-  nbColisTotal: 100
+  nbColisTotal: 36
   barreProgression: {fileID: 1853158960}
   feedbackPileEtage: {fileID: 1312704498}
   nbColisTraite: 0

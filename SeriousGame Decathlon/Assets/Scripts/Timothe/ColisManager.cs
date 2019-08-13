@@ -137,11 +137,11 @@ public class ColisManager : MonoBehaviour
             }
             else if(scriptColis.colisScriptable.fillPercent >= 125)
             {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
             }
             else
             {
-                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+                scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
             }
 
             scriptColis.spriteMaskArticleColis.sprite = scriptColis.colisScriptable.carton.cartonOuvert;
@@ -159,8 +159,8 @@ public class ColisManager : MonoBehaviour
 
     public void RenvoieColis(GameObject colisRenvoye)
     {
-
         colisRenvoye.GetComponent<ColisScript>().colisScriptable.needQualityControl = false;
+        anomDetect.isAwakning = false;
         anomDetect.CheckColis(colisRenvoye.GetComponent<ColisScript>().colisScriptable);
         if (!listeColisTraiter.Contains(colisRenvoye.GetComponent<ColisScript>().colisScriptable))
         {

@@ -64,7 +64,7 @@ public class FicheCarton : MonoBehaviour
 
             scriptColis = theNewColis.GetComponent<ColisScript>();
             scriptColis.colisScriptable = Colis.CreateInstance<Colis>();
-           
+            scriptColis.hasBeenScannedByPistol = true;
 
             //scriptColis.colisScriptable.carton.codeRef = buttonName;
             //scriptColis.colisScriptable.carton.Initialize();
