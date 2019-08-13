@@ -60,20 +60,20 @@ public class ScriptColisRecep : MonoBehaviour
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
-            if (TutoManagerRecep.instance == null)
-            {
-                if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn)
+                if (TutoManagerRecep.instance == null)
                 {
-                    canMove = true;
+                    if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn)
+                    {
+                        canMove = true;
+                    }
                 }
-            }
-            else if(TutoManagerRecep.instance != null)
-            {
-                if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn && TutoManagerRecep.instance.canMoveTuto)
+                else if (TutoManagerRecep.instance != null)
                 {
-                    canMove = true;
+                    if (tapisScript != null && Vector2.Distance(touchPosition, tapisScript.turnMenuPosition) > 7f && isOnTapis && tapisScript.tapisGeneral.convoyeur.isOn && !tapisScript.turnMenu.activeSelf && TutoManagerRecep.instance.canMoveTuto)
+                    {
+                        canMove = true;
+                    }
                 }
-            }
             if (!canMove && (tapisScript == null || tapisScript.colisSurLeTapis.Count>0 || !tapisScript.colisSurLeTapis.Contains(gameObject)))
             {
                 touchObject();
@@ -128,7 +128,6 @@ public class ScriptColisRecep : MonoBehaviour
             
             if(TutoManagerRecep.instance != null)
             {
-                Debug.Log("Tuto / DoesTouch " + doesTouch);
                 if (isOnTapis && !doesTouch && !tapisScript.colisSurLeTapis.Contains(gameObject) && !tapisScript.colisEnvoye.Contains(gameObject))
                 {
                     Debug.Log("Jsp ce que c'est mais il y passe");
@@ -207,10 +206,12 @@ public class ScriptColisRecep : MonoBehaviour
     {
         if ((face == "Up" || face =="Down") && ((rotation >= 85 && rotation <= 95) || (rotation >= 265 && rotation <= 275)))
         {
+            Debug.Log("Test here orientation up");
             colisScriptable.isBadOriented = false;
         }
         else
         {
+            Debug.Log("Test here orientation up 2");
             colisScriptable.isBadOriented = true;
         }
     }

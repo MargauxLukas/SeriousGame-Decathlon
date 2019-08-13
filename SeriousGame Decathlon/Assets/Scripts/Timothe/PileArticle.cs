@@ -31,6 +31,8 @@ public class PileArticle : MonoBehaviour
 
     private float timeUpdate;
 
+    public CalculNombreArticle calculArt;
+
     private void Start()
     {
         StartCoroutine(ResetPile());
@@ -90,7 +92,7 @@ public class PileArticle : MonoBehaviour
                     menuIsOpen = true;
                     if(TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(12);}
                     circleImage.transform.parent.gameObject.SetActive(true);
-                    circleImage.transform.parent.gameObject.transform.position = transform.position;
+                    circleImage.transform.parent.gameObject.transform.position = transform.position + new Vector3(0,1,0);
                     circleImage.fillAmount = 1f / itemNumber;
 
                     if (touch.phase == TouchPhase.Moved)
@@ -295,12 +297,14 @@ public class PileArticle : MonoBehaviour
             case 1:
                 if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis2) && listColisPresent[1] != null)
                 {
+                    calculArt.nbColisAffecte = 1;
                     ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
             case 2:
                 if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis1) && listColisPresent[0] != null)
                 {
+                    calculArt.nbColisAffecte = 0;
                     ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
                     if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(15); }
                 }

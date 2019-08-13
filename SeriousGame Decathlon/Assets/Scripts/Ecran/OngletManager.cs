@@ -117,6 +117,7 @@ public class OngletManager : MonoBehaviour
             repack.GetComponent<RepackTab>().Reset();
 
             //CHECKCOLIS
+            anomalieDetect.isAwakning = true;
             anomalieDetect.CheckColis(pistolScan.scriptColis.colisScriptable);
         }
     }

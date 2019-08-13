@@ -65,8 +65,7 @@ public class TapisRoulant : MonoBehaviour
                             lastColis.GetComponent<ScriptColisRecep>().canMove = false;
                             OpenTurnMenu();
                         }
-
-                        if (!lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented && !lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
+                        else if (!lastColis.GetComponent<ScriptColisRecep>().colisScriptable.isBadOriented && !lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
                         {
                             Debug.Log("Le colis est bien, je l'envoie");
                             lastColis.GetComponent<ScriptColisRecep>().canMove = true;
