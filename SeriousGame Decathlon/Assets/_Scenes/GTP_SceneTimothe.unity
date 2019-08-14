@@ -9754,9 +9754,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
   - {fileID: 11400000, guid: 7521e02d571fcbb42b88d6ed50a45594, type: 2}
   positionVoulueParEmplacement: 0000000000000000
-  chanceColisPasRemplit: 10
-  chanceArticlePasBon: 10
-  chanceColisPasBon: 50
+  chanceColisPasRemplit: 0
+  chanceArticlePasBon: 0
+  chanceColisPasBon: 0
   photoArticle: {fileID: 1572741195}
   managerColis: {fileID: 882313606}
   colisActuellementsPose:

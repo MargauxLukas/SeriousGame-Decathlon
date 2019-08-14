@@ -31,8 +31,8 @@ public class MalusScript : MonoBehaviour
         }
         else
         {
-            Scoring.instance.LosePointOnTime(10);
-            Scoring.instance.RecepMalus(8);
+            //Scoring.instance.LosePointOnTime(10);
+            //Scoring.instance.RecepMalus(8);
         }
     }
 }

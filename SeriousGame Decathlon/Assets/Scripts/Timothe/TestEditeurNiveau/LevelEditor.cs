@@ -593,6 +593,8 @@ public class LevelEditor : MonoBehaviour
         currentColis.estOuvert = true;
         currentColis.estAbime = true;
 
+        currentColis.carton = ListCartons[3];
+
         List<int> buttonToDesactivate = new List<int>(new int[] { 6, 13 });
         foreach (int nb in buttonToDesactivate)
         {

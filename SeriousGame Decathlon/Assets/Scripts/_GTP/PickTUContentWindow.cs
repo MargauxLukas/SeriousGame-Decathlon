@@ -136,6 +136,8 @@ public class PickTUContentWindow : MonoBehaviour
 
     public void Back()
     {
-        gameObject .SetActive(false);
+        gameObject.SetActive(false);
+
+        if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(3); }
     }
 }

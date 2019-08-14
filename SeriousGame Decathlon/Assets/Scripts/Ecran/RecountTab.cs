@@ -24,6 +24,8 @@ public class RecountTab : MonoBehaviour
     [HideInInspector]
     public int refRFID2;
 
+    public PileArticle pileArt;
+
     WayTicket newTicket;
 
     GameObject ticketgo;
@@ -37,7 +39,7 @@ public class RecountTab : MonoBehaviour
     {
         rfidScan.isActive = true;
         colis.GetComponent<ColisScript>().colisScriptable.hasBeenRecount = true;
-        if(!colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
+        if (!colis.GetComponent<ColisScript>().hasBeenScannedByPistol)
         {
             Scoring.instance.MinorPenalty();
             Scoring.instance.AffichageErreur("Colis non scanné");

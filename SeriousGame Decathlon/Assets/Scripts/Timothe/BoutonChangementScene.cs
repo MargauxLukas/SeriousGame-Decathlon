@@ -29,7 +29,7 @@ public class BoutonChangementScene : MonoBehaviour
     {
         if (ChargementListeColis.instance != null)
         {
-            if (ChargementListeColis.instance.nbColisVoulu > 0)
+            if (ChargementListeColis.instance.nbColisVoulu >= 3)
             {
                 SceneManager.LoadScene(10);
             }

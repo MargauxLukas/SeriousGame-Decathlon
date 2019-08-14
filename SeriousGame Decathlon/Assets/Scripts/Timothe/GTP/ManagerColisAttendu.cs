@@ -69,6 +69,7 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
+                chanceAvoirTropArticlePrevu--;
                 while (colisVoulus[i].listArticles.Count <= 11)
                 {
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
@@ -107,6 +108,7 @@ public class ManagerColisAttendu : MonoBehaviour
             if(Random.Range(0, nombreColisVoulu-nbColisCree) < chanceToComeFromInternet)
             {
                 colisVoulus[i].comeFromInternet = true;
+                chanceToComeFromInternet--;
             }
             nbColisCree++;
         }

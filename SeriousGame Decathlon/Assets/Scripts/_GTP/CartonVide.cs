@@ -80,6 +80,7 @@ public class CartonVide : MonoBehaviour
                         startPosition = new Vector3(62.40f, -3.20f, 0f);
                         transform.position = startPosition;                                                                         //Sa position = La position precedemment donné
                         cvl.isFree1 = false;                                                                                        //La place n'est plus libre
+                        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(1); }
                         cvl.csTab[0] = gameObject.GetComponent<RemplissageColisGTP>();                                              //On range le colis dans une liste pour avoir des informations quand on en a besoin
 
                         GetComponent<RemplissageColisGTP>().enabled = true;                          //On active son script (Au colis)
