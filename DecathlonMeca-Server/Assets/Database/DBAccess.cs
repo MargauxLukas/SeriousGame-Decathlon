@@ -1,9 +1,9 @@
 ﻿using Mono.Data.Sqlite;
 using System;
-using System.Data;
 using System.IO;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Data;
 
 public class DBAccess : MonoBehaviour
 {
@@ -176,8 +176,8 @@ public class DBAccess : MonoBehaviour
             if(rankT == i)
             {
                 cmnd.CommandText = "INSERT INTO 'RankingTab' VALUES ( '" + rankT  + "' , '" +  
-                                                                                               nameT  + "' , '" +  
-                                                                                               scoreT + "')" ;
+                                                                           nameT  + "' , '" +  
+                                                                           scoreT + "')" ;
                 cmnd.ExecuteNonQuery();
                 dbcon.Close();
                 break;

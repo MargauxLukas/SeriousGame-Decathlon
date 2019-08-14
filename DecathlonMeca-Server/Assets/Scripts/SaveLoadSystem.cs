@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem instance;
+    public Server server;
 
     //private Colis colisToSave;
 
@@ -78,7 +79,7 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    //FAIT
+    //CLIENT -> SERVEUR
     public void SaveColis(string json, string name)
     {
         if (!IsSaveFile())
@@ -112,7 +113,7 @@ public class SaveLoadSystem : MonoBehaviour
         SaveGeneralData(temporarySave);
     }
 
-    //FAIT
+    //CLIENT -> SERVEUR
     public void SaveWayTicket(string json, string name)
     {
         if (!IsSaveFile())
@@ -131,8 +132,7 @@ public class SaveLoadSystem : MonoBehaviour
         file.Close();
     }
 
-
-    //FAIT
+    //SERVEUR -> CLIENT
     public string LoadColis(string colisName)
     {
         if (!IsSaveFile())
@@ -152,6 +152,8 @@ public class SaveLoadSystem : MonoBehaviour
         return save;
     }
 
+
+    //SERVEUR -> CLIENT
     public string LoadWayTicket(string ticket)
     {
         if (!IsSaveFile())
@@ -195,22 +197,55 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    public string LoadGeneralData()
+    public void LoadGeneralData(int connectId, int channelId, int recHostId)
     {
         if (!IsSaveFile())
         {
-            return null;
+            return;
         }
-
-        string save = string.Empty;
-        BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
+        else
         {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
-            save = (string)bf.Deserialize(file);
-            file.Close();
+            SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
+            BinaryFormatter bf = new BinaryFormatter();
+            if (File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
+            {
+                FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
+                JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), dataToLoad);
+                file.Close();
+                SendLevel(dataToLoad, connectId, channelId, recHostId);
+            }
         }
-        return save;
+    }
+
+    public void SendLevel(SavedData dataSaved, int connectId, int channelId, int recHostId)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+
+        for (int i = 1; i <= dataSaved.nombreNiveauCree; i++)
+        {
+            string save = SaveLoadSystem.instance.LoadLevel(i);
+            string saveColis;
+            string saveWayTicket;
+            LevelScriptable levelScript = new LevelScriptable();
+            Colis colisScript = new Colis();
+            JsonUtility.FromJsonOverwrite(save, levelScript);
+            Net_SendLevel sl = new Net_SendLevel();
+            sl.file = save;
+            sl.nbLevel = i;
+
+            server.SendClient(recHostId, connectId, sl);
+
+            for (int nbColis = 0 ; nbColis < levelScript.colisDuNiveauNoms.Count ; nbColis++)
+            {
+                Net_SendColis sc = new Net_SendColis();
+                sc.fileColis = LoadColis(levelScript.colisDuNiveauNoms[nbColis]);
+                JsonUtility.FromJsonOverwrite(sc.fileColis, colisScript);
+                sc.fileticket = LoadWayTicket(colisScript.nomWayTicket);
+                sc.nbLevel = i;
+
+                server.SendClient(recHostId, connectId, sc);
+            }
+        }
     }
 
     public SavedData LoadGeneralDataIntern()

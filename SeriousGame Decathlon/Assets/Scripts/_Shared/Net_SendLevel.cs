@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using System.Collections.Generic;
+
+[System.Serializable]
 public class Net_SendLevel : NetMessage
 {
     public Net_SendLevel()
@@ -7,4 +9,6 @@ public class Net_SendLevel : NetMessage
     }
 
     public string file { set; get; }
+
+    public int nbLevel { set; get; }
 }

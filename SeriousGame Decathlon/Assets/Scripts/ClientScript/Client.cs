@@ -13,12 +13,13 @@ public class Client : MonoBehaviour
     private const int PORT      = 26000;
     private const int WEB_PORT  = 26001;
     private const int BYTE_SIZE = 1024 ;
-    private const string SERVER_IP = "127.0.0.1";                //Use 127.0.0.1 for local (When tablet is connected to PC)
+    //private const string SERVER_IP = "127.0.0.1";                //Use 127.0.0.1 for local (When tablet is connected to PC)
+    private const string SERVER_IP = "192.168.137.6";              //WifiTimothe
 
     private byte reliableChannel;
     private byte error;
 
-    private int hostId;
+    private int hostId = -1;
     private int connectionId;
 
     private bool isStarted;
@@ -152,11 +153,11 @@ public class Client : MonoBehaviour
                 break;
 
             case NetOP.ReceiveColis:
-                scSave = (Net_SendColis)msg;
+                LoadColisForLevel((Net_SendColis)msg);
                 break;
 
             case NetOP.ReceiveLevel:
-                slSave = (Net_SendLevel)msg;
+                LoadLevel((Net_SendLevel)msg);
                 break;
 
             case NetOP.ReceiveDataGeneral:
@@ -258,6 +259,16 @@ public class Client : MonoBehaviour
         sl.nbLevel = nbLevel;
 
         SendServer(sl);
+    }
+
+    public void LoadLevel(Net_SendLevel sl)
+    {
+        ChoixNiveauManager.instance.affichageLevel(sl.file, sl.nbLevel);
+    }
+
+    public void LoadColisForLevel(Net_SendColis sc)
+    {
+        ChoixNiveauManager.instance.SelectLevel(sc.fileColis, sc.fileticket, sc.nbLevel);
     }
 
     public void SendLevelWithoutColis(string json, int nbLevel)

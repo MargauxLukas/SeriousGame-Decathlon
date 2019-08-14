@@ -130,7 +130,7 @@ public class LevelEditor : MonoBehaviour
 
     public void LoadLevelEditor()
     {
-        dataSaved = SaveLoadSystem.instance.LoadGeneralData();
+        SaveLoadSystem.instance.LoadGeneralData();
         Debug.Log(dataSaved != null);
     }
 

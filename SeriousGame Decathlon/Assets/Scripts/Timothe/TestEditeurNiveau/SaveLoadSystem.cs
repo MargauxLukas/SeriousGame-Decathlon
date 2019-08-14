@@ -65,19 +65,20 @@ public class SaveLoadSystem : MonoBehaviour
         Client.instance.SendWayticket(json, ticket.NamingTicket());
     }
 
-    public Colis LoadColis(string colisName)
+    public Colis LoadColis(string colisName, string wtName = null)
     {
         Colis colisToLoad = Colis.CreateInstance<Colis>();
 
-        Net_Request request = new Net_Request();
-        request.stringRequest = "Colis";
-        request.colis = colisName;
-        Client.instance.SendServer(request);
+        JsonUtility.FromJsonOverwrite(colisName , colisToLoad);
 
-        JsonUtility.FromJsonOverwrite(Client.instance.swSave.file , colisToLoad);
-
-        colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
-
+        if (wtName == null)
+        {
+            colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
+        }
+        else
+        {
+            colisToLoad.wayTicket = LoadWayTicket(wtName);
+        }
         return colisToLoad;
     }
 
@@ -86,12 +87,7 @@ public class SaveLoadSystem : MonoBehaviour
     {
         WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
 
-        Net_Request request = new Net_Request();
-        request.stringRequest = "WayTicket";
-        request.colis = ticket;
-        Client.instance.SendServer(request);
-
-        JsonUtility.FromJsonOverwrite(Client.instance.swSave.file, newTicket);
+        JsonUtility.FromJsonOverwrite(ticket, newTicket);
 
         return newTicket;
     }
@@ -101,17 +97,11 @@ public class SaveLoadSystem : MonoBehaviour
 
     }
 
-    public SavedData LoadGeneralData()
+    public void LoadGeneralData()
     {
-        SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
-
         Net_Request request = new Net_Request();
         request.stringRequest = "GeneralData";
         Client.instance.SendServer(request);
-
-        JsonUtility.FromJsonOverwrite(Client.instance.gdSave.file , dataToLoad);
-
-        return dataToLoad;
     }
 
     //FAIT
@@ -153,6 +143,15 @@ public class SaveLoadSystem : MonoBehaviour
         Client.instance.SendServer(request);
 
         JsonUtility.FromJsonOverwrite(Client.instance.slSave.file, levelToSave);
+
+        return levelToSave;
+    }
+
+    public LevelScriptable GetLevel(string json)
+    {
+        LevelScriptable levelToSave = LevelScriptable.CreateInstance<LevelScriptable>();
+
+        JsonUtility.FromJsonOverwrite(json, levelToSave);
 
         return levelToSave;
     }

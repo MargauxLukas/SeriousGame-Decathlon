@@ -12,7 +12,7 @@ public class Server : MonoBehaviour
     private const int MAX_USER  = 100  ;
     private const int PORT      = 26000;
     private const int WEB_PORT  = 26001;
-    private const int BYTE_SIZE = 1024 ;
+    private const int BYTE_SIZE = 1024;
 
     private byte reliableChannel;
     private int hostId;
@@ -182,6 +182,7 @@ public class Server : MonoBehaviour
         BinaryFormatter formatter = new BinaryFormatter();
         MemoryStream ms = new MemoryStream(buffer);
         formatter.Serialize(ms, msg);
+
         if (recHost == 0){NetworkTransport.Send(hostId   , connectId, reliableChannel, buffer, BYTE_SIZE, out error);}
         else             {NetworkTransport.Send(webHostId, connectId, reliableChannel, buffer, BYTE_SIZE, out error);}
     }
@@ -287,7 +288,7 @@ public class Server : MonoBehaviour
     {
         Net_SendColis sc = new Net_SendColis();
 
-        sc.file = SaveLoadSystem.instance.LoadColis(request.colis);
+        sc.fileColis = SaveLoadSystem.instance.LoadColis(request.colis);
 
         SendClient(recHostId, connectId, sc);
     }
@@ -301,8 +302,6 @@ public class Server : MonoBehaviour
     {
         Net_SendLevel sl = new Net_SendLevel();
 
-        sl.file = SaveLoadSystem.instance.LoadLevel(request.integer);
-
         SendClient(recHostId, connectId, sl);
     }
 
@@ -313,11 +312,7 @@ public class Server : MonoBehaviour
 
     private void SendGeneralData(int connectId, int channelId, int recHostId)
     {
-        Net_SendGeneralData sgd = new Net_SendGeneralData();
-
-        sgd.file = SaveLoadSystem.instance.LoadGeneralData();
-
-        SendClient(recHostId, connectId, sgd);
+        SaveLoadSystem.instance.LoadGeneralData(connectId, channelId, recHostId);
     }
     #endregion
 }

@@ -6,6 +6,7 @@ public class Net_SendColis : NetMessage
         OperationCode = NetOP.ReceiveColis;
     }
 
-    public string file { set; get; }
-    public string ticket { set; get; }
+    public string fileColis  { set; get; }
+    public string fileticket { set; get; }
+    public int nbLevel { set; get; }
 }

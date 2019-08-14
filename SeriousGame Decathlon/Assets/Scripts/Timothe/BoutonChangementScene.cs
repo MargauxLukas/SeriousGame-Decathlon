@@ -7,7 +7,7 @@ public class BoutonChangementScene : MonoBehaviour
 {
     public void LoadNewScene(int nbScene)
     {
-        SceneManager.LoadScene(nbScene);
+            SceneManager.LoadScene(nbScene);
     }
 
     public void LoadMfScene()

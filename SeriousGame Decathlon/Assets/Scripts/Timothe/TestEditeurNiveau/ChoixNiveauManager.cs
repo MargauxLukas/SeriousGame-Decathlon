@@ -9,6 +9,7 @@ public class ChoixNiveauManager : MonoBehaviour
      *  Afficher le nombre des anomalies présentes
      *  Mettre le bouton pour changer de scène avec le bon niveau
      */
+    public static ChoixNiveauManager instance;
 
     public GameObject contentArea;
     public GameObject button;
@@ -17,8 +18,6 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public LevelScriptable currentChoiceLevel;
     public int currentLevelNb;
-
-    private SavedData dataSaved;
     public List<Colis> currentColisLevel;
 
     public AnomalieDetection detect;
@@ -37,31 +36,55 @@ public class ChoixNiveauManager : MonoBehaviour
     private List<int> currentAnomalieNumber;
     private List<string> currentAnomalies;
 
+    private LevelScriptable[] listLevelScriptable = new LevelScriptable[100];
+
     //Réception
     public Text affichageNombreColisRecep;
 
     //GTP
     public Text affichageNombreColisGtp;
 
+    private RectTransform rt;
 
-    // Start is called before the first frame update 
-    void Start()
+    private void Awake()
     {
-        dataSaved = SaveLoadSystem.instance.LoadGeneralData();
-
-        for (int i = 1; i <= dataSaved.nombreNiveauCree; i++)
+        if (instance == null)
         {
-            Debug.Log("Test");
-            GameObject nouveauBouton = Instantiate(button, contentArea.transform);
-            nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel = SaveLoadSystem.instance.LoadLevel(i);
-            nouveauBouton.GetComponentInChildren<Text>().text = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel.name;
-            nouveauBouton.GetComponent<GetCurrentLevelButton>().nbLevel = i;
-            nouveauBouton.GetComponent<GetCurrentLevelButton>().managerLevel = this;
-            RectTransform rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
-            rt.sizeDelta += new Vector2(0, 130);
-            //currentChoiceLevel = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel;
+            instance = this;
         }
+        else if (instance != this)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+        DontDestroyOnLoad(this);
+    }
+
+    public void Start()
+    {
+        SaveLoadSystem.instance.LoadGeneralData();
+        rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
         listAffAnomalies = new List<GameObject>();
+    }
+
+    public void affichageLevel(string json, int i)
+    {
+        LevelScriptable levelScript = SaveLoadSystem.instance.GetLevel(json);
+
+        listLevelScriptable[i] = levelScript;
+
+        GameObject nouveauBouton = Instantiate(button, contentArea.transform);
+        nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel = levelScript;
+        nouveauBouton.GetComponentInChildren<Text>().text = nouveauBouton.GetComponent<GetCurrentLevelButton>().currentLevel.name;
+        nouveauBouton.GetComponent<GetCurrentLevelButton>().nbLevel = i;
+        nouveauBouton.GetComponent<GetCurrentLevelButton>().managerLevel = this;
+        rt.sizeDelta += new Vector2(0, 130);
+    }
+
+    public void SelectLevel(string fileColis, string WayTicket, int nbLevel)
+    {
+        Colis colis = SaveLoadSystem.instance.LoadColis(fileColis, WayTicket);
+        listLevelScriptable[nbLevel].AddColis(colis);
     }
 
     public void ShowGeneralInfoLevel(LevelScriptable level)
@@ -84,6 +107,7 @@ public class ChoixNiveauManager : MonoBehaviour
         }
 
         currentColisLevel = new List<Colis>();
+        currentColisLevel = level.listColis;
 
         currentAnomalieNumber = new List<int>();
         currentAnomalies = new List<string>();
@@ -95,7 +119,6 @@ public class ChoixNiveauManager : MonoBehaviour
 
         for(int i = 0; i < level.colisDuNiveauNoms.Count; i++)
         {
-            currentColisLevel.Add(SaveLoadSystem.instance.LoadColis(level.colisDuNiveauNoms[i]));
             detect.CheckColis(currentColisLevel[i]);
 
             for(int j = 0; j < currentColisLevel[i].nbAnomalie; j++)
