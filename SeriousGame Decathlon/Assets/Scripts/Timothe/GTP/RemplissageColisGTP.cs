@@ -137,6 +137,11 @@ public class RemplissageColisGTP : MonoBehaviour
                 }
             }
         }
+
+        if(TutoManagerGTP.instance != null && tauxRemplissage == TutoManagerGTP.instance.remplissageColisTuto)
+        {
+            TutoManagerGTP.instance.Manager(6);
+        }
     }
 
     public void AddArticle(Article articleToHad, bool hasBeenScanned)

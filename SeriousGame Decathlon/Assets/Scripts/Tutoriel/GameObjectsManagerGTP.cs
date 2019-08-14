@@ -7,6 +7,7 @@ public class GameObjectsManagerGTP : MonoBehaviour
 {
     [Header("Bacs")]
     public GameObject bac1;
+    public GameObject bac2;
 
     [Header("Sprite Masks")]
     public GameObject blackScreen;
@@ -25,6 +26,14 @@ public class GameObjectsManagerGTP : MonoBehaviour
     [Header("Ecran")]
     public GameObject loupe1Button;
     public GameObject listPickTUBackButton;
+
+    [Header("Colis")]
+    public GameObject colisSource1;
+    public GameObject colisSource2;
+    public GameObject colisVide1;
+
+    [Header("Machine")]
+    public GameObject pushButton1;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
     {

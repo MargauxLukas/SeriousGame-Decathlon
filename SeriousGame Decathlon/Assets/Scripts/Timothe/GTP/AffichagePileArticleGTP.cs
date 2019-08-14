@@ -42,6 +42,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
                     GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.4f);
                     tasArticle.SetActive(true);
                     StartCoroutine(tasArticle.GetComponent<TasArticleGTP>().ApparitionArticle(currentColis.listArticles, isFulledWithPack, null));
+                    if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(5); }
                 }
                 else
                 {
@@ -49,6 +50,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
                     GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
                     tasArticle.SetActive(false);
                     currentColis.listArticles = tasArticle.GetComponent<TasArticleGTP>().CloseTasArticle();
+                    if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(7); }
                 }
                 doesTouch = false;
             }

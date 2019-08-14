@@ -107,6 +107,7 @@ public class ConsoleMonitor : MonoBehaviour
      ******************************************/
     public void Envoyer(int emplacement) 
     {
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(8); }
         if(emplacement != mcv.positionVoulueParEmplacement[mcv.emplacement])
         {
             Scoring.instance.LosePointGTP(150, "Tu as valider le mauvais colis");
