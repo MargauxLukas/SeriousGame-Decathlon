@@ -31,9 +31,11 @@ public class GameObjectsManagerGTP : MonoBehaviour
     public GameObject colisSource1;
     public GameObject colisSource2;
     public GameObject colisVide1;
+    public GameObject colisVide2;
 
     [Header("Machine")]
     public GameObject pushButton1;
+    public GameObject scanRFID;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
     {

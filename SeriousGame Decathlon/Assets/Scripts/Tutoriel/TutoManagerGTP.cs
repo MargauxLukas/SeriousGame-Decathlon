@@ -20,6 +20,10 @@ public class TutoManagerGTP : MonoBehaviour
 
     public float remplissageColisTuto;
 
+    //Déplacement doigt
+    private Vector3 fingerStartPosition;
+    private bool checkpointMoveDoigt = false;
+
     void Awake()
     {
         if (instance == null) { instance = this; }
@@ -132,34 +136,50 @@ public class TutoManagerGTP : MonoBehaviour
     IEnumerator MoveDoigt(Vector3 fingerPos, Vector3 targetPos, float fingerSpeed)
     {
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
-
-        if (phaseNum >= 47)
+        
+        if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
         {
-            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.25f)
-            {
-                gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
-                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
-            }
-            else
-            {
-                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
-            }
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
         }
         else
         {
-            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
-            {
-                gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
-                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
-            }
-            else
-            {
-                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
-            }
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
         }
 
         yield return new WaitForSeconds(Time.fixedDeltaTime);
         StartCoroutine(MoveDoigt(fingerPos, targetPos, fingerSpeed));
+    }
+
+    IEnumerator MoveDoigtCheckpoint(Vector3 fingerPos, Vector3 checkpointPos, Vector3 targetPos, float fingerSpeed)
+    {
+        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (checkpointPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
+
+        if(!checkpointMoveDoigt && Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, checkpointPos) <= 0.2f)
+        {
+            fingerStartPosition = fingerPos;
+            fingerPos = checkpointPos;
+            checkpointMoveDoigt = true;
+
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(MoveDoigtCheckpoint(fingerPos, checkpointPos, targetPos, fingerSpeed));
+        }
+
+        if(checkpointMoveDoigt && Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
+        {
+            fingerPos = fingerStartPosition;
+            checkpointMoveDoigt = false;
+
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            StartCoroutine(MoveDoigtCheckpoint(fingerPos, checkpointPos, targetPos, fingerSpeed));
+        }
+        else
+        {
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+        }
     }
 
     IEnumerator NewPhase(float time)
@@ -278,6 +298,10 @@ public class TutoManagerGTP : MonoBehaviour
                 {
                     case (8):
                         Phase08();
+                        break;
+
+                    case (15):
+                        Phase15();
                         break;
                 }
                 break;
@@ -637,7 +661,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
-                        new Vector3(62.97f, 3.42f, 900f), new Vector3(65.95f, -2.9f, 0), 4, true);
+                        new Vector3(62.97f, 3.42f, 900f), new Vector3(65.95f, -2.9f, 900), 4, true);
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.bac2).enabled = true;
 
@@ -756,19 +780,21 @@ public class TutoManagerGTP : MonoBehaviour
 
         if (canPlaySecond)
         {
-            Indications(new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(75.09f, -3.35f),
-                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+            StartCoroutine(MoveDoigtCheckpoint(new Vector3(73.88f, -0.61f, 900), new Vector3 (73.6f, -4.75f, 900), new Vector3(65.6f, -3.02f, 900), 4));
 
-            //Scan RFID
-            //Peut pas mettre articles si pas scannés
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
+
+            remplissageColisTuto = 4;
 
             canPlayFirst = true;
             canPlaySecond = false;
             phaseNum++;
         }
+    }
+
+    void Phase15()
+    {
+
     }
 }
