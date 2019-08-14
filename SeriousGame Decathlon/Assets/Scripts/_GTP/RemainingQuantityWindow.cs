@@ -34,6 +34,10 @@ public class RemainingQuantityWindow : MonoBehaviour
 
     public void OK()
     {
+        if(mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().isFulledWithPack != 0)
+        {
+            articleNb = articleNb * 3;
+        }
         if(nb == articleNb)
         {
             //Bien

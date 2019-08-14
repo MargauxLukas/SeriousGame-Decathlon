@@ -70,7 +70,7 @@ public class ManagerColisAttendu : MonoBehaviour
             if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
                 chanceAvoirTropArticlePrevu--;
-                while (colisVoulus[i].listArticles.Count <= 11)
+                while (colisVoulus[i].listArticles.Count <= 10)
                 {
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
                     colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
@@ -93,12 +93,10 @@ public class ManagerColisAttendu : MonoBehaviour
             }
             for (int m = 0; m < nbMemeArticle.Count; m++)
             {
-                if(nbMemeArticle[m]>=10)
+                while (nbMemeArticle[m]>=10)
                 {
-                    for(int l = 0; l < nbMemeArticle[m]-9; l++)
-                    {
-                        colisVoulus[i].listArticles.Remove(articleConnu[m]);
-                    }
+                    colisVoulus[i].listArticles.Remove(articleConnu[m]);
+                    nbMemeArticle[m]--;
                 }
             }
 
@@ -339,6 +337,7 @@ public class ManagerColisAttendu : MonoBehaviour
                     if (articleEnvoye[i] == articleVoulu[j])
                     {
                         //Debug.Log("Test Detect");
+                        colisRestant.listArticles.Add(articleVoulu[j]);
                         articleVoulu .RemoveAt(j);
                         articleEnvoye.RemoveAt(i);
                         j--;
@@ -347,19 +346,22 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
             }
         }
-
-        Colis colisTempo = Colis.CreateInstance<Colis>();
-        int nbPhaseTempo = -1;
-        if (colisVoulus.Count >= 4 && colisVoulus[3] != null)
+        int tailleListVoulue = colisRestant.listArticles.Count;
+        for(int n = 0; n < tailleListVoulue; n++)
         {
-            colisTempo = colisVoulus[3];
-            nbPhaseTempo = phasesColisVoulus[3];
+            for(int b = 0; b < articleVoulu.Count; b++)
+            {
+                if(articleVoulu[b] == colisRestant.listArticles[n])
+                {
+                    colisRestant.listArticles.Add(articleVoulu[b]);
+                    articleVoulu.RemoveAt(b);
+                    b--;
+                }
+            }
         }
 
-
-        colisRestant.listArticles = articleVoulu;
         Debug.Log(articleVoulu);
-        List<Article> artInColis  = new List<Article>();
+        /*List<Article> artInColis  = new List<Article>();
         List <int> nbArticleIdentique = new List<int>();
         Article previousArticle = new Article();
 
@@ -375,7 +377,7 @@ public class ManagerColisAttendu : MonoBehaviour
                 nbArticleIdentique.Add(1);
             }
             previousArticle = art;
-        }
+        }*/
 
         /*if (colisRestant.listArticles.Count > 0)
         {
@@ -390,8 +392,11 @@ public class ManagerColisAttendu : MonoBehaviour
                 colisVoulus.Add(colisRestant);
             }
         }*/
-
-        colisVoulus[emplacement] = Instantiate(colisRempli);
+        if (colisRestant.listArticles.Count > 0)
+        {
+            colisVoulus[emplacement] = Instantiate(colisRestant);
+            Debug.Log("Changement de colis");
+        }
         phasesColisVoulus[emplacement] = 0;
         colisScript.currentPhase = 12;
         /*if (nbPhaseTempo >= 0)
@@ -459,13 +464,13 @@ public class ManagerColisAttendu : MonoBehaviour
             {
                 ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
             }
+            else if (isLevelEnded)
+            {
+                ChargementListeColis.instance.QuitGTPLevel(0);
+            }
             else
             {
                 ChargementListeColis.instance.QuitGTPLevel(3);
-            }
-            if(isLevelEnded)
-            {
-                ChargementListeColis.instance.QuitGTPLevel(0);
             }
         }
     }
