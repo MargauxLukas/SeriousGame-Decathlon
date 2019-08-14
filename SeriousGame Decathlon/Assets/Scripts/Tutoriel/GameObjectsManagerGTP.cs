@@ -35,6 +35,7 @@ public class GameObjectsManagerGTP : MonoBehaviour
 
     [Header("Machine")]
     public GameObject pushButton1;
+    public GameObject pushButton2;
     public GameObject scanRFID;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)

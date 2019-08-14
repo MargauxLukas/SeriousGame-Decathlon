@@ -288,6 +288,10 @@ public class TutoManagerGTP : MonoBehaviour
                     case (14):
                         Phase14();
                         break;
+
+                    case (18):
+                        Phase18();
+                        break;
                 }
                 break;
             #endregion
@@ -303,6 +307,10 @@ public class TutoManagerGTP : MonoBehaviour
                     case (15):
                         Phase15();
                         break;
+
+                    case (19):
+                        Phase19();
+                        break;
                 }
                 break;
             #endregion
@@ -314,6 +322,14 @@ public class TutoManagerGTP : MonoBehaviour
                     case (9):
                         Phase09();
                         break;
+
+                    case (16):
+                        Phase16();
+                        break;
+
+                    case (20):
+                        Phase20();
+                        break;
                 }
                 break;
             #endregion
@@ -324,6 +340,10 @@ public class TutoManagerGTP : MonoBehaviour
                 {
                     case (10):
                         Phase10();
+                        break;
+
+                    case (17):
+                        Phase17();
                         break;
                 }
                 break;
@@ -780,6 +800,10 @@ public class TutoManagerGTP : MonoBehaviour
 
         if (canPlaySecond)
         {
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = true;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = true;
+
             StartCoroutine(MoveDoigtCheckpoint(new Vector3(73.88f, -0.61f, 900), new Vector3 (73.6f, -4.75f, 900), new Vector3(65.6f, -3.02f, 900), 4));
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
@@ -795,6 +819,120 @@ public class TutoManagerGTP : MonoBehaviour
 
     void Phase15()
     {
+        if (canPlayFirst)
+        {
+            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = false;
+            gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = false;
+            gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = false;
 
+            StopAllCoroutines();
+
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = false;
+
+            remplissageColisTuto = 0;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource2).enabled = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase16()
+    {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource2).enabled = false;
+
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(66.75f, 1.64f),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton2).interactable = true;
+
+        phaseNum++;
+    }
+
+    void Phase17()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton2).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(72.07f, -3.35f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase18()
+    {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = false;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = true;
+
+        remplissageColisTuto = 4;
+
+        phaseNum++;
+    }
+
+    void Phase19()
+    {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = false;
+        remplissageColisTuto = 0;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
+
+        phaseNum++;
+    }
+
+    void Phase20()
+    {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = false;
+
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(/*Position Bouton Push*/),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
     }
 }
