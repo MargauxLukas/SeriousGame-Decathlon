@@ -14,6 +14,7 @@ public class GameObjectsManagerGTP : MonoBehaviour
     public GameObject correctQtyWrongPlusButton;
     public GameObject correctQtyConfirmButton;
     public GameObject correctQtyBackButton;
+    public GameObject wrongProductButton;
 
     [Header("Colis")]
     public GameObject colisSource1;

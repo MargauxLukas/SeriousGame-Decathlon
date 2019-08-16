@@ -8641,7 +8641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &792244658
 Transform:
   m_ObjectHideFlags: 0
@@ -10300,6 +10300,7 @@ MonoBehaviour:
   correctQtyWrongPlusButton: {fileID: 0}
   correctQtyConfirmButton: {fileID: 0}
   correctQtyBackButton: {fileID: 0}
+  wrongProductButton: {fileID: 0}
   colisSource1: {fileID: 0}
   colisSource2: {fileID: 0}
   colisVide1: {fileID: 0}
@@ -12422,7 +12423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208057464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 69.67, y: 1.64, z: 900}
+  m_LocalPosition: {x: 76.22, y: 2.47, z: 900}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 1537923365}
@@ -16281,7 +16282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1542462230
 Transform:
   m_ObjectHideFlags: 0
@@ -17569,6 +17570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480178996055085714, guid: 77c888cc8d1a85c43a6da043eea3051c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c888cc8d1a85c43a6da043eea3051c, type: 3}
@@ -20293,7 +20299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025846992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.31, y: 1.38, z: 0}
+  m_LocalPosition: {x: 10.84, y: 4.45, z: 0}
   m_LocalScale: {x: 1.3, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 492575634}
