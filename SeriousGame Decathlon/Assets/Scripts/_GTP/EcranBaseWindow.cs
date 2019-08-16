@@ -10,6 +10,8 @@ public class EcranBaseWindow : MonoBehaviour
     public void AnomalyWindow()
     {
         anomalyWindow.SetActive(true);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(10); }
     }
 
     public void PickTUWindow(int nb)

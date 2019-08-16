@@ -54,7 +54,19 @@ public class ArticleUnitGTP : MonoBehaviour
                     {
                         if (remplisColis != null)
                         {
-                            if (isPack != 0)
+                            if (TutoManagerGTP.instance != null && remplisColis.colisScriptable.comeFromInternet)
+                            {
+                                if (hasBeenScanned)
+                                {
+                                    remplisColis.AddArticle(currentArticle, hasBeenScanned);
+                                    Instantiate(animationApparition, transform.position, Quaternion.identity);
+                                }
+                                else
+                                {
+                                    transform.position = startPosition;
+                                }
+                            }
+                            else if (isPack != 0)
                             {
                                 for (int l = 0; l < isPack; l++)
                                 {

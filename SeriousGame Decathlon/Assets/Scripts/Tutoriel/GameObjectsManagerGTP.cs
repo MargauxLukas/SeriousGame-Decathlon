@@ -5,9 +5,31 @@ using UnityEngine.UI;
 
 public class GameObjectsManagerGTP : MonoBehaviour
 {
-    [Header("Bacs")]
+    [Header("Ecran")]
+    public GameObject loupe1Button;
+    public GameObject listPickTUBackButton;
+    public GameObject remainingQtyOkButton;
+    public GameObject anomalyButton;
+    public GameObject correctQtyButton;
+    public GameObject correctQtyWrongPlusButton;
+    public GameObject correctQtyConfirmButton;
+    public GameObject correctQtyBackButton;
+
+    [Header("Colis")]
+    public GameObject colisSource1;
+    public GameObject colisSource2;
+    public GameObject colisVide1;
+    public GameObject colisVide2;
+    public GameObject colisVide3;
+
+    [Header("Machine")]
     public GameObject bac1;
     public GameObject bac2;
+    public GameObject bac3;
+    public GameObject pushButton1;
+    public GameObject pushButton2;
+    public GameObject pushButton3;
+    public GameObject scanRFID;
 
     [Header("Sprite Masks")]
     public GameObject blackScreen;
@@ -22,18 +44,6 @@ public class GameObjectsManagerGTP : MonoBehaviour
     public GameObject doigtClickSpriteMask;
     public GameObject doigtStay;
     public GameObject doigtStaySpriteMask;
-
-    [Header("Ecran")]
-    public GameObject loupe1Button;
-    public GameObject listPickTUBackButton;
-
-    [Header("Colis")]
-    public GameObject colisSource1;
-    public GameObject colisSource2;
-    public GameObject colisVide1;
-
-    [Header("Machine")]
-    public GameObject pushButton1;
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
     {

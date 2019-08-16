@@ -20,6 +20,7 @@ public class ScreenDisplayColor : MonoBehaviour
 
     int nbAnom = 0;
 
+
     void Start()
     {
         screenColorAnimator = screenColor.GetComponent<Animator>();

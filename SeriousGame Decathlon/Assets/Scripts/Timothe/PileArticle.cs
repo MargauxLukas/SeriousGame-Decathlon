@@ -295,14 +295,14 @@ public class PileArticle : MonoBehaviour
         switch (nb)
         {
             case 1:
-                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis2) && listColisPresent[1] != null)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis2) && listColisPresent.Count>0 && listColisPresent[1] != null)
                 {
                     calculArt.nbColisAffecte = 1;
                     ChoiceNumberColis(listColisPresent[1].colisScriptable, listColisPresent[1]);
                 }
                 break;
             case 2:
-                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis1) && listColisPresent[0] != null)
+                if ((TutoManagerMulti.instance == null || TutoManagerMulti.instance.canColis1) && listColisPresent.Count > 0 && listColisPresent[0] != null)
                 {
                     calculArt.nbColisAffecte = 0;
                     ChoiceNumberColis(listColisPresent[0].colisScriptable, listColisPresent[0]);
@@ -327,10 +327,16 @@ public class PileArticle : MonoBehaviour
                 {
                     listColisPresent[1].spriteSelection.SetActive(true);
                 }
-                listColisPresent[0].spriteSelection.SetActive(false);
+                if (listColisPresent.Count > 0)
+                {
+                    listColisPresent[0].spriteSelection.SetActive(false);
+                }
                 break;
             case 2:
-                listColisPresent[0].spriteSelection.SetActive(true);
+                if (listColisPresent.Count > 0)
+                {
+                    listColisPresent[0].spriteSelection.SetActive(true);
+                }
                 if (listColisPresent.Count - 1 >= 1)
                 {
                     listColisPresent[1].spriteSelection.SetActive(false);
@@ -341,7 +347,10 @@ public class PileArticle : MonoBehaviour
                 {
                     listColisPresent[1].spriteSelection.SetActive(false);
                 }
-                listColisPresent[0].spriteSelection.SetActive(false);
+                if (listColisPresent.Count > 0)
+                {
+                    listColisPresent[0].spriteSelection.SetActive(false);
+                }
                 break;
         }
     }

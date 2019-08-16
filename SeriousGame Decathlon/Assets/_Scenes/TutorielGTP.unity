@@ -3182,6 +3182,7 @@ MonoBehaviour:
   canPlayFirst: 1
   canPlaySecond: 0
   remplissageColisTuto: 0
+  correctyQtyWrongInputValue: 0
 --- !u!1 &281708072
 GameObject:
   m_ObjectHideFlags: 0
@@ -10291,8 +10292,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d99bc4cb5d9484bb7fec2fb2de1ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loupe1Button: {fileID: 0}
+  listPickTUBackButton: {fileID: 0}
+  remainingQtyOkButton: {fileID: 0}
+  anomalyButton: {fileID: 0}
+  correctQtyButton: {fileID: 0}
+  correctQtyWrongPlusButton: {fileID: 0}
+  correctQtyConfirmButton: {fileID: 0}
+  correctQtyBackButton: {fileID: 0}
+  colisSource1: {fileID: 0}
+  colisSource2: {fileID: 0}
+  colisVide1: {fileID: 0}
+  colisVide2: {fileID: 0}
+  colisVide3: {fileID: 0}
   bac1: {fileID: 0}
   bac2: {fileID: 0}
+  bac3: {fileID: 0}
+  pushButton1: {fileID: 0}
+  pushButton2: {fileID: 0}
+  pushButton3: {fileID: 0}
+  scanRFID: {fileID: 0}
   blackScreen: {fileID: 0}
   blackScreenDezoom: {fileID: 0}
   squareSpriteMask01: {fileID: 0}
@@ -10303,12 +10322,6 @@ MonoBehaviour:
   doigtClickSpriteMask: {fileID: 0}
   doigtStay: {fileID: 0}
   doigtStaySpriteMask: {fileID: 0}
-  loupe1Button: {fileID: 0}
-  listPickTUBackButton: {fileID: 0}
-  colisSource1: {fileID: 0}
-  colisSource2: {fileID: 0}
-  colisVide1: {fileID: 0}
-  pushButton1: {fileID: 0}
 --- !u!1 &926738645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2672306495849255138, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
@@ -12409,7 +12422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208057464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 75.09, y: -3.35, z: 900}
+  m_LocalPosition: {x: 69.67, y: 1.64, z: 900}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 1537923365}
@@ -16268,7 +16281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1542462230
 Transform:
   m_ObjectHideFlags: 0
@@ -17707,7 +17720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1773461724
 Transform:
   m_ObjectHideFlags: 0
@@ -20280,8 +20293,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025846992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.12, y: -4.38, z: 0}
-  m_LocalScale: {x: 0.67, y: 0.77, z: 1}
+  m_LocalPosition: {x: 7.31, y: 1.38, z: 0}
+  m_LocalScale: {x: 1.3, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 492575634}
   m_RootOrder: 1

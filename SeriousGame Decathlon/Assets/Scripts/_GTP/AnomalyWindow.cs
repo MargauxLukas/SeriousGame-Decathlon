@@ -17,6 +17,8 @@ public class AnomalyWindow : MonoBehaviour
     {
         ecranCorrectQuantity.SetActive(true );
         gameObject          .SetActive(false);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(11); }
     }
 
     /****************************************************
