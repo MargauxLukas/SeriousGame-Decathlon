@@ -61,6 +61,7 @@ public class ChangementEtiquettes : MonoBehaviour
 
                 if (nbEtiquettes > 20)
                 {
+                    detectAnomRecep.signalBoiteVert.SetActive(true);
                     ledVerte.SetActive(true);
                     ledOrange.SetActive(false);
                     ledOrangeClignotante.SetActive(false);
@@ -71,6 +72,7 @@ public class ChangementEtiquettes : MonoBehaviour
                 }
                 else if (nbEtiquettes <= 0)
                 {
+                    detectAnomRecep.signalBoiteVert.SetActive(true);
                     ledVerte.SetActive(false);
                     ledOrange.SetActive(false);
                     ledOrangeClignotante.SetActive(true);

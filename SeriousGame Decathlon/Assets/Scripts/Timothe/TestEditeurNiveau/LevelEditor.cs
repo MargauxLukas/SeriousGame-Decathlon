@@ -86,9 +86,9 @@ public class LevelEditor : MonoBehaviour
                 GtpInputfieldMauvaisArticle.text = "0";
             }
 
-            if (!string.IsNullOrEmpty(GtpInputfieldAllMauvaisArticle.text) && int.Parse(GtpInputfieldAllMauvaisArticle.text) > 100)
+            if (!string.IsNullOrEmpty(GtpInputfieldAllMauvaisArticle.text) && int.Parse(GtpInputfieldAllMauvaisArticle.text) > 25)
             {
-                GtpInputfieldAllMauvaisArticle.text = "100";
+                GtpInputfieldAllMauvaisArticle.text = "25";
             }
             else if (!string.IsNullOrEmpty(GtpInputfieldAllMauvaisArticle.text) && int.Parse(GtpInputfieldAllMauvaisArticle.text) < 0)
             {

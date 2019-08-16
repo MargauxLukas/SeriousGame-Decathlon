@@ -151,6 +151,10 @@ public class ColisManager : MonoBehaviour
             Scoring.instance.MinorPenalty();
             Scoring.instance.AffichageErreur("Tu a déjà un colis a traiter");
         }
+        else
+        {
+            Scoring.instance.AffichageErreur("Tu n'as plus aucun colis à traiter");
+        }
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
