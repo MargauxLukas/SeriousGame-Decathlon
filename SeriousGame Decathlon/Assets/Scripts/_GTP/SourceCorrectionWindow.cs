@@ -28,6 +28,11 @@ public class SourceCorrectionWindow : MonoBehaviour
     public void AffichageWrong()
     {
         textWrong.text = nbWrong.ToString();
+
+        if(TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctyQtyWrongInputValue)
+        {
+            TutoManagerGTP.instance.Manager(12);
+        }
     }
 
     public void AddDamaged()
@@ -78,6 +83,8 @@ public class SourceCorrectionWindow : MonoBehaviour
     public void Back()
     {
         gameObject.SetActive(false);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(14); }
     }
 
     public void Confirm()
@@ -89,6 +96,8 @@ public class SourceCorrectionWindow : MonoBehaviour
         AffichageWrong();
         AffichageDamaged();
         AffichageMissing();
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(13); }
     }
 
     public void ResetButton()
