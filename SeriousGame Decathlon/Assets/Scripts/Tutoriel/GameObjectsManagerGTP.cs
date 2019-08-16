@@ -12,6 +12,7 @@ public class GameObjectsManagerGTP : MonoBehaviour
     public GameObject anomalyButton;
     public GameObject correctQtyButton;
     public GameObject correctQtyWrongPlusButton;
+    public GameObject correctQtyMissingPlusButton;
     public GameObject correctQtyConfirmButton;
     public GameObject correctQtyBackButton;
     public GameObject wrongProductButton;

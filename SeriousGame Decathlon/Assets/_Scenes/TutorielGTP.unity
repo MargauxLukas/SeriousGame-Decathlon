@@ -3183,6 +3183,7 @@ MonoBehaviour:
   canPlaySecond: 0
   remplissageColisTuto: 0
   correctyQtyWrongInputValue: 0
+  correctyQtyMissingInputValue: 0
 --- !u!1 &281708072
 GameObject:
   m_ObjectHideFlags: 0
@@ -8641,7 +8642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &792244658
 Transform:
   m_ObjectHideFlags: 0
@@ -10298,6 +10299,7 @@ MonoBehaviour:
   anomalyButton: {fileID: 0}
   correctQtyButton: {fileID: 0}
   correctQtyWrongPlusButton: {fileID: 0}
+  correctQtyMissingPlusButton: {fileID: 0}
   correctQtyConfirmButton: {fileID: 0}
   correctQtyBackButton: {fileID: 0}
   wrongProductButton: {fileID: 0}
@@ -12423,7 +12425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208057464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 76.22, y: 2.47, z: 900}
+  m_LocalPosition: {x: 77, y: 2.22, z: 900}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 1537923365}
@@ -16282,7 +16284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1542462230
 Transform:
   m_ObjectHideFlags: 0

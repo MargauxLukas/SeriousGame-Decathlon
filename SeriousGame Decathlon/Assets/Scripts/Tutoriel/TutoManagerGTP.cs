@@ -21,6 +21,7 @@ public class TutoManagerGTP : MonoBehaviour
     [Header("Miscellaneous")]
     public float remplissageColisTuto;
     public float correctyQtyWrongInputValue;
+    public float correctyQtyMissingInputValue;
 
     //Déplacement doigt
     private Vector3 fingerStartPosition;
@@ -456,6 +457,10 @@ public class TutoManagerGTP : MonoBehaviour
                     case (29):
                         Phase29();
                         break;
+
+                    case (47):
+                        Phase47();
+                        break;
                 }
                 break;
             #endregion
@@ -466,6 +471,10 @@ public class TutoManagerGTP : MonoBehaviour
                 {
                     case (30):
                         Phase30();
+                        break;
+
+                    case (49):
+                        Phase49();
                         break;
                 }
                 break;
@@ -499,6 +508,17 @@ public class TutoManagerGTP : MonoBehaviour
                 {
                     case (38):
                         Phase38();
+                        break;
+                }
+                break;
+            #endregion
+
+            #region 16 - InputField Missing good value
+            case (16):
+                switch (phaseNum)
+                {
+                    case (48):
+                        Phase48();
                         break;
                 }
                 break;
@@ -1843,6 +1863,118 @@ public class TutoManagerGTP : MonoBehaviour
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(72.33f, 2.39f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyButton).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase47()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyButton).interactable = false;
+
+            dialogueManager.LoadDialogue(listDialogues[dialogNum]);
+            dialogNum++;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(77f, 2.22f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyMissingPlusButton).interactable = true;
+
+            correctyQtyMissingInputValue = 1;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
+        }
+    }
+
+    void Phase48()
+    {
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0), new Vector2(0, 0),
+                    new Vector2(0, 0),
+                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyMissingPlusButton).interactable = false;
+
+        correctyQtyMissingInputValue = 0;
+
+        Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(77f, 1.31f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyWrongPlusButton).interactable = true;
+
+        correctyQtyWrongInputValue = 1;
+
+        phaseNum++;
+    }
+
+    void Phase49()
+    {
+        if (canPlayFirst)
+        {
+            Indications(new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyWrongPlusButton).interactable = false;
+
+            correctyQtyWrongInputValue = 0;
+        }
+
+        if (canPlaySecond)
+        {
+            Indications(new Vector2(7.31f, 1.38f), new Vector2(1.3f, 0.35f),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(74.61f, 0.56f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
+
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.correctQtyConfirmButton).interactable = true;
+
+            canPlayFirst = true;
+            canPlaySecond = false;
+            phaseNum++;
         }
     }
     #endregion
