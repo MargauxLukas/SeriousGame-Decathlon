@@ -10308,7 +10308,10 @@ MonoBehaviour:
   colisSource1: {fileID: 0}
   colisSource2: {fileID: 0}
   colisVide1: {fileID: 0}
+  colisVide2: {fileID: 0}
   pushButton1: {fileID: 0}
+  pushButton2: {fileID: 0}
+  scanRFID: {fileID: 0}
 --- !u!1 &926738645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2672306495849255138, guid: c7a499f8ff2f2e04ca3d51a298ddc362,
@@ -12409,7 +12412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208057464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 75.09, y: -3.35, z: 900}
+  m_LocalPosition: {x: 66.75, y: 1.64, z: 900}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 1537923365}
