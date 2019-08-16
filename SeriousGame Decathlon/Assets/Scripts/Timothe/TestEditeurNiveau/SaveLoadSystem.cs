@@ -27,6 +27,11 @@ public class SaveLoadSystem : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public void IsSaveFile()
+    {
+        
+    }
+
     public void DeleteAllFile()
     {
 
@@ -55,13 +60,17 @@ public class SaveLoadSystem : MonoBehaviour
         string json = JsonUtility.ToJson(colisToSave);
         Client.instance.SendColis(json, colisToSave.name);
 
-        SaveWayTicket(colisToSave.wayTicket);
+        if (colisToSave.wayTicket != null)
+        {
+            SaveWayTicket(colisToSave.wayTicket);
+        }
     }
 
     //FAIT
     public void SaveWayTicket(WayTicket ticket)
     {
         string json = JsonUtility.ToJson(ticket);
+        Debug.Log(json + " " + ticket.NamingTicket());
         Client.instance.SendWayticket(json, ticket.NamingTicket());
     }
 
@@ -97,12 +106,13 @@ public class SaveLoadSystem : MonoBehaviour
 
     }
 
-    public void LoadGeneralData()
+    public void LoadGeneralData(string requestString = null)
     {
         Net_Request request = new Net_Request();
-        request.stringRequest = "GeneralData";
+        request.stringRequest = requestString;
         Client.instance.SendServer(request);
     }
+
 
     //FAIT
     public void SaveLevelWithoutColis(LevelScriptable levelToSave)

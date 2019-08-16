@@ -4,32 +4,47 @@ using UnityEngine;
 
 public class SaveAllScriptableBeginning : MonoBehaviour
 {
+    public static SaveAllScriptableBeginning instance { private set; get; }
 
     public List<Colis> allColisCreated;
     public List<LevelScriptable> allLevelCreated;
     public BestScoreScript beginScore;
-
     public int currentVersion;
-    
+
+    public bool isSaveFile       = false;
+    public SavedData newData;
+
     void Start()
     {
-        /*if(!SaveLoadSystem.instance.IsSaveFile())
+        if (instance == null)
         {
-            foreach(Colis coli in allColisCreated)
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        SaveLoadSystem.instance.LoadGeneralData("GeneralDataStart");        
+    }
+
+    public void StartAll(bool isSaveFile, SavedData newData)
+    {
+        if (!isSaveFile)
+        {
+            foreach (Colis coli in allColisCreated)
             {
                 SaveLoadSystem.instance.SaveColis(coli);
             }
 
-            foreach(LevelScriptable level in allLevelCreated)
+            foreach (LevelScriptable level in allLevelCreated)
             {
                 SaveLoadSystem.instance.SaveLevelWithoutColis(level);
             }
 
             SaveLoadSystem.instance.SaveBestBegin(beginScore);
         }
-        else if(SaveLoadSystem.instance.LoadGeneralData().version != currentVersion)
+        else if (newData.version != currentVersion)
         {
-            SavedData newData = SaveLoadSystem.instance.LoadGeneralData();
             newData.version = currentVersion;
             SaveLoadSystem.instance.SaveGeneralData(newData);
 
@@ -44,7 +59,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
             }
 
             SaveLoadSystem.instance.SaveBestBegin(beginScore);
-        }*/
+        }
     }
 
     int dellNumber = 0;

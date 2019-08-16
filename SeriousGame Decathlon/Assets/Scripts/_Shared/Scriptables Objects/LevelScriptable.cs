@@ -27,10 +27,27 @@ public class LevelScriptable : ScriptableObject
     public float chanceInternet;
     public float ChanceTropArticle;
 
-    public List<Colis> listColis = new List<Colis>();
+    public List<Colis> listColis      = new List<Colis>();
+    public List<Colis> listColisMF    = new List<Colis>();
+    public List<Colis> listColisRecep = new List<Colis>();
 
     public void AddColis(Colis colis)
     {
-        listColis.Add(colis);
+        if(!colisDuNiveauNoms.Contains(colis.name))
+        {
+            colisDuNiveauNoms.Add(colis.name);
+        }
+    }
+
+    public void AddColisMF(Colis colis)
+    {     
+        listColisMF.Add(colis);
+        listColis  .Add(colis);   
+    }
+
+    public void AddColisRecep(Colis colis)
+    {
+        listColisRecep.Add(colis);
+        listColis     .Add(colis);
     }
 }

@@ -78,10 +78,10 @@ public class DBAccess : MonoBehaviour
         cmnd_read.CommandText = "SELECT * FROM 'RankingTab' ";
         reader = cmnd_read.ExecuteReader();
 
-        while (reader.Read())
+        /*while (reader.Read())
         {
             Debug.Log(reader[0].ToString() + " / " + reader[1] + " / " + reader[2].ToString());
-        }
+        }*/
 
         dbcon.Close();
     }

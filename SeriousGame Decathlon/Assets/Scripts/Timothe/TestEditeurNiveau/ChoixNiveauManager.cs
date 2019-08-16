@@ -36,7 +36,7 @@ public class ChoixNiveauManager : MonoBehaviour
     private List<int> currentAnomalieNumber;
     private List<string> currentAnomalies;
 
-    private LevelScriptable[] listLevelScriptable = new LevelScriptable[100];
+    public LevelScriptable[] listLevelScriptable = new LevelScriptable[100];
 
     //Réception
     public Text affichageNombreColisRecep;
@@ -62,7 +62,7 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public void Start()
     {
-        SaveLoadSystem.instance.LoadGeneralData();
+        SaveLoadSystem.instance.LoadGeneralData("GeneralData");
         rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
         listAffAnomalies = new List<GameObject>();
     }
@@ -81,10 +81,18 @@ public class ChoixNiveauManager : MonoBehaviour
         rt.sizeDelta += new Vector2(0, 130);
     }
 
-    public void SelectLevel(string fileColis, string WayTicket, int nbLevel)
+    public void SelectLevelMF(string fileColis, string WayTicket, int nbLevel)
     {
         Colis colis = SaveLoadSystem.instance.LoadColis(fileColis, WayTicket);
         listLevelScriptable[nbLevel].AddColis(colis);
+        listLevelScriptable[nbLevel].AddColisMF(colis);
+    }
+
+    public void SelectLevelRecep(string fileColis, string WayTicket, int nbLevel)
+    {
+        Colis colis = SaveLoadSystem.instance.LoadColis(fileColis, WayTicket);
+        listLevelScriptable[nbLevel].AddColis(colis);
+        listLevelScriptable[nbLevel].AddColisRecep(colis);
     }
 
     public void ShowGeneralInfoLevel(LevelScriptable level)

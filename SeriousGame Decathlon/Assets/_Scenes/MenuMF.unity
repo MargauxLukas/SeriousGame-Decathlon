@@ -3971,7 +3971,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019939120
 GameObject:
@@ -4719,6 +4719,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1616a8dc3dbf56045a6c341393de4456, type: 2}
   beginScore: {fileID: 11400000, guid: 16767e1509e9028438d2885f133e8622, type: 2}
   currentVersion: 1
+  isSaveFile: 0
+  newData: {fileID: 0}
   feedbackSuppression: {fileID: 475955837}
 --- !u!1001 &1201628965
 PrefabInstance:
@@ -4787,6 +4789,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2412291380456082246, guid: c3ddcbe31306d0e45bd1db158bd97333,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412291380456082246, guid: c3ddcbe31306d0e45bd1db158bd97333,
+        type: 3}
+      propertyPath: sasb
+      value: 
+      objectReference: {fileID: 1112353863}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ddcbe31306d0e45bd1db158bd97333, type: 3}
 --- !u!1 &1224120143

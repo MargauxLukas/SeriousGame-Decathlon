@@ -57,15 +57,7 @@ public class LevelEditor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadLevelEditor();
         colisDejaCree = new List<Colis>();
-        if (dataSaved != null && dataSaved.nomColisConnus != null)
-        {
-            for (int i = 0; i < dataSaved.nomColisConnus.Count; i++)
-            {
-                colisDejaCree.Add(SaveLoadSystem.instance.LoadColis(dataSaved.nomColisConnus[i]));
-            }
-        }
     }
 
     private void Update()
@@ -126,12 +118,6 @@ public class LevelEditor : MonoBehaviour
     public void OpenEditor()
     {
         creationNiveau.SetActive(true);
-    }
-
-    public void LoadLevelEditor()
-    {
-        SaveLoadSystem.instance.LoadGeneralData();
-        Debug.Log(dataSaved != null);
     }
 
     public void NewLevel()

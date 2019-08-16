@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -26,7 +24,6 @@ public class Client : MonoBehaviour
 
     //Tests
     public Net_SendLevel slSave;
-    public Net_SendColis scSave;
     public Net_SendWayTicket swSave;
     public Net_SendGeneralData gdSave;
 
@@ -152,8 +149,12 @@ public class Client : MonoBehaviour
                 swSave = (Net_SendWayTicket)msg;
                 break;
 
-            case NetOP.ReceiveColis:
-                LoadColisForLevel((Net_SendColis)msg);
+            case NetOP.ReceiveColisMF:
+                LoadColisMFForLevel((Net_SendColisMF)msg);
+                break;
+
+            case NetOP.ReceiveColisRecep:
+                LoadColisRecepForLevel((Net_SendColisRecep)msg);
                 break;
 
             case NetOP.ReceiveLevel:
@@ -163,6 +164,11 @@ public class Client : MonoBehaviour
             case NetOP.ReceiveDataGeneral:
                 gdSave = (Net_SendGeneralData)msg;
                 break;
+
+            case NetOP.ReceiveGDAndSF:
+                LoadGDAndSF((Net_SendGDAndSF)msg);
+                break;
+
         }
     }
 
@@ -266,9 +272,21 @@ public class Client : MonoBehaviour
         ChoixNiveauManager.instance.affichageLevel(sl.file, sl.nbLevel);
     }
 
-    public void LoadColisForLevel(Net_SendColis sc)
+    public void LoadColisMFForLevel(Net_SendColisMF scmf)
     {
-        ChoixNiveauManager.instance.SelectLevel(sc.fileColis, sc.fileticket, sc.nbLevel);
+        ChoixNiveauManager.instance.SelectLevelMF(scmf.fileColisMF, scmf.fileticket, scmf.nbLevel);
+    }
+
+    public void LoadColisRecepForLevel(Net_SendColisRecep scr)
+    {
+        ChoixNiveauManager.instance.SelectLevelRecep(scr.fileColisRecep, scr.fileticket, scr.nbLevel);
+    }
+
+    public void LoadGDAndSF(Net_SendGDAndSF sgdsf)
+    {
+        SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
+        JsonUtility.FromJsonOverwrite(sgdsf.dataSaved, dataToLoad);
+        SaveAllScriptableBeginning.instance.StartAll(sgdsf.isSaveFile, dataToLoad);
     }
 
     public void SendLevelWithoutColis(string json, int nbLevel)

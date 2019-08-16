@@ -219,11 +219,15 @@ public class Server : MonoBehaviour
                 break;
 
             case "Colis":
-                SendColis(connectId, channelId, recHostId, request);
+                SendColisMF(connectId, channelId, recHostId, request);
                 break;
 
             case "GeneralData":
                 SendGeneralData(connectId, channelId, recHostId);
+                break;
+
+            case "GeneralDataStart":
+                SendGeneralDataAndIsSaveFile(connectId, channelId, recHostId);
                 break;
         }
     }
@@ -284,11 +288,11 @@ public class Server : MonoBehaviour
         SaveLoadSystem.instance.SaveColis(sc.json, sc.name);
     }
 
-    private void SendColis(int connectId, int channelId, int recHostId, Net_Request request)
+    private void SendColisMF(int connectId, int channelId, int recHostId, Net_Request request)
     {
-        Net_SendColis sc = new Net_SendColis();
+        Net_SendColisMF sc = new Net_SendColisMF();
 
-        sc.fileColis = SaveLoadSystem.instance.LoadColis(request.colis);
+        sc.fileColisMF = SaveLoadSystem.instance.LoadColis(request.colis);
 
         SendClient(recHostId, connectId, sc);
     }
@@ -313,6 +317,11 @@ public class Server : MonoBehaviour
     private void SendGeneralData(int connectId, int channelId, int recHostId)
     {
         SaveLoadSystem.instance.LoadGeneralData(connectId, channelId, recHostId);
+    }
+
+    private void SendGeneralDataAndIsSaveFile(int connectId, int channelId, int recHostId)
+    {
+        SaveLoadSystem.instance.LoadGeneralDataAndSavingFile(connectId, channelId, recHostId);
     }
     #endregion
 }

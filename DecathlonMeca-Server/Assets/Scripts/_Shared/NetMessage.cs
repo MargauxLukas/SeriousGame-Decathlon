@@ -16,9 +16,11 @@ public static class NetOP
     public const int SaveColis             = 9;
     public const int SaveLevel             = 10;
     public const int SaveLevelWithoutColis = 11;
-    public const int ReceiveColis          = 12;
-    public const int ReceiveLevel          = 13;
-    public const int ReceiveDataGeneral    = 14;
+    public const int ReceiveColisMF        = 12;
+    public const int ReceiveColisRecep     = 13;
+    public const int ReceiveLevel          = 14;
+    public const int ReceiveDataGeneral    = 15;
+    public const int ReceiveGDAndSF        = 16;
 }
 
 [System.Serializable]

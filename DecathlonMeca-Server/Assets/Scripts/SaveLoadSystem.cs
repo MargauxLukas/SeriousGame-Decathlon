@@ -217,6 +217,31 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
+    public void LoadGeneralDataAndSavingFile(int connectId, int channelId, int recHostId)
+    {
+        Net_SendGDAndSF sgdsf = new Net_SendGDAndSF();
+
+        if (Directory.Exists(Application.persistentDataPath + "/game_save"))
+        {
+            sgdsf.isSaveFile = true;
+        }
+        else
+        {
+            sgdsf.isSaveFile = false;
+        }
+
+        SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
+        BinaryFormatter bf = new BinaryFormatter();
+        if (File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
+        {
+            FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
+            string dataSaved = (string)bf.Deserialize(file);
+            sgdsf.dataSaved = dataSaved;
+            file.Close();
+            server.SendClient(recHostId, connectId, sgdsf);
+        }
+    }
+
     public void SendLevel(SavedData dataSaved, int connectId, int channelId, int recHostId)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -224,8 +249,6 @@ public class SaveLoadSystem : MonoBehaviour
         for (int i = 1; i <= dataSaved.nombreNiveauCree; i++)
         {
             string save = SaveLoadSystem.instance.LoadLevel(i);
-            string saveColis;
-            string saveWayTicket;
             LevelScriptable levelScript = new LevelScriptable();
             Colis colisScript = new Colis();
             JsonUtility.FromJsonOverwrite(save, levelScript);
@@ -237,13 +260,24 @@ public class SaveLoadSystem : MonoBehaviour
 
             for (int nbColis = 0 ; nbColis < levelScript.colisDuNiveauNoms.Count ; nbColis++)
             {
-                Net_SendColis sc = new Net_SendColis();
-                sc.fileColis = LoadColis(levelScript.colisDuNiveauNoms[nbColis]);
-                JsonUtility.FromJsonOverwrite(sc.fileColis, colisScript);
-                sc.fileticket = LoadWayTicket(colisScript.nomWayTicket);
-                sc.nbLevel = i;
+                Net_SendColisMF scmf = new Net_SendColisMF();
+                scmf.fileColisMF = LoadColis(levelScript.colisDuNiveauNoms[nbColis]);
+                JsonUtility.FromJsonOverwrite(scmf.fileColisMF, colisScript);
+                scmf.fileticket = LoadWayTicket(colisScript.nomWayTicket);
+                scmf.nbLevel = i;
 
-                server.SendClient(recHostId, connectId, sc);
+                server.SendClient(recHostId, connectId, scmf);
+            }
+
+            for (int nbColis = 0; nbColis < levelScript.colisDuNiveauNomReception.Count; nbColis++)
+            {
+                Net_SendColisRecep scr = new Net_SendColisRecep();
+                scr.fileColisRecep = LoadColis(levelScript.colisDuNiveauNomReception[nbColis]);
+                JsonUtility.FromJsonOverwrite(scr.fileColisRecep, colisScript);
+                scr.fileticket = LoadWayTicket(colisScript.nomWayTicket);
+                scr.nbLevel = i;
+
+                server.SendClient(recHostId, connectId, scr);
             }
         }
     }
