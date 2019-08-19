@@ -11,6 +11,7 @@ TagManager:
   - ColisGTP
   - ColisPrincipauxGTP
   - PlayerChoice
+  - Poubelle
   layers:
   - Default
   - TransparentFX

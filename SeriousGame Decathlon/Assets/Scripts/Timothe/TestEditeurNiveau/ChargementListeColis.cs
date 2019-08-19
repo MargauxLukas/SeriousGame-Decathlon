@@ -52,10 +52,36 @@ public class ChargementListeColis : MonoBehaviour
     public InputField nomDuJoueur;
     public int sceneFinNiveau;
 
+    AsyncOperation async;
+    public GameObject loadingScreen;
+
     public void LoadNewScene(int nbScene)
     {
-        SceneManager.LoadScene(nbScene);
+        if (loadingScreen != null)
+        {
+            StartCoroutine(LoadNewSceneAsync(nbScene));
+        }
+        else
+        {
+            SceneManager.LoadScene(nbScene);
+        }
     }
+
+    IEnumerator LoadNewSceneAsync(int nbScene)
+    {
+        loadingScreen.SetActive(true);
+        async = SceneManager.LoadSceneAsync(nbScene);
+        async.allowSceneActivation = false;
+        while (!async.isDone)
+        {
+            if (async.progress == 0.9f)
+            {
+                async.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+    }
+
 
     private void Awake()
     {

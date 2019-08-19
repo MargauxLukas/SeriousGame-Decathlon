@@ -9,6 +9,12 @@ public class BoutonChangementScene : MonoBehaviour
     public float coefSound = 1;
 
     public AudioSource source;
+
+    AsyncOperation async;
+    public GameObject loadingScreen;
+
+    public List<GameObject> aDesactiverEnChargement;
+
     public void LoadNewScene(int nbScene)
     {
         if (musique != null && source != null)
@@ -17,7 +23,36 @@ public class BoutonChangementScene : MonoBehaviour
             source.volume = coefSound;
             source.Play();
         }
-        SceneManager.LoadScene(nbScene);
+        if (loadingScreen != null)
+        {
+            foreach (GameObject go in aDesactiverEnChargement)
+            {
+                if (go != gameObject)
+                {
+                    go.SetActive(false);
+                }
+            }
+            StartCoroutine(LoadNewSceneAsync(nbScene));
+        }
+        else
+        {
+            SceneManager.LoadScene(nbScene);
+        }
+    }
+
+    IEnumerator LoadNewSceneAsync(int nbScene)
+    {
+        loadingScreen.SetActive(true);
+        async = SceneManager.LoadSceneAsync(nbScene);
+        async.allowSceneActivation = false;
+        while(!async.isDone)
+        {
+            if(async.progress == 0.9f)
+            {
+                async.allowSceneActivation = true;
+            }
+            yield return null;
+        }
     }
 
     public void LoadMfScene()
@@ -32,12 +67,26 @@ public class BoutonChangementScene : MonoBehaviour
         {
             if (ChargementListeColis.instance.colisProcessMulti != null && ChargementListeColis.instance.colisProcessMulti.Count > 0)
             {
-                SceneManager.LoadScene(1);
+                if (loadingScreen != null)
+                {
+                    StartCoroutine(LoadNewSceneAsync(1));
+                }
+                else
+                {
+                    SceneManager.LoadScene(1);
+                }
             }
         }
         else
         {
-            SceneManager.LoadScene(1);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(1));
+            }
+            else
+            {
+                SceneManager.LoadScene(1);
+            }
         }
     }
 
@@ -53,12 +102,26 @@ public class BoutonChangementScene : MonoBehaviour
         {
             if (ChargementListeColis.instance.nbColisVoulu >= 3)
             {
-                SceneManager.LoadScene(10);
+                if (loadingScreen != null)
+                {
+                    StartCoroutine(LoadNewSceneAsync(10));
+                }
+                else
+                {
+                    SceneManager.LoadScene(10);
+                }
             }
         }
         else
         {
-            SceneManager.LoadScene(10);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(10));
+            }
+            else
+            {
+                SceneManager.LoadScene(10);
+            }
         }
     }
 
@@ -74,12 +137,26 @@ public class BoutonChangementScene : MonoBehaviour
         {
             if (!ChargementListeColis.instance.hasBeenReturned)
             {
-                SceneManager.LoadScene(7);
+                if (loadingScreen != null)
+                {
+                    StartCoroutine(LoadNewSceneAsync(7));
+                }
+                else
+                {
+                    SceneManager.LoadScene(7);
+                }
             }
         }
         else
         {
-            SceneManager.LoadScene(7);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(7));
+            }
+            else
+            {
+                SceneManager.LoadScene(7);
+            }
         }
     }
 

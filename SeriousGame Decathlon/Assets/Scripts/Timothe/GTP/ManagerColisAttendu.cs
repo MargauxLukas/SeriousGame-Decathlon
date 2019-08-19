@@ -51,6 +51,17 @@ public class ManagerColisAttendu : MonoBehaviour
             {
                 int articleAlea = Random.Range(0, colisViderManage.colisVider.Count - 1);
                 int rngNumber = Random.Range(2, 5);
+                if (colisVoulus[i].listArticles.Count > 7)
+                {
+                    if (10 - colisVoulus[i].listArticles.Count > 2)
+                    {
+                        rngNumber = Random.Range(2, 10 - colisVoulus[i].listArticles.Count);
+                    }
+                    else
+                    {
+                        rngNumber = 2;
+                    }
+                }
                 for (int p = 0; p < rngNumber; p++)
                 {
                     colisVoulus[i].listArticles.Add(colisViderManage.colisVider[articleAlea].listArticles[0]);

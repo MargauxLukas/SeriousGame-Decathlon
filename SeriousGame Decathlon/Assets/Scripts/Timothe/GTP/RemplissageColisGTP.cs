@@ -32,6 +32,8 @@ public class RemplissageColisGTP : MonoBehaviour
 
     public GameObject spriteRemplit;
 
+    private float cooldown;
+
     private void Start()
     {
         colisScriptable = Instantiate(colisScriptable);
@@ -39,6 +41,10 @@ public class RemplissageColisGTP : MonoBehaviour
 
     void Update()
     {
+        if(cooldown>0)
+        {
+            cooldown -= Time.deltaTime;
+        }
         if(tauxRemplissage>1 && !spriteRemplit.activeSelf)
         {
             spriteRemplit.SetActive(true);
@@ -62,6 +68,7 @@ public class RemplissageColisGTP : MonoBehaviour
                 List<List<Article>> newListes    = new List<List<Article>>();
                 List<Article> articlesDejaConnus = new List     <Article> ();
 
+                cooldown = 0.1f;
                 if (!tasArticle[0].activeSelf)
                 {
                     if (colisScriptable.listArticles.Count > 0)
