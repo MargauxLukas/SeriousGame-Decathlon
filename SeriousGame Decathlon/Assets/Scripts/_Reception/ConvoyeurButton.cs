@@ -26,6 +26,8 @@ public class ConvoyeurButton : MonoBehaviour
     public DetectionAnomalieRecep detectAnom;
     public ChangementEtiquettes etiquettesManager;
 
+    public AudioSource source;
+
     private void Update()
     {
         if (convoyeur.isOn)
@@ -61,7 +63,11 @@ public class ConvoyeurButton : MonoBehaviour
                 if(TutoManagerRecep.instance != null) { TutoManagerRecep.instance.Manager(24); }
                 convoyeur.MoveY("replier");                                     //Boutton Replier + Validate
             }
-            else { return; }
+            
+            if(!UpPressed && ! downPressed && !replierPressed && !deplierPressed)
+            {
+                source.Stop();
+            }
         }
         else
         {
@@ -85,7 +91,7 @@ public class ConvoyeurButton : MonoBehaviour
             isOnAmpoule .SetActive(true );
             isOffAmpoule.SetActive(false);
             convoyeur.isOn = true;
-        }        
+        }
     }
 
     public void ValidationPointerDown()

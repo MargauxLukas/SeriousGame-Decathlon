@@ -20,6 +20,11 @@ public class PistolScan : MonoBehaviour
     [Header("List Anomalie de EcranZoom")]
     public GameObject listAnomalie;
 
+    public AudioClip musique;
+    public float coefSound = 1;
+
+    public AudioSource source;
+
     void Start()
     {
         pistolInitPos = transform.position;
@@ -70,6 +75,13 @@ public class PistolScan : MonoBehaviour
             //HasBeenScan
             scriptColis.hasBeenScannedByPistol = true;
             ongletManager.GetComponent<OngletManager>().hasBeenScannedByPistol = true;
+
+            if (musique != null && source != null)
+            {
+                source.clip = musique;
+                source.volume = coefSound;
+                source.Play();
+            }
 
             //A faire lorsque que je scan
             ongletManager.screenDisplay.UpdateAffichage();                                                                                       //On met à jour l'affichage

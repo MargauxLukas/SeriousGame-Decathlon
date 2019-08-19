@@ -23,6 +23,9 @@ public class ConvoyeurManager : MonoBehaviour
     public bool isOn;
     public bool isReplierMax = true;
 
+    public AudioSource source;
+    public AudioClip musique;
+    public float coefSound = 0.1f;
 
     public void Start()
     {
@@ -39,6 +42,12 @@ public class ConvoyeurManager : MonoBehaviour
         {
             if(height <= maxHeight)                             //Peut monter tant qu'il a pas atteint le maxHeight
             {
+                if (musique != null && source != null && !source.isPlaying)
+                {
+                    source.clip = musique;
+                    source.volume = coefSound;
+                    source.Play();
+                }
                 height = height + 0.016f;
                 gauge.Up();
             }
@@ -47,6 +56,12 @@ public class ConvoyeurManager : MonoBehaviour
         {
             if (height >= minHeight)                            //Peut descendre tant qu'il a pas atteint le minHeight
             {
+                if (musique != null && source != null && !source.isPlaying)
+                {
+                    source.clip = musique;
+                    source.volume = coefSound;
+                    source.Play();
+                }
                 height = height - 0.016f;
                 gauge.Down();
             }
@@ -75,6 +90,12 @@ public class ConvoyeurManager : MonoBehaviour
                 player.GetComponent<Animator>().SetFloat("DirectionY",   1f);
                 player.GetComponent<Animator>().SetBool ("DoesWalk"  , true);
                 isReplierMax = false;
+                if (musique != null && source != null && !source.isPlaying)
+                {
+                    source.clip = musique;
+                    source.volume = coefSound;
+                    source.Play();
+                }
             }
             else
             {
@@ -89,6 +110,12 @@ public class ConvoyeurManager : MonoBehaviour
         }
         else
         {
+            if (musique != null && source != null && !source.isPlaying)
+            {
+                source.clip = musique;
+                source.volume = coefSound;
+                source.Play();
+            }
             isReplierMax = false;
             camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 0.02f, camera.transform.position.z);
             player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.02f, player.transform.position.z);

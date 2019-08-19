@@ -9,8 +9,20 @@ public class ChoixTutorielScript : MonoBehaviour
     public int nbTutoToLoad;
     public Text detailTuto;
 
+    public AudioClip musique;
+    public AudioClip musiqueDeux;
+    public float coefSound = 1;
+
+    public AudioSource source;
+
     public void LoadTutoScene()
     {
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
+        }
         SceneManager.LoadScene(nbTutoToLoad);
     }
 
@@ -21,6 +33,13 @@ public class ChoixTutorielScript : MonoBehaviour
         if(ChargementListeColis.instance != null)
         {
             Destroy(ChargementListeColis.instance.gameObject);
+        }
+
+        if (musiqueDeux != null && source != null)
+        {
+            source.clip = musiqueDeux;
+            source.volume = coefSound;
+            source.Play();
         }
 
         switch (nb)
