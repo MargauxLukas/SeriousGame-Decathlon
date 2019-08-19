@@ -9,7 +9,9 @@ public class EcranBaseWindow : MonoBehaviour
 
     public void AnomalyWindow()
     {
-        anomalyWindow.SetActive(true );
+        anomalyWindow.SetActive(true);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(10); }
     }
 
     public void PickTUWindow(int nb)
@@ -22,6 +24,8 @@ public class EcranBaseWindow : MonoBehaviour
         {
             PickTUContentWindow.SetActive(true);
             PickTUContentWindow.GetComponent<PickTUContentWindow>().affichageListe(nb);
+
+            if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(2); }
         }
     }
 }

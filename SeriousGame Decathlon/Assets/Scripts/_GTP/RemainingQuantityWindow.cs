@@ -52,5 +52,7 @@ public class RemainingQuantityWindow : MonoBehaviour
         nb = 0;
         Affichage();
         gameObject.SetActive(false);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(9); }
     }
 }

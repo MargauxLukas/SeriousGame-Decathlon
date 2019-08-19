@@ -27,11 +27,6 @@ public class TutoManagerRecep : MonoBehaviour
     public bool canMoveTuto           = false;
     public bool canCloseMenuTourner   = false;
     public bool canCloseGestAnomalies = false;
-
-    //Déplacement doigt
-    private Vector3 fingerPosition;
-    private Vector3 targetPosition;
-    private float fingerSpeed;
     
     [Header("Flèche")]
     public float arrowRotation;
@@ -39,6 +34,11 @@ public class TutoManagerRecep : MonoBehaviour
     public float arrowEulerAngleY;
     public float arrowEulerAngleZ;
     public SpriteMask arrowSpriteMask;
+
+    //Déplacement doigt
+    private Vector3 fingerPosition;
+    private Vector3 targetPosition;
+    private float fingerSpeed;
 
     void Awake()
     {
