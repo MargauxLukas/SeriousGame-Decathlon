@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SimplePAthAI : MonoBehaviour
 {
-    public List<Transform> positionsVoulues;
-    public List<bool> needWait;
-    private int currentPosVoulue = 0;
+    public ChoixCheminIA currentPoint;
+    public ChoixCheminIA lastPoint;
+
     public float speed = 1;
     private bool canMove = true;
 
@@ -15,28 +15,35 @@ public class SimplePAthAI : MonoBehaviour
     {
         if (canMove)
         {
-            if (Vector2.Distance(positionsVoulues[currentPosVoulue].position, transform.position) > 0.5f)
+            if (Vector2.Distance(currentPoint.position, transform.position) > Random.Range(0.3f,1f))
             {
                 GetComponent<Animator>().SetBool("DoesWalk", true);
-                GetComponent<Animator>().SetFloat("DirX", positionsVoulues[currentPosVoulue].position.y - transform.position.y);
-                GetComponent<Animator>().SetFloat("DirY", positionsVoulues[currentPosVoulue].position.x - transform.position.x);
-                transform.position += (positionsVoulues[currentPosVoulue].position - transform.position).normalized * Time.fixedDeltaTime * speed;
+                GetComponent<Animator>().SetFloat("DirX", currentPoint.position.y - transform.position.y);
+                GetComponent<Animator>().SetFloat("DirY", currentPoint.position.x - transform.position.x);
+                transform.position += (currentPoint.position - transform.position).normalized * Time.fixedDeltaTime * speed;
             }
             else
             {
-                if (needWait[currentPosVoulue])
+                int rng = Random.Range(0, currentPoint.voisins.Count);
+                int rngWait = Random.Range(0, 100);
+                if (currentPoint.voisins[rng] != lastPoint && rngWait < 30)
                 {
-                    GetComponent<Animator>().SetBool("DoesWalk", false);
-                    StartCoroutine(WaitHere(Random.Range(3, 7)));
+                    lastPoint = currentPoint;
+                    currentPoint = currentPoint.voisins[rng];
                 }
-                currentPosVoulue++;
-                currentPosVoulue = currentPosVoulue % positionsVoulues.Count;
+                else
+                {
+                    lastPoint = currentPoint;
+                    currentPoint = currentPoint.voisins[rng];
+                    StartCoroutine(WaitHere(Random.Range(3f, 6f)));
+                }
             }
         }
     }
 
     IEnumerator WaitHere(float timeToWait)
     {
+        GetComponent<Animator>().SetBool("DoesWalk", false);
         canMove = false;
         yield return new WaitForSeconds(timeToWait);
         canMove = true;

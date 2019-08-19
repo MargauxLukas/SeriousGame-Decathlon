@@ -5,13 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class BoutonChangementScene : MonoBehaviour
 {
+    public AudioClip musique;
+    public float coefSound = 1;
+
+    public AudioSource source;
     public void LoadNewScene(int nbScene)
     {
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
+        }
         SceneManager.LoadScene(nbScene);
     }
 
     public void LoadMfScene()
     {
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
+        }
         if (ChargementListeColis.instance != null)
         {
             if (ChargementListeColis.instance.colisProcessMulti != null && ChargementListeColis.instance.colisProcessMulti.Count > 0)
@@ -27,6 +43,12 @@ public class BoutonChangementScene : MonoBehaviour
 
     public void LoadMGtpScene()
     {
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
+        }
         if (ChargementListeColis.instance != null)
         {
             if (ChargementListeColis.instance.nbColisVoulu >= 3)
@@ -42,6 +64,12 @@ public class BoutonChangementScene : MonoBehaviour
 
     public void LoadRecepScene()
     {
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
+        }
         if (ChargementListeColis.instance != null)
         {
             if (!ChargementListeColis.instance.hasBeenReturned)

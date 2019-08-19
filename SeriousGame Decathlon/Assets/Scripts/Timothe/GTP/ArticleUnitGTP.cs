@@ -20,6 +20,10 @@ public class ArticleUnitGTP : MonoBehaviour
 
     public GameObject animationApparition;
 
+    public AudioSource source;
+    public AudioClip musique;
+    public float coefSound = 0.4f;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -97,6 +101,12 @@ public class ArticleUnitGTP : MonoBehaviour
                             }
                         }
                         tasParent.affichageTas.Remove(gameObject);
+                        if (musique != null && source != null)
+                        {
+                            source.clip = musique;
+                            source.volume = coefSound;
+                            source.Play();
+                        }
                         Destroy(gameObject);
                     }
                     //Destroy(gameObject);
