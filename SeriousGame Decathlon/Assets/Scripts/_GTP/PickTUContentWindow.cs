@@ -101,6 +101,8 @@ public class PickTUContentWindow : MonoBehaviour
         //ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);    //Je lui donne le nom de l'article et le nombre prévu
         ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().artReference.name, mca.nbArticleVoulu);
         ecranCorrectPickedQty.SetActive(true);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(17); }
     }
 
     /************************************

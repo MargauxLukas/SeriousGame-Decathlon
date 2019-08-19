@@ -10297,12 +10297,14 @@ MonoBehaviour:
   listPickTUBackButton: {fileID: 0}
   remainingQtyOkButton: {fileID: 0}
   anomalyButton: {fileID: 0}
-  correctQtyButton: {fileID: 0}
-  correctQtyWrongPlusButton: {fileID: 0}
-  correctQtyMissingPlusButton: {fileID: 0}
-  correctQtyConfirmButton: {fileID: 0}
-  correctQtyBackButton: {fileID: 0}
+  correctSourceQtyButton: {fileID: 0}
+  correctSourceQtyWrongPlusButton: {fileID: 0}
+  correctSourceQtyMissingPlusButton: {fileID: 0}
+  correctSourceQtyConfirmButton: {fileID: 0}
+  correctSourceQtyBackButton: {fileID: 0}
   wrongProductButton: {fileID: 0}
+  correctPickedQtyButton: {fileID: 0}
+  correctPickedQtyPlusButton: {fileID: 0}
   colisSource1: {fileID: 0}
   colisSource2: {fileID: 0}
   colisVide1: {fileID: 0}
@@ -12425,7 +12427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208057464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 77, y: 2.22, z: 900}
+  m_LocalPosition: {x: 72.78, y: 2.45, z: 900}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 1537923365}
@@ -16284,7 +16286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1542462230
 Transform:
   m_ObjectHideFlags: 0
@@ -17302,7 +17304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1690653492
 Transform:
   m_ObjectHideFlags: 0
@@ -18771,6 +18773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f94ebc8176c0e4e9e90dd693ba14e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 0}
+  musique: {fileID: 0}
+  coefSound: 0.4
 --- !u!1 &1915028427
 GameObject:
   m_ObjectHideFlags: 0

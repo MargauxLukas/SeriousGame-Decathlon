@@ -7,14 +7,20 @@ public class GameObjectsManagerGTP : MonoBehaviour
 {
     [Header("Ecran")]
     public GameObject loupe1Button;
+    public GameObject loupe3Button;
     public GameObject listPickTUBackButton;
+    public GameObject correctPickedQtyButton;
+    public GameObject correctPickedQtyMinusButton;
+    public GameObject correctPickedQtyOkButton;
+    public GameObject closePickTUButton;
+    public GameObject remainingQtyPlusButton;
     public GameObject remainingQtyOkButton;
     public GameObject anomalyButton;
-    public GameObject correctQtyButton;
-    public GameObject correctQtyWrongPlusButton;
-    public GameObject correctQtyMissingPlusButton;
-    public GameObject correctQtyConfirmButton;
-    public GameObject correctQtyBackButton;
+    public GameObject correctSourceQtyButton;
+    public GameObject correctSourceQtyWrongPlusButton;
+    public GameObject correctSourceQtyMissingPlusButton;
+    public GameObject correctSourceQtyConfirmButton;
+    public GameObject correctSourceQtyBackButton;
     public GameObject wrongProductButton;
 
     [Header("Colis")]
@@ -32,6 +38,8 @@ public class GameObjectsManagerGTP : MonoBehaviour
     public GameObject pushButton2;
     public GameObject pushButton3;
     public GameObject scanRFID;
+    public GameObject consoleMinusButton;
+    public GameObject consoleValidateButton;
 
     [Header("Sprite Masks")]
     public GameObject blackScreen;

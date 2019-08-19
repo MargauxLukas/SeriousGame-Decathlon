@@ -23,6 +23,11 @@ public class CorrectPickedQtyWindow : MonoBehaviour
     {
         //Mettre a jour affichage
         quantitynb.text = (nbBase + nb).ToString();
+
+        if(TutoManagerGTP.instance != null && quantitynb.text == TutoManagerGTP.instance.correctPickedQtyInputValue)
+        {
+            TutoManagerGTP.instance.Manager(18);
+        }
     }
 
     /***************************************
@@ -53,6 +58,8 @@ public class CorrectPickedQtyWindow : MonoBehaviour
     {
         gameObject        .SetActive(false);
         ecranPickTUContent.GetComponent<PickTUContentWindow>().UpdatingArticle(nb);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(19); }
     }
 }
 
