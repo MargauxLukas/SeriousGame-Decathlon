@@ -25,7 +25,7 @@ public class DetectionColisBombe : MonoBehaviour
                 {
                     if (!haveAlreadySomething)
                     {
-                        foreach(Transform child in transform)
+                        foreach(Transform child in collision.transform)
                         {
                             child.position -= new Vector3(4, 0, 0);
                         }

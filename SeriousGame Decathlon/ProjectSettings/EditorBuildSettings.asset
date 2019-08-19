@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/MenuMF.unity
-    guid: 7bfab139be9b9e543bade9337b981886
+    path: Assets/_Scenes/EcranChargementBegin.unity
+    guid: f4abf2d54dde97947baa2ac4103c2aa3
   - enabled: 1
     path: Assets/_Scenes/SceneProtoUn.unity
     guid: 3eb357cae4b94c34cb6489b13f924e37
@@ -56,4 +56,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/_Scenes/Cr\xE9dit.unity"
     guid: 872f6bb1af0a55f4281b6f63a3adb056
+  - enabled: 1
+    path: Assets/_Scenes/MenuMF.unity
+    guid: 7bfab139be9b9e543bade9337b981886
   m_configObjects: {}

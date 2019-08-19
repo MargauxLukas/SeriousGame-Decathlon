@@ -15,6 +15,9 @@ public class ChoixTutorielScript : MonoBehaviour
 
     public AudioSource source;
 
+    AsyncOperation async;
+    public GameObject loadingScreen;
+
     public void LoadTutoScene()
     {
         if (musique != null && source != null)
@@ -23,8 +26,32 @@ public class ChoixTutorielScript : MonoBehaviour
             source.volume = coefSound;
             source.Play();
         }
-        SceneManager.LoadScene(nbTutoToLoad);
+
+        if (loadingScreen != null)
+        {
+            StartCoroutine(LoadNewSceneAsync(nbTutoToLoad));
+        }
+        else
+        {
+            SceneManager.LoadScene(nbTutoToLoad);
+        }
     }
+
+    IEnumerator LoadNewSceneAsync(int nbScene)
+    {
+        loadingScreen.SetActive(true);
+        async = SceneManager.LoadSceneAsync(nbScene);
+        async.allowSceneActivation = false;
+        while (!async.isDone)
+        {
+            if (async.progress == 0.9f)
+            {
+                async.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+    }
+
 
     public void ChooseTuto(int nb)
     {

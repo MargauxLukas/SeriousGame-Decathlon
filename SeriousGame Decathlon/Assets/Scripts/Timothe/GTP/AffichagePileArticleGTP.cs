@@ -17,6 +17,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
     public Article artReference;
 
     private int nbAddedArticle = 0;
+    private float cooldown;
 
     void Start()
     {
@@ -25,6 +26,10 @@ public class AffichagePileArticleGTP : MonoBehaviour
 
     void Update()
     {
+        if(cooldown>0)
+        {
+            cooldown -= Time.deltaTime;
+        }
         if(Input.touchCount>0 && !mca.isLevelEnded)
         {
             touchObject();
@@ -34,8 +39,9 @@ public class AffichagePileArticleGTP : MonoBehaviour
                 doesTouch = false;
             }
 
-            if(doesTouch)
+            if(doesTouch && cooldown<=0)
             {
+                cooldown = 0.1f;
                 if (!tasArticle.activeSelf && currentColis.listArticles != null && currentColis.listArticles.Count > 0)
                 {
                     isOpen = true;
