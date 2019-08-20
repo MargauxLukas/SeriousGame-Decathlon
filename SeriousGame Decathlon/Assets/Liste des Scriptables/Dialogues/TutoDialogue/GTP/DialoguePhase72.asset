@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase72
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "C'est un indicateur qui permet de savoir le taux de remplissage d'un colis. Si
+    cette jauge est pleine, rien ne sert de rajouter des articles, sinon le colis
+    risque de d\xE9border."
+  - "Dans un cas comme celui-ci, tu dois clore ton picking maintenant et le reste
+    de la commande sera envoy\xE9 dans un autre colis. "
+  - "D'abord, tu dois mettre \xE0 jour les informations sur le colis en cours. Utilise
+    la barre en dessous du colis pour indiquer combien d'articles tu as retir\xE9
+    du total. "
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

@@ -10169,39 +10169,9 @@ MonoBehaviour:
   emplacementsScripts:
   - {fileID: 926738645}
   - {fileID: 171931902}
-  colisVider:
-  - {fileID: 11400000, guid: ac0dbdc8b376eb641835fbf56a2b4603, type: 2}
-  - {fileID: 11400000, guid: 43b43a0d4806b3d4ab72e35105e4cd9a, type: 2}
-  - {fileID: 11400000, guid: 06168d02f8ef4d74f881538e097e24d4, type: 2}
-  - {fileID: 11400000, guid: 83f7fd4c078780e46931e8612bab28f5, type: 2}
-  - {fileID: 11400000, guid: 47c842e22ad817c4998785c5736cdff3, type: 2}
-  - {fileID: 11400000, guid: 5a35fadede0e27245b718214fcaa267f, type: 2}
-  - {fileID: 11400000, guid: 30683e55eb4c6384caabcf732e780b5a, type: 2}
-  - {fileID: 11400000, guid: 6ccbb5841875f6a40a46d75e2b9374b8, type: 2}
-  - {fileID: 11400000, guid: e472c9ee8c698464f879941850f959e9, type: 2}
-  - {fileID: 11400000, guid: eebc797e97e2e0941b1f76ecc8f59b9a, type: 2}
-  - {fileID: 11400000, guid: 4a627edf20ad81b4b864b9af92edc25a, type: 2}
-  - {fileID: 11400000, guid: 57561e59e22e7454eaf88c747e3980ca, type: 2}
-  - {fileID: 11400000, guid: 346798e32ed21cf42bb0a67edbacb51e, type: 2}
-  - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
-  - {fileID: 11400000, guid: 7521e02d571fcbb42b88d6ed50a45594, type: 2}
-  colisAvecPack:
-  - {fileID: 11400000, guid: ac0dbdc8b376eb641835fbf56a2b4603, type: 2}
-  - {fileID: 11400000, guid: 43b43a0d4806b3d4ab72e35105e4cd9a, type: 2}
-  - {fileID: 11400000, guid: 06168d02f8ef4d74f881538e097e24d4, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: 0b84d4d3eb7afe24197e381a44c2c9d6, type: 2}
-  - {fileID: 11400000, guid: 7521e02d571fcbb42b88d6ed50a45594, type: 2}
-  positionVoulueParEmplacement: 0000000000000000
+  colisVider: []
+  colisAvecPack: []
+  positionVoulueParEmplacement: 
   chanceColisPasRemplit: 0
   chanceArticlePasBon: 0
   chanceColisPasBon: 0
@@ -10216,10 +10186,20 @@ MonoBehaviour:
   emplacement: 0
   AncientEmplacementTempo: -1
   artReference: {fileID: 0}
-  colisViderTuto: []
-  needPack: 
-  currentColisNumberTuto: 0
-  listPosVoulue: 
+  colisViderTuto:
+  - {fileID: 11400000, guid: aeb27750c0363214c9a8b62ffc184845, type: 2}
+  - {fileID: 11400000, guid: 3944d35fdaa7bf047a5300da5cbef1c6, type: 2}
+  - {fileID: 11400000, guid: cf8fc8d60dd1f6f42bc786a74b68e24f, type: 2}
+  - {fileID: 11400000, guid: bbb3d6d98d8922a4f81dda5a60767e5c, type: 2}
+  - {fileID: 11400000, guid: b4143b0bf2435d84393e3532d5e5ec2b, type: 2}
+  - {fileID: 11400000, guid: 623eb39e38104384382e9269945c4aa1, type: 2}
+  - {fileID: 11400000, guid: 747b234de912a68408947c53d3b729e6, type: 2}
+  - {fileID: 11400000, guid: d0c022ed2089b354298f981bd1f21c32, type: 2}
+  - {fileID: 11400000, guid: 4543e3d55255e8e488eafe0e5b8565b6, type: 2}
+  - {fileID: 11400000, guid: c15ac540b9b01ec44936c78efb1dc10e, type: 2}
+  - {fileID: 11400000, guid: ac6f5745047390b4f8f2c1f2553745e0, type: 2}
+  needPack: 0000000000000000010000
+  listPosVoulue: 0100000002000000010000000300000002000000020000000100000003000000010000000300000001000000
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
@@ -10248,20 +10228,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monitor: {fileID: 1276711367}
   colisViderManage: {fileID: 882313604}
-  colisVoulus: []
-  colisActuellementTraite: []
-  phasesColisVoulus: 
+  colisVoulus:
+  - {fileID: 11400000, guid: 99c117e9a0f00ea4e97a7e1e772a482f, type: 2}
+  - {fileID: 11400000, guid: 317dd620990e9a448b2416fd5c6ee6e1, type: 2}
+  - {fileID: 11400000, guid: fcbf0f350422890488112e53f53bc86a, type: 2}
+  - {fileID: 11400000, guid: 445b75e3af7e16a43ad0414ce1bb070d, type: 2}
+  colisActuellementTraite:
+  - {fileID: 11400000, guid: 99c117e9a0f00ea4e97a7e1e772a482f, type: 2}
+  - {fileID: 11400000, guid: 317dd620990e9a448b2416fd5c6ee6e1, type: 2}
+  - {fileID: 11400000, guid: fcbf0f350422890488112e53f53bc86a, type: 2}
+  phasesColisVoulus: 03000000020000000300000002000000
   cm:
   - {fileID: 980227254}
   - {fileID: 1987281621}
   - {fileID: 994102619}
-  nombreColisVoulu: 3
+  nombreColisVoulu: 0
   nbArticleVoulu: 0
   nbEmplacement: 0
   chanceAvoirTropArticlePrevu: 0
   chanceToComeFromInternet: 0
   ecranFinNiveau: {fileID: 2118144035}
   isLevelEnded: 0
+  loadingScreen: {fileID: 0}
 --- !u!1 &887417059
 GameObject:
   m_ObjectHideFlags: 0

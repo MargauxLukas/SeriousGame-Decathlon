@@ -41,7 +41,7 @@ public class ManagerColisVider : MonoBehaviour
     [Header("Pour le tuto")]
     public List<Colis> colisViderTuto;
     public List<bool> needPack;
-    public int currentColisNumberTuto;
+    int currentColisNumberTuto;
     public List<int> listPosVoulue;
 
     // Start is called before the first frame update
