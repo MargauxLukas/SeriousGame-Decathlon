@@ -90,6 +90,8 @@ public class PickTUContentWindow : MonoBehaviour
     public void ClosePickTU()
     {
         mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, cvl.csTab[mca.nbEmplacement]);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(24); }
     }
 
     /****************************************************************************************

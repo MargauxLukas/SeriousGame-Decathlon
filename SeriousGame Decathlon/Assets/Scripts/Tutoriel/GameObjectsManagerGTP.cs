@@ -40,6 +40,7 @@ public class GameObjectsManagerGTP : MonoBehaviour
     public GameObject scanRFID;
     public GameObject consoleMinusButton;
     public GameObject consoleValidateButton;
+    public GameObject quitButton;
 
     [Header("Sprite Masks")]
     public GameObject blackScreen;
