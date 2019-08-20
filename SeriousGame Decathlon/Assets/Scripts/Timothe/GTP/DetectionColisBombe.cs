@@ -25,9 +25,12 @@ public class DetectionColisBombe : MonoBehaviour
                 {
                     if (!haveAlreadySomething)
                     {
-                        foreach(Transform child in collision.transform)
+                        foreach (Transform child in collision.transform)
                         {
-                            child.position -= new Vector3(4, 0, 0);
+                            if (child.GetComponent<TasArticleGTP>() != null)
+                            {
+                                child.position -= new Vector3(4, 0, 0);
+                            }
                         }
                         haveAlreadySomething = true;
                         Scoring.instance.LosePointGTP(25, "Renvoie d'un colis trop chargé");

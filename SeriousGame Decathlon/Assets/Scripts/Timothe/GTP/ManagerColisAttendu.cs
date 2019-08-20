@@ -29,6 +29,7 @@ public class ManagerColisAttendu : MonoBehaviour
     private int nbColisCree;
 
     public bool isLevelEnded = false;
+    public GameObject loadingScreen;
 
     public void Start()
     {
@@ -473,6 +474,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             if (colisVoulus.Count > 3)
             {
+                ChargementListeColis.instance.loadingScreen = loadingScreen;
                 ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
             }
             else if (isLevelEnded)

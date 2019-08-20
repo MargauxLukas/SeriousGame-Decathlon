@@ -33,7 +33,7 @@ public class ColisManager : MonoBehaviour
 
     public AnomalieDetection anomDetect;
 
-    public Image nbColisRestant;
+    public GameObject loadingScreen;
     private int colisTotal;
 
     private void Awake()
@@ -222,6 +222,7 @@ public class ColisManager : MonoBehaviour
         }
         else
         {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
             ChargementListeColis.instance.QuitMfLevel(listeColisTraiter, anomDetect.RFIDtagKnowned);
         }
     }

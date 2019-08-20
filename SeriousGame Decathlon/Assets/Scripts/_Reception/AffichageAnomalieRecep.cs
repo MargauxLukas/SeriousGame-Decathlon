@@ -22,6 +22,8 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public ConvoyeurManager cm;
 
+    public GameObject loadingScreen;
+
     public void Start()
     {
         fondTextAnomalieDezoom.SetActive(false);
@@ -121,6 +123,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
                 {
                     Scoring.instance.RecepBonus(90 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     ChargementListeColis.instance.hasBeenReturned = true;
+                    ChargementListeColis.instance.loadingScreen = loadingScreen;
                     ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
                 }
             }

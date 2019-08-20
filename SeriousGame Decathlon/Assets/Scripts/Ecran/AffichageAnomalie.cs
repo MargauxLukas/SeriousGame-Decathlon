@@ -108,7 +108,7 @@ public class AffichageAnomalie : MonoBehaviour
                             ongletManager.ActivateOngletRepack();
                             
                             break;
-                        case "RFID tag scanned for unknown product":
+                        case "RFID tag scanned for New product":
                             actualUsableDialogue.Add(dialogueList[7]);
                             ongletManager.ActivateOngletFillingRate();
                             break;

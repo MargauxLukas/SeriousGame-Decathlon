@@ -45,7 +45,7 @@ public class RemplissageColisGTP : MonoBehaviour
         {
             cooldown -= Time.deltaTime;
         }
-        if(tauxRemplissage>1 && !spriteRemplit.activeSelf)
+        if(tauxRemplissage>1 && !spriteRemplit.activeSelf && !besoinEtreVide)
         {
             spriteRemplit.SetActive(true);
         }
