@@ -23,8 +23,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
         else if (instance != this)
         {
             Destroy(this.gameObject);
-        }
-        SaveLoadSystem.instance.LoadGeneralData("GeneralDataStart");        
+        }   
     }
 
     public void StartAll(bool isSaveFile, SavedData newData)

@@ -138,9 +138,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void LoadGeneralData(string requestString = null)
     {
-        Net_Request request = new Net_Request();
-        request.stringRequest = requestString;
-        Client.instance.SendServer(request);
+        Client.instance.SendRequest(requestString);
     }
 
 

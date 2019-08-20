@@ -222,7 +222,7 @@ public class SaveLoadSystem : MonoBehaviour
     {
         Net_SendGDAndSF sgdsf = new Net_SendGDAndSF();
 
-        if (Directory.Exists(Application.persistentDataPath + "/game_save"))
+        if (IsSaveFile())
         {
             sgdsf.isSaveFile = true;
         }
@@ -239,8 +239,8 @@ public class SaveLoadSystem : MonoBehaviour
             string dataSaved = (string)bf.Deserialize(file);
             sgdsf.dataSaved = dataSaved;
             file.Close();
-            server.SendClient(recHostId, connectId, sgdsf);
         }
+        server.SendClient(recHostId, connectId, sgdsf);
     }
 
     public void SendLevel(SavedData dataSaved, int connectId, int channelId, int recHostId)

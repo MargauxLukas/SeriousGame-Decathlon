@@ -104,6 +104,7 @@ public class Client : MonoBehaviour
 
             case NetworkEventType.ConnectEvent:
                 Debug.Log("Connected to the server");
+                SaveLoadSystem.instance.LoadGeneralData("GeneralDataStart");
                 break;
 
             case NetworkEventType.DisconnectEvent:
@@ -240,6 +241,13 @@ public class Client : MonoBehaviour
         SendServer(sr);
     }
     #endregion
+    public void SendRequest(string req)
+    {
+        Net_Request request = new Net_Request();
+        request.stringRequest = req;
+
+        SendServer(request);
+    }
 
     public void SendWayticket(string json, string name)
     {
