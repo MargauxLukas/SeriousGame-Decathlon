@@ -16,7 +16,7 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Je vois. Merci de m'avoir pr\xE9venu."
-  - Cous devirez pouvoir reconditionner le colis mainteant.
+  - Cous devirez pouvoir reconditionner le colis en le divisant en 2.
   choixPossibles:
   - Merci beaucoup ! Au revoir.
   dialoguesSuivant:
