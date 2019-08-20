@@ -104,7 +104,7 @@ public class ManagerColisAttendu : MonoBehaviour
             }
             for (int m = 0; m < nbMemeArticle.Count; m++)
             {
-                while (nbMemeArticle[m]>=10)
+                while (nbMemeArticle[m]>=9)
                 {
                     colisVoulus[i].listArticles.Remove(articleConnu[m]);
                     nbMemeArticle[m]--;

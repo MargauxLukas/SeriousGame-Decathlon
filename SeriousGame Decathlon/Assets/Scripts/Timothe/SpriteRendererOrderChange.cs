@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpriteRendererOrderChange : MonoBehaviour
 {
     private SpriteRenderer render;
+    public float offSet = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,6 @@ public class SpriteRendererOrderChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        render.sortingOrder =(int)(-transform.position.y*10);
+        render.sortingOrder =(int)(-(transform.position.y-offSet)*10);
     }
 }
