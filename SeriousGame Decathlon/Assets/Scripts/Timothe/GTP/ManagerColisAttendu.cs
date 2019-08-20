@@ -35,6 +35,7 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if(ChargementListeColis.instance != null)
         {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
             nombreColisVoulu = (int)ChargementListeColis.instance.nbColisVoulu;
             chanceAvoirTropArticlePrevu = (int)ChargementListeColis.instance.ChanceTropArticle;
             chanceToComeFromInternet = (int)ChargementListeColis.instance.chanceInternet;
@@ -474,7 +475,6 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             if (colisVoulus.Count > 3)
             {
-                ChargementListeColis.instance.loadingScreen = loadingScreen;
                 ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
             }
             else if (isLevelEnded)

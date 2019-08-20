@@ -48,6 +48,10 @@ public class ColisManager : MonoBehaviour
 
     private void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
+        }
         colisTotal = listeColisTraiter.Count;
     }
 
@@ -222,7 +226,6 @@ public class ColisManager : MonoBehaviour
         }
         else
         {
-            ChargementListeColis.instance.loadingScreen = loadingScreen;
             ChargementListeColis.instance.QuitMfLevel(listeColisTraiter, anomDetect.RFIDtagKnowned);
         }
     }

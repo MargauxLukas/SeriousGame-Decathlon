@@ -29,6 +29,10 @@ public class AffichageAnomalieRecep : MonoBehaviour
         fondTextAnomalieDezoom.SetActive(false);
 
         textAnomalieGestion.text = "";
+        if (ChargementListeColis.instance != null)
+        {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
+        }
     }
 
     private void Update()
@@ -123,7 +127,6 @@ public class AffichageAnomalieRecep : MonoBehaviour
                 {
                     Scoring.instance.RecepBonus(90 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     ChargementListeColis.instance.hasBeenReturned = true;
-                    ChargementListeColis.instance.loadingScreen = loadingScreen;
                     ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
                 }
             }

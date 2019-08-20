@@ -9845,7 +9845,7 @@ MonoBehaviour:
   chanceToComeFromInternet: 1
   ecranFinNiveau: {fileID: 2118144035}
   isLevelEnded: 0
-  loadingScreen: {fileID: 1698985115}
+  loadingScreen: {fileID: 3773440498971283470}
 --- !u!1 &887417059
 GameObject:
   m_ObjectHideFlags: 0
