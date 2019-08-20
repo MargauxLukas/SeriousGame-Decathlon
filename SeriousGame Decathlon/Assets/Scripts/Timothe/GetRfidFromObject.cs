@@ -40,11 +40,18 @@ public class GetRfidFromObject : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Ended && collision.gameObject.GetComponent<PileArticle>() != null)
+            if (touch.phase == TouchPhase.Ended)
             {
-                if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(31);}
-                collision.gameObject.GetComponent<PileArticle>().ChangeRFID(newRFID);
-                GameObject.Destroy(gameObject);
+                if (collision.gameObject.GetComponent<PileArticle>() != null)
+                {
+                    if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(31); }
+                    collision.gameObject.GetComponent<PileArticle>().ChangeRFID(newRFID);
+                    GameObject.Destroy(gameObject);
+                }
+                else if (collision.gameObject.tag == "Poubelle")
+                {
+                    GameObject.Destroy(gameObject);
+                }
             }
         }
     }

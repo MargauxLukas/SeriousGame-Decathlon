@@ -114,6 +114,15 @@ public class LevelEditor : MonoBehaviour
                 GtpInputfieldColisVeutTropArticle.text = "0";
             }
         }
+        if (!string.IsNullOrEmpty(inputFieldNombreColisRecep.text) && int.Parse(inputFieldNombreColisRecep.text) > 100)
+        {
+            inputFieldNombreColisRecep.text = "100";
+        }
+        else if (!string.IsNullOrEmpty(inputFieldNombreColisRecep.text) && int.Parse(inputFieldNombreColisRecep.text) < 0)
+        {
+            inputFieldNombreColisRecep.text = "0";
+        }
+        
     }
     public void OpenEditor()
     {

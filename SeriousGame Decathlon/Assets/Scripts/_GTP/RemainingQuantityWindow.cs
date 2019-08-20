@@ -18,6 +18,11 @@ public class RemainingQuantityWindow : MonoBehaviour
     {
         //Mettre a jour affichage
         remainingQuantitynb.text = nb.ToString();
+
+        if(TutoManagerGTP.instance != null && remainingQuantitynb.text == TutoManagerGTP.instance.remainQtyInputValue)
+        {
+            TutoManagerGTP.instance.Manager(20);
+        }
     }
 
     public void Moins()

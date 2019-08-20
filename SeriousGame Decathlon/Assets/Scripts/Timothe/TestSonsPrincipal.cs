@@ -11,7 +11,17 @@ public class TestSonsPrincipal : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+        TestSonsPrincipal[] newList = GameObject.FindObjectsOfType<TestSonsPrincipal>();
+        Debug.Log(newList.Length);
+        for (int i = 0; i < newList.Length; i++)
+        {
+            if (newList[i] != null && newList[i] != this)
+            {
+                Debug.Log(newList[i].gameObject.name);
+                Destroy(GameObject.FindObjectOfType<TestSonsPrincipal>().gameObject);
+            }
+        }
         source.clip = musique;
         source.volume = coefSound;
         source.loop = true;

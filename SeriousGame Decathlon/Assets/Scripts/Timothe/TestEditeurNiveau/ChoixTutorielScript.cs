@@ -9,10 +9,49 @@ public class ChoixTutorielScript : MonoBehaviour
     public int nbTutoToLoad;
     public Text detailTuto;
 
+    public AudioClip musique;
+    public AudioClip musiqueDeux;
+    public float coefSound = 1;
+
+    public AudioSource source;
+
+    AsyncOperation async;
+    public GameObject loadingScreen;
+
     public void LoadTutoScene()
     {
-        SceneManager.LoadScene(nbTutoToLoad);
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
+        }
+
+        if (loadingScreen != null)
+        {
+            StartCoroutine(LoadNewSceneAsync(nbTutoToLoad));
+        }
+        else
+        {
+            SceneManager.LoadScene(nbTutoToLoad);
+        }
     }
+
+    IEnumerator LoadNewSceneAsync(int nbScene)
+    {
+        loadingScreen.SetActive(true);
+        async = SceneManager.LoadSceneAsync(nbScene);
+        async.allowSceneActivation = false;
+        while (!async.isDone)
+        {
+            if (async.progress == 0.9f)
+            {
+                async.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+    }
+
 
     public void ChooseTuto(int nb)
     {
@@ -21,6 +60,13 @@ public class ChoixTutorielScript : MonoBehaviour
         if(ChargementListeColis.instance != null)
         {
             Destroy(ChargementListeColis.instance.gameObject);
+        }
+
+        if (musiqueDeux != null && source != null)
+        {
+            source.clip = musiqueDeux;
+            source.volume = coefSound;
+            source.Play();
         }
 
         switch (nb)

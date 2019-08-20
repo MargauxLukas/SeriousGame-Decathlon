@@ -48,6 +48,8 @@ public class AnomalyWindow : MonoBehaviour
         {
             Scoring.instance.LosePointGTP(0, "Tu ne peux pas renvoyer de colis pour l'instant");
         }
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(15); }
     }
 
     /*************

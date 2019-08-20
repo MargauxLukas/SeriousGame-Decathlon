@@ -39,17 +39,23 @@ public class GetIWayFromObject : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Ended && collision.gameObject.GetComponent<ColisScript>() != null)
+            if (touch.phase == TouchPhase.Ended)
             {
-                collision.gameObject.GetComponent<ColisScript>().colisScriptable.wayTicket = IWayTicket;
-                if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(18);}
-                if(!collision.gameObject.GetComponent<ColisScript>().colisScriptable.isBadOriented && collision.gameObject.GetComponent<ColisScript>().IWayEtiquette != null)
+                if (collision.gameObject.GetComponent<ColisScript>() != null && IWayTicket != null)
                 {
-                    collision.gameObject.GetComponent<ColisScript>().IWayEtiquette.SetActive(true);
+                    collision.gameObject.GetComponent<ColisScript>().colisScriptable.wayTicket = IWayTicket;
+                    if (TutoManagerMulti.instance != null) { TutoManagerMulti.instance.Manager(18); }
+                    if (!collision.gameObject.GetComponent<ColisScript>().colisScriptable.isBadOriented && collision.gameObject.GetComponent<ColisScript>().IWayEtiquette != null)
+                    {
+                        collision.gameObject.GetComponent<ColisScript>().IWayEtiquette.SetActive(true);
+                    }
+                    Debug.Log("DeliverTicket");
+                    GameObject.Destroy(gameObject);
                 }
-                Debug.Log("DeliverTicket");
-                GameObject.Destroy(gameObject);
+                else if(collision.gameObject.tag == "Poubelle")
+                {
+                    GameObject.Destroy(gameObject);
+                }
             }
         }
     }

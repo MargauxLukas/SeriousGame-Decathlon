@@ -17,10 +17,17 @@ public class AffichageScoreFin : MonoBehaviour
     public GameObject ongletRecep;
     public GameObject ongletGTP;
 
+    public AudioSource source;
+    public AudioClip musique;
+    public float coefSound = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(GameObject.FindObjectOfType<TestSonsPrincipal>() != null)
+        {
+            Destroy(GameObject.FindObjectOfType<TestSonsPrincipal>().gameObject);
+        }
         if(ChargementListeColis.instance != null)
         {
             ChargementListeColis.instance.currentPlayerScriptable.score = ChargementListeColis.instance.currentPlayerScriptable.scoreMultifonction + ChargementListeColis.instance.currentPlayerScriptable.scoreGTP + ChargementListeColis.instance.currentPlayerScriptable.scoreReception;
@@ -105,6 +112,12 @@ public class AffichageScoreFin : MonoBehaviour
 
             //SaveLoadSystem.instance.SaveBestScore(ChargementListeColis.instance.currentPlayerScriptable.score, ChargementListeColis.instance.currentPlayerScriptable.name);
             //SaveLoadSystem.instance.SaveScore(ChargementListeColis.instance.currentPlayerScriptable);
+        }
+        if (musique != null && source != null)
+        {
+            source.clip = musique;
+            source.volume = coefSound;
+            source.Play();
         }
     }
 

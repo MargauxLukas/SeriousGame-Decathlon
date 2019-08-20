@@ -23,13 +23,18 @@ public class SourceCorrectionWindow : MonoBehaviour
     public void AffichageMissing()
     {
         textMissing.text = nbMissing.ToString();
+
+        if (TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctySourceQtyMissingInputValue)
+        {
+            TutoManagerGTP.instance.Manager(16);
+        }
     }
 
     public void AffichageWrong()
     {
         textWrong.text = nbWrong.ToString();
 
-        if(TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctyQtyWrongInputValue)
+        if(TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctySourceQtyWrongInputValue)
         {
             TutoManagerGTP.instance.Manager(12);
         }

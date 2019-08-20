@@ -24,6 +24,10 @@ public class RFIDScan : MonoBehaviour
     public bool isActive = false;
     public GameObject spriteScan;
 
+    public AudioClip musique;
+    public float coefSound = 1;
+    public AudioSource source;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (isActive)
@@ -75,7 +79,14 @@ public class RFIDScan : MonoBehaviour
                         }
                     }
                 }
-                
+
+                if (musique != null && source != null)
+                {
+                    source.clip = musique;
+                    source.volume = coefSound;
+                    source.Play();
+                }
+
                 scriptColis.hasBeenScannedByRFID = true;
                 if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(8);}
 

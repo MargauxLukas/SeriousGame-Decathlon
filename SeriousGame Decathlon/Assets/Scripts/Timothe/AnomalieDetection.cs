@@ -125,7 +125,7 @@ public class AnomalieDetection : MonoBehaviour
             {
                 colis.nbAnomalie++;
                 Debug.Log(colis.wayTicket.refArticle.numeroRef);
-                colis.listAnomalies.Add("RFID tag scanned for unknown product");
+                colis.listAnomalies.Add("RFID tag scanned for New product");
             }
 
             if (colis.estAbime) //A voir comment rectifier en jeu

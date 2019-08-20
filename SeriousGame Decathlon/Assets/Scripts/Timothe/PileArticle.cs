@@ -108,7 +108,10 @@ public class PileArticle : MonoBehaviour
                             {
                                 listColisPresent[1].spriteSelection.SetActive(false);
                             }
-                            listColisPresent[0].spriteSelection.SetActive(false);
+                            if (listColisPresent.Count>0 && listColisPresent[0] != null)
+                            {
+                                listColisPresent[0].spriteSelection.SetActive(false);
+                            }
                             currentItem = -1;
                         }
                     }
@@ -118,7 +121,10 @@ public class PileArticle : MonoBehaviour
                         {
                             listColisPresent[1].spriteSelection.SetActive(false);
                         }
-                        listColisPresent[0].spriteSelection.SetActive(false);
+                        if (listColisPresent.Count > 0 && listColisPresent[0] != null)
+                        {
+                            listColisPresent[0].spriteSelection.SetActive(false);
+                        }
                         menuCanOpen = true;
                         menuIsOpen = false;
                         circleImage.transform.parent.gameObject.SetActive(false);

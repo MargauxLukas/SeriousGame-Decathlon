@@ -28,6 +28,11 @@ public class Console : MonoBehaviour
     public void UpdateAffichage()
     {
         nbText.text = nb.ToString();
+
+        if(TutoManagerGTP.instance != null && nbText.text == TutoManagerGTP.instance.consoleInputValue)
+        {
+            TutoManagerGTP.instance.Manager(22);
+        }
     }
 
     public void Plus()
@@ -46,6 +51,8 @@ public class Console : MonoBehaviour
             nb--;
             UpdateAffichage();
         }
+
+        if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(21); }
     }
 
     public void Valider() 
@@ -56,6 +63,8 @@ public class Console : MonoBehaviour
             cm.UpdateAffichageConsole(nb, emplacementConsole);
             nb = 0;
             nbText.text = nb.ToString();
+
+            if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(23); }
         }
     }
 

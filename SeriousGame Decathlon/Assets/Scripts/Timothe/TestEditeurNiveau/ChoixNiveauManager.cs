@@ -14,6 +14,10 @@ public class ChoixNiveauManager : MonoBehaviour
     public GameObject contentArea;
     public GameObject button;
 
+    public AudioSource source;
+    public AudioClip musique;
+    public float coefSound = 0.4f;
+
     public ChargementListeColis levelLoading;
 
     public LevelScriptable currentChoiceLevel;
@@ -171,6 +175,12 @@ public class ChoixNiveauManager : MonoBehaviour
     {
         if (currentLevelNb != 0)
         {
+            if (musique != null && source != null)
+            {
+                source.clip = musique;
+                source.volume = coefSound;
+                source.Play();
+            }
             levelLoading.LoadNewLevelScript(currentLevelNb);
         }
     }
