@@ -2829,7 +2829,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(67.81f, -4.8f),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.consoleMinusButton).interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.console3MinusButton).interactable = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -2865,7 +2865,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.consoleMinusButton).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.console3MinusButton).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2882,7 +2882,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(68.94f, -5),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.consoleValidateButton).interactable = true;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.console3ValidateButton).interactable = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -2903,7 +2903,7 @@ public class TutoManagerGTP : MonoBehaviour
 
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtClick).transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.consoleValidateButton).interactable = false;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.console3ValidateButton).interactable = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
