@@ -50,6 +50,9 @@ public class ChoixNiveauManager : MonoBehaviour
 
     private RectTransform rt;
 
+    //WIFI
+    public GameObject Wifi;
+
     private void Awake()
     {
         if (instance == null)
@@ -64,11 +67,22 @@ public class ChoixNiveauManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void Start()
+    public void Update()
     {
-        SaveLoadSystem.instance.LoadGeneralData("GeneralData");
-        rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
-        listAffAnomalies = new List<GameObject>();
+        if (Wifi != null)
+        {
+            if (Application.internetReachability == NetworkReachability.NotReachable)
+            {
+                Wifi.SetActive(true);
+            }
+            else
+            {
+                Wifi.SetActive(false);
+                SaveLoadSystem.instance.LoadGeneralData("GeneralData");
+                rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
+                listAffAnomalies = new List<GameObject>();
+            }
+        }
     }
 
     public void affichageLevel(string json, int i)

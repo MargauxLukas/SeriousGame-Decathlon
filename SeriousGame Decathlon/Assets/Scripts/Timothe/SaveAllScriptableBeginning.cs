@@ -26,7 +26,7 @@ public class SaveAllScriptableBeginning : MonoBehaviour
         }   
     }
 
-    public void StartAll(bool isSaveFile, SavedData newData)
+    public void StartAll(bool isSaveFile, SavedData newData = null)
     {
         if (!isSaveFile)
         {
