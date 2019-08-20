@@ -43,23 +43,6 @@ public class SaveAllScriptableBeginning : MonoBehaviour
 
             SaveLoadSystem.instance.SaveBestBegin(beginScore);
         }
-        else if (newData.version != currentVersion)
-        {
-            newData.version = currentVersion;
-            SaveLoadSystem.instance.SaveGeneralData(newData);
-
-            foreach (Colis coli in allColisCreated)
-            {
-                SaveLoadSystem.instance.SaveColis(coli);
-            }
-
-            foreach (LevelScriptable level in allLevelCreated)
-            {
-                SaveLoadSystem.instance.SaveLevelWithoutColis(level);
-            }
-
-            SaveLoadSystem.instance.SaveBestBegin(beginScore);
-        }
     }
 
     int dellNumber = 0;

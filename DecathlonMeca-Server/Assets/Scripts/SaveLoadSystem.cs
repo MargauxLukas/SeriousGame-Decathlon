@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 public class SaveLoadSystem : MonoBehaviour
 {
@@ -244,8 +245,6 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SendLevel(SavedData dataSaved, int connectId, int channelId, int recHostId)
     {
-        BinaryFormatter bf = new BinaryFormatter();
-
         for (int i = 1; i <= dataSaved.nombreNiveauCree; i++)
         {
             string save = SaveLoadSystem.instance.LoadLevel(i);
@@ -265,6 +264,9 @@ public class SaveLoadSystem : MonoBehaviour
                 JsonUtility.FromJsonOverwrite(scmf.fileColisMF, colisScript);
                 scmf.fileticket = LoadWayTicket(colisScript.nomWayTicket);
                 scmf.nbLevel = i;
+
+                byte[] bytescol = Encoding.UTF8.GetBytes(scmf.fileColisMF);
+                byte[] byteswt = Encoding.UTF8.GetBytes(scmf.fileticket);
 
                 server.SendClient(recHostId, connectId, scmf);
             }

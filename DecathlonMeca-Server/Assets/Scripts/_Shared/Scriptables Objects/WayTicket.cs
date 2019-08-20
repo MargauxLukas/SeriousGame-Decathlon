@@ -10,6 +10,8 @@ public class WayTicket : ScriptableObject
     public int numeroCodeBarre;
     public float poids;
 
+    public int intRefArticle;
+
     public string NamingTicket()
     {
         string nom = "PCB" + PCB + "ART" + refArticle.numeroRef + "NUM" + numeroCodeBarre + "POI" + Mathf.RoundToInt(poids);

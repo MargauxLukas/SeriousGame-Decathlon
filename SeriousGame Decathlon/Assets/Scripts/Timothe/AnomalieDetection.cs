@@ -41,13 +41,16 @@ public class AnomalieDetection : MonoBehaviour
             {
                 foreach (Article article in colis.listArticles)
                 {
-                    if (article.rfid != null && article.rfid.estFonctionnel)
+                    if (article != null)
                     {
-                        RFIDnb++;
-                    }
-                    else
-                    {
-                        //Pas de RFID
+                        if (article.rfid != null && article.rfid.estFonctionnel)
+                        {
+                            RFIDnb++;
+                        }
+                        else
+                        {
+                            //Pas de RFID
+                        }
                     }
                 }
             }

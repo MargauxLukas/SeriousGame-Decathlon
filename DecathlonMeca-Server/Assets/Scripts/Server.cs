@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -20,7 +21,6 @@ public class Server : MonoBehaviour
 
     private bool isStarted;
     private byte error;
-
 
     #region Monobehaviour
     private void Start()

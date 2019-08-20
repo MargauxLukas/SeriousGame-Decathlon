@@ -31,6 +31,7 @@ public class Colis : ScriptableObject
 
     [Header("Liste Article")]
     public List<Article> listArticles = new List<Article>();
+    public List<int> listInt = new List<int>();
 
     [Header("Liste Anomalie")]
     public int nbAnomalie;

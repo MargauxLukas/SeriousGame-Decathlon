@@ -9,6 +9,8 @@ public class SaveLoadSystem : MonoBehaviour
     public static SaveLoadSystem instance;
     public bool hasReponse = false;
 
+    public List<Article> listArticle;
+
     //private Colis colisToSave;
 
     //https://www.youtube.com/watch?v=SNwPq01yHds
@@ -47,15 +49,25 @@ public class SaveLoadSystem : MonoBehaviour
 
     }
 
-    //FAIT
+    //IL LE FAIT 2 FOIS ! Une fois en appuyant sur sauvegarder (colis) et une fois ne appuyant sur sauvegarder (niveau)
     public void SaveColis(Colis colisToSave)
     {
         if (colisToSave.wayTicket != null)
         {
             colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
-
-            //SaveWayTicket(colisToSave.wayTicket);
         }
+        foreach(Article article in colisToSave.listArticles)
+        {
+            for(int i = 0; i < listArticle.Count; i++)
+            {
+                if(article == listArticle[i])
+                {
+                    colisToSave.listInt.Add(i);
+                    break;
+                }
+            }
+        }
+        colisToSave.listArticles = null;
 
         string json = JsonUtility.ToJson(colisToSave);
         Client.instance.SendColis(json, colisToSave.name);
@@ -69,9 +81,19 @@ public class SaveLoadSystem : MonoBehaviour
     //FAIT
     public void SaveWayTicket(WayTicket ticket)
     {
+        for (int i = 0; i < listArticle.Count; i++)
+        {
+            if (listArticle[i].rfid.refArticle == ticket.refArticle)
+            {
+                ticket.intRefArticle = i;
+                break;
+            }
+        }
+
         string json = JsonUtility.ToJson(ticket);
         Debug.Log(json + " " + ticket.NamingTicket());
         Client.instance.SendWayticket(json, ticket.NamingTicket());
+        ticket.refArticle = null;
     }
 
     public Colis LoadColis(string colisName, string wtName = null)
@@ -79,6 +101,12 @@ public class SaveLoadSystem : MonoBehaviour
         Colis colisToLoad = Colis.CreateInstance<Colis>();
 
         JsonUtility.FromJsonOverwrite(colisName , colisToLoad);
+
+        foreach(int number in colisToLoad.listInt)
+        {
+            colisToLoad.listArticles.Add(listArticle[number]);
+        }
+        colisToLoad.listInt = null;
 
         if (wtName == null)
         {
@@ -98,6 +126,8 @@ public class SaveLoadSystem : MonoBehaviour
 
         JsonUtility.FromJsonOverwrite(ticket, newTicket);
 
+        newTicket.refArticle = listArticle[newTicket.intRefArticle].rfid.refArticle;
+        
         return newTicket;
     }
 

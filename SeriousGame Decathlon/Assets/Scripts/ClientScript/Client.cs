@@ -11,8 +11,9 @@ public class Client : MonoBehaviour
     private const int PORT      = 26000;
     private const int WEB_PORT  = 26001;
     private const int BYTE_SIZE = 1024 ;
-    //private const string SERVER_IP = "127.0.0.1";                //Use 127.0.0.1 for local (When tablet is connected to PC)
+    //private const string SERVER_IP = "127.0.0.1";                  //Use 127.0.0.1 for local (When tablet is connected to PC)
     private const string SERVER_IP = "192.168.137.6";              //WifiTimothe
+    //private const string SERVER_IP = "172.19.52.86";               //DKTWarehouse
 
     private byte reliableChannel;
     private byte error;
