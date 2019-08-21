@@ -3290,7 +3290,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 972563454}
   gameObjectsManager: {fileID: 918540169}
-  listDialogues: []
+  listDialogues:
+  - {fileID: 11400000, guid: b7cc81e27f439f1428f7be9a9cb01b48, type: 2}
+  - {fileID: 11400000, guid: 7c06bc55851d8484589bae3d8e4d0803, type: 2}
+  - {fileID: 11400000, guid: 3f6094d404fa32343a6e3b73de2a8d96, type: 2}
+  - {fileID: 11400000, guid: efc9859a70ea24c4481b2b03496745ff, type: 2}
+  - {fileID: 11400000, guid: 134a33c2f0b944e4387a96b62ebca993, type: 2}
+  - {fileID: 11400000, guid: 0d3fabd562f4f8348b224dc7d1adaeb9, type: 2}
+  - {fileID: 11400000, guid: 3121443a98e6f2e478759acca427f5e8, type: 2}
+  - {fileID: 11400000, guid: 0348c2053fb96e543885b4b61fdef5b4, type: 2}
+  - {fileID: 11400000, guid: 0cc2a3b582a9d9c44a7d33cbb873967d, type: 2}
+  - {fileID: 11400000, guid: 7e3416a42213c314092febbaca225bb2, type: 2}
+  - {fileID: 11400000, guid: c49aaa6d658d33c46a2d70b40ca51d05, type: 2}
+  - {fileID: 11400000, guid: 7b214d2ca8dfb344292393e2a411b74a, type: 2}
+  - {fileID: 11400000, guid: fb07ba1ca3d1df64092a00a3193316c2, type: 2}
+  - {fileID: 11400000, guid: 4397a237ac40c3d4fbcb7c517b6343f0, type: 2}
+  - {fileID: 11400000, guid: 2b740a8d8ac491b4b92ddaab1f2a0ce0, type: 2}
+  - {fileID: 11400000, guid: 96941a4a57cc6af44a8a754c09f3b7ce, type: 2}
+  - {fileID: 11400000, guid: b23ccfe84dd3b8640be9c12656f495d6, type: 2}
+  - {fileID: 11400000, guid: 23a22f46dbb85224e96773ac89d674a2, type: 2}
+  - {fileID: 11400000, guid: 5e0fb4d276e473d47bce8ae283661138, type: 2}
+  - {fileID: 11400000, guid: fd63b054be1cb9744b6ef0944055b522, type: 2}
+  - {fileID: 11400000, guid: 97b08fe654988bb4fb57a16fa18c0566, type: 2}
+  - {fileID: 11400000, guid: b32d384aa9874e5478a9b2aedcb39a6c, type: 2}
+  - {fileID: 11400000, guid: 057a49ac1b2b85248b4274fde6fc6c29, type: 2}
+  - {fileID: 11400000, guid: 013ed687417ef544faaed8afcca6e737, type: 2}
+  - {fileID: 11400000, guid: 6532545cfd20e4a4bab4e08b7125e9ca, type: 2}
+  - {fileID: 11400000, guid: e06837caa902fb148a6ecb670c8490d6, type: 2}
+  - {fileID: 11400000, guid: 32170db1d872f3940ba4318941413073, type: 2}
+  - {fileID: 11400000, guid: 9b67ce6bb3ca60642b31787eea025bae, type: 2}
+  - {fileID: 11400000, guid: 5eb0d84ca260fcd4ba08f3df518043f0, type: 2}
+  - {fileID: 11400000, guid: 0c9b78e0dcffbe4479b1650fd03a3fda, type: 2}
+  - {fileID: 11400000, guid: bc91b5a01a20a534396a9318a7be59f0, type: 2}
+  - {fileID: 11400000, guid: 9206cb10ec2f48b4b81836ffcf2806f0, type: 2}
+  - {fileID: 11400000, guid: fce1fa8c332df9f43ad1761e48e723dd, type: 2}
+  - {fileID: 11400000, guid: ee494e45af736fd478995bd285721510, type: 2}
+  - {fileID: 11400000, guid: 6d028157d473f01449f241da240c1ad3, type: 2}
+  - {fileID: 11400000, guid: 442dedc7a0ee81e449eafa5898391eb8, type: 2}
+  - {fileID: 11400000, guid: 8ead7093c2a0e1b4eacbbdd9db642b7c, type: 2}
+  - {fileID: 11400000, guid: 2f715aea7c52f7847be1032e16998058, type: 2}
+  - {fileID: 11400000, guid: 05840c15d62b93b46beca3fc3b145d2d, type: 2}
+  - {fileID: 11400000, guid: afec5529a8a6436409672cd98179cedc, type: 2}
+  - {fileID: 11400000, guid: 36a794b75d6cea14b85bd632cc0c9064, type: 2}
+  - {fileID: 11400000, guid: e009ac050433455429e04b3a3b03a466, type: 2}
+  - {fileID: 11400000, guid: 6f9e69578d0647e448e0fee987c3e440, type: 2}
+  - {fileID: 11400000, guid: d05e25d93b3c3b74ba0d8087b31329c9, type: 2}
+  - {fileID: 11400000, guid: b62cbf190c889b749a9a52825cc09feb, type: 2}
+  - {fileID: 11400000, guid: f0546d597677ca94fad55864db522698, type: 2}
+  - {fileID: 11400000, guid: e9fe5582664976b4fb43b895bf8c6096, type: 2}
+  - {fileID: 11400000, guid: 06ada5a4a1306c24db33ca32c3ee0ee1, type: 2}
+  - {fileID: 11400000, guid: 1ac5c3dd7e2841e439d1efa8053ce24e, type: 2}
+  - {fileID: 11400000, guid: ba443401cb2916f48b90926e86657a99, type: 2}
+  - {fileID: 11400000, guid: d43b89388f0476f42acebc7cb4f5583a, type: 2}
+  - {fileID: 11400000, guid: 15b3c00623950894caef4cffc7af2623, type: 2}
+  - {fileID: 11400000, guid: 14dd29b4ca0b3cc4f97b44956b327d37, type: 2}
+  - {fileID: 11400000, guid: aef3cfd5a18e6844485ad5febac39ade, type: 2}
+  - {fileID: 11400000, guid: 7b56a923287c3024ba5981c876e69d2c, type: 2}
+  - {fileID: 11400000, guid: a78162c195ca6d94aa4ffde428a4008f, type: 2}
+  - {fileID: 11400000, guid: 67f56533789b93249aec4421213bc1e8, type: 2}
+  - {fileID: 11400000, guid: 83ffc687143910741939557a11300fe3, type: 2}
+  - {fileID: 11400000, guid: 93270744f4684f842a0538a1c22f8351, type: 2}
+  - {fileID: 11400000, guid: 5f3fc8a7a231d6f43900ea522dd57f58, type: 2}
+  - {fileID: 11400000, guid: 739061ed63ecf1c4eadcdc9c37981f72, type: 2}
+  - {fileID: 11400000, guid: 504d892e9296c1240b1b4b91f2fe4e4d, type: 2}
+  - {fileID: 11400000, guid: 45235d88a06b6ff4bbfced5a6ad4bb6e, type: 2}
+  - {fileID: 11400000, guid: e5588df25218a854eb3a5236fca98390, type: 2}
+  - {fileID: 11400000, guid: 9ad41fca628ec67489e4152483f55de1, type: 2}
   phaseNum: 0
   interactionNum: 0
   dialogNum: 0
@@ -10171,7 +10236,7 @@ MonoBehaviour:
   - {fileID: 171931902}
   colisVider: []
   colisAvecPack: []
-  positionVoulueParEmplacement: 
+  positionVoulueParEmplacement: 0000000000000000
   chanceColisPasRemplit: 0
   chanceArticlePasBon: 0
   chanceColisPasBon: 0
@@ -10199,7 +10264,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c15ac540b9b01ec44936c78efb1dc10e, type: 2}
   - {fileID: 11400000, guid: ac6f5745047390b4f8f2c1f2553745e0, type: 2}
   needPack: 0000000000000000010000
-  listPosVoulue: 0100000002000000010000000300000002000000020000000100000003000000010000000300000001000000
+  listPosVoulue: 0000000001000000000000000200000001000000010000000000000002000000000000000200000000000000
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
@@ -11264,7 +11329,7 @@ PrefabInstance:
         type: 3}
       propertyPath: actualDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 7427f86d84a929646a8ed1f7b1103bb2,
+      objectReference: {fileID: 11400000, guid: b7cc81e27f439f1428f7be9a9cb01b48,
         type: 2}
     - target: {fileID: 8337604343921782298, guid: 5b9e4f41c90091f48ab1d11921365362,
         type: 3}
@@ -19914,7 +19979,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 271013384}
     - target: {fileID: 6647039823770962376, guid: 664a2ed72bc2dd04796115937ffa1ccd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

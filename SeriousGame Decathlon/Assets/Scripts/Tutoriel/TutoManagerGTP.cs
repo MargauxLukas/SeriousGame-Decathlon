@@ -19,7 +19,7 @@ public class TutoManagerGTP : MonoBehaviour
     public bool canPlaySecond = false;
 
     [Header("Miscellaneous")]
-    public float remplissageColisTuto;
+    public float remplissageColisTuto = 100;
     public float correctySourceQtyWrongInputValue;
     public float correctySourceQtyMissingInputValue;
     public string correctPickedQtyInputValue;
@@ -41,6 +41,13 @@ public class TutoManagerGTP : MonoBehaviour
     {
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
+
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = false;
+    }
+
+    private void Update()
+    {
+        Debug.Log(phaseNum);
     }
 
     public void DialogueIsFinished()
@@ -143,15 +150,32 @@ public class TutoManagerGTP : MonoBehaviour
     IEnumerator MoveDoigt(Vector3 fingerPos, Vector3 targetPos, float fingerSpeed)
     {
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
-        
-        if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
+
+        if (phaseNum <= 1)
         {
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
-            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            Debug.Log("MoveDoigt Phase 0");
+            Debug.Log(Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos));
+            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.3f)
+            {
+                gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            }
+            else
+            {
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            }
         }
         else
         {
-            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
+            {
+                gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            }
+            else
+            {
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            }
         }
 
         yield return new WaitForSeconds(Time.fixedDeltaTime);
@@ -740,8 +764,8 @@ public class TutoManagerGTP : MonoBehaviour
     #region Colis source 1
     void Phase00()
     {
-        Indications(new Vector2(-3.64f, 4.14f), new Vector2(1.25f, 0.97f),
-                    new Vector2(-3.72f, -2.51f), new Vector2(1.25f, 1.25f),
+        Indications(new Vector2(-3.72f, -2.51f), new Vector2(1.25f, 0.97f),
+                    new Vector2(-3.64f, 4.14f), new Vector2(1.25f, 1.25f),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0),

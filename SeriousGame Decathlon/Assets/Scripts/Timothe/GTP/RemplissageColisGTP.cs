@@ -147,6 +147,7 @@ public class RemplissageColisGTP : MonoBehaviour
 
         if(TutoManagerGTP.instance != null && tauxRemplissage == TutoManagerGTP.instance.remplissageColisTuto)
         {
+            Debug.Log("Jeu : " + tauxRemplissage + "Tuto : " + TutoManagerGTP.instance.remplissageColisTuto);
             TutoManagerGTP.instance.Manager(6);
         }
     }
