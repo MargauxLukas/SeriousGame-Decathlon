@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc3b85cb60008d4a8c0eec7764cd3ab, type: 3}
+  m_Name: Doudoune notOK
+  m_EditorClassIdentifier: 
+  poids: 2
+  rfid: {fileID: 11400000, guid: 6bab9c19affe1d445985bb429f4c1c7b, type: 2}
+  spriteList:
+  - {fileID: 21300000, guid: a7d47bc8deb5e4e439c1e95e49d2f49e, type: 3}
+  - {fileID: 21300000, guid: 49d1c66de3d0b19478e617f09ef1763b, type: 3}
+  - {fileID: 21300000, guid: 414c02e6975c5df4686d766f9db34037, type: 3}

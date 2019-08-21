@@ -22,6 +22,7 @@ public class Client : MonoBehaviour
     private int connectionId;
 
     private bool isStarted;
+    public bool isConnectedToServer = false;
 
     //Tests
     public Net_SendLevel slSave;
@@ -104,11 +105,13 @@ public class Client : MonoBehaviour
 
             case NetworkEventType.ConnectEvent:
                 Debug.Log("Connected to the server");
+                isConnectedToServer = true;
                 SaveLoadSystem.instance.LoadGeneralData("GeneralDataStart");
                 break;
 
             case NetworkEventType.DisconnectEvent:
                 Debug.Log("Disconnected to the server");
+                isConnectedToServer = false;
                 break;
 
             case NetworkEventType.DataEvent:
@@ -170,7 +173,6 @@ public class Client : MonoBehaviour
             case NetOP.ReceiveGDAndSF:
                 LoadGDAndSF((Net_SendGDAndSF)msg);
                 break;
-
         }
     }
 
@@ -229,14 +231,18 @@ public class Client : MonoBehaviour
     ***********************************/
     public void ReceiveHallOfFame(Net_OnSendingHallOfFame oshof)
     {
-        AffichageHallOfFame.instance.SetScore(oshof.name , oshof.score, oshof.rank);
+        AffichageHallOfFame.instance.SetScore(oshof.name , oshof.score, oshof.rank, oshof.tab);
     }
 
-    public void SendMyRank(int score, string name)
+    public void SendMyRank(int score, string name, string date, int scoreMF, int scoreRecep, int scoreGTP)
     {
         Net_SetRank sr = new Net_SetRank();
-        sr.score = score;
-        sr.name = name;
+        sr.score      = score     ;
+        sr.name       = name      ;
+        sr.date       = date      ;  
+        sr.scoreMF    = scoreMF   ;
+        sr.scoreRecep = scoreRecep;
+        sr.scoreGTP   = scoreGTP  ;
 
         SendServer(sr);
     }

@@ -72,16 +72,16 @@ public class AffichageHallOfFame : MonoBehaviour
                     scoreDesVipRecep[i].text = newBestRecep.scoreDesJoueurs[i].ToString();
                 }
             }
-        }
+        }*/
     }
 
     public void MoveMenu(bool isSupp)
     {
         float distance = 0;
         GameObject gm = null;
-        if(isSupp)
+        if (isSupp)
         {
-            for(int i = 0; i < listHoF.Count; i++)
+            for (int i = 0; i < listHoF.Count; i++)
             {
                 listHoF[i].transform.position += new Vector3(1, 0, 0) * coef;
                 if (Vector3.Distance(listHoF[i].transform.position, transform.position) > distance)
@@ -104,12 +104,32 @@ public class AffichageHallOfFame : MonoBehaviour
                 }
             }
             gm.transform.position += new Vector3(1, 0, 0) * coef * 4;
-        }*/
+        }
     }
 
-    public void SetScore(string name, int score, int rank)
+    public void SetScore(string name, int score, int rank, string tab)
     {
-        nomDesVIP  [rank - 1].text = name;
-        scoreDesVIP[rank - 1].text = score.ToString();
+        switch(tab)
+        {
+            case "RankingTab":
+                nomDesVIP  [rank - 1].text = name;
+                scoreDesVIP[rank - 1].text = score.ToString();
+                break;
+
+            case "RankingMF":
+                nomDesVipMF  [rank - 1].text = name;
+                scoreDesVipMF[rank - 1].text = score.ToString();
+                break;
+
+            case "RankingRecep":
+                nomDesVipRecep  [rank - 1].text = name;
+                scoreDesVipRecep[rank - 1].text = score.ToString();
+                break;
+
+            case "RankingGTP":
+                nomDesVipGTP  [rank - 1].text = name;
+                scoreDesVipGTP[rank - 1].text = score.ToString();
+                break;
+        }
     }
 }

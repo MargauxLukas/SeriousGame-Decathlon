@@ -21,6 +21,8 @@ public static class NetOP
     public const int ReceiveLevel          = 14;
     public const int ReceiveDataGeneral    = 15;
     public const int ReceiveGDAndSF        = 16;
+    public const int AllData               = 17;
+    public const int AllNbData               = 18;
 }
 
 [System.Serializable]

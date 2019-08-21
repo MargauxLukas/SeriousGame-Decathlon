@@ -229,6 +229,10 @@ public class Server : MonoBehaviour
             case "GeneralDataStart":
                 SendGeneralDataAndIsSaveFile(connectId, channelId, recHostId);
                 break;
+
+            case "File":
+                SendData(connectId, channelId, recHostId);
+                break;
         }
     }
     #endregion
@@ -248,19 +252,22 @@ public class Server : MonoBehaviour
 
         Net_OnSendingHallOfFame oshof = new Net_OnSendingHallOfFame();
 
-        for(int i = 1; i <= 10; i++)
+        foreach (string tab in dbAccess.listTable)
         {
-            oshof.name = dbAccess.getHallOfFameName(i);
-            oshof.score = dbAccess.getHallOfFameScore(i);
-            oshof.rank = i;
-
-            SendClient(recHostId, connectId, oshof);                                                            //On lui envois le classement 1 par 1, peut importe dans l'ordre ou arrive les paquets puisque je lui donne aussi le rank, du coup il sait ou le ranger même si il reçoit le 7eme avant le 1er
+            for (int i = 1; i <= 10; i++)
+            {
+                oshof.name  = dbAccess.getHallOfFameName(i,tab);
+                oshof.score = dbAccess.getHallOfFameScore(i,tab);
+                oshof.rank  = i;
+                oshof.tab   = tab;
+                SendClient(recHostId, connectId, oshof);                                                            //On lui envois le classement 1 par 1, peut importe dans l'ordre ou arrive les paquets puisque je lui donne aussi le rank, du coup il sait ou le ranger même si il reçoit le 7eme avant le 1er
+            }
         }
     }
 
     public void SetRanking(int connectId, int channelId, int recHostId, Net_SetRank sr)
     {
-        dbAccess.SetRanking(sr.score, sr.name);
+        dbAccess.SetRanking(sr.score, sr.name, sr.date, sr.scoreMF, sr.scoreRecep, sr.scoreGTP);
     }
     #endregion
 
@@ -324,4 +331,39 @@ public class Server : MonoBehaviour
         SaveLoadSystem.instance.LoadGeneralDataAndSavingFile(connectId, channelId, recHostId);
     }
     #endregion
+
+    public void SendData(int connectId, int channelId, int recHostId)
+    {
+        Net_SendNbData SNBD = new Net_SendNbData();
+        Net_SendAllData sad = new Net_SendAllData();
+        SNBD = dbAccess.SendnbData();
+
+        int maxG     = SNBD.nbGeneral;
+        int maxMF    = SNBD.nbMF;
+        int maxRecep = SNBD.nbRecep;
+        int maxGTP   = SNBD.nbGTP;
+
+        SendClient(recHostId, connectId, SNBD);
+
+        for (int i = 1; i <= maxG; i++)
+        {
+            sad = dbAccess.SendAllData("RankingTabAll", i);
+            SendClient(recHostId, connectId, sad);
+        }
+        for (int i = 1; i <= maxMF; i++)
+        {
+            sad = dbAccess.SendAllData("RankingMFAll", i);
+            SendClient(recHostId, connectId, sad);
+        }
+        for (int i = 1; i <= maxRecep; i++)
+        {
+            sad = dbAccess.SendAllData("RankingRecepAll", i);
+            SendClient(recHostId, connectId, sad);
+        }
+        for (int i = 1; i <= maxGTP; i++)
+        {
+            sad = dbAccess.SendAllData("RankingGTPAll", i);
+            SendClient(recHostId, connectId, sad);
+        }
+    }
 }

@@ -40,14 +40,14 @@ public class AffichageScoreFin : MonoBehaviour
             affichageNom.text = ChargementListeColis.instance.currentPlayerScriptable.name.ToString();
             affichageDate.text = ChargementListeColis.instance.currentPlayerScriptable.date.ToString();
 
-            Client.instance.SendMyRank(ChargementListeColis.instance.currentPlayerScriptable.score, ChargementListeColis.instance.currentPlayerScriptable.name);
-
             Player currentPlayer = ChargementListeColis.instance.currentPlayerScriptable;
             textScoreParProcess[0].text = currentPlayer.scoreMultifonction.ToString();
             textScoreParProcess[1].text = currentPlayer.scoreReception.ToString();
             textScoreParProcess[2].text = currentPlayer.scoreGTP.ToString();
 
-            for(int i = 0; i < currentPlayer.erreursMultifonction.Count; i++)
+            Client.instance.SendMyRank(ChargementListeColis.instance.currentPlayerScriptable.score, ChargementListeColis.instance.currentPlayerScriptable.name, currentPlayer.date, currentPlayer.scoreMultifonction, currentPlayer.scoreReception, currentPlayer.scoreGTP);
+
+            for (int i = 0; i < currentPlayer.erreursMultifonction.Count; i++)
             {
                 GameObject erreurActuelle = Instantiate(affichageDesErreurs, lesDiffContents[0], false);
                 int nbChild = 0;
