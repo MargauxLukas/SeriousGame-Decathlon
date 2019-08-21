@@ -197,10 +197,13 @@ public class TutoManagerGTP : MonoBehaviour
 
     IEnumerator MoveDoigtCheckpoint(Vector3 fingerPos, Vector3 checkpointPos, Vector3 targetPos, float fingerSpeed)
     {
+        Debug.Log("MoveDoigtActif");
+        // Il passe ici mais pas dans les if après + on peut mettre un article pas scanné dans un colis
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (checkpointPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
 
         if(!checkpointMoveDoigt && Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, checkpointPos) <= 0.2f)
         {
+            Debug.Log("MoveDoigtStartToTarget");
             fingerStartPosition = fingerPos;
             fingerPos = checkpointPos;
             checkpointMoveDoigt = true;
@@ -211,6 +214,7 @@ public class TutoManagerGTP : MonoBehaviour
 
         if(checkpointMoveDoigt && Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
         {
+            Debug.Log("MoveDoigtTargetToEnd");
             fingerPos = fingerStartPosition;
             checkpointMoveDoigt = false;
 
