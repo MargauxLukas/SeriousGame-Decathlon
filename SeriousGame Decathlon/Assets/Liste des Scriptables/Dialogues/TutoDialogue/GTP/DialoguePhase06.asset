@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Maintenant que ton colis est apair\xE9 et que tu as toutes les informations,
     tu peux commencer \xE0 d\xE9placer les articles."
-  - 'D''abord ouvre le ColisSource en appuyant dessus. '
+  - 'D''abord ouvre le colis source en appuyant dessus. '
   choixPossibles:
   - '...'
   dialoguesSuivant:

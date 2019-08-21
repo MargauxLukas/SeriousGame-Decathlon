@@ -145,10 +145,14 @@ public class RemplissageColisGTP : MonoBehaviour
             }
         }
 
-        if(TutoManagerGTP.instance != null && tauxRemplissage == TutoManagerGTP.instance.remplissageColisTuto)
+        if(TutoManagerGTP.instance != null)
         {
-            Debug.Log("Jeu : " + tauxRemplissage + "Tuto : " + TutoManagerGTP.instance.remplissageColisTuto);
-            TutoManagerGTP.instance.Manager(6);
+            Debug.Log("Jeu : " + tauxRemplissage + " | Tuto : " + TutoManagerGTP.instance.remplissageColisTuto);
+
+            if(tauxRemplissage >= TutoManagerGTP.instance.remplissageColisTuto)
+            {
+                TutoManagerGTP.instance.Manager(6);
+            }
         }
     }
 
