@@ -19,7 +19,7 @@ public class TutoManagerGTP : MonoBehaviour
     public bool canPlaySecond = false;
 
     [Header("Miscellaneous")]
-    public float remplissageColisTuto;
+    public float remplissageColisTuto;                  //Pour "réinitialiser" la valeur mettre = 100 pour qu'elle ne soit jamais atteinte en jeu (jamais 100 articles dans un colis)
     public float correctySourceQtyWrongInputValue;
     public float correctySourceQtyMissingInputValue;
     public string correctPickedQtyInputValue;
@@ -31,6 +31,9 @@ public class TutoManagerGTP : MonoBehaviour
     private Vector3 fingerStartPosition;
     private bool checkpointMoveDoigt = false;
     private bool fingerActive = false;
+    private bool checkpointActive = false;
+    private bool moveStartToCheckpoint = true;
+    private bool moveCheckpointToTarget = false;
 
     void Awake()
     {
@@ -152,6 +155,7 @@ public class TutoManagerGTP : MonoBehaviour
 
     IEnumerator MoveDoigt(Vector3 fingerPos, Vector3 targetPos, float fingerSpeed)
     {
+        Debug.Log("Bite");
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
 
         if (phaseNum == 0 || phaseNum == 1 || phaseNum == 10 || phaseNum == 11)
@@ -182,6 +186,47 @@ public class TutoManagerGTP : MonoBehaviour
         {
             if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
             {
+                gameObjectsManager.doigtStay.transform.localPosition = fingerPos;
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
+            }
+            else
+            {
+                gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
+            }
+        }
+
+        if (!checkpointActive)
+        {
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            StartCoroutine(MoveDoigt(fingerPos, targetPos, fingerSpeed));
+        }
+    }
+
+    IEnumerator MoveDoigtCheckpoint(Vector3 fingerPos, Vector3 checkpointPos, Vector3 targetPos, float fingerSpeed)
+    {
+        
+        checkpointActive = true;
+
+        if (moveStartToCheckpoint)
+        {
+            StartCoroutine(MoveDoigt(fingerPos, checkpointPos, fingerSpeed));
+
+            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, checkpointPos) <= 0.5f)
+            {
+                moveStartToCheckpoint = false;
+                moveCheckpointToTarget = true;
+            }
+        }
+
+        if (moveCheckpointToTarget)
+        {
+            StartCoroutine(MoveDoigt(checkpointPos, targetPos, fingerSpeed));
+
+            if (Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.6f)
+            {
+                moveStartToCheckpoint = true;
+                moveCheckpointToTarget = false;
+
                 gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
                 gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
             }
@@ -192,42 +237,7 @@ public class TutoManagerGTP : MonoBehaviour
         }
 
         yield return new WaitForSeconds(Time.fixedDeltaTime);
-        StartCoroutine(MoveDoigt(fingerPos, targetPos, fingerSpeed));
-    }
-
-    IEnumerator MoveDoigtCheckpoint(Vector3 fingerPos, Vector3 checkpointPos, Vector3 targetPos, float fingerSpeed)
-    {
-        Debug.Log("MoveDoigtActif");
-        // Il passe ici mais pas dans les if après + on peut mettre un article pas scanné dans un colis
-        gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (checkpointPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
-
-        if(!checkpointMoveDoigt && Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, checkpointPos) <= 0.2f)
-        {
-            Debug.Log("MoveDoigtStartToTarget");
-            fingerStartPosition = fingerPos;
-            fingerPos = checkpointPos;
-            checkpointMoveDoigt = true;
-
-            yield return new WaitForSeconds(0.5f);
-            StartCoroutine(MoveDoigtCheckpoint(fingerPos, checkpointPos, targetPos, fingerSpeed));
-        }
-
-        if(checkpointMoveDoigt && Vector3.Distance(gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition, targetPos) <= 0.2f)
-        {
-            Debug.Log("MoveDoigtTargetToEnd");
-            fingerPos = fingerStartPosition;
-            checkpointMoveDoigt = false;
-
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition = fingerPos;
-            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", true);
-
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
-            StartCoroutine(MoveDoigtCheckpoint(fingerPos, checkpointPos, targetPos, fingerSpeed));
-        }
-        else
-        {
-            gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).SetBool("endLoop", false);
-        }
+        StartCoroutine(MoveDoigtCheckpoint(fingerPos, checkpointPos, targetPos, fingerSpeed));
     }
 
     IEnumerator NewPhase(float time)
@@ -246,7 +256,6 @@ public class TutoManagerGTP : MonoBehaviour
     {
         if (fingerActive)
         {
-            Debug.Log("fingerActive");
             gameObjectsManager.doigtClick.transform.position += new Vector3(0, 0, 900);
         }
     }
@@ -1256,13 +1265,14 @@ public class TutoManagerGTP : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator(gameObjectsManager.doigtStay).enabled = true;
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay).enabled = true;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.doigtStaySpriteMask).enabled = true;
+            gameObjectsManager.doigtStay.transform.localPosition = new Vector3(73.88f, -0.61f, 900);
 
             StartCoroutine(MoveDoigtCheckpoint(new Vector3(73.88f, -0.61f, 900), new Vector3 (73.6f, -4.75f, 900), new Vector3(65.6f, -3.02f, 900), 4));
 
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
 
-            remplissageColisTuto = 4;
+            remplissageColisTuto = 0.4f;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1283,7 +1293,7 @@ public class TutoManagerGTP : MonoBehaviour
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = false;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -1345,6 +1355,8 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(72.07f, -3.35f),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
+            CorrectFingerPos();
+
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
 
             canPlayFirst = true;
@@ -1366,7 +1378,7 @@ public class TutoManagerGTP : MonoBehaviour
 
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = true;
 
-        remplissageColisTuto = 4;
+        remplissageColisTuto = 0.4f;
 
         phaseNum++;
     }
@@ -1374,7 +1386,7 @@ public class TutoManagerGTP : MonoBehaviour
     void Phase19()
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = false;
-        remplissageColisTuto = 0;
+        remplissageColisTuto = 100;
 
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
 
@@ -1517,7 +1529,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide3).enabled = true;
 
-            remplissageColisTuto = 4;
+            remplissageColisTuto = 0.4f;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1539,7 +1551,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource2).enabled = true;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1946,7 +1958,7 @@ public class TutoManagerGTP : MonoBehaviour
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
 
-            remplissageColisTuto = 2;
+            remplissageColisTuto = 0.2f;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1968,7 +1980,7 @@ public class TutoManagerGTP : MonoBehaviour
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = false;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2051,7 +2063,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = true;
 
-            remplissageColisTuto = 2;
+            remplissageColisTuto = 0.2f;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -2065,7 +2077,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = false;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2524,7 +2536,7 @@ public class TutoManagerGTP : MonoBehaviour
 
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide3).enabled = true;
 
-        remplissageColisTuto = 3;
+        remplissageColisTuto = 0.3f;
 
         phaseNum++;
     }
@@ -2535,7 +2547,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide3).enabled = false;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2732,7 +2744,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = true;
 
-            remplissageColisTuto = 6;
+            remplissageColisTuto = 0.6f;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -2744,7 +2756,7 @@ public class TutoManagerGTP : MonoBehaviour
     {
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = false;
 
-        remplissageColisTuto = 0;
+        remplissageColisTuto = 100;
 
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
@@ -2838,7 +2850,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide3).enabled = true;
 
-            remplissageColisTuto = 1;
+            remplissageColisTuto = 0.1f;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -2852,7 +2864,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide3).enabled = false;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -3130,7 +3142,7 @@ public class TutoManagerGTP : MonoBehaviour
 
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = true;
 
-        remplissageColisTuto = 2;
+        remplissageColisTuto = 0.2f;
 
         phaseNum++;
     }
@@ -3141,7 +3153,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide1).enabled = false;
 
-            remplissageColisTuto = 0;
+            remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
