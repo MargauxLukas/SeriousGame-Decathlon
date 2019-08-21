@@ -16,7 +16,7 @@ public class EcranBaseWindow : MonoBehaviour
 
     public void PickTUWindow(int nb)
     {
-        if (PickTUContentWindow.GetComponent<PickTUContentWindow>().mca.colisViderManage.colisActuellementsPose[nb] == null)
+        if (PickTUContentWindow.GetComponent<PickTUContentWindow>().mca.colisViderManager.colisActuellementsPose[nb] == null)
         {
             return;
         }

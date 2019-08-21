@@ -41,7 +41,7 @@ public class ManagerColisVider : MonoBehaviour
     [Header("Pour le tuto")]
     public List<Colis> colisViderTuto;
     public List<bool> needPack;
-    public int currentColisNumberTuto;
+    int currentColisNumberTuto;
     public List<int> listPosVoulue;
 
     // Start is called before the first frame update
@@ -434,7 +434,11 @@ public class ManagerColisVider : MonoBehaviour
             emplacementsScripts[(emplacement+1)%2].transform.position -= new Vector3(0, 1, 0) * Time.fixedDeltaTime * 0.3f;
             if (m>=99)
             {
-                emplacementsScripts[emplacement].GetComponent<BoxCollider2D>().enabled = true;
+                if(TutoManagerGTP.instance == null)
+                {
+                    emplacementsScripts[emplacement].GetComponent<BoxCollider2D>().enabled = true;
+                }
+                
                 //managerColis.AjoutArticleColisVoulu(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0], Random.Range(0,2), Random.Range(1,7));
                 List<int> emplacementsConcerne = new List<int>();
                 List<int> nombreArticles = new List<int>();

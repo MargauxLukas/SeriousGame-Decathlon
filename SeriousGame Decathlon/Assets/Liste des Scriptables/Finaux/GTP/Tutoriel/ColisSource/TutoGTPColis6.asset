@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b49de9ff3e7a724f8a7b89a2351fbf1, type: 3}
+  m_Name: TutoGTPColis6
+  m_EditorClassIdentifier: 
+  name: 
+  PCB: 0
+  poids: 0
+  fillPercent: 0
+  hasBeenRecount: 0
+  isBadOriented: 0
+  estOuvert: 0
+  estAbime: 0
+  needQualityControl: 0
+  aEteVide: 0
+  carton: {fileID: 0}
+  nomWayTicket: 
+  wayTicket: {fileID: 0}
+  listArticles:
+  - {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  - {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  - {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  - {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  - {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  - {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  nbAnomalie: 0
+  listAnomalies: []
+  comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 11400000, guid: cab8d4e74f63ad045961567d41480690, type: 2}
+  provenance: 

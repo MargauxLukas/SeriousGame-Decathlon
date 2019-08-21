@@ -64,9 +64,21 @@ public class GameObjectsManagerGTP : MonoBehaviour
     }
     private void Update()
     {
-        colisVide1 = colisManager.colisActuellementsPose[0].GetComponent<GameObject>();
-        colisVide2 = colisManager.colisActuellementsPose[1].GetComponent<GameObject>();
-        colisVide3 = colisManager.colisActuellementsPose[2].GetComponent<GameObject>();
+        if(colisManager.colisActuellementsPose != null)
+        {
+            if(colisManager.colisActuellementsPose[0] != null)
+            {
+                colisVide1 = colisManager.colisActuellementsPose[0].gameObject;
+            }
+            if(colisManager.colisActuellementsPose[1] != null)
+            {
+                colisVide2 = colisManager.colisActuellementsPose[1].gameObject;
+            }
+            if (colisManager.colisActuellementsPose[2])
+            {
+                colisVide3 = colisManager.colisActuellementsPose[2].gameObject;
+            }
+        }
     }
 
     public SpriteRenderer GameObjectToSpriteRenderer(GameObject gameObject)
