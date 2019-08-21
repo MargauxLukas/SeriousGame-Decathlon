@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Ici, tu peux voir la liste des anomalies pr\xE9sentes sur le colis que tu viens
     de scanner. "
-  - "Le code d\u2019erreur Unknown Product signifie que le colis contient des articles
+  - "Le code d\u2019erreur New Product signifie que le colis contient des articles
     encore non r\xE9f\xE9renc\xE9s dans l\u2019entrep\xF4t, il te faudra remplir l\u2019onglet
     Filling Rate pour sauvegarder les informations sur ce type d\u2019articles.  "
   - "Le colis pr\xE9sente aussi une anomalie sur son contenu, le nombre d'articles

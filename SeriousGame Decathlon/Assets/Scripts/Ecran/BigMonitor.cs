@@ -27,7 +27,7 @@ public class BigMonitor : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !monitorClosing && !monitorOpening && !openMonitorTuto &&!closeMonitorTuto)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -64,6 +64,7 @@ public class BigMonitor : MonoBehaviour
 
         if(Vector2.Distance(transform.position, targetPosition) <= 0.2f)
         {
+            swipeDifference = 0;
             isOpen = true;
             monitorOpening = false;
             if (TutoManagerMulti.instance != null && !openMonitorTuto) {TutoManagerMulti.instance.Manager(3);}
@@ -80,9 +81,11 @@ public class BigMonitor : MonoBehaviour
     {
         miniMonitor.monitorClosing = true;
         transform.position = Vector2.MoveTowards(transform.position, initialPosition, 1f);
+        monitorClosing = true;
 
         if (Vector2.Distance(transform.position, initialPosition) <= 0.2f)
         {
+            monitorClosing = false;
             if (TutoManagerMulti.instance != null && !closeMonitorTuto) { TutoManagerMulti.instance.Manager(7); }
             isOpen = false;
             closeMonitorTuto = false;

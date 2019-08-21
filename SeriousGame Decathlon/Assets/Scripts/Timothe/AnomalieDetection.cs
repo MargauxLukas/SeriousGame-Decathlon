@@ -32,6 +32,28 @@ public class AnomalieDetection : MonoBehaviour
     {
         if (colis.listArticles.Count > 0)
         {
+            if (!isAwakning && colis.listAnomalies != null)
+            {
+                Debug.Log("Alala");
+                if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
+                {
+                    Debug.Log("Waken 2 : " + isAwakning);
+                    Scoring.instance.MidPenalty();
+                    Scoring.instance.AffichageErreur("Quality control : Colis non vidé");
+                }
+
+                if (colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount)
+                {
+                    Debug.Log("Waken 3 : " + isAwakning);
+                    Scoring.instance.MidPenalty();
+                    Scoring.instance.AffichageErreur("Repack from FP : Colis non recompté");
+                }
+                if((colis.listAnomalies.Contains("RFID tags to be applied") || colis.listAnomalies.Contains("RFID tag over Tolerance") || colis.listAnomalies.Contains("RFID tag scanned for New product") || colis.listAnomalies.Contains("RFID tag for unexpected product")) && !colis.hasBeenRecount)
+                {
+                    Scoring.instance.MidPenalty();
+                    Scoring.instance.AffichageErreur("Anomalie de RFID : Tu n'as pas Recount ton colis");
+                }
+            }
 
             colis.nbAnomalie = 0;
             colis.listAnomalies = new List<string>();
@@ -155,21 +177,6 @@ public class AnomalieDetection : MonoBehaviour
             else
             {
                 //Debug.Log("T'arrive là ?");
-            }
-
-            if (!isAwakning && colis.listAnomalies != null)
-            {
-                if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
-                {
-                    Scoring.instance.MidPenalty();
-                    Scoring.instance.AffichageErreur("Quality control : Colis non vidé");
-                }
-
-                if (colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount)
-                {
-                    Scoring.instance.MidPenalty();
-                    Scoring.instance.AffichageErreur("Repack from FP : Colis non recompté");
-                }
             }
         }
         else

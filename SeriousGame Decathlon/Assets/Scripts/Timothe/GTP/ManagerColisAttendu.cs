@@ -35,6 +35,7 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if(ChargementListeColis.instance != null)
         {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
             nombreColisVoulu = (int)ChargementListeColis.instance.nbColisVoulu;
             chanceAvoirTropArticlePrevu = (int)ChargementListeColis.instance.ChanceTropArticle;
             chanceToComeFromInternet = (int)ChargementListeColis.instance.chanceInternet;
@@ -81,11 +82,21 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
+                int rng = Random.Range(0, colisViderManage.colisVider.Count);
                 chanceAvoirTropArticlePrevu--;
                 while (colisVoulus[i].listArticles.Count <= 10)
                 {
-                    colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
-                    colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                    if (nbPhase > 1)
+                    {
+                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                    }
+                    else
+                    {
+                        nbPhase = 2;
+                        colisVoulus[i].listArticles.Add(colisViderManage.colisVider[rng].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisViderManage.colisVider[rng].listArticles[0]);
+                    }
                 }
             }
 
@@ -481,7 +492,6 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             if (colisVoulus.Count > 3)
             {
-                ChargementListeColis.instance.loadingScreen = loadingScreen;
                 ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
             }
             else if (isLevelEnded)

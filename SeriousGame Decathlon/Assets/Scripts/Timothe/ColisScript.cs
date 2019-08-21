@@ -516,11 +516,11 @@ public class ColisScript : MonoBehaviour
                             }
                             else if (colisScriptable.fillPercent >= 125)
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                             }
                             else
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
                             }
                             spriteArticleDansColis.sprite = null;
                         }
@@ -535,11 +535,11 @@ public class ColisScript : MonoBehaviour
                         }
                         else if (colisScriptable.fillPercent >= 125)
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                         }
                         else
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
                         }
                         spriteArticleDansColis.sprite = null;
                     }
@@ -590,11 +590,11 @@ public class ColisScript : MonoBehaviour
                         }
                         else if (colisScriptable.fillPercent >= 125)
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                         }
                         else
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                         }
                         spriteArticleDansColis.sprite = null;
                     }
