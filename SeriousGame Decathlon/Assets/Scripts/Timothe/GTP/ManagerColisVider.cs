@@ -384,13 +384,20 @@ public class ManagerColisVider : MonoBehaviour
         }
         if(aEteVerifier)
         {
-            if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count-1])
+            if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count > 0)
             {
-                Scoring.instance.WinPointGTP(70);
+                if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count - 1])
+                {
+                    Scoring.instance.WinPointGTP(70);
+                }
+                else
+                {
+                    Scoring.instance.LosePointGTP(50, "Tu as signaler une anomalie inexistante sur le SHU");
+                }
             }
             else
             {
-                Scoring.instance.LosePointGTP(50, "Tu as signaler une anomalie inexistante sur le SHU");
+                Scoring.instance.WinPointGTP(70);
             }
         }
         aEteVerifier = false;

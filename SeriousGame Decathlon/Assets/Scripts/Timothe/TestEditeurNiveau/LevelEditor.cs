@@ -466,7 +466,7 @@ public class LevelEditor : MonoBehaviour
         currentColis.estAbime = true;
         currentColis.carton = ListCartons[2];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 3, 4, 6, 13, 12 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 3, 4, 6, 13, 12, 9 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -482,7 +482,7 @@ public class LevelEditor : MonoBehaviour
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 3, 4, 6, 12, 13 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 3, 4, 6, 9, 12, 13 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;

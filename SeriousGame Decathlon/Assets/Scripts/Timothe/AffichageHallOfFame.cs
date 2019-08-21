@@ -42,8 +42,8 @@ public class AffichageHallOfFame : MonoBehaviour
                 for (int i = 0; i < newBestMF.nomDesJoueurs.Count; i++)
                 {
                     Debug.Log(newBestMF.nomDesJoueurs[i]);
-                    scoreDesVipMF[i].text = newBestMF.nomDesJoueurs[i];
-                    nomDesVipMF[i].text = newBestMF.scoreDesJoueurs[i].ToString();
+                    nomDesVipMF[i].text = newBestMF.nomDesJoueurs[i];
+                    scoreDesVipMF[i].text = newBestMF.scoreDesJoueurs[i].ToString();
                 }
             }
 
