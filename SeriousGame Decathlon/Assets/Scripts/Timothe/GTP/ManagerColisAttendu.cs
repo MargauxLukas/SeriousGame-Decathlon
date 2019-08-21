@@ -82,7 +82,7 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
-                int rng = Random.Range(0, colisViderManage.colisVider.Count);
+                int rng = Random.Range(0, colisViderManager.colisVider.Count);
                 chanceAvoirTropArticlePrevu--;
                 while (colisVoulus[i].listArticles.Count <= 10)
                 {
@@ -94,8 +94,8 @@ public class ManagerColisAttendu : MonoBehaviour
                     else
                     {
                         nbPhase = 2;
-                        colisVoulus[i].listArticles.Add(colisViderManage.colisVider[rng].listArticles[0]);
-                        colisVoulus[i].listArticles.Add(colisViderManage.colisVider[rng].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
                     }
                 }
             }

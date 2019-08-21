@@ -155,7 +155,6 @@ public class TutoManagerGTP : MonoBehaviour
 
     IEnumerator MoveDoigt(Vector3 fingerPos, Vector3 targetPos, float fingerSpeed)
     {
-        Debug.Log("Bite");
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPos - fingerPos) * Time.fixedDeltaTime * fingerSpeed;
 
         if (phaseNum == 0 || phaseNum == 1 || phaseNum == 10 || phaseNum == 11)
