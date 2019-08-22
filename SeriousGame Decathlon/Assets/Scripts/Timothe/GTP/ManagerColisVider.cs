@@ -300,10 +300,12 @@ public class ManagerColisVider : MonoBehaviour
                 if (newColis.gtpSupposedToBe != null)
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.gtpSupposedToBe;
+                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP");
                 }
                 else
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
+                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP2");
                 }
             }
         }
@@ -316,6 +318,16 @@ public class ManagerColisVider : MonoBehaviour
                 if(needPack[currentColisNumberTuto])
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 3;
+                }
+                if (newColis.gtpSupposedToBe != null)
+                {
+                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.gtpSupposedToBe;
+                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP");
+                }
+                else
+                {
+                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
+                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP2");
                 }
                 currentColisNumberTuto++;
             }
@@ -332,8 +344,9 @@ public class ManagerColisVider : MonoBehaviour
         if (colisVider != null)
         {
             emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis(emplacement);
-            if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null && emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count <= 4)
+            if(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null && emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count <= 4 &&  (TutoManagerGTP.instance == null || emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name == "Polaire violette" || emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name == "Montre"))
             {
+                Debug.Log(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name);
                 emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = true;
             }
         }
@@ -455,7 +468,7 @@ public class ManagerColisVider : MonoBehaviour
                         artToCompare = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0];
                     }
                 }
-                if (managerColis.colisActuellementTraite[positionVoulueParEmplacement[emplacement]] != null && emplacementsScripts[(emplacement + 1) % 2].GetComponent<AffichagePileArticleGTP>().currentColis!=null && emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null &&emplacementsScripts[(emplacement+1)%2].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe)
+                if (managerColis.colisActuellementTraite[positionVoulueParEmplacement[emplacement]] != null && emplacementsScripts[(emplacement + 1) % 2].GetComponent<AffichagePileArticleGTP>().currentColis != null && emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null && emplacementsScripts[(emplacement + 1) % 2].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe != emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe)
                 {
                     for (int x = 0; x < managerColis.colisActuellementTraite[positionVoulueParEmplacement[emplacement]].listArticles.Count; x++)
                     {
@@ -465,25 +478,59 @@ public class ManagerColisVider : MonoBehaviour
                         }
                     }
                     managerColis.AjoutArticleColisVoulu(positionVoulueParEmplacement[emplacement], leBonNombreArticle);
+                    Debug.Log("Test GTP pré photo" + TutoManagerGTP.instance.phaseNum);
                     if (!photoArticle.enabled)
                     {
+                        Debug.Log("Test GTP photo" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.enabled = true;
                     }
                     if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe != null)
                     {
+                        Debug.Log("Test GTP photo2" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.photoGTP;
+                        Debug.Log(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.name);
                     }
                     else
                     {
+                        Debug.Log("Test GTP photo3" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].photoGTP;
                     }
                 }
-                else
+                else if (TutoManagerGTP.instance != null)
+                {
+                    for (int x = 0; x < managerColis.colisActuellementTraite[positionVoulueParEmplacement[emplacement]].listArticles.Count; x++)
+                    {
+                        if (managerColis.colisActuellementTraite[positionVoulueParEmplacement[emplacement]].listArticles[x] == artToCompare)
+                        {
+                            leBonNombreArticle++;
+                        }
+                    }
+                    managerColis.AjoutArticleColisVoulu(positionVoulueParEmplacement[emplacement], leBonNombreArticle);
+                    Debug.Log("Test GTP pré photo" + TutoManagerGTP.instance.phaseNum);
+                    if (!photoArticle.enabled)
+                    {
+                        Debug.Log("Test GTP photo" + TutoManagerGTP.instance.phaseNum);
+                        photoArticle.enabled = true;
+                    }
+                    if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe != null)
+                    {
+                        Debug.Log("Test GTP photo2" + TutoManagerGTP.instance.phaseNum);
+                        photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.photoGTP;
+                        Debug.Log(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.name);
+                    }
+                    else
+                    {
+                        Debug.Log("Test GTP photo3" + TutoManagerGTP.instance.phaseNum);
+                        photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].photoGTP;
+                    }
+                }
+                else if (TutoManagerGTP.instance == null)
                 {
                     Debug.Log("Pass There");
                     emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis = ChoixNouveauColis(emplacement);
-                    if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null && emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count <= 4)
+                    if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis != null && emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count <= 4 && (TutoManagerGTP.instance==null || emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name == "Polaire violette" || emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name == "Montre"))
                     {
+                        Debug.Log(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name);
                         emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = true;
                     }
                     else
