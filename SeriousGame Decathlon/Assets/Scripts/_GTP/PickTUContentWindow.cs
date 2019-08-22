@@ -66,7 +66,7 @@ public class PickTUContentWindow : MonoBehaviour
         nb2 = 0;
         nb3 = 0;
 
-        foreach (Article art in mca.colisViderManage.colisActuellementsPose[nb].GetComponent<RemplissageColisGTP>().colisScriptable.listArticles)   //Je regarde ce qu'il y'a dans le colis
+        foreach (Article art in mca.colisViderManager.colisActuellementsPose[nb].GetComponent<RemplissageColisGTP>().colisScriptable.listArticles)   //Je regarde ce qu'il y'a dans le colis
         {
             if (art.name == ArticleName1)                                                     // Pour chaque article, j'incrémente
             {
@@ -90,6 +90,8 @@ public class PickTUContentWindow : MonoBehaviour
     public void ClosePickTU()
     {
         mca.ClosePickTU(mca.nbEmplacement, cvl.csTab[mca.nbEmplacement].colisScriptable, cvl.csTab[mca.nbEmplacement]);
+
+        if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(24); }
     }
 
     /****************************************************************************************
@@ -99,7 +101,7 @@ public class PickTUContentWindow : MonoBehaviour
     {
         //Soucis si le carton est vide, il faudrait prendre l'article en cours comme reference
         //ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].name, mca.nbArticleVoulu);    //Je lui donne le nom de l'article et le nombre prévu
-        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManage.emplacementsScripts[mca.colisViderManage.emplacement].GetComponent<AffichagePileArticleGTP>().artReference.name, mca.nbArticleVoulu);
+        ecranCorrectPickedQty.GetComponent<CorrectPickedQtyWindow>().AffichageStart(mca.colisViderManager.emplacementsScripts[mca.colisViderManager.emplacement].GetComponent<AffichagePileArticleGTP>().artReference.name, mca.nbArticleVoulu);
         ecranCorrectPickedQty.SetActive(true);
 
         if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(17); }

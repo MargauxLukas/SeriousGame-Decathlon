@@ -7,7 +7,7 @@ public class ManagerColisAttendu : MonoBehaviour
 {
     [Header("A Assigner")]
     public Monitor monitor;
-    public ManagerColisVider colisViderManage;
+    public ManagerColisVider colisViderManager;
 
     [Header("Liste")]
     public List<Colis> colisVoulus             = new List<Colis>(); //Tous les colis voulus
@@ -29,11 +29,13 @@ public class ManagerColisAttendu : MonoBehaviour
     private int nbColisCree;
 
     public bool isLevelEnded = false;
+    public GameObject loadingScreen;
 
     public void Start()
     {
         if(ChargementListeColis.instance != null)
         {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
             nombreColisVoulu = (int)ChargementListeColis.instance.nbColisVoulu;
             chanceAvoirTropArticlePrevu = (int)ChargementListeColis.instance.ChanceTropArticle;
             chanceToComeFromInternet = (int)ChargementListeColis.instance.chanceInternet;
@@ -49,7 +51,7 @@ public class ManagerColisAttendu : MonoBehaviour
 
             for (int k = 0; k < nb; k++)
             {
-                int articleAlea = Random.Range(0, colisViderManage.colisVider.Count - 1);
+                int articleAlea = Random.Range(0, colisViderManager.colisVider.Count - 1);
                 int rngNumber = Random.Range(2, 5);
                 if (colisVoulus[i].listArticles.Count > 7)
                 {
@@ -64,7 +66,7 @@ public class ManagerColisAttendu : MonoBehaviour
                 }
                 for (int p = 0; p < rngNumber; p++)
                 {
-                    colisVoulus[i].listArticles.Add(colisViderManage.colisVider[articleAlea].listArticles[0]);
+                    colisVoulus[i].listArticles.Add(colisViderManager.colisVider[articleAlea].listArticles[0]);
                 }
             }
 
@@ -80,11 +82,21 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
+                int rng = Random.Range(0, colisViderManager.colisVider.Count);
                 chanceAvoirTropArticlePrevu--;
                 while (colisVoulus[i].listArticles.Count <= 10)
                 {
-                    colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
-                    colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                    if (nbPhase > 1)
+                    {
+                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                    }
+                    else
+                    {
+                        nbPhase = 2;
+                        colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
+                    }
                 }
             }
 
@@ -104,7 +116,7 @@ public class ManagerColisAttendu : MonoBehaviour
             }
             for (int m = 0; m < nbMemeArticle.Count; m++)
             {
-                while (nbMemeArticle[m]>=10)
+                while (nbMemeArticle[m]>=9)
                 {
                     colisVoulus[i].listArticles.Remove(articleConnu[m]);
                     nbMemeArticle[m]--;
@@ -128,6 +140,13 @@ public class ManagerColisAttendu : MonoBehaviour
             cm[q].phaseActuelle = phasesColisVoulus[q];
             //Debug.Log("Start les phases : " + phasesColisVoulus[q]);
         }
+
+        for(int tutoColisSourceNum = 0; tutoColisSourceNum < colisViderManager.colisViderTuto.Count; tutoColisSourceNum++)
+        {
+            Debug.Log(colisViderManager.colisViderTuto[tutoColisSourceNum]);
+            Debug.Log(Instantiate(colisViderManager.colisViderTuto[tutoColisSourceNum]));
+            colisViderManager.colisViderTuto[tutoColisSourceNum] = Instantiate(colisViderManager.colisViderTuto[tutoColisSourceNum]);
+        }
     }
 
     public void RenvoieColis(int emplacement)
@@ -140,14 +159,14 @@ public class ManagerColisAttendu : MonoBehaviour
             phasesColisVoulus.RemoveAt(3);
             colisActuellementTraite[emplacement] = colisVoulus[emplacement];
             cm[emplacement].phaseActuelle = phasesColisVoulus[emplacement];
-            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
+            StartCoroutine(colisViderManager.colisActuellementsPose[emplacement].AnimationColisRenvoie());
         }
         else if(decompteFinNiveau>=2)
         {
             Debug.Log("Fin de niveau");
             isLevelEnded = true;
             ecranFinNiveau.SetActive(true);
-            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
+            StartCoroutine(colisViderManager.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;
             //Affichage de la fin du niveau
@@ -156,7 +175,7 @@ public class ManagerColisAttendu : MonoBehaviour
         {
             decompteFinNiveau++;
             Debug.Log("Allo");
-            StartCoroutine(colisViderManage.colisActuellementsPose[emplacement].AnimationColisRenvoie());
+            StartCoroutine(colisViderManager.colisActuellementsPose[emplacement].AnimationColisRenvoie());
             colisActuellementTraite[emplacement] = null;
             colisVoulus[emplacement] = null;
         }
@@ -231,7 +250,7 @@ public class ManagerColisAttendu : MonoBehaviour
         if (colisActuellementTraite[emplacement].comeFromInternet)
         {
             Debug.Log("Test ici");
-            if (colisViderManage.emplacementsScripts[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisToCompare.listArticles.Count)
+            if (colisViderManager.emplacementsScripts[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisToCompare.listArticles.Count)
             {
                 Debug.Log("Et là");
                 Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
@@ -284,9 +303,9 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if (colisActuellementTraite[emplacement].comeFromInternet)
             {
-                Debug.Log("Articles scanné " + colisViderManage.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned);
+                Debug.Log("Articles scanné " + colisViderManager.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned);
                 Debug.Log("Nombre Articles " + colisCompare.listArticles.Count);
-                if (colisViderManage.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisCompare.listArticles.Count)
+                if (colisViderManager.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisCompare.listArticles.Count)
                 {
                     Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
                 }

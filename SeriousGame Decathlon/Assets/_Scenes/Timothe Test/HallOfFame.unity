@@ -577,17 +577,6 @@ MonoBehaviour:
   - {fileID: 1440169453}
   - {fileID: 1376793710}
   nomDesVipMF:
-  - {fileID: 167041284}
-  - {fileID: 1669110390}
-  - {fileID: 804504936}
-  - {fileID: 1421309519}
-  - {fileID: 1423018434}
-  - {fileID: 784996523}
-  - {fileID: 1503245782}
-  - {fileID: 840430317}
-  - {fileID: 1007288132}
-  - {fileID: 176446778}
-  scoreDesVipMF:
   - {fileID: 1910226574}
   - {fileID: 1555261685}
   - {fileID: 1547850984}
@@ -598,6 +587,17 @@ MonoBehaviour:
   - {fileID: 1187687453}
   - {fileID: 820950091}
   - {fileID: 330522781}
+  scoreDesVipMF:
+  - {fileID: 167041284}
+  - {fileID: 1669110390}
+  - {fileID: 804504936}
+  - {fileID: 1421309519}
+  - {fileID: 1423018434}
+  - {fileID: 754319700}
+  - {fileID: 1503245782}
+  - {fileID: 840430317}
+  - {fileID: 1007288132}
+  - {fileID: 176446778}
   nomDesVipGTP:
   - {fileID: 1023168326}
   - {fileID: 794223071}
@@ -2022,6 +2022,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa44dab90fee764684a0c62a1a7b436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musique: {fileID: 0}
+  coefSound: 1
+  source: {fileID: 0}
+  loadingScreen: {fileID: 0}
+  aDesactiverEnChargement: []
 --- !u!1 &381080128
 GameObject:
   m_ObjectHideFlags: 0

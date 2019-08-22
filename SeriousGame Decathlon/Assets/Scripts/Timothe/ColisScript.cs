@@ -517,11 +517,11 @@ public class ColisScript : MonoBehaviour
                             }
                             else if (colisScriptable.fillPercent >= 125)
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                             }
                             else
                             {
-                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                                spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
                             }
                             spriteArticleDansColis.sprite = null;
                         }
@@ -536,11 +536,11 @@ public class ColisScript : MonoBehaviour
                         }
                         else if (colisScriptable.fillPercent >= 125)
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
                         }
                         else
                         {
-                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[2];
+                            spriteArticleTableUn.GetComponent<SpriteRenderer>().sprite = articleOnTableUn[0].spriteList[1];
                         }
                         spriteArticleDansColis.sprite = null;
                     }
@@ -565,17 +565,17 @@ public class ColisScript : MonoBehaviour
                             spriteArticleTableDeux.SetActive(true);
                             spriteArticleTableDeux.GetComponent<PileArticle>().listArticles = articleOnTableDeux;
 
-                            if (colisScriptable.fillPercent <= 50)
+                            if (colisScriptable.fillPercent <= 75)
                             {
                                 spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[0];
                             }
-                            else if (colisScriptable.fillPercent >= 125)
+                            else if (colisScriptable.fillPercent >= 110)
                             {
-                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                             }
                             else
                             {
-                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
+                                spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                             }
                             spriteArticleDansColis.sprite = null;
                         }
@@ -591,11 +591,11 @@ public class ColisScript : MonoBehaviour
                         }
                         else if (colisScriptable.fillPercent >= 125)
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
                         }
                         else
                         {
-                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[2];
+                            spriteArticleTableDeux.GetComponent<SpriteRenderer>().sprite = articleOnTableDeux[0].spriteList[1];
                         }
                         spriteArticleDansColis.sprite = null;
                     }

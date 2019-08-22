@@ -33,7 +33,7 @@ public class ColisManager : MonoBehaviour
 
     public AnomalieDetection anomDetect;
 
-    public Image nbColisRestant;
+    public GameObject loadingScreen;
     private int colisTotal;
 
     private void Awake()
@@ -48,6 +48,10 @@ public class ColisManager : MonoBehaviour
 
     private void Start()
     {
+        if(ChargementListeColis.instance != null)
+        {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
+        }
         colisTotal = listeColisTraiter.Count;
     }
 

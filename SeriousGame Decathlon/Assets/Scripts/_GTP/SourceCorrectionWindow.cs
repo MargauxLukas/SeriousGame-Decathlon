@@ -24,8 +24,10 @@ public class SourceCorrectionWindow : MonoBehaviour
     {
         textMissing.text = nbMissing.ToString();
 
-        if (TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctySourceQtyMissingInputValue)
+        Debug.Log("Test Missing 2");
+        if (TutoManagerGTP.instance != null && nbMissing >= 1)
         {
+            Debug.Log("Test Missing 1");
             TutoManagerGTP.instance.Manager(16);
         }
     }

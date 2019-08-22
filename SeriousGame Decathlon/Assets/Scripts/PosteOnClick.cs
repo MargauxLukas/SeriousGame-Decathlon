@@ -68,6 +68,7 @@ public class PosteOnClick : MonoBehaviour
     {
         if (TutoManagerMulti.instance != null) {TutoManagerMulti.instance.Manager(45);}
         if (TutoManagerRecep.instance != null) {TutoManagerRecep.instance.Manager(14);}
+        if (TutoManagerGTP  .instance != null) {TutoManagerGTP  .instance.Manager(25);}
         cameraPoste .SetActive(false);
         cameraDezoom.SetActive(true );
         aStar       .SetActive(true );

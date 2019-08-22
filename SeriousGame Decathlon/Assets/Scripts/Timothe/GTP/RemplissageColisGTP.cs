@@ -45,7 +45,7 @@ public class RemplissageColisGTP : MonoBehaviour
         {
             cooldown -= Time.deltaTime;
         }
-        if(tauxRemplissage>1 && !spriteRemplit.activeSelf)
+        if(tauxRemplissage>1 && !spriteRemplit.activeSelf && !besoinEtreVide)
         {
             spriteRemplit.SetActive(true);
         }
@@ -145,9 +145,14 @@ public class RemplissageColisGTP : MonoBehaviour
             }
         }
 
-        if(TutoManagerGTP.instance != null && tauxRemplissage == TutoManagerGTP.instance.remplissageColisTuto)
+        if(TutoManagerGTP.instance != null)
         {
-            TutoManagerGTP.instance.Manager(6);
+            Debug.Log("Jeu : " + tauxRemplissage + " | Tuto : " + TutoManagerGTP.instance.remplissageColisTuto);
+
+            if(tauxRemplissage >= TutoManagerGTP.instance.remplissageColisTuto)
+            {
+                TutoManagerGTP.instance.Manager(6);
+            }
         }
     }
 

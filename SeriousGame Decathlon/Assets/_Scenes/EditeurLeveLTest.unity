@@ -812,6 +812,8 @@ MonoBehaviour:
   musique: {fileID: 0}
   coefSound: 1
   source: {fileID: 0}
+  loadingScreen: {fileID: 0}
+  aDesactiverEnChargement: []
 --- !u!114 &128657523
 MonoBehaviour:
   m_ObjectHideFlags: 0

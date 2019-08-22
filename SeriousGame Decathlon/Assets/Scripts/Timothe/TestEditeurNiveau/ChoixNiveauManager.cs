@@ -200,5 +200,11 @@ public class ChoixNiveauManager : MonoBehaviour
             levelLoading.LoadNewLevelScript(currentLevelNb);
         }
     }
+
+    public void DeleteLevel()
+    {
+        currentChoiceLevel = SaveLoadSystem.instance.LoadLevel(currentLevelNb);
+        //Et à partir de là, tu peux le suppr normalement...
+    }
 }
 

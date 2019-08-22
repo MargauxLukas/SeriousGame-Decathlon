@@ -22,11 +22,18 @@ public class AffichageAnomalieRecep : MonoBehaviour
 
     public ConvoyeurManager cm;
 
+    public GameObject loadingScreen;
+    public GameObject loadingScreenZoom;
+
     public void Start()
     {
         fondTextAnomalieDezoom.SetActive(false);
 
         textAnomalieGestion.text = "";
+        if (ChargementListeColis.instance != null)
+        {
+            ChargementListeColis.instance.loadingScreen = loadingScreen;
+        }
     }
 
     private void Update()
@@ -119,8 +126,10 @@ public class AffichageAnomalieRecep : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Test");
                     Scoring.instance.RecepBonus(90 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite));
                     ChargementListeColis.instance.hasBeenReturned = true;
+                    ChargementListeColis.instance.loadingScreen = loadingScreenZoom;
                     ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
                 }
             }

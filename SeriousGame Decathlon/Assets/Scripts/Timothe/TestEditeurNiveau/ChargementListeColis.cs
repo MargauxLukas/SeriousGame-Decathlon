@@ -125,11 +125,25 @@ public class ChargementListeColis : MonoBehaviour
         apparitionPos = 1;
         if(TutoManagerMulti.instance != null)
         {
-            SceneManager.LoadScene(0);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(0));
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
         else
         {
-            SceneManager.LoadScene(6);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(6));
+            }
+            else
+            {
+                SceneManager.LoadScene(6);
+            }
         }
     }
 
@@ -139,11 +153,25 @@ public class ChargementListeColis : MonoBehaviour
         apparitionPos = 2;
         if(TutoManagerRecep.instance != null)
         {
-            SceneManager.LoadScene(0);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(0));
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
         else
         {
-            SceneManager.LoadScene(6);
+            if (loadingScreen != null)
+            {
+                StartCoroutine(LoadNewSceneAsync(6));
+            }
+            else
+            {
+                SceneManager.LoadScene(6);
+            }
         }
     }
 
@@ -151,7 +179,14 @@ public class ChargementListeColis : MonoBehaviour
     {
         nbColisVoulu = nombreColisRestant;
         apparitionPos = 3;
-        SceneManager.LoadScene(6);
+        if (loadingScreen != null)
+        {
+            StartCoroutine(LoadNewSceneAsync(6));
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     public void LoadNewLevelScript(int currentLevelTempo)

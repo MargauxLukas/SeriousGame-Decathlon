@@ -431,7 +431,7 @@ public class LevelEditor : MonoBehaviour
     {
         currentColis.listArticles[currentColis.listArticles.Count - 1] = listArticleSansRFID[randomArticle];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 4, 6, 8 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 4, 6, 8, 13 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -441,7 +441,7 @@ public class LevelEditor : MonoBehaviour
     {
         currentColis.listArticles.RemoveAt(currentColis.listArticles.Count - 1);
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 4, 6, 8 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 4, 6, 8, 13 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -452,7 +452,7 @@ public class LevelEditor : MonoBehaviour
         currentColis.estAbime = true;
         currentColis.carton = ListCartons[2];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 3, 4, 6 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 3, 4, 6, 13, 12, 9 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -468,7 +468,7 @@ public class LevelEditor : MonoBehaviour
             currentColis.listArticles.Add(listArticleBonEtat[randomArticle]);
         }
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 3, 4, 6 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 1, 2, 3, 4, 6, 9, 12, 13 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -506,7 +506,7 @@ public class LevelEditor : MonoBehaviour
         }
         newIway.refArticle = listRefArticles[rngNewProd];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 0, 4, 6, 7, 8, 11 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 4, 6, 7, 8, 11, 10 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -540,7 +540,7 @@ public class LevelEditor : MonoBehaviour
             currentColis.poids = currentColis.listArticles.Count * listArticleBonEtat[randomArticle].poids;
         }
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 9 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 9, 1, 2, 3, 4, 12, 13 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -550,7 +550,7 @@ public class LevelEditor : MonoBehaviour
     {
         currentColis.listArticles[1] = listArticleBonEtat[wrongArticle];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 8, 10 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 8, 10, 11 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -577,7 +577,7 @@ public class LevelEditor : MonoBehaviour
 
         currentColis.carton = ListCartons[3];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 12 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 12, 3, 4, 9, 13 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
@@ -590,7 +590,7 @@ public class LevelEditor : MonoBehaviour
 
         currentColis.carton = ListCartons[3];
 
-        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 13 });
+        List<int> buttonToDesactivate = new List<int>(new int[] { 6, 13, 12, 9, 3, 4 });
         foreach (int nb in buttonToDesactivate)
         {
             boutonAnomalies[nb].interactable = false;
