@@ -8,12 +8,12 @@ public class Client : MonoBehaviour
     public static Client instance { private set; get; }
 
     private const int MAX_USER  = 100  ;
-    private const int PORT      = 41480;
-    private const int WEB_PORT  = 41481;
+    private const int PORT      = 26000;
+    private const int WEB_PORT  = 26001;
     private const int BYTE_SIZE = 1024 ;
     //private const string SERVER_IP = "127.0.0.1";                  //Use 127.0.0.1 for local (When tablet is connected to PC)
     //private const string SERVER_IP = "165.225.76.70";              //WifiTimothe
-    private const string SERVER_IP = "172.19.52.80";               //DKTWarehouse
+    private const string SERVER_IP = "172.19.52.139";               //DKTWarehouse
 
     private byte reliableChannel;
     private byte error;
@@ -98,6 +98,7 @@ public class Client : MonoBehaviour
         int dataSize;
 
         NetworkEventType type = NetworkTransport.Receive(out recHostId, out connectionID, out channelId, recBuffer, BYTE_SIZE, out dataSize, out error);
+        Debug.Log(type + "Arrive ici 5");
         switch (type)
         {
             case NetworkEventType.Nothing:
@@ -163,6 +164,7 @@ public class Client : MonoBehaviour
                 break;
 
             case NetOP.ReceiveLevel:
+                Debug.Log("Arrive ici 3");
                 LoadLevel((Net_SendLevel)msg);
                 break;
 
@@ -193,6 +195,7 @@ public class Client : MonoBehaviour
     #region Send
     public void SendServer(NetMessage msg)
     {
+        Debug.Log("Passe ici 2");
         // This is where we hold our data
         byte[] buffer = new byte[BYTE_SIZE];
 
@@ -220,6 +223,7 @@ public class Client : MonoBehaviour
      ******************************************/
     public void RequestHallOfFame()
     {
+        Debug.Log("Passe ici bis 1");
         Net_Request request = new Net_Request();
         request.stringRequest = "HallOfFame";
 
@@ -252,6 +256,7 @@ public class Client : MonoBehaviour
         Net_Request request = new Net_Request();
         request.stringRequest = req;
 
+        Debug.Log("Passe ici 3 ou 4");
         SendServer(request);
     }
 
@@ -284,6 +289,7 @@ public class Client : MonoBehaviour
 
     public void LoadLevel(Net_SendLevel sl)
     {
+        Debug.Log("Arrive ici 2");
         ChoixNiveauManager.instance.affichageLevel(sl.file, sl.nbLevel);
     }
 

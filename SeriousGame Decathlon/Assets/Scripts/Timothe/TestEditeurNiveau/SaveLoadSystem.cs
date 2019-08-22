@@ -138,6 +138,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void LoadGeneralData(string requestString = null)
     {
+        Debug.Log("ALLOICILEGENERALDATAMAISASKIPONMEVOITPAS");
         Client.instance.SendRequest(requestString);
     }
 
@@ -178,6 +179,7 @@ public class SaveLoadSystem : MonoBehaviour
         Net_Request request = new Net_Request();
         request.stringRequest = "Level";
         request.integer = levelNb;
+        Debug.Log("Arrive ici 6 pour la request");
         Client.instance.SendServer(request);
 
         JsonUtility.FromJsonOverwrite(Client.instance.slSave.file, levelToSave);

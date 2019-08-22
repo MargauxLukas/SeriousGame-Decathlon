@@ -67,7 +67,7 @@ public class ChoixNiveauManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void Update()
+    public void Start()
     {
         if (Wifi != null)
         {
@@ -87,6 +87,8 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public void affichageLevel(string json, int i)
     {
+        Debug.Log("Arrive ici 1");
+        
         LevelScriptable levelScript = SaveLoadSystem.instance.GetLevel(json);
 
         listLevelScriptable[i] = levelScript;
