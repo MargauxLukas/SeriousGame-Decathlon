@@ -1989,10 +1989,9 @@ public class TutoManagerGTP : MonoBehaviour
             dialogNum++;
             Debug.Log("Test tuto 2");
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
 
             remplissageColisTuto = 0.6f;
-
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
             canPlayFirst = true;
             canPlaySecond = false;
             phaseNum++;
@@ -2010,7 +2009,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
-
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
             remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
@@ -2030,7 +2029,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton2).interactable = true;
-
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
             canPlayFirst = true;
             canPlaySecond = false;
             phaseNum++;
