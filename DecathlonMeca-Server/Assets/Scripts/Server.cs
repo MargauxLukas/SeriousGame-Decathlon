@@ -11,8 +11,8 @@ public class Server : MonoBehaviour
     public DBAccess dbAccess;
 
     private const int MAX_USER  = 100  ;
-    private const int PORT      = 26000;
-    private const int WEB_PORT  = 26001;
+    private const int PORT      = 41480;
+    private const int WEB_PORT  = 41481;
     private const int BYTE_SIZE = 1024;
 
     private byte reliableChannel;

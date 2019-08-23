@@ -14,7 +14,11 @@ public class WayTicket : ScriptableObject
 
     public string NamingTicket()
     {
-        string nom = "PCB" + PCB + "ART" + refArticle.numeroRef + "NUM" + numeroCodeBarre + "POI" + Mathf.RoundToInt(poids);
-        return nom;
+        if (refArticle != null)
+        {
+            string nom = "PCB" + PCB + "ART" + refArticle.numeroRef + "NUM" + numeroCodeBarre + "POI" + Mathf.RoundToInt(poids);
+            return nom;
+        }
+        return "PasDeTicket";
     }
 }
