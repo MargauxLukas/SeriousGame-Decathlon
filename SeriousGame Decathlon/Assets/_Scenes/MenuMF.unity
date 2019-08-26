@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 224920589}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -3931,7 +3931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 650431080}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -7061,7 +7061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 1495360613}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -7881,7 +7881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 1578938840}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -9206,7 +9206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 1782420370}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -9466,7 +9466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 1816187403}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -10473,7 +10473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 1930410102}
   loadingScreen: {fileID: 1650483683}
   aDesactiverEnChargement:
@@ -11280,7 +11280,7 @@ PrefabInstance:
     - target: {fileID: 6224598946339792234, guid: 56d00c3b661742c4fb4f93235b79fc1b,
         type: 3}
       propertyPath: coefSound
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56d00c3b661742c4fb4f93235b79fc1b, type: 3}

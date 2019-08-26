@@ -6721,6 +6721,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3453611145928882421, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8d8744d6e5e80ed46a3d69c8e75268a8, type: 2}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 882166088}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: stoppingDst
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 681326126}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: pf
+      value: 
+      objectReference: {fileID: 1368504375}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6801,41 +6836,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 882166088}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: stoppingDst
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: playerAnimator
-      value: 
-      objectReference: {fileID: 681326126}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: pf
-      value: 
-      objectReference: {fileID: 1368504375}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: speed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3453611145928882421, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8d8744d6e5e80ed46a3d69c8e75268a8, type: 2}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_BodyType
@@ -13427,7 +13427,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7ddd68bceccfb3b4995d4938bb85a9e7, type: 3}
     - target: {fileID: 1888849768, guid: e05404e310ac9c64782555c0b29fbbaf, type: 3}
       propertyPath: coefSound
-      value: 0.1
+      value: 0.23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e05404e310ac9c64782555c0b29fbbaf, type: 3}
