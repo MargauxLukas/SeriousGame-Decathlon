@@ -162,7 +162,6 @@ public class ColisManager : MonoBehaviour
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
         spriteArticleTableDeux.GetComponent<PileArticle>().UpdatePileArticle();
-
     }
 
     public void RenvoieColis(GameObject colisRenvoye)

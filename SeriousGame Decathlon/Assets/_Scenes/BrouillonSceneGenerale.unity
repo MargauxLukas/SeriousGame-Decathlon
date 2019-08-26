@@ -976,7 +976,7 @@ PrefabInstance:
     - target: {fileID: 3178321947600932116, guid: b67ac016820549e42bf0f66d92c96261,
         type: 3}
       propertyPath: obstacleProximityPenalty
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b67ac016820549e42bf0f66d92c96261, type: 3}
@@ -6908,6 +6908,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: pf
+      value: 
+      objectReference: {fileID: 228834216}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1521649776}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6973,30 +6988,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
         type: 3}
-      propertyPath: pf
-      value: 
-      objectReference: {fileID: 228834216}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1521649776}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: speed
-      value: 6
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e14c14e297de043909cce304004371, type: 3}
