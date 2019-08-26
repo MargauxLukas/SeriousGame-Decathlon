@@ -78,7 +78,7 @@ public class DeplacementNuages : MonoBehaviour
             }
             else if(touch.phase == TouchPhase.Moved)
             {
-                Debug.Log(Vector2.Distance(touchPosition, lastPosition));
+                //Debug.Log(Vector2.Distance(touchPosition, lastPosition));
                 if (touchPosition.x > lastPosition.x && touchPosition.y > lastPosition.y && Vector2.Distance(touchPosition, lastPosition) > 50f && !movedDown)
                 {
                     movedUp = true;

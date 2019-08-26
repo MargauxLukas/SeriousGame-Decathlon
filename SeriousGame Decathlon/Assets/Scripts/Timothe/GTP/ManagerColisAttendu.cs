@@ -158,6 +158,7 @@ public class ManagerColisAttendu : MonoBehaviour
 
     public void RenvoieColis(int emplacement)
     {
+        monitor.ResetMonitor();
         if (colisVoulus.Count > 3 && colisVoulus[3] != null)
         {
             colisVoulus[emplacement] = colisVoulus[3];

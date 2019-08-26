@@ -211,25 +211,28 @@ public class PileArticle : MonoBehaviour
     //A mettre sur le bouton de validation du nombre
     public void RemplirColis(Colis colisRemplir, ColisScript scriptColis, int nb)
     {
-        List<Article> newArticleList = new List<Article>();
-        for(int i = nb-1; i >= 0; i--)
+        if (nb > 0)
         {
-            if (i < listArticles.Count)
+            List<Article> newArticleList = new List<Article>();
+            for (int i = nb - 1; i >= 0; i--)
             {
-                Article articleToHad = Article.CreateInstance<Article>();
-                articleToHad = listArticles[i];
-                newArticleList.Add(articleToHad);
-                listArticles.RemoveAt(i);
+                if (i < listArticles.Count)
+                {
+                    Article articleToHad = Article.CreateInstance<Article>();
+                    articleToHad = listArticles[i];
+                    newArticleList.Add(articleToHad);
+                    listArticles.RemoveAt(i);
+                }
             }
+            colisRemplir.Remplir(newArticleList);
+            //listArticles = new List<Article>();
+            if (listArticles.Count <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+            scriptColis.hasBeenScannedByRFID = false;
+            scriptColis.spriteArticleDansColis.sprite = GetComponent<SpriteRenderer>().sprite;
         }
-        colisRemplir.Remplir(newArticleList);
-        //listArticles = new List<Article>();
-        if(listArticles.Count <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-        scriptColis.hasBeenScannedByRFID = false;
-        scriptColis.spriteArticleDansColis.sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     void touchObject()

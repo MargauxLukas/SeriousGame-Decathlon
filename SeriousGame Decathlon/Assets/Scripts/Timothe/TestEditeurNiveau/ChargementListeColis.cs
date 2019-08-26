@@ -189,7 +189,6 @@ public class ChargementListeColis : MonoBehaviour
         }
     }
 
-
     public void LoadNewLevelScript(int currentLevelTempo)
     {
         if (nomDuJoueur != null)
@@ -197,6 +196,7 @@ public class ChargementListeColis : MonoBehaviour
             if (nomDuJoueur.text != null)
             {
                 currentPlayerScriptable.name = nomDuJoueur.text;
+                Client.instance.SendName(currentPlayerScriptable.name);
             }
             else
             {
@@ -212,20 +212,17 @@ public class ChargementListeColis : MonoBehaviour
         List<Colis> colisListe = new List<Colis>();
 
         levelScript = LevelScriptable.CreateInstance<LevelScriptable>();
-        levelScript = SaveLoadSystem.instance.LoadLevel(currentLevelTempo);
+        levelScript = ChoixNiveauManager.instance.listLevelScriptable[currentLevelTempo];
 
         if (levelScript != null)
         {
             //Pour la MF
-            if (levelScript.colisDuNiveauNoms != null)
+            if (levelScript.listColisMF != null)
             {
-                for (int nb = 0; nb < levelScript.colisDuNiveauNoms.Count; nb++)
+                for (int nb = 0; nb < levelScript.listColisMF.Count; nb++)
                 {
-                    colisListe.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNoms[nb]));
-                    for (int i = 0; i < levelScript.nbColisParNomColis[nb]; i++)
-                    {
-                        newList.Add(colisListe[nb]);
-                    }
+                    colisListe.Add(levelScript.listColisMF[nb]);
+                    newList.Add(colisListe[nb]);    
                 }
                 colisProcessMulti = newList;
             }
@@ -234,11 +231,11 @@ public class ChargementListeColis : MonoBehaviour
             nombreColisRecep = levelScript.nombreColisReception;
             chanceAnomalieRecep = levelScript.chanceReceptionColisHaveAnomalie;
 
-            if (levelScript.colisDuNiveauNomReception != null)
+            if (levelScript.listColisRecep != null)
             {
                 for (int nb = 0; nb < levelScript.colisDuNiveauNomReception.Count; nb++)
                 {
-                    newListRecep.Add(SaveLoadSystem.instance.LoadColis(levelScript.colisDuNiveauNomReception[nb]));
+                    newListRecep.Add(levelScript.listColisRecep[nb]);
                 }
 
                 colisProcessReception = newListRecep;
@@ -266,5 +263,10 @@ public class ChargementListeColis : MonoBehaviour
 
         //Ajouter le choix des process pour le level load.
         LoadNewScene(sceneToLoad);
+    }
+
+    public void ChangeAuthentificationMessage(string msg)
+    {
+        Debug.Log(msg);
     }
 }
