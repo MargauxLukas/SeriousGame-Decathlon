@@ -92,6 +92,13 @@ public class TasArticleGTP : MonoBehaviour
                 nouvelArticle.GetComponent<ArticleUnitGTP>().isPack = nbPackArticle;
                 nouvelArticle.GetComponent<SpriteRenderer>().sprite = nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.spritePackGTP;
             }
+
+            if((TutoManagerGTP.instance != null && (TutoManagerGTP.instance.phaseNum == 24 || TutoManagerGTP.instance.phaseNum == 25) && nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.name == "Débardeur")
+            || (TutoManagerGTP.instance != null && (TutoManagerGTP.instance.phaseNum == 42 || TutoManagerGTP.instance.phaseNum == 43) && nouvelArticle.GetComponent<ArticleUnitGTP>().currentArticle.name == "Baskets noires"))
+            {
+                nouvelArticle.GetComponent<BoxCollider2D>().enabled = false;
+            }
+
             affichageTas.Add(nouvelArticle);
         }
     }

@@ -58,15 +58,18 @@ public class ArticleUnitGTP : MonoBehaviour
                     {
                         if (remplisColis != null)
                         {
-                            if (TutoManagerGTP.instance != null && remplisColis.colisScriptable.comeFromInternet)
+                            if (TutoManagerGTP.instance != null && ((TutoManagerGTP.instance.phaseNum == 14 || TutoManagerGTP.instance.phaseNum == 15) || (TutoManagerGTP.instance.phaseNum == 40 || TutoManagerGTP.instance.phaseNum == 41)))
                             {
+                                Debug.Log("Internet");
                                 if (hasBeenScanned)
                                 {
+                                    Debug.Log("Scanned");
                                     remplisColis.AddArticle(currentArticle, hasBeenScanned);
                                     Instantiate(animationApparition, transform.position, Quaternion.identity);
                                 }
                                 else
                                 {
+                                    Debug.Log("Return to start");
                                     transform.position = startPosition;
                                 }
                             }
@@ -100,14 +103,24 @@ public class ArticleUnitGTP : MonoBehaviour
                                 Instantiate(animationApparition, transform.position, Quaternion.identity);
                             }
                         }
-                        tasParent.affichageTas.Remove(gameObject);
-                        if (musique != null && source != null)
+                        
+
+                        if (transform.position == startPosition)
                         {
-                            source.clip = musique;
-                            source.volume = coefSound;
-                            source.Play();
+                            return;
                         }
-                        Destroy(gameObject);
+                        else
+                        {
+                            tasParent.affichageTas.Remove(gameObject);
+                            if (musique != null && source != null)
+                            {
+                                source.clip = musique;
+                                source.volume = coefSound;
+                                source.Play();
+                            }
+
+                            Destroy(gameObject);
+                        }
                     }
                     //Destroy(gameObject);
                 }

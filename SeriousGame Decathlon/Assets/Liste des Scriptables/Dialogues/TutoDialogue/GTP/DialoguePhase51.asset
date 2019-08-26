@@ -16,7 +16,7 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Il faut maintenant que tu mettes \xE0 jour les informations sur la commande."
-  - Appuie sur la Loupe verte.
+  - Appuie sur la Loupe.
   choixPossibles:
   - '...'
   dialoguesSuivant:

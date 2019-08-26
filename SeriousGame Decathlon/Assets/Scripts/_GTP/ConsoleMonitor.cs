@@ -86,8 +86,12 @@ public class ConsoleMonitor : MonoBehaviour
                     if (nbArticleEnCours <= Mathf.Abs(nb))
                     {
                         Debug.Log("Is removing : " + colisAttenduManage.colisActuellementTraite[emplacement].listArticles[compteur].name);
-                        colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
-                        compteur--;
+
+                        if(TutoManagerGTP.instance == null)
+                        {
+                            colisAttenduManage.colisActuellementTraite[emplacement].listArticles.RemoveAt(compteur);
+                            compteur--;
+                        }
                     }
                 }
             }
