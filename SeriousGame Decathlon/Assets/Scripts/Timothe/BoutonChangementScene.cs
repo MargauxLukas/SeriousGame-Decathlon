@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class BoutonChangementScene : MonoBehaviour
 {
@@ -14,6 +16,13 @@ public class BoutonChangementScene : MonoBehaviour
     public GameObject loadingScreen;
 
     public List<GameObject> aDesactiverEnChargement;
+
+    public GameObject changeIP;
+    public GameObject canvasIP;
+    public TextMeshProUGUI textIP;
+
+    public GameObject Button14;
+    public GameObject Button8;
 
     public void LoadNewScene(int nbScene)
     {
@@ -38,6 +47,25 @@ public class BoutonChangementScene : MonoBehaviour
         {
             SceneManager.LoadScene(nbScene);
         }
+    }
+
+
+    public void ChangeIP()
+    {
+        Button14.GetComponent<Button>().interactable = false;
+        Button8.GetComponent<Button>().interactable = false;
+        changeIP.SetActive(true);
+        canvasIP.SetActive(true);
+    }
+
+    public void ChangeIPConfirm()
+    {
+        Client.instance.SERVER_IP = textIP.text;
+        Debug.Log(Client.instance.SERVER_IP);
+        changeIP.SetActive(false);
+        canvasIP.SetActive(false);
+        Button14.GetComponent<Button>().interactable = true;
+        Button8.GetComponent<Button>().interactable  = true;
     }
 
     IEnumerator LoadNewSceneAsync(int nbScene)

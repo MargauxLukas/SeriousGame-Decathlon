@@ -13,7 +13,7 @@ public class Client : MonoBehaviour
     private const int BYTE_SIZE = 1024 ;
     //private const string SERVER_IP = "127.0.0.1";                  //Use 127.0.0.1 for local (When tablet is connected to PC)
     //private const string SERVER_IP = "165.225.76.70";              //WifiTimothe
-    private const string SERVER_IP = "172.19.52.106";                //DKTWarehouse
+    public string SERVER_IP = "172.19.52.106";                       //DKTWarehouse
 
     private byte reliableChannel;
     private byte error;
@@ -98,7 +98,6 @@ public class Client : MonoBehaviour
         int dataSize;
 
         NetworkEventType type = NetworkTransport.Receive(out recHostId, out connectionID, out channelId, recBuffer, BYTE_SIZE, out dataSize, out error);
-        Debug.Log(type + "Arrive ici 5");
         switch (type)
         {
             case NetworkEventType.Nothing:

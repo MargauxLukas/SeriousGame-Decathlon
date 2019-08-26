@@ -150,7 +150,6 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void LoadGeneralData(string requestString = null)
     {
-        Debug.Log("ALLOICILEGENERALDATAMAISASKIPONMEVOITPAS");
         Client.instance.SendRequest(requestString);
     }
 
