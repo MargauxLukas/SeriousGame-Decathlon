@@ -22,7 +22,8 @@ MonoBehaviour:
   estAbime: 0
   needQualityControl: 1
   aEteVide: 0
-  carton: {fileID: 11400000, guid: 4c0a7ff2afa1c714e970aba6b62989bf, type: 2}
+  carton: {fileID: 11400000, guid: 870ec97164ca6944ea5097b00925d5b9, type: 2}
+  codeCarton: 0
   nomWayTicket: 
   wayTicket: {fileID: 11400000, guid: 92eea7467c799044b9259d4d40bfa1f1, type: 2}
   listArticles:
@@ -32,7 +33,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
   - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
   - {fileID: 11400000, guid: dfd8de99d02c12b4089e271f59f9966d, type: 2}
+  listInt: 
   nbAnomalie: 0
   listAnomalies: []
   comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 0}
   provenance: 

@@ -47,16 +47,23 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void DeleteLevel(int levelNb)
     {
+        if (levelNb > 3)
+        {
+            Net_Request request = new Net_Request();
+            request.stringRequest = "Delete";
+            request.integer = levelNb;
 
+            Client.instance.SendServer(request);
+        }
     }
 
-    //IL LE FAIT 2 FOIS ! Une fois en appuyant sur sauvegarder (colis) et une fois ne appuyant sur sauvegarder (niveau)
     public void SaveColis(Colis colisToSave)
     {
         if (colisToSave.wayTicket != null)
         {
             colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
         }
+        Debug.Log(colisToSave.listArticles);
         foreach(Article article in colisToSave.listArticles)
         {
             for(int i = 0; i < listArticle.Count; i++)
@@ -77,7 +84,6 @@ public class SaveLoadSystem : MonoBehaviour
                 colisToSave.codeCarton = i;
             }
         }
-        colisToSave.carton = null;
 
         string json = JsonUtility.ToJson(colisToSave);
         Client.instance.SendColis(json, colisToSave.name);
@@ -190,7 +196,6 @@ public class SaveLoadSystem : MonoBehaviour
         Net_Request request = new Net_Request();
         request.stringRequest = "Level";
         request.integer = levelNb;
-        Debug.Log("Arrive ici 6 pour la request");
         Client.instance.SendServer(request);
 
         JsonUtility.FromJsonOverwrite(Client.instance.slSave.file, levelToSave);

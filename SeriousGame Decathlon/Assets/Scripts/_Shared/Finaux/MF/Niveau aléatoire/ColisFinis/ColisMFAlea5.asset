@@ -23,15 +23,15 @@ MonoBehaviour:
   needQualityControl: 0
   aEteVide: 0
   carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
-  nomWayTicket: 
+  codeCarton: 2
+  nomWayTicket: PasDeTicket
   wayTicket: {fileID: 11400000, guid: 9013b45dd8a679b4fa7e57ac6d5f0767, type: 2}
-  listArticles:
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
-  - {fileID: 11400000, guid: 926cdee9e3dfdee429f92a16bd25c0af, type: 2}
+  listArticles: []
+  listInt: 02000000020000000200000002000000
   nbAnomalie: 2
   listAnomalies:
   - RFID tags to be applied
   - RFID tag under Tolerance
+  comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 0}
   provenance: 

@@ -203,8 +203,10 @@ public class ChoixNiveauManager : MonoBehaviour
 
     public void DeleteLevel()
     {
-        currentChoiceLevel = SaveLoadSystem.instance.LoadLevel(currentLevelNb);
-        //Et à partir de là, tu peux le suppr normalement...
+        if (currentLevelNb > 3)
+        {
+            SaveLoadSystem.instance.DeleteLevel(currentLevelNb);
+        }
     }
 }
 

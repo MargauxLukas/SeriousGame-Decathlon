@@ -233,6 +233,10 @@ public class Server : MonoBehaviour
             case "File":
                 SendData(connectId, channelId, recHostId);
                 break;
+
+            case "Delete":
+                DeleteLevel(request);
+                break;
         }
     }
     #endregion
@@ -365,5 +369,10 @@ public class Server : MonoBehaviour
             sad = dbAccess.SendAllData("RankingGTPAll", i);
             SendClient(recHostId, connectId, sad);
         }
+    }
+
+    public void DeleteLevel(Net_Request request)
+    {
+        SaveLoadSystem.instance.DeleteLevel(request.integer);
     }
 }

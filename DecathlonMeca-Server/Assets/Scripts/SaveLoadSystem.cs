@@ -76,7 +76,23 @@ public class SaveLoadSystem : MonoBehaviour
 
         if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
         {
+            LevelScriptable levelScript = new LevelScriptable();
+            string save = SaveLoadSystem.instance.LoadLevel(levelNb);
+            JsonUtility.FromJsonOverwrite(save, levelScript);
+
+            for (int nbColis = 0; nbColis < levelScript.colisDuNiveauNoms.Count; nbColis++)
+            {
+                if (File.Exists(Application.persistentDataPath + "/game_save/colis_data/" + levelScript.colisDuNiveauNoms[nbColis] + ".txt"))
+                {
+                    File.Delete(Application.persistentDataPath + "/game_save/colis_data/" + levelScript.colisDuNiveauNoms[nbColis] + ".txt");
+                }
+            }
+
+
             File.Delete(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt");
+            SavedData temporarySave = LoadGeneralDataIntern();
+            temporarySave.nombreNiveauCree--;
+            SaveGeneralData(temporarySave);
         }
     }
 

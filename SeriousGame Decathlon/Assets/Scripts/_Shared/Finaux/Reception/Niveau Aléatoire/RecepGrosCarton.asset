@@ -23,10 +23,13 @@ MonoBehaviour:
   needQualityControl: 0
   aEteVide: 0
   carton: {fileID: 11400000, guid: a03d2839a3ab9824296672723400d2b7, type: 2}
+  codeCarton: 5
   nomWayTicket: 
   wayTicket: {fileID: 0}
   listArticles: []
+  listInt: 
   nbAnomalie: 0
   listAnomalies: []
   comeFromInternet: 0
+  gtpSupposedToBe: {fileID: 0}
   provenance: 

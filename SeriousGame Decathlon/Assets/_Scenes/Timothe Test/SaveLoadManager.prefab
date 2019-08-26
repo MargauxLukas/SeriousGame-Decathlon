@@ -57,3 +57,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 477bb7e9ef9a4ae46899b4a091a72543, type: 2}
   - {fileID: 11400000, guid: d2c8cad0562574643a5864b7b8b75ca3, type: 2}
   - {fileID: 11400000, guid: 473f6d100b800464f8e20dd1da2c2388, type: 2}
+  listCarton:
+  - {fileID: 11400000, guid: 870ec97164ca6944ea5097b00925d5b9, type: 2}
+  - {fileID: 11400000, guid: 68104880d0a8c0a4a934319490b336c6, type: 2}
+  - {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
+  - {fileID: 11400000, guid: efa806fbb758f4b4f84a96c9803857d6, type: 2}
+  - {fileID: 11400000, guid: 4c0a7ff2afa1c714e970aba6b62989bf, type: 2}
+  - {fileID: 11400000, guid: a03d2839a3ab9824296672723400d2b7, type: 2}
+  - {fileID: 11400000, guid: debd2d380404d334ea93ccc9f2626925, type: 2}
+  - {fileID: 11400000, guid: 1f7f1e49a3f110840954aa86a8b717b0, type: 2}

@@ -163,7 +163,6 @@ public class Client : MonoBehaviour
                 break;
 
             case NetOP.ReceiveLevel:
-                Debug.Log("Arrive ici 3");
                 LoadLevel((Net_SendLevel)msg);
                 break;
 
@@ -194,7 +193,6 @@ public class Client : MonoBehaviour
     #region Send
     public void SendServer(NetMessage msg)
     {
-        Debug.Log("Passe ici 2");
         // This is where we hold our data
         byte[] buffer = new byte[BYTE_SIZE];
 
@@ -222,7 +220,6 @@ public class Client : MonoBehaviour
      ******************************************/
     public void RequestHallOfFame()
     {
-        Debug.Log("Passe ici bis 1");
         Net_Request request = new Net_Request();
         request.stringRequest = "HallOfFame";
 
@@ -255,7 +252,6 @@ public class Client : MonoBehaviour
         Net_Request request = new Net_Request();
         request.stringRequest = req;
 
-        Debug.Log("Passe ici 3 ou 4");
         SendServer(request);
     }
 
@@ -288,7 +284,6 @@ public class Client : MonoBehaviour
 
     public void LoadLevel(Net_SendLevel sl)
     {
-        Debug.Log("Arrive ici 2");
         ChoixNiveauManager.instance.affichageLevel(sl.file, sl.nbLevel);
     }
 
