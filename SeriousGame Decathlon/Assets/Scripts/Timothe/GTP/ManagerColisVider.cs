@@ -317,6 +317,10 @@ public class ManagerColisVider : MonoBehaviour
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 3;
                 }
+                else
+                {
+                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 0;
+                }
                 if (newColis.gtpSupposedToBe != null)
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.gtpSupposedToBe;
@@ -359,6 +363,7 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
             {
+                if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(8); }
                 Debug.Log("Test");
                 RemainingQuantityWindow.SetActive(true);
                 RemainingQuantityWindow.GetComponent<RemainingQuantityWindow>().articleNb = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count;

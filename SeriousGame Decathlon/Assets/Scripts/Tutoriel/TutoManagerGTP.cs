@@ -481,6 +481,13 @@ public class TutoManagerGTP : MonoBehaviour
                         }
                         break;
 
+                    case (67):
+                        if (gameObjectsManager.colisVide2.GetComponent<RemplissageColisGTP>().tauxRemplissage >= remplissageColisTuto || canPlaySecond)
+                        {
+                            Phase67();
+                        }
+                        break;
+
                     case (71):
                         if (gameObjectsManager.colisVide3.GetComponent<RemplissageColisGTP>().tauxRemplissage >= remplissageColisTuto || canPlaySecond)
                         {
@@ -766,6 +773,9 @@ public class TutoManagerGTP : MonoBehaviour
                 {
                     case (73):
                         Phase73();
+                        break;
+                    case (74):
+                        Phase74();
                         break;
                 }
                 break;
@@ -1963,7 +1973,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
-
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
             StartCoroutine(NewPhase(1));
         }
     }
@@ -1989,9 +1999,8 @@ public class TutoManagerGTP : MonoBehaviour
             dialogNum++;
             Debug.Log("Test tuto 2");
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = true;
-
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource2).enabled = true;
             remplissageColisTuto = 0.6f;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
             canPlayFirst = true;
             canPlaySecond = false;
             phaseNum++;
@@ -2009,7 +2018,6 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
             remplissageColisTuto = 100;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
@@ -2029,7 +2037,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton2).interactable = true;
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = false;
             canPlayFirst = true;
             canPlaySecond = false;
             phaseNum++;
@@ -2044,6 +2052,7 @@ public class TutoManagerGTP : MonoBehaviour
         {
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.scanRFID).enabled = false;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = false;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource2).enabled = false;
 
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
@@ -2779,24 +2788,24 @@ public class TutoManagerGTP : MonoBehaviour
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.bac2).enabled = false;
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
-            dialogNum++;
         }
 
         if (canPlaySecond)
         {
+            dialogNum++;
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
             phaseNum++;
         }
     }
 
     void Phase67()
     {
+        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = false;
-
-        remplissageColisTuto = 100;
 
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
@@ -2805,8 +2814,6 @@ public class TutoManagerGTP : MonoBehaviour
                     new Vector2(72.07f, -3.35f),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-        gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
-
         phaseNum++;
     }
 
@@ -2814,6 +2821,7 @@ public class TutoManagerGTP : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            remplissageColisTuto = 100;
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
@@ -2821,7 +2829,7 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = false;
+           
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
@@ -2829,6 +2837,7 @@ public class TutoManagerGTP : MonoBehaviour
 
         if (canPlaySecond)
         {
+            gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = false;
             Indications(new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(0, 0), new Vector2(0, 0),
@@ -2969,6 +2978,7 @@ public class TutoManagerGTP : MonoBehaviour
         if(console.nbText.text == "-2")
         {
             phaseNum++;
+            Phase74();
         }
     }
 
@@ -3093,6 +3103,7 @@ public class TutoManagerGTP : MonoBehaviour
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
+            gameObjectsManager.GameObjectToButton(gameObjectsManager.listPickTUBackButton).interactable = true;
         }
 
         if (canPlaySecond)
@@ -3103,8 +3114,6 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0), new Vector2(0, 0),
                         new Vector2(71.45f, 0.61f),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
-
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.listPickTUBackButton).enabled = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -3123,8 +3132,6 @@ public class TutoManagerGTP : MonoBehaviour
                         new Vector2(0, 0),
                         new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.listPickTUBackButton).enabled = false;
-
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
@@ -3141,6 +3148,7 @@ public class TutoManagerGTP : MonoBehaviour
 
     void Phase79()
     {
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.listPickTUBackButton).interactable = false;
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
@@ -3148,13 +3156,14 @@ public class TutoManagerGTP : MonoBehaviour
                     new Vector2(69.67f, 1.64f),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
-        gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton3).enabled = true;
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton3).interactable = true;
 
         phaseNum++;
     }
 
     void Phase80()
     {
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton3).interactable = true;
         Indications(new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
@@ -3183,6 +3192,8 @@ public class TutoManagerGTP : MonoBehaviour
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisVide2).enabled = true;
 
         remplissageColisTuto = 0.8f;
+
+        gameObjectsManager.GameObjectToButton(gameObjectsManager.pushButton3).interactable = false;
 
         phaseNum++;
     }
