@@ -64,7 +64,7 @@ public class ConvoyeurButton : MonoBehaviour
                 convoyeur.MoveY("replier");                                     //Boutton Replier + Validate
             }
             
-            if(!UpPressed && ! downPressed && !replierPressed && !deplierPressed)
+            if(!UpPressed && ! downPressed && !replierPressed && !deplierPressed && source!=null)
             {
                 source.Stop();
             }
