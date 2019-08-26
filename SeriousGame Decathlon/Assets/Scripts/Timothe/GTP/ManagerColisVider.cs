@@ -300,12 +300,10 @@ public class ManagerColisVider : MonoBehaviour
                 if (newColis.gtpSupposedToBe != null)
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.gtpSupposedToBe;
-                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP");
                 }
                 else
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
-                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP2");
                 }
             }
         }
@@ -319,15 +317,17 @@ public class ManagerColisVider : MonoBehaviour
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 3;
                 }
+                else
+                {
+                    emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().isFulledWithPack = 0;
+                }
                 if (newColis.gtpSupposedToBe != null)
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.gtpSupposedToBe;
-                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP");
                 }
                 else
                 {
                     emplacementsScripts[empalcementColisCree].GetComponent<AffichagePileArticleGTP>().artReference = newColis.listArticles[0];
-                    Debug.Log(TutoManagerGTP.instance.phaseNum + "TestGTP2");
                 }
                 currentColisNumberTuto++;
             }
@@ -363,6 +363,7 @@ public class ManagerColisVider : MonoBehaviour
         {
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
             {
+                if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(8); }
                 Debug.Log("Test");
                 RemainingQuantityWindow.SetActive(true);
                 RemainingQuantityWindow.GetComponent<RemainingQuantityWindow>().articleNb = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles.Count;
@@ -478,21 +479,17 @@ public class ManagerColisVider : MonoBehaviour
                         }
                     }
                     managerColis.AjoutArticleColisVoulu(positionVoulueParEmplacement[emplacement], leBonNombreArticle);
-                    Debug.Log("Test GTP pré photo" + TutoManagerGTP.instance.phaseNum);
                     if (!photoArticle.enabled)
                     {
-                        Debug.Log("Test GTP photo" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.enabled = true;
                     }
                     if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe != null)
                     {
-                        Debug.Log("Test GTP photo2" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.photoGTP;
                         Debug.Log(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.name);
                     }
                     else
                     {
-                        Debug.Log("Test GTP photo3" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].photoGTP;
                     }
                 }
@@ -506,21 +503,17 @@ public class ManagerColisVider : MonoBehaviour
                         }
                     }
                     managerColis.AjoutArticleColisVoulu(positionVoulueParEmplacement[emplacement], leBonNombreArticle);
-                    Debug.Log("Test GTP pré photo" + TutoManagerGTP.instance.phaseNum);
                     if (!photoArticle.enabled)
                     {
-                        Debug.Log("Test GTP photo" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.enabled = true;
                     }
                     if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe != null)
                     {
-                        Debug.Log("Test GTP photo2" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.photoGTP;
                         Debug.Log(emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe.name);
                     }
                     else
                     {
-                        Debug.Log("Test GTP photo3" + TutoManagerGTP.instance.phaseNum);
                         photoArticle.sprite = emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0].photoGTP;
                     }
                 }

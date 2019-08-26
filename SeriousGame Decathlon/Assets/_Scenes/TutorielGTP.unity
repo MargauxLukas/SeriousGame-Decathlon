@@ -10269,7 +10269,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c15ac540b9b01ec44936c78efb1dc10e, type: 2}
   - {fileID: 11400000, guid: ac6f5745047390b4f8f2c1f2553745e0, type: 2}
   needPack: 0000000000000000010000
-  listPosVoulue: 0000000001000000000000000200000001000000010000000000000002000000010000000200000000000000
+  listPosVoulue: 0000000001000000000000000200000001000000010000000000000002000000010000000200000001000000
 --- !u!4 &882313605
 Transform:
   m_ObjectHideFlags: 0
@@ -18034,6 +18034,7 @@ GameObject:
   - component: {fileID: 1764888810}
   - component: {fileID: 1764888809}
   - component: {fileID: 1764888808}
+  - component: {fileID: 1764888811}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -18103,9 +18104,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1670701380}
-        m_MethodName: ReturnToDezoom
-        m_Mode: 1
+      - m_Target: {fileID: 1764888811}
+        m_MethodName: LoadNewScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18153,6 +18154,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764888806}
   m_CullTransparentMesh: 0
+--- !u!114 &1764888811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764888806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa44dab90fee764684a0c62a1a7b436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musique: {fileID: 0}
+  coefSound: 1
+  source: {fileID: 0}
+  loadingScreen: {fileID: 0}
+  aDesactiverEnChargement: []
 --- !u!1 &1773461723
 GameObject:
   m_ObjectHideFlags: 0
