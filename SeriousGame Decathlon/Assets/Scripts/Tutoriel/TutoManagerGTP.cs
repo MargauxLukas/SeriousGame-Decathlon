@@ -2714,7 +2714,7 @@ public class TutoManagerGTP : MonoBehaviour
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
                     new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(75.09f, -3.35f),
+                    new Vector2(72.07f, -3.35f),
                     new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false);
 
         gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.colisSource1).enabled = true;
