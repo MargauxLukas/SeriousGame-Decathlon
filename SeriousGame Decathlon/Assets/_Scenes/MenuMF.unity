@@ -1545,7 +1545,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347058506
 GameObject:
@@ -4141,7 +4141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019939120
 GameObject:
@@ -4296,6 +4296,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
         type: 3}
+      propertyPath: listCodeCarton.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
       propertyPath: listArticle.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: a60ec9b0a04f4c348b32cea203935519,
@@ -4365,6 +4375,84 @@ PrefabInstance:
       propertyPath: listArticle.Array.data[11]
       value: 
       objectReference: {fileID: 11400000, guid: 473f6d100b800464f8e20dd1da2c2388,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCodeCarton.Array.data[0]
+      value: CB01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCodeCarton.Array.data[1]
+      value: CB02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCodeCarton.Array.data[2]
+      value: CB03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCodeCarton.Array.data[3]
+      value: CB04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCodeCarton.Array.data[4]
+      value: CB05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCodeCarton.Array.data[5]
+      value: CB06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 870ec97164ca6944ea5097b00925d5b9,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 68104880d0a8c0a4a934319490b336c6,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: efa806fbb758f4b4f84a96c9803857d6,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c0a7ff2afa1c714e970aba6b62989bf,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: a03d2839a3ab9824296672723400d2b7,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: debd2d380404d334ea93ccc9f2626925,
+        type: 2}
+    - target: {fileID: 4776208186393675208, guid: e8003d0f2c50e5d4291fb71715c79adb,
+        type: 3}
+      propertyPath: listCarton.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f7f1e49a3f110840954aa86a8b717b0,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8003d0f2c50e5d4291fb71715c79adb, type: 3}

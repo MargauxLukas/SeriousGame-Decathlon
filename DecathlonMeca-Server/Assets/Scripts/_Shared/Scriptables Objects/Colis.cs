@@ -24,6 +24,7 @@ public class Colis : ScriptableObject
 
     [Header("Type Carton")]
     public Carton carton;
+    public int codeCarton;
 
     [Header("Ticket HU")]
     public string nomWayTicket;

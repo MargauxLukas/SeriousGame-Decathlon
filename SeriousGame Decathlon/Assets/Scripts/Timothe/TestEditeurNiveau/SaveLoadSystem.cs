@@ -10,6 +10,7 @@ public class SaveLoadSystem : MonoBehaviour
     public bool hasReponse = false;
 
     public List<Article> listArticle;
+    public List<Carton> listCarton;
 
     //private Colis colisToSave;
 
@@ -69,6 +70,15 @@ public class SaveLoadSystem : MonoBehaviour
         }
         colisToSave.listArticles = null;
 
+        for(int i = 0; i < listCarton.Count; i++)
+        {
+            if(listCarton[i].codeRef == colisToSave.carton.codeRef)
+            {
+                colisToSave.codeCarton = i;
+            }
+        }
+        colisToSave.carton = null;
+
         string json = JsonUtility.ToJson(colisToSave);
         Client.instance.SendColis(json, colisToSave.name);
 
@@ -107,6 +117,8 @@ public class SaveLoadSystem : MonoBehaviour
             colisToLoad.listArticles.Add(listArticle[number]);
         }
         colisToLoad.listInt = null;
+
+        colisToLoad.carton = listCarton[colisToLoad.codeCarton];
 
         if (wtName == null)
         {
