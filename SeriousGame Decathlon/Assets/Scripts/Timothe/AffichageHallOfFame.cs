@@ -111,22 +111,22 @@ public class AffichageHallOfFame : MonoBehaviour
     {
         switch(tab)
         {
-            case "RankingTab":
+            case "RankingTabAll":
                 nomDesVIP  [rank - 1].text = name;
                 scoreDesVIP[rank - 1].text = score.ToString();
                 break;
 
-            case "RankingMF":
+            case "RankingMFAll":
                 nomDesVipMF  [rank - 1].text = name;
                 scoreDesVipMF[rank - 1].text = score.ToString();
                 break;
 
-            case "RankingRecep":
+            case "RankingRecepAll":
                 nomDesVipRecep  [rank - 1].text = name;
                 scoreDesVipRecep[rank - 1].text = score.ToString();
                 break;
 
-            case "RankingGTP":
+            case "RankingGTPAll":
                 nomDesVipGTP  [rank - 1].text = name;
                 scoreDesVipGTP[rank - 1].text = score.ToString();
                 break;
