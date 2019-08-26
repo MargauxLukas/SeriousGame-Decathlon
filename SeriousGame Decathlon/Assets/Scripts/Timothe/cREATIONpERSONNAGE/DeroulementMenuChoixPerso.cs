@@ -73,7 +73,12 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
                         go.transform.position += new Vector3(1, 0, 0) * Vector2.Distance(touchPosition, lastPosition);
                         if (Vector3.Distance(transform.position, go.transform.position) < 3)
                         {
+                            go.GetComponent<SpriteRenderer>().sortingOrder = 2;
                             go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 6) * 3;
+                        }
+                        else
+                        {
+                            go.GetComponent<SpriteRenderer>().sortingOrder = 0;
                         }
                     }
                 }
@@ -85,7 +90,12 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
                         go.transform.position -= new Vector3(1, 0, 0) * Vector2.Distance(touchPosition, lastPosition);
                         if (Vector3.Distance(transform.position, go.transform.position) < 3)
                         {
+                            go.GetComponent<SpriteRenderer>().sortingOrder = 2;
                             go.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, go.transform.position) / 6) * 3;
+                        }
+                        else
+                        {
+                            go.GetComponent<SpriteRenderer>().sortingOrder = 0;
                         }
                     }
                 }

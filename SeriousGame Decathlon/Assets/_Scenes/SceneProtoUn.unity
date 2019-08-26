@@ -8919,31 +8919,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 577562310}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: stoppingDst
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: playerAnimator
-      value: 
-      objectReference: {fileID: 438501168}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: pf
-      value: 
-      objectReference: {fileID: 1615897920}
-    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338685, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9014,15 +8989,40 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.30876237
       objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2488011276625338680, guid: 26e14c14e297de043909cce304004371,
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
-      propertyPath: m_IsTrigger
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 577562310}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: stoppingDst
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 438501168}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: pf
+      value: 
+      objectReference: {fileID: 1615897920}
+    - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338681, guid: 26e14c14e297de043909cce304004371,
         type: 3}
@@ -9342,7 +9342,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1848907645}
   m_OnClick:
     m_PersistentCalls:
@@ -26950,22 +26950,22 @@ PrefabInstance:
     - target: {fileID: 6647039823613494014, guid: 664a2ed72bc2dd04796115937ffa1ccd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 62.05
+      value: 105.1
       objectReference: {fileID: 0}
     - target: {fileID: 6647039823613494014, guid: 664a2ed72bc2dd04796115937ffa1ccd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9.42
+      value: -15.9
       objectReference: {fileID: 0}
     - target: {fileID: 6647039823613494014, guid: 664a2ed72bc2dd04796115937ffa1ccd,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 398.1
+      value: 648.3
       objectReference: {fileID: 0}
     - target: {fileID: 6647039823613494014, guid: 664a2ed72bc2dd04796115937ffa1ccd,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 91.44
+      value: 151.6
       objectReference: {fileID: 0}
     - target: {fileID: 6647039823508755507, guid: 664a2ed72bc2dd04796115937ffa1ccd,
         type: 3}

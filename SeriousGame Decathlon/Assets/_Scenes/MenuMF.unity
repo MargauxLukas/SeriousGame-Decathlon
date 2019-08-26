@@ -9217,7 +9217,7 @@ PrefabInstance:
     - target: {fileID: 6224598946339792234, guid: 56d00c3b661742c4fb4f93235b79fc1b,
         type: 3}
       propertyPath: coefSound
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56d00c3b661742c4fb4f93235b79fc1b, type: 3}
