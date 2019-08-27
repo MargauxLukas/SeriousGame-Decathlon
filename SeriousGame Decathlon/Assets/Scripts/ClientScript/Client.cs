@@ -3,6 +3,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 public class Client : MonoBehaviour
 {
     public static Client instance { private set; get; }
@@ -41,6 +42,19 @@ public class Client : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+        if(!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Debug.Log("Test creationDirectory");
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        if(!File.Exists(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"))
+        {
+            File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", SERVER_IP);
+        }
+        else
+        {
+            SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
+        }
         Init();
     }
     #endregion

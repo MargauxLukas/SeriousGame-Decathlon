@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 public class BoutonChangementScene : MonoBehaviour
 {
@@ -61,6 +64,11 @@ public class BoutonChangementScene : MonoBehaviour
     public void ChangeIPConfirm()
     {
         Client.instance.SERVER_IP = textIP.text;
+        if (Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", Client.instance.SERVER_IP);
         Debug.Log(Client.instance.SERVER_IP);
         changeIP.SetActive(false);
         canvasIP.SetActive(false);
