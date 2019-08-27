@@ -44,6 +44,18 @@ public class Client : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+        if (!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        if (!File.Exists(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"))
+        {
+            File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", SERVER_IP);
+        }
+        else
+        {
+            SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
+        }
         Init();
     }
     #endregion
@@ -217,6 +229,14 @@ public class Client : MonoBehaviour
 
     public void OKChangeIp()
     {
+        Client.instance.SERVER_IP = text.text;
+        if (Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", Client.instance.SERVER_IP);
+        Debug.Log(Client.instance.SERVER_IP);
+
         buttonExport.SetActive(true);
         ecranIp.SetActive(false);
         InputField.SetActive(false);
