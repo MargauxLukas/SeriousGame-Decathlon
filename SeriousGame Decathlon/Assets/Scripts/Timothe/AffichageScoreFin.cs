@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Affiche la score à la fin du niveau
 public class AffichageScoreFin : MonoBehaviour
 {
     public Text affichageScore;
@@ -119,6 +120,7 @@ public class AffichageScoreFin : MonoBehaviour
         }
     }
 
+    //Permet d'ouvrir l'onglet voulu
     public void OpenMF()
     {
         ongletMF.SetActive(true);

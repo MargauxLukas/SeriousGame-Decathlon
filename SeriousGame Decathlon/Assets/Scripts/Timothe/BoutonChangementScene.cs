@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Bouton permettant de passer à une autre scène
 public class BoutonChangementScene : MonoBehaviour
 {
     public AudioClip musique;
@@ -15,7 +16,7 @@ public class BoutonChangementScene : MonoBehaviour
 
     public List<GameObject> aDesactiverEnChargement;
 
-    public void LoadNewScene(int nbScene)
+    public void LoadNewScene(int nbScene) //Permet de charger la scène voulue
     {
         if (musique != null && source != null)
         {
@@ -40,7 +41,7 @@ public class BoutonChangementScene : MonoBehaviour
         }
     }
 
-    IEnumerator LoadNewSceneAsync(int nbScene)
+    IEnumerator LoadNewSceneAsync(int nbScene) //Permet de charger la scène voulue en ajoutant un écran de chargement
     {
         loadingScreen.SetActive(true);
         async = SceneManager.LoadSceneAsync(nbScene);
@@ -55,7 +56,7 @@ public class BoutonChangementScene : MonoBehaviour
         }
     }
 
-    public void LoadMfScene()
+    public void LoadMfScene() //Permet de charger la scène du MF avec les informations du niveau voulu
     {
         if (musique != null && source != null)
         {
@@ -90,7 +91,7 @@ public class BoutonChangementScene : MonoBehaviour
         }
     }
 
-    public void LoadMGtpScene()
+    public void LoadMGtpScene() //Permet de charger la scène du GTP avec les informations du niveau voulu
     {
         if (musique != null && source != null)
         {
@@ -125,7 +126,7 @@ public class BoutonChangementScene : MonoBehaviour
         }
     }
 
-    public void LoadRecepScene()
+    public void LoadRecepScene() //Permet de charger la scène de la Réception avec les informations du niveau voulu
     {
         if (musique != null && source != null)
         {
@@ -160,7 +161,7 @@ public class BoutonChangementScene : MonoBehaviour
         }
     }
 
-    public void OpenURL()
+    public void OpenURL() //Renvoie au Google Form de retours de bugs
     {
         Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSde8JlUbdVpTeYeKS_inLRQDctyKbsr0iGuwH6LuEbcf5U7-A/viewform?usp=sf_link");
     }
