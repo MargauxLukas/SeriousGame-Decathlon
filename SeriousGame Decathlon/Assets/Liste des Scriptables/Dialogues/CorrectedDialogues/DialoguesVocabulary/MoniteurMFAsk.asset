@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: MoniteurMFAsk
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 0}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Bien s\xFBr ! Sur quoi puis-je t\u2019\xE9clairer ?"
+  choixPossibles:
+  - "Qu'est-ce qu'une \xE9tiquette HU ?"
+  - Qu'est-ce qu'une puce RFID ?
+  - Qu'est-ce que le PCB d'un colis ?
+  dialoguesSuivant:
+  - {fileID: 11400000, guid: 0b3f0cc198a742c44993ae4f8918f0f1, type: 2}
+  - {fileID: 11400000, guid: 5eea91c2c25249148a8b587876936b1f, type: 2}
+  - {fileID: 11400000, guid: 43ec8562aa993654fbda825fc891d42e, type: 2}
