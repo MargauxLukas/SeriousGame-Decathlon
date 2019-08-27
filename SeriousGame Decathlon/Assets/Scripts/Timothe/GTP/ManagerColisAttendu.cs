@@ -270,7 +270,7 @@ public class ManagerColisAttendu : MonoBehaviour
             if (colisViderManager.emplacementsScripts[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisToCompare.listArticles.Count)
             {
                 Debug.Log("Et là");
-                Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
+                Scoring.instance.LosePointGTP(50, "Articles Internet non scannés");
             }
         }
 
@@ -324,7 +324,7 @@ public class ManagerColisAttendu : MonoBehaviour
                 Debug.Log("Nombre Articles " + colisCompare.listArticles.Count);
                 if (colisViderManager.colisActuellementsPose[emplacement].GetComponent<RemplissageColisGTP>().nbArticleScanned != colisCompare.listArticles.Count)
                 {
-                    Scoring.instance.LosePointGTP(50, "Certains articles venant de commandes internets n'ont pas été scanné");
+                    Scoring.instance.LosePointGTP(50, "Articles Internet non scannés");
                 }
             }
 
@@ -334,11 +334,11 @@ public class ManagerColisAttendu : MonoBehaviour
                 Debug.Log("Un colis a été mal fait");
                 if (articleEnvoye.Count == 0 || articleVoulu.Count == 0)
                 {
-                    Scoring.instance.LosePointGTP(50, "Il y a plus/moins d'articles que ce qu'il devrait y avoir dans le colis");
+                    Scoring.instance.LosePointGTP(50, "Articles en trop/manquants dans le colis");
                 }
                 else
                 {
-                    Scoring.instance.LosePointGTP(50, "Il y a un article inatendu dans ton colis");
+                    Scoring.instance.LosePointGTP(50, "Article inattendu dans le colis");
                 }
                 return false;
             }

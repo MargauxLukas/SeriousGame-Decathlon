@@ -105,7 +105,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                         ampouleOrange.SetActive(false);
                         bulle.SetActive(true);
                         Scoring.instance.RecepMalus(15);
-                        Scoring.instance.AffichageErreur("Tu as laissé un colis mal orienté sur le convoyeur");
+                        Scoring.instance.AffichageErreur("Colis mal orienté envoyé");
                     }
                     else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef == "CBGrand")
                     {
@@ -118,7 +118,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                         ampouleOrange.SetActive(false);
                         bulle.SetActive(true);
                         Scoring.instance.RecepMalus(15);
-                        Scoring.instance.AffichageErreur("Tu as laissé un colis trop grand sur le convoyeur");
+                        Scoring.instance.AffichageErreur("Colis trop grand envoyé");
                     }
                     else if (colisATraiter.GetComponent<ScriptColisRecep>().colisScriptable.poids >= 35)
                     {
@@ -131,7 +131,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                         ampouleOrange.SetActive(true);
                         bulle.SetActive(true);
                         Scoring.instance.RecepMalus(15);
-                        Scoring.instance.AffichageErreur("Tu as laissé un colis trop lourd sur le convoyeur");
+                        Scoring.instance.AffichageErreur("Colis trop lourd envoyé");
                     }
                     else
                     {
@@ -198,7 +198,7 @@ public class DetectionAnomalieRecep : MonoBehaviour
                     bulle                      .SetActive(true);
                     gotAnomalie = true;
                     Scoring.instance.RecepMalus(15);
-                    Scoring.instance.AffichageErreur("Tu as envoyé un colis mal orienté sur le convoyeur");
+                    Scoring.instance.AffichageErreur("Colis mal orienté");
                 }
             }
 

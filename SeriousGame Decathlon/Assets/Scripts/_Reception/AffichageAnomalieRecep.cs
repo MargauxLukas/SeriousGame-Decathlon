@@ -141,7 +141,7 @@ public class AffichageAnomalieRecep : MonoBehaviour
             else
             {
                 Scoring.instance.RecepMalus(50 * (paletteManager.nbColisTotal - paletteManager.nbColisTraite) + 250);
-                Scoring.instance.AffichageErreur("Tu as essayé de renvoyer un conteneur qui n'était pas défaillant !");
+                Scoring.instance.AffichageErreur("Container non-défaillant renvoyé");
             }
         }
     }

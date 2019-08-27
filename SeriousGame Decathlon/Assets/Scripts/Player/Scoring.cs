@@ -54,7 +54,7 @@ public class Scoring : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if(instance == null && TutoManagerGTP.instance == null)
         {
             instance = this;
         }

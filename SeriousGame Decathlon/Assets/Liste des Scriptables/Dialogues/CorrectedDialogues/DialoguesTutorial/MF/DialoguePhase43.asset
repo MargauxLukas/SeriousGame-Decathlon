@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Il ne te manque qu\u2019une chose \xE0 pr\xE9ciser : est-ce que la machine peut
     ouvrir le colis."
-  - 'Ici ton colis contient du textile, peut importe le taux de remplissage, il sera
+  - 'Ici ton colis contient du textile, peu importe le taux de remplissage, il sera
     toujours ouvrable par la machine. '
   - "Fais attention lorsque tu es en pr\xE9sence d\u2019articles emball\xE9s dans
     des bo\xEEtes en carton, en fonction du taux de remplissage, la machine pourrait

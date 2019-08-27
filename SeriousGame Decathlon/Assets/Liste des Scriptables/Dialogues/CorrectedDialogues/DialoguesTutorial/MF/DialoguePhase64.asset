@@ -15,8 +15,8 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Tu sais maintenant scanner un colis, essaie de traiter celui-ci tout seul. Je
-    viendrais t\u2019aider en cas de besoin."
+  - "Tu sais maintenant scanner un colis, essaie de traiter celui-ci tout.e seul.e.
+    Je viendrais t\u2019aider en cas de besoin."
   choixPossibles:
   - '...'
   dialoguesSuivant:

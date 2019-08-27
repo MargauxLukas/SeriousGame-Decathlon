@@ -30,7 +30,7 @@ public class FillingRateTab : MonoBehaviour
         if(fillingRate != tabRecount.colis.GetComponent<ColisScript>().colisScriptable.fillPercent)
         {
             Scoring.instance.MidPenalty();
-            Scoring.instance.AffichageErreur("Mauvais filling rate");
+            Scoring.instance.AffichageErreur("Mauvais Filling Rate");
         }
     }
 

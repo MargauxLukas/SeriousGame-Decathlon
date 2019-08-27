@@ -15,7 +15,7 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Maintenant que tu es pr\xEAt \xE0 partir, appuie sur le bouton Quitter en haut
+  - "Maintenant que tu es pr\xEAt.e \xE0 partir, appuie sur le bouton Quitter en haut
     \xE0 gauche de l\u2019\xE9cran pour retourner dans l'entrep\xF4t."
   choixPossibles:
   - '...'

@@ -16,7 +16,7 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Tu as enfin termin\xE9 le traitement de ton premier colis. Tu pourras passer
-    au deuxi\xE8me colis quand tu le souhaiteras en appuyant sur la p\xE9dale. "
+    au deuxi\xE8me colis en appuyant sur la p\xE9dale. "
   choixPossibles:
   - '...'
   dialoguesSuivant:

@@ -155,11 +155,11 @@ public class ColisManager : MonoBehaviour
         else if(listeColisActuel.Length > 0)
         {
             Scoring.instance.MinorPenalty();
-            Scoring.instance.AffichageErreur("Tu a déjà un colis a traiter");
+            Scoring.instance.AffichageErreur("Colis déjà en cours de traitement");
         }
         else
         {
-            Scoring.instance.AffichageErreur("Tu n'as plus aucun colis à traiter");
+            Scoring.instance.AffichageErreur("Plus aucun colis à traiter");
         }
 
         spriteArticleTableUn.GetComponent<PileArticle>().UpdatePileArticle();
@@ -181,12 +181,12 @@ public class ColisManager : MonoBehaviour
                 for (int m = 0; m < colisRenvoye.GetComponent<ColisScript>().colisScriptable.nbAnomalie; m++)
                 {
                     Scoring.instance.MajorPenalty();
-                    Scoring.instance.AffichageErreur("Tu a créé une anomalie");
+                    Scoring.instance.AffichageErreur("Anomalie créée");
                 }
 
                 Scoring.instance.sendColis();
                 Scoring.instance.ResetComboColisSansMalus();
-                Scoring.instance.AffichageErreur("Renvoie de colis avec des anomalies !!");
+                Scoring.instance.AffichageErreur("Renvoi de colis avec des anomalies");
                 Scoring.instance.WhatTheFuck();
 
             }
@@ -202,7 +202,7 @@ public class ColisManager : MonoBehaviour
             if(colisRenvoye.GetComponent<ColisScript>().colisScriptable.isBadOriented)
             {
                 Scoring.instance.MajorPenalty();
-                Scoring.instance.AffichageErreur("Tu a renvoyé un colis mal orienté");
+                Scoring.instance.AffichageErreur("Renvoi de colis mal orienté");
             }
             //GameObject.Destroy(colisRenvoye);
         }

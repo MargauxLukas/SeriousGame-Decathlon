@@ -49,7 +49,7 @@ public class RemainingQuantityWindow : MonoBehaviour
         }
         else
         {
-            Scoring.instance.LosePointGTP(50, "Tu n'as pas donner le bon nombre d'article restant dans le SHU");
+            Scoring.instance.LosePointGTP(50, "Nombre d'articles restants dans le SHU incorrect");
         }
 
         mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty = false;

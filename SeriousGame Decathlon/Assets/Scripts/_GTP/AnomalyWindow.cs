@@ -39,14 +39,14 @@ public class AnomalyWindow : MonoBehaviour
             if (mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe == null || mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.listArticles[0] == mcv.emplacementsScripts[mcv.emplacement].GetComponent<AffichagePileArticleGTP>().currentColis.gtpSupposedToBe)
             {
                 Debug.Log("Erreur Wrong product");
-                Scoring.instance.LosePointGTP(100, "Tu as envoyé un colis sans problème en Multifonction");
+                Scoring.instance.LosePointGTP(100, "Renvoi d'un colis sans problème en Multifonction");
             }
             mcv.FairePartirUnColis();
             gameObject.SetActive(false);
         }
         else
         {
-            Scoring.instance.LosePointGTP(0, "Tu ne peux pas renvoyer de colis pour l'instant");
+            Scoring.instance.LosePointGTP(0, "Renvoi de colis impossible pour l'instant");
         }
 
         if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(15); }
