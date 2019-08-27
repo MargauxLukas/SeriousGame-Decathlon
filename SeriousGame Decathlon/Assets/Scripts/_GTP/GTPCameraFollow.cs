@@ -54,7 +54,5 @@ public class GTPCameraFollow : MonoBehaviour
             newPos = new Vector3(player.transform.position.x, newPos.y, newPos.z);
         }
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, newPos.x + offset, lerpCoef), Mathf.Lerp(transform.position.y, newPos.y + offset, lerpCoef), transform.position.z);
-
-
     }
 }

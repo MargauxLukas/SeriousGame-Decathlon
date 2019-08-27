@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc3b85cb60008d4a8c0eec7764cd3ab, type: 3}
+  m_Name: TutoMFChaussettesColis3
+  m_EditorClassIdentifier: 
+  poids: 1
+  rfid: {fileID: 11400000, guid: 6c6dad00fcdec8a46bf9241dfc740a44, type: 2}
+  spriteList:
+  - {fileID: 21300000, guid: 0cff902f37a70404c934c9cffb034a62, type: 3}
+  - {fileID: 21300000, guid: 55231251b0b7d8b4fa60080889dc219b, type: 3}
+  - {fileID: 21300000, guid: 1409f0a192b42cc40b8df53089d139e4, type: 3}

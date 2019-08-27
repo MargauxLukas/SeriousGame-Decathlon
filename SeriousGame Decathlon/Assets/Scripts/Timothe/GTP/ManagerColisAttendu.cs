@@ -156,6 +156,13 @@ public class ManagerColisAttendu : MonoBehaviour
             Debug.Log(Instantiate(colisViderManager.colisViderTuto[tutoColisSourceNum]));
             colisViderManager.colisViderTuto[tutoColisSourceNum] = Instantiate(colisViderManager.colisViderTuto[tutoColisSourceNum]);
         }
+
+        for (int tutoCommandeNum = 0; tutoCommandeNum < colisVoulus.Count; tutoCommandeNum++)
+        {
+            Debug.Log(colisVoulus[tutoCommandeNum]);
+            Debug.Log(Instantiate(colisVoulus[tutoCommandeNum]));
+            colisVoulus[tutoCommandeNum] = Instantiate(colisVoulus[tutoCommandeNum]);
+        }
     }
 
     public void RenvoieColis(int emplacement)

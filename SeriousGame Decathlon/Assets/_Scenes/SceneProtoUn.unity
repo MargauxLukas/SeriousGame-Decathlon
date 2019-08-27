@@ -6362,7 +6362,7 @@ PrefabInstance:
     - target: {fileID: 5815273009268680019, guid: e9b8581166f4cd442b09f9922424fe9a,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5815273009268680019, guid: e9b8581166f4cd442b09f9922424fe9a,
         type: 3}
@@ -8694,6 +8694,11 @@ MonoBehaviour:
   source: {fileID: 0}
   loadingScreen: {fileID: 0}
   aDesactiverEnChargement: []
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!1 &1750144322
 GameObject:
   m_ObjectHideFlags: 0

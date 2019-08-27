@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-//Bouton permettant de passer à une autre scène
+
 public class BoutonChangementScene : MonoBehaviour
 {
     public AudioClip musique;
@@ -16,7 +20,14 @@ public class BoutonChangementScene : MonoBehaviour
 
     public List<GameObject> aDesactiverEnChargement;
 
-    public void LoadNewScene(int nbScene) //Permet de charger la scène voulue
+    public GameObject changeIP;
+    public GameObject canvasIP;
+    public TextMeshProUGUI textIP;
+
+    public GameObject Button14;
+    public GameObject Button8;
+
+    public void LoadNewScene(int nbScene)
     {
         if (musique != null && source != null)
         {
@@ -41,7 +52,31 @@ public class BoutonChangementScene : MonoBehaviour
         }
     }
 
-    IEnumerator LoadNewSceneAsync(int nbScene) //Permet de charger la scène voulue en ajoutant un écran de chargement
+
+    public void ChangeIP()
+    {
+        Button14.GetComponent<Button>().interactable = false;
+        Button8.GetComponent<Button>().interactable = false;
+        changeIP.SetActive(true);
+        canvasIP.SetActive(true);
+    }
+
+    public void ChangeIPConfirm()
+    {
+        Client.instance.SERVER_IP = textIP.text;
+        if (Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", Client.instance.SERVER_IP);
+        Debug.Log(Client.instance.SERVER_IP);
+        changeIP.SetActive(false);
+        canvasIP.SetActive(false);
+        Button14.GetComponent<Button>().interactable = true;
+        Button8.GetComponent<Button>().interactable  = true;
+    }
+
+    IEnumerator LoadNewSceneAsync(int nbScene)
     {
         loadingScreen.SetActive(true);
         async = SceneManager.LoadSceneAsync(nbScene);

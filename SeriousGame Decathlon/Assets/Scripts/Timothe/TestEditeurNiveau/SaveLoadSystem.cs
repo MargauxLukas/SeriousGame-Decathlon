@@ -7,7 +7,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem instance;
-    public AnomalieDetection detection;
+    public bool hasReponse = false;
+
+    public List<Article> listArticle;
+    public List<Carton> listCarton;
 
     //private Colis colisToSave;
 
@@ -15,11 +18,11 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
-        else if(instance != this)
+        else if (instance != this)
         {
             Destroy(instance.gameObject);
             instance = this;
@@ -27,286 +30,154 @@ public class SaveLoadSystem : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public void IsSaveFile()
+    {
+        
+    }
+
     public void DeleteAllFile()
     {
-        if(IsSaveFile())
-        {
-            if (Directory.Exists(Application.persistentDataPath + "/game_save"))
-            {
-                DeleteFileInDirectory(Application.persistentDataPath + "/game_save");
-                Application.Quit();
-            }
-        }
+
     }
 
     public void DeleteFileInDirectory(string direc)
     {
-        string[] files = Directory.GetFiles(direc);
-        string[] dirs = Directory.GetDirectories(direc);
 
-        if(dirs.Length > 0)
-        {
-            foreach(string dir in dirs)
-            {
-                DeleteFileInDirectory(dir);
-            }
-        }
-
-        foreach (string file in files)
-        {
-            File.SetAttributes(file, FileAttributes.Normal);
-            File.Delete(file);
-        }
-
-        Directory.Delete(direc);
-    }
-
-    public bool IsSaveFile()
-    {
-        return Directory.Exists(Application.persistentDataPath + "/game_save");
     }
 
     public void DeleteLevel(int levelNb)
     {
-        if (!IsSaveFile())
+        if (levelNb > 3)
         {
-            return;
-        }
+            Net_Request request = new Net_Request();
+            request.stringRequest = "Delete";
+            request.integer = levelNb;
 
-        if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
-        {
-            File.Delete(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt");
+            Client.instance.SendServer(request);
         }
     }
 
     public void SaveColis(Colis colisToSave)
     {
-        if(!IsSaveFile())
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
-
-        if (!Directory.Exists(Application.persistentDataPath + "/game_save/colis_data"))
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save/colis_data");
-        }
-
         if (colisToSave.wayTicket != null)
         {
             colisToSave.nomWayTicket = colisToSave.wayTicket.NamingTicket();
+        }
+        Debug.Log(colisToSave.listArticles);
+        foreach(Article article in colisToSave.listArticles)
+        {
+            for(int i = 0; i < listArticle.Count; i++)
+            {
+                if(article == listArticle[i])
+                {
+                    colisToSave.listInt.Add(i);
+                    break;
+                }
+            }
+        }
+        colisToSave.listArticles = null;
 
-            SaveWayTicket(colisToSave.wayTicket);
+        for(int i = 0; i < listCarton.Count; i++)
+        {
+            if(listCarton[i].codeRef == colisToSave.carton.codeRef)
+            {
+                colisToSave.codeCarton = i;
+            }
         }
 
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/game_save/colis_data/" + colisToSave.name + ".txt");
-        var json = JsonUtility.ToJson(colisToSave);
-        bf.Serialize(file, json);
-        file.Close();
+        string json = JsonUtility.ToJson(colisToSave);
+        Client.instance.SendColis(json, colisToSave.name);
 
-        SavedData temporarySave = LoadGeneralData();
-        Debug.Log(colisToSave.name);
-        if (temporarySave.nomColisConnus != null)
+        if (colisToSave.wayTicket != null)
         {
-            if (!temporarySave.nomColisConnus.Contains(colisToSave.name))
+            SaveWayTicket(colisToSave.wayTicket);
+        }
+    }
+
+    //FAIT
+    public void SaveWayTicket(WayTicket ticket)
+    {
+        for (int i = 0; i < listArticle.Count; i++)
+        {
+            if (listArticle[i].rfid.refArticle == ticket.refArticle)
             {
-                temporarySave.nomColisConnus.Add(colisToSave.name);
+                ticket.intRefArticle = i;
+                break;
             }
+        }
+
+        string json = JsonUtility.ToJson(ticket);
+        Debug.Log(json + " " + ticket.NamingTicket());
+        Client.instance.SendWayticket(json, ticket.NamingTicket());
+        //ticket.refArticle = null;
+    }
+
+    public Colis LoadColis(string colisName, string wtName = null)
+    {
+        Colis colisToLoad = Colis.CreateInstance<Colis>();
+
+        JsonUtility.FromJsonOverwrite(colisName , colisToLoad);
+
+        foreach(int number in colisToLoad.listInt)
+        {
+            colisToLoad.listArticles.Add(listArticle[number]);
+        }
+        colisToLoad.listInt = null;
+
+        colisToLoad.carton = listCarton[colisToLoad.codeCarton];
+
+        if (wtName == null)
+        {
+            colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
         }
         else
         {
-            temporarySave.nomColisConnus = new List<string>();
-            temporarySave.nomColisConnus.Add(colisToSave.name);
+            colisToLoad.wayTicket = LoadWayTicket(wtName);
         }
-        SaveGeneralData(temporarySave);
-    }
-
-    public void SaveWayTicket(WayTicket ticket)
-    {
-        if (!IsSaveFile())
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
-
-        if (!Directory.Exists(Application.persistentDataPath + "/game_save/wayTicket_data"))
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save/wayTicket_data");
-        }
-
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket.NamingTicket() + ".txt");
-        var json = JsonUtility.ToJson(ticket);
-        bf.Serialize(file, json);
-        file.Close();
-    }
-
-    public Colis LoadColis(/*Colis colisToLoad, */string colisName)
-    {
-        if (!IsSaveFile())
-        {
-            return null;
-        }
-
-        Colis colisToLoad = Colis.CreateInstance<Colis>();
-        BinaryFormatter bf = new BinaryFormatter();
-        if(File.Exists(Application.persistentDataPath + "/game_save/colis_data/" + colisName + ".txt"))
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/colis_data/" + colisName + ".txt", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), colisToLoad);
-            file.Close();
-        }
-
-        colisToLoad.wayTicket = LoadWayTicket(colisToLoad.nomWayTicket);
-
         return colisToLoad;
     }
 
+    //FAIT
     public WayTicket LoadWayTicket(string ticket)
     {
-        if (!IsSaveFile())
-        {
-            return null;
-        }
-
         WayTicket newTicket = WayTicket.CreateInstance<WayTicket>();
-        BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket + ".txt"))
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/wayTicket_data/" + ticket + ".txt", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), newTicket);
-            file.Close();
-        }
 
+        JsonUtility.FromJsonOverwrite(ticket, newTicket);
+
+        newTicket.refArticle = listArticle[newTicket.intRefArticle].rfid.refArticle;
+        
         return newTicket;
     }
 
     public void SaveGeneralData(SavedData dataToSave)
     {
-        if (!IsSaveFile())
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
 
-        BinaryFormatter bf = new BinaryFormatter();
-        //dataToSave = Versionning(dataToSave);
-        if (!File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/generalData.txt");
-            var json = JsonUtility.ToJson(dataToSave);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-        else
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
-            var json = JsonUtility.ToJson(dataToSave);
-            bf.Serialize(file, json);
-            file.Close();
-        }
     }
 
-    public SavedData Versionning (SavedData dataSaved)
+    public void LoadGeneralData(string requestString = null)
     {
-        dataSaved.version += 1;
-        return dataSaved;
+        Client.instance.SendRequest(requestString);
     }
 
-    public SavedData LoadGeneralData()
-    {
-        if (!IsSaveFile())
-        {
-            return null;
-        }
 
-        SavedData dataToLoad = SavedData.CreateInstance<SavedData>();
-
-        BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/game_save/generalData.txt"))
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/generalData.txt", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), dataToLoad);
-            file.Close();
-        }
-        return dataToLoad;
-    }
-
+    //FAIT
     public void SaveLevelWithoutColis(LevelScriptable levelToSave)
     {
-        if (!IsSaveFile())
-        {
-            Debug.Log("Test");
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
-
-        if (!Directory.Exists(Application.persistentDataPath + "/game_save/level_data"))
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save/level_data");
-        }
-
-        BinaryFormatter bf = new BinaryFormatter();
-        if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
-        {
-            SavedData temporarySave = LoadGeneralData();
-            temporarySave.nombreNiveauCree++;
-            levelToSave.nbLevel = temporarySave.nombreNiveauCree;
-
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt");
-            var json = JsonUtility.ToJson(levelToSave);
-            bf.Serialize(file, json);
-            file.Close();
-
-            SaveGeneralData(temporarySave);
-        }
-        else
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt", FileMode.Open);
-            var json = JsonUtility.ToJson(levelToSave);
-            bf.Serialize(file, json);
-            file.Close();
-        }
+        string json = JsonUtility.ToJson(levelToSave);
+        Client.instance.SendLevelWithoutColis(json, levelToSave.nbLevel);
     }
 
+
+    //FAIT
     public void SaveLevel(LevelScriptable levelToSave, List<Colis> colisDuLevel)
     {
-        if (!IsSaveFile())
-        {
-            Debug.Log("Test");
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
-
-        if (!Directory.Exists(Application.persistentDataPath + "/game_save/level_data"))
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save/level_data");
-        }
-
-        if(levelToSave.name == null)
+        if (levelToSave.name == null)
         {
             levelToSave.name = "Niveau " + levelToSave.nbLevel.ToString();
         }
 
-        BinaryFormatter bf = new BinaryFormatter();
-        if (!File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt"))
-        {
-            SavedData temporarySave = LoadGeneralData();
-            temporarySave.nombreNiveauCree++;
-            levelToSave.nbLevel = temporarySave.nombreNiveauCree;
-
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt");
-            var json = JsonUtility.ToJson(levelToSave);
-            bf.Serialize(file, json);
-            file.Close();
-
-            SaveGeneralData(temporarySave);
-        }
-        else
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelToSave.nbLevel.ToString() + ".txt", FileMode.Open);
-            var json = JsonUtility.ToJson(levelToSave);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        //colisDuLevel = levelToSave.colisToSave;
+        string json = JsonUtility.ToJson(levelToSave);
+        Client.instance.SendLevel(json, levelToSave.nbLevel);
 
         if (colisDuLevel != null && colisDuLevel.Count > 0)
         {
@@ -317,153 +188,51 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
+    //FAIT
     public LevelScriptable LoadLevel(int levelNb)
     {
-        if (!IsSaveFile())
-        {
-            return null;
-        }
-
         LevelScriptable levelToSave = LevelScriptable.CreateInstance<LevelScriptable>();
 
-        BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"))
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), levelToSave);
-            file.Close();
-            //Debug.Log("Bonjour : " + levelToSave.colisDuNiveauNoms.Count);
-        }
+        Net_Request request = new Net_Request();
+        request.stringRequest = "Level";
+        request.integer = levelNb;
+        Client.instance.SendServer(request);
 
-        //Debug.Log("nb level : " + levelNb);
+        JsonUtility.FromJsonOverwrite(Client.instance.slSave.file, levelToSave);
 
-        //Debug.Log(File.Exists(Application.persistentDataPath + "/game_save/level_data/Level" + levelNb.ToString() + ".txt"));
+        return levelToSave;
+    }
+
+    public LevelScriptable GetLevel(string json)
+    {
+        LevelScriptable levelToSave = LevelScriptable.CreateInstance<LevelScriptable>();
+
+        JsonUtility.FromJsonOverwrite(json, levelToSave);
 
         return levelToSave;
     }
 
     public void SaveScore(Player playerToSave)
     {
-        if (!IsSaveFile())
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
 
-        string path = Application.persistentDataPath + "/game_save/allScoringSave.txt";
-        string content = playerToSave.name + ";" + System.DateTime.Now.ToString("dd MMMM yyyy") + ";" + playerToSave.score + "\r\n";
-
-        SaveBestScore(playerToSave.score, playerToSave.name);
-        SaveBestScoreMF(playerToSave.scoreMultifonction, playerToSave.name);
-        SaveBestScoreGTP(playerToSave.scoreGTP, playerToSave.name);
-        SaveBestScoreRecep(playerToSave.scoreReception, playerToSave.name);
-
-        if (!File.Exists(path))
-        {
-            File.WriteAllText(path, content);
-        }
-        else
-        {
-            File.AppendAllText(path, content);
-        }
     }
 
     public void SaveBestBegin(BestScoreScript bestBegin)
     {
-        if (!IsSaveFile())
-        {
-            Debug.Log("Test");
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
 
-        BinaryFormatter bf = new BinaryFormatter();
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFame.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFameMF.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFameMF.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFameGTP.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFameGTP.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFameRecep.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFameRecep.txt");
-            var json = JsonUtility.ToJson(bestBegin);
-            bf.Serialize(file, json);
-            file.Close();
-        }
     }
 
     public void SaveBestScore(int score, string nom)
     {
-        if (!IsSaveFile())
-        {
-            Debug.Log("Test");
-            Directory.CreateDirectory(Application.persistentDataPath + "/game_save");
-        }
 
-        BinaryFormatter bf = new BinaryFormatter();
-        BestScoreScript newBest = new BestScoreScript();
-
-        if(File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
-        {
-            newBest = LoadBestScore();
-        }
-
-        if(newBest.nomDesJoueurs != null && newBest.nomDesJoueurs.Count > 0)
-        {
-            if (score >= newBest.scoreDesJoueurs[newBest.scoreDesJoueurs.Count - 1])
-            {
-                newBest.scoreDesJoueurs[newBest.scoreDesJoueurs.Count - 1] = score;
-                newBest.nomDesJoueurs[newBest.nomDesJoueurs.Count - 1] = nom;
-                for (int i = newBest.nomDesJoueurs.Count-2 ; i >= 0; i--)
-                {
-                    if(score >= newBest.scoreDesJoueurs[i])
-                    {
-                        int tempoScore = newBest.scoreDesJoueurs[i];
-                        string tempoNom = newBest.nomDesJoueurs[i];
-                        newBest.scoreDesJoueurs[i] = score;
-                        newBest.nomDesJoueurs[i] = nom;
-                        newBest.scoreDesJoueurs[i+1] = tempoScore;
-                        newBest.nomDesJoueurs[i+1] = tempoNom;
-                    }
-                }
-            }
-        }
-        
-        if (!File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/game_save/hallOfFame.txt");
-            var json = JsonUtility.ToJson(newBest);
-            bf.Serialize(file, json);
-            file.Close();
-        }
-        else
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/hallOfFame.txt", FileMode.Open);
-            var json = JsonUtility.ToJson(newBest);
-            bf.Serialize(file, json);
-            file.Close();
-        }
     }
 
-    public void SaveBestScoreMF(int score, string nom)
+    public BestScoreScript LoadBestScore()
+    {
+        return null;
+    }
+
+   /* public void SaveBestScoreMF(int score, string nom)
     {
         if (!IsSaveFile())
         {
@@ -622,24 +391,6 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    public BestScoreScript LoadBestScore()
-    {
-        if (!IsSaveFile())
-        {
-            return null;
-        }
-        BestScoreScript hallToLoad = BestScoreScript.CreateInstance<BestScoreScript>();
-
-        BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/game_save/hallOfFame.txt"))
-        {
-            FileStream file = File.Open(Application.persistentDataPath + "/game_save/hallOfFame.txt", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), hallToLoad);
-            file.Close();
-        }
-        return hallToLoad;
-    }
-
     public BestScoreScript LoadBestScoreMF()
     {
         if (!IsSaveFile())
@@ -692,5 +443,5 @@ public class SaveLoadSystem : MonoBehaviour
             file.Close();
         }
         return hallToLoad;
-    }
+    }*/
 }

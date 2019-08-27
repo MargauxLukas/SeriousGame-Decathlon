@@ -9,6 +9,8 @@ public class AffichageHallOfFame : MonoBehaviour
     public float coef;
     public List<GameObject> listHoF;
 
+    public static AffichageHallOfFame instance { set; get; }
+
     public List<Text> nomDesVIP;
     public List<Text> scoreDesVIP;
 
@@ -24,7 +26,11 @@ public class AffichageHallOfFame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (SaveLoadSystem.instance != null)
+        if (instance == null) { instance = this; }
+        else { Destroy(instance); }
+
+        Client.instance.RequestHallOfFame();
+        /*if (SaveLoadSystem.instance != null)
         {
             BestScoreScript newBest = SaveLoadSystem.instance.LoadBestScore();
             BestScoreScript newBestMF = SaveLoadSystem.instance.LoadBestScoreMF();
@@ -67,7 +73,7 @@ public class AffichageHallOfFame : MonoBehaviour
                     scoreDesVipRecep[i].text = newBestRecep.scoreDesJoueurs[i].ToString();
                 }
             }
-        }
+        }*/
     }
 
     //Permet de passer au Hall of Fame suivant/précédent
@@ -75,9 +81,9 @@ public class AffichageHallOfFame : MonoBehaviour
     {
         float distance = 0;
         GameObject gm = null;
-        if(isSupp)
+        if (isSupp)
         {
-            for(int i = 0; i < listHoF.Count; i++)
+            for (int i = 0; i < listHoF.Count; i++)
             {
                 listHoF[i].transform.position += new Vector3(1, 0, 0) * coef;
                 if (Vector3.Distance(listHoF[i].transform.position, transform.position) > distance)
@@ -100,6 +106,32 @@ public class AffichageHallOfFame : MonoBehaviour
                 }
             }
             gm.transform.position += new Vector3(1, 0, 0) * coef * 4;
+        }
+    }
+
+    public void SetScore(string name, int score, int rank, string tab)
+    {
+        switch(tab)
+        {
+            case "RankingTabAll":
+                nomDesVIP  [rank - 1].text = name;
+                scoreDesVIP[rank - 1].text = score.ToString();
+                break;
+
+            case "RankingMFAll":
+                nomDesVipMF  [rank - 1].text = name;
+                scoreDesVipMF[rank - 1].text = score.ToString();
+                break;
+
+            case "RankingRecepAll":
+                nomDesVipRecep  [rank - 1].text = name;
+                scoreDesVipRecep[rank - 1].text = score.ToString();
+                break;
+
+            case "RankingGTPAll":
+                nomDesVipGTP  [rank - 1].text = name;
+                scoreDesVipGTP[rank - 1].text = score.ToString();
+                break;
         }
     }
 }
