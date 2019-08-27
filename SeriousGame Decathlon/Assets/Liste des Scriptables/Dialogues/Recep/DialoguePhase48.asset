@@ -17,9 +17,9 @@ MonoBehaviour:
   phraseDites:
   - "Il ne te reste qu'une ligne de colis \xE0 injecter. Le convoyeur ne peux pas
     descendre plus bas. "
-  - Pour prendre les colis sans te blesser en te baissant, utilise la Ventouse pour
+  - Pour prendre les colis sans te blesser en te baissant, utilise la ventouse pour
     les poser sur le convoyeur.
-  - "Attrape la Ventouse et am\xE8ne-la sur le colis que tu veux envoyer, ensuite
+  - "Attrape la ventouse et am\xE8ne-la sur le colis que tu veux envoyer, ensuite
     fais glisser l'ensemble sur le convoyeur et d\xE9pose ton colis sur le tapis."
   choixPossibles:
   - '...'

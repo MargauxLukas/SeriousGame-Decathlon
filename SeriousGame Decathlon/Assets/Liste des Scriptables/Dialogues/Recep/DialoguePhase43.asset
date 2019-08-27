@@ -16,8 +16,8 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Comme tu as pu le remarquer, la LED du poste de gestion des anomalies est verte.
-    Le probl\xE8me ne vient pas d'un colis mais de l'Etiqueteuse juste ici, qui poss\xE8de
-    ses propres LED. "
+    Le probl\xE8me ne vient pas d'un colis mais de l'\xE9tiqueteuse juste ici, qui
+    poss\xE8de ses propres LED. "
   choixPossibles:
   - '...'
   dialoguesSuivant:

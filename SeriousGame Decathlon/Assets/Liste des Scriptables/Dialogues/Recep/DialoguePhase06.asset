@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Parfait, tu peux maintenant commencer \xE0 injecter les colis dans les bonnes
     conditions."
-  - Prend un colis et fais le glisser sur le convoyeur.
+  - Prends un colis et fais le glisser sur le convoyeur.
   choixPossibles:
   - '...'
   dialoguesSuivant:

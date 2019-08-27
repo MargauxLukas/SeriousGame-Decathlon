@@ -18,8 +18,8 @@ MonoBehaviour:
   - 'Comme te l''indique le texte "Too Heavy", ton colis est trop lourd et ne peut
     pas rester plus longtemps sur le convoyeur. '
   - "Tu vas devoir le mettre de c\xF4t\xE9 sur une palette. Pour ce faire, laisse
-    ton doigt appuy\xE9 sur le colis pour ouvrir le Menu circulaire et appuie ensuite
-    sur le bouton Palettiser afin de mettre ton colis sur une palette.  "
+    ton doigt appuy\xE9 sur le colis pour ouvrir le menu circulaire et appuie ensuite
+    sur le bouton Palettiser afin de mettre ton colis sur une palette. "
   choixPossibles:
   - '...'
   dialoguesSuivant:

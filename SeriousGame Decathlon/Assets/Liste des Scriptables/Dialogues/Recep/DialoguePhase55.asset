@@ -15,7 +15,7 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Tu peux, pour finir, \xE9teindre le Convoyeur gr\xE2ce au bouton \xC9teindre. "
+  - "Tu peux, pour finir, \xE9teindre le convoyeur gr\xE2ce au bouton \xC9teindre. "
   choixPossibles:
   - '...'
   dialoguesSuivant:

@@ -19,7 +19,7 @@ MonoBehaviour:
   - "Il faut toujours que ton convoyeur se trouve juste en dessous du colis que tu
     veux injecter pour ne pas te blesser. \r\n"
   - "Bien \xE9videmment, tu ne peux injecter que les colis se trouvant sur la ligne
-    la plus haute de la pile avant de passer \xE0 l'\xE9tage du dessous."
+    la plus haute de la pile avant de pouvoir passer \xE0 l'\xE9tage du dessous."
   - "Reste appuy\xE9 sur le bouton Monter pour faire monter le convoyeur \xE0 la hauteur
     adapt\xE9e \xE0 la pile de colis. "
   choixPossibles:

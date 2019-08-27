@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Tu as \xE0 nouveau fini une ligne, n'oublie pas d'abaisser le Convoyeur avant
     de porter un nouveau colis. "
-  - Je te laisse continuer seul pour les prochains colis...
+  - Je te laisse continuer seul.e pour les prochains colis...
   choixPossibles:
   - '...'
   dialoguesSuivant:

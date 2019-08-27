@@ -15,8 +15,8 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Ca y est le container est vide, il ne te reste qu'\xE0 le replier et l'\xE9teindre
-    avant de quitter ton poste. "
+  - "Ca y est le container est vide, il ne te reste qu'\xE0 replier le convoyeur et
+    l'\xE9teindre avant de quitter ton poste. "
   - "Pour \xE9tiver tout accident, tu dois appuyer sur deux boutons en m\xEAme temps
     pour replier le convoyeur, cela permet d'avoir les deux mains occup\xE9es prendant
     que la machine se replie."
