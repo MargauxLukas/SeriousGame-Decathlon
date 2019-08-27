@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Il arrive, comme dans ce colis, que les articles soient regroup\xE9s dans des
     sachets. Dans ce cas, tu dois mettre dans le colis, le nombre d'articles indiqu\xE9."
-  - Dans ton cas, tu dois mettre 6 articles dans le carton, tu dois donc y mettre
+  - Dans ton cas, tu dois mettre 6 articles dans le carton, tu dois donc y glisser
     2 sachets de 3 articles.
   choixPossibles:
   - '...'

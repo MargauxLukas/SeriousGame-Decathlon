@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
-  m_Name: DialoguePhase41
+  m_Name: DialoguePhase51
   m_EditorClassIdentifier: 
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Tu peux maintenant refermer le colis puis appuyer sur le bouton noir, ce qui
-    renverra le colis source et la commande, qui sera envoy\xE9e \xE0 son destinataire
-    dans quelques jours. "
+  - "Une fois que tu as plac\xE9 le colis correctement, touche l'\xE9cran pour fermer
+    le menu Tourner."
   choixPossibles:
   - '...'
   dialoguesSuivant:

@@ -16,7 +16,7 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Ensuite appuie sur le bouton Wrong Product pour renvoyer le colis vers le poste
-    Multifonction pour que son anomalie soit tra\xEEt\xE9e. Puis passe au colis suivant. "
+    Multifonction afin que son anomalie soit trait\xE9e. Puis passe au colis suivant. "
   choixPossibles:
   - '...'
   dialoguesSuivant:

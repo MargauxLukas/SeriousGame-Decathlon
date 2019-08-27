@@ -15,16 +15,17 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "J'ai fais venir un container juste pour toi, afin que tu puisses t'entra\xEEner. "
-  - "Tu vas pouvoir d\xE9couvrir tous les cas qui se pr\xE9senteront \xE0 toi dans
-    ton travail quotidien."
+  - "Je vais te montrer, par le biais de trois colis, les outils \xE0 ta disposition
+    pour r\xE9soudre la plupart des anomalies que tu peux rencontrer au poste Multifonction. "
+  - "Garde bien en t\xEAte que chaque anomalie peut \xEAtre r\xE9solue de plusieurs
+    mani\xE8res diff\xE9rentes. "
   - "Si plus tard dans ton entra\xEEnement tu rencontres un probl\xE8me ou que tu
     as besoin de pr\xE9cisions sur un cas pr\xE9cis, n'h\xE9site pas \xE0 t'adresser
     directement \xE0 ton moniteur. "
   - "Je suis l\xE0 pour t'apprendre les bases, \xE0 toi de t'en servir au mieux par
     la suite."
-  - "Si tout est clair, tu vas pouvoir commencer \xE0 injecter tes premiers colis.
-    Appuie sur le bouton Allumer pour mettre en marche le convoyeur."
+  - "Si tout est clair, tu vas pouvoir traiter ton premier colis. Appuie sur la p\xE9dale
+    en bas \xE0 droite de l\u2019\xE9cran pour appeler un colis."
   choixPossibles:
   - '...'
   dialoguesSuivant:

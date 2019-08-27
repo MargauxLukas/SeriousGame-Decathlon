@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
-  m_Name: DialoguePhase41
+  m_Name: DialoguePhase26
   m_EditorClassIdentifier: 
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Tu peux maintenant refermer le colis puis appuyer sur le bouton noir, ce qui
-    renverra le colis source et la commande, qui sera envoy\xE9e \xE0 son destinataire
-    dans quelques jours. "
+  - "Tu peux voir ici combien d\u2019articles composent la pile et le nombre de puces
+    RFID qui se trouvent dans la pile. "
+  - "Dans ce cas, tu peux voir qu\u2019il y a autant d'articles que de puces RFID
+    dans la pile mais il manque toujours un article par rapport au nombre indiqu\xE9
+    sur l'\xE9tiquette."
+  - "Il va maintenant falloir indiquer \xE0 la base de donn\xE9es que ce colis ne
+    contient pas le nombre d'articles attendu. "
+  - "Clique n'importe o\xF9 sur l'\xE9cran pour fermer la fiche Info. "
   choixPossibles:
   - '...'
   dialoguesSuivant:

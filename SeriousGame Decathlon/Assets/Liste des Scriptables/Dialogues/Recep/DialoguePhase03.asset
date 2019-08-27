@@ -17,7 +17,7 @@ MonoBehaviour:
   phraseDites:
   - "Avant de d\xE9placer un colis, v\xE9rifie toujours que le convoyeur est \xE0
     une hauteur convenable pour ne pas avoir \xE0 faire d'efforts suppl\xE9mentaires."
-  - "Tu peux te rep\xE9rer gr\xE2ce \xE0 la Jauge juste ici."
+  - "Tu peux te rep\xE9rer gr\xE2ce \xE0 la jauge juste ici."
   choixPossibles:
   - '...'
   dialoguesSuivant:

@@ -15,8 +15,8 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - 'Tu peux appuyer sur le bouton noir pour renvoyer le colis avant de passer au
-    suivant. '
+  - 'Tu peux, enfin, appuyer sur le bouton noir pour renvoyer le colis avant de passer
+    au suivant. '
   choixPossibles:
   - '...'
   dialoguesSuivant:

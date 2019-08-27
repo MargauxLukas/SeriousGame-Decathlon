@@ -15,8 +15,15 @@ MonoBehaviour:
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Encore un mauvais article. Commence par d\xE9placer les bons articles dans le
-    carton. "
+  - "Il ne te manque qu\u2019une chose \xE0 pr\xE9ciser : est-ce que la machine peut
+    ouvrir le colis."
+  - 'Ici ton colis contient du textile, peut importe le taux de remplissage, il sera
+    toujours ouvrable par la machine. '
+  - "Fais attention lorsque tu es en pr\xE9sence d\u2019articles emball\xE9s dans
+    des bo\xEEtes en carton, en fonction du taux de remplissage, la machine pourrait
+    endommager les articles. "
+  - "Tu peux donc pr\xE9ciser, gr\xE2ce \xE0 cette case \xE0 cocher, si la machine
+    peut ou non ouvrir ton colis."
   choixPossibles:
   - '...'
   dialoguesSuivant:

@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
-  m_Name: DialoguePhase41
+  m_Name: DialoguePhase116
   m_EditorClassIdentifier: 
   persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
   persoEcoutant: {fileID: 0}
   phraseDites:
-  - "Tu peux maintenant refermer le colis puis appuyer sur le bouton noir, ce qui
-    renverra le colis source et la commande, qui sera envoy\xE9e \xE0 son destinataire
-    dans quelques jours. "
+  - "Je pense que tu as maintenant tous les outils n\xE9cessaires \xE0 ta formation
+    tu vas pouvoir t\u2019entra\xEEner dans des vrais conditions."
+  - "Avant de quitter ton poste, v\xE9rifie touours qu'il soit propre et rang\xE9.
+    Il te reste un carton vide \xE0 jeter, pour ce faire, ouvre le menu circulaire
+    du colis et appuie sur le bouton rouge pour Jeter. "
   choixPossibles:
   - '...'
   dialoguesSuivant:
