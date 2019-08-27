@@ -109,7 +109,7 @@ public class SaveLoadSystem : MonoBehaviour
         string json = JsonUtility.ToJson(ticket);
         Debug.Log(json + " " + ticket.NamingTicket());
         Client.instance.SendWayticket(json, ticket.NamingTicket());
-        ticket.refArticle = null;
+        //ticket.refArticle = null;
     }
 
     public Colis LoadColis(string colisName, string wtName = null)
