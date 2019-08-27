@@ -9845,6 +9845,7 @@ MonoBehaviour:
   ecranFinNiveau: {fileID: 2118144035}
   isLevelEnded: 0
   loadingScreen: {fileID: 3773440498971283470}
+  desactiveEnQuittant: {fileID: 1465785647}
 --- !u!1 &887417059
 GameObject:
   m_ObjectHideFlags: 0

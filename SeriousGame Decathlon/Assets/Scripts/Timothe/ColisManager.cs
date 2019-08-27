@@ -36,6 +36,8 @@ public class ColisManager : MonoBehaviour
     public GameObject loadingScreen;
     private int colisTotal;
 
+    public GameObject desactiveEnQuittant;
+
     private void Awake()
     {
         if(ChargementListeColis.instance != null)
@@ -221,10 +223,12 @@ public class ColisManager : MonoBehaviour
     {
         if (ChargementListeColis.instance == null)
         {
+            desactiveEnQuittant.SetActive(false);
             SceneManager.LoadScene(6);
         }
         else
         {
+            desactiveEnQuittant.SetActive(false);
             ChargementListeColis.instance.QuitMfLevel(listeColisTraiter, anomDetect.RFIDtagKnowned);
         }
     }
