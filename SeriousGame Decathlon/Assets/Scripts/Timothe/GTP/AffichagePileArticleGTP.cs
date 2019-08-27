@@ -49,6 +49,7 @@ public class AffichagePileArticleGTP : MonoBehaviour
                     tasArticle.SetActive(true);
                     StartCoroutine(tasArticle.GetComponent<TasArticleGTP>().ApparitionArticle(currentColis.listArticles, isFulledWithPack, null));
                     if(TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(5); }
+
                 }
                 else
                 {

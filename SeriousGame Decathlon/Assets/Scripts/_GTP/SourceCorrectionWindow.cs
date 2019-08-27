@@ -36,7 +36,7 @@ public class SourceCorrectionWindow : MonoBehaviour
     {
         textWrong.text = nbWrong.ToString();
 
-        if(TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctySourceQtyWrongInputValue)
+        if(TutoManagerGTP.instance != null && nbWrong >= TutoManagerGTP.instance.correctSourceQtyWrongInputValue)
         {
             TutoManagerGTP.instance.Manager(12);
         }
