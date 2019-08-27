@@ -31,6 +31,8 @@ public class ManagerColisAttendu : MonoBehaviour
     public bool isLevelEnded = false;
     public GameObject loadingScreen;
 
+    public GameObject desactiveEnQuittant;
+
     public void Start()
     {
         if(ChargementListeColis.instance != null)
@@ -82,17 +84,24 @@ public class ManagerColisAttendu : MonoBehaviour
 
             if ((float)Random.Range(0, nombreColisVoulu - nbColisCree) < chanceAvoirTropArticlePrevu)
             {
+                int f = 0;
                 int rng = Random.Range(0, colisViderManager.colisVider.Count);
+
+                int rngNbArt = Random.Range(10, 13);
                 chanceAvoirTropArticlePrevu--;
-                while (colisVoulus[i].listArticles.Count <= 10)
+                while (colisVoulus[i].listArticles.Count <= rngNbArt)
                 {
                     if (nbPhase > 1)
                     {
                         colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
-                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[colisVoulus[i].listArticles.Count-1]);
                     }
                     else
                     {
+                        while (f < 10 && colisViderManager.colisVider[rng].listArticles[0] == colisVoulus[i].listArticles[0])
+                        {
+                            rng = (rng + 1) % colisViderManager.colisVider.Count;
+                        }
                         nbPhase = 2;
                         colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
                         colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
@@ -494,20 +503,24 @@ public class ManagerColisAttendu : MonoBehaviour
     {
         if (ChargementListeColis.instance == null)
         {
+            desactiveEnQuittant.SetActive(false);
             SceneManager.LoadScene(6);
         }
         else
         {
             if (colisVoulus.Count > 3)
             {
+                desactiveEnQuittant.SetActive(false);
                 ChargementListeColis.instance.QuitGTPLevel(colisVoulus.Count);
             }
             else if (isLevelEnded)
             {
+                desactiveEnQuittant.SetActive(false);
                 ChargementListeColis.instance.QuitGTPLevel(0);
             }
             else
             {
+                desactiveEnQuittant.SetActive(false);
                 ChargementListeColis.instance.QuitGTPLevel(3);
             }
         }

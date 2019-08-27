@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Permet de faire apparaître le joueur au niveau du poste qu'il vient de quitter
 public class ApparitionJoueurEntrepot : MonoBehaviour
 {
     public GameObject player;
@@ -38,11 +39,5 @@ public class ApparitionJoueurEntrepot : MonoBehaviour
             }
         }
         camera.GetComponent<GTPCameraFollow>().enabled = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

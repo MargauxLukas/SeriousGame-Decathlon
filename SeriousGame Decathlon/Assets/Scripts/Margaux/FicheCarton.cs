@@ -82,11 +82,11 @@ public class FicheCarton : MonoBehaviour
                 }
                 else if (scriptColis.colisScriptable.fillPercent >= 125)
                 {
-                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
+                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
                 }
                 else
                 {
-                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[2];
+                    scriptColis.spriteArticleDansColis.sprite = scriptColis.colisScriptable.listArticles[0].spriteList[1];
                 }
             }
             else

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Permet d'afficher les différents Hall of fame au chargement de la scène
 public class AffichageHallOfFame : MonoBehaviour
 {
     public float coef;
@@ -75,6 +76,7 @@ public class AffichageHallOfFame : MonoBehaviour
         }*/
     }
 
+    //Permet de passer au Hall of Fame suivant/précédent
     public void MoveMenu(bool isSupp)
     {
         float distance = 0;

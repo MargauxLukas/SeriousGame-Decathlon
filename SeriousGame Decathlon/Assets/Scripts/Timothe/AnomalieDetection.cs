@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Permet de détecter les anomalies connues par le jeu
 public class AnomalieDetection : MonoBehaviour
 {
     public List<int> RFIDtagKnowned;
@@ -28,21 +30,23 @@ public class AnomalieDetection : MonoBehaviour
         }
     }
 
+    //Permet de vérifier 1 colis
     public void CheckColis(Colis colis)
     {
         if (colis.listArticles.Count > 0)
         {
+            //Permet de vérifier que certaines anomalies ont été bien traité
             if (!isAwakning && colis.listAnomalies != null)
             {
                 Debug.Log("Alala");
-                if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide)
+                if (colis.listAnomalies.Contains("Quality control") && !colis.aEteVide) //Vérifie que le joueur a bien vider le colis lors d'un Quality control
                 {
                     Debug.Log("Waken 2 : " + isAwakning);
                     Scoring.instance.MidPenalty();
                     Scoring.instance.AffichageErreur("Quality control : Colis non vidé");
                 }
 
-                if (colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount)
+                if (colis.listAnomalies.Contains("Repacking from FP") && !colis.hasBeenRecount) //Vérifie que le joueur a bien scanner les RFID du colis lors d'un Repack from FP
                 {
                     Debug.Log("Waken 3 : " + isAwakning);
                     Scoring.instance.MidPenalty();
@@ -189,87 +193,12 @@ public class AnomalieDetection : MonoBehaviour
         }
     }
 
+    //Permet de vérifier une liste de colis
     public void CheckList(List<Colis> listColis)
     {
         foreach (Colis colis in listColis)
         {
             CheckColis(colis);
-            /*colis.nbAnomalie = 0;
-            colis.listAnomalies = new List<string>();
-
-            int RFIDnb = 0;
-            foreach (Article article in colis.listArticles)
-            {
-                Debug.Log(article.rfid);
-                if (article.rfid != null)                                 //D'abord vérification si nul, sinon rfid.fonctionnel met une erreur
-                {
-                    if (article.rfid.estFonctionnel)
-                    {
-                        RFIDnb++;
-                    }
-                }
-            }
-            Debug.Log("Test Anomalie 1");
-
-            if (colis.wayTicket == null || RFIDnb != colis.wayTicket.PCB)
-            {
-                colis.nbAnomalie++;
-                colis.listAnomalies.Add("RFID tag over Tolerance");
-            }
-            Debug.Log("Test Anomalie 2");
-
-            bool isBreakable = false;
-            foreach (Article article in colis.listArticles)
-            {
-                if (article.rfid != null && colis.wayTicket != null &&(article.rfid.refArticle.numeroRef != colis.wayTicket.refArticle.numeroRef && !isBreakable))
-                {
-                    colis.nbAnomalie++;
-                    colis.listAnomalies.Add("RFID tag for unexpected product");
-                    isBreakable = true;
-                }
-            }
-            Debug.Log("Test Anomalie 3");
-
-            if (colis.poids > 20)
-            {
-                colis.nbAnomalie++;
-                colis.listAnomalies.Add("TU too heavy (20-25)");
-            }
-            Debug.Log("Test Anomalie 4");
-
-            bool isCompatible = false;
-            for (int i = 0; i < RFIDtagKnowned.Count; i++)
-            {
-                Debug.Log("Test Anomalie 5");
-                if (colis.listArticles[0].rfid != null)
-                {
-                    if (colis.listArticles[0].rfid.refArticle.numeroRef == RFIDtagKnowned[i])
-                    {
-                        isCompatible = true;
-                    }
-                }
-            }
-            if (!isCompatible)
-            {
-                colis.nbAnomalie++;
-                colis.listAnomalies.Add("RFID tag scanned for unknown product");
-            }
-           
-
-            if (colis.estAbime)
-            {
-                colis.nbAnomalie++;
-                colis.listAnomalies.Add("Quality Control");
-            }
-            Debug.Log("Test Anomalie 6");
-
-            if (colis.isBadOriented)
-            {
-                colis.nbAnomalie++;
-                colis.listAnomalies.Add("Wrong carton orientation");
-            }
-            */
-
         }
         if(isAwakning)
         {

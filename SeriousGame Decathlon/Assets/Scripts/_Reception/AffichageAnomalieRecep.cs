@@ -25,6 +25,8 @@ public class AffichageAnomalieRecep : MonoBehaviour
     public GameObject loadingScreen;
     public GameObject loadingScreenZoom;
 
+    public GameObject desactiveEnQuittant;
+
     public void Start()
     {
         fondTextAnomalieDezoom.SetActive(false);
@@ -94,14 +96,17 @@ public class AffichageAnomalieRecep : MonoBehaviour
         {
             if(TutoManagerRecep.instance != null)
             {
+                desactiveEnQuittant.SetActive(false);
                 SceneManager.LoadScene(0);
             }
             else if (ChargementListeColis.instance == null)
             {
+                desactiveEnQuittant.SetActive(false);
                 SceneManager.LoadScene(6);
             }
             else
             {
+                desactiveEnQuittant.SetActive(false);
                 ChargementListeColis.instance.QuitReceptionLevel(paletteManager.nbColisTotal - paletteManager.nbColisTraite, false);
             }
         }
