@@ -2323,7 +2323,7 @@ MonoBehaviour:
   detailTuto: {fileID: 477226657}
   musique: {fileID: 8300000, guid: 7a6264c3dfb20d148965249a1534b24a, type: 3}
   musiqueDeux: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   source: {fileID: 1354568523}
   loadingScreen: {fileID: 930571101}
 --- !u!82 &1354568523

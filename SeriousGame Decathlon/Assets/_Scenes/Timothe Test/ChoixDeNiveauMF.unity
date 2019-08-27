@@ -1803,7 +1803,7 @@ MonoBehaviour:
   button: {fileID: 2656908294971292673, guid: b88e74e40a938074588fc6d297cd5a18, type: 3}
   source: {fileID: 587411738}
   musique: {fileID: 8300000, guid: 7a6264c3dfb20d148965249a1534b24a, type: 3}
-  coefSound: 0.4
+  coefSound: 0.6
   levelLoading: {fileID: 941395405}
   currentChoiceLevel: {fileID: 0}
   currentLevelNb: 0
@@ -6483,7 +6483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musique: {fileID: 8300000, guid: 652002f1809e15b42b9fcae6b9ed0cbc, type: 3}
-  coefSound: 0.4
+  coefSound: 0.5
   source: {fileID: 1918158210}
   loadingScreen: {fileID: 0}
   aDesactiverEnChargement: []

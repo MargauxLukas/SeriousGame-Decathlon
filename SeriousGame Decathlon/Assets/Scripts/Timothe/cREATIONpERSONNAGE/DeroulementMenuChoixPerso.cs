@@ -120,6 +120,10 @@ public class DeroulementMenuChoixPerso : MonoBehaviour
                     go.transform.position += newPos;
                     go.transform.localScale = Vector3.one * 3;
                     go.GetComponent<MenuPersoChoice>().StopAnim();
+                    if(go != goToTake)
+                    {
+                        go.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                    }
                 }
                 goToTake.GetComponent<MenuPersoChoice>().StartAnim();
                 goToTake.transform.localScale = Vector3.one * (1.5f - Vector3.Distance(transform.position, goToTake.transform.position) / 6) * 3;
