@@ -146,6 +146,7 @@ public class LevelEditor : MonoBehaviour
     public void NewLevel()
     {
         creationNiveau.SetActive(true);
+        inputFieldLevel.text = "";
         ongletMultifonction.SetActive(false);
 
         foreach (Button bouton in boutonAnomalies)
@@ -156,6 +157,7 @@ public class LevelEditor : MonoBehaviour
         newLevel = LevelScriptable.CreateInstance<LevelScriptable>();
         colisNewLevel = new List<Colis>();
         currentAnomalieNumber = 0;
+        newLevel.chanceReceptionColisHaveAnomalie = 10;
     }
 
     public void SaveLevel()
@@ -249,6 +251,8 @@ public class LevelEditor : MonoBehaviour
         newLevel.nombreColisReception = int.Parse(inputFieldNombreColisRecep.text);
     }
 
+    public List<GameObject> feedbackColis;
+
     public void ChooseColisForReception(Colis colisToAdd)
     {
         if(newLevel.colisDuNiveauNomReception == null)
@@ -258,10 +262,50 @@ public class LevelEditor : MonoBehaviour
 
         if(!newLevel.colisDuNiveauNomReception.Contains(colisToAdd.name))
         {
+            if (colisToAdd.name == "RecepAbimePetit")
+            {
+                feedbackColis[0].SetActive(true);
+            }
+            if (colisToAdd.name == "RecepGrosCarton")
+            {
+                feedbackColis[1].SetActive(true);
+            }
+            if (colisToAdd.name == "RecepMalOriente")
+            {
+                feedbackColis[2].SetActive(true);
+            }
+            if (colisToAdd.name == "RecepTropLourd")
+            {
+                feedbackColis[3].SetActive(true);
+            }
             newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
             if(colisToAdd.name == "RecepMalOriente")
             {
                 newLevel.colisDuNiveauNomReception.Add(colisToAdd.name);
+            }
+        }
+        else
+        {
+            if (colisToAdd.name == "RecepAbimePetit")
+            {
+                feedbackColis[0].SetActive(false);
+            }
+            if (colisToAdd.name == "RecepGrosCarton")
+            {
+                feedbackColis[1].SetActive(false);
+            }
+            if (colisToAdd.name == "RecepMalOriente")
+            {
+                feedbackColis[2].SetActive(false);
+            }
+            if (colisToAdd.name == "RecepTropLourd")
+            {
+                feedbackColis[3].SetActive(false);
+            }
+            newLevel.colisDuNiveauNomReception.Remove(colisToAdd.name);
+            if (colisToAdd.name == "RecepMalOriente")
+            {
+                newLevel.colisDuNiveauNomReception.Remove(colisToAdd.name);
             }
         }
     }
@@ -276,6 +320,13 @@ public class LevelEditor : MonoBehaviour
         {
             bouton.interactable = true;
         }
+
+        foreach(Text text in anomaliesActuelles)
+        {
+            text.text = "";
+        }
+
+        inputFieldColisMF.text = "";
 
         currentColis = Colis.CreateInstance<Colis>();
         currentAnomalieNumber = 0;
@@ -363,52 +414,69 @@ public class LevelEditor : MonoBehaviour
         creationNiveau.SetActive(true);
     }
 
+    public List<Text> anomaliesActuelles;
+
     public void AnomalieChoice(int nbAnomalie)
     {
+        //Faire une liste de 3 Text. En fonction du NbAnomalie, rempli tel Test avec la bonne anomalie.
         if (!currentColis.needQualityControl)
         {
             switch (nbAnomalie)
             {
                 case 0:
+                    anomaliesActuelles[currentAnomalieNumber].text = "RFID Over Tolerance";
                     RFIDoverTolerance();
                     break;
                 case 1:
+                    anomaliesActuelles[currentAnomalieNumber].text = "RFID Under Tolerance";
                     RFIDunderToleranceV1();
                     break;
                 case 2:
+                    anomaliesActuelles[currentAnomalieNumber].text = "RFID Under Tolerance";
                     RFIDunderToleranceV2();
                     break;
                 case 3:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Dimension out of Tolerance";
                     DimensionOutToleranceV1();
                     break;
                 case 4:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Dimension out of Tolerance";
                     DimensionOutToleranceV2();
                     break;
                 case 5:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Wrong Orientation";
                     WrongOrientation();
                     break;
                 case 6:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Quality Control";
                     QualityControl();
                     break;
                 case 7:
+                    anomaliesActuelles[currentAnomalieNumber].text = "New Product";
                     NewProduct();
                     break;
                 case 8:
+                    anomaliesActuelles[currentAnomalieNumber].text = "RFID tag to be Applied";
                     RFIDTagToApplied();
                     break;
                 case 9:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Too Heavy";
                     TooHeavy();
                     break;
                 case 10:
+                    anomaliesActuelles[currentAnomalieNumber].text = "RFID tag for unexpected product";
                     RFIDUnexpectedV1();
                     break;
                 case 11:
+                    anomaliesActuelles[currentAnomalieNumber].text = "RFID tag for unexpected product";
                     RFIDUnexpectedV2();
                     break;
                 case 12:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Dimension out of Tray";
                     DimensionOutTray();
                     break;
                 case 13:
+                    anomaliesActuelles[currentAnomalieNumber].text = "Repacking from FP";
                     RepackngFP();
                     break;
 
@@ -611,4 +679,5 @@ public class LevelEditor : MonoBehaviour
         }
     }
     #endregion
+
 }
