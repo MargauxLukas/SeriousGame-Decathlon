@@ -9975,11 +9975,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2488011276625338678, guid: 26e14c14e297de043909cce304004371,
         type: 3}
       propertyPath: target
@@ -10009,6 +10004,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871187060551740161, guid: 26e14c14e297de043909cce304004371,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e14c14e297de043909cce304004371, type: 3}
@@ -11351,26 +11351,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1929283566}
-    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
-        type: 3}
-      propertyPath: m_margin.x
-      value: 46.1848
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
-        type: 3}
-      propertyPath: m_margin.z
-      value: 27.10291
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 612511056346160041, guid: 79982186ad8ef814d8a030e168f68beb,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -11405,6 +11385,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 46.1848
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 27.10291
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782788211342204540, guid: 79982186ad8ef814d8a030e168f68beb,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79982186ad8ef814d8a030e168f68beb, type: 3}
@@ -14073,7 +14073,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Deplier
+  m_text: "D\xE9plier"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
