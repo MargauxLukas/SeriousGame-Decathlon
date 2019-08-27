@@ -9,7 +9,7 @@ public class Client : MonoBehaviour
     public static Client instance { private set; get; }
 
     private const int MAX_USER = 100;
-    private const int PORT = 26000;
+    private const int PORT = 41480;
     private const int WEB_PORT = 26001;
     private const int BYTE_SIZE = 1024;
     //private const string SERVER_IP = "127.0.0.1";                  //Use 127.0.0.1 for local (When tablet is connected to PC)
@@ -44,6 +44,18 @@ public class Client : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+        if (!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        if (!File.Exists(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"))
+        {
+            File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", SERVER_IP);
+        }
+        else
+        {
+            SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
+        }
         Init();
     }
     #endregion
@@ -217,6 +229,14 @@ public class Client : MonoBehaviour
 
     public void OKChangeIp()
     {
+        Client.instance.SERVER_IP = text.text;
+        if (Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
+        }
+        File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", Client.instance.SERVER_IP);
+        Debug.Log(Client.instance.SERVER_IP);
+
         buttonExport.SetActive(true);
         ecranIp.SetActive(false);
         InputField.SetActive(false);

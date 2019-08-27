@@ -25,88 +25,28 @@ public class SQLToCSV : MonoBehaviour
         Debug.Log(data);
         switch (tab)
         {
-            case "RankingTabAll":
+            case "RankingAll":
                 dataGeneral.Add(data);
                 if(rank == maxGeneral)
                 {
                     isDataGeneralDone = true;
                 }
                 break;
-
-            case "RankingMFAll":
-                dataMF.Add(data);
-                if (rank == maxMF)
-                {
-                    isDataMFDone = true;
-                }
-                break;
-
-            case "RankingRecepAll":
-                dataRecep.Add(data);
-                if (rank == maxRecep)
-                {
-                    isDataRecepDone = true;
-                }
-                break;
-
-            case "RankingGTPAll":
-                dataGTP.Add(data);
-                if (rank == maxGTP)
-                {
-                    isDataGTPDone = true;
-                }
-                break;
         }
 
-        if(isDataGeneralDone && isDataGTPDone && isDataMFDone && isDataRecepDone)
+        if(isDataGeneralDone)
         {
             SetToAFileData();
-            SetToAFileMF();
-            SetToAFileRecep();
-            SetToAFileGTP();
         }
     }
 
     public void SetToAFileData()
     {
-        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_general");
+        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_ALL");
 
         foreach (string text in dataGeneral)
         {
             file.Write(text + "\r\n");
-        }
-
-        file.Close();
-    }
-    public void SetToAFileMF()
-    {
-        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_MF");
-
-        foreach (string text in dataMF)
-        {
-            file.Write(text + "\n");
-        }
-
-        file.Close();
-    }
-    public void SetToAFileRecep()
-    {
-        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_Recep");
-
-        foreach (string text in dataRecep)
-        {
-            file.Write(text + "\n");
-        }
-
-        file.Close();
-    }
-    public void SetToAFileGTP()
-    {
-        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_GTP");
-
-        foreach (string text in dataGTP)
-        {
-            file.Write(text + "\n");
         }
 
         file.Close();

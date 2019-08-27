@@ -16,3 +16,4 @@ MonoBehaviour:
   refArticle: {fileID: 11400000, guid: aada3e3ebc9fed549b7e1b199f8d5454, type: 2}
   numeroCodeBarre: 1
   poids: 12
+  intRefArticle: 0

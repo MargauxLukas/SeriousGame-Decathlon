@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WayTicketMFAlea6
   m_EditorClassIdentifier: 
   PCB: 4
-  refArticle: {fileID: 11400000, guid: bfd2d68021baeb24387d408dc1335534, type: 2}
+  refArticle: {fileID: 11400000, guid: 1df94303a1c2f014abf99b6d2588bd8b, type: 2}
   numeroCodeBarre: 6
   poids: 2
+  intRefArticle: 4

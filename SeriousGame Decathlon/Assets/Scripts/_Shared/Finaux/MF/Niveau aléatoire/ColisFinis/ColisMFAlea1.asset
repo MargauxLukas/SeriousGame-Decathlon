@@ -24,7 +24,7 @@ MonoBehaviour:
   aEteVide: 0
   carton: {fileID: 11400000, guid: 60a54a9dabf980744af6d55cf29a38c6, type: 2}
   codeCarton: 2
-  nomWayTicket: PasDeTicket
+  nomWayTicket: PCB6ART4635NUM1POI12
   wayTicket: {fileID: 11400000, guid: 92eea7467c799044b9259d4d40bfa1f1, type: 2}
   listArticles: []
   listInt: 010000000100000001000000010000000100000001000000

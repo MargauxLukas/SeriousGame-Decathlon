@@ -343,30 +343,12 @@ public class Server : MonoBehaviour
         SNBD = dbAccess.SendnbData();
 
         int maxG     = SNBD.nbGeneral;
-        int maxMF    = SNBD.nbMF;
-        int maxRecep = SNBD.nbRecep;
-        int maxGTP   = SNBD.nbGTP;
 
         SendClient(recHostId, connectId, SNBD);
 
         for (int i = 1; i <= maxG; i++)
         {
-            sad = dbAccess.SendAllData("RankingTabAll", i);
-            SendClient(recHostId, connectId, sad);
-        }
-        for (int i = 1; i <= maxMF; i++)
-        {
-            sad = dbAccess.SendAllData("RankingMFAll", i);
-            SendClient(recHostId, connectId, sad);
-        }
-        for (int i = 1; i <= maxRecep; i++)
-        {
-            sad = dbAccess.SendAllData("RankingRecepAll", i);
-            SendClient(recHostId, connectId, sad);
-        }
-        for (int i = 1; i <= maxGTP; i++)
-        {
-            sad = dbAccess.SendAllData("RankingGTPAll", i);
+            sad = dbAccess.SendAllData("RankingAll", i);
             SendClient(recHostId, connectId, sad);
         }
     }
