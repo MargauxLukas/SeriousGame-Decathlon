@@ -52,6 +52,9 @@ public class ChoixNiveauManager : MonoBehaviour
 
     //WIFI
     public GameObject Wifi;
+    public GameObject Server;
+
+    public bool dataDownload = false;
 
     private void Awake()
     {
@@ -67,7 +70,7 @@ public class ChoixNiveauManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void Start()
+    public void Update()
     {
         if (Wifi != null)
         {
@@ -78,11 +81,25 @@ public class ChoixNiveauManager : MonoBehaviour
             else
             {
                 Wifi.SetActive(false);
-                SaveLoadSystem.instance.LoadGeneralData("GeneralData");
+                if(!dataDownload)
+                {
+                    SaveLoadSystem.instance.LoadGeneralData("GeneralData");
+                    dataDownload = true;
+                }
                 rt = contentArea.GetComponent(typeof(RectTransform)) as RectTransform;
                 listAffAnomalies = new List<GameObject>();
             }
         }
+    }
+
+    public void CantReachServer()
+    {
+        Server.SetActive(true);
+    }
+
+    public void CanReachServer()
+    {
+        Server.SetActive(false);
     }
 
     public void affichageLevel(string json, int i)

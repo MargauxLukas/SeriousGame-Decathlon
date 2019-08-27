@@ -203,6 +203,11 @@ public class Client : MonoBehaviour
         formatter.Serialize(ms, msg);
 
         NetworkTransport.Send(hostId, connectionId, reliableChannel, buffer, BYTE_SIZE, out error);
+
+        if(error == 2)
+        {
+            ChoixNiveauManager.instance.CantReachServer();
+        }
     }
     #endregion
     

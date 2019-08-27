@@ -2,6 +2,7 @@
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Networking;
+using TMPro;
 
 public class Client : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Client : MonoBehaviour
     private const int BYTE_SIZE = 1024;
     //private const string SERVER_IP = "127.0.0.1";                  //Use 127.0.0.1 for local (When tablet is connected to PC)
     //private const string SERVER_IP = "192.168.137.6";                //WifiTimothe
-    private const string SERVER_IP = "172.19.52.80";               //DKTWarehouse
+    private string SERVER_IP = "172.19.52.106";               //DKTWarehouse
 
     private byte reliableChannel;
     private byte error;
@@ -25,6 +26,11 @@ public class Client : MonoBehaviour
     public bool isConnectedToServer = false;
 
     public SQLToCSV stcsv;
+
+    public GameObject buttonExport;
+    public GameObject ecranIp;
+    public GameObject InputField;
+    public TextMeshProUGUI text;
 
     #region Monobehaviour
     private void Start()
@@ -200,5 +206,20 @@ public class Client : MonoBehaviour
     public void SendData(Net_SendAllData sad)
     {
         stcsv.setToAList(sad.data, sad.rank, sad.tab);
+    }
+
+    public void ChangeIp()
+    {
+        buttonExport.SetActive(false);
+        ecranIp.SetActive(true);
+        InputField.SetActive(true);
+    }
+
+    public void OKChangeIp()
+    {
+        buttonExport.SetActive(true);
+        ecranIp.SetActive(false);
+        InputField.SetActive(false);
+        SERVER_IP = text.text;
     }
 }
