@@ -22,13 +22,6 @@ public class DBAccess : MonoBehaviour
         #region Create Table
         #region RankingGeneral
         dbcmd = dbcon.CreateCommand();
-        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingTab'( " +
-                            " 'rank' INTEGER NOT NULL UNIQUE, " +
-                            " 'name' TEXT NOT NULL, " +
-                            " 'score' INTEGER NOT NULL, " +
-                            " 'date' TEXT NOT NULL" +
-                            ");";
-        dbcmd.ExecuteNonQuery();
 
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingTabAll'( " +
                            " 'rank' INTEGER NOT NULL UNIQUE, " +
@@ -40,14 +33,6 @@ public class DBAccess : MonoBehaviour
         #endregion
 
         #region RankingMF
-        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingMF'( " +
-                           " 'rank' INTEGER NOT NULL UNIQUE, " +
-                           " 'name' TEXT NOT NULL, " +
-                           " 'score' INTEGER NOT NULL, " +
-                           " 'date' TEXT NOT NULL" +
-                           ");";
-        dbcmd.ExecuteNonQuery();
-
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingMFAll'( " +
                    " 'rank' INTEGER NOT NULL UNIQUE, " +
                    " 'name' TEXT NOT NULL, " +
@@ -58,14 +43,6 @@ public class DBAccess : MonoBehaviour
         #endregion
 
         #region RankingRecep
-        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingRecep'( " +
-                   " 'rank' INTEGER NOT NULL UNIQUE, " +
-                   " 'name' TEXT NOT NULL, " +
-                   " 'score' INTEGER NOT NULL, " +
-                   " 'date' TEXT NOT NULL" +
-                   ");";
-        dbcmd.ExecuteNonQuery();
-
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingRecepAll'( " +
            " 'rank' INTEGER NOT NULL UNIQUE, " +
            " 'name' TEXT NOT NULL, " +
@@ -76,14 +53,6 @@ public class DBAccess : MonoBehaviour
         #endregion
 
         #region RankingGTP
-        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingGTP'( " +
-                   " 'rank' INTEGER NOT NULL UNIQUE, " +
-                   " 'name' TEXT NOT NULL, " +
-                   " 'score' INTEGER NOT NULL, " +
-                   " 'date' TEXT NOT NULL" +
-                   ");";
-        dbcmd.ExecuteNonQuery();
-
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingGTPAll'( " +
            " 'rank' INTEGER NOT NULL UNIQUE, " +
            " 'name' TEXT NOT NULL, " +
@@ -91,6 +60,23 @@ public class DBAccess : MonoBehaviour
            " 'date' TEXT NOT NULL" +
            ");";
         dbcmd.ExecuteNonQuery();
+        #endregion
+
+        #region RankingAll
+        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingAll'( " +
+                   " 'nb' INTEGER NOT NULL, " +
+                   " 'name' TEXT NOT NULL, " +
+                   " 'scoreG' INTEGER NOT NULL, " +
+                   " 'scoreMF' INTEGER NOT NULL, " +
+                   " 'scoreRecep' INTEGER NOT NULL, " +
+                   " 'scoreGTP' INTEGER NOT NULL, " +
+                   " 'date' TEXT NOT NULL" +
+                   ");";
+        dbcmd.ExecuteNonQuery();
+
+        /*IDbCommand cmnd = dbcon.CreateCommand();
+        cmnd.CommandText = "INSERT INTO 'RankingAll' (nb, name, scoreG, scoreMF, scoreRecep, scoreGTP, date) VALUES (1, 'test',50 ,50 ,50 ,50,'66/06/2070')";
+        cmnd.ExecuteNonQuery();*/
         #endregion
         #endregion
 
@@ -354,6 +340,27 @@ public class DBAccess : MonoBehaviour
             }
         }
         #endregion
+
+        #region ScoreTOUT
+
+        cmnd_read = dbcon.CreateCommand();
+
+        IDbCommand cmnd = dbcon.CreateCommand();
+        cmnd.CommandText = "SELECT MAX(nb) FROM RankingAll";
+        IDataReader readercmnd = cmnd_read.ExecuteReader();
+
+        int nbGeneral = int.Parse(readercmnd[0].ToString());
+        nbGeneral++;
+
+        cmnd_read.CommandText = "INSERT INTO 'RankingAll' VALUES ('" + nbGeneral + "' , '" +
+                                                                       name       + "' , '" +
+                                                                       score      + "' , '" +
+                                                                       scoreMF    + "' , '" +
+                                                                       scoreRecep + "' , '" +
+                                                                       scoreGTP   + "' , '" +
+                                                                       date +     "')";
+        cmnd_read.ExecuteNonQuery();
+        #endregion
     }
 
 
@@ -405,28 +412,10 @@ public class DBAccess : MonoBehaviour
         dbcon.Open();
 
         IDbCommand cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingTabAll";
+        cmnd_read.CommandText = "SELECT MAX(nb) FROM RankingAll";
         IDataReader reader = cmnd_read.ExecuteReader();
 
         SNBD.nbGeneral = int.Parse(reader[0].ToString());
-
-        cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingMFAll";
-        reader = cmnd_read.ExecuteReader();
-
-        SNBD.nbMF = int.Parse(reader[0].ToString());
-
-        cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingRecepAll";
-        reader = cmnd_read.ExecuteReader();
-
-        SNBD.nbRecep = int.Parse(reader[0].ToString());
-
-        cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingGTPAll";
-        reader = cmnd_read.ExecuteReader();
-
-        SNBD.nbGTP = int.Parse(reader[0].ToString());
 
         return SNBD;
     }
@@ -439,11 +428,11 @@ public class DBAccess : MonoBehaviour
         dbcon.Open();
 
         IDbCommand cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT * FROM '" + tab + "' WHERE rank =" + rank;
+        cmnd_read.CommandText = "SELECT * FROM '" + tab + "' WHERE nb =" + rank;
         IDataReader reader = cmnd_read.ExecuteReader();
 
         sad.tab = tab;
-        sad.data = reader[0].ToString() + "," + reader[1].ToString() + "," + reader[2].ToString() + "," + reader[3].ToString();
+        sad.data = reader[1].ToString() + ";" + reader[2].ToString() + ";" + reader[3].ToString() + ";" + reader[4].ToString() + ";" + reader[5].ToString() + ";" + reader[6].ToString();
         sad.rank = rank;
 
         return sad;
