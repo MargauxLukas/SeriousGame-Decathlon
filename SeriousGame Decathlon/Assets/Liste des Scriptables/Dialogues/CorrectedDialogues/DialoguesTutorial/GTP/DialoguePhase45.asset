@@ -17,9 +17,9 @@ MonoBehaviour:
   phraseDites:
   - "La diff\xE9rence avec le colis pr\xE9c\xE9dent, c'est que, cette fois, il manque
     aussi un des articles attendus. "
-  - "Tu vas devoir notifier les 2 anomalies puis mettre \xE0 jour le nombre d'articles
+  - "Tu vas devoir notifier l'anomalie puis mettre \xE0 jour le nombre d'articles
     dans le colis de commande."
-  - 'Appuie sur le bouton Anomaly pour indiquer les anomalies. '
+  - 'Appuie sur le bouton Anomaly pour indiquer l''anomalie. '
   choixPossibles:
   - '...'
   dialoguesSuivant:

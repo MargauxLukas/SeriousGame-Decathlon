@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase58
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Ces informations te permettent de savoir combien de colis avec la m\xEAme anomalie
+    tu as envoy\xE9s sur le convoyeur. "
+  - "Selon le pourcentage de colis d\xE9fectueux dans le container, tu peux d\xE9cider
+    de le renvoyer pour qu'il soit trait\xE9 manuellement par une autre \xE9quipe. "
+  - "Pour renvoyer un container de ce type, tu peux te servir du bouton Return \xE0
+    tout moment ce qui terminera le niveau instantan\xE9ment."
+  - "Attention cependant si tu renvoies un container sans anomalies, un important
+    malus te sera attribu\xE9 sur ton score final. "
+  - "Dans ton cas, tu as fini de vider le container qui t'\xE9tais attribu\xE9, tu
+    peux te servir du bouton pour renvoyer le container vide et laisser la place \xE0
+    un nouveau."
+  - 'Appuie sur le bouton Return pour quitter le niveau. '
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

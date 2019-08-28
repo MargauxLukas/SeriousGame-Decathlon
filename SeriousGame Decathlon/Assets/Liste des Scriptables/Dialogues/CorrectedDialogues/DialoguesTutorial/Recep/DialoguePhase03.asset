@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase03
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Avant de d\xE9placer un colis, v\xE9rifie toujours que le convoyeur est \xE0
+    une hauteur convenable pour ne pas avoir \xE0 faire d'efforts suppl\xE9mentaires."
+  - "Tu peux te rep\xE9rer gr\xE2ce \xE0 la jauge juste ici."
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

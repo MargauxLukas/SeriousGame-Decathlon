@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase90
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Tu dois remplir la premi\xE8re case, Packaging Mat., avec la r\xE9f\xE9rence
+    du carton que tu viens de cr\xE9er : CB01."
+  - "Puis entrer la r\xE9f\xE9rence des articles dans la case suivante, ici 9712. "
+  - "Enfin le nombre d\u2019articles que tu vas mettre dans le colis sur la derni\xE8re
+    ligne. Une fois les informations compl\xE9t\xE9es, appuie sur OK."
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

@@ -50,12 +50,12 @@ public class AnomalieDetection : MonoBehaviour
                 {
                     Debug.Log("Waken 3 : " + isAwakning);
                     Scoring.instance.MidPenalty();
-                    Scoring.instance.AffichageErreur("Repack from FP : Colis non recompté");
+                    Scoring.instance.AffichageErreur("Repack from FP : Articles non recomptés");
                 }
                 if((colis.listAnomalies.Contains("RFID tags to be applied") || colis.listAnomalies.Contains("RFID tag over Tolerance") || colis.listAnomalies.Contains("RFID tag scanned for New product") || colis.listAnomalies.Contains("RFID tag for unexpected product")) && !colis.hasBeenRecount)
                 {
                     Scoring.instance.MidPenalty();
-                    Scoring.instance.AffichageErreur("Anomalie de RFID : Tu n'as pas Recount ton colis");
+                    Scoring.instance.AffichageErreur("Anomalie de RFID : Articles non recomptés");
                 }
             }
 

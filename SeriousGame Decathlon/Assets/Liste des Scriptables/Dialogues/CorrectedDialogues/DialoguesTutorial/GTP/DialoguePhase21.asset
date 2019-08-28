@@ -16,9 +16,9 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Au GTP, tout est calcul\xE9 par la meca. Quand un colis source est suppos\xE9
-    \xEAtre vide, au moment d'appuyer sur le bouton, tu dois certifier que le colis
-    est bien vide ou s'il y a eu une erreur et qu'il reste encore des articles dans
-    le carton. "
+    \xEAtre vide, au moment d'appuyer sur le bouton, "
+  - 'tu dois certifier que le colis est bien vide ou s''il y a eu une erreur et qu''il
+    reste encore des articles dans le carton. '
   - 'Ton colis est bien vide, il te suffit d''appuyer sur le bouton OK. '
   choixPossibles:
   - '...'

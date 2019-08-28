@@ -17,8 +17,8 @@ MonoBehaviour:
   phraseDites:
   - "Ton colis source est cens\xE9 \xEAtre vide. Seulement, il reste un article, suite
     \xE0 une erreur. Tu dois donc le signaler afin que le colis ne soit pas d\xE9truit
-    avec son contenu. \r\n"
-  - 'Remplit la case pour indiquer qu''il reste un article dans le carton. '
+    ainsi que son contenu. \r\n"
+  - 'Remplis la case pour indiquer qu''il reste un article dans le carton. '
   choixPossibles:
   - '...'
   dialoguesSuivant:

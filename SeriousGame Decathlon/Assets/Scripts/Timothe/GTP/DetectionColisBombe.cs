@@ -33,7 +33,7 @@ public class DetectionColisBombe : MonoBehaviour
                             }
                         }
                         haveAlreadySomething = true;
-                        Scoring.instance.LosePointGTP(25, "Renvoie d'un colis trop chargé");
+                        Scoring.instance.LosePointGTP(25, "Renvoi d'un colis trop chargé");
                         collision.GetComponent<RemplissageColisGTP>().StopAllCoroutines();
                         collision.GetComponent<SpriteRenderer>().sortingOrder += 2;
                         colisRevoir = collision.gameObject;

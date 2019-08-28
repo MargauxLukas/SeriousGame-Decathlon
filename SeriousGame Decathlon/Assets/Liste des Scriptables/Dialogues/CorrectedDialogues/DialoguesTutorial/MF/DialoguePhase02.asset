@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase02
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "\xC7a y est, ton colis est scann\xE9. Maintenant, regarde ton \xE9cran, il est
+    rouge. Tu as donc des anomalies \xE0 traiter : le nombre d'anomalies pr\xE9sentes
+    sur le colis t'es indiqu\xE9 au centre de l'\xE9cran. "
+  - "Clique sur l\u2019\xE9cran pour savoir de quelles anomalies il s\u2019agit."
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

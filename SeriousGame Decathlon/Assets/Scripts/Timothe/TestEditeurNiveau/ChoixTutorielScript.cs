@@ -72,13 +72,13 @@ public class ChoixTutorielScript : MonoBehaviour
         switch (nb)
         {
             case 9:
-                detailTuto.text = "Ce tutoriel va t'apprendre les bases de la Mutifonction. Tu y apprendras différentes techniques pour résoudre les anomalies que tu rencontreras.";
+                detailTuto.text = "Trois colis défectueux viennent d'arriver à ton poste afin te former. Tu apprendras, dans ce tutoriel, les bases de la Mutifonction ainsi différentes techniques pour résoudre les anomalies que tu rencontreras.";
                 break;
             case 12:
                 detailTuto.text = "Un container spécial est arrivé à quai pour t'apprendre les bases de la Réception. Tu apprendras, durant ce tutoriel, à manipuler les colis afin de préserver ta santé et à gérer les éventuelles anomalies que tu pourrais rencontrer.";
                 break;
             case 11:
-                detailTuto.text = "Détail tuto GTP";
+                detailTuto.text = "Quatre commandes à traiter on été spécialement envoyées à ton poste pour ta formation. Tu apprendras dans ce tutoriel, les bases du GTP et découvriras les différentes anomalies que tu pourras rencontrer à ce poste.";
                 break;
         }
     }

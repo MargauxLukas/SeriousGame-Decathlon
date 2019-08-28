@@ -30,7 +30,7 @@ public class BoutonMettreSurPalette : MonoBehaviour
                 if(!tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.estAbime && tapisRoule.lastColis.GetComponent<ScriptColisRecep>().colisScriptable.carton.codeRef != "CBGrand")
                 {
                     Scoring.instance.RecepMalus(90);
-                    Scoring.instance.AffichageErreur("Tu as posé un colis sans problème sur la palette");
+                    Scoring.instance.AffichageErreur("Colis sans problème mis sur la palette");
                 }
                 else
                 {

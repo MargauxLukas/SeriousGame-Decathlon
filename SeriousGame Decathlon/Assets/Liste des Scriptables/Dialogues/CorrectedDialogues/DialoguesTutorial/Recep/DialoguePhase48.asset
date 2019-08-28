@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7696c1d7f482334438b9cef920f13d3b, type: 3}
+  m_Name: DialoguePhase48
+  m_EditorClassIdentifier: 
+  persoParlant: {fileID: 11400000, guid: 59129a12f7c44de4f8ed95d9c05a9340, type: 2}
+  persoEcoutant: {fileID: 0}
+  phraseDites:
+  - "Il ne te reste qu'une ligne de colis \xE0 injecter. Le convoyeur ne peux pas
+    descendre plus bas. "
+  - Pour prendre les colis sans te blesser en te baissant, utilise la ventouse pour
+    les poser sur le convoyeur.
+  - "Attrape la ventouse et am\xE8ne-la sur le colis que tu veux envoyer, ensuite
+    fais glisser l'ensemble sur le convoyeur et d\xE9pose ton colis sur le tapis."
+  choixPossibles:
+  - '...'
+  dialoguesSuivant:
+  - {fileID: 0}

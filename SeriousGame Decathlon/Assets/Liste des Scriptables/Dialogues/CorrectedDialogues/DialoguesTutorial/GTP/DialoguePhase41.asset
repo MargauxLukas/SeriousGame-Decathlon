@@ -16,7 +16,8 @@ MonoBehaviour:
   persoEcoutant: {fileID: 0}
   phraseDites:
   - "Tu peux maintenant refermer le colis puis appuyer sur le bouton noir, ce qui
-    renverra le colis source et la commande qui sera envoy\xE9e dans quelques jours. "
+    renverra le colis source et la commande, qui sera envoy\xE9e \xE0 son destinataire
+    dans quelques jours. "
   choixPossibles:
   - '...'
   dialoguesSuivant:
