@@ -1031,7 +1031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.025005, y: -62}
+  m_AnchoredPosition: {x: 41, y: -86}
   m_SizeDelta: {x: 318.05, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &139968266
@@ -1238,7 +1238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.025005, y: 65}
+  m_AnchoredPosition: {x: 39, y: 33}
   m_SizeDelta: {x: 318.05, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206685601
@@ -1786,7 +1786,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Change tous les articles en articles non attendus
+  m_Text: Change tous les articles en articles inattendus
 --- !u!222 &297240648
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2016,7 +2016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &330097069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2435,7 +2435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.7}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131, y: -295}
+  m_AnchoredPosition: {x: 113, y: -290}
   m_SizeDelta: {x: 685.9, y: 29.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366336790
@@ -2616,7 +2616,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8a0de79e038542149bd2fb8c05f40851, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cda8802a31bdb89428a1c26215196c24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3150,7 +3150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Enl\xE8ve tous les RFID des articles pr\xE9sent"
+  m_Text: "Enl\xE8ve tous les RFID des articles pr\xE9sents"
 --- !u!222 &480668501
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3325,7 +3325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Carton abim\xE9"
+  m_Text: "Carton ab\xEEm\xE9"
 --- !u!222 &511762745
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3483,7 +3483,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Change les articles du colis en de nouveaux articles inconus
+  m_Text: Change les articles du colis en de nouveaux articles inconnus
 --- !u!222 &524680084
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3562,7 +3562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Remplit le colis jusqu'\u28E3e qu'il soit trop lourd"
+  m_Text: "Remplit le colis jusqu'\xE0 c\u28E3e qu'il soit trop lourd"
 --- !u!222 &528939783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4005,7 +4005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.73}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -399.5, y: -130.1}
+  m_AnchoredPosition: {x: -350, y: -134}
   m_SizeDelta: {x: 323.1, y: 79.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &618159028
@@ -4138,8 +4138,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -376.8, y: 42.351}
-  m_SizeDelta: {x: 339.7, y: 52.701}
+  m_AnchoredPosition: {x: -378.81, y: 42.351}
+  m_SizeDelta: {x: 343.71, y: 52.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658406416
 MonoBehaviour:
@@ -4282,8 +4282,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.5, y: 249.7}
-  m_SizeDelta: {x: 342.9, y: 44.5}
+  m_AnchoredPosition: {x: 25.5, y: 249.06}
+  m_SizeDelta: {x: 342.9, y: 49.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658406544
 MonoBehaviour:
@@ -4755,16 +4755,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716874198}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.17204815, w: 0.9850886}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 104600996}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -19.814001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -586.78, y: -329.01}
+  m_AnchoredPosition: {x: -551, y: -324}
   m_SizeDelta: {x: 106.45, y: 113.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716874200
@@ -5273,7 +5273,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Un contr\xF4le qualit\xE9 devra \xEAtre fait sur l'article"
+  m_Text: "Un contr\xF4le qualit\xE9 devra \xEAtre fait sur le colis"
 --- !u!222 &774229104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5539,7 +5539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 359.28, y: -0.06}
+  m_AnchoredPosition: {x: 410, y: -0.06}
   m_SizeDelta: {x: 328.37, y: 68.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905752938
@@ -6173,7 +6173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396.65976, y: 3.75}
+  m_AnchoredPosition: {x: -349, y: 3.75}
   m_SizeDelta: {x: 330.68, y: 38.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046983071
@@ -6638,7 +6638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1162067106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7197,7 +7197,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2d7c6cb08ae7eaa488f419c4ef78ce2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac7f8ef185f6b104ab11ce8005689dab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7565,8 +7565,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23, y: 42.351}
-  m_SizeDelta: {x: 341.7, y: 52.701}
+  m_AnchoredPosition: {x: 24.54999, y: 42.351}
+  m_SizeDelta: {x: 344.8, y: 52.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299999646
 MonoBehaviour:
@@ -8053,8 +8053,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -207.5, y: -171.8}
-  m_SizeDelta: {x: 339.8, y: 48.1}
+  m_AnchoredPosition: {x: -206.06, y: -171.8}
+  m_SizeDelta: {x: 345.45, y: 48.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346482705
 MonoBehaviour:
@@ -9468,7 +9468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Change un article par UN non attendu
+  m_Text: Change un article par un article inattendu
 --- !u!222 &1598191523
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9514,8 +9514,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 244.7, y: -171.8}
-  m_SizeDelta: {x: 339.8, y: 48.1}
+  m_AnchoredPosition: {x: 248.69, y: -171.8}
+  m_SizeDelta: {x: 347.79, y: 48.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1664281386
 MonoBehaviour:
@@ -9657,7 +9657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.025005, y: -183}
+  m_AnchoredPosition: {x: 40, y: -212}
   m_SizeDelta: {x: 318.05, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1667318286
@@ -10314,7 +10314,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2ef3eefdf7d970d41baf4aca17b96b27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75b9dffc0d795294398579fd9f097b39, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10365,7 +10365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.7}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131, y: -269}
+  m_AnchoredPosition: {x: 113, y: -263}
   m_SizeDelta: {x: 685.9, y: 29.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1749612242
@@ -11445,7 +11445,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ouvre le colis et l'abime, demandant \xE0 \xEAtre reconditionn\xE9"
+  m_Text: "Ouvre le colis et l'ab\xEEme, devant \xEAtre reconditionn\xE9"
 --- !u!222 &1909624921
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11488,7 +11488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.7}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131, y: -321}
+  m_AnchoredPosition: {x: 113, y: -316}
   m_SizeDelta: {x: 685.9, y: 29.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914756019
@@ -12061,8 +12061,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 419, y: 42.35}
-  m_SizeDelta: {x: 342.9, y: 52.7}
+  m_AnchoredPosition: {x: 419.43, y: 42.35}
+  m_SizeDelta: {x: 343.75, y: 52.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997387503
 MonoBehaviour:
@@ -12335,7 +12335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.025005, y: 183.1}
+  m_AnchoredPosition: {x: 41, y: 154}
   m_SizeDelta: {x: 318.05, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034495098
