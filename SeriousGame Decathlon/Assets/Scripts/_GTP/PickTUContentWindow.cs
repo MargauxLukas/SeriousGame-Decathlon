@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickTUContentWindow : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PickTUContentWindow : MonoBehaviour
     public List<ArticleAffichage> listArticleAffichage;
 
     private int emplacement;
+
+    public Button anomalyButton;
 
     /********************************************************************************
     *      **Affichage de la Liste d'article à mettre dans le colis à Remplir**    *
@@ -141,6 +144,7 @@ public class PickTUContentWindow : MonoBehaviour
     public void Back()
     {
         gameObject.SetActive(false);
+        anomalyButton.interactable = true;
 
         if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(3); }
     }
