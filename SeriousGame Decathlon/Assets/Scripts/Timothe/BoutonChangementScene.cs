@@ -60,7 +60,7 @@ public class BoutonChangementScene : MonoBehaviour
         changeIP.SetActive(true);
         canvasIP.SetActive(true);
     }
-    string test = "0";
+
     public void ChangeIPConfirm()
     {
         Client.instance.SERVER_IP = textIP.text;
