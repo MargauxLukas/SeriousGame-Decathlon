@@ -39,6 +39,7 @@ public class GameObjectsManagerRecep : MonoBehaviour
     public GameObject ampoule;
     public GameObject ampouleSpriteMask;
     public GameObject etiqueteuse;
+    public GameObject detectAnomaliesDeskLED;
 
     [Header("Menu Circulaire")]
     public GameObject menuCirculaireTuto;

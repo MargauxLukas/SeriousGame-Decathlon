@@ -1313,7 +1313,7 @@ public class TutoManagerRecep : MonoBehaviour
                         new Vector3(0, 0, 0), new Vector3(0, 0), 0, false,
                         new Vector2(0, 0), 0, 0, 0);
 
-            gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButton).interactable = true;
+            //gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButton).interactable = true;
 
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1738,6 +1738,8 @@ public class TutoManagerRecep : MonoBehaviour
             gameObjectsManager.GameObjectToButton(gameObjectsManager.leftRotaArrow).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.rightRotaArrow).interactable = false;
             gameObjectsManager.GameObjectToButton(gameObjectsManager.palette).interactable = false;
+
+            gameObjectsManager.detectAnomaliesDeskLED.SetActive(true);
 
             etiqueteuse.nbEtiquettes = 0;
             etiqueteuse.ledVerte.SetActive(false);
