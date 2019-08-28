@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnomalyWindow : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class AnomalyWindow : MonoBehaviour
 
     [Header("ManagerColisVider")]
     public ManagerColisVider mcv;
+
+    public Button anomalyButton;
+
+    public Button Loupe1;
+    public Button Loupe2;
+    public Button Loupe3;
 
     /***********************************************
      *   Permet d'ouvrir l'écran EcranCorrectQty   *
@@ -62,6 +69,10 @@ public class AnomalyWindow : MonoBehaviour
 
     public void Back()
     {
+        anomalyButton.interactable = true;
+        Loupe1.interactable = true;
+        Loupe2.interactable = true;
+        Loupe3.interactable = true;
         gameObject.SetActive(false);
     }
 }

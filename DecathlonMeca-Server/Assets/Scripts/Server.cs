@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -22,10 +23,14 @@ public class Server : MonoBehaviour
     private bool isStarted;
     private byte error;
 
+    public TextMeshProUGUI textip;
+    public TextMeshProUGUI textEtat;
+
     #region Monobehaviour
     private void Start()
     {
-        GetLocalIPAddress();
+        textEtat.text = "En cours";
+        textip.text = GetLocalIPAddress();
         //Debug.Log(System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable());
         DontDestroyOnLoad(gameObject);
         Init();
@@ -41,7 +46,6 @@ public class Server : MonoBehaviour
         {
             if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
             {
-                Debug.Log(ip.ToString());
                 return ip.ToString();
             }
         }
@@ -73,6 +77,7 @@ public class Server : MonoBehaviour
 
         Debug.Log(string.Format("Opening connection on Port {0} and webPort {1}", PORT, WEB_PORT));
         isStarted = true;
+        textEtat.text = "Connecté";
     }
 
     /****************************************************
@@ -82,6 +87,15 @@ public class Server : MonoBehaviour
     {
         isStarted = false;
         NetworkTransport.Shutdown();
+        textEtat.text = "Déconnecté";
+        Application.Quit();
+    }
+
+    public void Restart()
+    {
+        isStarted = false;
+        NetworkTransport.Shutdown();
+        Start();
     }
 
     public void UpdateMessagePump()

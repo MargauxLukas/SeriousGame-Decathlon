@@ -719,10 +719,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 1f52b917-52e8-49ee-a1ea-e04845127cb6
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: SeriousGameDecathlon
+  organizationId: catoune
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

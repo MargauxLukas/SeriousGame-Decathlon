@@ -33,6 +33,8 @@ public class Client : MonoBehaviour
     public GameObject InputField;
     public Text text;
 
+    public TextMeshProUGUI textEtatServeur;
+
     #region Monobehaviour
     private void Start()
     {
@@ -91,6 +93,58 @@ public class Client : MonoBehaviour
 #else
         // Standalone Client
         connectionId = NetworkTransport.Connect(hostId, SERVER_IP, PORT, 0, out error);
+        
+        switch(error)
+        {
+            case 0:
+                textEtatServeur.text = "Problème avec le serveur";
+                break;
+
+            case 1:
+                textEtatServeur.text = "WRONG HOST";
+                break;
+
+            case 2:
+                textEtatServeur.text = "WRONG CONNECTION";
+                break;
+
+            case 3:
+                textEtatServeur.text = "No Resources";
+                break;
+
+            case 4:
+                textEtatServeur.text = "Bad Message";
+                break;
+
+            case 5:
+                textEtatServeur.text = "Timeout";
+                break;
+
+            case 6:
+                textEtatServeur.text = "Message Too Long";
+                break;
+
+            case 7:
+                textEtatServeur.text = "Wrong Operation";
+                break;
+
+            case 8:
+                textEtatServeur.text = "Version Mismatch";
+                break;
+
+            case 9:
+                textEtatServeur.text = "CRCMismatch";
+                break;
+
+            case 10:
+                textEtatServeur.text = "DNS Failure";
+                break;
+
+            case 11:
+                textEtatServeur.text = "Ussage Error";
+                break;
+        }
+
         Debug.Log("Connecting from Standalone");
 #endif
 
@@ -123,6 +177,7 @@ public class Client : MonoBehaviour
 
             case NetworkEventType.ConnectEvent:
                 Debug.Log("Connected to the server");
+                textEtatServeur.text = "Vous êtes connecté au serveur.";
                 isConnectedToServer = true;
                 break;
 

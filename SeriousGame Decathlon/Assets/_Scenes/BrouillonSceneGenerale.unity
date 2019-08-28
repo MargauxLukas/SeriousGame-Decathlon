@@ -234,6 +234,11 @@ MonoBehaviour:
   source: {fileID: 0}
   loadingScreen: {fileID: 0}
   aDesactiverEnChargement: []
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!114 &22268913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +976,7 @@ PrefabInstance:
     - target: {fileID: 3178321947600932116, guid: b67ac016820549e42bf0f66d92c96261,
         type: 3}
       propertyPath: nodeRadius
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3178321947600932116, guid: b67ac016820549e42bf0f66d92c96261,
         type: 3}
@@ -3710,6 +3715,11 @@ MonoBehaviour:
   - {fileID: 1506413745}
   - {fileID: 727838296}
   - {fileID: 1101259347}
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!1 &747566053
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,6 +5138,11 @@ MonoBehaviour:
   - {fileID: 1506413745}
   - {fileID: 727838296}
   - {fileID: 1101259347}
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!114 &1101259350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6154,6 +6169,11 @@ MonoBehaviour:
   source: {fileID: 0}
   loadingScreen: {fileID: 0}
   aDesactiverEnChargement: []
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!114 &1387314437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6657,6 +6677,11 @@ MonoBehaviour:
   - {fileID: 1506413745}
   - {fileID: 727838296}
   - {fileID: 1101259347}
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!1 &1516152492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6855,6 +6880,11 @@ MonoBehaviour:
   source: {fileID: 0}
   loadingScreen: {fileID: 0}
   aDesactiverEnChargement: []
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!114 &1520269809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7572,6 +7602,11 @@ MonoBehaviour:
   source: {fileID: 0}
   loadingScreen: {fileID: 1234938292}
   aDesactiverEnChargement: []
+  changeIP: {fileID: 0}
+  canvasIP: {fileID: 0}
+  textIP: {fileID: 0}
+  Button14: {fileID: 0}
+  Button8: {fileID: 0}
 --- !u!114 &1750743898
 MonoBehaviour:
   m_ObjectHideFlags: 0

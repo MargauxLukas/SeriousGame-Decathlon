@@ -6704,6 +6704,7 @@ MonoBehaviour:
   - {fileID: 1130866082}
   - {fileID: 562911584}
   - {fileID: 2085240983}
+  anomalyButton: {fileID: 824601105}
 --- !u!1001 &681326124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8475,6 +8476,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ecranCorrectQuantity: {fileID: 1542462229}
   mcv: {fileID: 882313604}
+  anomalyButton: {fileID: 824601105}
+  Loupe1: {fileID: 281708074}
+  Loupe2: {fileID: 520984155}
+  Loupe3: {fileID: 162649238}
 --- !u!1 &798927084
 GameObject:
   m_ObjectHideFlags: 0
@@ -16939,6 +16944,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anomalyWindow: {fileID: 792244657}
   PickTUContentWindow: {fileID: 679415225}
+  anomalyButton: {fileID: 824601105}
+  Loupe1: {fileID: 281708074}
+  Loupe2: {fileID: 520984155}
+  Loupe3: {fileID: 162649238}
 --- !u!1 &1802423009
 GameObject:
   m_ObjectHideFlags: 0
