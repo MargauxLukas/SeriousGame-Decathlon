@@ -36,8 +36,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/BrouillonSceneGenerale.unity
     guid: 90f0fa47be179554aa4eda763be8591b
   - enabled: 1
-    path: Assets/_Scenes/RecepTimothe.unity
-    guid: 1bb53bdaff083fd478ffaaa2a9cc3d7e
+    path: Assets/_Scenes/EcranChargementRecep.unity
+    guid: f4161ff9e0c2ac2469ffa18f4b095a1a
   - enabled: 1
     path: Assets/_Scenes/Timothe Test/HallOfFame.unity
     guid: 744190abba1f2e8438115845770f68ce
@@ -45,8 +45,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/TutorielMF.unity
     guid: 66f9048f87598914eb7514ee85ea3dc8
   - enabled: 1
-    path: Assets/_Scenes/GTP_SceneTimothe.unity
-    guid: 42bd423f57c2e754babed602d4d8a6ff
+    path: Assets/_Scenes/EcranChargementGTP.unity
+    guid: 0f327da29a85d1e498cc715ec0d480dd
   - enabled: 1
     path: Assets/_Scenes/Timothe Test/ChoixPersonnage.unity
     guid: 714de1ae0afb64149a15658e31f3e253
@@ -65,4 +65,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/SceneProtoUn.unity
     guid: 3eb357cae4b94c34cb6489b13f924e37
+  - enabled: 1
+    path: Assets/_Scenes/RecepTimothe.unity
+    guid: 1bb53bdaff083fd478ffaaa2a9cc3d7e
+  - enabled: 1
+    path: Assets/_Scenes/GTP_SceneTimothe.unity
+    guid: 42bd423f57c2e754babed602d4d8a6ff
   m_configObjects: {}
