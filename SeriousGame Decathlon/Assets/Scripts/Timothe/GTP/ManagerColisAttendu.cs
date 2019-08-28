@@ -89,31 +89,72 @@ public class ManagerColisAttendu : MonoBehaviour
 
                 int rngNbArt = Random.Range(10, 13);
                 chanceAvoirTropArticlePrevu--;
+                List<int> nbMemeArticleTempo = new List<int>();
+                List<Article> articleConnuTempo = new List<Article>();
+                for (int m = 0; m < colisVoulus[i].listArticles.Count; m++)
+                {
+                    if(!articleConnuTempo.Contains(colisVoulus[i].listArticles[m]))
+                    {
+                        articleConnuTempo.Add(colisVoulus[i].listArticles[m]);
+                        nbMemeArticleTempo.Add(1);
+                    }
+                    else
+                    {
+                        nbMemeArticleTempo[nbMemeArticleTempo.Count - 1]++;
+                    }
+                }
+                int nbArtRng = 0;
                 while (colisVoulus[i].listArticles.Count <= rngNbArt)
                 {
                     if (nbPhase > 1)
                     {
-                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
-                        colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[colisVoulus[i].listArticles.Count-1]);
+                        int nbArt = colisVoulus[i].listArticles.Count - 1;
+                        while(nbArt>0 && colisVoulus[i].listArticles[nbArt] == colisVoulus[i].listArticles[0])
+                        {
+                            nbArt--;
+                        }
+                        if (nbMemeArticleTempo[0] < 9)
+                        {
+                            colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                            nbMemeArticleTempo[0]++;
+                        }
+                        if (nbMemeArticleTempo[nbMemeArticleTempo.Count - 1] < 9)
+                        {
+                            colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[nbArt]);
+                            nbMemeArticleTempo[nbMemeArticleTempo.Count - 1]++;
+                        }
                     }
                     else
                     {
                         while (f < 10 && colisViderManager.colisVider[rng].listArticles[0] == colisVoulus[i].listArticles[0])
                         {
                             rng = (rng + 1) % colisViderManager.colisVider.Count;
+                            f++;
                         }
+                        
                         nbPhase = 2;
-                        colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
-                        colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
+                        if (nbMemeArticleTempo[0] < 9)
+                        {
+                            colisVoulus[i].listArticles.Add(colisVoulus[i].listArticles[0]);
+                            nbMemeArticleTempo[0]++;
+                        }
+                        if (nbArtRng < 9)
+                        {
+                            colisVoulus[i].listArticles.Add(colisViderManager.colisVider[rng].listArticles[0]);
+                            nbArtRng++;
+                        }
                     }
                 }
             }
 
             List<int> nbMemeArticle = new List<int>();
             List<Article> articleConnu = new List<Article>();
+
+            //Pour le Debug
+            Debug.Log("Colis n°" + i);
             for (int m = 0; m < colisVoulus[i].listArticles.Count; m++)
             {
-                if(!articleConnu.Contains(colisVoulus[i].listArticles[m]))
+                if (!articleConnu.Contains(colisVoulus[i].listArticles[m]))
                 {
                     articleConnu.Add(colisVoulus[i].listArticles[m]);
                     nbMemeArticle.Add(1);
@@ -125,13 +166,19 @@ public class ManagerColisAttendu : MonoBehaviour
             }
             for (int m = 0; m < nbMemeArticle.Count; m++)
             {
-                while (nbMemeArticle[m]>=9)
-                {
-                    colisVoulus[i].listArticles.Remove(articleConnu[m]);
-                    nbMemeArticle[m]--;
-                }
+                Debug.Log("Nombre de meme article : " + nbMemeArticle[m]);
             }
 
+            nbPhase = 0;
+            articleDejaConnus = new List<Article>();
+            foreach (Article art in colisVoulus[i].listArticles)
+            {
+                if (!articleDejaConnus.Contains(art))
+                {
+                    articleDejaConnus.Add(art);
+                    nbPhase++;
+                }
+            }
 
             phasesColisVoulus.Add(nbPhase);
 

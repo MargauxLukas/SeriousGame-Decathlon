@@ -9837,10 +9837,10 @@ MonoBehaviour:
   - {fileID: 980227254}
   - {fileID: 1987281621}
   - {fileID: 994102619}
-  nombreColisVoulu: 4
+  nombreColisVoulu: 20
   nbArticleVoulu: 0
   nbEmplacement: 0
-  chanceAvoirTropArticlePrevu: 2
+  chanceAvoirTropArticlePrevu: 20
   chanceToComeFromInternet: 1
   ecranFinNiveau: {fileID: 2118144035}
   isLevelEnded: 0
