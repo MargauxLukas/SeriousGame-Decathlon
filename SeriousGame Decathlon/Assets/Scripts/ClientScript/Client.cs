@@ -1,8 +1,9 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using UnityEngine.SceneManagement;
 
 public class Client : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class Client : MonoBehaviour
     public Net_SendGeneralData gdSave;
 
     #region Monobehaviour
-    private void Start()
+    public void Start()
     {
         if (instance == null)
         {
@@ -39,25 +40,44 @@ public class Client : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(this);
+            return;
         }
         DontDestroyOnLoad(this);
-        if(!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
+        if (!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
         {
             Debug.Log("Test creationDirectory");
             Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
         }
-        if(!File.Exists(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"))
+        if (!File.Exists(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"))
         {
             File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", SERVER_IP);
         }
-        else
+        Debug.Log(File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"));
+        SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
+        /*string[] tabTempo = SERVER_IP.Split('.');
+        SERVER_IP = string.Empty;
+
+        for(int i = 0; i<4; i++)
         {
-            SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
-        }
+            if (i == 3)
+            {
+                SERVER_IP = SERVER_IP + tabTempo[i];
+            }
+            else
+            {
+                SERVER_IP = SERVER_IP + tabTempo[i] + ".";
+            }
+        }*/
         Init();
+
     }
     #endregion
+
+    private void OnLoad()
+    {
+
+    }
 
     private void Update()
     {
@@ -121,6 +141,7 @@ public class Client : MonoBehaviour
                 Debug.Log("Connected to the server");
                 isConnectedToServer = true;
                 SaveLoadSystem.instance.LoadGeneralData("GeneralDataStart");
+                SceneManager.LoadScene(14);
                 break;
 
             case NetworkEventType.DisconnectEvent:

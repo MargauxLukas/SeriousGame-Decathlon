@@ -27,10 +27,4 @@ public class TestSonsPrincipal : MonoBehaviour
         source.loop = true;
         source.Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

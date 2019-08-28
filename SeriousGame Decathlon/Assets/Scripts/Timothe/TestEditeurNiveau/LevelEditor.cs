@@ -64,10 +64,6 @@ public class LevelEditor : MonoBehaviour
     {
         if (ongletGTP.activeSelf)
         {
-            if (!string.IsNullOrEmpty(GtpInputfieldNombreColis.text) && int.Parse(GtpInputfieldNombreColis.text) < 3)
-            {
-                GtpInputfieldNombreColis.text = "3";
-            }
 
             if (!string.IsNullOrEmpty(GtpInputfieldMauvaisArticle.text) && int.Parse(GtpInputfieldMauvaisArticle.text) > 100)
             {
@@ -180,6 +176,11 @@ public class LevelEditor : MonoBehaviour
 
     public void ValidateAllField()
     {
+        if (!string.IsNullOrEmpty(GtpInputfieldNombreColis.text) && int.Parse(GtpInputfieldNombreColis.text) < 3)
+        {
+            GtpInputfieldNombreColis.text = "3";
+        }
+
         newLevel.nbColisVoulu = int.Parse(GtpInputfieldNombreColis.text);
         newLevel.chanceMauvaisArticle = int.Parse(GtpInputfieldMauvaisArticle.text);
         newLevel.chanceAllMauvaisArticle = int.Parse(GtpInputfieldAllMauvaisArticle.text);
