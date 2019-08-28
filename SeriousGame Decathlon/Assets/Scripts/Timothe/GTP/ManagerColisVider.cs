@@ -44,6 +44,8 @@ public class ManagerColisVider : MonoBehaviour
     int currentColisNumberTuto;
     public List<int> listPosVoulue;
 
+    private float cooldown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,10 @@ public class ManagerColisVider : MonoBehaviour
         if(tempsReponseChangementColis>0)
         {
             tempsReponseChangementColis -= Time.deltaTime;
+        }
+        if(cooldown>0)
+        {
+            cooldown -= Time.deltaTime;
         }
     }
 
@@ -359,8 +365,9 @@ public class ManagerColisVider : MonoBehaviour
 
     public bool PeutFairePartirColis()
     {
-        if (!managerColis.isLevelEnded)
+        if (!managerColis.isLevelEnded && cooldown<=0)
         {
+            cooldown = 0.5f;
             if (emplacementsScripts[emplacement].GetComponent<AffichagePileArticleGTP>().isSupposedToBeEmpty)
             {
                 if (TutoManagerGTP.instance != null) { TutoManagerGTP.instance.Manager(8); }
