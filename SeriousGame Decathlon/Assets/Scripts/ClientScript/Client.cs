@@ -46,29 +46,13 @@ public class Client : MonoBehaviour
         DontDestroyOnLoad(this);
         if (!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
         {
-            Debug.Log("Test creationDirectory");
             Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
         }
         if (!File.Exists(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"))
         {
             File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", SERVER_IP);
         }
-        Debug.Log(File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt"));
         SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
-        /*string[] tabTempo = SERVER_IP.Split('.');
-        SERVER_IP = string.Empty;
-
-        for(int i = 0; i<4; i++)
-        {
-            if (i == 3)
-            {
-                SERVER_IP = SERVER_IP + tabTempo[i];
-            }
-            else
-            {
-                SERVER_IP = SERVER_IP + tabTempo[i] + ".";
-            }
-        }*/
         Init();
 
     }
