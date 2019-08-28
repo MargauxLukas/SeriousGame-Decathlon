@@ -3,6 +3,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Client : MonoBehaviour
     public GameObject buttonExport;
     public GameObject ecranIp;
     public GameObject InputField;
-    public TextMeshProUGUI text;
+    public Text text;
 
     #region Monobehaviour
     private void Start()
@@ -41,9 +42,11 @@ public class Client : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(this);
+            return;
         }
         DontDestroyOnLoad(this);
+
         if (!Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
@@ -229,17 +232,25 @@ public class Client : MonoBehaviour
 
     public void OKChangeIp()
     {
-        Client.instance.SERVER_IP = text.text;
+        SERVER_IP = text.text;
         if (Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
         }
-        File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", Client.instance.SERVER_IP);
-        Debug.Log(Client.instance.SERVER_IP);
+        File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", SERVER_IP);
 
         buttonExport.SetActive(true);
         ecranIp.SetActive(false);
         InputField.SetActive(false);
-        SERVER_IP = text.text;
+        isConnectedToServer = false;
+        Shutdown();
+        Start();
+    }
+
+    public void  NoChangeIP()
+    {
+        buttonExport.SetActive(true);
+        ecranIp.SetActive(false);
+        InputField.SetActive(false);
     }
 }

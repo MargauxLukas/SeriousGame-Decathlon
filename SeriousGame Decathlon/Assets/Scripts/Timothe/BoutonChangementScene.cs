@@ -63,15 +63,12 @@ public class BoutonChangementScene : MonoBehaviour
     string test = "0";
     public void ChangeIPConfirm()
     {
-        test = textIP.text;
-        Client.instance.SERVER_IP = test;
+        Client.instance.SERVER_IP = textIP.text;
         if (Directory.Exists(Application.persistentDataPath + "/PlayTheMeca"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/PlayTheMeca");
         }
         File.WriteAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt", Client.instance.SERVER_IP);
-
-       // Client.instance.SERVER_IP = File.ReadAllText(Application.persistentDataPath + "/PlayTheMeca/PlayTheMecaIP.txt");
 
         changeIP.SetActive(false);
         canvasIP.SetActive(false);
@@ -80,6 +77,14 @@ public class BoutonChangementScene : MonoBehaviour
         Client.instance.isConnectedToServer = false;
         Client.instance.Shutdown();
         Client.instance.Start();
+    }
+
+    public void NoChangeIP()
+    {
+        changeIP.SetActive(false);
+        canvasIP.SetActive(false);
+        Button14.GetComponent<Button>().interactable = true;
+        Button8.GetComponent<Button>().interactable = true;
     }
 
     IEnumerator LoadNewSceneAsync(int nbScene)
