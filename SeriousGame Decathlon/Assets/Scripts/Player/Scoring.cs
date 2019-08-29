@@ -54,7 +54,7 @@ public class Scoring : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null && TutoManagerGTP.instance == null)
+        if(instance == null)
         {
             instance = this;
         }
@@ -174,9 +174,12 @@ public class Scoring : MonoBehaviour
     #region GTP
     public void LosePointGTP(int amount, string text)
     {
-        Debug.Log("Lose Some Point");
-        scoreGTP -= amount;
-        AffichageErreur(text);
+        if (TutoManagerGTP.instance == null)
+        {
+            Debug.Log("Lose Some Point");
+            scoreGTP -= amount;
+            AffichageErreur(text);
+        }
     }
 
     public void WinPointGTP(int amount)
