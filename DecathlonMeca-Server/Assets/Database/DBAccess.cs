@@ -8,15 +8,15 @@ using System.Collections.Generic;
 
 public class DBAccess : MonoBehaviour
 {
-    public List<string> listTable = new List<string> { "RankingTabAll", "RankingMFAll", "RankingRecepAll", "RankingGTPAll"};
+    public List<string> listTable = new List<string> { "RankingTabAll", "RankingMFAll", "RankingRecepAll", "RankingGTPAll"};                         //Liste des Tables SQL (Je prends pas en compte RankingAll que je remplis de toute évidence
 
     public void Start()
     {
-        string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
-        IDbConnection dbcon = new SqliteConnection(connection);
-        dbcon.Open();
+        string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";                                                       //Lien de l'emplacement du fichier SQL (Pour y acceder : C:\Users\Designer\AppData\LocalLow\DefaultCompany\DecathlonMeca-Server )                            
+        IDbConnection dbcon = new SqliteConnection(connection);                                                                                      //On donne le lien auquel on veut accéder 
+        dbcon.Open();                                                                                                                                //On ouvre la base de donnée (IMPORTANT : Penser à la fermer lorsqu'on l'utilise plus (Après une recherche, un INSERT, Un UPDATE ...)
 
-        IDbCommand dbcmd;
+        IDbCommand dbcmd;                                                                                                                            //Sert à prendre une requête SQL avec "dbcmd.CommandText = ... " et à l'éxecuter avec "dbcmd.ExecuteNonQuery()".                                            
         IDataReader reader;
 
         #region Create Table
@@ -140,11 +140,6 @@ public class DBAccess : MonoBehaviour
         */
 
         dbcon.Close();
-    }
-
-    public void CanCloseDB()
-    {
-        //
     }
 
     #region GetHallOfFame
