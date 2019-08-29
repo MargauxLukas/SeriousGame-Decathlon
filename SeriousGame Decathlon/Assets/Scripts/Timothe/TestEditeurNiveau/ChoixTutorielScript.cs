@@ -78,7 +78,7 @@ public class ChoixTutorielScript : MonoBehaviour
                 detailTuto.text = "Un container spécial est arrivé à quai pour t'apprendre les bases de la Réception. Tu apprendras, durant ce tutoriel, à manipuler les colis afin de préserver ta santé et à gérer les éventuelles anomalies que tu pourrais rencontrer.";
                 break;
             case 15:
-                detailTuto.text = "Quatre commandes à traiter on été spécialement envoyées à ton poste pour ta formation. Tu apprendras dans ce tutoriel, les bases du GTP et découvriras les différentes anomalies que tu pourras rencontrer à ce poste.";
+                detailTuto.text = "Quatre commandes à traiter ont été spécialement envoyées à ton poste pour ta formation. Tu apprendras dans ce tutoriel, les bases du GTP et découvriras les différentes anomalies que tu pourras rencontrer à ce poste.";
                 break;
         }
     }
