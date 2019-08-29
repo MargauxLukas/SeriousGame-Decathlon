@@ -66,6 +66,7 @@ public class TutoManagerRecep : MonoBehaviour
 
     public void DialogueIsFinished()
     {
+        Debug.Log("DialogueIsFinished" + interactionNum);
         canPlayFirst  = false;
         canPlaySecond =  true;
         Manager(interactionNum);
@@ -2089,7 +2090,7 @@ public class TutoManagerRecep : MonoBehaviour
         gameObjectsManager.GameObjectToButton(gameObjectsManager.validateButton).interactable = false;
         gameObjectsManager.GameObjectToButton(gameObjectsManager.foldUpButton).interactable = false;
 
-        StartCoroutine(NewPhase(0.5f));
+        StartCoroutine(NewPhase(0.75f));
     }
 
     void Phase55()
@@ -2101,17 +2102,20 @@ public class TutoManagerRecep : MonoBehaviour
 
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
+
+            Debug.Log(canPlayFirst + "," + canPlaySecond);
         }
 
         if (canPlaySecond)
         {
+            Debug.Log("Phase 55 play second");
             Indications(new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(61.13f, -4.43f),
-                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
-                    new Vector2(0, 0), 0, 0, 0);
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(61.13f, -4.43f),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.onOffButton).interactable = true;
 
@@ -2126,12 +2130,12 @@ public class TutoManagerRecep : MonoBehaviour
         if (canPlayFirst)
         {
             Indications(new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0), new Vector2(0, 0),
-                    new Vector2(0, 0),
-                    new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
-                    new Vector2(0, 0), 0, 0, 0);
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(0, 0),
+                        new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0, false,
+                        new Vector2(0, 0), 0, 0, 0);
 
             gameObjectsManager.GameObjectToButton(gameObjectsManager.onOffButton).interactable = false;
 
