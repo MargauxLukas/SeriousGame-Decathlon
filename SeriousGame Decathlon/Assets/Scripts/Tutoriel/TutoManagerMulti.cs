@@ -61,6 +61,7 @@ public class TutoManagerMulti : MonoBehaviour
 
     public void DialogueIsFinished()
     {
+        Debug.Log("Dialogue is finished " + interactionNum);
         canPlayFirst  =   false;
         canPlaySecond =    true;
         Manager(interactionNum);
@@ -2891,6 +2892,7 @@ public class TutoManagerMulti : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            Debug.Log("Phase88");
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
 
@@ -2902,6 +2904,7 @@ public class TutoManagerMulti : MonoBehaviour
 
         if (canPlaySecond)
         {
+            Debug.Log("Phase 88 Play Second");
             gameObjectsManager.GameObjectToBoxCollider(gameObjectsManager.screen).enabled = true;
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
@@ -3118,7 +3121,7 @@ public class TutoManagerMulti : MonoBehaviour
         if (canPlaySecond)
         {
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
-            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localPosition = new Vector2(-2.12f, 5.04f);
+            gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localPosition = new Vector2(-2.1f, 5.07f);
             gameObjectsManager.GameObjectToTransform(gameObjectsManager.circleSpriteMask).transform.localScale = new Vector2(0.8f, 0.8f); ;
             gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.circleSpriteMask).enabled = true;
 
