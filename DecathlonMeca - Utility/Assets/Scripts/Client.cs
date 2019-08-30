@@ -308,4 +308,9 @@ public class Client : MonoBehaviour
         ecranIp.SetActive(false);
         InputField.SetActive(false);
     }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }
