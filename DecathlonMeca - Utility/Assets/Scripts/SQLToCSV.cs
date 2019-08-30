@@ -42,7 +42,7 @@ public class SQLToCSV : MonoBehaviour
 
     public void SetToAFileData()
     {
-        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_ALL");
+        StreamWriter file = new StreamWriter(Application.persistentDataPath + "/data_ALL.txt");
 
         foreach (string text in dataGeneral)
         {

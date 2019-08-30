@@ -17,7 +17,7 @@ public class DBAccess : MonoBehaviour
         dbcon.Open();                                                                                                                                //On ouvre la base de donnée (IMPORTANT : Penser à la fermer lorsqu'on l'utilise plus (Après une recherche, un INSERT, Un UPDATE ...)
 
         IDbCommand dbcmd;                                                                                                                            //Sert à prendre une requête SQL avec "dbcmd.CommandText = ... " et à l'éxecuter avec "dbcmd.ExecuteNonQuery()".                                            
-        IDataReader reader;
+        IDataReader reader;                                                                                                                          //Sert à lire une requête, utile lorsqu'on veut juste avoir des informations avec  "reader = cmnd_read.ExecuteReader()"
 
         #region Create Table
         #region RankingGeneral
