@@ -14,4 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hayao Miyazaki
   date: 14 juin 2019
-  score: 35
+  score: 0
+  scoreGTP: 0
+  scoreReception: 0
+  scoreMultifonction: 0
+  erreursReception: []
+  erreursMultifonction: []
+  erreursGTP: []
+  nbErreursReception: 
+  nbErreursMultifonction: 
+  nbErreursGTP: 

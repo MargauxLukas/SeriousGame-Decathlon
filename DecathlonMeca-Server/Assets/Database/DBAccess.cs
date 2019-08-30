@@ -8,15 +8,15 @@ using System.Collections.Generic;
 
 public class DBAccess : MonoBehaviour
 {
-    public List<string> listTable = new List<string> { "RankingTabAll", "RankingMFAll", "RankingRecepAll", "RankingGTPAll"};
+    public List<string> listTable = new List<string> { "RankingTabAll", "RankingMFAll", "RankingRecepAll", "RankingGTPAll"};                         //Liste des Tables SQL (Je prends pas en compte RankingAll que je remplis de toute évidence
 
     public void Start()
     {
-        string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
-        IDbConnection dbcon = new SqliteConnection(connection);
-        dbcon.Open();
+        string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";                                                       //Lien de l'emplacement du fichier SQL (Pour y acceder : C:\Users\Designer\AppData\LocalLow\DefaultCompany\DecathlonMeca-Server )                            
+        IDbConnection dbcon = new SqliteConnection(connection);                                                                                      //On donne le lien auquel on veut accéder 
+        dbcon.Open();                                                                                                                                //On ouvre la base de donnée (IMPORTANT : Penser à la fermer lorsqu'on l'utilise plus (Après une recherche, un INSERT, Un UPDATE ...)
 
-        IDbCommand dbcmd;
+        IDbCommand dbcmd;                                                                                                                            //Sert à prendre une requête SQL avec "dbcmd.CommandText = ... " et à l'éxecuter avec "dbcmd.ExecuteNonQuery()".                                            
         IDataReader reader;
 
         #region Create Table
@@ -142,11 +142,6 @@ public class DBAccess : MonoBehaviour
         dbcon.Close();
     }
 
-    public void CanCloseDB()
-    {
-        //
-    }
-
     #region GetHallOfFame
     /**************************************************
      *      Permet d'avoir le nom des joueurs         *
@@ -158,7 +153,6 @@ public class DBAccess : MonoBehaviour
         dbcon.Open();
 
         IDbCommand cmnd_read = dbcon.CreateCommand();
-
         cmnd_read.CommandText = "SELECT name FROM '" + tab + "' where rank =" + rank;
         IDataReader reader = cmnd_read.ExecuteReader();
 
@@ -186,168 +180,88 @@ public class DBAccess : MonoBehaviour
     *******************************************************************/
     public void SetRanking(int score, string name, string date, int scoreMF, int scoreRecep, int scoreGTP)
     {
+        int rankG = 0;
+        int rankMF = 0;
+        int rankRecep = 0;
+        int rankGTP = 0;
+
         string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
         IDbConnection dbcon = new SqliteConnection(connection);
         dbcon.Open();
 
         #region ScoreGeneral
-        IDbCommand cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingTabAll";
-        IDataReader reader = cmnd_read.ExecuteReader();
-
-        int max = int.Parse(reader[0].ToString());
-        int rank = int.Parse(reader[0].ToString());
-        int min = 1;
-
-        if (score > 0)
+        for (int i = 10; i > 0; i--)
         {
-            for (int i = (min+max)/2; i <= rank; i--)
-            {   
-                cmnd_read.CommandText = "SELECT score FROM 'RankingTabAll' where rank =" + i.ToString();
-                reader = cmnd_read.ExecuteReader();
+            IDbCommand cmndScore = dbcon.CreateCommand();
+            cmndScore.CommandText = "SELECT score FROM 'RankingTabAll' where rank =" + i.ToString();
+            IDataReader readerScore = cmndScore.ExecuteReader();
 
-                if (int.Parse(reader[0].ToString()) > score)
-                {
-                    min = (min + max)/2;
-                }
-                else if(int.Parse(reader[0].ToString()) < score)
-                {
-                    max = (min + max) / 2;
-                }
-                else
-                {
-                    rank = i+1;
-                    string tab = "RankingTabAll";
-                    TriRanking(score, name, rank, date, tab);
-                    break;
-                }
+            if (int.Parse(readerScore[0].ToString()) >= score)
+            {
+                break;
             }
-        }
-        else
-        {
-            //Je prefere ne pas mettre de rang à 0 pour le moment
-            /*cmnd_read.CommandText = "INSERT INTO 'RankingTabAll' VALUES ( '" + max   + "' , '" +
-                                                                            name  + "' , '" + 
-                                                                            score + "' , '" + 
-                                                                            date  + "')";
-            reader = cmnd_read.ExecuteReader();
-            dbcon.Close();
-            return;*/
+            else { rankG = i; }
+            readerScore.Close();
         }
         #endregion
 
         #region ScoreMF
-        cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingMFAll";
-        reader = cmnd_read.ExecuteReader();
-
-        max = int.Parse(reader[0].ToString());
-        rank = int.Parse(reader[0].ToString());
-        min = 1;
-
-        if (scoreMF > 0)
+        for (int i = 10; i > 0; i--)
         {
-            for (int i = (min + max) / 2; i <= rank; i--)
-            {
-                cmnd_read.CommandText = "SELECT score FROM 'RankingMFAll' where rank =" + i.ToString();
-                reader = cmnd_read.ExecuteReader();
+            IDbCommand cmndScore = dbcon.CreateCommand();
+            cmndScore.CommandText = "SELECT score FROM 'RankingMFAll' where rank =" + i.ToString();
+            IDataReader readerScore;
+            readerScore = cmndScore.ExecuteReader();
 
-                if (int.Parse(reader[0].ToString()) > scoreMF)
-                {
-                    min = (min + max) / 2;
-                }
-                else if (int.Parse(reader[0].ToString()) < scoreMF)
-                {
-                    max = (min + max) / 2;
-                }
-                else
-                {
-                    rank = i + 1;
-                    string tab = "RankingMFAll";
-                    TriRanking(scoreMF, name, rank, date, tab);
-                    break;
-                }
+            if (int.Parse(readerScore[0].ToString()) >= scoreMF)
+            {
+                break;
             }
+            else { rankMF = i; }
+            readerScore.Close();
         }
         #endregion
 
         #region ScoreRecep
-        cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingRecepAll";
-        reader = cmnd_read.ExecuteReader();
-
-        max = int.Parse(reader[0].ToString());
-        rank = int.Parse(reader[0].ToString());
-        min = 1;
-
-        if (scoreRecep > 0)
-        {
-            for (int i = (min + max) / 2; i <= rank; i--)
+            for (int i = 10; i > 0; i--)
             {
-                cmnd_read.CommandText = "SELECT score FROM 'RankingRecepAll' where rank =" + i.ToString();
-                reader = cmnd_read.ExecuteReader();
+                IDbCommand cmndScore = dbcon.CreateCommand();
+                cmndScore.CommandText = "SELECT score FROM 'RankingRecepAll' where rank =" + i.ToString();
+                IDataReader readerScore;
+                readerScore = cmndScore.ExecuteReader();
 
-                if (int.Parse(reader[0].ToString()) > scoreRecep)
-                {
-                    min = (min + max) / 2;
-                }
-                else if (int.Parse(reader[0].ToString()) < scoreRecep)
-                {
-                    max = (min + max) / 2;
-                }
-                else
-                {
-                    rank = i + 1;
-                    string tab = "RankingRecepAll";
-                    TriRanking(scoreRecep, name, rank, date, tab);
-                    break;
-                }
+            if (int.Parse(readerScore[0].ToString()) >= scoreRecep)
+            {
+                break;
             }
+            else { rankRecep = i; }
+            readerScore.Close();
         }
         #endregion
 
         #region ScoreGTP
-        cmnd_read = dbcon.CreateCommand();
-        cmnd_read.CommandText = "SELECT MAX(rank) FROM RankingGTPAll";
-        reader = cmnd_read.ExecuteReader();
-
-        max = int.Parse(reader[0].ToString());
-        rank = int.Parse(reader[0].ToString());
-        min = 1;
-
-        if (scoreGTP > 0)
+        for (int i = 10; i > 0; i--)
         {
-            for (int i = (min + max) / 2; i <= rank; i--)
-            {
-                cmnd_read.CommandText = "SELECT score FROM 'RankingGTPAll' where rank =" + i.ToString();
-                reader = cmnd_read.ExecuteReader();
+            IDbCommand cmndScore = dbcon.CreateCommand();
+            cmndScore.CommandText = "SELECT score FROM 'RankingGTPAll' where rank =" + i.ToString();
+            IDataReader readerScore;
+            readerScore = cmndScore.ExecuteReader();
 
-                if (int.Parse(reader[0].ToString()) > scoreGTP)
-                {
-                    min = (min + max) / 2;
-                }
-                else if (int.Parse(reader[0].ToString()) < scoreGTP)
-                {
-                    max = (min + max) / 2;
-                }
-                else
-                {
-                    rank = i + 1;
-                    string tab = "RankingGTPAll";
-                    TriRanking(scoreGTP, name, rank, date, tab);
-                    break;
-                }
+            if (int.Parse(readerScore[0].ToString()) >= scoreGTP)
+            {
+                break;
             }
+            else { rankMF = i; }
+            readerScore.Close();
         }
         #endregion
 
         #region ScoreTOUT
 
-        cmnd_read = dbcon.CreateCommand();
-
+        IDbCommand cmnd_read = dbcon.CreateCommand();
         IDbCommand cmnd = dbcon.CreateCommand();
         cmnd.CommandText = "SELECT MAX(nb) FROM RankingAll";
-        IDataReader readercmnd = cmnd_read.ExecuteReader();
+        IDataReader readercmnd = cmnd.ExecuteReader();
 
         int nbGeneral = int.Parse(readercmnd[0].ToString());
         nbGeneral++;
@@ -361,8 +275,15 @@ public class DBAccess : MonoBehaviour
                                                                        date +     "')";
         cmnd_read.ExecuteNonQuery();
         #endregion
-    }
+        
 
+        dbcon.Close();
+
+        if (rankG != 0) { TriRanking(score, name, rankG, date, "RankingTabAll"); }
+        if (rankMF != 0){TriRanking(scoreMF, name, rankMF, date, "RankingMFAll");}
+        if (rankRecep != 0){TriRanking(scoreRecep, name, rankRecep, date, "RankingRecepAll");}
+        if (rankGTP != 0){TriRanking(scoreGTP, name, rankGTP, date, "RankingGTPAll");}
+    }
 
     /************************************
     *         C'est pour trier          *
@@ -372,33 +293,32 @@ public class DBAccess : MonoBehaviour
         string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
         IDbConnection dbcon = new SqliteConnection(connection);
         dbcon.Open();
-        
-        IDbCommand cmnd = dbcon.CreateCommand();
-        cmnd.CommandText = "SELECT MAX(rank) FROM  '" + tab + "'";
-        IDataReader reader = cmnd.ExecuteReader();
 
-        int max = int.Parse(reader[0].ToString());
+        IDbCommand cmndReader = dbcon.CreateCommand();
+        cmndReader.CommandText = "DELETE FROM '" + tab + "' where rank = 10";
+        cmndReader.ExecuteNonQuery();
 
-        for (int i = max; i > 0; i--)
+        for (int i = 10; i > 0; i--)
         {
-            int nbToUpdate = i - 1;
+            int nbToUpdate = i + 1;
             if (rankT == i)
             {
-                cmnd.CommandText = "UPDATE '" + tab +"' SET rank = " + i + " WHERE rank = " + nbToUpdate;
-                cmnd.ExecuteNonQuery();
+                cmndReader.CommandText = "UPDATE '" + tab + "' SET rank = " + nbToUpdate + " WHERE rank = " + i.ToString();
+                cmndReader.ExecuteNonQuery();
 
-                cmnd.CommandText = "INSERT INTO '" + tab + "' VALUES ( '" + rankT  + "' , '" +  
-                                                                            nameT  + "' , '" +  
-                                                                            scoreT + "' , '" + 
-                                                                            date   + "')" ;
-                cmnd.ExecuteNonQuery();
+                cmndReader.CommandText = "INSERT INTO '" + tab + "' VALUES ( '" + rankT + "' , '" +
+                                                                            nameT + "' , '" +
+                                                                            scoreT + "' , '" +
+                                                                            date + "')";
+                cmndReader.ExecuteNonQuery();
                 dbcon.Close();
                 break;
             }
             else
             {
-                cmnd.CommandText = "UPDATE '" + tab + "' SET rank = " + i + " WHERE rank = " + nbToUpdate;
-                cmnd.ExecuteNonQuery();
+                Debug.Log("Rank " + i + " devient rank " + nbToUpdate);
+                cmndReader.CommandText = "UPDATE '" + tab + "' SET rank = " + nbToUpdate + " WHERE rank = " + i.ToString();
+                cmndReader.ExecuteNonQuery();
             }
         }
     }

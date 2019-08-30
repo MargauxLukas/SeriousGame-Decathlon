@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mere castor
   date: "08 ao\xFBt 2019"
-  score: 51
+  score: 0
   scoreGTP: 0
   scoreReception: 0
-  scoreMultifonction: 51
-  erreursReception:
-  - "Tu as pos\xE9 un colis abim\xE9 ou trop grand sur le convoyeur"
+  scoreMultifonction: 0
+  erreursReception: []
   erreursMultifonction: []
   erreursGTP: []
-  nbErreursReception: 02000000
+  nbErreursReception: 
   nbErreursMultifonction: 
   nbErreursGTP: 
