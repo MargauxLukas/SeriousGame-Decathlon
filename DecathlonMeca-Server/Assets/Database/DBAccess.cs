@@ -21,14 +21,14 @@ public class DBAccess : MonoBehaviour
 
         #region Create Table
         #region RankingGeneral
-        dbcmd = dbcon.CreateCommand();
+        dbcmd = dbcon.CreateCommand();                                                                                                               //On lui indique qu'on va créer une commande.
 
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS 'RankingTabAll'( " +
                            " 'rank' INTEGER NOT NULL UNIQUE, " +
                            " 'name' TEXT NOT NULL, " +
                            " 'score' INTEGER NOT NULL, " +
                            " 'date' TEXT NOT NULL" +
-                           ");";
+                           ");";                                                                                                                     //Commande SQL, on cré
         dbcmd.ExecuteNonQuery();
         #endregion
 
@@ -139,7 +139,7 @@ public class DBAccess : MonoBehaviour
         reader = cmnd_read.ExecuteReader();
         */
 
-        dbcon.Close();
+        dbcon.Close();                                                                                                                               //On ferme la base de donnée
     }
 
     #region GetHallOfFame
@@ -180,23 +180,23 @@ public class DBAccess : MonoBehaviour
     *******************************************************************/
     public void SetRanking(int score, string name, string date, int scoreMF, int scoreRecep, int scoreGTP)
     {
-        int rankG = 0;
-        int rankMF = 0;
-        int rankRecep = 0;
-        int rankGTP = 0;
+        int rankG     = 0;                                                                                                  //Rang Général
+        int rankMF    = 0;                                                                                                  //Rang Multifonction
+        int rankRecep = 0;                                                                                                  //Rang Reception
+        int rankGTP   = 0;                                                                                                  //Rang GTP
 
         string connection = "URI=file:" + Application.persistentDataPath + "/RankingDatabase";
         IDbConnection dbcon = new SqliteConnection(connection);
         dbcon.Open();
 
         #region ScoreGeneral
-        for (int i = 10; i > 0; i--)
+        for (int i = 10; i > 0; i--)                                                                                         //On parcourt la liste du Hall Of Fame
         {
             IDbCommand cmndScore = dbcon.CreateCommand();
             cmndScore.CommandText = "SELECT score FROM 'RankingTabAll' where rank =" + i.ToString();
             IDataReader readerScore = cmndScore.ExecuteReader();
 
-            if (int.Parse(readerScore[0].ToString()) >= score)
+            if (int.Parse(readerScore[0].ToString()) >= score)                                                               //Si le score du joueur est actuel est supérieur on continue sinon on arrête
             {
                 break;
             }
@@ -279,10 +279,10 @@ public class DBAccess : MonoBehaviour
 
         dbcon.Close();
 
-        if (rankG != 0) { TriRanking(score, name, rankG, date, "RankingTabAll"); }
-        if (rankMF != 0){TriRanking(scoreMF, name, rankMF, date, "RankingMFAll");}
+        if (rankG     != 0){TriRanking(score     , name, rankG    , date,   "RankingTabAll");}
+        if (rankMF    != 0){TriRanking(scoreMF   , name, rankMF   , date,    "RankingMFAll");}
         if (rankRecep != 0){TriRanking(scoreRecep, name, rankRecep, date, "RankingRecepAll");}
-        if (rankGTP != 0){TriRanking(scoreGTP, name, rankGTP, date, "RankingGTPAll");}
+        if (rankGTP   != 0){TriRanking(scoreGTP  , name, rankGTP  , date,   "RankingGTPAll");}
     }
 
     /************************************
@@ -295,10 +295,10 @@ public class DBAccess : MonoBehaviour
         dbcon.Open();
 
         IDbCommand cmndReader = dbcon.CreateCommand();
-        cmndReader.CommandText = "DELETE FROM '" + tab + "' where rank = 10";
+        cmndReader.CommandText = "DELETE FROM '" + tab + "' where rank = 10";                                                                               //Si je rentre ici c'est que le score du joueur actuel est de toute évidence supérieur au 10 ème, du coup je le supprime.
         cmndReader.ExecuteNonQuery();
 
-        for (int i = 10; i > 0; i--)
+        for (int i = 10; i > 0; i--)                                                                                                                        //Je refait le même traitement qu'au dessus sauf que cette fois, je change la place des joueurs avec "UPDATE ..." et j'insere le joueur actuel avec "INSERT ..."
         {
             int nbToUpdate = i + 1;
             if (rankT == i)
@@ -324,6 +324,9 @@ public class DBAccess : MonoBehaviour
     }
     #endregion
 
+    /***************************************************************************************************** 
+     *     Sert à savoir combien il y'a de score enregistré dans Ranking All (Sert pour l'UTILITY)       *
+     *****************************************************************************************************/
     public Net_SendNbData SendnbData()
     {
         Net_SendNbData SNBD = new Net_SendNbData();
@@ -337,9 +340,13 @@ public class DBAccess : MonoBehaviour
 
         SNBD.nbGeneral = int.Parse(reader[0].ToString());
 
+        dbcon.Close();
         return SNBD;
     }
 
+    /*********************************************************************************** 
+    *     Sert à envoyer toutes les données de Ranking All (Sert pour l'UTILITY)       *
+    ************************************************************************************/
     public Net_SendAllData SendAllData(string tab, int rank)
     {
         Net_SendAllData sad = new Net_SendAllData();
@@ -352,9 +359,10 @@ public class DBAccess : MonoBehaviour
         IDataReader reader = cmnd_read.ExecuteReader();
 
         sad.tab = tab;
-        sad.data = reader[1].ToString() + ";" + reader[2].ToString() + ";" + reader[3].ToString() + ";" + reader[4].ToString() + ";" + reader[5].ToString() + ";" + reader[6].ToString();
+        sad.data = reader[1].ToString() + ";" + reader[2].ToString() + ";" + reader[3].ToString() + ";" + reader[4].ToString() + ";" + reader[5].ToString() + ";" + reader[6].ToString();               // 1 = Nom / 2 = Score General / 3 = Score MF / 4 = Score Recep / 5 = Score GTP / 6 = Date
         sad.rank = rank;
 
+        dbcon.Close();
         return sad;
     }
 }
