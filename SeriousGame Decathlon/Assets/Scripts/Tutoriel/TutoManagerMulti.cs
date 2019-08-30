@@ -47,28 +47,32 @@ public class TutoManagerMulti : MonoBehaviour
 
     void Awake()
     {
+        //Instancie le tuto
         if (instance == null) { instance = this  ; }
         else                  { Destroy(instance); }
     }
 
     private void Start()
     {
+        //Liste de colis personnalisés
         colisManager.GetComponent<ColisManager>().listeColisTraiter = listColis;
 
+        //Premier dialogue
         dialogueManager.LoadDialogue(listDialogues[dialogNum]);
         dialogNum++;
     }
 
+    //Permet de lancer la suite d'une phase après un dialogue
     public void DialogueIsFinished()
     {
-        Debug.Log("Dialogue is finished " + interactionNum);
         canPlayFirst  =   false;
         canPlaySecond =    true;
         Manager(interactionNum);
     }
 
+    //Lance les phases en fonctions des actions du joueur
     public void Manager(float interaction)
-    {
+    { 
         interactionNum = interaction;
         Debug.Log("Interaction : " + interactionNum + " Phase : " + phaseNum);
         switch (interaction)
@@ -886,6 +890,7 @@ public class TutoManagerMulti : MonoBehaviour
         }
     }
 
+    //Coroutine d'animation du doigt (glisser/déposer)
     IEnumerator MoveDoigt()
     {
         gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition += (targetPosition - gameObjectsManager.GameObjectToTransform(gameObjectsManager.doigtStay).transform.localPosition).normalized * Time.fixedDeltaTime * fingerSpeed;
@@ -904,7 +909,8 @@ public class TutoManagerMulti : MonoBehaviour
         StartCoroutine(MoveDoigt());
     }
 
-    IEnumerator NewPhase      (float time)
+    //Coroutine permettant de lancer la phase suivante après un temps de pause égal à "time"
+    IEnumerator NewPhase(float time)
     {
         yield return new WaitForSeconds(time);
 
@@ -915,39 +921,40 @@ public class TutoManagerMulti : MonoBehaviour
         Manager(4);
     }
 
+    //Coroutine empêchant de fermer la fiche info des articles avant un temps égal à "time"
     IEnumerator CloseFicheInfo(float time)
     {
         yield return new WaitForSeconds(time);
         canCloseFicheInfo = true;
     }
 
+    //Coroutine empêchant de fermer le menu tourner avant un temps égal à "time"
     IEnumerator CloseTurnMenu (float time)
     {
         yield return new WaitForSeconds(time);
         canCloseMenuTourner = true;
     }
-
-    IEnumerator ReturnToMenu  (float time)
-    {
-        yield return new WaitForSeconds(time);
-        gameObjectsManager.quitButtonToMenu.GetComponent<BoutonChangementScene>().LoadNewScene(0);
-    }
+   
 
     #region Colis1
     void Phase00()
     {
+        //Bouton pédale en surbrillance
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen)     .enabled = true;
         gameObjectsManager.GameObjectToTransform     (gameObjectsManager.circleSpriteMask).transform.localPosition = new Vector2(11.64f,-4.04f);
         gameObjectsManager.GameObjectToTransform     (gameObjectsManager.circleSpriteMask).transform.localScale    = new Vector2(  0.9f,  0.9f);
         gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.circleSpriteMask).enabled = true;
 
+        //Doigt clic sur bouton pédale
         gameObjectsManager.GameObjectToTransform     (gameObjectsManager.doigtClick).transform.localPosition = new Vector2(12.1f,-4.5f);
         gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick)          .enabled = true;
         gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtClick)          .enabled = true;
         gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtClickSpriteMask).enabled = true;
 
+        //Bouton pédale interactible
         gameObjectsManager.GameObjectToButton(gameObjectsManager.pedal).interactable = true;
 
+        //Reset pour fonct. DialogueIsFinished()
         canPlayFirst  =  true;
         canPlaySecond = false;
         phaseNum++;
@@ -956,22 +963,26 @@ public class TutoManagerMulti : MonoBehaviour
     void Phase01()
     {
         if (canPlayFirst)
-        {        
+        {   //Désactivation surbrillance
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen)         .enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.circleSpriteMask)    .enabled = false;
 
+            //Désactivation doigt
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick)          .enabled = false;
             gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtClick)          .enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
+            //Désactivation bouton Pédale
             gameObjectsManager.GameObjectToButton        (gameObjectsManager.pedal)          .interactable = false;
 
+            //Nouveau dialogue
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
 
         if (canPlaySecond)
         {
+            //Pistolet et Colis en surbrillance
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
 
             gameObjectsManager.GameObjectToTransform     (gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2( 5.3f, 1.24f);
@@ -982,8 +993,11 @@ public class TutoManagerMulti : MonoBehaviour
             gameObjectsManager.GameObjectToTransform     (gameObjectsManager.squareSpriteMask02).transform.localScale    = new Vector2(1.4f,  1.19f);
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.squareSpriteMask02).enabled = true;
 
+            //Doigt glisser/déposer
             gameObjectsManager.GameObjectToTransform     (gameObjectsManager.doigtStay).transform.localPosition = new Vector3(5.75f, 1f, 30f);
+            //Position pistolet
             fingerPosition = new Vector3(5.75f,    1f, 30f);
+            //Position colis
             targetPosition = new Vector3(8.75f, -1.4f, 30f);
             fingerSpeed = 8f;
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay)          .enabled = true;
@@ -991,9 +1005,11 @@ public class TutoManagerMulti : MonoBehaviour
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtStaySpriteMask).enabled = true;
             StartCoroutine(MoveDoigt());
 
+            //Pistolet et collider colis acivés
             gameObjectsManager.GameObjectToBoxCollider   (gameObjectsManager.pistolet).enabled = true;
             gameObjectsManager.GameObjectToBoxCollider   (gameObjectsManager.colis1)  .enabled = true;
 
+            //Reset pour fonct. DialogueIsFinished()
             phaseNum++;
             canPlayFirst  =  true;
             canPlaySecond = false;
@@ -1004,39 +1020,47 @@ public class TutoManagerMulti : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            //Désactivation surbrillance
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen)       .enabled = false;
 
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.squareSpriteMask01).enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.squareSpriteMask02).enabled = false;
 
+            //Désactivation doigt
             fingerSpeed = 0;
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtStay)          .enabled = false;
             gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtStay)          .enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtStaySpriteMask).enabled = false;
 
+            //Désactivation pistolet et colis
             gameObjectsManager.GameObjectToBoxCollider   (gameObjectsManager.pistolet)           .enabled = false;
             gameObjectsManager.GameObjectToBoxCollider   (gameObjectsManager.colis1)             .enabled = false;
 
+            //Nouveau dialogue
             dialogueManager.LoadDialogue(listDialogues[dialogNum]);
             dialogNum++;
         }
 
         if (canPlaySecond)
         {
+            //Ecran en surbrillance
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen).enabled = true;
 
             gameObjectsManager.GameObjectToTransform     (gameObjectsManager.squareSpriteMask01).transform.localPosition = new Vector2(10.4f, 2.94f);
             gameObjectsManager.GameObjectToTransform     (gameObjectsManager.squareSpriteMask01).transform.localScale    = new Vector2(   2f,  1.2f);
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.squareSpriteMask01).enabled = true;
 
+            //Doigt click sur écran
             gameObjectsManager.GameObjectToTransform     (gameObjectsManager.doigtClick).transform.localPosition = new Vector2(11f, 2.45f);
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.doigtClick)          .enabled = true;
             gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtClick)          .enabled = true;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtClickSpriteMask).enabled = true;
 
+            //Activation collider et script écran 
             gameObjectsManager.GameObjectToBoxCollider   (gameObjectsManager.screen)              .enabled = true;
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>().enabled = true;
 
+            //Reset pour fonct. DialogueIsFinished()
             phaseNum++;
             canPlayFirst = true;
             canPlaySecond = false;
@@ -1047,6 +1071,7 @@ public class TutoManagerMulti : MonoBehaviour
     {
         if (canPlayFirst)
         {
+            //Désactivation surbrillance
             gameObjectsManager.GameObjectToSpriteRenderer(gameObjectsManager.blackScreen)         .enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.squareSpriteMask01)  .enabled = false;
 
@@ -1054,6 +1079,7 @@ public class TutoManagerMulti : MonoBehaviour
             gameObjectsManager.GameObjectToAnimator      (gameObjectsManager.doigtClick)          .enabled = false;
             gameObjectsManager.GameObjectToSpriteMask    (gameObjectsManager.doigtClickSpriteMask).enabled = false;
 
+            //Désactivation Ecran
             gameObjectsManager.GameObjectToBoxCollider   (gameObjectsManager.screen).enabled = false;
             gameObjectsManager.bigScreen.GetComponent<BigMonitor>()                 .enabled = false;
 
@@ -3377,13 +3403,6 @@ public class TutoManagerMulti : MonoBehaviour
         gameObjectsManager.GameObjectToSpriteMask(gameObjectsManager.squareSpriteMask01).enabled = false;
 
         gameObjectsManager.GameObjectToButton(gameObjectsManager.quitButtonWorkView).interactable = false;
-
-        phaseNum++;
-    }
-
-    void Phase120()
-    {
-        StartCoroutine(ReturnToMenu(0));
 
         phaseNum++;
     }
